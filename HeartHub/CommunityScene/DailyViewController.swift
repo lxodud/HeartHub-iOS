@@ -8,7 +8,10 @@
 import UIKit
 
 final class DailyViewController: UIViewController {
-    private let dailyCollectionView = UICollectionView(frame: .zero)
+    private lazy var dailyCollectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: generateCollectionViewLayout()
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,10 +21,20 @@ final class DailyViewController: UIViewController {
     }
 }
 
+extension DailyViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+}
+
 // MARK: Configure CollectionView
 extension DailyViewController {
     private func configureDailyCollectionView()  {
-        dailyCollectionView.collectionViewLayout = generateCollectionViewLayout()
+        dailyCollectionView.dataSource = self
     }
     
     private func generateCollectionViewLayout() -> UICollectionViewCompositionalLayout {
