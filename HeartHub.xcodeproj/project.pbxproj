@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C809A1E2A56DA57009EC362 /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C809A1D2A56DA57009EC362 /* DailyViewController.swift */; };
 		0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC12A5281C1001EF4E7 /* AppDelegate.swift */; };
 		0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC32A5281C1001EF4E7 /* SceneDelegate.swift */; };
 		0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC52A5281C1001EF4E7 /* ViewController.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C809A1D2A56DA57009EC362 /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
 		0CC33ABE2A5281C1001EF4E7 /* HeartHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC33AC12A5281C1001EF4E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CC33AC32A5281C1001EF4E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C809A1C2A56D17F009EC362 /* CommunityScene */ = {
+			isa = PBXGroup;
+			children = (
+				0C809A1D2A56DA57009EC362 /* DailyViewController.swift */,
+			);
+			path = CommunityScene;
+			sourceTree = "<group>";
+		};
 		0CC33AB52A5281C1001EF4E7 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +64,7 @@
 		0CC33AC02A5281C1001EF4E7 /* HeartHub */ = {
 			isa = PBXGroup;
 			children = (
+				0C809A1C2A56D17F009EC362 /* CommunityScene */,
 				0CC33AC12A5281C1001EF4E7 /* AppDelegate.swift */,
 				0CC33AC32A5281C1001EF4E7 /* SceneDelegate.swift */,
 				0CC33AC52A5281C1001EF4E7 /* ViewController.swift */,
@@ -136,6 +147,7 @@
 			files = (
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
 				0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */,
+				0C809A1E2A56DA57009EC362 /* DailyViewController.swift in Sources */,
 				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
