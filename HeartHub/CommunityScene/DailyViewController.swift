@@ -12,7 +12,9 @@ final class DailyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureDailyCollectionView()
+        configureSubview()
+        configureLayout()
     }
 }
 
@@ -20,7 +22,6 @@ final class DailyViewController: UIViewController {
 extension DailyViewController {
     private func configureDailyCollectionView()  {
         dailyCollectionView.collectionViewLayout = generateCollectionViewLayout()
-        view.addSubview(dailyCollectionView)
     }
     
     private func generateCollectionViewLayout() -> UICollectionViewCompositionalLayout {
@@ -44,5 +45,26 @@ extension DailyViewController {
         let section = NSCollectionLayoutSection(group: feedGroup)
         
         return UICollectionViewCompositionalLayout(section: section)
+    }
+}
+
+// MARK: Configure UI
+extension DailyViewController {
+    private func configureSubview() {
+        [dailyCollectionView].forEach {
+            view.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    
+    private func configureLayout() {
+        let safeArea = view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            dailyCollectionView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            dailyCollectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            dailyCollectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            dailyCollectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+        ])
     }
 }
