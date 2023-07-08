@@ -13,6 +13,7 @@ final class CommunityViewController: UIViewController {
         navigationOrientation: .horizontal
     )
 
+    private let searchBar = UISearchBar()
     private let viewControllers: [UIViewController]
     
     init(viewControllers: [UIViewController]) {
@@ -28,6 +29,7 @@ final class CommunityViewController: UIViewController {
         super.viewDidLoad()
         configurePageViewControllerInitialSetting()
         configurePageViewControllerLayout()
+        configureSearchBar()
     }
 }
 
@@ -92,3 +94,11 @@ extension CommunityViewController {
     }
 }
 
+// MARK: Configure SearchBar
+extension CommunityViewController {
+    private func configureSearchBar() {
+        searchBar.placeholder = "Search your interest!"
+        navigationItem.titleView = searchBar
+        navigationController?.navigationBar.backgroundColor = .systemBackground
+    }
+}

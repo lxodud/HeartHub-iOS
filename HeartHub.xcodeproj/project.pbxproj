@@ -49,11 +49,19 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		0C809A1C2A56D17F009EC362 /* CommunityScene */ = {
+		0C382E292A59A1F100EA08E0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				0C382E272A5994A700EA08E0 /* CommunityViewController.swift */,
 				0C809A1D2A56DA57009EC362 /* DailyViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0C809A1C2A56D17F009EC362 /* CommunityScene */ = {
+			isa = PBXGroup;
+			children = (
+				0C382E292A59A1F100EA08E0 /* Controller */,
 				0C382E242A5950AF00EA08E0 /* View */,
 			);
 			path = CommunityScene;
