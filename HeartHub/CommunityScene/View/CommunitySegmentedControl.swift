@@ -27,6 +27,10 @@ final class CommunitySegmentedControl: UISegmentedControl {
         setupInitialStatus()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         setupTitleAttributes()
@@ -40,10 +44,6 @@ final class CommunitySegmentedControl: UISegmentedControl {
         UIView.animate(withDuration: 0.1) {
             self.underLine.frame.origin.x = originX
         }
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 
