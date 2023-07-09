@@ -12,9 +12,30 @@ final class CommunityViewController: UIViewController {
         transitionStyle: .scroll,
         navigationOrientation: .horizontal
     )
-
+    
+    private let communitySegmentedControl: CommunitySegmentedControl = {
+        let segmentedControl = CommunitySegmentedControl(
+            items: ["Daily", "Look", "Date", "Game"],
+            normalColor: UIColor(red: 0.463, green: 0.463, blue: 0.463, alpha: 1),
+            selectedColor: UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        )
+        return segmentedControl
+    }()
+    
     private let searchBar = UISearchBar()
     private let viewControllers: [UIViewController]
+    
+    private var currentIndex: Int = 0 {
+        didSet {
+            let nextViewController = viewControllers[currentIndex]
+            let direction: UIPageViewController.NavigationDirection = oldValue < currentIndex ? .forward : .reverse
+            communityPageViewController.setViewControllers(
+                [nextViewController],
+                direction: direction,
+                animated: true
+            )
+        }
+    }
     
     init(viewControllers: [UIViewController]) {
         self.viewControllers = viewControllers
@@ -27,9 +48,42 @@ final class CommunityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurePageViewControllerInitialSetting()
+        communitySegmentedControl.addTarget(self, action: #selector(tapCommunitySegmentedControl(_:)), for: .valueChanged)
+        configureCommunitySegmentedControlLayout()
         configurePageViewControllerLayout()
+        configurePageViewControllerInitialSetting()
         configureSearchBar()
+    }
+}
+
+// MARK: PageViewController Delegate
+extension CommunityViewController: UIPageViewControllerDelegate {
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        willTransitionTo pendingViewControllers: [UIViewController]
+    ) {
+        guard let nextViewController = pendingViewControllers.first,
+              let index = viewControllers.firstIndex(of: nextViewController)
+        else {
+            return
+        }
+        
+        communitySegmentedControl.selectedSegmentIndex = index
+    }
+    
+    func pageViewController(
+        _ pageViewController: UIPageViewController,
+        didFinishAnimating finished: Bool,
+        previousViewControllers: [UIViewController],
+        transitionCompleted completed: Bool
+    ) {
+        guard let currentViewController = pageViewController.viewControllers?.first,
+              let index = viewControllers.firstIndex(of: currentViewController)
+        else {
+            return
+        }
+        
+        communitySegmentedControl.selectedSegmentIndex = index
     }
 }
 
@@ -39,26 +93,26 @@ extension CommunityViewController: UIPageViewControllerDataSource {
         _ pageViewController: UIPageViewController,
         viewControllerBefore viewController: UIViewController
     ) -> UIViewController? {
-        guard let index = viewControllers.firstIndex(of: viewController) else { return nil }
-        let previousIndex = index - 1
-        if previousIndex < 0 {
+        guard let index = viewControllers.firstIndex(of: viewController),
+              (index - 1) >= 0
+        else {
             return nil
         }
         
-        return viewControllers[previousIndex]
+        return viewControllers[index - 1]
     }
     
     func pageViewController(
         _ pageViewController: UIPageViewController,
         viewControllerAfter viewController: UIViewController
     ) -> UIViewController? {
-        guard let index = viewControllers.firstIndex(of: viewController) else { return nil }
-        let nextIndex = index + 1
-        if nextIndex == viewControllers.count {
+        guard let index = viewControllers.firstIndex(of: viewController),
+              (index + 1) != viewControllers.count
+        else {
             return nil
         }
         
-        return viewControllers[nextIndex]
+        return viewControllers[index + 1]
     }
 }
 
@@ -68,12 +122,13 @@ extension CommunityViewController {
         if let firstViewController = viewControllers.first {
             communityPageViewController.setViewControllers(
                 [firstViewController],
-                direction: .forward,
+                direction: .reverse,
                 animated: true
             )
         }
         
         communityPageViewController.dataSource = self
+        communityPageViewController.delegate = self
     }
     
     private func configurePageViewControllerLayout() {
@@ -85,11 +140,36 @@ extension CommunityViewController {
         
         view.addSubview(pageView)
         
+        pageView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
-            pageView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            pageView.topAnchor.constraint(equalTo: communitySegmentedControl.bottomAnchor),
             pageView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             pageView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             pageView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+        ])
+    }
+}
+
+// MARK: Configure CommunitySegmentedControl
+extension CommunityViewController {
+    @objc
+    private func tapCommunitySegmentedControl(_ sender: UISegmentedControl) {
+        currentIndex = sender.selectedSegmentIndex
+    }
+    
+    private func configureCommunitySegmentedControlLayout() {
+        let safeArea = view.safeAreaLayoutGuide
+        
+        view.addSubview(communitySegmentedControl)
+        
+        communitySegmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            communitySegmentedControl.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            communitySegmentedControl.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            communitySegmentedControl.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            communitySegmentedControl.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.08)
         ])
     }
 }
