@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol DailyCellProfileViewDelegate: AnyObject {
+    func didTapUserProfile()
+    func didTapPostOption()
+}
+
 final class DailyCellProfileView: UIView {
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -23,18 +28,19 @@ final class DailyCellProfileView: UIView {
         return label
     }()
     
-    private let postRelatedButton: UIButton = {
+    private let postOptionButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
         return button
     }()
     
+    weak var delegate: DailyCellProfileViewDelegate?
+    
     init() {
         super.init(frame: .zero)
         configureSubview()
         configureLayout()
-        profileIdLabel.text = "하이"
-        profileImageView.image = UIImage(systemName: "square.and.arrow.up.circle.fill")
+        configureAction()
     }
     
     required init(coder: NSCoder) {
@@ -49,13 +55,29 @@ final class DailyCellProfileView: UIView {
 
 // MARK: Configure Action
 extension DailyCellProfileView {
+    private func configureAction() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapUserProfile))
+        profileImageView.addGestureRecognizer(tapGesture)
+        profileIdLabel.addGestureRecognizer(tapGesture)
+        
+        postOptionButton.addTarget(self, action: #selector(tapOptionButton), for: .touchUpInside)
+    }
     
+    @objc
+    private func tapUserProfile() {
+        delegate?.didTapUserProfile()
+    }
+    
+    @objc
+    private func tapOptionButton() {
+        delegate?.didTapPostOption()
+    }
 }
 
 // MARK: Configure UI
 extension DailyCellProfileView {
     private func configureSubview() {
-        [profileImageView, profileIdLabel, postRelatedButton].forEach {
+        [profileImageView, profileIdLabel, postOptionButton].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -80,18 +102,18 @@ extension DailyCellProfileView {
             ),
             
             // MARK: Button Layout
-            postRelatedButton.trailingAnchor.constraint(
+            postOptionButton.trailingAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.trailingAnchor,
                 constant: -15
             ),
-            postRelatedButton.widthAnchor.constraint(
-                equalTo: postRelatedButton.heightAnchor
+            postOptionButton.widthAnchor.constraint(
+                equalTo: postOptionButton.heightAnchor
             ),
-            postRelatedButton.heightAnchor.constraint(
+            postOptionButton.heightAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.heightAnchor,
                 multiplier: 0.3
             ),
-            postRelatedButton.centerYAnchor.constraint(
+            postOptionButton.centerYAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.centerYAnchor
             ),
             
@@ -101,7 +123,7 @@ extension DailyCellProfileView {
                 constant: 15
             ),
             profileIdLabel.trailingAnchor.constraint(
-                equalTo: postRelatedButton.leadingAnchor,
+                equalTo: postOptionButton.leadingAnchor,
                 constant: -15
             ),
             profileIdLabel.heightAnchor.constraint(
