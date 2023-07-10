@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		0C382E262A5950C700EA08E0 /* CommunitySegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C382E252A5950C700EA08E0 /* CommunitySegmentedControl.swift */; };
 		0C382E282A5994A700EA08E0 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C382E272A5994A700EA08E0 /* CommunityViewController.swift */; };
-		0C382E2E2A5B01AD00EA08E0 /* DailyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C382E2D2A5B01AD00EA08E0 /* DailyCollectionViewCell.swift */; };
-		0C382E312A5BDB6D00EA08E0 /* DailyCellProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C382E302A5BDB6D00EA08E0 /* DailyCellProfileView.swift */; };
-		0C809A1E2A56DA57009EC362 /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C809A1D2A56DA57009EC362 /* DailyViewController.swift */; };
+		0C382E2E2A5B01AD00EA08E0 /* DailyDateImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C382E2D2A5B01AD00EA08E0 /* DailyDateImageCollectionViewCell.swift */; };
+		0C382E312A5BDB6D00EA08E0 /* CommunityCellProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C382E302A5BDB6D00EA08E0 /* CommunityCellProfileView.swift */; };
+		0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C382E322A5C564000EA08E0 /* CommunityCellBottomButtonView.swift */; };
+		0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */; };
 		0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC12A5281C1001EF4E7 /* AppDelegate.swift */; };
 		0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC32A5281C1001EF4E7 /* SceneDelegate.swift */; };
 		0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC52A5281C1001EF4E7 /* ViewController.swift */; };
@@ -22,9 +23,10 @@
 /* Begin PBXFileReference section */
 		0C382E252A5950C700EA08E0 /* CommunitySegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySegmentedControl.swift; sourceTree = "<group>"; };
 		0C382E272A5994A700EA08E0 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
-		0C382E2D2A5B01AD00EA08E0 /* DailyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCollectionViewCell.swift; sourceTree = "<group>"; };
-		0C382E302A5BDB6D00EA08E0 /* DailyCellProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCellProfileView.swift; sourceTree = "<group>"; };
-		0C809A1D2A56DA57009EC362 /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
+		0C382E2D2A5B01AD00EA08E0 /* DailyDateImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		0C382E302A5BDB6D00EA08E0 /* CommunityCellProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellProfileView.swift; sourceTree = "<group>"; };
+		0C382E322A5C564000EA08E0 /* CommunityCellBottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellBottomButtonView.swift; sourceTree = "<group>"; };
+		0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateViewController.swift; sourceTree = "<group>"; };
 		0CC33ABE2A5281C1001EF4E7 /* HeartHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC33AC12A5281C1001EF4E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CC33AC32A5281C1001EF4E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 			isa = PBXGroup;
 			children = (
 				0C382E252A5950C700EA08E0 /* CommunitySegmentedControl.swift */,
+				0C382E302A5BDB6D00EA08E0 /* CommunityCellProfileView.swift */,
+				0C382E322A5C564000EA08E0 /* CommunityCellBottomButtonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -61,19 +65,19 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		0C382E2A2A5B016800EA08E0 /* DailyScene */ = {
+		0C382E2A2A5B016800EA08E0 /* DailyDateScene */ = {
 			isa = PBXGroup;
 			children = (
 				0C382E2C2A5B019700EA08E0 /* View */,
 				0C382E2B2A5B018D00EA08E0 /* Controller */,
 			);
-			path = DailyScene;
+			path = DailyDateScene;
 			sourceTree = "<group>";
 		};
 		0C382E2B2A5B018D00EA08E0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0C809A1D2A56DA57009EC362 /* DailyViewController.swift */,
+				0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -81,18 +85,17 @@
 		0C382E2C2A5B019700EA08E0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0C382E2F2A5BDB3000EA08E0 /* DailyCollectionViewCell */,
+				0C382E2F2A5BDB3000EA08E0 /* DailyDateCollectionViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		0C382E2F2A5BDB3000EA08E0 /* DailyCollectionViewCell */ = {
+		0C382E2F2A5BDB3000EA08E0 /* DailyDateCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				0C382E2D2A5B01AD00EA08E0 /* DailyCollectionViewCell.swift */,
-				0C382E302A5BDB6D00EA08E0 /* DailyCellProfileView.swift */,
+				0C382E2D2A5B01AD00EA08E0 /* DailyDateImageCollectionViewCell.swift */,
 			);
-			path = DailyCollectionViewCell;
+			path = DailyDateCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		0C809A1C2A56D17F009EC362 /* CommunityScene */ = {
@@ -100,7 +103,7 @@
 			children = (
 				0C382E242A5950AF00EA08E0 /* View */,
 				0C382E292A59A1F100EA08E0 /* Controller */,
-				0C382E2A2A5B016800EA08E0 /* DailyScene */,
+				0C382E2A2A5B016800EA08E0 /* DailyDateScene */,
 			);
 			path = CommunityScene;
 			sourceTree = "<group>";
@@ -206,13 +209,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
+				0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */,
 				0C382E282A5994A700EA08E0 /* CommunityViewController.swift in Sources */,
 				0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */,
-				0C382E2E2A5B01AD00EA08E0 /* DailyCollectionViewCell.swift in Sources */,
-				0C809A1E2A56DA57009EC362 /* DailyViewController.swift in Sources */,
+				0C382E2E2A5B01AD00EA08E0 /* DailyDateImageCollectionViewCell.swift in Sources */,
+				0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */,
 				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
 				0C382E262A5950C700EA08E0 /* CommunitySegmentedControl.swift in Sources */,
-				0C382E312A5BDB6D00EA08E0 /* DailyCellProfileView.swift in Sources */,
+				0C382E312A5BDB6D00EA08E0 /* CommunityCellProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol DailyCellProfileViewDelegate: AnyObject {
+protocol CommunityCellProfileViewDelegate: AnyObject {
     func didTapUserProfile()
     func didTapPostOption()
 }
 
-final class DailyCellProfileView: UIView {
+final class CommunityCellProfileView: UIView {
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
@@ -34,7 +34,7 @@ final class DailyCellProfileView: UIView {
         return button
     }()
     
-    weak var delegate: DailyCellProfileViewDelegate?
+    weak var delegate: CommunityCellProfileViewDelegate?
     
     init() {
         super.init(frame: .zero)
@@ -54,7 +54,7 @@ final class DailyCellProfileView: UIView {
 }
 
 // MARK: Configure Action
-extension DailyCellProfileView {
+extension CommunityCellProfileView {
     private func configureAction() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapUserProfile))
         profileImageView.addGestureRecognizer(tapGesture)
@@ -75,7 +75,7 @@ extension DailyCellProfileView {
 }
 
 // MARK: Configure UI
-extension DailyCellProfileView {
+extension CommunityCellProfileView {
     private func configureSubview() {
         [profileImageView, profileIdLabel, postOptionButton].forEach {
             addSubview($0)
@@ -85,7 +85,7 @@ extension DailyCellProfileView {
     
     private func configureLayout() {
         NSLayoutConstraint.activate([
-            // MARK: ImageView Layout
+            // MARK: profileImageView Constraint
             profileImageView.leadingAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.leadingAnchor,
                 constant: 15
@@ -101,7 +101,7 @@ extension DailyCellProfileView {
                 equalTo: safeAreaLayoutGuide.centerYAnchor
             ),
             
-            // MARK: Button Layout
+            // MARK: postOptionButton Constraint
             postOptionButton.trailingAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.trailingAnchor,
                 constant: -15
@@ -117,7 +117,7 @@ extension DailyCellProfileView {
                 equalTo: safeAreaLayoutGuide.centerYAnchor
             ),
             
-            // MARK: Label Layout
+            // MARK: profileIdLabel Constraint
             profileIdLabel.leadingAnchor.constraint(
                 equalTo: profileImageView.trailingAnchor,
                 constant: 15

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DailyViewController: UIViewController {
+final class DailyDateViewController: UIViewController {
     private lazy var dailyCollectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: generateCollectionViewLayout()
@@ -21,7 +21,7 @@ final class DailyViewController: UIViewController {
     }
 }
 
-extension DailyViewController: UICollectionViewDataSource {
+extension DailyDateViewController: UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
@@ -38,7 +38,7 @@ extension DailyViewController: UICollectionViewDataSource {
 }
 
 // MARK: Configure CollectionView
-extension DailyViewController {
+extension DailyDateViewController {
     private func configureDailyCollectionView()  {
         dailyCollectionView.dataSource = self
     }
@@ -68,7 +68,7 @@ extension DailyViewController {
 }
 
 // MARK: Configure UI
-extension DailyViewController {
+extension DailyDateViewController {
     private func configureSubview() {
         [dailyCollectionView].forEach {
             view.addSubview($0)
