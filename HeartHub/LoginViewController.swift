@@ -9,7 +9,7 @@
 
 import UIKit
 
-final class LoginViewController: UIViewController {
+class LoginViewController: UIViewController {
     
     private let loginView = LoginView()
     
@@ -24,29 +24,30 @@ final class LoginViewController: UIViewController {
     }
     
     func setupAddTarget() {
-        loginView.idLoginBtn.addTarget(self, action: #selector(didTapIdLoginButton), for: .touchUpInside)
-        loginView.emailLoginBtn.addTarget(self, action: #selector(didTapEmailLoginButton), for: .touchUpInside)
+        loginView.loginBtn.addTarget(self, action: #selector(didTapFindIdButton), for: .touchUpInside)
+        loginView.findIdBtn.addTarget(self, action: #selector(didTapFindIdButton), for: .touchUpInside)
         loginView.signUpBtn.addTarget(self, action: #selector(didTapSignUpButton), for: .touchUpInside)
-        loginView.nicknameLoginBtn.addTarget(self, action: #selector(didTapNicknameLoginButton), for: .touchUpInside)
+        loginView.findPwBtn.addTarget(self, action: #selector(didTapFindPwButton), for: .touchUpInside)
+    }
 
+    
+    @objc private func didTapLoginButton() {
+        // 로그인 버튼을 눌렀을 때의 동작 정의
+        print("로그인 버튼이 눌렸습니다.")
     }
     
-    @objc private func didTapIdLoginButton() {
-        // 아이디로로 로그인 버튼을 눌렀을 때의 동작 정의
-        print("아이디 로그인 버튼이 눌렸습니다.")
-    }
-    
-    @objc private func didTapEmailLoginButton() {
-        // 이메일로로 로그인 버튼을 눌렀을 때의 동작 정의
-        print("이메일 로그인 버튼이 눌렸습니다.")
+    @objc private func didTapFindPwButton() {
+        // let findPwVC = FindPwViewController()
+        // present(findPwVC, animated: true, completion: nil)
     }
     
     @objc private func didTapSignUpButton() {
         let signUpVC = SignUpViewController()
         present(signUpVC, animated: true, completion: nil)
     }
-    @objc private func didTapNicknameLoginButton() {
-        // 닉네임으로 로그인 버튼을 눌렀을 때의 동작 정의
-        print("닉네임으로 로그인 버튼이 눌렸습니다.")
+    @objc private func didTapFindIdButton() {
+        // let findIdVC = FindIdViewController()
+        // present(findIdVC, animated: true, completion: nil)
+        
     }
 }
