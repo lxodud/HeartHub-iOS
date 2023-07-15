@@ -18,6 +18,8 @@
 		5626B3452A597FA200477EBC /* SignUp2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B3442A597FA200477EBC /* SignUp2ViewController.swift */; };
 		5626B34B2A59938700477EBC /* SignUp3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B34A2A59938700477EBC /* SignUp3ViewController.swift */; };
 		5626B34D2A5993A700477EBC /* SignUp4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B34C2A5993A700477EBC /* SignUp4ViewController.swift */; };
+		56348A632A631283005BB635 /* FindIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A622A631283005BB635 /* FindIdView.swift */; };
+		56348A652A631449005BB635 /* FindIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A642A631449005BB635 /* FindIdViewController.swift */; };
 		569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EDA2A5C241B00B51898 /* LoginView.swift */; };
 		569E4EE42A5CE18E00B51898 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE32A5CE18E00B51898 /* SignUpView.swift */; };
 		569E4EE62A5D06C400B51898 /* SignUp2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE52A5D06C400B51898 /* SignUp2View.swift */; };
@@ -41,6 +43,8 @@
 		5626B3442A597FA200477EBC /* SignUp2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp2ViewController.swift; sourceTree = "<group>"; };
 		5626B34A2A59938700477EBC /* SignUp3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp3ViewController.swift; sourceTree = "<group>"; };
 		5626B34C2A5993A700477EBC /* SignUp4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp4ViewController.swift; sourceTree = "<group>"; };
+		56348A622A631283005BB635 /* FindIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdView.swift; sourceTree = "<group>"; };
+		56348A642A631449005BB635 /* FindIdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FindIdViewController.swift; path = HeartHub/Views/FindIdViewController.swift; sourceTree = SOURCE_ROOT; };
 		569E4EDA2A5C241B00B51898 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		569E4EE32A5CE18E00B51898 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		569E4EE52A5D06C400B51898 /* SignUp2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp2View.swift; sourceTree = "<group>"; };
@@ -85,12 +89,6 @@
 				569E4ED92A5C231A00B51898 /* Models */,
 				569E4ED82A5C231000B51898 /* Views */,
 				569E4ED62A5C22FC00B51898 /* Controllers */,
-				0CC33AC52A5281C1001EF4E7 /* ViewController.swift */,
-				5626B2D02A57EEB300477EBC /* LoginViewController.swift */,
-				5626B3362A584A3D00477EBC /* SignUpViewController.swift */,
-				5626B3442A597FA200477EBC /* SignUp2ViewController.swift */,
-				5626B34A2A59938700477EBC /* SignUp3ViewController.swift */,
-				5626B34C2A5993A700477EBC /* SignUp4ViewController.swift */,
 				569E4ECD2A5B036C00B51898 /* SignUpVC */,
 				5626B3402A59691A00477EBC /* BlurClass.swift */,
 				0CC33ACA2A5281C3001EF4E7 /* Assets.xcassets */,
@@ -120,6 +118,13 @@
 		569E4ED62A5C22FC00B51898 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0CC33AC52A5281C1001EF4E7 /* ViewController.swift */,
+				5626B2D02A57EEB300477EBC /* LoginViewController.swift */,
+				5626B3362A584A3D00477EBC /* SignUpViewController.swift */,
+				5626B3442A597FA200477EBC /* SignUp2ViewController.swift */,
+				5626B34A2A59938700477EBC /* SignUp3ViewController.swift */,
+				5626B34C2A5993A700477EBC /* SignUp4ViewController.swift */,
+				56348A642A631449005BB635 /* FindIdViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -132,6 +137,7 @@
 				569E4EE52A5D06C400B51898 /* SignUp2View.swift */,
 				569E4EEA2A5D40E800B51898 /* SignUp3View.swift */,
 				569E4EEC2A5D499900B51898 /* SignUp4View.swift */,
+				56348A622A631283005BB635 /* FindIdView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,10 +223,12 @@
 			files = (
 				5626B2D12A57EEB300477EBC /* LoginViewController.swift in Sources */,
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
+				56348A652A631449005BB635 /* FindIdViewController.swift in Sources */,
 				0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */,
 				569E4EED2A5D499900B51898 /* SignUp4View.swift in Sources */,
 				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
 				569E4EEB2A5D40E800B51898 /* SignUp3View.swift in Sources */,
+				56348A632A631283005BB635 /* FindIdView.swift in Sources */,
 				5626B3372A584A3D00477EBC /* SignUpViewController.swift in Sources */,
 				569E4EE42A5CE18E00B51898 /* SignUpView.swift in Sources */,
 				5626B3452A597FA200477EBC /* SignUp2ViewController.swift in Sources */,

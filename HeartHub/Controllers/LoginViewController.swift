@@ -46,8 +46,9 @@ class LoginViewController: UIViewController {
         present(signUpVC, animated: true, completion: nil)
     }
     @objc private func didTapFindIdButton() {
-        // let findIdVC = FindIdViewController()
-        // present(findIdVC, animated: true, completion: nil)
+        let findIdVC = FindIdViewController()
+        findIdVC.modalPresentationStyle = .fullScreen
+        present(findIdVC, animated: true, completion: nil)
         
     }
 }

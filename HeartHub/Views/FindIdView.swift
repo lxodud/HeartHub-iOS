@@ -1,16 +1,14 @@
 //
-//  LoginView.swift
+//  FindIdView.swift
 //  HeartHub
 //
-//  Created by 제민우 on 2023/07/10.
+//  Created by 제민우 on 2023/07/16.
 //
 
 import UIKit
 
-class LoginView: UIView {
+class FindIdView: UIView {
     let screenHeight = UIScreen.main.bounds.size.height
-    let buttonFontSize: CGFloat = 16.0
-
 
     // MARK: 배경 + 하트브랜드
     // 백그라운드 화면
@@ -69,9 +67,9 @@ class LoginView: UIView {
         return label
     }()
     
-    // MARK: ID,PW 입력
-    // 아이디 입력 텍스트 필드
-    private lazy var idEnterTextField: UITextField = {
+    // MARK: 이메일입력
+    // 이메일 입력 텍스트 필드
+    private lazy var emailTextField: UITextField = {
         var tf = UITextField()
         tf.backgroundColor = .clear
         tf.textColor = .white
@@ -85,78 +83,50 @@ class LoginView: UIView {
         return tf
     }()
     
-    // 아이디 입력 텍스트필드 뷰
-    private lazy var idEnterTextFieldView: UIView = {
+    // 이메일 입력 텍스트필드 뷰
+    private lazy var emailTextFieldView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
         view.clipsToBounds = true
         view.layer.cornerRadius = 8
         view.layer.borderColor = #colorLiteral(red: 1, green: 0.9999999404, blue: 1, alpha: 1)
         view.layer.borderWidth = 1
-        view.addSubview(idEnterTextField)
+        view.addSubview(emailTextField)
         return view
     }()
-    
-    
-    // 비밀번호 입력 텍스트필드
-    lazy var pwEnterTextField: UITextField = {
-        var tf = UITextField()
-        tf.backgroundColor = .clear
-        tf.textColor = .white
-        tf.keyboardType = .default
-        tf.attributedPlaceholder = NSAttributedString(
-                string: "비밀번호를 입력하세요.",
-                attributes: [NSAttributedString.Key.foregroundColor: UIColor.white,
-                             NSAttributedString.Key.font: UIFont(name: "Pretendard-Regular", size: 16)!
-                            ])
-        tf.textAlignment = .left
-        return tf
-    }()
-    
-    // 비밀번호 입력 텍스트필드 뷰
-    private lazy var pwEnterTextFieldView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 8
-        view.layer.borderColor = #colorLiteral(red: 1, green: 0.9999999404, blue: 1, alpha: 1)
-        view.layer.borderWidth = 1
-        view.addSubview(pwEnterTextField)
-        return view
-    }()
-    
-    // 로그인 버튼
-    lazy var loginBtn: UIButton = {
+
+    // 아이디 찾기
+    lazy var findIdBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .white
         button.layer.cornerRadius = 8
         button.layer.borderWidth = 1
         button.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        button.setTitle("로그인", for: .normal)
+        button.setTitle("아이디 찾기", for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Pretendard-SemiBold", size: 16)
         button.setTitleColor(UIColor(red: 0.98, green: 0.18, blue: 0.74, alpha: 1), for: .normal)
         button.contentVerticalAlignment = .center
         return button
     }()
     
-    // 아이디 + 비밀번호 + 로그인 버튼 스택뷰
-    private lazy var idPwStackView: UIStackView = {
-        let stview = UIStackView(arrangedSubviews: [idEnterTextFieldView, pwEnterTextFieldView, loginBtn])
-        stview.spacing = 8
+    // 이메일입력 + 아이디 찾기 버튼 스택뷰
+    private lazy var emailTfFindIdBtnStackView: UIStackView = {
+        let stview = UIStackView(arrangedSubviews: [emailTextFieldView, findIdBtn])
+        stview.spacing = 47
         stview.axis = .vertical
         stview.distribution = .fillEqually
         stview.alignment = .fill
         return stview
     }()
     
-    // MARK: 아이디 찾기 + 회원가입 + 비밀번호찾기 버튼
+    // MARK: 아디디 찾기 + 회원가입 + 비밀번호찾기 버튼
     // 아이디 찾기 버튼
-    lazy var findIdBtn: UIButton = {
+    lazy var unActivatedFindIdBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
         button.setTitle("아이디 찾기", for: .normal)
         button.titleLabel?.textAlignment = .center
-        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitleColor(UIColor(red: 1, green: 0.758, blue: 0.918, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Pretendard-Regular", size: 16)
        // button.sizeToFit()
         button.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -207,10 +177,10 @@ class LoginView: UIView {
     
     // 아이디찾기 + 선 + 회원가입 + 선 + 비밀번호 찾기 버튼 스택뷰
     lazy var signUpFindIdPwStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [findIdBtn, lineView1, signUpBtn, lineView2, findPwBtn])
+        let stView = UIStackView(arrangedSubviews: [unActivatedFindIdBtn, lineView1, signUpBtn, lineView2, findPwBtn])
         stView.spacing = 10
         stView.axis = .horizontal
-        stView.distribution = .equalCentering
+        stView.distribution = .fill
         stView.alignment = .center
         return stView
     }()
@@ -234,7 +204,7 @@ class LoginView: UIView {
          heartHubBackLabel,
          heartHubLabel,
          heartImageView,
-         idPwStackView,
+         emailTfFindIdBtnStackView,
          signUpFindIdPwStackView].forEach { addSubview($0) }
     }
     
@@ -245,12 +215,10 @@ class LoginView: UIView {
         heartHubBackLabelConstraints()
         heartHubLabelConstraints()
         heartImageViewConstraints()
-        idEnterTextFieldConstraints()
-        pwEnterTextFieldConstraints()
-        idEnterTextFieldViewConstraints()
-        pwEnterTextFieldViewConstraints()
-        loginBtnConstraints()
-        idPwStackViewConstraints()
+        emailTextFieldConstraints()
+        emailTextFieldViewConstraints()
+        findIdBtnConstraints()
+        emailTfFindIdStackViewConstraints()
         signUpFindIdPwStackViewConstraints()
         lineView1Constraints()
         lineView2Constraints()
@@ -314,54 +282,37 @@ class LoginView: UIView {
         ])
     }
     
-    private func idPwStackViewConstraints() {
-        idPwStackView.translatesAutoresizingMaskIntoConstraints = false
+    private func emailTfFindIdStackViewConstraints() {
+        emailTfFindIdBtnStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            idPwStackView.topAnchor.constraint(equalTo: heartImageView.bottomAnchor, constant: 49.62),
-            idPwStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 59),
-            idPwStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -59),
-        ])
-        idPwStackView.setCustomSpacing(20, after: pwEnterTextFieldView)
-
-    }
-    
-    private func idEnterTextFieldConstraints() {
-        idEnterTextField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            idEnterTextField.topAnchor.constraint(equalTo: idEnterTextFieldView.topAnchor, constant: 12),
-            idEnterTextField.bottomAnchor.constraint(equalTo: idEnterTextFieldView.bottomAnchor, constant: -12),
-            idEnterTextField.leadingAnchor.constraint(equalTo: idEnterTextFieldView.leadingAnchor, constant: 12),
-            idEnterTextField.trailingAnchor.constraint(equalTo: idEnterTextFieldView.trailingAnchor, constant: -12),
+            emailTfFindIdBtnStackView.topAnchor.constraint(equalTo: heartImageView.bottomAnchor, constant: 49.62),
+            emailTfFindIdBtnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 59),
+            emailTfFindIdBtnStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -59),
         ])
     }
     
-    private func pwEnterTextFieldConstraints() {
-        pwEnterTextField.translatesAutoresizingMaskIntoConstraints = false
+    private func emailTextFieldConstraints() {
+        emailTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        pwEnterTextField.topAnchor.constraint(equalTo: pwEnterTextFieldView.topAnchor, constant: 12),
-        pwEnterTextField.bottomAnchor.constraint(equalTo: pwEnterTextFieldView.bottomAnchor, constant: -12),
-        pwEnterTextField.leadingAnchor.constraint(equalTo: pwEnterTextFieldView.leadingAnchor, constant: 12),
-        pwEnterTextField.trailingAnchor.constraint(equalTo: pwEnterTextFieldView.trailingAnchor, constant: -12),
+            emailTextField.topAnchor.constraint(equalTo: emailTextFieldView.topAnchor, constant: 12),
+            emailTextField.bottomAnchor.constraint(equalTo: emailTextFieldView.bottomAnchor, constant: -12),
+            emailTextField.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 12),
+            emailTextField.trailingAnchor.constraint(equalTo: emailTextFieldView.trailingAnchor, constant: -12),
         ])
     }
     
-    private func idEnterTextFieldViewConstraints() {
-        idEnterTextFieldView.translatesAutoresizingMaskIntoConstraints = false
+    
+    private func emailTextFieldViewConstraints() {
+        emailTextFieldView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            idEnterTextFieldView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 48 / screenHeight)
-        ])
-    }
-    private func pwEnterTextFieldViewConstraints() {
-        pwEnterTextFieldView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            pwEnterTextFieldView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 48 / screenHeight)
+            emailTextFieldView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 48 / screenHeight)
         ])
     }
     
-    private func loginBtnConstraints() {
-        loginBtn.translatesAutoresizingMaskIntoConstraints = false
+    private func findIdBtnConstraints() {
+        findIdBtn.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            loginBtn.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 48 / screenHeight)
+            findIdBtn.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 48 / screenHeight)
         ])
     }
     
@@ -369,8 +320,8 @@ class LoginView: UIView {
         signUpFindIdPwStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             signUpFindIdPwStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            signUpFindIdPwStackView.topAnchor.constraint(equalTo: idPwStackView.bottomAnchor, constant: 28),
-            signUpFindIdPwStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -46),
+            signUpFindIdPwStackView.topAnchor.constraint(equalTo: emailTfFindIdBtnStackView.bottomAnchor, constant: 28),
+//            signUpFindIdPwStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -46),
             signUpFindIdPwStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 69),
             signUpFindIdPwStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -69),
         ])
@@ -382,7 +333,7 @@ class LoginView: UIView {
             lineView1.widthAnchor.constraint(equalToConstant: 1),
             lineView1.topAnchor.constraint(equalTo: signUpFindIdPwStackView.topAnchor, constant: 8),
             lineView1.bottomAnchor.constraint(equalTo: signUpFindIdPwStackView.bottomAnchor, constant: -8),
-            lineView1.leadingAnchor.constraint(equalTo: findIdBtn.trailingAnchor, constant: 10),
+            lineView1.leadingAnchor.constraint(equalTo: unActivatedFindIdBtn.trailingAnchor, constant: 10),
             lineView1.trailingAnchor.constraint(equalTo: signUpBtn.leadingAnchor, constant: -10)
         ])
     }
