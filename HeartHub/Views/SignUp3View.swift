@@ -82,26 +82,33 @@ class SignUp3View: UIView {
         tf.backgroundColor = .clear
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .emailAddress
-        tf.placeholder = "이메일을 입력하세요."
+        tf.attributedPlaceholder = NSAttributedString(
+                        string: "이메일을 입력하세요",
+                        attributes: [
+                            NSAttributedString.Key.foregroundColor:
+                                UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 0.5),
+                            NSAttributedString.Key.font:
+                                UIFont(name: "Pretendard-Regular", size: 14)!
+                                    ])
         tf.textAlignment = .left
         return tf
     }()
     
     
-    // 이메일 인증 버튼
-    lazy var emailCertifyBtn: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
-        button.setTitle("인증", for: .normal)
-        button.setTitleColor(UIColor(red: 0.46, green: 0.46, blue: 0.46, alpha: 1), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button.titleLabel?.contentMode = .scaleAspectFill
-        button.clipsToBounds = true
-        button.layer.cornerRadius = 18
-        button.contentMode = .center
-        button.tintColor = .black
-        return button
-    }()
+//    // 이메일 인증 버튼
+//    lazy var emailCertifyBtn: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.backgroundColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
+//        button.setTitle("인증", for: .normal)
+//        button.setTitleColor(UIColor(red: 0.46, green: 0.46, blue: 0.46, alpha: 1), for: .normal)
+//        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+//        button.titleLabel?.contentMode = .scaleAspectFill
+//        button.clipsToBounds = true
+//        button.layer.cornerRadius = 18
+//        button.contentMode = .center
+//        button.tintColor = .black
+//        return button
+//    }()
     
     // 이메일 입력 뷰
     private lazy var emailTextFieldView: UIView = {
@@ -112,74 +119,29 @@ class SignUp3View: UIView {
         view.layer.borderColor = #colorLiteral(red: 0.86, green: 0.86, blue: 0.86, alpha: 1)
         view.layer.borderWidth = 1
         view.addSubview(emailTextField)
-        view.addSubview(emailCertifyBtn)
-
+//        view.addSubview(emailCertifyBtn)
        return view
     }()
     
-    // 인증번호 입력 텍스트필드
-    private lazy var certificationNumberTextField: UITextField = {
-        var tf = UITextField()
-        tf.backgroundColor = .clear
-        tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
-        tf.keyboardType = .phonePad
-        tf.placeholder = "인증번호를 입력해주세요."
-        tf.textAlignment = .left
-        return tf
-    }()
-    
-    
-    // 인증번호 인증 버튼
-    lazy var certificationNumCertifyBtn: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
-        button.setTitle("인증", for: .normal)
-        button.setTitleColor(UIColor(red: 0.46, green: 0.46, blue: 0.46, alpha: 1), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button.titleLabel?.contentMode = .scaleAspectFill
-        button.clipsToBounds = true
-        button.layer.cornerRadius = 18
-        button.contentMode = .center
-        button.tintColor = .black
-        return button
-    }()
-    
-    // 인증번호 입력 뷰
-    private lazy var certificationTextFieldView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 18
-        view.layer.borderColor = #colorLiteral(red: 0.86, green: 0.86, blue: 0.86, alpha: 1)
-        view.layer.borderWidth = 1
-        view.addSubview(certificationNumberTextField)
-        view.addSubview(certificationNumCertifyBtn)
-
-       return view
-    }()
-    
-    // 닉네임, 이메일 입력 스택뷰
-    private lazy var certificationStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [emailTextFieldView,certificationTextFieldView])
-        stView.spacing = 28
-        stView.axis = .vertical
-        stView.distribution = .fillEqually
-        stView.alignment = .fill
-        return stView
-    }()
-    
-    // 연인 닉네임 또는 아이디 입력 텍스트필드
+    // 애인아이디 입력 텍스트필드
     private lazy var loverIdTextField: UITextField = {
         var tf = UITextField()
         tf.backgroundColor = .clear
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
-        tf.keyboardType = .emailAddress
-        tf.placeholder = "(선택) 내 애인의 닉네임 또는 아이디를 입력하세요."
+        tf.keyboardType = .phonePad
+        tf.attributedPlaceholder = NSAttributedString(
+                        string: "(선택) 내 애인의 아이디를 입력하세요",
+                        attributes: [
+                            NSAttributedString.Key.foregroundColor:
+                                UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 0.5),
+                            NSAttributedString.Key.font:
+                                UIFont(name: "Pretendard-Regular", size: 14)!
+                                    ])
         tf.textAlignment = .left
         return tf
     }()
     
-    // 연인 닉네임 또는 아이디 입력 텍스트필드 뷰
+    // 인증번호 입력 뷰
     private lazy var loverIdTextFieldView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -191,27 +153,26 @@ class SignUp3View: UIView {
        return view
     }()
     
+    // 닉네임, 이메일 입력 스택뷰
+    private lazy var enterStackView: UIStackView = {
+        let stView = UIStackView(arrangedSubviews: [emailTextFieldView, loverIdTextFieldView])
+        stView.spacing = 28
+        stView.axis = .vertical
+        stView.distribution = .fillEqually
+        stView.alignment = .fill
+        return stView
+    }()
+    
     // 아이디로 계정연동 레이블
     private var idLinkingLabel: UILabel = {
         let label = UILabel()
-        label.text = "아이디로 계정연동"
+        label.text = "계정연동 시 서로의 스크랩 목록을 확인할 수 있습니다."
         label.font = UIFont.systemFont(ofSize: 14)
         label.textAlignment = .right
         label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
         return label
     }()
-    
-    // 연인 계정 연동 스택뷰
-    private lazy var loverLinkingStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [loverIdTextFieldView, idLinkingLabel])
-        stView.spacing = 4
-        stView.axis = .vertical
-        stView.distribution = .fill
-        stView.alignment = .trailing
-        return stView
-    }()
-    
    
     // MARK: 뷰 초기화
 
@@ -232,15 +193,15 @@ class SignUp3View: UIView {
         heartImg2View,
         nextBtn,
         startLabelStackView,
-        certificationStackView,
-        loverLinkingStackView].forEach { addSubview($0)}
+        enterStackView,
+        idLinkingLabel].forEach { addSubview($0)}
     }
     
     func setup() {
         backgroundColor = .white
 
         emailTextField.delegate = self
-        certificationNumberTextField.delegate = self
+        loverIdTextField.delegate = self
         loverIdTextField.delegate = self
     }
     
@@ -251,53 +212,50 @@ class SignUp3View: UIView {
         heartImgBackgroundViewConstraints()
         nextBtnConstraints()
         startLabelStackViewConstraints()
+        
         emailTextFieldViewConstraints()
         emailTextFieldConstraints()
-        emailCheckBtnConstraints()
-        certificationTextFieldViewConstraints()
-        certificationNumberTextFieldConstraints()
-        certificationNumberBtnConstraints()
-        certificationStackViewConstraints()
-        loverIdTextFieldConstraints()
         loverIdTextFieldViewConstraints()
+        loverIdTextFieldConstraints()
+        enterStackViewConstraints()
         idLinkingLabelConstraints()
     }
     
     private func heartImg2ViewConstraints() {
         heartImg2View.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        heartImg2View.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 32),
-        heartImg2View.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 172),
-        heartImg2View.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -172)
+            heartImg2View.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 32),
+            heartImg2View.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 172),
+            heartImg2View.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -172)
         ])
     }
     
     private func heartImgBackgroundViewConstraints() {
         heartImgBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        heartImgBackgroundView.topAnchor.constraint(equalTo: heartImg2View.topAnchor, constant: 3),
-        heartImgBackgroundView.bottomAnchor.constraint(equalTo: heartImg2View.bottomAnchor, constant: -2.75 ),
-        heartImgBackgroundView.leadingAnchor.constraint(equalTo: heartImg2View.leadingAnchor, constant: 0),
-        heartImgBackgroundView.trailingAnchor.constraint(equalTo: heartImg2View.trailingAnchor, constant: 0)
+            heartImgBackgroundView.topAnchor.constraint(equalTo: heartImg2View.topAnchor, constant: 3),
+            heartImgBackgroundView.bottomAnchor.constraint(equalTo: heartImg2View.bottomAnchor, constant: -2.75 ),
+            heartImgBackgroundView.leadingAnchor.constraint(equalTo: heartImg2View.leadingAnchor, constant: 0),
+            heartImgBackgroundView.trailingAnchor.constraint(equalTo: heartImg2View.trailingAnchor, constant: 0)
         ])
     }
     
     private func nextBtnConstraints() {
         nextBtn.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        nextBtn.widthAnchor.constraint(equalToConstant: 50),
-        nextBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -56),
-        nextBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 315),
-        nextBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40)
+            nextBtn.widthAnchor.constraint(equalToConstant: 50),
+            nextBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -56),
+            nextBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 315),
+            nextBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40)
         ])
     }
     
     private func startLabelStackViewConstraints() {
         startLabelStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        startLabelStackView.topAnchor.constraint(equalTo: heartImg2View.bottomAnchor, constant: 50),
-        startLabelStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
-        startLabelStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 76)
+            startLabelStackView.topAnchor.constraint(equalTo: heartImg2View.bottomAnchor, constant: 50),
+            startLabelStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
+            startLabelStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 76)
         ])
     }
     
@@ -311,104 +269,62 @@ class SignUp3View: UIView {
     private func emailTextFieldConstraints() {
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        emailTextField.topAnchor.constraint(equalTo: emailTextFieldView.topAnchor),
-        emailTextField.bottomAnchor.constraint(equalTo: emailTextFieldView.bottomAnchor),
-        emailTextField.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 27),
-        emailTextField.trailingAnchor.constraint(equalTo: emailCertifyBtn.leadingAnchor, constant: 73)
+            emailTextField.topAnchor.constraint(equalTo: emailTextFieldView.topAnchor),
+            emailTextField.bottomAnchor.constraint(equalTo: emailTextFieldView.bottomAnchor),
+            emailTextField.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 27),
+            emailTextField.trailingAnchor.constraint(equalTo: emailTextFieldView.trailingAnchor, constant: -73)
         ])
         
     }
     
-    private func emailCheckBtnConstraints() {
-        emailCertifyBtn.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-        emailCertifyBtn.topAnchor.constraint(equalTo: emailTextFieldView.topAnchor),
-        emailCertifyBtn.bottomAnchor.constraint(equalTo: emailTextFieldView.bottomAnchor),
-        emailCertifyBtn.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 255.22),
-        emailCertifyBtn.trailingAnchor.constraint(equalTo: emailTextFieldView.trailingAnchor)
-        ])
-    }
+//    private func emailCheckBtnConstraints() {
+//        emailCertifyBtn.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//        emailCertifyBtn.topAnchor.constraint(equalTo: emailTextFieldView.topAnchor),
+//        emailCertifyBtn.bottomAnchor.constraint(equalTo: emailTextFieldView.bottomAnchor),
+//        emailCertifyBtn.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 255.22),
+//        emailCertifyBtn.trailingAnchor.constraint(equalTo: emailTextFieldView.trailingAnchor)
+//        ])
+//    }
     
-    private func certificationTextFieldViewConstraints() {
-        certificationTextFieldView.translatesAutoresizingMaskIntoConstraints = false
+    private func loverIdTextFieldViewConstraints() {
+        loverIdTextFieldView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        certificationTextFieldView.heightAnchor.constraint(equalToConstant: textViewHeight)
+            loverIdTextFieldView.heightAnchor.constraint(equalToConstant: textViewHeight)
         ])
 
-        
-    }
-    
-    private func certificationNumberTextFieldConstraints() {
-        certificationNumberTextField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-        certificationNumberTextField.topAnchor.constraint(equalTo: certificationTextFieldView.topAnchor),
-        certificationNumberTextField.bottomAnchor.constraint(equalTo: certificationTextFieldView.bottomAnchor),
-        certificationNumberTextField.leadingAnchor.constraint(equalTo: certificationTextFieldView.leadingAnchor, constant: 27),
-        certificationNumberTextField.trailingAnchor.constraint(equalTo: certificationNumCertifyBtn.leadingAnchor)
-        ])
-        
-    }
-    
-    private func certificationNumberBtnConstraints() {
-        certificationNumCertifyBtn.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-        certificationNumCertifyBtn.topAnchor.constraint(equalTo: certificationTextFieldView.topAnchor),
-        certificationNumCertifyBtn.bottomAnchor.constraint(equalTo: certificationTextFieldView.bottomAnchor),
-        certificationNumCertifyBtn.leadingAnchor.constraint(equalTo: certificationTextFieldView.leadingAnchor, constant: 255.22),
-        certificationNumCertifyBtn.trailingAnchor.constraint(equalTo: certificationTextFieldView.trailingAnchor)
-        ])
-    }
-    
-    private func certificationStackViewConstraints() {
-        certificationStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-        certificationStackView.topAnchor.constraint(equalTo: startLabelStackView.bottomAnchor, constant: 134),
-        certificationStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
-        certificationStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
-        ])
     }
     
     private func loverIdTextFieldConstraints() {
         loverIdTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        loverIdTextField.topAnchor.constraint(equalTo: loverIdTextFieldView.topAnchor),
-        loverIdTextField.bottomAnchor.constraint(equalTo: loverIdTextFieldView.bottomAnchor),
-        loverIdTextField.leadingAnchor.constraint(equalTo: loverIdTextFieldView.leadingAnchor, constant: 20),
-        loverIdTextField.trailingAnchor.constraint(equalTo: loverIdTextFieldView.trailingAnchor, constant: -20)
+            loverIdTextField.topAnchor.constraint(equalTo: loverIdTextFieldView.topAnchor),
+            loverIdTextField.bottomAnchor.constraint(equalTo: loverIdTextFieldView.bottomAnchor),
+            loverIdTextField.leadingAnchor.constraint(equalTo: loverIdTextFieldView.leadingAnchor, constant: 27),
+            loverIdTextField.trailingAnchor.constraint(equalTo: loverIdTextFieldView.trailingAnchor, constant: -73)
         ])
+        
     }
     
-    private func loverIdTextFieldViewConstraints() {
-        loverIdTextFieldView.translatesAutoresizingMaskIntoConstraints = false
+    
+    private func enterStackViewConstraints() {
+        enterStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        loverIdTextFieldView.heightAnchor.constraint(equalToConstant: textViewHeight)
+            enterStackView.topAnchor.constraint(equalTo: startLabelStackView.bottomAnchor, constant: 181),
+            enterStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            enterStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -31)
         ])
     }
     
     private func idLinkingLabelConstraints() {
         idLinkingLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        idLinkingLabel.leadingAnchor.constraint(equalTo: loverLinkingStackView.leadingAnchor, constant: 213),
-        idLinkingLabel.trailingAnchor.constraint(equalTo: loverLinkingStackView.trailingAnchor, constant: -18)
+            idLinkingLabel.topAnchor.constraint(equalTo: loverIdTextFieldView.bottomAnchor, constant: 3),
+            idLinkingLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 46),
+            idLinkingLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -59)
         ])
         
     }
-    
-    private func loverLinkingStackViewConstraints() {
-        loverLinkingStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            loverLinkingStackView.topAnchor.constraint(equalTo: certificationStackView.bottomAnchor, constant: 36),
-            loverLinkingStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
-            loverLinkingStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
-        ])
-    }
-    
-        
-        
-        
-
-
-
 }
 
 extension SignUp3View: UITextFieldDelegate {
@@ -416,14 +332,14 @@ extension SignUp3View: UITextFieldDelegate {
     // 키보드 엔터키가 눌렸을때 (다음 동작을 허락할 것인지)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // 두개의 텍스트필드를 모두 종료 (키보드 내려가기)
-        if emailTextField.text != "", certificationNumberTextField.text != "", loverIdTextField.text != "" {
+        if emailTextField.text != "", loverIdTextField.text != "", loverIdTextField.text != "" {
             loverIdTextField.resignFirstResponder()
             return true
-        } else if emailTextField.text != "", certificationNumberTextField.text != "" {
+        } else if emailTextField.text != "", loverIdTextField.text != "" {
             loverIdTextField.becomeFirstResponder()
             return true
         } else if emailTextField.text != "" {
-            certificationNumberTextField.becomeFirstResponder()
+            loverIdTextField.becomeFirstResponder()
             return true
         }
             return false
@@ -432,7 +348,7 @@ extension SignUp3View: UITextFieldDelegate {
     // 텍스트필드 이외의 영역을 눌렀을때 키보드 내려가도록
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         emailTextField.resignFirstResponder()
-        certificationNumberTextField.resignFirstResponder()
+        loverIdTextField.resignFirstResponder()
         loverIdTextField.resignFirstResponder()
     }
     
@@ -453,8 +369,8 @@ extension SignUp3View: UITextFieldDelegate {
         case emailTextField:
             guard emailTextField.text!.count < 100 else { return false }
             return true
-        case certificationNumberTextField:
-            guard certificationNumberTextField.text!.count < 100 else { return false }
+        case loverIdTextField:
+            guard loverIdTextField.text!.count < 100 else { return false }
             return true
         case loverIdTextField:
             guard loverIdTextField.text!.count < 10 else { return false }

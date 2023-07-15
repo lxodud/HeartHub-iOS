@@ -24,11 +24,7 @@ class SignUp3ViewController: UIViewController {
     
     func addTarget() {
         signUp3View.nextBtn.addTarget(self, action: #selector(didTapNextBtn), for: .touchUpInside)
-        signUp3View.emailCertifyBtn.addTarget(self, action: #selector(didTapEmailCertifyBtn), for: .touchUpInside)
-        signUp3View.certificationNumCertifyBtn.addTarget(
-            self,
-            action: #selector(didTapCertificationNumCertifyBtn),
-            for: .touchUpInside)
+//        signUp3View.emailCertifyBtn.addTarget(self, action: #selector(didTapEmailCertifyBtn), for: .touchUpInside)
     }
     
     @objc func didTapEmailCertifyBtn() {
