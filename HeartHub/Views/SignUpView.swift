@@ -156,6 +156,7 @@ class SignUpView: UIView {
         return stView
     }()
     
+    // MARK: 뷰 초기화
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
@@ -188,6 +189,7 @@ class SignUpView: UIView {
 
     }
     
+    // MARK: 제약
     private func constraints() {
         heartImgBackgroundViewConstraints()
         heartImg0ViewConstraints()
@@ -270,7 +272,6 @@ class SignUpView: UIView {
             startDayTextField.leadingAnchor.constraint(equalTo: startDayTextFieldView.leadingAnchor, constant: 22),
             startDayTextField.trailingAnchor.constraint(equalTo: startDayTextFieldView.trailingAnchor, constant: -22)
         ])
-
     }
     
     private func startDateStackViewConstraints() {
@@ -299,6 +300,7 @@ class SignUpView: UIView {
     }
 }
 
+// MARK: 텍스트필드 델리게이트
 extension SignUpView: UITextFieldDelegate {
     
     // 엔터누르면 다음 텍스트필드로 이동

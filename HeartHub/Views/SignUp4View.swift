@@ -268,6 +268,8 @@ class SignUp4View: UIView {
         return line
     }()
     
+    // MARK: 뷰 초기화
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -294,7 +296,7 @@ class SignUp4View: UIView {
 
     }
     
-    
+    // MARK: 제약
     private func constraints() {
         heartImg3ViewConstraints()
         heartImgBackgroundViewConstraints()

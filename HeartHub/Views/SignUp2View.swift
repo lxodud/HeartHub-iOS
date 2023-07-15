@@ -49,7 +49,7 @@ class SignUp2View: UIView {
     private var startLabel: UILabel = {
         let label = UILabel()
         label.text = "사랑을 시작해볼까요?"
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.font = UIFont(name: "Pretendard-SemiBold", size: 20)
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 1)
@@ -60,7 +60,7 @@ class SignUp2View: UIView {
     private var startExplainLabel: UILabel = {
         let label = UILabel()
         label.text = "계정을 생성하여 HeartHub를 즐겨보아요."
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "Pretendard-Regular", size: 12)
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
@@ -84,7 +84,14 @@ class SignUp2View: UIView {
         tf.backgroundColor = .clear
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .emailAddress
-        tf.placeholder = "닉네임을 입력하세요."
+        tf.attributedPlaceholder = NSAttributedString(
+                        string: "닉네임을 입력하세요.",
+                        attributes: [
+                            NSAttributedString.Key.foregroundColor:
+                                UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 0.5),
+                            NSAttributedString.Key.font:
+                                UIFont(name: "Pretendard-Regular", size: 14)!
+                                    ])
         tf.textAlignment = .left
         return tf
     }()
@@ -96,6 +103,7 @@ class SignUp2View: UIView {
         button.backgroundColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
         button.setTitle("중복 확인", for: .normal)
         button.setTitleColor(UIColor(red: 0.46, green: 0.46, blue: 0.46, alpha: 1), for: .normal)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.titleLabel?.contentMode = .scaleAspectFill
         button.clipsToBounds = true
@@ -119,13 +127,32 @@ class SignUp2View: UIView {
         return view
     }()
     
+    // 닉네임 제약
+    private lazy var nickNameConstraintLabel: UILabel = {
+        var label = UILabel()
+        label.text = "한글/영문/숫자/특수문자 구성"
+        label.font = UIFont(name: "Pretendard-Regular", size: 12)
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
+        label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
+        return label
+    }()
+    
+    
     // 아이디 입력 텍스트필드
     private lazy var idTextField: UITextField = {
         var tf = UITextField()
         tf.backgroundColor = .clear
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .emailAddress
-        tf.placeholder = "아이디을 입력하세요."
+        tf.attributedPlaceholder = NSAttributedString(
+                        string: "아이디를 입력하세요.",
+                        attributes: [
+                            NSAttributedString.Key.foregroundColor:
+                                UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 0.5),
+                            NSAttributedString.Key.font:
+                                UIFont(name: "Pretendard-Regular", size: 14)!
+                                    ])
         tf.textAlignment = .left
         return tf
     }()
@@ -137,7 +164,7 @@ class SignUp2View: UIView {
         button.backgroundColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
         button.setTitle("중복 확인", for: .normal)
         button.setTitleColor(UIColor(red: 0.46, green: 0.46, blue: 0.46, alpha: 1), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.titleLabel?.font = UIFont(name: "Pretendard-Regular", size: 14)
         button.titleLabel?.contentMode = .scaleAspectFill
         button.clipsToBounds = true
         button.layer.cornerRadius = 18
@@ -160,10 +187,79 @@ class SignUp2View: UIView {
         return view
     }()
     
-    // 닉네임, 이메일 입력 스택뷰
-    private lazy var nickNameIdStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [nickNameTextFieldView,idTextFieldView])
-        stView.spacing = 28
+    // 아이디 제약
+    private lazy var idConstraintLabel: UILabel = {
+        var label = UILabel()
+        label.text = "영문/숫자/특수문자 구성"
+        label.font = UIFont(name: "Pretendard-Regular", size: 12)
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
+        label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
+        return label
+    }()
+    
+    // 비밀번호 입력 텍스트필드
+    private lazy var pwTextField: UITextField = {
+        var tf = UITextField()
+        tf.backgroundColor = .clear
+        tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
+        tf.keyboardType = .emailAddress
+        tf.attributedPlaceholder = NSAttributedString(
+                        string: "비밀번호를 입력하세요.",
+                        attributes: [
+                            NSAttributedString.Key.foregroundColor:
+                                UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 0.5),
+                            NSAttributedString.Key.font:
+                                UIFont(name: "Pretendard-Regular", size: 14)!
+                                    ])
+        tf.textAlignment = .left
+        return tf
+    }()
+    
+    
+    // 비밀번호 중복확인 버튼
+    lazy var pwCheckBtn: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
+        button.setTitle("중복 확인", for: .normal)
+        button.setTitleColor(UIColor(red: 0.46, green: 0.46, blue: 0.46, alpha: 1), for: .normal)
+        button.titleLabel?.font = UIFont(name: "Pretendard-Regular", size: 14)
+        button.titleLabel?.contentMode = .scaleAspectFill
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 18
+        button.contentMode = .center
+        button.tintColor = .black
+        return button
+    }()
+    
+    // 비밀번호 입력 뷰
+    private lazy var pwTextFieldView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 18
+        view.layer.borderColor = #colorLiteral(red: 0.86, green: 0.86, blue: 0.86, alpha: 1)
+        view.layer.borderWidth = 1
+        view.addSubview(pwTextField)
+        return view
+    }()
+    
+    // 비밀번호 제약 레이블
+    private lazy var pwConstraintLabel: UILabel = {
+        var label = UILabel()
+        label.text = "영문/숫자/특수문자 구성"
+        label.font = UIFont(name: "Pretendard-Regular", size: 12)
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
+        label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
+        return label
+    }()
+    
+    
+    // 닉네임, 이메일, 비밀번호 입력 스택뷰
+    private lazy var enterStackView: UIStackView = {
+        let stView = UIStackView(arrangedSubviews: [nickNameTextFieldView, idTextFieldView, pwTextFieldView])
+        stView.spacing = 30
         stView.axis = .vertical
         stView.distribution = .fillEqually
         stView.alignment = .fill
@@ -192,8 +288,7 @@ class SignUp2View: UIView {
     let maleLabel: UILabel = {
         let label = UILabel()
         label.text = "남"
-        // 폰트 수정 필요
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "Pretendard-Regular", size: 14)
         label.textAlignment = .center
         //label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
@@ -221,8 +316,7 @@ class SignUp2View: UIView {
     private let femaleLabel: UILabel = {
         let label = UILabel()
         label.text = "여"
-        // 폰트 수정 필요
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "Pretendard-Regular", size: 14)
         label.textAlignment = .center
         //label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
@@ -246,7 +340,14 @@ class SignUp2View: UIView {
         tf.backgroundColor = .clear
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .numberPad
-        tf.placeholder = "YYYY"
+        tf.attributedPlaceholder = NSAttributedString(
+                        string: "YYYY",
+                        attributes: [
+                            NSAttributedString.Key.foregroundColor:
+                                UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 0.5),
+                            NSAttributedString.Key.font:
+                                UIFont(name: "Pretendard-Regular", size: 14)!
+                                    ])
         tf.textAlignment = .center
         return tf
     }()
@@ -269,7 +370,14 @@ class SignUp2View: UIView {
         tf.backgroundColor = .clear
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .numberPad
-        tf.placeholder = "MM"
+        tf.attributedPlaceholder = NSAttributedString(
+                        string: "MM",
+                        attributes: [
+                            NSAttributedString.Key.foregroundColor:
+                                UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 0.5),
+                            NSAttributedString.Key.font:
+                                UIFont(name: "Pretendard-Regular", size: 14)!
+                                    ])
         tf.textAlignment = .center
         return tf
     }()
@@ -292,7 +400,14 @@ class SignUp2View: UIView {
         tf.backgroundColor = .clear
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .numberPad
-        tf.placeholder = "DD"
+        tf.attributedPlaceholder = NSAttributedString(
+                        string: "DD",
+                        attributes: [
+                            NSAttributedString.Key.foregroundColor:
+                                UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 0.5),
+                            NSAttributedString.Key.font:
+                                UIFont(name: "Pretendard-Regular", size: 14)!
+                                    ])
         tf.textAlignment = .center
         return tf
     }()
@@ -323,14 +438,14 @@ class SignUp2View: UIView {
     private var birthdayLabel: UILabel = {
         let label = UILabel()
         label.text = "생년월일 입력란 입니다."
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont(name: "Pretendard-Regular", size: 12)
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
         return label
     }()
     
-    
+    // MARK: 뷰 초기화
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -348,7 +463,12 @@ class SignUp2View: UIView {
          heartImg1View,
          nextBtn,
          startLabelStackView,
-         nickNameIdStackView,
+         
+         nickNameConstraintLabel,
+         idConstraintLabel,
+         pwConstraintLabel,
+         
+         enterStackView,
          sexBtnStackView,
          birthdayStackView,
          birthdayLabel].forEach { addSubview($0)}
@@ -363,22 +483,34 @@ class SignUp2View: UIView {
         birthdayDateTextField.delegate = self
     }
     
-
+    // MARK: 제약
     
     func constraints() {
         heartImg1ViewConstraints()
         heartImgBackgroundViewConstraints()
         nextBtnConstraints()
         startLabelStackViewConstraints()
+        
+        nickNameConstraintLabelConstraints()
+        idConstraintLabelConstraints()
+        pwConstraintLabelConstraints()
+        
+        nickNameTextFieldConstraints()
         nickNameTextFieldViewConstraints()
         nickNameCheckBtnConstraints()
+        
         idTextFieldConstraints()
         idTextFieldViewConstraints()
         idCheckBtnConstraints()
-        nickNameIdStackViewConstraints()
+        
+        pwTextFieldConstraints()
+        pwTextFieldViewConstraints()
+        enterStackViewConstraints()
+        
         maleLabelConstraints()
         femaleLabelConstraints()
         sexBtnStackViewConstraints()
+        
         birthdayYearTextFieldConstraints()
         birthdayMonthTextFieldConstraints()
         birthdayDateTextFieldConstraints()
@@ -426,6 +558,35 @@ class SignUp2View: UIView {
             startLabelStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 76)
         ])
     }
+    
+    private func nickNameConstraintLabelConstraints() {
+        nickNameConstraintLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            nickNameConstraintLabel.topAnchor.constraint(equalTo: nickNameTextFieldView.bottomAnchor, constant: 3),
+            nickNameConstraintLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
+            nickNameConstraintLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 211),
+        ])
+    }
+    
+    private func idConstraintLabelConstraints() {
+        idConstraintLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            idConstraintLabel.topAnchor.constraint(equalTo: idTextFieldView.bottomAnchor, constant: 3),
+            idConstraintLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
+            idConstraintLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 211),
+        ])
+    }
+    
+    private func pwConstraintLabelConstraints() {
+        pwConstraintLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            pwConstraintLabel.topAnchor.constraint(equalTo: pwTextFieldView.bottomAnchor, constant: 3),
+            pwConstraintLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
+            nickNameConstraintLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 211),
+        ])
+    }
+            
+    
     private func nickNameTextFieldConstraints() {
         nickNameTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -480,12 +641,31 @@ class SignUp2View: UIView {
         ])
     }
 
-    private func nickNameIdStackViewConstraints() {
-        nickNameIdStackView.translatesAutoresizingMaskIntoConstraints = false
+    
+    private func pwTextFieldConstraints() {
+        pwTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nickNameIdStackView.topAnchor.constraint(equalTo: startLabelStackView.bottomAnchor, constant: 134),
-            nickNameIdStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
-            nickNameIdStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
+            pwTextField.topAnchor.constraint(equalTo: pwTextFieldView.topAnchor),
+            pwTextField.bottomAnchor.constraint(equalTo: pwTextFieldView.bottomAnchor),
+            pwTextField.leadingAnchor.constraint(equalTo: pwTextFieldView.leadingAnchor, constant: 27),
+            pwTextField.trailingAnchor.constraint(equalTo: pwTextFieldView.trailingAnchor, constant: 27)
+        ])
+    }
+    
+    private func pwTextFieldViewConstraints() {
+        pwTextFieldView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            pwTextFieldView.heightAnchor.constraint(equalToConstant: textViewHeight)
+        ])
+    }
+    
+
+    private func enterStackViewConstraints() {
+        enterStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            enterStackView.topAnchor.constraint(equalTo: startLabelStackView.bottomAnchor, constant: 104),
+            enterStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
+            enterStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
         ])
     }
     
@@ -494,7 +674,8 @@ class SignUp2View: UIView {
         NSLayoutConstraint.activate([
             maleLabel.centerYAnchor.constraint(equalTo: maleBtn.centerYAnchor),
             maleLabel.leadingAnchor.constraint(equalTo: maleBtn.leadingAnchor, constant: 41),
-            maleLabel.trailingAnchor.constraint(equalTo: maleBtn.trailingAnchor, constant: -14)        ])
+            maleLabel.trailingAnchor.constraint(equalTo: maleBtn.trailingAnchor, constant: -14)
+        ])
     }
     
     private func femaleLabelConstraints() {
@@ -502,15 +683,16 @@ class SignUp2View: UIView {
         NSLayoutConstraint.activate([
             femaleLabel.centerYAnchor.constraint(equalTo: femaleBtn.centerYAnchor),
             femaleLabel.leadingAnchor.constraint(equalTo: femaleBtn.leadingAnchor, constant: 41),
-            femaleLabel.trailingAnchor.constraint(equalTo: femaleBtn.trailingAnchor, constant: -14)        ])
+            femaleLabel.trailingAnchor.constraint(equalTo: femaleBtn.trailingAnchor, constant: -14)
+        ])
     }
     
     private func sexBtnStackViewConstraints() {
         sexBtnStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             sexBtnStackView.heightAnchor.constraint(equalToConstant: textViewHeight),
-            sexBtnStackView.topAnchor.constraint(equalTo: nickNameIdStackView.bottomAnchor, constant: 28),
-            //sexBtnStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 29),
+            sexBtnStackView.topAnchor.constraint(equalTo: pwConstraintLabel.bottomAnchor, constant: 15),
+            sexBtnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 29),
             sexBtnStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -203)
         ])
     }
@@ -550,7 +732,8 @@ class SignUp2View: UIView {
             birthdayStackView.topAnchor.constraint(equalTo: maleBtn.bottomAnchor, constant: 22),
             birthdayStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
             birthdayStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -67),
-            birthdayStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 35)        ])
+            birthdayStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 35)
+        ])
     }
     
     private func birthdayYearTextFieldViewConstraints() {

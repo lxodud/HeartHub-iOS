@@ -213,7 +213,8 @@ class SignUp3View: UIView {
     }()
     
    
-    
+    // MARK: 뷰 초기화
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -243,7 +244,8 @@ class SignUp3View: UIView {
         loverIdTextField.delegate = self
     }
     
-    
+    // MARK: 제약
+
     private func constraints() {
         heartImg2ViewConstraints()
         heartImgBackgroundViewConstraints()

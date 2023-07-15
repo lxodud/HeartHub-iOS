@@ -44,9 +44,9 @@ class SignUp4ViewController: UIViewController {
             let Chekedimage = UIImage(named: "RadioBtnChecked")
             signUp4View.allTermAgreeBtn.setImage(Chekedimage, for: .normal)
         }
-        //didTapPrivacyAgreeBtn()
-        //didTapTermOfUseAgreeBtn()
-        //didTapMarketingAgreeBtn()
+        didTapPrivacyAgreeBtn()
+        didTapTermOfUseAgreeBtn()
+        didTapMarketingAgreeBtn()
     }
     
     @objc func didTapPrivacyAgreeBtn() {
@@ -88,6 +88,7 @@ class SignUp4ViewController: UIViewController {
         
         
     }
+   
    
 }
 
