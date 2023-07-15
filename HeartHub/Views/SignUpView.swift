@@ -47,7 +47,7 @@ class SignUpView: UIView {
     private var startLabel: UILabel = {
         let label = UILabel()
         label.text = "우리의 시작"
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.font = UIFont(name: "Pretendard-SemiBold", size: 20)
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 1)
@@ -58,7 +58,7 @@ class SignUpView: UIView {
     private var startExplainLabel: UILabel = {
         let label = UILabel()
         label.text = "당신이 애인과 처음 사귀기 시작한 날은 언제인가요?"
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "Pretendard-Regular", size: 14)
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)

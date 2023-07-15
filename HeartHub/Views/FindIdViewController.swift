@@ -28,8 +28,9 @@ class FindIdViewController: UIViewController {
     }
 
     @objc private func didTapFindIdButton() {
-        // let findIdVC = FindIdViewController()
-        // present(findIdVC, animated: true, completion: nil)
+        let heartHubModalVC = heartHubModalViewController()
+        heartHubModalVC.modalPresentationStyle = .formSheet
+        present(heartHubModalVC, animated: true, completion: nil)
     }
     
     @objc private func didTapSignUpButton() {
