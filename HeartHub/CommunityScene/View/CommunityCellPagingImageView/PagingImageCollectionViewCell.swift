@@ -36,6 +36,7 @@ extension PagingImageCollectionViewCell {
         let safeArea = contentView.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
+            // MARK: imageView Constraint
             imageView.topAnchor.constraint(
                 equalTo: safeArea.topAnchor
             ),

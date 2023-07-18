@@ -48,7 +48,11 @@ final class CommunityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        communitySegmentedControl.addTarget(self, action: #selector(tapCommunitySegmentedControl(_:)), for: .valueChanged)
+        communitySegmentedControl.addTarget(
+            self,
+            action: #selector(tapCommunitySegmentedControl(_:)),
+            for: .valueChanged
+        )
         configureCommunitySegmentedControlLayout()
         configurePageViewControllerLayout()
         configurePageViewControllerInitialSetting()
@@ -143,10 +147,18 @@ extension CommunityViewController {
         pageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            pageView.topAnchor.constraint(equalTo: communitySegmentedControl.bottomAnchor),
-            pageView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            pageView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            pageView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            pageView.topAnchor.constraint(
+                equalTo: communitySegmentedControl.bottomAnchor
+            ),
+            pageView.leadingAnchor.constraint(
+                equalTo: safeArea.leadingAnchor
+            ),
+            pageView.trailingAnchor.constraint(
+                equalTo: safeArea.trailingAnchor
+            ),
+            pageView.bottomAnchor.constraint(
+                equalTo: safeArea.bottomAnchor
+            ),
         ])
     }
 }
@@ -166,10 +178,18 @@ extension CommunityViewController {
         communitySegmentedControl.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            communitySegmentedControl.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            communitySegmentedControl.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            communitySegmentedControl.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            communitySegmentedControl.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.08)
+            communitySegmentedControl.topAnchor.constraint(
+                equalTo: safeArea.topAnchor
+            ),
+            communitySegmentedControl.leadingAnchor.constraint(
+                equalTo: safeArea.leadingAnchor
+            ),
+            communitySegmentedControl.trailingAnchor.constraint(
+                equalTo: safeArea.trailingAnchor
+            ),
+            communitySegmentedControl.heightAnchor.constraint(
+                equalTo: safeArea.heightAnchor, multiplier: 0.08
+            )
         ])
     }
 }

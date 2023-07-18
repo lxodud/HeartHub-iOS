@@ -64,8 +64,6 @@ extension CommunityCellPagingImageView: UICollectionViewDelegateFlowLayout {
         
         return CGSize(width: width, height: height)
     }
-    
-    
 }
 
 // MARK: UICollectionView DataSource
@@ -124,6 +122,7 @@ extension CommunityCellPagingImageView {
         let safeArea = safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
+            // MARK: pagingImageCollectionView Constraint
             pagingImageCollectionView.topAnchor.constraint(
                 equalTo: safeArea.topAnchor
             ),
@@ -138,6 +137,7 @@ extension CommunityCellPagingImageView {
                 multiplier: 0.95
             ),
             
+            // MARK: imagePageControl Constraint
             imagePageControl.topAnchor.constraint(
                 equalTo: pagingImageCollectionView.bottomAnchor
             ),

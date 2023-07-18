@@ -59,8 +59,17 @@ extension CommunitySegmentedControl {
     }
     
     private func removeInitialImage() {
-        setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
-        setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+        setBackgroundImage(
+            UIImage(),
+            for: .normal,
+            barMetrics: .default
+        )
+        setDividerImage(
+            UIImage(),
+            forLeftSegmentState: .normal,
+            rightSegmentState: .normal,
+            barMetrics: .default
+        )
     }
 }
 

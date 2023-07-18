@@ -13,6 +13,7 @@
 		0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C382E322A5C564000EA08E0 /* CommunityCellBottomButtonView.swift */; };
 		0C43F6102A659C6D00EED860 /* PagingImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C43F60F2A659C6D00EED860 /* PagingImageCollectionViewCell.swift */; };
 		0C43F6132A659CD800EED860 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C43F6122A659CD800EED860 /* Reusable.swift */; };
+		0C43F6152A66767700EED860 /* DailyDateImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C43F6142A66767700EED860 /* DailyDateImageCell.swift */; };
 		0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */; };
 		0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC12A5281C1001EF4E7 /* AppDelegate.swift */; };
 		0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC32A5281C1001EF4E7 /* SceneDelegate.swift */; };
@@ -29,6 +30,7 @@
 		0C382E322A5C564000EA08E0 /* CommunityCellBottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellBottomButtonView.swift; sourceTree = "<group>"; };
 		0C43F60F2A659C6D00EED860 /* PagingImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		0C43F6122A659CD800EED860 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		0C43F6142A66767700EED860 /* DailyDateImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyDateImageCell.swift; path = HeartHub/CommunityScene/DailyDateScene/View/DailyDateCell/DailyDateImageCell.swift; sourceTree = SOURCE_ROOT; };
 		0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateViewController.swift; sourceTree = "<group>"; };
 		0CC33ABE2A5281C1001EF4E7 /* HeartHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC33AC12A5281C1001EF4E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,7 +75,7 @@
 		0C382E2A2A5B016800EA08E0 /* DailyDateScene */ = {
 			isa = PBXGroup;
 			children = (
-				0CF732422A6564F400ED3B01 /* View */,
+				0C43F6162A6676AB00EED860 /* View */,
 				0C382E2B2A5B018D00EA08E0 /* Controller */,
 			);
 			path = DailyDateScene;
@@ -102,6 +104,22 @@
 				0C43F6122A659CD800EED860 /* Reusable.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		0C43F6162A6676AB00EED860 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0C43F6172A6676B500EED860 /* DailyDateCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0C43F6172A6676B500EED860 /* DailyDateCell */ = {
+			isa = PBXGroup;
+			children = (
+				0C43F6142A66767700EED860 /* DailyDateImageCell.swift */,
+			);
+			path = DailyDateCell;
 			sourceTree = "<group>";
 		};
 		0C809A1C2A56D17F009EC362 /* CommunityScene */ = {
@@ -143,21 +161,6 @@
 				0CC33ACF2A5281C3001EF4E7 /* Info.plist */,
 			);
 			path = HeartHub;
-			sourceTree = "<group>";
-		};
-		0CF732422A6564F400ED3B01 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				0CF732432A6564FB00ED3B01 /* DailyDateCollectionViewCell */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		0CF732432A6564FB00ED3B01 /* DailyDateCollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DailyDateCollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +240,7 @@
 				0C382E282A5994A700EA08E0 /* CommunityViewController.swift in Sources */,
 				0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */,
 				0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */,
+				0C43F6152A66767700EED860 /* DailyDateImageCell.swift in Sources */,
 				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
 				0C382E262A5950C700EA08E0 /* CommunitySegmentedControl.swift in Sources */,
 				0C43F6102A659C6D00EED860 /* PagingImageCollectionViewCell.swift in Sources */,
