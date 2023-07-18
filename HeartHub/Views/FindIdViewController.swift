@@ -25,8 +25,15 @@ class FindIdViewController: UIViewController {
         findIdView.findIdBtn.addTarget(self, action: #selector(didTapFindIdButton), for: .touchUpInside)
         findIdView.signUpBtn.addTarget(self, action: #selector(didTapSignUpButton), for: .touchUpInside)
         findIdView.findPwBtn.addTarget(self, action: #selector(didTapFindPwButton), for: .touchUpInside)
+        findIdView.unActivatedFindIdBtn.addTarget(self, action: #selector(didTapunActivatedFindIdBtn), for: .touchUpInside)
+
     }
 
+    @objc private func didTapunActivatedFindIdBtn() {
+        let loginVC = LoginViewController()
+        present(loginVC, animated: true, completion: nil)
+    }
+    
     @objc private func didTapFindIdButton() {
         let heartHubModalVC = heartHubModalViewController()
         heartHubModalVC.modalPresentationStyle = .formSheet

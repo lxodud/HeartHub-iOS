@@ -22,7 +22,8 @@ class SignUp2ViewController: UIViewController {
     }
     
     func addTarget() {
-        signUp2View.nextBtn.addTarget(self, action: #selector(didTapNextBtn), for: .touchUpInside)
+        signUp2View.rightArrowBtn.addTarget(self, action: #selector(didTapRightArrowBtn), for: .touchUpInside)
+        signUp2View.leftArrowBtn.addTarget(self, action: #selector(didTapLeftArrowBtn), for: .touchUpInside)
         signUp2View.nickNameCheckBtn.addTarget(self, action: #selector(didTapNickNameCheckBtn), for: .touchUpInside)
         signUp2View.idCheckBtn.addTarget(self, action: #selector(didTapIdCheckBtn), for: .touchUpInside)
         signUp2View.maleBtn.addTarget(self, action: #selector(didTapMaleBtn), for: .touchUpInside)
@@ -30,11 +31,18 @@ class SignUp2ViewController: UIViewController {
     }
     
 
-    @objc func didTapNextBtn() {
+    @objc func didTapRightArrowBtn() {
         let signUp3VC = SignUp3ViewController()
+        signUp3VC.modalPresentationStyle = .fullScreen
         present(signUp3VC, animated: true, completion: nil)
     }
     
+    @objc func didTapLeftArrowBtn() {
+        let signUpVC = SignUpViewController()
+        signUpVC.modalPresentationStyle = .fullScreen
+        present(signUpVC, animated: true, completion: nil)
+    }
+
     @objc func didTapNickNameCheckBtn() {
         
         

@@ -31,15 +31,14 @@ class SignUpView: UIView {
     
 
     
-    // 다음화면 넘어가는 버튼
-    lazy var nextBtn: UIButton = {
-        let button = UIButton(type: .system)
-        let symbolConfiguration = UIImage.SymbolConfiguration(weight: .thin)
-        let symbolImage = UIImage(systemName: "arrow.right.circle", withConfiguration: symbolConfiguration)
-        button.setImage(symbolImage, for: .normal)
-        button.contentMode = .center
-        button.tintColor = .black
-        return button
+// MARK: 다음화면 버튼
+    
+    lazy var rightArrowBtn: UIButton = {
+        let btn = UIButton()
+        btn.layer.masksToBounds = false
+        btn.setImage(UIImage(named: "RightArrow"), for: .normal)
+        btn.contentMode = .center
+        return btn
     }()
     
     // MARK: 회원가입 초기화면 레이블
@@ -183,7 +182,7 @@ class SignUpView: UIView {
         
         [heartImgBackgroundView,
          heartImg0View,
-         nextBtn,
+         rightArrowBtn,
          startLabelStackView,
          startDateStackView].forEach { addSubview($0)}
 
@@ -193,7 +192,7 @@ class SignUpView: UIView {
     private func constraints() {
         heartImgBackgroundViewConstraints()
         heartImg0ViewConstraints()
-        nextBtnConstraints()
+        rightArrowBtnConstraints()
         startLabelStackViewConstraints()
         startDateStackViewConstraints()
         startYearTextFieldConstraints()
@@ -225,13 +224,12 @@ class SignUpView: UIView {
     }
     
     
-    private func nextBtnConstraints() {
-        nextBtn.translatesAutoresizingMaskIntoConstraints = false
+    private func rightArrowBtnConstraints() {
+        rightArrowBtn.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nextBtn.widthAnchor.constraint(equalToConstant: 50),
-            nextBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -56),
-            nextBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 315),
-            nextBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40)
+            rightArrowBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -77),
+            rightArrowBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 294 ),
+            rightArrowBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40)
         ])
     }
     

@@ -31,16 +31,32 @@ class SignUp4View: UIView {
         return img
     }()
     
-    // 다음화면 넘어가는 버튼
-    lazy var nextBtn: UIButton = {
-        let button = UIButton(type: .system)
-        let symbolConfiguration = UIImage.SymbolConfiguration(weight: .thin)
-        let symbolImage = UIImage(systemName: "arrow.right.circle", withConfiguration: symbolConfiguration)
-        button.setImage(symbolImage, for: .normal)
-        button.contentMode = .center
-        button.tintColor = .black
-        return button
+    // MARK: 이전화면 버튼 다음화면 버튼
+    lazy var leftArrowBtn: UIButton = {
+        let btn = UIButton()
+        btn.layer.masksToBounds = false
+        btn.setImage(UIImage(named: "LeftArrow"), for: .normal)
+        btn.contentMode = .center
+        return btn
     }()
+    
+    lazy var rightArrowBtn: UIButton = {
+        let btn = UIButton()
+        btn.layer.masksToBounds = false
+        btn.setImage(UIImage(named: "RightArrow"), for: .normal)
+        btn.contentMode = .center
+        return btn
+    }()
+    
+    private lazy var arrowBtnStackView: UIStackView = {
+       let stView = UIStackView(arrangedSubviews: [leftArrowBtn, rightArrowBtn])
+        stView.axis = .horizontal
+        stView.spacing = 198
+        stView.distribution = .fillEqually
+        stView.alignment = .fill
+        return stView
+    }()
+    
     
     // MARK: 회원가입화면2 상단 레이블
     // 사랑을 시작해볼까요 레이블
@@ -285,7 +301,7 @@ class SignUp4View: UIView {
     func addViews() {
         [heartImgBackgroundView,
          heartImg3View,
-         nextBtn,
+         arrowBtnStackView,
          startLabelStackView,
          agreeStackView].forEach { addSubview($0)}
     }
@@ -300,7 +316,7 @@ class SignUp4View: UIView {
     private func constraints() {
         heartImg3ViewConstraints()
         heartImgBackgroundViewConstraints()
-        nextBtnConstraints()
+        arrowBtnConstraints()
         startLabelStackViewConstraints()
         lineViewConstraints()
         agreeStackViewConstraints()
@@ -325,13 +341,12 @@ class SignUp4View: UIView {
         ])
     }
     
-    private func nextBtnConstraints() {
-        nextBtn.translatesAutoresizingMaskIntoConstraints = false
+    private func arrowBtnConstraints() {
+        arrowBtnStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nextBtn.widthAnchor.constraint(equalToConstant: 50),
-            nextBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -56),
-            nextBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 315),
-            nextBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            arrowBtnStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -77),
+            arrowBtnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            arrowBtnStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40)
         ])
     }
     

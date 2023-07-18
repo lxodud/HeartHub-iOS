@@ -7,6 +7,7 @@
 
 
 import UIKit
+import DropDown
 
 class SignUp3ViewController: UIViewController {
 
@@ -23,21 +24,33 @@ class SignUp3ViewController: UIViewController {
     }
     
     func addTarget() {
-        signUp3View.nextBtn.addTarget(self, action: #selector(didTapNextBtn), for: .touchUpInside)
-//        signUp3View.emailCertifyBtn.addTarget(self, action: #selector(didTapEmailCertifyBtn), for: .touchUpInside)
+        signUp3View.rightArrowBtn.addTarget(self, action: #selector(didTapRightArrowBtn), for: .touchUpInside)
+        signUp3View.leftArrowBtn.addTarget(self, action: #selector(didTapLeftArrowBtn), for: .touchUpInside)
+        signUp3View.dropDownBtn.addTarget(self, action: #selector(didTapdropDownBtn), for: .touchUpInside)
     }
     
-    @objc func didTapEmailCertifyBtn() {
-        
-    }
-
-    @objc func didTapCertificationNumCertifyBtn() {
-        
-    }
-    
-    @objc func didTapNextBtn() {
+    @objc func didTapRightArrowBtn() {
         let signUp4VC = SignUp4ViewController()
+        signUp4VC.modalPresentationStyle = .fullScreen
         present(signUp4VC, animated: true, completion: nil)
     }
+    
+    @objc func didTapLeftArrowBtn() {
+        let signUp2VC = SignUp2ViewController()
+        signUp2VC.modalPresentationStyle = .fullScreen
+        present(signUp2VC, animated: true, completion: nil)
+    }
 
+    
+    @objc func didTapdropDownBtn() {        
+        if signUp3View.dropDownBtn.currentImage == UIImage(named: "DropDownArrow.png") {
+            let upArrow = UIImage(named: "DropUpArrow.png")
+            signUp3View.dropDownBtn.setImage(upArrow, for: .normal)
+            signUp3View.emailDropDown.show()
+        } else {
+            let downArrow = UIImage(named: "DropDownArrow.png")
+            signUp3View.dropDownBtn.setImage(downArrow, for: .normal)
+            signUp3View.emailDropDown.hide()
+        }
+    }
 }

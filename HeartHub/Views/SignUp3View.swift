@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import DropDown
 
 class SignUp3View: UIView {
+    
+    let screenHeight = UIScreen.main.bounds.size.height
     let textViewHeight: CGFloat = 35
 
     // MARK: 하트이미지
@@ -31,23 +34,39 @@ class SignUp3View: UIView {
         return img
     }()
     
-    // 다음화면 넘어가는 버튼
-    lazy var nextBtn: UIButton = {
-        let button = UIButton(type: .system)
-        let symbolConfiguration = UIImage.SymbolConfiguration(weight: .thin)
-        let symbolImage = UIImage(systemName: "arrow.right.circle", withConfiguration: symbolConfiguration)
-        button.setImage(symbolImage, for: .normal)
-        button.contentMode = .center
-        button.tintColor = .black
-        return button
+    // MARK: 이전화면 버튼 다음화면 버튼
+    lazy var leftArrowBtn: UIButton = {
+        let btn = UIButton()
+        btn.layer.masksToBounds = false
+        btn.setImage(UIImage(named: "LeftArrow"), for: .normal)
+        btn.contentMode = .center
+        return btn
     }()
+    
+    lazy var rightArrowBtn: UIButton = {
+        let btn = UIButton()
+        btn.layer.masksToBounds = false
+        btn.setImage(UIImage(named: "RightArrow"), for: .normal)
+        btn.contentMode = .center
+        return btn
+    }()
+    
+    private lazy var arrowBtnStackView: UIStackView = {
+       let stView = UIStackView(arrangedSubviews: [leftArrowBtn, rightArrowBtn])
+        stView.axis = .horizontal
+        stView.spacing = 198
+        stView.distribution = .fillEqually
+        stView.alignment = .fill
+        return stView
+    }()
+    
     
     // MARK: 회원가입화면2 상단 레이블
     // 사랑을 시작해볼까요 레이블
     private var startLabel: UILabel = {
         let label = UILabel()
         label.text = "사랑을 시작해볼까요?"
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.font = UIFont(name: "Pretendard-SemiBold", size: 20)
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 1)
@@ -58,7 +77,7 @@ class SignUp3View: UIView {
     private var startExplainLabel: UILabel = {
         let label = UILabel()
         label.text = "계정을 생성하여 HeartHub를 즐겨보아요."
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "Pretendard-Regular", size: 14)
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
@@ -75,7 +94,7 @@ class SignUp3View: UIView {
         return stView
     }()
     
-    // MARK: 이메일 인증번호 입력란
+    // MARK: 이메일 입력 + dropDown 버튼
     // 이메일 입력 텍스트 필드
     private lazy var emailTextField: UITextField = {
         var tf = UITextField()
@@ -94,21 +113,50 @@ class SignUp3View: UIView {
         return tf
     }()
     
+    lazy var emailDropDown: DropDown = {
+       var dropDown = DropDown()
+        dropDown.dataSource = ["@naver.com", "@gmail.com", "@hanmail.com", "@kakao.com"]
+        dropDown.textColor = UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 0.5)
+        dropDown.textFont = UIFont(name: "Pretendard-Regular", size: 14)!
+        dropDown.backgroundColor = .white
+        dropDown.anchorView = emailTextFieldView
+        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
+        dropDown.width = 115
+        dropDown.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        dropDown.dismissMode = .onTap
+        dropDown.separatorColor = #colorLiteral(red: 0.850980401, green: 0.850980401, blue: 0.850980401, alpha: 1)
+
+        // dropDown 셀 중 하나가 선택되면
+        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            if var emailAdress = emailTextField.text {
+                emailAdress = emailTextField.text! + item
+                emailTextField.text! = emailAdress
+            }
+            if dropDownBtn.currentImage == UIImage(named: "DropUpArrow.png") {
+                let downArrow = UIImage(named: "DropDownArrow.png")
+                dropDownBtn.setImage(downArrow, for: .normal)}
+          print("Selected item: \(item) at index: \(index)")
+        }
+        
+        // dropDown이 해제될 때
+        dropDown.cancelAction = { [unowned self] in
+            if dropDownBtn.currentImage == UIImage(named: "DropUpArrow.png") {
+                let downArrow = UIImage(named: "DropDownArrow.png")
+                dropDownBtn.setImage(downArrow, for: .normal)}
+        }
+        return dropDown
+    }()
     
-//    // 이메일 인증 버튼
-//    lazy var emailCertifyBtn: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.backgroundColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
-//        button.setTitle("인증", for: .normal)
-//        button.setTitleColor(UIColor(red: 0.46, green: 0.46, blue: 0.46, alpha: 1), for: .normal)
-//        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-//        button.titleLabel?.contentMode = .scaleAspectFill
-//        button.clipsToBounds = true
-//        button.layer.cornerRadius = 18
-//        button.contentMode = .center
-//        button.tintColor = .black
-//        return button
-//    }()
+    lazy var dropDownBtn: UIButton = {
+        let btn = UIButton()
+        let downArrow = UIImage(named: "DropDownArrow.png")
+        let upArrow = UIImage(named: "DropUpArrow.png")
+        
+        btn.setImage(downArrow, for: .normal)
+        btn.contentMode = .center
+        btn.tintColor = .black
+        return btn
+    }()
     
     // 이메일 입력 뷰
     private lazy var emailTextFieldView: UIView = {
@@ -119,16 +167,17 @@ class SignUp3View: UIView {
         view.layer.borderColor = #colorLiteral(red: 0.86, green: 0.86, blue: 0.86, alpha: 1)
         view.layer.borderWidth = 1
         view.addSubview(emailTextField)
-//        view.addSubview(emailCertifyBtn)
+        view.addSubview(dropDownBtn)
        return view
     }()
     
+    // MARK: 애인 아이디 입력
     // 애인아이디 입력 텍스트필드
     private lazy var loverIdTextField: UITextField = {
         var tf = UITextField()
         tf.backgroundColor = .clear
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
-        tf.keyboardType = .phonePad
+        tf.keyboardType = .default
         tf.attributedPlaceholder = NSAttributedString(
                         string: "(선택) 내 애인의 아이디를 입력하세요",
                         attributes: [
@@ -141,7 +190,7 @@ class SignUp3View: UIView {
         return tf
     }()
     
-    // 인증번호 입력 뷰
+    // 애인아이디 입력 뷰
     private lazy var loverIdTextFieldView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -167,7 +216,7 @@ class SignUp3View: UIView {
     private var idLinkingLabel: UILabel = {
         let label = UILabel()
         label.text = "계정연동 시 서로의 스크랩 목록을 확인할 수 있습니다."
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "Pretendard-Regular", size: 14)
         label.textAlignment = .right
         label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
@@ -191,7 +240,7 @@ class SignUp3View: UIView {
     func addViews() {
         [heartImgBackgroundView,
         heartImg2View,
-        nextBtn,
+        arrowBtnStackView,
         startLabelStackView,
         enterStackView,
         idLinkingLabel].forEach { addSubview($0)}
@@ -210,13 +259,18 @@ class SignUp3View: UIView {
     private func constraints() {
         heartImg2ViewConstraints()
         heartImgBackgroundViewConstraints()
-        nextBtnConstraints()
+        arrowBtnConstraints()
+        
         startLabelStackViewConstraints()
         
         emailTextFieldViewConstraints()
         emailTextFieldConstraints()
+        
         loverIdTextFieldViewConstraints()
         loverIdTextFieldConstraints()
+        
+        dropDownBtnConstraints()
+        
         enterStackViewConstraints()
         idLinkingLabelConstraints()
     }
@@ -240,13 +294,12 @@ class SignUp3View: UIView {
         ])
     }
     
-    private func nextBtnConstraints() {
-        nextBtn.translatesAutoresizingMaskIntoConstraints = false
+    private func arrowBtnConstraints() {
+        arrowBtnStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nextBtn.widthAnchor.constraint(equalToConstant: 50),
-            nextBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -56),
-            nextBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 315),
-            nextBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40)
+            arrowBtnStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -77),
+            arrowBtnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            arrowBtnStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40)
         ])
     }
     
@@ -262,7 +315,7 @@ class SignUp3View: UIView {
     private func emailTextFieldViewConstraints() {
         emailTextFieldView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            emailTextFieldView.heightAnchor.constraint(equalToConstant: textViewHeight)
+            emailTextFieldView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: textViewHeight / screenHeight)
         ])
     }
     
@@ -290,9 +343,8 @@ class SignUp3View: UIView {
     private func loverIdTextFieldViewConstraints() {
         loverIdTextFieldView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            loverIdTextFieldView.heightAnchor.constraint(equalToConstant: textViewHeight)
+            loverIdTextFieldView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: textViewHeight / screenHeight)
         ])
-
     }
     
     private func loverIdTextFieldConstraints() {
@@ -301,11 +353,19 @@ class SignUp3View: UIView {
             loverIdTextField.topAnchor.constraint(equalTo: loverIdTextFieldView.topAnchor),
             loverIdTextField.bottomAnchor.constraint(equalTo: loverIdTextFieldView.bottomAnchor),
             loverIdTextField.leadingAnchor.constraint(equalTo: loverIdTextFieldView.leadingAnchor, constant: 27),
-            loverIdTextField.trailingAnchor.constraint(equalTo: loverIdTextFieldView.trailingAnchor, constant: -73)
+            loverIdTextField.trailingAnchor.constraint(equalTo: dropDownBtn.leadingAnchor, constant: -10)
         ])
-        
     }
     
+    private func dropDownBtnConstraints() {
+        dropDownBtn.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            dropDownBtn.topAnchor.constraint(equalTo: emailTextFieldView.topAnchor, constant: 6),
+            dropDownBtn.bottomAnchor.constraint(equalTo: emailTextFieldView.bottomAnchor, constant: -5),
+            dropDownBtn.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 293),
+            dropDownBtn.trailingAnchor.constraint(equalTo: emailTextFieldView.trailingAnchor, constant: -12)
+        ])
+    }
     
     private func enterStackViewConstraints() {
         enterStackView.translatesAutoresizingMaskIntoConstraints = false

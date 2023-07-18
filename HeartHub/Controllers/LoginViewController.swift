@@ -43,6 +43,7 @@ class LoginViewController: UIViewController {
     
     @objc private func didTapSignUpButton() {
         let signUpVC = SignUpViewController()
+        signUpVC.modalPresentationStyle = .fullScreen
         present(signUpVC, animated: true, completion: nil)
     }
     @objc private func didTapFindIdButton() {

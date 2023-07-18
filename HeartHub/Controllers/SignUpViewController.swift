@@ -22,11 +22,12 @@ class SignUpViewController: UIViewController {
     }
 
     func addTarget() {
-        signupView.nextBtn.addTarget(self, action: #selector(didTapNextBtn), for: .touchUpInside)
+        signupView.rightArrowBtn.addTarget(self, action: #selector(didTapRightArrowBtn), for: .touchUpInside)
     }
     
-    @objc func didTapNextBtn() {
+    @objc func didTapRightArrowBtn() {
         let signUp2VC = SignUp2ViewController()
+        signUp2VC.modalPresentationStyle = .fullScreen
         present(signUp2VC, animated: true, completion: nil)
     }
    

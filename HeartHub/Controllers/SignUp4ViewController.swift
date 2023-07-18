@@ -23,7 +23,8 @@ class SignUp4ViewController: UIViewController {
     }
     
     func addTarget() {
-        signUp4View.nextBtn.addTarget(self, action: #selector(didTapNextBtn), for: .touchUpInside)
+        signUp4View.rightArrowBtn.addTarget(self, action: #selector(didTapRightArrowBtn), for: .touchUpInside)
+        signUp4View.leftArrowBtn.addTarget(self, action: #selector(didTapLeftArrowBtn), for: .touchUpInside)
         signUp4View.allTermAgreeBtn.addTarget(self, action: #selector(didTapAllAgreeBtn), for: .touchUpInside)
         signUp4View.privacyAgreeBtn.addTarget(self, action: #selector(didTapPrivacyAgreeBtn), for: .touchUpInside)
         signUp4View.privacyArrowBtn.addTarget(self, action: #selector(didTapPrivacyArrowBtn), for: .touchUpInside)
@@ -32,8 +33,16 @@ class SignUp4ViewController: UIViewController {
         signUp4View.marketingAgreeBtn.addTarget(self, action: #selector(didTapMarketingAgreeBtn), for: .touchUpInside)
     }
     
-    @objc func didTapNextBtn() {
-        
+    @objc func didTapRightArrowBtn() {
+        let loginVC = LoginViewController()
+        loginVC.modalPresentationStyle = .fullScreen
+        present(loginVC, animated: true, completion: nil)
+    }
+    
+    @objc func didTapLeftArrowBtn() {
+        let signUp3VC = SignUp3ViewController()
+        signUp3VC.modalPresentationStyle = .fullScreen
+        present(signUp3VC, animated: true, completion: nil)
     }
     
     @objc func didTapAllAgreeBtn() {

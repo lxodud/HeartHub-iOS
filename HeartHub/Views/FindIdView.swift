@@ -124,7 +124,7 @@ class FindIdView: UIView {
     lazy var unActivatedFindIdBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-        button.setTitle("아이디 찾기", for: .normal)
+        button.setTitle("로그인", for: .normal)
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(UIColor(red: 1, green: 0.758, blue: 0.918, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Pretendard-Regular", size: 16)

@@ -33,16 +33,33 @@ class SignUp2View: UIView {
         return img
     }()
     
-    // 다음화면 넘어가는 버튼
-    lazy var nextBtn: UIButton = {
-        let button = UIButton(type: .system)
-        let symbolConfiguration = UIImage.SymbolConfiguration(weight: .thin)
-        let symbolImage = UIImage(systemName: "arrow.right.circle", withConfiguration: symbolConfiguration)
-        button.setImage(symbolImage, for: .normal)
-        button.contentMode = .center
-        button.tintColor = .black
-        return button
+    // MARK: 이전화면 버튼 다음화면 버튼
+    lazy var leftArrowBtn: UIButton = {
+        let btn = UIButton()
+        btn.layer.masksToBounds = false
+        btn.setImage(UIImage(named: "LeftArrow"), for: .normal)
+        btn.contentMode = .center
+        return btn
     }()
+    
+    lazy var rightArrowBtn: UIButton = {
+        let btn = UIButton()
+        btn.layer.masksToBounds = false
+        btn.setImage(UIImage(named: "RightArrow"), for: .normal)
+        btn.contentMode = .center
+        return btn
+    }()
+    
+    private lazy var arrowBtnStackView: UIStackView = {
+       let stView = UIStackView(arrangedSubviews: [leftArrowBtn, rightArrowBtn])
+        stView.axis = .horizontal
+        stView.spacing = 198
+        stView.distribution = .fillEqually
+        stView.alignment = .fill
+        return stView
+    }()
+    
+    
     
     // MARK: 회원가입화면2 상단 레이블
     // 사랑을 시작해볼까요 레이블
@@ -269,14 +286,14 @@ class SignUp2View: UIView {
     // MARK: 성별 선택
     // 남자 버튼
     lazy var maleBtn: UIButton = {
-        let button = UIButton(type: .custom)
+        var button = UIButton(type: .custom)
         button.backgroundColor = .clear
         button.layer.cornerRadius = 18
         button.layer.borderWidth = 1
         button.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
         
         // 라디오버튼 구현
-        let checkedImg = UIImage(named: "RadioBtnChecked.png")
+//        let checkedImg = UIImage(named: "RadioBtnChecked.png")
         let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
         button.setImage(unCheckedImg, for: .normal)
         button.imageView?.contentMode = .scaleAspectFill
@@ -297,14 +314,14 @@ class SignUp2View: UIView {
     
     // 여자 버튼
     lazy var femaleBtn: UIButton = {
-        let button = UIButton(type: .custom)
+        var button = UIButton(type: .custom)
         button.backgroundColor = .clear
         button.layer.cornerRadius = 18
         button.layer.borderWidth = 1
         button.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
         
         // 라디오버튼 구현
-        let checkedImg = UIImage(named: "RadioBtnChecked.png")
+//        let checkedImg = UIImage(named: "RadioBtnChecked.png")
         let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
         button.setImage(unCheckedImg, for: .normal)
         button.imageView?.contentMode = .scaleAspectFill
@@ -461,7 +478,7 @@ class SignUp2View: UIView {
     func addViews() {
         [heartImgBackgroundView,
          heartImg1View,
-         nextBtn,
+         arrowBtnStackView,
          startLabelStackView,
          
          nickNameConstraintLabel,
@@ -488,7 +505,7 @@ class SignUp2View: UIView {
     func constraints() {
         heartImg1ViewConstraints()
         heartImgBackgroundViewConstraints()
-        nextBtnConstraints()
+        arrowBtnConstraints()
         startLabelStackViewConstraints()
         
         nickNameConstraintLabelConstraints()
@@ -539,14 +556,13 @@ class SignUp2View: UIView {
             heartImg1View.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -172)
         ])
     }
-    
-    private func nextBtnConstraints() {
-        nextBtn.translatesAutoresizingMaskIntoConstraints = false
+        
+    private func arrowBtnConstraints() {
+        arrowBtnStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nextBtn.widthAnchor.constraint(equalToConstant: 50),
-            nextBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -56),
-            nextBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 315),
-            nextBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40)
+            arrowBtnStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -77),
+            arrowBtnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            arrowBtnStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40)
         ])
     }
     
