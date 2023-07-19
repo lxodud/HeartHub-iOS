@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol CommunityCellProfileViewDelegate: AnyObject {
-    func didTapUserProfile()
-    func didTapPostOption()
-}
-
 final class CommunityCellProfileView: UIView {
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()

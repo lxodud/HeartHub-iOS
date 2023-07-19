@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol CommunityCellBottomButtonViewDelegate: AnyObject {
-    func didTapThumbButton()
-    func didTapCommentButton()
-    func didTapHeartButton()
-}
-
 final class CommunityCellBottomButtonView: UIView {
     private let thumbButton: UIButton = {
         let button = UIButton()

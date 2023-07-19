@@ -7,17 +7,6 @@
 
 import UIKit
 
-protocol DailyDateCellDelegate: AnyObject {
-    // MARK: Profile View Delegate
-    func didTapUserProfile()
-    func didTapPostOption()
-    
-    // MARK: Bottom Button View Delegate
-    func didTapThumbButton()
-    func didTapCommentButton()
-    func didTapHeartButton()
-}
-
 protocol DailyDateCellable: UICollectionViewCell, CommunityCellProfileViewDelegate, CommunityCellBottomButtonViewDelegate {
     var delegate: DailyDateCellDelegate? { get set }
     
