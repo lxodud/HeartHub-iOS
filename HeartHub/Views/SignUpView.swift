@@ -322,11 +322,9 @@ extension SignUpView: UITextFieldDelegate {
         startMonthTextField.resignFirstResponder()
         startDayTextField.resignFirstResponder()
     }
-    
-    
-    // 텍스트필드 별 글자수 제한
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
+       
         // 백스페이스 감지
         if let char = string.cString(using: String.Encoding.utf8) {
             let isBackSpace = strcmp(char, "\\b")
@@ -335,22 +333,56 @@ extension SignUpView: UITextFieldDelegate {
             }
         }
         
+        guard let text = textField.text else {
+            return true
+        }
+        
+        let maxLength: Int
+        var allowedCharacterSet: CharacterSet
+        
         switch textField {
         case startYearTextField:
-            guard startYearTextField.text!.count < 4 else { return false }
-            return true
+            maxLength = 4
+            allowedCharacterSet = CharacterSet(charactersIn: "0123456789")
+            let updatedText = (text as NSString).replacingCharacters(in: range, with: string)
+            let currentYear = Calendar.current.component(.year, from: Date())
+            if let year = Int(updatedText) {
+                     if year >= 1950 && year <= currentYear {
+                         return true
+                     }
+                 }
+            
         case startMonthTextField:
-            guard startMonthTextField.text!.count < 2 else { return false }
-            return true
+            maxLength = 2
+            allowedCharacterSet = CharacterSet(charactersIn: "0123456789")
+            let updatedText = (text as NSString).replacingCharacters(in: range, with: string)
+            if let month = Int(updatedText) {
+                     if month >= 01 && month <= 12 {
+                         return true
+                     }
+                 }
+            
         case startDayTextField:
-            guard startDayTextField.text!.count < 2 else { return false }
-            return true
+            maxLength = 2
+            allowedCharacterSet = CharacterSet(charactersIn: "0123456789")
+            let updatedText = (text as NSString).replacingCharacters(in: range, with: string)
+            if let date = Int(updatedText) {
+                     if date >= 01 && date <= 31 {
+                         return true
+                     }
+                 }
+            
         default:
             return true
         }
-
+        
+        let newLength = text.count + string.count - range.length
+        
+        if newLength <= maxLength {
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacterSet.isSuperset(of: characterSet)
+        } else {
+            return false
+        }
     }
-
-    
-
 }

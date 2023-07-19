@@ -101,6 +101,7 @@ class SignUp2View: UIView {
         tf.backgroundColor = .clear
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .emailAddress
+        tf.autocapitalizationType = .none
         tf.attributedPlaceholder = NSAttributedString(
                         string: "닉네임을 입력하세요.",
                         attributes: [
@@ -145,7 +146,7 @@ class SignUp2View: UIView {
     }()
     
     // 닉네임 제약
-    private lazy var nickNameConstraintLabel: UILabel = {
+    private lazy var nickNameDescriptionLabel: UILabel = {
         var label = UILabel()
         label.text = "한글/영문/숫자/특수문자 구성"
         label.font = UIFont(name: "Pretendard-Regular", size: 12)
@@ -162,6 +163,7 @@ class SignUp2View: UIView {
         tf.backgroundColor = .clear
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .emailAddress
+        tf.autocapitalizationType = .none
         tf.attributedPlaceholder = NSAttributedString(
                         string: "아이디를 입력하세요.",
                         attributes: [
@@ -205,7 +207,7 @@ class SignUp2View: UIView {
     }()
     
     // 아이디 제약
-    private lazy var idConstraintLabel: UILabel = {
+    private lazy var idDescriptionLabel: UILabel = {
         var label = UILabel()
         label.text = "영문/숫자/특수문자 구성"
         label.font = UIFont(name: "Pretendard-Regular", size: 12)
@@ -221,6 +223,7 @@ class SignUp2View: UIView {
         tf.backgroundColor = .clear
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .emailAddress
+        tf.autocapitalizationType = .none
         tf.attributedPlaceholder = NSAttributedString(
                         string: "비밀번호를 입력하세요.",
                         attributes: [
@@ -262,7 +265,7 @@ class SignUp2View: UIView {
     }()
     
     // 비밀번호 제약 레이블
-    private lazy var pwConstraintLabel: UILabel = {
+    private lazy var pwDescriptionLabel: UILabel = {
         var label = UILabel()
         label.text = "영문/숫자/특수문자 구성"
         label.font = UIFont(name: "Pretendard-Regular", size: 12)
@@ -452,7 +455,7 @@ class SignUp2View: UIView {
     }()
     
     // 생년월일 입력란 입니다.
-    private var birthdayLabel: UILabel = {
+    private var birthdayDescriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "생년월일 입력란 입니다."
         label.font = UIFont(name: "Pretendard-Regular", size: 12)
@@ -481,20 +484,21 @@ class SignUp2View: UIView {
          arrowBtnStackView,
          startLabelStackView,
          
-         nickNameConstraintLabel,
-         idConstraintLabel,
-         pwConstraintLabel,
+         nickNameDescriptionLabel,
+         idDescriptionLabel,
+         pwDescriptionLabel,
          
          enterStackView,
          sexBtnStackView,
          birthdayStackView,
-         birthdayLabel].forEach { addSubview($0)}
+         birthdayDescriptionLabel].forEach { addSubview($0)}
     }
     
     func setup() {
         backgroundColor = .white
         idTextField.delegate = self
         nickNameTextField.delegate = self
+        pwTextField.delegate = self
         birthdayYearTextField.delegate = self
         birthdayMonthTextField.delegate = self
         birthdayDateTextField.delegate = self
@@ -508,9 +512,9 @@ class SignUp2View: UIView {
         arrowBtnConstraints()
         startLabelStackViewConstraints()
         
-        nickNameConstraintLabelConstraints()
-        idConstraintLabelConstraints()
-        pwConstraintLabelConstraints()
+        nickNameDescriptionLabelConstraints()
+        idDescriptionLabelConstraints()
+        pwDescriptionLabelConstraints()
         
         nickNameTextFieldConstraints()
         nickNameTextFieldViewConstraints()
@@ -535,7 +539,7 @@ class SignUp2View: UIView {
         birthdayYearTextFieldViewConstraints()
         birthdayMonthTextFieldViewConstraints()
         birthdayDateTextFieldViewConstraints()
-        birthdayLabelConstraints()
+        birthdayDescriptionConstraints()
     }
     
     private func heartImgBackgroundViewConstraints() {
@@ -575,30 +579,30 @@ class SignUp2View: UIView {
         ])
     }
     
-    private func nickNameConstraintLabelConstraints() {
-        nickNameConstraintLabel.translatesAutoresizingMaskIntoConstraints = false
+    private func nickNameDescriptionLabelConstraints() {
+        nickNameDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nickNameConstraintLabel.topAnchor.constraint(equalTo: nickNameTextFieldView.bottomAnchor, constant: 3),
-            nickNameConstraintLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
-            nickNameConstraintLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 211),
+            nickNameDescriptionLabel.topAnchor.constraint(equalTo: nickNameTextFieldView.bottomAnchor, constant: 3),
+            nickNameDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
+            nickNameDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 211),
         ])
     }
     
-    private func idConstraintLabelConstraints() {
-        idConstraintLabel.translatesAutoresizingMaskIntoConstraints = false
+    private func idDescriptionLabelConstraints() {
+        idDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            idConstraintLabel.topAnchor.constraint(equalTo: idTextFieldView.bottomAnchor, constant: 3),
-            idConstraintLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
-            idConstraintLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 211),
+            idDescriptionLabel.topAnchor.constraint(equalTo: idTextFieldView.bottomAnchor, constant: 3),
+            idDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
+            idDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 211),
         ])
     }
     
-    private func pwConstraintLabelConstraints() {
-        pwConstraintLabel.translatesAutoresizingMaskIntoConstraints = false
+    private func pwDescriptionLabelConstraints() {
+        pwDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            pwConstraintLabel.topAnchor.constraint(equalTo: pwTextFieldView.bottomAnchor, constant: 3),
-            pwConstraintLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
-            nickNameConstraintLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 211),
+            pwDescriptionLabel.topAnchor.constraint(equalTo: pwTextFieldView.bottomAnchor, constant: 3),
+            pwDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
+            nickNameDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 211),
         ])
     }
             
@@ -707,7 +711,7 @@ class SignUp2View: UIView {
         sexBtnStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             sexBtnStackView.heightAnchor.constraint(equalToConstant: textViewHeight),
-            sexBtnStackView.topAnchor.constraint(equalTo: pwConstraintLabel.bottomAnchor, constant: 15),
+            sexBtnStackView.topAnchor.constraint(equalTo: pwDescriptionLabel.bottomAnchor, constant: 15),
             sexBtnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 29),
             sexBtnStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -203)
         ])
@@ -773,17 +777,17 @@ class SignUp2View: UIView {
         ])
     }
     
-    private func birthdayLabelConstraints() {
-        birthdayLabel.translatesAutoresizingMaskIntoConstraints = false
+    private func birthdayDescriptionConstraints() {
+        birthdayDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            birthdayLabel.topAnchor.constraint(equalTo: birthdayStackView.bottomAnchor, constant: 2),
-            birthdayLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
-            birthdayLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -236)
+            birthdayDescriptionLabel.topAnchor.constraint(equalTo: birthdayStackView.bottomAnchor, constant: 2),
+            birthdayDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
+            birthdayDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -236)
         ])
     }
 }
 
-
+// MARK: 텍스트필드 델리게이트
 
 extension SignUp2View: UITextFieldDelegate {
     
@@ -821,9 +825,8 @@ extension SignUp2View: UITextFieldDelegate {
         birthdayDateTextField.resignFirstResponder()
     }
     
-    // 텍스트필드 별 글자수 제한
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
+      
         // 백스페이스 감지
         if let char = string.cString(using: String.Encoding.utf8) {
             let isBackSpace = strcmp(char, "\\b")
@@ -832,21 +835,69 @@ extension SignUp2View: UITextFieldDelegate {
             }
         }
         
+        guard let text = textField.text else {
+            return true
+        }
+        
+        let maxLength: Int
+        var allowedCharacterSet: CharacterSet
+        
         switch textField {
+        case nickNameTextField:
+            maxLength = 10
+            allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_?+=~")
+                .union(CharacterSet(charactersIn: "\u{AC00}"..."\u{D7A3}"))
+                .union(CharacterSet(charactersIn: "\u{3131}"..."\u{314E}"))
+                .union(CharacterSet(charactersIn: "\u{314F}"..."\u{3163}"))
+        case idTextField:
+            maxLength = 18
+            allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_?+=~")
+        case pwTextField:
+            maxLength = 15
+            allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_?+=~")
         case birthdayYearTextField:
-            guard birthdayYearTextField.text!.count < 4 else { return false }
-            return true
+            maxLength = 4
+            allowedCharacterSet = CharacterSet(charactersIn: "0123456789")
+            let updatedText = (text as NSString).replacingCharacters(in: range, with: string)
+            let currentYear = Calendar.current.component(.year, from: Date())
+            if let year = Int(updatedText) {
+                     if year >= 1950 && year <= currentYear {
+                         return true
+                     }
+                 }
         case birthdayMonthTextField:
-            guard birthdayMonthTextField.text!.count < 2 else { return false }
-            return true
+            maxLength = 2
+            allowedCharacterSet = CharacterSet(charactersIn: "0123456789")
+            let updatedText = (text as NSString).replacingCharacters(in: range, with: string)
+            if let month = Int(updatedText) {
+                     if month >= 01 && month <= 12 {
+                         return true
+                     }
+                 }
         case birthdayDateTextField:
-            guard birthdayDateTextField.text!.count < 2 else { return false }
-            return true
+            maxLength = 2
+            allowedCharacterSet = CharacterSet(charactersIn: "0123456789")
+            let updatedText = (text as NSString).replacingCharacters(in: range, with: string)
+            if let date = Int(updatedText) {
+                     if date >= 01 && date <= 31 {
+                         return true
+                     }
+                 }
         default:
             return true
         }
-
+        
+        let newLength = text.count + string.count - range.length
+        
+        if newLength <= maxLength {
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacterSet.isSuperset(of: characterSet)
+        } else {
+            return false
+        }
     }
+    
+
 }
 
 

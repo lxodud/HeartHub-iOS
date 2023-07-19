@@ -76,6 +76,7 @@ class LoginView: UIView {
         tf.backgroundColor = .clear
         tf.textColor = .white
         tf.keyboardType = .emailAddress
+        tf.autocapitalizationType = .none
         tf.attributedPlaceholder = NSAttributedString(
                 string: "아이디를 입력하세요.",
                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -104,6 +105,7 @@ class LoginView: UIView {
         tf.backgroundColor = .clear
         tf.textColor = .white
         tf.keyboardType = .default
+        tf.autocapitalizationType = .none
         tf.attributedPlaceholder = NSAttributedString(
                 string: "비밀번호를 입력하세요.",
                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -221,6 +223,7 @@ class LoginView: UIView {
         
         addViews()
         constraints()
+        setup()
     }
         
     required init?(coder: NSCoder) {
@@ -236,6 +239,11 @@ class LoginView: UIView {
          heartImageView,
          idPwStackView,
          signUpFindIdPwStackView].forEach { addSubview($0) }
+    }
+    
+    func setup() {
+        idEnterTextField.delegate = self
+        pwEnterTextField.delegate = self
     }
     
     func constraints() {
@@ -397,4 +405,69 @@ class LoginView: UIView {
             lineView2.trailingAnchor.constraint(equalTo: findPwBtn.leadingAnchor, constant: -10)
         ])
     }
+}
+
+extension LoginView: UITextFieldDelegate {
+    
+    // 키보드 엔터키가 눌렸을때 (다음 동작을 허락할 것인지)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // 두개의 텍스트필드를 모두 종료 (키보드 내려가기)
+        if idEnterTextField.text != "", pwEnterTextField.text != "", pwEnterTextField.text != "" {
+            pwEnterTextField.resignFirstResponder()
+            return true
+        } else if idEnterTextField.text != "", pwEnterTextField.text != "" {
+            pwEnterTextField.becomeFirstResponder()
+            return true
+        } else if idEnterTextField.text != "" {
+            pwEnterTextField.becomeFirstResponder()
+            return true
+        }
+            return false
+        }
+    
+    // 텍스트필드 이외의 영역을 눌렀을때 키보드 내려가도록
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        idEnterTextField.resignFirstResponder()
+        pwEnterTextField.resignFirstResponder()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+      
+        // 백스페이스 감지
+        if let char = string.cString(using: String.Encoding.utf8) {
+            let isBackSpace = strcmp(char, "\\b")
+            if isBackSpace == -92 {
+                return true
+            }
+        }
+        
+        guard let text = textField.text else {
+            return true
+        }
+        
+        let maxLength: Int
+        var allowedCharacterSet: CharacterSet
+        
+        switch textField {
+        case idEnterTextField:
+            maxLength = 18
+            allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_?+=~")
+        case pwEnterTextField:
+            maxLength = 15
+            allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_?+=~")
+
+        default:
+            return true
+        }
+        
+        let newLength = text.count + string.count - range.length
+        
+        if newLength <= maxLength {
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacterSet.isSuperset(of: characterSet)
+        } else {
+            return false
+        }
+    }
+    
 }

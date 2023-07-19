@@ -30,7 +30,6 @@ class SignUp3View: UIView {
         img.backgroundColor = .clear
         img.image = UIImage(named: "HeartIcon2:3.png")
         img.addSubview(heartImgBackgroundView)
-
         return img
     }()
     
@@ -101,6 +100,7 @@ class SignUp3View: UIView {
         tf.backgroundColor = .clear
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .emailAddress
+        tf.autocapitalizationType = .none
         tf.attributedPlaceholder = NSAttributedString(
                         string: "이메일을 입력하세요",
                         attributes: [
@@ -171,6 +171,18 @@ class SignUp3View: UIView {
        return view
     }()
     
+    // 이메일 형식 제약조건 레이블
+    private lazy var emailFormatDescriptionLabel: UILabel = {
+       let label = UILabel()
+        label.text = "이메일의 형식이 올바르지 않습니다."
+        label.font = UIFont(name: "Pretendard-Regular", size: 14)
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
+        label.isHidden = true
+        label.textColor = #colorLiteral(red: 1, green: 0.01488391776, blue: 0.006827606354, alpha: 1)
+        return label
+    }()
+    
     // MARK: 애인 아이디 입력
     // 애인아이디 입력 텍스트필드
     private lazy var loverIdTextField: UITextField = {
@@ -178,6 +190,7 @@ class SignUp3View: UIView {
         tf.backgroundColor = .clear
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .default
+        tf.autocapitalizationType = .none
         tf.attributedPlaceholder = NSAttributedString(
                         string: "(선택) 내 애인의 아이디를 입력하세요",
                         attributes: [
@@ -217,7 +230,7 @@ class SignUp3View: UIView {
         let label = UILabel()
         label.text = "계정연동 시 서로의 스크랩 목록을 확인할 수 있습니다."
         label.font = UIFont(name: "Pretendard-Regular", size: 14)
-        label.textAlignment = .right
+        label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
         return label
@@ -243,6 +256,7 @@ class SignUp3View: UIView {
         arrowBtnStackView,
         startLabelStackView,
         enterStackView,
+        emailFormatDescriptionLabel,
         idLinkingLabel].forEach { addSubview($0)}
     }
     
@@ -265,6 +279,7 @@ class SignUp3View: UIView {
         
         emailTextFieldViewConstraints()
         emailTextFieldConstraints()
+        emailFormatDescriptionLabelConstraints()
         
         loverIdTextFieldViewConstraints()
         loverIdTextFieldConstraints()
@@ -327,7 +342,16 @@ class SignUp3View: UIView {
             emailTextField.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 27),
             emailTextField.trailingAnchor.constraint(equalTo: emailTextFieldView.trailingAnchor, constant: -73)
         ])
-        
+    }
+    
+    private func emailFormatDescriptionLabelConstraints() {
+        emailFormatDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            emailFormatDescriptionLabel.topAnchor.constraint(equalTo: emailTextFieldView.bottomAnchor),
+            emailFormatDescriptionLabel.bottomAnchor.constraint(equalTo: loverIdTextFieldView.topAnchor, constant: -4),
+            emailFormatDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 46),
+            emailFormatDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -154)
+        ])
     }
     
 //    private func emailCheckBtnConstraints() {
@@ -387,8 +411,9 @@ class SignUp3View: UIView {
     }
 }
 
+// MARK: 텍스트필드 델리게이트
+
 extension SignUp3View: UITextFieldDelegate {
-    
     // 키보드 엔터키가 눌렸을때 (다음 동작을 허락할 것인지)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // 두개의 텍스트필드를 모두 종료 (키보드 내려가기)
@@ -412,6 +437,20 @@ extension SignUp3View: UITextFieldDelegate {
         loverIdTextField.resignFirstResponder()
     }
     
+    // 이메일 텍스트필드 형식 제약조건
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let idPattern = #"^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"#
+        let isVaildPattern = (emailTextField.text!.range(of: idPattern, options: .regularExpression) != nil)
+        if emailTextField.text!.isEmpty {
+            emailFormatDescriptionLabel.isHidden = true
+        } else if isVaildPattern {
+            emailFormatDescriptionLabel.isHidden = true
+        } else {
+            emailFormatDescriptionLabel.isHidden = false
+        }
+    }
+    
+    
     // 텍스트필드 별 글자수 제한
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -423,20 +462,31 @@ extension SignUp3View: UITextFieldDelegate {
             }
         }
         
+        guard let text = textField.text else {
+            return true
+        }
         
-        // 이메일 인증번호 최대 길이? 일단 100으로 설정
+        let maxLength: Int
+        var allowedCharacterSet: CharacterSet
+        
         switch textField {
         case emailTextField:
-            guard emailTextField.text!.count < 100 else { return false }
-            return true
+            maxLength = 100
+            allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'*+-/=?^_`{|}~.(),:;<>@")
         case loverIdTextField:
-            guard loverIdTextField.text!.count < 100 else { return false }
-            return true
-        case loverIdTextField:
-            guard loverIdTextField.text!.count < 10 else { return false }
-            return true
+            maxLength = 18
+            allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_?+=~")
         default:
             return true
+        }
+        
+        let newLength = text.count + string.count - range.length
+        
+        if newLength <= maxLength {
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacterSet.isSuperset(of: characterSet)
+        } else {
+            return false
         }
 
     }
