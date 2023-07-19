@@ -95,7 +95,7 @@ extension CommunityCellProfileView {
             ),
             profileImageView.heightAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.heightAnchor,
-                multiplier: 0.3
+                multiplier: 0.5
             ),
             profileImageView.centerYAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.centerYAnchor
@@ -128,7 +128,7 @@ extension CommunityCellProfileView {
             ),
             profileIdLabel.heightAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.heightAnchor,
-                multiplier: 0.3
+                multiplier: 0.5
             ),
             profileIdLabel.centerYAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.centerYAnchor

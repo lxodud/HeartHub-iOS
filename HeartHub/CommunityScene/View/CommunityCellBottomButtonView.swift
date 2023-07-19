@@ -46,7 +46,7 @@ final class CommunityCellBottomButtonView: UIView {
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
-        stackView.spacing = 8
+        stackView.spacing = 3
         return stackView
     }()
     
@@ -118,11 +118,15 @@ extension CommunityCellBottomButtonView {
                 constant: 15
             ),
             buttonStackView.widthAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.widthAnchor,
+                greaterThanOrEqualTo: safeAreaLayoutGuide.widthAnchor,
                 multiplier: 0.3
             ),
             buttonStackView.centerYAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.centerYAnchor
+            ),
+            buttonStackView.heightAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.heightAnchor,
+                multiplier: 1
             ),
             
             // MARK: heartButton Constraint
@@ -133,6 +137,10 @@ extension CommunityCellBottomButtonView {
             heartButton.widthAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.widthAnchor,
                 multiplier: 0.06
+            ),
+            heartButton.heightAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.heightAnchor,
+                multiplier: 1
             ),
             heartButton.centerYAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.centerYAnchor
