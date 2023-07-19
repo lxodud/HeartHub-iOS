@@ -7,7 +7,9 @@
 
 import UIKit
 
-final class DailyDateImageCell: UICollectionViewCell {
+final class DailyDateImageCell: UICollectionViewCell, DailyDateCellable {
+    weak var delegate: DailyDateCellDelegate?
+    
     private let profileView = CommunityCellProfileView()
     private let pagingImageView = CommunityCellPagingImageView()
     private let bottomButtonView = CommunityCellBottomButtonView()
@@ -45,6 +47,9 @@ extension DailyDateImageCell {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
+        
+        profileView.delegate = self
+        bottomButtonView.delegate = self
     }
     
     private func configureLayout() {

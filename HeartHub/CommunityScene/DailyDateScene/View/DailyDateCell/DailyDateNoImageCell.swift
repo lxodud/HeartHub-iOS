@@ -7,7 +7,9 @@
 
 import UIKit
 
-final class DailyDateNoImageCell: UICollectionViewCell {
+final class DailyDateNoImageCell: UICollectionViewCell, DailyDateCellable {
+    weak var delegate: DailyDateCellDelegate?
+    
     private let profileView = CommunityCellProfileView()
     private let bottomButtonView = CommunityCellBottomButtonView()
     private let postLabel: UILabel = {
@@ -44,9 +46,8 @@ extension DailyDateNoImageCell {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        postLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
-        profileView.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        bottomButtonView.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        profileView.delegate = self
+        bottomButtonView.delegate = self
     }
     
     private func configureLayout() {
@@ -83,7 +84,8 @@ extension DailyDateNoImageCell {
                 constant: -12
             ),
             postLabel.heightAnchor.constraint(
-                equalTo: profileView.heightAnchor
+                equalTo: profileView.heightAnchor,
+                multiplier: 2
             ),
             
             // MARK: bottomButtonView Constraint
