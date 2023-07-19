@@ -60,7 +60,7 @@ final class CommunityViewController: UIViewController {
     }
 }
 
-// MARK: PageViewController Delegate
+// MARK: PageViewController Delegate Implementation
 extension CommunityViewController: UIPageViewControllerDelegate {
     func pageViewController(
         _ pageViewController: UIPageViewController,
@@ -91,7 +91,7 @@ extension CommunityViewController: UIPageViewControllerDelegate {
     }
 }
 
-// MARK: PageViewController DataSource
+// MARK: PageViewController DataSource Implementation
 extension CommunityViewController: UIPageViewControllerDataSource {
     func pageViewController(
         _ pageViewController: UIPageViewController,

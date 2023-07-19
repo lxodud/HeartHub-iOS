@@ -11,6 +11,7 @@ protocol DailyDateCellable: UICollectionViewCell, CommunityCellProfileViewDelega
     var delegate: DailyDateCellDelegate? { get set }
     
     func fetchAdjustedHeight() -> CGFloat
+    func configureCell(_ data: MockData)
 }
 
 // MARK: Profile View Delegate Implementation

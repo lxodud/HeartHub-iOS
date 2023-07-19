@@ -38,6 +38,12 @@ final class DailyDateImageCell: UICollectionViewCell, DailyDateCellable {
         
         return height
     }
+    
+    func configureCell(_ data: MockData) {
+        profileView.configureContents(data)
+        pagingImageView.configureContents(data.images)
+        postLabel.text = data.postLabel
+    }
 }
 
 // MARK: Configure UI

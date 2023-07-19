@@ -39,7 +39,7 @@ final class CommunityCellPagingImageView: UIView {
         configureLayout()
     }
     
-    func configurePostImages(_ images: [UIImage]) {
+    func configureContents(_ images: [UIImage]) {
         self.images = images
     }
 }

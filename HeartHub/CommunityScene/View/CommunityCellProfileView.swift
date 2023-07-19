@@ -48,6 +48,14 @@ final class CommunityCellProfileView: UIView {
     }
 }
 
+// MARK: Public Interface
+extension CommunityCellProfileView {
+    func configureContents(_ data: MockData) {
+        profileImageView.image = data.profileImage
+        profileIdLabel.text = data.profileName
+    }
+}
+
 // MARK: Configure Action
 extension CommunityCellProfileView {
     private func configureAction() {
