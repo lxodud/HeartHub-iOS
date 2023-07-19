@@ -14,6 +14,8 @@
 		0C43F6102A659C6D00EED860 /* PagingImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C43F60F2A659C6D00EED860 /* PagingImageCollectionViewCell.swift */; };
 		0C43F6132A659CD800EED860 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C43F6122A659CD800EED860 /* Reusable.swift */; };
 		0C43F6152A66767700EED860 /* DailyDateImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C43F6142A66767700EED860 /* DailyDateImageCell.swift */; };
+		0C4D32F72A6823A600AD5EFF /* DailyDateNoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32F62A6823A600AD5EFF /* DailyDateNoImageCell.swift */; };
+		0C4D32F92A6825FF00AD5EFF /* DailyDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32F82A6825FF00AD5EFF /* DailyDateCell.swift */; };
 		0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */; };
 		0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC12A5281C1001EF4E7 /* AppDelegate.swift */; };
 		0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC32A5281C1001EF4E7 /* SceneDelegate.swift */; };
@@ -31,6 +33,8 @@
 		0C43F60F2A659C6D00EED860 /* PagingImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		0C43F6122A659CD800EED860 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		0C43F6142A66767700EED860 /* DailyDateImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyDateImageCell.swift; path = HeartHub/CommunityScene/DailyDateScene/View/DailyDateCell/DailyDateImageCell.swift; sourceTree = SOURCE_ROOT; };
+		0C4D32F62A6823A600AD5EFF /* DailyDateNoImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateNoImageCell.swift; sourceTree = "<group>"; };
+		0C4D32F82A6825FF00AD5EFF /* DailyDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateCell.swift; sourceTree = "<group>"; };
 		0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateViewController.swift; sourceTree = "<group>"; };
 		0CC33ABE2A5281C1001EF4E7 /* HeartHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC33AC12A5281C1001EF4E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				0C43F6142A66767700EED860 /* DailyDateImageCell.swift */,
+				0C4D32F62A6823A600AD5EFF /* DailyDateNoImageCell.swift */,
+				0C4D32F82A6825FF00AD5EFF /* DailyDateCell.swift */,
 			);
 			path = DailyDateCell;
 			sourceTree = "<group>";
@@ -238,6 +244,8 @@
 				0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */,
 				0CF732452A65653500ED3B01 /* CommunityCellPagingImageView.swift in Sources */,
 				0C382E282A5994A700EA08E0 /* CommunityViewController.swift in Sources */,
+				0C4D32F92A6825FF00AD5EFF /* DailyDateCell.swift in Sources */,
+				0C4D32F72A6823A600AD5EFF /* DailyDateNoImageCell.swift in Sources */,
 				0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */,
 				0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */,
 				0C43F6152A66767700EED860 /* DailyDateImageCell.swift in Sources */,

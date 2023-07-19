@@ -1,15 +1,14 @@
 //
-//  DailyDateImageCell.swift
+//  DailyDateCell.swift
 //  HeartHub
 //
-//  Created by 이태영 on 2023/07/18.
+//  Created by 이태영 on 2023/07/19.
 //
 
 import UIKit
 
-final class DailyDateImageCell: UICollectionViewCell {
+final class DailyDateNoImageCell: UICollectionViewCell {
     private let profileView = CommunityCellProfileView()
-    private let pagingImageView = CommunityCellPagingImageView()
     private let bottomButtonView = CommunityCellBottomButtonView()
     private let postLabel: UILabel = {
         let label = UILabel()
@@ -30,7 +29,6 @@ final class DailyDateImageCell: UICollectionViewCell {
     
     func fetchAdjustedHeight() -> CGFloat {
         var height = profileView.bounds.height
-        height += pagingImageView.bounds.height
         height += postLabel.bounds.height
         height += bottomButtonView.bounds.height
         
@@ -39,12 +37,16 @@ final class DailyDateImageCell: UICollectionViewCell {
 }
 
 // MARK: Configure UI
-extension DailyDateImageCell {
+extension DailyDateNoImageCell {
     private func configureSubview() {
-        [profileView, pagingImageView, postLabel, bottomButtonView].forEach {
+        [profileView, postLabel, bottomButtonView].forEach {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
+        
+        postLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
+        profileView.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        bottomButtonView.setContentHuggingPriority(.defaultHigh, for: .vertical)
     }
     
     private func configureLayout() {
@@ -68,24 +70,9 @@ extension DailyDateImageCell {
                 multiplier: 0.15
             ),
             
-            
-            // MARK: pagingImageView Constarint
-            pagingImageView.topAnchor.constraint(
-                equalTo: profileView.bottomAnchor
-            ),
-            pagingImageView.leadingAnchor.constraint(
-                equalTo: safeArea.leadingAnchor
-            ),
-            pagingImageView.trailingAnchor.constraint(
-                equalTo: safeArea.trailingAnchor
-            ),
-            pagingImageView.heightAnchor.constraint(
-                equalTo: pagingImageView.widthAnchor
-            ),
-            
             // MARK: postLabel Constraint
             postLabel.topAnchor.constraint(
-                equalTo: pagingImageView.bottomAnchor
+                equalTo: profileView.bottomAnchor
             ),
             postLabel.leadingAnchor.constraint(
                 equalTo: safeArea.leadingAnchor,
