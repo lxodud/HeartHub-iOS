@@ -21,8 +21,45 @@ final class LookViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureLookCollectionView()
         configureSubview()
         configureLayout()
+    }
+}
+
+// MARK: UICollectionView Delegate FlowLayout Implementation
+extension LookViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        return CGSize(width: 0, height: 0)
+    }
+}
+
+// MARK: UICollectionView DataSource Implementation
+extension LookViewController: UICollectionViewDataSource {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        return 0
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+}
+
+// MARK: Configure CollectionView
+extension LookViewController {
+    private func configureLookCollectionView()  {
+        lookCollectionView.dataSource = self
+        lookCollectionView.delegate = self
     }
 }
 
