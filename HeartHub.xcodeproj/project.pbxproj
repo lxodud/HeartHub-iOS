@@ -15,13 +15,14 @@
 		0C43F6132A659CD800EED860 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C43F6122A659CD800EED860 /* Reusable.swift */; };
 		0C43F6152A66767700EED860 /* DailyDateImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C43F6142A66767700EED860 /* DailyDateImageCell.swift */; };
 		0C4D32F72A6823A600AD5EFF /* DailyDateNoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32F62A6823A600AD5EFF /* DailyDateNoImageCell.swift */; };
-		0C4D32F92A6825FF00AD5EFF /* DailyDateCellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32F82A6825FF00AD5EFF /* DailyDateCellable.swift */; };
-		0C4D32FD2A68312C00AD5EFF /* DailyDateCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32FC2A68312C00AD5EFF /* DailyDateCellDelegate.swift */; };
+		0C4D32F92A6825FF00AD5EFF /* CommunityCellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32F82A6825FF00AD5EFF /* CommunityCellable.swift */; };
+		0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32FC2A68312C00AD5EFF /* CommunityCellDelegate.swift */; };
 		0C4D32FF2A68315B00AD5EFF /* CommunityCellProfileViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32FE2A68315B00AD5EFF /* CommunityCellProfileViewDelegate.swift */; };
 		0C4D33012A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */; };
 		0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */; };
 		0CB49BDA2A69234A00C77341 /* LookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB49BD92A69234A00C77341 /* LookViewController.swift */; };
 		0CB49BDC2A69237400C77341 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB49BDB2A69237400C77341 /* MockData.swift */; };
+		0CB49BDF2A69526500C77341 /* LookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB49BDE2A69526500C77341 /* LookCell.swift */; };
 		0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC12A5281C1001EF4E7 /* AppDelegate.swift */; };
 		0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC32A5281C1001EF4E7 /* SceneDelegate.swift */; };
 		0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC52A5281C1001EF4E7 /* ViewController.swift */; };
@@ -39,13 +40,14 @@
 		0C43F6122A659CD800EED860 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		0C43F6142A66767700EED860 /* DailyDateImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyDateImageCell.swift; path = HeartHub/CommunityScene/DailyDateScene/View/DailyDateCell/DailyDateImageCell.swift; sourceTree = SOURCE_ROOT; };
 		0C4D32F62A6823A600AD5EFF /* DailyDateNoImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateNoImageCell.swift; sourceTree = "<group>"; };
-		0C4D32F82A6825FF00AD5EFF /* DailyDateCellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateCellable.swift; sourceTree = "<group>"; };
-		0C4D32FC2A68312C00AD5EFF /* DailyDateCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateCellDelegate.swift; sourceTree = "<group>"; };
+		0C4D32F82A6825FF00AD5EFF /* CommunityCellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellable.swift; sourceTree = "<group>"; };
+		0C4D32FC2A68312C00AD5EFF /* CommunityCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellDelegate.swift; sourceTree = "<group>"; };
 		0C4D32FE2A68315B00AD5EFF /* CommunityCellProfileViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellProfileViewDelegate.swift; sourceTree = "<group>"; };
 		0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellBottomButtonViewDelegate.swift; sourceTree = "<group>"; };
 		0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateViewController.swift; sourceTree = "<group>"; };
 		0CB49BD92A69234A00C77341 /* LookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookViewController.swift; sourceTree = "<group>"; };
 		0CB49BDB2A69237400C77341 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		0CB49BDE2A69526500C77341 /* LookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookCell.swift; sourceTree = "<group>"; };
 		0CC33ABE2A5281C1001EF4E7 /* HeartHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC33AC12A5281C1001EF4E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CC33AC32A5281C1001EF4E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		0C382E2A2A5B016800EA08E0 /* DailyDateScene */ = {
 			isa = PBXGroup;
 			children = (
+				0C4D32FA2A6830CC00AD5EFF /* Protocol */,
 				0C43F6162A6676AB00EED860 /* View */,
 				0C382E2B2A5B018D00EA08E0 /* Controller */,
 			);
@@ -135,7 +138,6 @@
 			children = (
 				0C43F6142A66767700EED860 /* DailyDateImageCell.swift */,
 				0C4D32F62A6823A600AD5EFF /* DailyDateNoImageCell.swift */,
-				0C4D32FA2A6830CC00AD5EFF /* Protocol */,
 			);
 			path = DailyDateCell;
 			sourceTree = "<group>";
@@ -143,8 +145,8 @@
 		0C4D32FA2A6830CC00AD5EFF /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				0C4D32F82A6825FF00AD5EFF /* DailyDateCellable.swift */,
-				0C4D32FC2A68312C00AD5EFF /* DailyDateCellDelegate.swift */,
+				0C4D32F82A6825FF00AD5EFF /* CommunityCellable.swift */,
+				0C4D32FC2A68312C00AD5EFF /* CommunityCellDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -182,6 +184,7 @@
 		0CB49BD82A69234100C77341 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0CB49BDE2A69526500C77341 /* LookCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -297,10 +300,11 @@
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
 				0C43F6132A659CD800EED860 /* Reusable.swift in Sources */,
 				0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */,
-				0C4D32FD2A68312C00AD5EFF /* DailyDateCellDelegate.swift in Sources */,
+				0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */,
 				0CF732452A65653500ED3B01 /* CommunityCellPagingImageView.swift in Sources */,
 				0C382E282A5994A700EA08E0 /* CommunityViewController.swift in Sources */,
-				0C4D32F92A6825FF00AD5EFF /* DailyDateCellable.swift in Sources */,
+				0CB49BDF2A69526500C77341 /* LookCell.swift in Sources */,
+				0C4D32F92A6825FF00AD5EFF /* CommunityCellable.swift in Sources */,
 				0CB49BDA2A69234A00C77341 /* LookViewController.swift in Sources */,
 				0CB49BDC2A69237400C77341 /* MockData.swift in Sources */,
 				0C4D32F72A6823A600AD5EFF /* DailyDateNoImageCell.swift in Sources */,
