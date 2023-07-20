@@ -1,24 +1,18 @@
 //
-//  DailyDateImageCell.swift
+//  LookCell.swift
 //  HeartHub
 //
-//  Created by 이태영 on 2023/07/18.
+//  Created by 이태영 on 2023/07/20.
 //
 
 import UIKit
 
-final class DailyDateImageCell: UICollectionViewCell, CommunityCellable {
+final class LookCell: UICollectionViewCell, CommunityCellable {
     weak var delegate: CommunityCellDelegate?
     
     private let profileView = CommunityCellProfileView()
     private let pagingImageView = CommunityCellPagingImageView()
     private let bottomButtonView = CommunityCellBottomButtonView()
-    private let postLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.numberOfLines = 0
-        return label
-    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,51 +21,48 @@ final class DailyDateImageCell: UICollectionViewCell, CommunityCellable {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     func fetchAdjustedHeight() -> CGFloat {
         var height = profileView.bounds.height
         height += pagingImageView.bounds.height
-        height += postLabel.bounds.height
         height += bottomButtonView.bounds.height
-        
         return height
     }
     
     func configureCell(_ data: MockData) {
-        profileView.configureContents(data)
-        pagingImageView.configureContents(data.images)
-        postLabel.text = data.postLabel
+        
     }
 }
 
 // MARK: Configure UI
-extension DailyDateImageCell {
+extension LookCell {
     private func configureSubview() {
-        [profileView, pagingImageView, postLabel, bottomButtonView].forEach {
-            contentView.addSubview($0)
+        [profileView, pagingImageView, bottomButtonView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        profileView.delegate = self
-        bottomButtonView.delegate = self
+        contentView.addSubview(pagingImageView)
+        pagingImageView.addSubview(profileView)
+        pagingImageView.addSubview(bottomButtonView)
     }
     
     private func configureLayout() {
-        let safeArea = contentView.safeAreaLayoutGuide
+        let contentViewSafeArea = contentView.safeAreaLayoutGuide
+        let pagingImageViewSafeArea = pagingImageView.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
             // MARK: profileView Constraint
             profileView.topAnchor.constraint(
-                equalTo: safeArea.topAnchor
+                equalTo: pagingImageViewSafeArea.topAnchor
             ),
             profileView.leadingAnchor.constraint(
-                equalTo: safeArea.leadingAnchor,
+                equalTo: pagingImageViewSafeArea.leadingAnchor,
                 constant: 12
             ),
             profileView.trailingAnchor.constraint(
-                equalTo: safeArea.trailingAnchor,
+                equalTo: pagingImageViewSafeArea.leadingAnchor,
                 constant: -12
             ),
             profileView.heightAnchor.constraint(
@@ -79,52 +70,36 @@ extension DailyDateImageCell {
                 multiplier: 0.15
             ),
             
-            
             // MARK: pagingImageView Constarint
             pagingImageView.topAnchor.constraint(
-                equalTo: profileView.bottomAnchor
+                equalTo: contentViewSafeArea.topAnchor
             ),
             pagingImageView.leadingAnchor.constraint(
-                equalTo: safeArea.leadingAnchor
+                equalTo: contentViewSafeArea.leadingAnchor
             ),
             pagingImageView.trailingAnchor.constraint(
-                equalTo: safeArea.trailingAnchor
+                equalTo: contentViewSafeArea.trailingAnchor
             ),
-            pagingImageView.heightAnchor.constraint(
-                equalTo: pagingImageView.widthAnchor
-            ),
-            
-            // MARK: postLabel Constraint
-            postLabel.topAnchor.constraint(
-                equalTo: pagingImageView.bottomAnchor
-            ),
-            postLabel.leadingAnchor.constraint(
-                equalTo: safeArea.leadingAnchor,
-                constant: 12
-            ),
-            postLabel.trailingAnchor.constraint(
-                equalTo: safeArea.trailingAnchor,
-                constant: -12
-            ),
-            postLabel.heightAnchor.constraint(
-                equalTo: profileView.heightAnchor
+            pagingImageView.bottomAnchor.constraint(
+                equalTo: contentViewSafeArea.bottomAnchor
             ),
             
             // MARK: bottomButtonView Constraint
             bottomButtonView.topAnchor.constraint(
-                equalTo: postLabel.bottomAnchor
+                equalTo: pagingImageView.bottomAnchor
             ),
             bottomButtonView.leadingAnchor.constraint(
-                equalTo: safeArea.leadingAnchor,
+                equalTo: pagingImageViewSafeArea.leadingAnchor,
                 constant: 3
             ),
             bottomButtonView.trailingAnchor.constraint(
-                equalTo: safeArea.trailingAnchor,
+                equalTo: pagingImageViewSafeArea.trailingAnchor,
                 constant: -3
             ),
             bottomButtonView.heightAnchor.constraint(
                 equalTo: profileView.heightAnchor
             )
         ])
+        
     }
 }

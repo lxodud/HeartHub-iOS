@@ -7,8 +7,8 @@
 
 import UIKit
 
-final class DailyDateNoImageCell: UICollectionViewCell, DailyDateCellable {
-    weak var delegate: DailyDateCellDelegate?
+final class DailyDateNoImageCell: UICollectionViewCell, CommunityCellable {
+    weak var delegate: CommunityCellDelegate?
     
     private let profileView = CommunityCellProfileView()
     private let bottomButtonView = CommunityCellBottomButtonView()

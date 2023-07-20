@@ -37,7 +37,7 @@ extension DailyDateViewController: UICollectionViewDelegateFlowLayout {
         let width = view.frame.width
         let estimateHeight = view.frame.height
         let size = CGRect(x: 0, y: 0, width: width, height: estimateHeight)
-        var dummyCell: DailyDateCellable
+        var dummyCell: CommunityCellable
         
         if mockData[indexPath.row].images.isEmpty {
             dummyCell = DailyDateNoImageCell(frame: size)
@@ -68,7 +68,7 @@ extension DailyDateViewController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         
-        let cellType: DailyDateCellable.Type
+        let cellType: CommunityCellable.Type
         
         if mockData[indexPath.row].images.isEmpty {
             cellType = DailyDateNoImageCell.self
@@ -79,7 +79,7 @@ extension DailyDateViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: cellType.reuseIdentifier,
             for: indexPath
-        ) as? DailyDateCellable else {
+        ) as? CommunityCellable else {
             return UICollectionViewCell()
         }
         
