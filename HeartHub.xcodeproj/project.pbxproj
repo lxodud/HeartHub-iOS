@@ -20,6 +20,8 @@
 		0C4D32FF2A68315B00AD5EFF /* CommunityCellProfileViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32FE2A68315B00AD5EFF /* CommunityCellProfileViewDelegate.swift */; };
 		0C4D33012A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */; };
 		0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */; };
+		0CB49BDA2A69234A00C77341 /* LookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB49BD92A69234A00C77341 /* LookViewController.swift */; };
+		0CB49BDC2A69237400C77341 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB49BDB2A69237400C77341 /* MockData.swift */; };
 		0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC12A5281C1001EF4E7 /* AppDelegate.swift */; };
 		0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC32A5281C1001EF4E7 /* SceneDelegate.swift */; };
 		0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC52A5281C1001EF4E7 /* ViewController.swift */; };
@@ -42,6 +44,8 @@
 		0C4D32FE2A68315B00AD5EFF /* CommunityCellProfileViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellProfileViewDelegate.swift; sourceTree = "<group>"; };
 		0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellBottomButtonViewDelegate.swift; sourceTree = "<group>"; };
 		0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateViewController.swift; sourceTree = "<group>"; };
+		0CB49BD92A69234A00C77341 /* LookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookViewController.swift; sourceTree = "<group>"; };
+		0CB49BDB2A69237400C77341 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		0CC33ABE2A5281C1001EF4E7 /* HeartHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC33AC12A5281C1001EF4E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CC33AC32A5281C1001EF4E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				0C43F6122A659CD800EED860 /* Reusable.swift */,
+				0CB49BDB2A69237400C77341 /* MockData.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -160,8 +165,25 @@
 				0C382E242A5950AF00EA08E0 /* View */,
 				0C382E292A59A1F100EA08E0 /* Controller */,
 				0C382E2A2A5B016800EA08E0 /* DailyDateScene */,
+				0CB49BD72A69230200C77341 /* LookScene */,
 			);
 			path = CommunityScene;
+			sourceTree = "<group>";
+		};
+		0CB49BD72A69230200C77341 /* LookScene */ = {
+			isa = PBXGroup;
+			children = (
+				0CB49BD82A69234100C77341 /* View */,
+			);
+			path = LookScene;
+			sourceTree = "<group>";
+		};
+		0CB49BD82A69234100C77341 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0CB49BD92A69234A00C77341 /* LookViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		0CC33AB52A5281C1001EF4E7 = {
@@ -271,6 +293,8 @@
 				0CF732452A65653500ED3B01 /* CommunityCellPagingImageView.swift in Sources */,
 				0C382E282A5994A700EA08E0 /* CommunityViewController.swift in Sources */,
 				0C4D32F92A6825FF00AD5EFF /* DailyDateCellable.swift in Sources */,
+				0CB49BDA2A69234A00C77341 /* LookViewController.swift in Sources */,
+				0CB49BDC2A69237400C77341 /* MockData.swift in Sources */,
 				0C4D32F72A6823A600AD5EFF /* DailyDateNoImageCell.swift in Sources */,
 				0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */,
 				0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */,

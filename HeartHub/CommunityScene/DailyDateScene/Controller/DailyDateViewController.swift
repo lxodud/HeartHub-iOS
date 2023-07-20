@@ -109,72 +109,26 @@ extension DailyDateViewController {
 // MARK: Configure UI
 extension DailyDateViewController {
     private func configureSubview() {
-        [dailyCollectionView].forEach {
-            view.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
+        view.addSubview(dailyCollectionView)
+        dailyCollectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func configureLayout() {
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            dailyCollectionView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            dailyCollectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            dailyCollectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            dailyCollectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            dailyCollectionView.topAnchor.constraint(
+                equalTo: safeArea.topAnchor
+            ),
+            dailyCollectionView.leadingAnchor.constraint(
+                equalTo: safeArea.leadingAnchor
+            ),
+            dailyCollectionView.trailingAnchor.constraint(
+                equalTo: safeArea.trailingAnchor
+            ),
+            dailyCollectionView.bottomAnchor.constraint(
+                equalTo: safeArea.bottomAnchor
+            ),
         ])
     }
 }
-
-struct MockData {
-    var images: [UIImage]
-    var profileImage: UIImage
-    var profileName: String
-    var postLabel: String
-}
-
-let mockData = [
-    MockData(
-        images: [UIImage(systemName: "pencil.circle.fill")!,
-                UIImage(systemName:"rectangle.portrait.and.arrow.forward.fill")!,
-                UIImage(systemName:"rectangle.portrait.and.arrow.forward.fill")!,
-                UIImage(systemName:"rectangle.portrait.and.arrow.forward.fill")!,],
-        profileImage: UIImage(systemName: "square.and.arrow.down.on.square.fill")!,
-        profileName: "안녕",
-        postLabel: "ㅇ아아아ㅏ안매아ㅔㅁ나애ㅔ마네애ㅏㄴㅁ"
-    ),
-    MockData(
-        images: [],
-        profileImage: UIImage(systemName: "square.and.arrow.down.on.square.fill")!,
-        profileName: "허허",
-        postLabel: "ㅇ아아아ㅏ안매아ㅔㅁ나애ㅔ마네애ㅏㄴㅁ"
-    ),
-    MockData(
-        images: [UIImage(systemName: "pencil.circle.fill")!],
-        profileImage: UIImage(systemName: "square.and.arrow.down.on.square.fill")!,
-        profileName: "히히",
-        postLabel: "ㅇ아아아ㅏ안매아ㅔㅁ나애ㅔ마네애ㅏㄴㅁ"
-    ),
-    MockData(
-        images: [UIImage(systemName: "pencil.circle.fill")!,
-                UIImage(systemName:"rectangle.portrait.and.arrow.forward.fill")!,
-                UIImage(systemName:"rectangle.portrait.and.arrow.forward.fill")!,
-                UIImage(systemName:"rectangle.portrait.and.arrow.forward.fill")!,],
-        profileImage: UIImage(systemName: "square.and.arrow.down.on.square.fill")!,
-        profileName: "안녕",
-        postLabel: "ㅇ아아아ㅏ안매아ㅔㅁ나애ㅔ마네애ㅏㄴㅁ"
-    ),
-    MockData(
-        images: [],
-        profileImage: UIImage(systemName: "square.and.arrow.down.on.square.fill")!,
-        profileName: "안녕",
-        postLabel: "ㅇ아아아ㅏ안매아ㅔㅁ나애ㅔ마네애ㅏㄴㅁ"
-    ),
-    MockData(
-        images: [UIImage(systemName: "pencil.circle.fill")!],
-        profileImage: UIImage(systemName: "square.and.arrow.down.on.square.fill")!,
-        profileName: "안녕",
-        postLabel: "ㅇ아아아ㅏ안매아ㅔㅁ나애ㅔ마네애ㅏㄴㅁ"
-    )
-]
