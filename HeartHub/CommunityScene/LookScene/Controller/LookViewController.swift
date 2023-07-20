@@ -34,7 +34,21 @@ extension LookViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        return CGSize(width: 0, height: 0)
+        let width = view.frame.width
+        let estimateHeight = view.frame.height
+        let size = CGRect(x: 0, y: 0, width: width, height: estimateHeight)
+        let dummyCell = LookCell(frame: size)
+        
+        dummyCell.configureCell(mockData[indexPath.row])
+        dummyCell.layoutIfNeeded()
+        
+        var height = dummyCell.fetchAdjustedHeight()
+        
+        if height > 542 {
+            height = 542
+        }
+        
+        return CGSize(width: width, height: height)
     }
 }
 
@@ -44,14 +58,24 @@ extension LookViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return 0
+        return mockData.count
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: LookCell.reuseIdentifier,
+            for: indexPath) as? LookCell
+        else {
+            return UICollectionViewCell()
+        }
+        
+        cell.configureCell(mockData[indexPath.row])
+        
+        return cell
     }
 }
 
@@ -60,6 +84,10 @@ extension LookViewController {
     private func configureLookCollectionView()  {
         lookCollectionView.dataSource = self
         lookCollectionView.delegate = self
+        lookCollectionView.register(
+            LookCell.self,
+            forCellWithReuseIdentifier: LookCell.reuseIdentifier
+        )
     }
 }
 

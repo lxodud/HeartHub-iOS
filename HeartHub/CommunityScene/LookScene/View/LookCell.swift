@@ -32,7 +32,8 @@ final class LookCell: UICollectionViewCell, CommunityCellable {
     }
     
     func configureCell(_ data: MockData) {
-        
+        profileView.configureContents(data)
+        pagingImageView.configureContents(data.images)
     }
 }
 
@@ -42,6 +43,8 @@ extension LookCell {
         [profileView, pagingImageView, bottomButtonView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
+        profileView.layer.opacity = 0.5
+        bottomButtonView.layer.opacity = 0.5
         
         contentView.addSubview(pagingImageView)
         pagingImageView.addSubview(profileView)
@@ -62,7 +65,7 @@ extension LookCell {
                 constant: 12
             ),
             profileView.trailingAnchor.constraint(
-                equalTo: pagingImageViewSafeArea.leadingAnchor,
+                equalTo: pagingImageViewSafeArea.trailingAnchor,
                 constant: -12
             ),
             profileView.heightAnchor.constraint(
@@ -85,8 +88,8 @@ extension LookCell {
             ),
             
             // MARK: bottomButtonView Constraint
-            bottomButtonView.topAnchor.constraint(
-                equalTo: pagingImageView.bottomAnchor
+            bottomButtonView.bottomAnchor.constraint(
+                equalTo: pagingImageViewSafeArea.bottomAnchor
             ),
             bottomButtonView.leadingAnchor.constraint(
                 equalTo: pagingImageViewSafeArea.leadingAnchor,
