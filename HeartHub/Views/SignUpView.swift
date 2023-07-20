@@ -227,6 +227,7 @@ class SignUpView: UIView {
     private func rightArrowBtnConstraints() {
         rightArrowBtn.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+//            rightArrowBtn.topAnchor.constraint(equalTo: startDateStackView.bottomAnchor, constant: 272),
             rightArrowBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -77),
             rightArrowBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 294 ),
             rightArrowBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40)

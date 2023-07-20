@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DLRadioButton
 
 class SignUp2View: UIView {
     
@@ -58,8 +59,6 @@ class SignUp2View: UIView {
         stView.alignment = .fill
         return stView
     }()
-    
-    
     
     // MARK: 회원가입화면2 상단 레이블
     // 사랑을 시작해볼까요 레이블
@@ -288,33 +287,41 @@ class SignUp2View: UIView {
     
     // MARK: 성별 선택
     // 남자 버튼
-    lazy var maleBtn: UIButton = {
-        var button = UIButton(type: .custom)
-        button.backgroundColor = .clear
-        button.layer.cornerRadius = 18
-        button.layer.borderWidth = 1
-        button.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
+    lazy var maleBtn: DLRadioButton = {
+        var btn = DLRadioButton(type: .custom)
+        btn.backgroundColor = .clear
+//        btn.setTitleColor(UIColor(red: 0.98, green: 0.18, blue: 0.74, alpha: 1), for: .normal)
+        btn.layer.cornerRadius = 18
+        btn.layer.borderWidth = 1
+        btn.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
+        btn.setTitle("남", for: .normal)
+        btn.titleLabel?.font = UIFont(name: "Pretendard-Regular", size: 14)
+        btn.setTitleColor(UIColor(red: 0.46, green: 0.46, blue: 0.46, alpha: 1), for: .normal)
+        btn.marginWidth = 10.87
+        btn.indicatorColor = UIColor(red: 0.98, green: 0.18, blue: 0.74, alpha: 1)
+        btn.iconColor = UIColor(red: 0.98, green: 0.18, blue: 0.74, alpha: 1)
+        btn.contentHorizontalAlignment = .left
         
         // 라디오버튼 구현
-//        let checkedImg = UIImage(named: "RadioBtnChecked.png")
-        let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
-        button.setImage(unCheckedImg, for: .normal)
-        button.imageView?.contentMode = .scaleAspectFill
-        button.contentHorizontalAlignment = .left
-        button.addSubview(maleLabel)
-        return button
+//        let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
+//        button.setImage(unCheckedImg, for: .normal)
+//        button.otherButtons.append(femaleBtn)
+//        button.imageView?.contentMode = .scaleAspectFill
+//        btn.contentHorizontalAlignment = .left
+//        button.addSubview(maleLabel)
+        return btn
     }()
     
-    let maleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "남"
-        label.font = UIFont(name: "Pretendard-Regular", size: 14)
-        label.textAlignment = .center
-        //label.adjustsFontSizeToFitWidth = true
-        label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
-        return label
-    }()
-    
+//    let maleLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "남"
+//        label.font = UIFont(name: "Pretendard-Regular", size: 14)
+//        label.textAlignment = .center
+//        //label.adjustsFontSizeToFitWidth = true
+//        label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
+//        return label
+//    }()
+//
     // 여자 버튼
     lazy var femaleBtn: UIButton = {
         var button = UIButton(type: .custom)
@@ -328,6 +335,7 @@ class SignUp2View: UIView {
         let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
         button.setImage(unCheckedImg, for: .normal)
         button.imageView?.contentMode = .scaleAspectFill
+        button.adjustsImageSizeForAccessibilityContentSizeCategory = true
         button.contentHorizontalAlignment = .left
         button.addSubview(femaleLabel)
         return button
@@ -338,7 +346,7 @@ class SignUp2View: UIView {
         label.text = "여"
         label.font = UIFont(name: "Pretendard-Regular", size: 14)
         label.textAlignment = .center
-        //label.adjustsFontSizeToFitWidth = true
+        label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
         return label
     }()
@@ -528,7 +536,7 @@ class SignUp2View: UIView {
         pwTextFieldViewConstraints()
         enterStackViewConstraints()
         
-        maleLabelConstraints()
+//        maleLabelConstraints()
         femaleLabelConstraints()
         sexBtnStackViewConstraints()
         
@@ -689,14 +697,14 @@ class SignUp2View: UIView {
         ])
     }
     
-    private func maleLabelConstraints() {
-        maleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            maleLabel.centerYAnchor.constraint(equalTo: maleBtn.centerYAnchor),
-            maleLabel.leadingAnchor.constraint(equalTo: maleBtn.leadingAnchor, constant: 41),
-            maleLabel.trailingAnchor.constraint(equalTo: maleBtn.trailingAnchor, constant: -14)
-        ])
-    }
+//    private func maleLabelConstraints() {
+//        maleLabel.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            maleLabel.centerYAnchor.constraint(equalTo: maleBtn.centerYAnchor),
+//            maleLabel.leadingAnchor.constraint(equalTo: maleBtn.leadingAnchor, constant: 41),
+//            maleLabel.trailingAnchor.constraint(equalTo: maleBtn.trailingAnchor, constant: -14)
+//        ])
+//    }
     
     private func femaleLabelConstraints() {
         femaleLabel.translatesAutoresizingMaskIntoConstraints = false
