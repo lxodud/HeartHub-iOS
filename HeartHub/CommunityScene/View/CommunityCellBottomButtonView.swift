@@ -68,9 +68,21 @@ final class CommunityCellBottomButtonView: UIView {
 // MARK: Configure Action
 extension CommunityCellBottomButtonView {
     private func configureAction() {
-        thumbButton.addTarget(self, action: #selector(tapThumbButton(_:)), for: .touchUpInside)
-        commentButton.addTarget(self, action: #selector(tapCommentButton(_:)), for: .touchUpInside)
-        heartButton.addTarget(self, action: #selector(tapHeartButton(_:)), for: .touchUpInside)
+        thumbButton.addTarget(
+            self,
+            action: #selector(tapThumbButton(_:)),
+            for: .touchUpInside
+        )
+        commentButton.addTarget(
+            self,
+            action: #selector(tapCommentButton(_:)),
+            for: .touchUpInside
+        )
+        heartButton.addTarget(
+            self,
+            action: #selector(tapHeartButton(_:)),
+            for: .touchUpInside
+        )
     }
     
     @objc
