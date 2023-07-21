@@ -28,7 +28,10 @@ final class DailyDateNoImageCell: UICollectionViewCell, CommunityCellable {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+// MARK: Public Interface
+extension DailyDateNoImageCell {
     func fetchAdjustedHeight() -> CGFloat {
         var height = profileView.bounds.height
         height += postLabel.bounds.height
