@@ -57,6 +57,7 @@ class SignUp2ViewController: UIViewController {
         print("남 선택")
         
         //버튼의 이미지가 "RadioBtnChecked" ->  "RadioBtnUnchecked"로 바꾸고 else "RadioBtnUnchecked" -> "RadioBtnChecked" 로 바꿈
+        signUp2View.femaleBtn.setImage(UIImage(named: "RadioBtnUnChecked"), for: .normal)
         if signUp2View.maleBtn.currentImage == UIImage(named: "RadioBtnChecked") {
            let unChekedimage = UIImage(named: "RadioBtnUnChecked")
             signUp2View.maleBtn.setImage(unChekedimage, for: .normal)
@@ -70,6 +71,7 @@ class SignUp2ViewController: UIViewController {
         print("남 선택")
         
         //버튼의 이미지가 "RadioBtnChecked" ->  "RadioBtnUnchecked"로 바꾸고 else "RadioBtnUnchecked" -> "RadioBtnChecked" 로 바꿈
+        signUp2View.maleBtn.setImage(UIImage(named: "RadioBtnUnChecked"), for: .normal)
         if signUp2View.femaleBtn.currentImage == UIImage(named: "RadioBtnChecked") {
            let unChekedimage = UIImage(named: "RadioBtnUnChecked")
             signUp2View.femaleBtn.setImage(unChekedimage, for: .normal)

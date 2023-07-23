@@ -14,22 +14,12 @@ class SignUp3View: UIView {
     let textViewHeight: CGFloat = 35
 
     // MARK: 하트이미지
-    // 하트이미지 배경
-    private lazy var heartImgBackgroundView: UIImageView = {
-        var img = UIImageView()
-        img.contentMode = .scaleAspectFill
-        img.backgroundColor = .clear
-        img.image = UIImage(named: "HeartBackgorund.png")
-        return img
-    }()
-    
     // 하트이미지 1/3
     private lazy var heartImg2View: UIImageView = {
         var img = UIImageView()
         img.contentMode = .scaleAspectFit
         img.backgroundColor = .clear
         img.image = UIImage(named: "HeartIcon2:3.png")
-        img.addSubview(heartImgBackgroundView)
         return img
     }()
     
@@ -60,7 +50,7 @@ class SignUp3View: UIView {
     }()
     
     
-    // MARK: 회원가입화면2 상단 레이블
+    // MARK: 회원가입화면3 상단 레이블
     // 사랑을 시작해볼까요 레이블
     private var startLabel: UILabel = {
         let label = UILabel()
@@ -86,7 +76,7 @@ class SignUp3View: UIView {
     // 두 레이블 묶는 스택뷰
     private lazy var startLabelStackView: UIStackView = {
         let stView = UIStackView(arrangedSubviews: [startLabel, startExplainLabel])
-        stView.spacing = 5
+        stView.spacing = 3.5
         stView.axis = .vertical
         stView.distribution = .fill
         stView.alignment = .fill
@@ -101,6 +91,9 @@ class SignUp3View: UIView {
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .emailAddress
         tf.autocapitalizationType = .none
+        tf.autocorrectionType = .no
+        tf.spellCheckingType = .no
+        tf.clearsOnBeginEditing = false
         tf.attributedPlaceholder = NSAttributedString(
                         string: "이메일을 입력하세요",
                         attributes: [
@@ -191,6 +184,8 @@ class SignUp3View: UIView {
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .default
         tf.autocapitalizationType = .none
+        tf.autocorrectionType = .no
+        tf.spellCheckingType = .no
         tf.attributedPlaceholder = NSAttributedString(
                         string: "(선택) 내 애인의 아이디를 입력하세요",
                         attributes: [
@@ -218,7 +213,7 @@ class SignUp3View: UIView {
     // 닉네임, 이메일 입력 스택뷰
     private lazy var enterStackView: UIStackView = {
         let stView = UIStackView(arrangedSubviews: [emailTextFieldView, loverIdTextFieldView])
-        stView.spacing = 28
+        stView.spacing = 36
         stView.axis = .vertical
         stView.distribution = .fillEqually
         stView.alignment = .fill
@@ -226,7 +221,7 @@ class SignUp3View: UIView {
     }()
     
     // 아이디로 계정연동 레이블
-    private var idLinkingLabel: UILabel = {
+    private var loverIdLinkingLabel: UILabel = {
         let label = UILabel()
         label.text = "계정연동 시 서로의 스크랩 목록을 확인할 수 있습니다."
         label.font = UIFont(name: "Pretendard-Regular", size: 14)
@@ -251,13 +246,12 @@ class SignUp3View: UIView {
     }
     
     func addViews() {
-        [heartImgBackgroundView,
-        heartImg2View,
-        arrowBtnStackView,
+        [heartImg2View,
         startLabelStackView,
         enterStackView,
         emailFormatDescriptionLabel,
-        idLinkingLabel].forEach { addSubview($0)}
+        loverIdLinkingLabel,
+         arrowBtnStackView,].forEach { addSubview($0)}
     }
     
     func setup() {
@@ -272,7 +266,6 @@ class SignUp3View: UIView {
 
     private func constraints() {
         heartImg2ViewConstraints()
-        heartImgBackgroundViewConstraints()
         arrowBtnConstraints()
         
         startLabelStackViewConstraints()
@@ -289,41 +282,44 @@ class SignUp3View: UIView {
         enterStackViewConstraints()
         idLinkingLabelConstraints()
     }
-    
+
     private func heartImg2ViewConstraints() {
         heartImg2View.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            heartImg2View.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 32),
-            heartImg2View.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 172),
-            heartImg2View.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -172)
-        ])
-    }
-    
-    private func heartImgBackgroundViewConstraints() {
-        heartImgBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            heartImgBackgroundView.topAnchor.constraint(equalTo: heartImg2View.topAnchor, constant: 3),
-            heartImgBackgroundView.bottomAnchor.constraint(equalTo: heartImg2View.bottomAnchor, constant: -2.75 ),
-            heartImgBackgroundView.leadingAnchor.constraint(equalTo: heartImg2View.leadingAnchor, constant: 0),
-            heartImgBackgroundView.trailingAnchor.constraint(equalTo: heartImg2View.trailingAnchor, constant: 0)
-        ])
-    }
-    
-    private func arrowBtnConstraints() {
-        arrowBtnStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            arrowBtnStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -77),
-            arrowBtnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            arrowBtnStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40)
+            heartImg2View.heightAnchor.constraint(equalTo: heartImg2View.widthAnchor),
+            heartImg2View.centerXAnchor.constraint(equalTo: centerXAnchor),
+            heartImg2View.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 4),
+            heartImg2View.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 172),
         ])
     }
     
     private func startLabelStackViewConstraints() {
         startLabelStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            startLabelStackView.topAnchor.constraint(equalTo: heartImg2View.bottomAnchor, constant: 50),
-            startLabelStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
-            startLabelStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 76)
+            startLabelStackView.topAnchor.constraint(equalTo: heartImg2View.bottomAnchor, constant: 34),
+            startLabelStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 32),
+            startLabelStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -120)
+        ])
+    }
+    
+    private func enterStackViewConstraints() {
+        enterStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            enterStackView.topAnchor.constraint(equalTo: startLabelStackView.bottomAnchor, constant: 181),
+            enterStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            enterStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -31)
+        ])
+    }
+    
+    private func arrowBtnConstraints() {
+        arrowBtnStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            rightArrowBtn.heightAnchor.constraint(equalTo: rightArrowBtn.widthAnchor),
+            leftArrowBtn.heightAnchor.constraint(equalTo: leftArrowBtn.widthAnchor),
+            arrowBtnStackView.topAnchor.constraint(equalTo: loverIdLinkingLabel.bottomAnchor, constant: 225),
+            arrowBtnStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -33),
+            arrowBtnStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40),
+            arrowBtnStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40)
         ])
     }
     
@@ -349,8 +345,8 @@ class SignUp3View: UIView {
         NSLayoutConstraint.activate([
             emailFormatDescriptionLabel.topAnchor.constraint(equalTo: emailTextFieldView.bottomAnchor),
             emailFormatDescriptionLabel.bottomAnchor.constraint(equalTo: loverIdTextFieldView.topAnchor, constant: -4),
-            emailFormatDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 46),
-            emailFormatDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -154)
+            emailFormatDescriptionLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 46),
+            emailFormatDescriptionLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -154)
         ])
     }
     
@@ -367,7 +363,7 @@ class SignUp3View: UIView {
     private func loverIdTextFieldViewConstraints() {
         loverIdTextFieldView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            loverIdTextFieldView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: textViewHeight / screenHeight)
+            loverIdTextFieldView.heightAnchor.constraint(equalTo: emailTextFieldView.heightAnchor)
         ])
     }
     
@@ -391,21 +387,12 @@ class SignUp3View: UIView {
         ])
     }
     
-    private func enterStackViewConstraints() {
-        enterStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            enterStackView.topAnchor.constraint(equalTo: startLabelStackView.bottomAnchor, constant: 181),
-            enterStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
-            enterStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -31)
-        ])
-    }
-    
     private func idLinkingLabelConstraints() {
-        idLinkingLabel.translatesAutoresizingMaskIntoConstraints = false
+        loverIdLinkingLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            idLinkingLabel.topAnchor.constraint(equalTo: loverIdTextFieldView.bottomAnchor, constant: 3),
-            idLinkingLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 46),
-            idLinkingLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -59)
+            loverIdLinkingLabel.topAnchor.constraint(equalTo: loverIdTextFieldView.bottomAnchor, constant: 3),
+            loverIdLinkingLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 46),
+            loverIdLinkingLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -59)
         ])
         
     }

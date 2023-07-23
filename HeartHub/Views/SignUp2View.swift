@@ -14,23 +14,12 @@ class SignUp2View: UIView {
     
     // MARK: 하트이미지
     
-    // 하트이미지 배경
-    private lazy var heartImgBackgroundView: UIImageView = {
-        var img = UIImageView()
-        img.contentMode = .scaleAspectFill
-        img.backgroundColor = .clear
-        img.image = UIImage(named: "HeartBackgorund.png")
-        return img
-    }()
-    
     // 하트이미지 1/3
     private lazy var heartImg1View: UIImageView = {
         var img = UIImageView()
         img.contentMode = .scaleAspectFit
         img.backgroundColor = .clear
         img.image = UIImage(named: "HeartIcon1:3.png")
-        img.addSubview(heartImgBackgroundView)
-        
         return img
     }()
     
@@ -76,7 +65,7 @@ class SignUp2View: UIView {
     private var startExplainLabel: UILabel = {
         let label = UILabel()
         label.text = "계정을 생성하여 HeartHub를 즐겨보아요."
-        label.font = UIFont(name: "Pretendard-Regular", size: 12)
+        label.font = UIFont(name: "Pretendard-Regular", size: 14)
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
@@ -86,7 +75,7 @@ class SignUp2View: UIView {
     // 두 레이블 묶는 스택뷰
     private lazy var startLabelStackView: UIStackView = {
         let stView = UIStackView(arrangedSubviews: [startLabel, startExplainLabel])
-        stView.spacing = 5
+        stView.spacing = 3.5
         stView.axis = .vertical
         stView.distribution = .fill
         stView.alignment = .fill
@@ -161,6 +150,9 @@ class SignUp2View: UIView {
         var tf = UITextField()
         tf.backgroundColor = .clear
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
+        tf.autocapitalizationType = .none
+        tf.autocorrectionType = .no
+        tf.spellCheckingType = .no
         tf.keyboardType = .emailAddress
         tf.autocapitalizationType = .none
         tf.attributedPlaceholder = NSAttributedString(
@@ -208,7 +200,7 @@ class SignUp2View: UIView {
     // 아이디 제약
     private lazy var idDescriptionLabel: UILabel = {
         var label = UILabel()
-        label.text = "영문/숫자/특수문자 구성"
+        label.text = "영문/숫자 구성"
         label.font = UIFont(name: "Pretendard-Regular", size: 12)
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
@@ -223,6 +215,10 @@ class SignUp2View: UIView {
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .emailAddress
         tf.autocapitalizationType = .none
+        tf.autocorrectionType = .no
+        tf.spellCheckingType = .no
+        tf.isSecureTextEntry = true
+        tf.clearsOnBeginEditing = false
         tf.attributedPlaceholder = NSAttributedString(
                         string: "비밀번호를 입력하세요.",
                         attributes: [
@@ -287,58 +283,71 @@ class SignUp2View: UIView {
     
     // MARK: 성별 선택
     // 남자 버튼
-    lazy var maleBtn: DLRadioButton = {
-        var btn = DLRadioButton(type: .custom)
-        btn.backgroundColor = .clear
-//        btn.setTitleColor(UIColor(red: 0.98, green: 0.18, blue: 0.74, alpha: 1), for: .normal)
-        btn.layer.cornerRadius = 18
-        btn.layer.borderWidth = 1
-        btn.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
-        btn.setTitle("남", for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Pretendard-Regular", size: 14)
-        btn.setTitleColor(UIColor(red: 0.46, green: 0.46, blue: 0.46, alpha: 1), for: .normal)
-        btn.marginWidth = 10.87
-        btn.indicatorColor = UIColor(red: 0.98, green: 0.18, blue: 0.74, alpha: 1)
-        btn.iconColor = UIColor(red: 0.98, green: 0.18, blue: 0.74, alpha: 1)
-        btn.contentHorizontalAlignment = .left
-        
-        // 라디오버튼 구현
+//    lazy var maleBtn: DLRadioButton = {
+//        var btn = DLRadioButton(type: .custom)
+//        btn.backgroundColor = .clear
+////        btn.setTitleColor(UIColor(red: 0.98, green: 0.18, blue: 0.74, alpha: 1), for: .normal)
+//        btn.layer.cornerRadius = 18
+//        btn.layer.borderWidth = 1
+//        btn.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
+//        btn.setTitle("남", for: .normal)
+//        btn.titleLabel?.font = UIFont(name: "Pretendard-Regular", size: 14)
+//        btn.setTitleColor(UIColor(red: 0.46, green: 0.46, blue: 0.46, alpha: 1), for: .normal)
+//        btn.marginWidth = 10.87
+//        btn.indicatorColor = UIColor(red: 0.98, green: 0.18, blue: 0.74, alpha: 1)
+//        btn.iconColor = UIColor(red: 0.98, green: 0.18, blue: 0.74, alpha: 1)
+//        btn.contentHorizontalAlignment = .left
+//
+////         라디오버튼 구현
 //        let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
 //        button.setImage(unCheckedImg, for: .normal)
 //        button.otherButtons.append(femaleBtn)
 //        button.imageView?.contentMode = .scaleAspectFill
 //        btn.contentHorizontalAlignment = .left
 //        button.addSubview(maleLabel)
+//        return btn
+//    }()
+    
+    lazy var maleBtn: UIButton = {
+        var btn = UIButton(type: .custom)
+        btn.backgroundColor = .clear
+        btn.layer.cornerRadius = 18
+        btn.layer.borderWidth = 1
+        btn.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
+        let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
+        btn.setImage(unCheckedImg, for: .normal)
+        btn.imageView?.contentMode = .scaleAspectFit
+//        btn.adjustsImageSizeForAccessibilityContentSizeCategory = true
+        btn.contentHorizontalAlignment = .leading
+        btn.addSubview(maleLabel)
         return btn
     }()
     
-//    let maleLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "남"
-//        label.font = UIFont(name: "Pretendard-Regular", size: 14)
-//        label.textAlignment = .center
-//        //label.adjustsFontSizeToFitWidth = true
-//        label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
-//        return label
-//    }()
-//
+    let maleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "남"
+        label.font = UIFont(name: "Pretendard-Regular", size: 14)
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
+        return label
+    }()
+
     // 여자 버튼
     lazy var femaleBtn: UIButton = {
-        var button = UIButton(type: .custom)
-        button.backgroundColor = .clear
-        button.layer.cornerRadius = 18
-        button.layer.borderWidth = 1
-        button.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
-        
+        var btn = UIButton(type: .custom)
+        btn.backgroundColor = .clear
+        btn.layer.cornerRadius = 18
+        btn.layer.borderWidth = 1
+        btn.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)        
         // 라디오버튼 구현
-//        let checkedImg = UIImage(named: "RadioBtnChecked.png")
         let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
-        button.setImage(unCheckedImg, for: .normal)
-        button.imageView?.contentMode = .scaleAspectFill
-        button.adjustsImageSizeForAccessibilityContentSizeCategory = true
-        button.contentHorizontalAlignment = .left
-        button.addSubview(femaleLabel)
-        return button
+        btn.setImage(unCheckedImg, for: .normal)
+        btn.imageView?.contentMode = .scaleAspectFit
+//        btn.adjustsImageSizeForAccessibilityContentSizeCategory = true
+        btn.contentHorizontalAlignment = .leading
+        btn.addSubview(femaleLabel)
+        return btn
     }()
     
     private let femaleLabel: UILabel = {
@@ -487,8 +496,7 @@ class SignUp2View: UIView {
     }
     
     func addViews() {
-        [heartImgBackgroundView,
-         heartImg1View,
+        [heartImg1View,
          arrowBtnStackView,
          startLabelStackView,
          
@@ -516,7 +524,6 @@ class SignUp2View: UIView {
     
     func constraints() {
         heartImg1ViewConstraints()
-        heartImgBackgroundViewConstraints()
         arrowBtnConstraints()
         startLabelStackViewConstraints()
         
@@ -536,7 +543,7 @@ class SignUp2View: UIView {
         pwTextFieldViewConstraints()
         enterStackViewConstraints()
         
-//        maleLabelConstraints()
+        maleLabelConstraints()
         femaleLabelConstraints()
         sexBtnStackViewConstraints()
         
@@ -544,46 +551,69 @@ class SignUp2View: UIView {
         birthdayMonthTextFieldConstraints()
         birthdayDateTextFieldConstraints()
         birthdayStackViewConstraints()
-        birthdayYearTextFieldViewConstraints()
         birthdayMonthTextFieldViewConstraints()
         birthdayDateTextFieldViewConstraints()
         birthdayDescriptionConstraints()
     }
     
-    private func heartImgBackgroundViewConstraints() {
-        heartImgBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            heartImgBackgroundView.topAnchor.constraint(equalTo: heartImg1View.topAnchor, constant: 3),
-            heartImgBackgroundView.bottomAnchor.constraint(equalTo: heartImg1View.bottomAnchor, constant: -2.75),
-            heartImgBackgroundView.leadingAnchor.constraint(equalTo: heartImg1View.leadingAnchor, constant: 0),
-            heartImgBackgroundView.trailingAnchor.constraint(equalTo: heartImg1View.trailingAnchor, constant: 0)
-        ])
-    }
-    
     private func heartImg1ViewConstraints() {
         heartImg1View.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            heartImg1View.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 32),
-            heartImg1View.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 172),
-            heartImg1View.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -172)
+            heartImg1View.heightAnchor.constraint(equalTo: heartImg1View.widthAnchor),
+            heartImg1View.centerXAnchor.constraint(equalTo: centerXAnchor),
+            heartImg1View.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 4),
+            heartImg1View.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 172),
         ])
     }
-        
-    private func arrowBtnConstraints() {
-        arrowBtnStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            arrowBtnStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -77),
-            arrowBtnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            arrowBtnStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40)
-        ])
-    }
+
     
     private func startLabelStackViewConstraints() {
         startLabelStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            startLabelStackView.topAnchor.constraint(equalTo: heartImg1View.bottomAnchor, constant: 50),
-            startLabelStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
-            startLabelStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 76)
+            startLabelStackView.topAnchor.constraint(equalTo: heartImg1View.bottomAnchor, constant: 34),
+            startLabelStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 32),
+            startLabelStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -120)
+        ])
+    }
+    
+    private func enterStackViewConstraints() {
+        enterStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            enterStackView.topAnchor.constraint(equalTo: startLabelStackView.bottomAnchor, constant: 104),
+            enterStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 32),
+            enterStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -30)
+        ])
+    }
+    
+    private func sexBtnStackViewConstraints() {
+        sexBtnStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            sexBtnStackView.heightAnchor.constraint(equalToConstant: textViewHeight),
+            sexBtnStackView.topAnchor.constraint(equalTo: pwDescriptionLabel.bottomAnchor, constant: 15),
+            sexBtnStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 32),
+            sexBtnStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -203)
+        ])
+    }
+    
+    private func birthdayStackViewConstraints() {
+        birthdayStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            birthdayStackView.topAnchor.constraint(equalTo: maleBtn.bottomAnchor, constant: 22),
+            birthdayStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 32),
+            birthdayStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -67),
+            birthdayStackView.heightAnchor.constraint(equalTo: nickNameTextFieldView.heightAnchor)
+        ])
+    }
+    
+    private func arrowBtnConstraints() {
+        arrowBtnStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            rightArrowBtn.heightAnchor.constraint(equalTo: rightArrowBtn.widthAnchor),
+            leftArrowBtn.heightAnchor.constraint(equalTo: leftArrowBtn.widthAnchor),
+            arrowBtnStackView.topAnchor.constraint(equalTo: birthdayDescriptionLabel.bottomAnchor, constant: 118),
+            arrowBtnStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -33),
+            arrowBtnStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40),
+            arrowBtnStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40)
         ])
     }
     
@@ -591,8 +621,8 @@ class SignUp2View: UIView {
         nickNameDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             nickNameDescriptionLabel.topAnchor.constraint(equalTo: nickNameTextFieldView.bottomAnchor, constant: 3),
-            nickNameDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
-            nickNameDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 211),
+            nickNameDescriptionLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 44),
+            nickNameDescriptionLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 211),
         ])
     }
     
@@ -600,8 +630,8 @@ class SignUp2View: UIView {
         idDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             idDescriptionLabel.topAnchor.constraint(equalTo: idTextFieldView.bottomAnchor, constant: 3),
-            idDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
-            idDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 211),
+            idDescriptionLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 44),
+            idDescriptionLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 211),
         ])
     }
     
@@ -609,8 +639,8 @@ class SignUp2View: UIView {
         pwDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             pwDescriptionLabel.topAnchor.constraint(equalTo: pwTextFieldView.bottomAnchor, constant: 3),
-            pwDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
-            nickNameDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 211),
+            pwDescriptionLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 44),
+            nickNameDescriptionLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 211),
         ])
     }
             
@@ -687,41 +717,21 @@ class SignUp2View: UIView {
         ])
     }
     
-
-    private func enterStackViewConstraints() {
-        enterStackView.translatesAutoresizingMaskIntoConstraints = false
+    private func maleLabelConstraints() {
+        maleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            enterStackView.topAnchor.constraint(equalTo: startLabelStackView.bottomAnchor, constant: 104),
-            enterStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
-            enterStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
+            maleLabel.centerYAnchor.constraint(equalTo: maleBtn.centerYAnchor),
+            maleLabel.leadingAnchor.constraint(equalTo: maleBtn.leadingAnchor, constant: 41),
+            maleLabel.trailingAnchor.constraint(equalTo: maleBtn.trailingAnchor, constant: -14)
         ])
     }
-    
-//    private func maleLabelConstraints() {
-//        maleLabel.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            maleLabel.centerYAnchor.constraint(equalTo: maleBtn.centerYAnchor),
-//            maleLabel.leadingAnchor.constraint(equalTo: maleBtn.leadingAnchor, constant: 41),
-//            maleLabel.trailingAnchor.constraint(equalTo: maleBtn.trailingAnchor, constant: -14)
-//        ])
-//    }
-    
+
     private func femaleLabelConstraints() {
         femaleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             femaleLabel.centerYAnchor.constraint(equalTo: femaleBtn.centerYAnchor),
             femaleLabel.leadingAnchor.constraint(equalTo: femaleBtn.leadingAnchor, constant: 41),
             femaleLabel.trailingAnchor.constraint(equalTo: femaleBtn.trailingAnchor, constant: -14)
-        ])
-    }
-    
-    private func sexBtnStackViewConstraints() {
-        sexBtnStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            sexBtnStackView.heightAnchor.constraint(equalToConstant: textViewHeight),
-            sexBtnStackView.topAnchor.constraint(equalTo: pwDescriptionLabel.bottomAnchor, constant: 15),
-            sexBtnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 29),
-            sexBtnStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -203)
         ])
     }
     
@@ -754,43 +764,23 @@ class SignUp2View: UIView {
         ])
     }
     
-    private func birthdayStackViewConstraints() {
-        birthdayStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            birthdayStackView.topAnchor.constraint(equalTo: maleBtn.bottomAnchor, constant: 22),
-            birthdayStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
-            birthdayStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -67),
-            birthdayStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 35)
-        ])
-    }
-    
-    private func birthdayYearTextFieldViewConstraints() {
-        birthdayYearTextFieldView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            birthdayYearTextFieldView.widthAnchor.constraint(equalToConstant: 105)
-        ])
-    }
-    
     private func birthdayMonthTextFieldViewConstraints() {
         birthdayMonthTextFieldView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            birthdayMonthTextFieldView.widthAnchor.constraint(equalToConstant: 86),
-        ])
+        birthdayMonthTextFieldView.widthAnchor.constraint(equalTo: birthdayYearTextFieldView.widthAnchor, multiplier: 0.81 ).isActive = true
+
     }
     
     private func birthdayDateTextFieldViewConstraints() {
         birthdayDateTextFieldView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            birthdayDateTextFieldView.widthAnchor.constraint(equalToConstant: 86)
-        ])
+        birthdayDateTextFieldView.widthAnchor.constraint(equalTo: birthdayMonthTextFieldView.widthAnchor).isActive = true
     }
     
     private func birthdayDescriptionConstraints() {
         birthdayDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             birthdayDescriptionLabel.topAnchor.constraint(equalTo: birthdayStackView.bottomAnchor, constant: 2),
-            birthdayDescriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
-            birthdayDescriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -236)
+            birthdayDescriptionLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 44),
+            birthdayDescriptionLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -236)
         ])
     }
 }
@@ -859,7 +849,7 @@ extension SignUp2View: UITextFieldDelegate {
                 .union(CharacterSet(charactersIn: "\u{314F}"..."\u{3163}"))
         case idTextField:
             maxLength = 18
-            allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_?+=~")
+            allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
         case pwTextField:
             maxLength = 15
             allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_?+=~")

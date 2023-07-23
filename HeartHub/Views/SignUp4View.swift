@@ -10,24 +10,12 @@ import UIKit
 class SignUp4View: UIView {
     
     // MARK: 하트이미지
-    
-    // 하트이미지 배경
-    private lazy var heartImgBackgroundView: UIImageView = {
-        var img = UIImageView()
-        img.contentMode = .scaleAspectFill
-        img.backgroundColor = .clear
-        img.image = UIImage(named: "HeartBackgorund.png")
-        return img
-    }()
-    
     // 하트이미지 1/3
     private lazy var heartImg3View: UIImageView = {
         var img = UIImageView()
         img.contentMode = .scaleAspectFit
         img.backgroundColor = .clear
-        img.image = UIImage(named: "HeartIcon3:3.png")
-        img.addSubview(heartImgBackgroundView)
-        
+        img.image = UIImage(named: "HeartIcon3:3.png")        
         return img
     }()
     
@@ -58,12 +46,12 @@ class SignUp4View: UIView {
     }()
     
     
-    // MARK: 회원가입화면2 상단 레이블
+    // MARK: 회원가입화면4 상단 레이블
     // 사랑을 시작해볼까요 레이블
     private var startLabel: UILabel = {
         let label = UILabel()
         label.text = "사랑을 시작해볼까요?"
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.font = UIFont(name: "Pretendard-SemiBold", size: 20)
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 1)
@@ -74,7 +62,7 @@ class SignUp4View: UIView {
     private var startExplainLabel: UILabel = {
         let label = UILabel()
         label.text = "계정을 생성하여 HeartHub를 즐겨보아요."
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont(name: "Pretendard-Regular", size: 14)
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
@@ -91,190 +79,214 @@ class SignUp4View: UIView {
         return stView
     }()
     
-    // MARK: 약관동의 + 동의 버튼
-    let labelWidth: CGFloat = 200
-    //    let spacingAgreeStview: CGFloat = 27
+// MARK: 약관동의
     
-    // 약관 전체 동의 레이블
-    private var allTermAgreeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "약관 전체 동의"
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textAlignment = .left
-        label.adjustsFontSizeToFitWidth = true
-        label.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 1)
-        return label
-    }()
+    // MARK: 라디오 버튼
     
     // 약관 전체 동의 버튼
     lazy var allTermAgreeBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-        let checkedImg = UIImage(named: "RadioBtnChecked.png")
         let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
         button.setImage(unCheckedImg, for: .normal)
-        button.imageView?.contentMode = .scaleAspectFill
+        button.imageView?.contentMode = .scaleAspectFit
         button.contentHorizontalAlignment = .center
         return button
-    }()
-    
-    // 약관 전체 동의 버튼 + 약관 전체 동의 레이블 스택뷰
-    private lazy var allTermAgreeStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [allTermAgreeBtn, allTermAgreeLabel])
-        stView.spacing = 1
-        stView.axis = .horizontal
-        stView.distribution = .fill
-        stView.alignment = .fill
-        return stView
-    }()
-    
-    
-    // 개인정보 수집 동의 레이블
-    private var privacyAgreeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "(필수) 개인정보 수집 및 이용동의"
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textAlignment = .left
-        // label.adjustsFontSizeToFitWidth = true
-        label.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 1)
-        return label
     }()
     
     // 개인정보 수집 동의 버튼
     lazy var privacyAgreeBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-        let checkedImg = UIImage(named: "RadioBtnChecked.png")
         let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
         button.setImage(unCheckedImg, for: .normal)
-        button.imageView?.contentMode = .scaleAspectFill
+        button.imageView?.contentMode = .scaleAspectFit
         button.contentHorizontalAlignment = .center
         return button
-    }()
-    
-    // 개인정보 수집 및 이용동의 화살표 버튼
-    lazy var privacyArrowBtn: UIButton = {
-        let button = UIButton(type: .system)
-        let symbolConfiguration = UIImage.SymbolConfiguration(weight: .thin)
-        let symbolImage = UIImage(systemName: "chevron.right", withConfiguration: symbolConfiguration)
-        button.setImage(symbolImage, for: .normal)
-        button.contentMode = .center
-        button.tintColor = #colorLiteral(red: 0.06666665524, green: 0.06666665524, blue: 0.06666665524, alpha: 1)
-        return button
-    }()
-    
-    
-    // 개인정보 수집 동의 버튼 + 개인정보 수집 동의 레이블 스택뷰
-    private lazy var privacyAgreeStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [privacyAgreeBtn, privacyAgreeLabel])
-        stView.spacing = 1
-        stView.axis = .horizontal
-        stView.distribution = .fill
-        stView.alignment = .fill
-        return stView
-    }()
-    
-    // 이용 약관 동의 레이블
-    private var termOfUseAgreeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "(필수) 이용 약관 동의"
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textAlignment = .left
-        // label.adjustsFontSizeToFitWidth = true
-        label.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 1)
-        return label
     }()
     
     // 이용 약관 동의 버튼
     lazy var termOfUseAgreeBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-        
-        let checkedImg = UIImage(named: "RadioBtnChecked.png")
         let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
         button.setImage(unCheckedImg, for: .normal)
-        button.imageView?.contentMode = .scaleAspectFill
+        button.imageView?.contentMode = .scaleAspectFit
         button.contentHorizontalAlignment = .center
         return button
-    }()
-    
-    // 개인정보 수집 및 이용동의 화살표 버튼
-    lazy var termOfUseArrowBtn: UIButton = {
-        let button = UIButton(type: .system)
-        let symbolConfiguration = UIImage.SymbolConfiguration(weight: .thin)
-        let symbolImage = UIImage(systemName: "chevron.right", withConfiguration: symbolConfiguration)
-        button.setImage(symbolImage, for: .normal)
-        button.contentMode = .center
-        button.tintColor = #colorLiteral(red: 0.06666665524, green: 0.06666665524, blue: 0.06666665524, alpha: 1)
-        return button
-    }()
-    
-    
-    // 이용 약관 동의 버튼 + 이용 약관 동의 레이블 스택뷰
-    private lazy var termOfUseAgreeStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [termOfUseAgreeBtn, termOfUseAgreeLabel])
-        stView.spacing = 1
-        stView.axis = .horizontal
-        stView.distribution = .fill
-        stView.alignment = .fill
-        return stView
-    }()
-    
-    // 마케팅 활용 동의 레이블
-    private var marketingAgreeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "(선택) 마케팅 활용 동의"
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textAlignment = .left
-        // label.adjustsFontSizeToFitWidth = true
-        label.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 1)
-        return label
     }()
     
     // 마케팅 활용 동의 버튼
     lazy var marketingAgreeBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-        
-        let checkedImg = UIImage(named: "RadioBtnChecked.png")
         let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
         button.setImage(unCheckedImg, for: .normal)
-        button.imageView?.contentMode = .scaleAspectFill
+        button.imageView?.contentMode = .scaleAspectFit
         button.contentHorizontalAlignment = .center
         return button
     }()
     
-    // 마케팅 전체 동의 버튼 + 마케팅 전체 동의 레이블 스택뷰
-    private lazy var marketingAgreeStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [marketingAgreeBtn, marketingAgreeLabel])
-        stView.spacing = 1
+    // MARK: 동의 레이블
+    private var allTermAgreeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "약관 전체 동의"
+        label.font = UIFont(name: "Pretendard-Regular", size: 16)
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
+        label.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 1)
+        return label
+    }()
+    
+    private var privacyAgreeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "(필수) 개인정보 수집 및 이용동의"
+        label.font = UIFont(name: "Pretendard-Regular", size: 16)
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
+        label.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 1)
+        return label
+    }()
+    
+    private var termOfUseAgreeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "(필수) 이용 약관 동의"
+        label.font = UIFont(name: "Pretendard-Regular", size: 16)
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
+        label.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 1)
+        return label
+    }()
+    
+    private var marketingAgreeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "(선택) 마케팅 활용 동의"
+        label.font = UIFont(name: "Pretendard-Regular", size: 16)
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
+        label.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 1)
+        return label
+    }()
+    
+    // MARK: 약관 명세 버튼
+    // 개인정보 수집 및 이용동의 화살표 버튼
+    lazy var privacyDescriptionBtn: UIButton = {
+        let button = UIButton(type: .system)
+        let symbolImage = UIImage(systemName: "chevron.right")
+        button.setImage(symbolImage, for: .normal)
+        button.contentMode = .center
+        button.tintColor = #colorLiteral(red: 0.06666665524, green: 0.06666665524, blue: 0.06666665524, alpha: 1)
+        return button
+    }()
+    
+    // 개인정보 수집 및 이용동의 화살표 버튼
+    lazy var termOfUseDescriptionBtn: UIButton = {
+        let button = UIButton(type: .system)
+        let symbolImage = UIImage(systemName: "chevron.right")
+        button.setImage(symbolImage, for: .normal)
+        button.contentMode = .center
+        button.tintColor = #colorLiteral(red: 0.06666665524, green: 0.06666665524, blue: 0.06666665524, alpha: 1)
+        return button
+    }()
+  
+    // 개인정보 수집 및 이용동의 화살표 버튼
+    lazy var marketingDescriptionBtn: UIButton = {
+        let button = UIButton(type: .system)
+        let symbolImage = UIImage(systemName: "chevron.right")
+        button.setImage(symbolImage, for: .normal)
+        button.contentMode = .center
+        button.tintColor = #colorLiteral(red: 0.06666665524, green: 0.06666665524, blue: 0.06666665524, alpha: 1)
+        return button
+    }()
+    
+// MARK: 스택뷰
+    // 약관 전체 동의 버튼 + 레이블 스택뷰
+    private lazy var allTermAgreeStackView: UIStackView = {
+        let stView = UIStackView(arrangedSubviews: [allTermAgreeBtn, allTermAgreeLabel])
+        stView.spacing = 9
         stView.axis = .horizontal
         stView.distribution = .fill
         stView.alignment = .fill
         return stView
     }()
+
+    // 개인정보 수집 및 이용 동의 버튼 + 레이블 스택뷰
+    private lazy var privacyAgreeStackView: UIStackView = {
+        let stView = UIStackView(arrangedSubviews: [privacyAgreeBtn, privacyAgreeLabel, privacyDescriptionBtn])
+        stView.spacing = 9
+        stView.axis = .horizontal
+        stView.distribution = .fill
+        stView.alignment = .center
+        stView.setCustomSpacing(71, after: privacyAgreeLabel)
+        return stView
+    }()
+
     
-    // 약관동의레이블 스택뷰
+    // 이용 약관 동의 버튼 + 레이블 스택뷰
+    private lazy var termOfUseAgreeStackView: UIStackView = {
+        let stView = UIStackView(arrangedSubviews: [termOfUseAgreeBtn, termOfUseAgreeLabel, termOfUseDescriptionBtn])
+        stView.spacing = 9
+        stView.axis = .horizontal
+        stView.distribution = .fill
+        stView.alignment = .center
+        stView.setCustomSpacing(144, after: termOfUseAgreeLabel)
+        return stView
+    }()
+
+    // 마케팅 전체 동의 버튼 + 레이블 스택뷰
+    private lazy var marketingAgreeStackView: UIStackView = {
+        let stView = UIStackView(arrangedSubviews: [marketingAgreeBtn, marketingAgreeLabel, marketingDescriptionBtn])
+        stView.spacing = 9
+        stView.axis = .horizontal
+        stView.distribution = .fill
+        stView.alignment = .center
+        stView.setCustomSpacing(130, after: marketingAgreeLabel)
+        return stView
+    }()
+    
+    // 약관동의 스택뷰
     private lazy var lineBelowAgreeStackView: UIStackView = {
         let stView = UIStackView(arrangedSubviews: [privacyAgreeStackView, termOfUseAgreeStackView, marketingAgreeStackView])
-        stView.spacing = 0
+        stView.spacing = 16
         stView.axis = .vertical
         stView.distribution = .fillEqually
         stView.alignment = .leading
         return stView
     }()
     
-    // 약관동의레이블 스택뷰
-    private lazy var agreeStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [allTermAgreeStackView, lineView, lineBelowAgreeStackView])
-        stView.spacing = 7.74
-        stView.axis = .vertical
-        stView.distribution = .fill
-        stView.alignment = .leading
-        //        stView.setCustomSpacing(<#T##spacing: CGFloat##CGFloat#>, after: <#T##UIView#>)
-        //        stView.layoutMargins = uied
-        return stView
-    }()
+    
+    
+//    // 약관 명세 버튼 스택뷰
+//    private lazy var agreeDescriptionBtnStackView: UIStackView = {
+//        let stView = UIStackView(arrangedSubviews: [privacyDescriptionBtn, termOfUseDescriptionBtn, marketingDescriptionBtn])
+//        stView.spacing = 27
+//        stView.axis = .vertical
+//        stView.distribution = .fillEqually
+//        stView.alignment = .center
+//        return stView
+//    }()
+//
+//    // 선 아래 스택뷰
+//    private lazy var lineBelowAgreeStackView: UIStackView = {
+//        let stView = UIStackView(arrangedSubviews: [agreeBtnLabelStackView, agreeDescriptionBtnStackView])
+//        stView.spacing = 71
+//        stView.axis = .horizontal
+//        stView.distribution = .fill
+//        stView.alignment = .fill
+//        return stView
+//    }()
+    
+//    // 약관동의레이블 스택뷰
+//    private lazy var agreeStackView: UIStackView = {
+//        let stView = UIStackView(arrangedSubviews: [allTermAgreeStackView, lineView, lineBelowAgreeStackView])
+//        stView.spacing = 7.74
+//        stView.axis = .vertical
+//        stView.distribution = .fill
+//        stView.alignment = .leading
+//        //        stView.setCustomSpacing(<#T##spacing: CGFloat##CGFloat#>, after: <#T##UIView#>)
+//        //        stView.layoutMargins = uied
+//        return stView
+//    }()
     
     
     // 약관동의 사이 선
@@ -299,11 +311,14 @@ class SignUp4View: UIView {
     }
     
     func addViews() {
-        [heartImgBackgroundView,
-         heartImg3View,
+        [heartImg3View,
          arrowBtnStackView,
          startLabelStackView,
-         agreeStackView].forEach { addSubview($0)}
+         allTermAgreeStackView,
+         lineView,
+         lineBelowAgreeStackView,
+//         agreeStackView
+        ].forEach { addSubview($0)}
     }
     
     func setup() {
@@ -315,47 +330,41 @@ class SignUp4View: UIView {
     // MARK: 제약
     private func constraints() {
         heartImg3ViewConstraints()
-        heartImgBackgroundViewConstraints()
-        arrowBtnConstraints()
         startLabelStackViewConstraints()
+        allTermAgreeStackViewConstraints()
         lineViewConstraints()
-        agreeStackViewConstraints()
+        lineBelowAgreeStackViewConstraints()
+        arrowBtnConstraints()
+
+//        agreeStackViewConstraints()
+        privacyArrowBtnConstraints()
     }
     
     private func heartImg3ViewConstraints() {
         heartImg3View.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            heartImg3View.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 32),
-            heartImg3View.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 172),
-            heartImg3View.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -172)
-        ])
-    }
-    
-    private func heartImgBackgroundViewConstraints() {
-        heartImgBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            heartImgBackgroundView.topAnchor.constraint(equalTo: heartImg3View.topAnchor, constant: 3),
-            heartImgBackgroundView.bottomAnchor.constraint(equalTo: heartImg3View.bottomAnchor, constant: -2.75),
-            heartImgBackgroundView.leadingAnchor.constraint(equalTo: heartImg3View.leadingAnchor, constant: 0),
-            heartImgBackgroundView.trailingAnchor.constraint(equalTo: heartImg3View.trailingAnchor, constant: 0)
-        ])
-    }
-    
-    private func arrowBtnConstraints() {
-        arrowBtnStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            arrowBtnStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -77),
-            arrowBtnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            arrowBtnStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40)
+            heartImg3View.heightAnchor.constraint(equalTo: heartImg3View.widthAnchor),
+            heartImg3View.centerXAnchor.constraint(equalTo: centerXAnchor),
+            heartImg3View.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 4),
+            heartImg3View.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 172),
         ])
     }
     
     private func startLabelStackViewConstraints() {
         startLabelStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            startLabelStackView.topAnchor.constraint(equalTo: heartImg3View.bottomAnchor, constant: 50),
-            startLabelStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
-            startLabelStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 76),
+            startLabelStackView.topAnchor.constraint(equalTo: heartImg3View.bottomAnchor, constant: 34),
+            startLabelStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 32),
+            startLabelStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -76),
+        ])
+    }
+
+    private func allTermAgreeStackViewConstraints() {
+        allTermAgreeStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            allTermAgreeStackView.topAnchor.constraint(equalTo: startLabelStackView.bottomAnchor, constant: 166),
+            allTermAgreeStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 33),
+            allTermAgreeStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -235)
         ])
     }
     
@@ -363,17 +372,58 @@ class SignUp4View: UIView {
         lineView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             lineView.heightAnchor.constraint(equalToConstant: 1),
-            lineView.leadingAnchor.constraint(equalTo: agreeStackView.leadingAnchor, constant: -1),
-            lineView.trailingAnchor.constraint(equalTo: agreeStackView.trailingAnchor, constant: 0),
+            lineView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            lineView.topAnchor.constraint(equalTo: allTermAgreeStackView.bottomAnchor, constant: 16),
+            lineView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 24),
         ])
     }
     
-    private func agreeStackViewConstraints() {
-        agreeStackView.translatesAutoresizingMaskIntoConstraints = false
+    private func lineBelowAgreeStackViewConstraints() {
+        lineBelowAgreeStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            agreeStackView.topAnchor.constraint(equalTo: startLabelStackView.bottomAnchor, constant: 158),
-            agreeStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            agreeStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            lineBelowAgreeStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            lineBelowAgreeStackView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 16),
+            lineBelowAgreeStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 33)
         ])
     }
+    
+    private func arrowBtnConstraints() {
+        arrowBtnStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            rightArrowBtn.heightAnchor.constraint(equalTo: rightArrowBtn.widthAnchor),
+            leftArrowBtn.heightAnchor.constraint(equalTo: leftArrowBtn.widthAnchor),
+//            arrowBtnStackView.topAnchor.constraint(equalTo: agreeStackView.bottomAnchor, constant: 209),
+            arrowBtnStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -33),
+            arrowBtnStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40),
+            arrowBtnStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40)
+        ])
+    }
+    
+
+    
+//    private func agreeStackViewConstraints() {
+//        agreeStackView.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            agreeStackView.topAnchor.constraint(equalTo: startLabelStackView.bottomAnchor, constant: 170),
+//            agreeStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 33),
+//            agreeStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -24),
+//        ])
+//    }
+    
+    private func privacyArrowBtnConstraints() {
+        privacyDescriptionBtn.translatesAutoresizingMaskIntoConstraints = false
+        termOfUseDescriptionBtn.translatesAutoresizingMaskIntoConstraints = false
+        marketingDescriptionBtn.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            privacyDescriptionBtn.heightAnchor.constraint(equalToConstant: 14 /*privacyAgreeLabel.heightAnchor,constant: multiplier: 0.58*/),
+            privacyDescriptionBtn.widthAnchor.constraint(equalTo: privacyDescriptionBtn.heightAnchor),
+            
+            termOfUseDescriptionBtn.heightAnchor.constraint(equalTo: privacyDescriptionBtn.heightAnchor),
+            termOfUseDescriptionBtn.widthAnchor.constraint(equalTo: privacyDescriptionBtn.heightAnchor),
+            
+            marketingDescriptionBtn.heightAnchor.constraint(equalTo: privacyDescriptionBtn.heightAnchor),
+            marketingDescriptionBtn.widthAnchor.constraint(equalTo: privacyDescriptionBtn.heightAnchor),
+        ])
+    }
+     
 }

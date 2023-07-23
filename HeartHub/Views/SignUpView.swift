@@ -10,22 +10,12 @@ import UIKit
 class SignUpView: UIView {
 
     // MARK: 하트이미지
-    // 하트이미지 배경
-    private lazy var heartImgBackgroundView: UIImageView = {
-        var img = UIImageView()
-        img.contentMode = .scaleAspectFill
-        img.backgroundColor = .clear
-        img.image = UIImage(named: "HeartBackgorund.png")
-        return img
-    }()
-    
     // 하트이미지 0/3
     private lazy var heartImg0View: UIImageView = {
         var img = UIImageView()
         img.contentMode = .scaleAspectFit
         img.backgroundColor = .clear
         img.image = UIImage(named: "HeartIcon0:3.png")
-        img.addSubview(heartImgBackgroundView)
         return img
     }()
     
@@ -68,7 +58,7 @@ class SignUpView: UIView {
     // 두 레이블 묶는 스택뷰
     private lazy var startLabelStackView: UIStackView = {
         let stView = UIStackView(arrangedSubviews: [startLabel, startExplainLabel])
-        stView.spacing = 5
+        stView.spacing = 3.5
         stView.axis = .vertical
         stView.distribution = .fill
         stView.alignment = .fill
@@ -80,6 +70,11 @@ class SignUpView: UIView {
     private lazy var startYearTextField: UITextField = {
         var tf = UITextField()
         tf.backgroundColor = .clear
+        tf.attributedPlaceholder = NSAttributedString(
+                        string: "YYYY",
+                        attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5),
+                                     NSAttributedString.Key.font: UIFont(name: "Pretendard-Regular", size: 14)!
+                                    ])
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .numberPad
         tf.placeholder = "YYYY"
@@ -105,7 +100,11 @@ class SignUpView: UIView {
         tf.backgroundColor = .clear
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .numberPad
-        tf.placeholder = "MM"
+        tf.attributedPlaceholder = NSAttributedString(
+                        string: "MM",
+                        attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5),
+                                     NSAttributedString.Key.font: UIFont(name: "Pretendard-Regular", size: 14)!
+                                    ])
         tf.textAlignment = .center
         return tf
     }()
@@ -128,7 +127,11 @@ class SignUpView: UIView {
         tf.backgroundColor = .clear
         tf.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         tf.keyboardType = .numberPad
-        tf.placeholder = "DD"
+        tf.attributedPlaceholder = NSAttributedString(
+                        string: "DD",
+                        attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5),
+                                     NSAttributedString.Key.font: UIFont(name: "Pretendard-Regular", size: 14)!
+                                    ])
         tf.textAlignment = .center
         return tf
     }()
@@ -180,8 +183,7 @@ class SignUpView: UIView {
     private func addViews() {
         backgroundColor = .white
         
-        [heartImgBackgroundView,
-         heartImg0View,
+        [heartImg0View,
          rightArrowBtn,
          startLabelStackView,
          startDateStackView].forEach { addSubview($0)}
@@ -190,7 +192,6 @@ class SignUpView: UIView {
     
     // MARK: 제약
     private func constraints() {
-        heartImgBackgroundViewConstraints()
         heartImg0ViewConstraints()
         rightArrowBtnConstraints()
         startLabelStackViewConstraints()
@@ -202,52 +203,52 @@ class SignUpView: UIView {
         startMonthTextFieldViewConstraints()
         startDayTextFieldViewConstraints()
     }
-        
-    private func heartImgBackgroundViewConstraints() {
-        heartImgBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            heartImgBackgroundView.topAnchor.constraint(equalTo: heartImg0View.topAnchor, constant: 3),
-            heartImgBackgroundView.bottomAnchor.constraint(equalTo: heartImg0View.bottomAnchor, constant: -2.75),
-            heartImgBackgroundView.leadingAnchor.constraint(equalTo: heartImg0View.leadingAnchor, constant: 0),
-            heartImgBackgroundView.trailingAnchor.constraint(equalTo: heartImg0View.trailingAnchor, constant: 0)
-        ])
-    }
-    
     
     private func heartImg0ViewConstraints() {
         heartImg0View.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            heartImg0View.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 32),
-            heartImg0View.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 172),
-            heartImg0View.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -172)
+            heartImg0View.heightAnchor.constraint(equalTo: heartImg0View.widthAnchor),
+            heartImg0View.centerXAnchor.constraint(equalTo: centerXAnchor),
+            heartImg0View.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 4),
+            heartImg0View.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 172),
+        ])
+    }
+
+    private func startLabelStackViewConstraints() {
+        startLabelStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            startLabelStackView.topAnchor.constraint(equalTo: heartImg0View.bottomAnchor, constant: 34),
+            startLabelStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 32),
+            startLabelStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -76)
         ])
     }
     
+    private func startDateStackViewConstraints() {
+        startDateStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            startDateStackView.topAnchor.constraint(equalTo: startLabelStackView.bottomAnchor, constant: 226),
+            startDateStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            startDateStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 50),
+//            startDateStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 35)
+        ])
+    }
     
     private func rightArrowBtnConstraints() {
         rightArrowBtn.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-//            rightArrowBtn.topAnchor.constraint(equalTo: startDateStackView.bottomAnchor, constant: 272),
-            rightArrowBtn.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -77),
-            rightArrowBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 294 ),
-            rightArrowBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40)
-        ])
-    }
-    
-    private func startLabelStackViewConstraints() {
-        startLabelStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            startLabelStackView.topAnchor.constraint(equalTo: heartImg0View.bottomAnchor, constant: 50),
-            startLabelStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
-            startLabelStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 76)
+            rightArrowBtn.heightAnchor.constraint(equalTo: rightArrowBtn.widthAnchor),
+            rightArrowBtn.topAnchor.constraint(equalTo: startDateStackView.bottomAnchor, constant: 272),
+            rightArrowBtn.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -33),
+            rightArrowBtn.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 294),
+            rightArrowBtn.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40)
         ])
     }
     
     private func startYearTextFieldConstraints() {
         startYearTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            startYearTextField.topAnchor.constraint(equalTo: startYearTextFieldView.topAnchor),
-            startYearTextField.bottomAnchor.constraint(equalTo: startYearTextFieldView .bottomAnchor),
+            startYearTextField.centerYAnchor.constraint(equalTo: startYearTextFieldView.centerYAnchor),
+            startYearTextField.topAnchor.constraint(equalTo: startYearTextFieldView.topAnchor, constant: 7),
             startYearTextField.leadingAnchor.constraint(equalTo: startYearTextFieldView.leadingAnchor, constant: 22),
             startYearTextField.trailingAnchor.constraint(equalTo: startYearTextFieldView.trailingAnchor, constant: -22)
         ])
@@ -256,46 +257,38 @@ class SignUpView: UIView {
     private func startMonthTextFieldConstraints() {
         startMonthTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            startMonthTextField.centerYAnchor.constraint(equalTo: startMonthTextFieldView.centerYAnchor),
             startMonthTextField.topAnchor.constraint(equalTo: startMonthTextFieldView.topAnchor),
-            startMonthTextField.bottomAnchor.constraint(equalTo: startMonthTextFieldView.bottomAnchor),
-            startMonthTextField.leadingAnchor.constraint(equalTo: startMonthTextFieldView.leadingAnchor, constant: 22),
-            startMonthTextField.trailingAnchor.constraint(equalTo: startMonthTextFieldView.trailingAnchor, constant: -22)
+            startMonthTextField.leadingAnchor.constraint(equalTo: startMonthTextFieldView.leadingAnchor, constant: 23),
+            startMonthTextField.trailingAnchor.constraint(equalTo: startMonthTextFieldView.trailingAnchor, constant: -23)
         ])
     }
     
     private func startDayTextFieldConstraints() {
         startDayTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            startDayTextField.centerYAnchor.constraint(equalTo: startDayTextFieldView.centerYAnchor),
             startDayTextField.topAnchor.constraint(equalTo: startDayTextFieldView.topAnchor),
-            startDayTextField.bottomAnchor.constraint(equalTo: startDayTextFieldView.bottomAnchor),
-            startDayTextField.leadingAnchor.constraint(equalTo: startDayTextFieldView.leadingAnchor, constant: 22),
-            startDayTextField.trailingAnchor.constraint(equalTo: startDayTextFieldView.trailingAnchor, constant: -22)
+            startDayTextField.leadingAnchor.constraint(equalTo: startDayTextFieldView.leadingAnchor, constant: 23),
+            startDayTextField.trailingAnchor.constraint(equalTo: startDayTextFieldView.trailingAnchor, constant: -23)
         ])
     }
     
-    private func startDateStackViewConstraints() {
-        startDateStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            startDateStackView.topAnchor.constraint(equalTo: startLabelStackView.bottomAnchor, constant: 226),
-            startDateStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
-            startDateStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -49),
-            startDateStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 35)
-        ])
-    }
+
 
     private func startYearTextFieldViewConstraints() {
-        startYearTextFieldView.translatesAutoresizingMaskIntoConstraints = false
-        startYearTextFieldView.widthAnchor.constraint(equalToConstant: 105).isActive = true
+//        startYearTextFieldView.translatesAutoresizingMaskIntoConstraints = false
+//        startYearTextFieldView.widthAnchor.constraint(equalToConstant: 105).isActive = true
     }
     
     private func startMonthTextFieldViewConstraints() {
         startMonthTextFieldView.translatesAutoresizingMaskIntoConstraints = false
-        startMonthTextFieldView.widthAnchor.constraint(equalToConstant: 86).isActive = true
+        startMonthTextFieldView.widthAnchor.constraint(equalTo: startYearTextFieldView.widthAnchor, multiplier: 0.81).isActive = true
     }
     
     private func startDayTextFieldViewConstraints() {
         startDayTextFieldView.translatesAutoresizingMaskIntoConstraints = false
-        startDayTextFieldView.widthAnchor.constraint(equalToConstant: 86).isActive = true
+        startDayTextFieldView.widthAnchor.constraint(equalTo: startMonthTextFieldView.widthAnchor).isActive = true
     }
 }
 

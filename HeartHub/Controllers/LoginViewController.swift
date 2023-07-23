@@ -5,8 +5,6 @@
 //  Created by 제민우 on 2023/07/07.
 //
 
-// 이슈 : 버튼 타이틀 폰트 크기 자동으로 조정 어떻게 함?
-
 import UIKit
 
 class LoginViewController: UIViewController {
@@ -24,7 +22,7 @@ class LoginViewController: UIViewController {
     }
     
     func setupAddTarget() {
-        loginView.loginBtn.addTarget(self, action: #selector(didTapFindIdButton), for: .touchUpInside)
+        loginView.loginBtn.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
         loginView.findIdBtn.addTarget(self, action: #selector(didTapFindIdButton), for: .touchUpInside)
         loginView.signUpBtn.addTarget(self, action: #selector(didTapSignUpButton), for: .touchUpInside)
         loginView.findPwBtn.addTarget(self, action: #selector(didTapFindPwButton), for: .touchUpInside)

@@ -183,7 +183,7 @@ class FindIdView: UIView {
         let stView = UIStackView(arrangedSubviews: [loginBtn, lineView1, signUpBtn, lineView2, findPwBtn])
         stView.spacing = 10
         stView.axis = .horizontal
-        stView.distribution = .fill
+        stView.distribution = .equalCentering
         stView.alignment = .center
         return stView
     }()
@@ -191,13 +191,17 @@ class FindIdView: UIView {
     // MARK: 뷰 초기화
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        setup()
         addViews()
         constraints()
     }
         
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setup() {
+        emailTextField.delegate = self
     }
     
     func addViews() {
@@ -219,8 +223,6 @@ class FindIdView: UIView {
         heartHubLabelConstraints()
         heartImageViewConstraints()
         emailTextFieldConstraints()
-        emailTextFieldViewConstraints()
-        findIdBtnConstraints()
         emailTfFindIdStackViewConstraints()
         signUpFindIdPwStackViewConstraints()
         lineView1Constraints()
@@ -237,20 +239,19 @@ class FindIdView: UIView {
         ])
     }
     
-    
     private func mountainBackgroundViewConstraints() {
         mountainBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            mountainBackgroundView.topAnchor.constraint(equalTo: topAnchor, constant: 558),
-            mountainBackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 37),
+            mountainBackgroundView.topAnchor.constraint(equalTo: topAnchor, constant: 557.76),
+            mountainBackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 36.5),
             mountainBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -15),
-            mountainBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 113)
+            mountainBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 112.88)
         ])
     }
     private func LoginMountainFrontViewConstraints() {
         LoginMountainFrontView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            LoginMountainFrontView.topAnchor.constraint(equalTo: topAnchor, constant: 422),
+            LoginMountainFrontView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 363),
             LoginMountainFrontView.bottomAnchor.constraint(equalTo: bottomAnchor),
             LoginMountainFrontView.leadingAnchor.constraint(equalTo: leadingAnchor),
             LoginMountainFrontView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -261,35 +262,34 @@ class FindIdView: UIView {
         heartHubBackLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             heartHubBackLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            heartHubBackLabel.topAnchor.constraint(equalTo: topAnchor, constant: 261),
-            heartHubBackLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 63),
-            heartHubBackLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -61),
+            heartHubBackLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 202),
+            heartHubBackLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 63),
         ])
     }
     private func heartHubLabelConstraints() {
         heartHubLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             heartHubLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            heartHubLabel.topAnchor.constraint(equalTo: topAnchor, constant: 261),
-            heartHubLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 63),
-            heartHubLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -63)
+            heartHubLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 202),
+            heartHubLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 63),
         ])
     }
     private func heartImageViewConstraints() {
         heartImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            heartImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             heartImageView.topAnchor.constraint(equalTo: heartHubLabel.bottomAnchor, constant: 33),
-            heartImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 60),
-            heartImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60)
+            heartImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 60),
         ])
     }
     
     private func emailTfFindIdStackViewConstraints() {
         emailTfFindIdBtnStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            emailTfFindIdBtnStackView.topAnchor.constraint(equalTo: heartImageView.bottomAnchor, constant: 49.62),
+            emailTfFindIdBtnStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            emailTfFindIdBtnStackView.topAnchor.constraint(equalTo: heartImageView.bottomAnchor, constant: 78.62),
             emailTfFindIdBtnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 59),
-            emailTfFindIdBtnStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -59),
+
         ])
     }
     
@@ -302,30 +302,15 @@ class FindIdView: UIView {
             emailTextField.trailingAnchor.constraint(equalTo: emailTextFieldView.trailingAnchor, constant: -12),
         ])
     }
-    
-    
-    private func emailTextFieldViewConstraints() {
-        emailTextFieldView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            emailTextFieldView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 48 / screenHeight)
-        ])
-    }
-    
-    private func findIdBtnConstraints() {
-        findIdBtn.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            findIdBtn.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 48 / screenHeight)
-        ])
-    }
+
     
     private func signUpFindIdPwStackViewConstraints() {
         signUpFindIdPwStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             signUpFindIdPwStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             signUpFindIdPwStackView.topAnchor.constraint(equalTo: emailTfFindIdBtnStackView.bottomAnchor, constant: 28),
-//            signUpFindIdPwStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -46),
+                  signUpFindIdPwStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 12),
             signUpFindIdPwStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 69),
-            signUpFindIdPwStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -69),
         ])
     }
     
@@ -333,21 +318,15 @@ class FindIdView: UIView {
         lineView1.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             lineView1.widthAnchor.constraint(equalToConstant: 1),
-            lineView1.topAnchor.constraint(equalTo: signUpFindIdPwStackView.topAnchor, constant: 8),
-            lineView1.bottomAnchor.constraint(equalTo: signUpFindIdPwStackView.bottomAnchor, constant: -8),
-            lineView1.leadingAnchor.constraint(equalTo: loginBtn.trailingAnchor, constant: 10),
-            lineView1.trailingAnchor.constraint(equalTo: signUpBtn.leadingAnchor, constant: -10)
+            lineView1.heightAnchor.constraint(equalTo: signUpBtn.heightAnchor, multiplier: 0.5)
         ])
     }
-    
+
     private func lineView2Constraints() {
         lineView2.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             lineView2.widthAnchor.constraint(equalToConstant: 1),
-            lineView2.topAnchor.constraint(equalTo: signUpFindIdPwStackView.topAnchor, constant: 8),
-            lineView2.bottomAnchor.constraint(equalTo: signUpFindIdPwStackView.bottomAnchor, constant: -8),
-            lineView2.leadingAnchor.constraint(equalTo: signUpBtn.trailingAnchor, constant: 10),
-            lineView2.trailingAnchor.constraint(equalTo: findPwBtn.leadingAnchor, constant: -10)
+            lineView2.heightAnchor.constraint(equalTo: lineView1.heightAnchor)
         ])
     }
 }
