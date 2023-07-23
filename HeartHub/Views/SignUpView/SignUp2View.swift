@@ -9,11 +9,9 @@ import UIKit
 import DLRadioButton
 
 class SignUp2View: UIView {
-    
     let textViewHeight: CGFloat = 35
     
-    // MARK: 하트이미지
-    
+// MARK: 하트이미지
     // 하트이미지 1/3
     private lazy var heartImg1View: UIImageView = {
         var img = UIImageView()
@@ -23,7 +21,7 @@ class SignUp2View: UIView {
         return img
     }()
     
-    // MARK: 이전화면 버튼 다음화면 버튼
+// MARK: 이전화면 버튼 다음화면 버튼
     lazy var leftArrowBtn: UIButton = {
         let btn = UIButton()
         btn.layer.masksToBounds = false
@@ -314,6 +312,8 @@ class SignUp2View: UIView {
         btn.layer.cornerRadius = 18
         btn.layer.borderWidth = 1
         btn.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
+        
+        // 라디오버튼 구현
         let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
         btn.setImage(unCheckedImg, for: .normal)
         btn.imageView?.contentMode = .scaleAspectFit
@@ -328,7 +328,7 @@ class SignUp2View: UIView {
         label.text = "남"
         label.font = UIFont(name: "Pretendard-Regular", size: 14)
         label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
+//        label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
         return label
     }()
@@ -340,6 +340,7 @@ class SignUp2View: UIView {
         btn.layer.cornerRadius = 18
         btn.layer.borderWidth = 1
         btn.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)        
+        
         // 라디오버튼 구현
         let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
         btn.setImage(unCheckedImg, for: .normal)
@@ -355,7 +356,7 @@ class SignUp2View: UIView {
         label.text = "여"
         label.font = UIFont(name: "Pretendard-Regular", size: 14)
         label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
+//        label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
         return label
     }()

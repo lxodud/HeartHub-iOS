@@ -127,6 +127,27 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		56348A8A2A6DB17C005BB635 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				569E4EDA2A5C241B00B51898 /* LoginView.swift */,
+				56348A622A631283005BB635 /* FindIdView.swift */,
+				56348A662A6318B0005BB635 /* FindIdPopUpView.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		56348A8D2A6DB4CE005BB635 /* SignUpView */ = {
+			isa = PBXGroup;
+			children = (
+				569E4EE32A5CE18E00B51898 /* SignUpView.swift */,
+				569E4EE52A5D06C400B51898 /* SignUp2View.swift */,
+				569E4EEA2A5D40E800B51898 /* SignUp3View.swift */,
+				569E4EEC2A5D499900B51898 /* SignUp4View.swift */,
+			);
+			path = SignUpView;
+			sourceTree = "<group>";
+		};
 		569E4ECD2A5B036C00B51898 /* SignUpVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,13 +173,8 @@
 		569E4ED82A5C231000B51898 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				569E4EDA2A5C241B00B51898 /* LoginView.swift */,
-				569E4EE32A5CE18E00B51898 /* SignUpView.swift */,
-				569E4EE52A5D06C400B51898 /* SignUp2View.swift */,
-				569E4EEA2A5D40E800B51898 /* SignUp3View.swift */,
-				569E4EEC2A5D499900B51898 /* SignUp4View.swift */,
-				56348A622A631283005BB635 /* FindIdView.swift */,
-				56348A662A6318B0005BB635 /* FindIdPopUpView.swift */,
+				56348A8A2A6DB17C005BB635 /* LoginView */,
+				56348A8D2A6DB4CE005BB635 /* SignUpView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
