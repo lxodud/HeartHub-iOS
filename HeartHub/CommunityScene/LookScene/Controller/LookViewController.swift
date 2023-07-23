@@ -1,14 +1,14 @@
 //
-//  DailyViewController.swift
+//  LookViewController.swift
 //  HeartHub
 //
-//  Created by 이태영 on 2023/07/06.
+//  Created by 이태영 on 2023/07/20.
 //
 
 import UIKit
 
-final class DailyDateViewController: UIViewController {
-    private let dailyCollectionView: UICollectionView = {
+final class LookViewController: UIViewController {
+    private let lookCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
@@ -21,14 +21,14 @@ final class DailyDateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureDailyCollectionView()
+        configureLookCollectionView()
         configureSubview()
         configureLayout()
     }
 }
 
 // MARK: UICollectionView Delegate FlowLayout Implementation
-extension DailyDateViewController: UICollectionViewDelegateFlowLayout {
+extension LookViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -37,29 +37,27 @@ extension DailyDateViewController: UICollectionViewDelegateFlowLayout {
         let width = view.frame.width
         let estimateHeight = view.frame.height
         let size = CGRect(x: 0, y: 0, width: width, height: estimateHeight)
-        var dummyCell: CommunityCellable
+        let dummyCell = LookCell(frame: size)
         
-        if mockData[indexPath.row].images.isEmpty {
-            dummyCell = DailyDateNoImageCell(frame: size)
-        } else {
-            dummyCell = DailyDateImageCell(frame: size)
-        }
-        
+        dummyCell.configureCell(mockData[indexPath.row])
         dummyCell.layoutIfNeeded()
         
-        let height = dummyCell.fetchAdjustedHeight()
+        var height = dummyCell.fetchAdjustedHeight()
+        
+        if height > 542 {
+            height = 542
+        }
         
         return CGSize(width: width, height: height)
     }
 }
 
 // MARK: UICollectionView DataSource Implementation
-extension DailyDateViewController: UICollectionViewDataSource {
+extension LookViewController: UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        
         return mockData.count
     }
     
@@ -68,18 +66,10 @@ extension DailyDateViewController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         
-        let cellType: CommunityCellable.Type
-        
-        if mockData[indexPath.row].images.isEmpty {
-            cellType = DailyDateNoImageCell.self
-        } else {
-            cellType = DailyDateImageCell.self
-        }
-        
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: cellType.reuseIdentifier,
-            for: indexPath
-        ) as? CommunityCellable else {
+            withReuseIdentifier: LookCell.reuseIdentifier,
+            for: indexPath) as? LookCell
+        else {
             return UICollectionViewCell()
         }
         
@@ -90,43 +80,38 @@ extension DailyDateViewController: UICollectionViewDataSource {
 }
 
 // MARK: Configure CollectionView
-extension DailyDateViewController {
-    private func configureDailyCollectionView()  {
-        dailyCollectionView.dataSource = self
-        dailyCollectionView.delegate = self
-        
-        dailyCollectionView.register(
-            DailyDateImageCell.self,
-            forCellWithReuseIdentifier: DailyDateImageCell.reuseIdentifier
-        )
-        dailyCollectionView.register(
-            DailyDateNoImageCell.self,
-            forCellWithReuseIdentifier: DailyDateNoImageCell.reuseIdentifier
+extension LookViewController {
+    private func configureLookCollectionView()  {
+        lookCollectionView.dataSource = self
+        lookCollectionView.delegate = self
+        lookCollectionView.register(
+            LookCell.self,
+            forCellWithReuseIdentifier: LookCell.reuseIdentifier
         )
     }
 }
 
 // MARK: Configure UI
-extension DailyDateViewController {
+extension LookViewController {
     private func configureSubview() {
-        view.addSubview(dailyCollectionView)
-        dailyCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(lookCollectionView)
+        lookCollectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func configureLayout() {
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            dailyCollectionView.topAnchor.constraint(
+            lookCollectionView.topAnchor.constraint(
                 equalTo: safeArea.topAnchor
             ),
-            dailyCollectionView.leadingAnchor.constraint(
+            lookCollectionView.leadingAnchor.constraint(
                 equalTo: safeArea.leadingAnchor
             ),
-            dailyCollectionView.trailingAnchor.constraint(
+            lookCollectionView.trailingAnchor.constraint(
                 equalTo: safeArea.trailingAnchor
             ),
-            dailyCollectionView.bottomAnchor.constraint(
+            lookCollectionView.bottomAnchor.constraint(
                 equalTo: safeArea.bottomAnchor
             ),
         ])

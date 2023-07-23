@@ -7,15 +7,15 @@
 
 import UIKit
 
-protocol DailyDateCellable: UICollectionViewCell, CommunityCellProfileViewDelegate, CommunityCellBottomButtonViewDelegate {
-    var delegate: DailyDateCellDelegate? { get set }
+protocol CommunityCellable: UICollectionViewCell, CommunityCellProfileViewDelegate, CommunityCellBottomButtonViewDelegate {
+    var delegate: CommunityCellDelegate? { get set }
     
     func fetchAdjustedHeight() -> CGFloat
     func configureCell(_ data: MockData)
 }
 
 // MARK: Profile View Delegate Implementation
-extension DailyDateCellable {
+extension CommunityCellable {
     func didTapUserProfile() {
         delegate?.didTapUserProfile()
     }
@@ -26,7 +26,7 @@ extension DailyDateCellable {
 }
 
 // MARK: BottomButton Delegate Implementation
-extension DailyDateCellable {
+extension CommunityCellable {
     func didTapThumbButton() {
         delegate?.didTapThumbButton()
     }
