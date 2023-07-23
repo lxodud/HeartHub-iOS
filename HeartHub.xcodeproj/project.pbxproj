@@ -22,6 +22,8 @@
 		0C5929F52A6ADB4500C21570 /* CommunityFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929F42A6ADB4500C21570 /* CommunityFloatingButton.swift */; };
 		0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929F62A6D3EA800C21570 /* PanModalPresentationController.swift */; };
 		0C5929FE2A6D481400C21570 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929FD2A6D481400C21570 /* BlurView.swift */; };
+		0C592A012A6D69AF00C21570 /* PanModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C592A002A6D69AF00C21570 /* PanModalTransitioningDelegate.swift */; };
+		0C592A042A6D720700C21570 /* PanModalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C592A032A6D720700C21570 /* PanModalAnimator.swift */; };
 		0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */; };
 		0CB49BDA2A69234A00C77341 /* LookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB49BD92A69234A00C77341 /* LookViewController.swift */; };
 		0CB49BDC2A69237400C77341 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB49BDB2A69237400C77341 /* MockData.swift */; };
@@ -50,6 +52,8 @@
 		0C5929F42A6ADB4500C21570 /* CommunityFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityFloatingButton.swift; sourceTree = "<group>"; };
 		0C5929F62A6D3EA800C21570 /* PanModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalPresentationController.swift; sourceTree = "<group>"; };
 		0C5929FD2A6D481400C21570 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		0C592A002A6D69AF00C21570 /* PanModalTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalTransitioningDelegate.swift; sourceTree = "<group>"; };
+		0C592A032A6D720700C21570 /* PanModalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalAnimator.swift; sourceTree = "<group>"; };
 		0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateViewController.swift; sourceTree = "<group>"; };
 		0CB49BD92A69234A00C77341 /* LookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookViewController.swift; sourceTree = "<group>"; };
 		0CB49BDB2A69237400C77341 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
@@ -83,7 +87,6 @@
 				0C382E322A5C564000EA08E0 /* CommunityCellBottomButtonView.swift */,
 				0C5929F42A6ADB4500C21570 /* CommunityFloatingButton.swift */,
 				0C43F60E2A659C4E00EED860 /* CommunityCellPagingImageView */,
-				0C4D32FB2A6830F000AD5EFF /* Protocol */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -99,7 +102,6 @@
 		0C382E2A2A5B016800EA08E0 /* DailyDateScene */ = {
 			isa = PBXGroup;
 			children = (
-				0C4D32FA2A6830CC00AD5EFF /* Protocol */,
 				0C43F6162A6676AB00EED860 /* View */,
 				0C382E2B2A5B018D00EA08E0 /* Controller */,
 			);
@@ -123,13 +125,13 @@
 			path = CommunityCellPagingImageView;
 			sourceTree = "<group>";
 		};
-		0C43F6112A659CB000EED860 /* Utils */ = {
+		0C43F6112A659CB000EED860 /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				0C43F6122A659CD800EED860 /* Reusable.swift */,
 				0CB49BDB2A69237400C77341 /* MockData.swift */,
 			);
-			path = Utils;
+			path = Util;
 			sourceTree = "<group>";
 		};
 		0C43F6162A6676AB00EED860 /* View */ = {
@@ -149,20 +151,13 @@
 			path = DailyDateCell;
 			sourceTree = "<group>";
 		};
-		0C4D32FA2A6830CC00AD5EFF /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				0C4D32F82A6825FF00AD5EFF /* CommunityCellable.swift */,
-				0C4D32FC2A68312C00AD5EFF /* CommunityCellDelegate.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
 		0C4D32FB2A6830F000AD5EFF /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
 				0C4D32FE2A68315B00AD5EFF /* CommunityCellProfileViewDelegate.swift */,
 				0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */,
+				0C4D32F82A6825FF00AD5EFF /* CommunityCellable.swift */,
+				0C4D32FC2A68312C00AD5EFF /* CommunityCellDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -170,6 +165,8 @@
 		0C5929FA2A6D47D700C21570 /* CommentScene */ = {
 			isa = PBXGroup;
 			children = (
+				0C592A022A6D6C7F00C21570 /* Util */,
+				0C5929FF2A6D693F00C21570 /* Protocol */,
 				0C5929FB2A6D47EB00C21570 /* View */,
 				0C5929FC2A6D47F000C21570 /* Controller */,
 			);
@@ -192,10 +189,27 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		0C5929FF2A6D693F00C21570 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				0C592A032A6D720700C21570 /* PanModalAnimator.swift */,
+				0C592A002A6D69AF00C21570 /* PanModalTransitioningDelegate.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		0C592A022A6D6C7F00C21570 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		0C809A1C2A56D17F009EC362 /* CommunityScene */ = {
 			isa = PBXGroup;
 			children = (
-				0C43F6112A659CB000EED860 /* Utils */,
+				0C43F6112A659CB000EED860 /* Util */,
+				0C4D32FB2A6830F000AD5EFF /* Protocol */,
 				0C382E242A5950AF00EA08E0 /* View */,
 				0C382E292A59A1F100EA08E0 /* Controller */,
 				0C382E2A2A5B016800EA08E0 /* DailyDateScene */,
@@ -336,6 +350,7 @@
 				0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */,
 				0CF732452A65653500ED3B01 /* CommunityCellPagingImageView.swift in Sources */,
 				0C382E282A5994A700EA08E0 /* CommunityViewController.swift in Sources */,
+				0C592A042A6D720700C21570 /* PanModalAnimator.swift in Sources */,
 				0CB49BDF2A69526500C77341 /* LookCell.swift in Sources */,
 				0C4D32F92A6825FF00AD5EFF /* CommunityCellable.swift in Sources */,
 				0CB49BDA2A69234A00C77341 /* LookViewController.swift in Sources */,
@@ -344,6 +359,7 @@
 				0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */,
 				0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */,
 				0C43F6152A66767700EED860 /* DailyDateImageCell.swift in Sources */,
+				0C592A012A6D69AF00C21570 /* PanModalTransitioningDelegate.swift in Sources */,
 				0C4D33012A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift in Sources */,
 				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
 				0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */,
