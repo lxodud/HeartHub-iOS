@@ -69,13 +69,16 @@ class FindIdView: UIView {
     
     // MARK: 이메일입력
     // 이메일 입력 텍스트 필드
-    private lazy var emailTextField: UITextField = {
+    lazy var emailTextField: UITextField = {
         var tf = UITextField()
         tf.backgroundColor = .clear
         tf.textColor = .white
         tf.keyboardType = .emailAddress
+        tf.autocapitalizationType = .none
+        tf.autocorrectionType = .no
+        tf.spellCheckingType = .no
         tf.attributedPlaceholder = NSAttributedString(
-                string: "아이디를 입력하세요.",
+                string: "이메일을 입력하세요.",
                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.white,
                              NSAttributedString.Key.font: UIFont(name: "Pretendard-Regular", size: 16)!
                             ])
@@ -95,7 +98,7 @@ class FindIdView: UIView {
         return view
     }()
 
-    // 아이디 찾기
+    // 아이디 찾기 버튼
     lazy var findIdBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .white
@@ -119,14 +122,14 @@ class FindIdView: UIView {
         return stview
     }()
     
-    // MARK: 아디디 찾기 + 회원가입 + 비밀번호찾기 버튼
+    // MARK: 아이디 찾기 + 회원가입 + 비밀번호찾기 버튼
     // 아이디 찾기 버튼
-    lazy var unActivatedFindIdBtn: UIButton = {
+    lazy var loginBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
         button.setTitle("로그인", for: .normal)
         button.titleLabel?.textAlignment = .center
-        button.setTitleColor(UIColor(red: 1, green: 0.758, blue: 0.918, alpha: 1), for: .normal)
+        button.setTitleColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Pretendard-Regular", size: 16)
        // button.sizeToFit()
         button.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -177,7 +180,7 @@ class FindIdView: UIView {
     
     // 아이디찾기 + 선 + 회원가입 + 선 + 비밀번호 찾기 버튼 스택뷰
     lazy var signUpFindIdPwStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [unActivatedFindIdBtn, lineView1, signUpBtn, lineView2, findPwBtn])
+        let stView = UIStackView(arrangedSubviews: [loginBtn, lineView1, signUpBtn, lineView2, findPwBtn])
         stView.spacing = 10
         stView.axis = .horizontal
         stView.distribution = .fill
@@ -278,7 +281,6 @@ class FindIdView: UIView {
             heartImageView.topAnchor.constraint(equalTo: heartHubLabel.bottomAnchor, constant: 33),
             heartImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 60),
             heartImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60)
-            
         ])
     }
     
@@ -333,7 +335,7 @@ class FindIdView: UIView {
             lineView1.widthAnchor.constraint(equalToConstant: 1),
             lineView1.topAnchor.constraint(equalTo: signUpFindIdPwStackView.topAnchor, constant: 8),
             lineView1.bottomAnchor.constraint(equalTo: signUpFindIdPwStackView.bottomAnchor, constant: -8),
-            lineView1.leadingAnchor.constraint(equalTo: unActivatedFindIdBtn.trailingAnchor, constant: 10),
+            lineView1.leadingAnchor.constraint(equalTo: loginBtn.trailingAnchor, constant: 10),
             lineView1.trailingAnchor.constraint(equalTo: signUpBtn.leadingAnchor, constant: -10)
         ])
     }
@@ -349,3 +351,59 @@ class FindIdView: UIView {
         ])
     }
 }
+
+extension FindIdView: UITextFieldDelegate {
+    
+    // 키보드 엔터키가 눌렸을때 (다음 동작을 허락할 것인지)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // 두개의 텍스트필드를 모두 종료 (키보드 내려가기)
+        if emailTextField.text != "" {
+            emailTextField.resignFirstResponder()
+        }
+            return true
+        }
+    
+    // 텍스트필드 이외의 영역을 눌렀을때 키보드 내려가도록
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        emailTextField.resignFirstResponder()
+    }
+    
+            
+    // 텍스트필드 별 글자수 제한
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        // 백스페이스 감지
+        if let char = string.cString(using: String.Encoding.utf8) {
+            let isBackSpace = strcmp(char, "\\b")
+            if isBackSpace == -92 {
+                return true
+            }
+        }
+        
+        guard let text = textField.text else {
+            return true
+        }
+        
+        let maxLength: Int
+        var allowedCharacterSet: CharacterSet
+        
+        if textField == emailTextField {
+            maxLength = 100
+            allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'*+-/=?^_`{|}~.(),:;<>@")
+        } else {
+            return false
+        }
+        
+        let newLength = text.count + string.count - range.length
+        
+        if newLength <= maxLength {
+            let characterSet = CharacterSet(charactersIn: string)
+            return allowedCharacterSet.isSuperset(of: characterSet)
+        } else {
+            return false
+        }
+
+    }
+    
+}
+

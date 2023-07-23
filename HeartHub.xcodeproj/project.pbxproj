@@ -20,8 +20,8 @@
 		5626B34D2A5993A700477EBC /* SignUp4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B34C2A5993A700477EBC /* SignUp4ViewController.swift */; };
 		56348A632A631283005BB635 /* FindIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A622A631283005BB635 /* FindIdView.swift */; };
 		56348A652A631449005BB635 /* FindIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A642A631449005BB635 /* FindIdViewController.swift */; };
-		56348A672A6318B0005BB635 /* HeartHubModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A662A6318B0005BB635 /* HeartHubModalView.swift */; };
-		56348A692A6319EA005BB635 /* heartHubModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A682A6319EA005BB635 /* heartHubModalViewController.swift */; };
+		56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A662A6318B0005BB635 /* FindIdPopUpView.swift */; };
+		56348A692A6319EA005BB635 /* FindIdPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A682A6319EA005BB635 /* FindIdPopUpViewController.swift */; };
 		569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EDA2A5C241B00B51898 /* LoginView.swift */; };
 		569E4EE42A5CE18E00B51898 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE32A5CE18E00B51898 /* SignUpView.swift */; };
 		569E4EE62A5D06C400B51898 /* SignUp2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE52A5D06C400B51898 /* SignUp2View.swift */; };
@@ -50,8 +50,8 @@
 		5626B34C2A5993A700477EBC /* SignUp4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp4ViewController.swift; sourceTree = "<group>"; };
 		56348A622A631283005BB635 /* FindIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdView.swift; sourceTree = "<group>"; };
 		56348A642A631449005BB635 /* FindIdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FindIdViewController.swift; path = HeartHub/Views/FindIdViewController.swift; sourceTree = SOURCE_ROOT; };
-		56348A662A6318B0005BB635 /* HeartHubModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartHubModalView.swift; sourceTree = "<group>"; };
-		56348A682A6319EA005BB635 /* heartHubModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = heartHubModalViewController.swift; sourceTree = "<group>"; };
+		56348A662A6318B0005BB635 /* FindIdPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdPopUpView.swift; sourceTree = "<group>"; };
+		56348A682A6319EA005BB635 /* FindIdPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdPopUpViewController.swift; sourceTree = "<group>"; };
 		569E4EDA2A5C241B00B51898 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		569E4EE32A5CE18E00B51898 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		569E4EE52A5D06C400B51898 /* SignUp2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp2View.swift; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 				5626B34A2A59938700477EBC /* SignUp3ViewController.swift */,
 				5626B34C2A5993A700477EBC /* SignUp4ViewController.swift */,
 				56348A642A631449005BB635 /* FindIdViewController.swift */,
-				56348A682A6319EA005BB635 /* heartHubModalViewController.swift */,
+				56348A682A6319EA005BB635 /* FindIdPopUpViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -158,7 +158,7 @@
 				569E4EEA2A5D40E800B51898 /* SignUp3View.swift */,
 				569E4EEC2A5D499900B51898 /* SignUp4View.swift */,
 				56348A622A631283005BB635 /* FindIdView.swift */,
-				56348A662A6318B0005BB635 /* HeartHubModalView.swift */,
+				56348A662A6318B0005BB635 /* FindIdPopUpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -176,7 +176,6 @@
 				15B862B20CFD240D7E3F016F /* Pods-HeartHub.debug.xcconfig */,
 				9B22F018AA19302771485F16 /* Pods-HeartHub.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -307,11 +306,11 @@
 				5626B3372A584A3D00477EBC /* SignUpViewController.swift in Sources */,
 				569E4EE42A5CE18E00B51898 /* SignUpView.swift in Sources */,
 				5626B3452A597FA200477EBC /* SignUp2ViewController.swift in Sources */,
-				56348A672A6318B0005BB635 /* HeartHubModalView.swift in Sources */,
+				56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */,
 				5626B34D2A5993A700477EBC /* SignUp4ViewController.swift in Sources */,
 				5626B34B2A59938700477EBC /* SignUp3ViewController.swift in Sources */,
 				569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */,
-				56348A692A6319EA005BB635 /* heartHubModalViewController.swift in Sources */,
+				56348A692A6319EA005BB635 /* FindIdPopUpViewController.swift in Sources */,
 				5626B3412A59691A00477EBC /* BlurClass.swift in Sources */,
 				569E4EE62A5D06C400B51898 /* SignUp2View.swift in Sources */,
 			);
