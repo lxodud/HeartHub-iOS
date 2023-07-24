@@ -26,21 +26,27 @@ extension PanModalAnimator {
         transitionContext: UIViewControllerContextTransitioning
     ) {
         guard let toViewController = transitionContext.viewController(forKey: .to),
-              let fromViewController = transitionContext.viewController(forKey: .from),
-              let presentedView = toViewController.presentedViewController?.view
+              let fromViewController = transitionContext.viewController(forKey: .from)
         else {
             return
         }
         
+        fromViewController.beginAppearanceTransition(false, animated: true)
+        
         let yPosition = transitionContext.containerView.frame.height / 2
         
+        guard let presentedView = fromViewController.presentedViewController?.view else {
+            return
+        }
+        
         presentedView.frame = transitionContext.finalFrame(for: toViewController)
+        presentedView.frame.origin.y = transitionContext.containerView.frame.height
         
         UIView.animate(
             withDuration: 0.3,
             delay: 0,
-            usingSpringWithDamping: 0.5,
-            initialSpringVelocity: 0.5,
+            usingSpringWithDamping: 0.8,
+            initialSpringVelocity: 0,
             animations: {
                 presentedView.frame.origin.y = yPosition
             },
@@ -59,13 +65,15 @@ extension PanModalAnimator {
             return
         }
         
+        toViewController.beginAppearanceTransition(false, animated: true)
+        
         let yPosition = transitionContext.containerView.frame.height
         
         UIView.animate(
-            withDuration: 0.3,
+            withDuration: 0.5,
             delay: 0,
-            usingSpringWithDamping: 0.5,
-            initialSpringVelocity: 0.5,
+            usingSpringWithDamping: 0.8,
+            initialSpringVelocity: 0,
             animations: {
                 presentedView.frame.origin.y = yPosition
             },
@@ -81,7 +89,7 @@ extension PanModalAnimator: UIViewControllerAnimatedTransitioning {
     func transitionDuration(
         using transitionContext: UIViewControllerContextTransitioning?
     ) -> TimeInterval {
-        return 0.3
+        return 0.4
     }
     
     func animateTransition(

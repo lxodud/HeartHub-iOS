@@ -30,6 +30,7 @@ final class BlurView: UIView {
     init(backgroundColor: UIColor = UIColor.black.withAlphaComponent(0.7)) {
         super.init(frame: .zero)
         self.backgroundColor = backgroundColor
+        self.alpha = 0.0
     }
     
     required init?(coder: NSCoder) {

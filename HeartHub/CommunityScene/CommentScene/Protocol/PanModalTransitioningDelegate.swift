@@ -19,14 +19,7 @@ extension PanModalTransitioningDelegate: UIViewControllerTransitioningDelegate {
         presenting: UIViewController,
         source: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
-        return nil
-    }
-    
-    func animationController(
-        forDismissed dismissed: UIViewController
-    ) -> UIViewControllerAnimatedTransitioning?
-    {
-        return nil
+        return PanModalAnimator(transitionStyle: .presentation)
     }
     
     func presentationController(
@@ -34,6 +27,15 @@ extension PanModalTransitioningDelegate: UIViewControllerTransitioningDelegate {
         presenting: UIViewController?,
         source: UIViewController
     ) -> UIPresentationController? {
-        return nil
+        return PanModalPresentationController(
+            presentedViewController: presented,
+            presenting: presenting
+        )
+    }
+    
+    func animationController(
+        forDismissed dismissed: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning?{
+        return PanModalAnimator(transitionStyle: .dismissal)
     }
 }
