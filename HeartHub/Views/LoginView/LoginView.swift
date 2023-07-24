@@ -13,7 +13,7 @@ class LoginView: UIView {
     // 백그라운드 화면
     private let backgroundView: UIImageView = {
         var imgView = UIImageView()
-        imgView.contentMode = .scaleAspectFill
+        imgView.contentMode = .scaleAspectFit
         imgView.image = UIImage(named: "BackgroundGradient.png")
         return imgView
     }()
@@ -21,7 +21,7 @@ class LoginView: UIView {
     // 백그라운드 산
     private let mountainBackgroundView: UIImageView = {
         var imgView = UIImageView()
-        imgView.contentMode = .scaleAspectFill
+        imgView.contentMode = .scaleAspectFit
         imgView.image = UIImage(named: "MountainBackground.png")
         return imgView
     }()
@@ -29,7 +29,7 @@ class LoginView: UIView {
     // 산이미지 앞에 gradient
     private let LoginMountainFrontView: UIImageView = {
         var imgView = UIImageView()
-        imgView.contentMode = .scaleAspectFill
+        imgView.contentMode = .scaleAspectFit
         imgView.image = UIImage(named: "LoginMountainFront.png")
         return imgView
     }()
@@ -42,30 +42,16 @@ class LoginView: UIView {
         return imgView
     }()
     
-    // MARK: HeartHub main Label
-    // mainLabel
-    private let heartHubLabel: UILabel = {
-        let label = UILabel()
-        label.text = "HeartHuB"
-        label.font = UIFont(name: "Pretendard-SemiBold", size: 60)
-        label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
-        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        return label
+    // MARK: HeartHub main Label Image
+    private let HeartHubMainLabelImageView: UIImageView = {
+        var imgView = UIImageView()
+        imgView.contentMode = .scaleAspectFit
+        imgView.image = UIImage(named: "HeartHubMainLabel")
+        return imgView
     }()
     
-    private let heartHubBackLabel: BlurredLabel = {
-        let label = BlurredLabel()
-        label.text = "HeartHuB"
-        label.font = UIFont(name: "Pretendard-SemiBold", size: 60)
-        label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
-        label.clipsToBounds = false
-        label.textColor = #colorLiteral(red: 0.98, green: 0.18, blue: 0.74, alpha: 1)
-        label.isBlurring = true
-        return label
-    }()
     
+
 // MARK: ID,PW 입력, 로그인 버튼
     // 아이디 입력 텍스트 필드
     private lazy var idEnterTextField: UITextField = {
@@ -237,8 +223,7 @@ class LoginView: UIView {
         [backgroundView,
          mountainBackgroundView,
          LoginMountainFrontView,
-         heartHubBackLabel,
-         heartHubLabel,
+         HeartHubMainLabelImageView,
          heartImageView,
          idPwLoginBtnStackView,
          signUpFindIdPwStackView].forEach { addSubview($0) }
@@ -253,8 +238,8 @@ class LoginView: UIView {
         backgroundViewConstraints()
         mountainBackgroundViewConstraints()
         LoginMountainFrontViewConstraints()
-        heartHubBackLabelConstraints()
-        heartHubLabelConstraints()
+        heartHubMainLabelImageViewConstraints()
+
         heartImageViewConstraints()
         idEnterTextFieldConstraints()
         pwEnterTextFieldConstraints()
@@ -278,42 +263,36 @@ class LoginView: UIView {
         mountainBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             mountainBackgroundView.topAnchor.constraint(equalTo: topAnchor, constant: 557.76),
-            mountainBackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 36.5),
-            mountainBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -15),
-            mountainBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 112.88)
+            mountainBackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 6),
+            mountainBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            mountainBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
+    
     private func LoginMountainFrontViewConstraints() {
         LoginMountainFrontView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             LoginMountainFrontView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 363),
-            LoginMountainFrontView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            LoginMountainFrontView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 6),
             LoginMountainFrontView.leadingAnchor.constraint(equalTo: leadingAnchor),
             LoginMountainFrontView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
         ])
     }
-    private func heartHubBackLabelConstraints() {
-        heartHubBackLabel.translatesAutoresizingMaskIntoConstraints = false
+    
+    private func heartHubMainLabelImageViewConstraints() {
+        HeartHubMainLabelImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            heartHubBackLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            heartHubBackLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 202),
-            heartHubBackLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 63),
+            HeartHubMainLabelImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            HeartHubMainLabelImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 202),
+            HeartHubMainLabelImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 63),
         ])
     }
-    private func heartHubLabelConstraints() {
-        heartHubLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            heartHubLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            heartHubLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 202),
-            heartHubLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 63),
-        ])
-    }
+
     private func heartImageViewConstraints() {
         heartImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             heartImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            heartImageView.topAnchor.constraint(equalTo: heartHubLabel.bottomAnchor, constant: 33),
+            heartImageView.topAnchor.constraint(equalTo: HeartHubMainLabelImageView.bottomAnchor, constant: 33),
             heartImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 60),
         ])
     }
