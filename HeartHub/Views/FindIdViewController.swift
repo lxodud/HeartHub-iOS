@@ -40,10 +40,6 @@ class FindIdViewController: UIViewController {
         let idPattern = #"^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"#
         let isVaildPattern = (findIdView.emailTextField.text!.range(of: idPattern, options: .regularExpression) != nil)
         if isVaildPattern {
-//            let heartHubModalVC = heartHubModalViewController()
-//            heartHubModalVC.modalPresentationStyle = .formSheet
-//            present(heartHubModalVC, animated: true, completion: nil)
-            
             let findIdModalVC = FindIdPopUpViewController()
             findIdModalVC.modalPresentationStyle = .overFullScreen
             present(findIdModalVC, animated: true, completion: nil)
@@ -59,24 +55,8 @@ class FindIdViewController: UIViewController {
     }
     
     @objc private func didTapFindPwButton() {
-        // let findPwVC = FindPwViewController()
-        // present(findPwVC, animated: true, completion: nil)
+         let findPwVC = FindPwViewController()
+         findPwVC.modalPresentationStyle = .fullScreen
+         present(findPwVC, animated: true, completion: nil)
     }
-    
-
-//    func showFindIdModalView() {
-//        view.backgroundColor = .systemGray
-//        let findIdModalView = findIdModalView()
-//        findIdModalView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        findIdModalView.backgroundColor = .white
-//        findIdModalView.clipsToBounds = true
-//        findIdModalView.layer.cornerRadius = 20
-//        NSLayoutConstraint.activate([
-//            findIdModalView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            findIdModalView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            findIdModalView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 153),
-//            findIdModalView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30)
-//        ])
-//    }
 }

@@ -35,8 +35,9 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func didTapFindPwButton() {
-        // let findPwVC = FindPwViewController()
-        // present(findPwVC, animated: true, completion: nil)
+         let findPwVC = FindPwViewController()
+         findPwVC.modalPresentationStyle = .fullScreen
+         present(findPwVC, animated: true, completion: nil)
     }
     
     @objc private func didTapSignUpButton() {

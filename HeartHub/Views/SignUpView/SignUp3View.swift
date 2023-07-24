@@ -11,7 +11,7 @@ import DropDown
 class SignUp3View: UIView {
     
     let screenHeight = UIScreen.main.bounds.size.height
-    let textViewHeight: CGFloat = 35
+//    let textViewHeight: CGFloat = 35
 
     // MARK: 하트이미지
     // 하트이미지 1/3
@@ -113,8 +113,8 @@ class SignUp3View: UIView {
         dropDown.textFont = UIFont(name: "Pretendard-Regular", size: 14)!
         dropDown.backgroundColor = .white
         dropDown.anchorView = emailTextFieldView
-        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
-        dropDown.width = 115
+        dropDown.bottomOffset = CGPoint(x: 215, y:(dropDown.anchorView?.plainView.bounds.height)!)
+        dropDown.width = 117
         dropDown.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         dropDown.dismissMode = .onTap
         dropDown.separatorColor = #colorLiteral(red: 0.850980401, green: 0.850980401, blue: 0.850980401, alpha: 1)
@@ -270,7 +270,7 @@ class SignUp3View: UIView {
         
         startLabelStackViewConstraints()
         
-        emailTextFieldViewConstraints()
+//        emailTextFieldViewConstraints()
         emailTextFieldConstraints()
         emailFormatDescriptionLabelConstraints()
         
@@ -323,12 +323,12 @@ class SignUp3View: UIView {
         ])
     }
     
-    private func emailTextFieldViewConstraints() {
-        emailTextFieldView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            emailTextFieldView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: textViewHeight / screenHeight)
-        ])
-    }
+//    private func emailTextFieldViewConstraints() {
+//        emailTextFieldView.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            emailTextFieldView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: textViewHeight / screenHeight)
+//        ])
+//    }
     
     private func emailTextFieldConstraints() {
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
