@@ -100,12 +100,17 @@ extension PanModalPresentationController {
         
         switch recognizer.state {
         case .changed:
-            let velocity = recognizer.velocity(in: containerView)
             modalPosition.y += dragPosition.y
             presentedView.center = modalPosition
             
             recognizer.setTranslation(.zero, in: containerView)
             gestureDirection = recognizer.velocity(in: containerView).y
+            
+            
+            // change blur view alpha with current y position
+            let y = presentedView.frame.origin.y - halfModalYPosition
+            backgroundView.blurState = .calculatedValue(1.0 - (y / presentedView.frame.height))
+            
         case .ended, .cancelled:
             adjustYPosition(with: presentedView.frame.minY ,to: gestureDirection)
         default:
@@ -152,6 +157,7 @@ extension PanModalPresentationController {
         guard let presentedView = presentedView else {
             return
         }
+        presentedView.layer.cornerRadius = 40
         
         containerView.addSubview(presentedView)
         presentedView.addSubview(dragIndicator)

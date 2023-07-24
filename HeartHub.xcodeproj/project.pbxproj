@@ -24,6 +24,9 @@
 		0C5929FE2A6D481400C21570 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929FD2A6D481400C21570 /* BlurView.swift */; };
 		0C592A012A6D69AF00C21570 /* PanModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C592A002A6D69AF00C21570 /* PanModalTransitioningDelegate.swift */; };
 		0C592A042A6D720700C21570 /* PanModalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C592A032A6D720700C21570 /* PanModalAnimator.swift */; };
+		0C592A082A6E793A00C21570 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C592A072A6E793A00C21570 /* CommentViewController.swift */; };
+		0C592A0A2A6E9C7900C21570 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C592A092A6E9C7900C21570 /* CommentTableViewCell.swift */; };
+		0C592A0C2A6E9F9D00C21570 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C592A0B2A6E9F9D00C21570 /* CommentView.swift */; };
 		0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */; };
 		0CB49BDA2A69234A00C77341 /* LookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB49BD92A69234A00C77341 /* LookViewController.swift */; };
 		0CB49BDC2A69237400C77341 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB49BDB2A69237400C77341 /* MockData.swift */; };
@@ -54,6 +57,9 @@
 		0C5929FD2A6D481400C21570 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		0C592A002A6D69AF00C21570 /* PanModalTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalTransitioningDelegate.swift; sourceTree = "<group>"; };
 		0C592A032A6D720700C21570 /* PanModalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalAnimator.swift; sourceTree = "<group>"; };
+		0C592A072A6E793A00C21570 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		0C592A092A6E9C7900C21570 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		0C592A0B2A6E9F9D00C21570 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateViewController.swift; sourceTree = "<group>"; };
 		0CB49BD92A69234A00C77341 /* LookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookViewController.swift; sourceTree = "<group>"; };
 		0CB49BDB2A69237400C77341 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
@@ -176,7 +182,9 @@
 		0C5929FB2A6D47EB00C21570 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0C592A0B2A6E9F9D00C21570 /* CommentView.swift */,
 				0C5929FD2A6D481400C21570 /* BlurView.swift */,
+				0C592A092A6E9C7900C21570 /* CommentTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -185,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				0C5929F62A6D3EA800C21570 /* PanModalPresentationController.swift */,
+				0C592A072A6E793A00C21570 /* CommentViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -192,7 +201,6 @@
 		0C5929FF2A6D693F00C21570 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				0C592A032A6D720700C21570 /* PanModalAnimator.swift */,
 				0C592A002A6D69AF00C21570 /* PanModalTransitioningDelegate.swift */,
 			);
 			path = Protocol;
@@ -201,6 +209,7 @@
 		0C592A022A6D6C7F00C21570 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				0C592A032A6D720700C21570 /* PanModalAnimator.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -344,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C592A082A6E793A00C21570 /* CommentViewController.swift in Sources */,
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
 				0C43F6132A659CD800EED860 /* Reusable.swift in Sources */,
 				0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */,
@@ -365,9 +375,11 @@
 				0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */,
 				0C382E262A5950C700EA08E0 /* CommunitySegmentedControl.swift in Sources */,
 				0C4D32FF2A68315B00AD5EFF /* CommunityCellProfileViewDelegate.swift in Sources */,
+				0C592A0A2A6E9C7900C21570 /* CommentTableViewCell.swift in Sources */,
 				0C43F6102A659C6D00EED860 /* PagingImageCollectionViewCell.swift in Sources */,
 				0C5929FE2A6D481400C21570 /* BlurView.swift in Sources */,
 				0C5929F52A6ADB4500C21570 /* CommunityFloatingButton.swift in Sources */,
+				0C592A0C2A6E9F9D00C21570 /* CommentView.swift in Sources */,
 				0C382E312A5BDB6D00EA08E0 /* CommunityCellProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

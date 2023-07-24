@@ -44,7 +44,7 @@ final class CommunityCellProfileView: UIView {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        profileImageView.layer.cornerRadius = profileImageView.frame.height * 0.5
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
     }
 }
 

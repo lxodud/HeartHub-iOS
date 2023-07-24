@@ -136,12 +136,11 @@ extension CommunityCellPagingImageView {
                 equalTo: safeArea.trailingAnchor
             ),
             pagingImageCollectionView.heightAnchor.constraint(
-                equalTo: safeArea.heightAnchor,
-                multiplier: 0.95
+                equalTo: safeArea.heightAnchor
             ),
             
             // MARK: imagePageControl Constraint
-            imagePageControl.topAnchor.constraint(
+            imagePageControl.bottomAnchor.constraint(
                 equalTo: pagingImageCollectionView.bottomAnchor
             ),
             imagePageControl.centerXAnchor.constraint(

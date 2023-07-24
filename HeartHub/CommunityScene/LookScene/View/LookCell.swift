@@ -28,10 +28,7 @@ final class LookCell: UICollectionViewCell, CommunityCellable {
 // MARK: Public Interface
 extension LookCell {
     func fetchAdjustedHeight() -> CGFloat {
-        var height = profileView.bounds.height
-        height += pagingImageView.bounds.height
-        height += bottomButtonView.bounds.height
-        return height
+        return pagingImageView.bounds.height
     }
     
     func configureCell(_ data: MockData) {
@@ -46,8 +43,6 @@ extension LookCell {
         [profileView, pagingImageView, bottomButtonView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
-        profileView.layer.opacity = 0.5
-        bottomButtonView.layer.opacity = 0.5
         
         contentView.addSubview(pagingImageView)
         pagingImageView.addSubview(profileView)
@@ -89,10 +84,11 @@ extension LookCell {
             pagingImageView.bottomAnchor.constraint(
                 equalTo: contentViewSafeArea.bottomAnchor
             ),
+
             
             // MARK: bottomButtonView Constraint
             bottomButtonView.bottomAnchor.constraint(
-                equalTo: pagingImageViewSafeArea.bottomAnchor
+                equalTo: pagingImageView.bottomAnchor
             ),
             bottomButtonView.leadingAnchor.constraint(
                 equalTo: pagingImageViewSafeArea.leadingAnchor,
