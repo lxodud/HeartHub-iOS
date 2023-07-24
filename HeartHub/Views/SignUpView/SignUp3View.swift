@@ -112,9 +112,10 @@ class SignUp3View: UIView {
         dropDown.textColor = UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 0.5)
         dropDown.textFont = UIFont(name: "Pretendard-Regular", size: 14)!
         dropDown.backgroundColor = .white
-        dropDown.anchorView = emailTextFieldView
-        dropDown.bottomOffset = CGPoint(x: 215, y:(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.width = 117
+        dropDown.anchorView = emailTextFieldView
+        let xOffset = emailTextFieldView.bounds.width - (dropDown.width)!
+        dropDown.bottomOffset = CGPoint(x: xOffset, y:(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         dropDown.dismissMode = .onTap
         dropDown.separatorColor = #colorLiteral(red: 0.850980401, green: 0.850980401, blue: 0.850980401, alpha: 1)
