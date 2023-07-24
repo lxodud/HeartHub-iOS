@@ -324,13 +324,6 @@ class SignUp3View: UIView {
         ])
     }
     
-//    private func emailTextFieldViewConstraints() {
-//        emailTextFieldView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            emailTextFieldView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: textViewHeight / screenHeight)
-//        ])
-//    }
-    
     private func emailTextFieldConstraints() {
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -350,16 +343,6 @@ class SignUp3View: UIView {
             emailFormatDescriptionLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -154)
         ])
     }
-    
-//    private func emailCheckBtnConstraints() {
-//        emailCertifyBtn.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//        emailCertifyBtn.topAnchor.constraint(equalTo: emailTextFieldView.topAnchor),
-//        emailCertifyBtn.bottomAnchor.constraint(equalTo: emailTextFieldView.bottomAnchor),
-//        emailCertifyBtn.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 255.22),
-//        emailCertifyBtn.trailingAnchor.constraint(equalTo: emailTextFieldView.trailingAnchor)
-//        ])
-//    }
     
     private func loverIdTextFieldViewConstraints() {
         loverIdTextFieldView.translatesAutoresizingMaskIntoConstraints = false

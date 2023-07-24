@@ -130,3 +130,118 @@ class FindPwPopUpView: UIView {
         ])
     }
 }
+
+//    // MARK: 레이블
+//    private lazy var findPwLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "메일로 임시 비밀번호가전송되었습니다."
+//        label.font = UIFont(name: "Pretendard-SemiBold", size: 24)
+//        label.adjustsFontForContentSizeCategory = true
+//        label.textColor = .black
+//        return label
+//    }()
+//
+//    // 종이비행기 이미지뷰
+//    private let paperPlaneImgView: UIImageView = {
+//        var imgView = UIImageView()
+//        imgView.contentMode = .scaleAspectFit
+//        imgView.image = UIImage(named: "HeartIcon3:3.png")
+//        return imgView
+//    }()
+//
+//    // MARK: 닫기버튼
+//    lazy var closeBtn: UIButton = {
+//        let btn = UIButton(type: .custom)
+//        btn.backgroundColor = .white
+//        btn.layer.borderWidth = 1
+//        btn.layer.cornerRadius = 18
+//        btn.layer.borderColor = #colorLiteral(red: 0.9803773761, green: 0.1853338182, blue: 0.7394250631, alpha: 1)
+//
+//        btn.setTitle("닫기", for: .normal)
+//        btn.titleLabel?.font = UIFont.init(name: "Pretendard-Regular", size: 14)
+//        btn.titleLabel?.textAlignment = .center
+//        btn.setTitleColor(UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 1), for: .normal)
+//        btn.sizeToFit()
+//        btn.titleLabel?.adjustsFontSizeToFitWidth = true
+//        btn.titleLabel?.numberOfLines = 1
+//
+//        btn.layer.shadowColor = UIColor(red: 0.98, green: 0.184, blue: 0.741, alpha: 0.25).cgColor
+//        btn.layer.shadowOpacity = 1.0
+//        btn.layer.shadowOffset = CGSize(width: 0, height: 4)
+//        btn.layer.shadowRadius = 6
+//        return btn
+//    }()
+//
+//
+//    lazy var containerView: UIView = {
+//       let view = UIView()
+//        view.backgroundColor = .white
+//        view.clipsToBounds = true
+//        view.layer.cornerRadius = 18
+//        [findPwLabel, paperPlaneImgView, closeBtn].forEach { addSubview($0) }
+//        return view
+//    }()
+//
+//    // MARK: 뷰 초기화
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        backgroundColor = UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 0.2)
+//        addViews()
+//        constraints()
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//
+//    // MARK: 제약
+//    func addViews() {
+//        addSubview(containerView)
+//    }
+//
+//    private func constraints() {
+//        findPwLabelConstraints()
+//        paperPlaneImgViewConstraints()
+//        closeBtnConstraints()
+//        containerViewConstraints()
+//    }
+//
+//
+//    private func containerViewConstraints() {
+//        containerView.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            containerView.centerXAnchor.constraint(equalTo: centerXAnchor),
+//            containerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 138),
+//            containerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -163),
+//            containerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 30)
+//        ])
+//    }
+//
+//    private func findPwLabelConstraints() {
+//        findPwLabel.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            findPwLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+//            findPwLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 100),
+//            findPwLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 58)
+//        ])
+//    }
+//
+//    private func paperPlaneImgViewConstraints() {
+//        paperPlaneImgView.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            paperPlaneImgView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+//            paperPlaneImgView.topAnchor.constraint(equalTo: findPwLabel.bottomAnchor, constant: 34),
+//            paperPlaneImgView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 112)
+//        ])
+//    }
+//
+//    private func closeBtnConstraints() {
+//        closeBtn.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            closeBtn.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+//            closeBtn.topAnchor.constraint(equalTo: paperPlaneImgView.bottomAnchor, constant: 81),
+//            closeBtn.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -30),
+//            closeBtn.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 30),
+//        ])
+//    }
+//}

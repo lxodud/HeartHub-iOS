@@ -87,7 +87,7 @@ class SignUp4View: UIView {
     lazy var allTermAgreeBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-        let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
+        let unCheckedImg = UIImage(named: "AgreeRadioBtnUnChecked")
         button.setImage(unCheckedImg, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.contentHorizontalAlignment = .center
@@ -98,7 +98,7 @@ class SignUp4View: UIView {
     lazy var privacyAgreeBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-        let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
+        let unCheckedImg = UIImage(named: "AgreeRadioBtnUnChecked")
         button.setImage(unCheckedImg, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.contentHorizontalAlignment = .center
@@ -109,7 +109,7 @@ class SignUp4View: UIView {
     lazy var termOfUseAgreeBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-        let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
+        let unCheckedImg = UIImage(named: "AgreeRadioBtnUnChecked")
         button.setImage(unCheckedImg, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.contentHorizontalAlignment = .center
@@ -120,7 +120,7 @@ class SignUp4View: UIView {
     lazy var marketingAgreeBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-        let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
+        let unCheckedImg = UIImage(named: "AgreeRadioBtnUnChecked")
         button.setImage(unCheckedImg, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.contentHorizontalAlignment = .center
@@ -254,41 +254,6 @@ class SignUp4View: UIView {
         return stView
     }()
     
-    
-    
-//    // 약관 명세 버튼 스택뷰
-//    private lazy var agreeDescriptionBtnStackView: UIStackView = {
-//        let stView = UIStackView(arrangedSubviews: [privacyDescriptionBtn, termOfUseDescriptionBtn, marketingDescriptionBtn])
-//        stView.spacing = 27
-//        stView.axis = .vertical
-//        stView.distribution = .fillEqually
-//        stView.alignment = .center
-//        return stView
-//    }()
-//
-//    // 선 아래 스택뷰
-//    private lazy var lineBelowAgreeStackView: UIStackView = {
-//        let stView = UIStackView(arrangedSubviews: [agreeBtnLabelStackView, agreeDescriptionBtnStackView])
-//        stView.spacing = 71
-//        stView.axis = .horizontal
-//        stView.distribution = .fill
-//        stView.alignment = .fill
-//        return stView
-//    }()
-    
-//    // 약관동의레이블 스택뷰
-//    private lazy var agreeStackView: UIStackView = {
-//        let stView = UIStackView(arrangedSubviews: [allTermAgreeStackView, lineView, lineBelowAgreeStackView])
-//        stView.spacing = 7.74
-//        stView.axis = .vertical
-//        stView.distribution = .fill
-//        stView.alignment = .leading
-//        //        stView.setCustomSpacing(<#T##spacing: CGFloat##CGFloat#>, after: <#T##UIView#>)
-//        //        stView.layoutMargins = uied
-//        return stView
-//    }()
-    
-    
     // 약관동의 사이 선
     private lazy var lineView: UIView = {
         let line = UIView()
@@ -398,24 +363,13 @@ class SignUp4View: UIView {
             arrowBtnStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40)
         ])
     }
-    
 
-    
-//    private func agreeStackViewConstraints() {
-//        agreeStackView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            agreeStackView.topAnchor.constraint(equalTo: startLabelStackView.bottomAnchor, constant: 170),
-//            agreeStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 33),
-//            agreeStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -24),
-//        ])
-//    }
-    
     private func privacyArrowBtnConstraints() {
         privacyDescriptionBtn.translatesAutoresizingMaskIntoConstraints = false
         termOfUseDescriptionBtn.translatesAutoresizingMaskIntoConstraints = false
         marketingDescriptionBtn.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            privacyDescriptionBtn.heightAnchor.constraint(equalToConstant: 14 /*privacyAgreeLabel.heightAnchor,constant: multiplier: 0.58*/),
+            privacyDescriptionBtn.heightAnchor.constraint(equalToConstant: 14),
             privacyDescriptionBtn.widthAnchor.constraint(equalTo: privacyDescriptionBtn.heightAnchor),
             
             termOfUseDescriptionBtn.heightAnchor.constraint(equalTo: privacyDescriptionBtn.heightAnchor),

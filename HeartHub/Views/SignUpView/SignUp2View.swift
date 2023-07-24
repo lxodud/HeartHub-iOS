@@ -281,31 +281,6 @@ class SignUp2View: UIView {
     
     // MARK: 성별 선택
     // 남자 버튼
-//    lazy var maleBtn: DLRadioButton = {
-//        var btn = DLRadioButton(type: .custom)
-//        btn.backgroundColor = .clear
-////        btn.setTitleColor(UIColor(red: 0.98, green: 0.18, blue: 0.74, alpha: 1), for: .normal)
-//        btn.layer.cornerRadius = 18
-//        btn.layer.borderWidth = 1
-//        btn.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
-//        btn.setTitle("남", for: .normal)
-//        btn.titleLabel?.font = UIFont(name: "Pretendard-Regular", size: 14)
-//        btn.setTitleColor(UIColor(red: 0.46, green: 0.46, blue: 0.46, alpha: 1), for: .normal)
-//        btn.marginWidth = 10.87
-//        btn.indicatorColor = UIColor(red: 0.98, green: 0.18, blue: 0.74, alpha: 1)
-//        btn.iconColor = UIColor(red: 0.98, green: 0.18, blue: 0.74, alpha: 1)
-//        btn.contentHorizontalAlignment = .left
-//
-////         라디오버튼 구현
-//        let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
-//        button.setImage(unCheckedImg, for: .normal)
-//        button.otherButtons.append(femaleBtn)
-//        button.imageView?.contentMode = .scaleAspectFill
-//        btn.contentHorizontalAlignment = .left
-//        button.addSubview(maleLabel)
-//        return btn
-//    }()
-    
     lazy var maleBtn: UIButton = {
         var btn = UIButton(type: .custom)
         btn.backgroundColor = .clear

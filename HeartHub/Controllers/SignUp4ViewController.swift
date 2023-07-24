@@ -12,8 +12,8 @@ class SignUp4ViewController: UIViewController {
 
     private let signUp4View = SignUp4View()
 
-    let unChekedimage = UIImage(named: "RadioBtnUnChecked")
-    let Chekedimage = UIImage(named: "RadioBtnChecked")
+    let unChekedimage = UIImage(named: "AgreeRadioBtnUnChecked")
+    let Chekedimage = UIImage(named: "AgreeRadioBtnChecked")
     
     override func loadView() {
         view = signUp4View
@@ -52,33 +52,37 @@ class SignUp4ViewController: UIViewController {
     }
     
     @objc func didTapAllAgreeBtn() {
-        if signUp4View.allTermAgreeBtn.currentImage == UIImage(named: "RadioBtnChecked") {
+        if signUp4View.allTermAgreeBtn.currentImage == UIImage(named: "AgreeRadioBtnChecked") {
             signUp4View.allTermAgreeBtn.setImage(unChekedimage, for: .normal)
-        } else {
-            signUp4View.allTermAgreeBtn.setImage(Chekedimage, for: .normal)
-        }
-        
-        if signUp4View.privacyAgreeBtn.currentImage == Chekedimage ||
-            signUp4View.termOfUseAgreeBtn == Chekedimage ||
-            signUp4View.marketingAgreeBtn == Chekedimage {
-            signUp4View.privacyAgreeBtn.setImage(Chekedimage, for: .normal)
-            signUp4View.termOfUseAgreeBtn.setImage(Chekedimage, for: .normal)
-            signUp4View.marketingAgreeBtn.setImage(Chekedimage, for: .normal)
-        } else if signUp4View.privacyAgreeBtn.currentImage == unChekedimage ||
-                    signUp4View.termOfUseAgreeBtn == unChekedimage ||
-                    signUp4View.marketingAgreeBtn == unChekedimage  {
-            signUp4View.privacyAgreeBtn.setImage(Chekedimage, for: .normal)
-            signUp4View.termOfUseAgreeBtn.setImage(Chekedimage, for: .normal)
-            signUp4View.marketingAgreeBtn.setImage(Chekedimage, for: .normal)
-        } else{
             signUp4View.privacyAgreeBtn.setImage(unChekedimage, for: .normal)
             signUp4View.termOfUseAgreeBtn.setImage(unChekedimage, for: .normal)
             signUp4View.marketingAgreeBtn.setImage(unChekedimage, for: .normal)
+        } else {
+            signUp4View.allTermAgreeBtn.setImage(Chekedimage, for: .normal)
+            if signUp4View.privacyAgreeBtn.currentImage == Chekedimage ||
+                signUp4View.termOfUseAgreeBtn == Chekedimage ||
+                signUp4View.marketingAgreeBtn == Chekedimage {
+                signUp4View.privacyAgreeBtn.setImage(Chekedimage, for: .normal)
+                signUp4View.termOfUseAgreeBtn.setImage(Chekedimage, for: .normal)
+                signUp4View.marketingAgreeBtn.setImage(Chekedimage, for: .normal)
+            } else if signUp4View.privacyAgreeBtn.currentImage == unChekedimage ||
+                        signUp4View.termOfUseAgreeBtn == unChekedimage ||
+                        signUp4View.marketingAgreeBtn == unChekedimage  {
+                signUp4View.privacyAgreeBtn.setImage(Chekedimage, for: .normal)
+                signUp4View.termOfUseAgreeBtn.setImage(Chekedimage, for: .normal)
+                signUp4View.marketingAgreeBtn.setImage(Chekedimage, for: .normal)
+            } else{
+                signUp4View.privacyAgreeBtn.setImage(unChekedimage, for: .normal)
+                signUp4View.termOfUseAgreeBtn.setImage(unChekedimage, for: .normal)
+                signUp4View.marketingAgreeBtn.setImage(unChekedimage, for: .normal)
+            }
         }
+        
+
     }
     
     @objc func didTapPrivacyAgreeBtn() {
-        if signUp4View.privacyAgreeBtn.currentImage == UIImage(named: "RadioBtnChecked") {
+        if signUp4View.privacyAgreeBtn.currentImage == UIImage(named: "AgreeRadioBtnChecked") {
             signUp4View.privacyAgreeBtn.setImage(unChekedimage, for: .normal)
         } else {
             signUp4View.privacyAgreeBtn.setImage(Chekedimage, for: .normal)
@@ -86,7 +90,7 @@ class SignUp4ViewController: UIViewController {
     }
     
     @objc func didTapTermOfUseAgreeBtn() {
-        if signUp4View.termOfUseAgreeBtn.currentImage == UIImage(named: "RadioBtnChecked") {
+        if signUp4View.termOfUseAgreeBtn.currentImage == UIImage(named: "AgreeRadioBtnChecked") {
             signUp4View.termOfUseAgreeBtn.setImage(unChekedimage, for: .normal)
         } else {
             signUp4View.termOfUseAgreeBtn.setImage(Chekedimage, for: .normal)
@@ -94,7 +98,7 @@ class SignUp4ViewController: UIViewController {
     }
     
     @objc func didTapMarketingAgreeBtn() {
-        if signUp4View.marketingAgreeBtn.currentImage == UIImage(named: "RadioBtnChecked") {
+        if signUp4View.marketingAgreeBtn.currentImage == UIImage(named: "AgreeRadioBtnChecked") {
             signUp4View.marketingAgreeBtn.setImage(unChekedimage, for: .normal)
         } else {
             signUp4View.marketingAgreeBtn.setImage(Chekedimage, for: .normal)
