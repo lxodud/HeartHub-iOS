@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-class SignUp3View: UIView {
+class SignUpLoverLinkingView: UIView {
     
     let screenHeight = UIScreen.main.bounds.size.height
 //    let textViewHeight: CGFloat = 35
@@ -384,7 +384,7 @@ class SignUp3View: UIView {
 
 // MARK: 텍스트필드 델리게이트
 
-extension SignUp3View: UITextFieldDelegate {
+extension SignUpLoverLinkingView: UITextFieldDelegate {
     // 키보드 엔터키가 눌렸을때 (다음 동작을 허락할 것인지)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // 두개의 텍스트필드를 모두 종료 (키보드 내려가기)

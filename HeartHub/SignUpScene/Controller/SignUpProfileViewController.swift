@@ -7,12 +7,12 @@
 
 import UIKit
 
-class SignUp2ViewController: UIViewController {
+class SignUpProfileViewController: UIViewController {
 
-    private let signUp2View = SignUp2View()
+    private let signUpProfileView = SignUpProfileView()
     
     override func loadView() {
-        view = signUp2View
+        view = signUpProfileView
     }
     
     override func viewDidLoad() {
@@ -22,17 +22,17 @@ class SignUp2ViewController: UIViewController {
     }
     
     func addTarget() {
-        signUp2View.rightArrowBtn.addTarget(self, action: #selector(didTapRightArrowBtn), for: .touchUpInside)
-        signUp2View.leftArrowBtn.addTarget(self, action: #selector(didTapLeftArrowBtn), for: .touchUpInside)
-        signUp2View.nickNameCheckBtn.addTarget(self, action: #selector(didTapNickNameCheckBtn), for: .touchUpInside)
-        signUp2View.idCheckBtn.addTarget(self, action: #selector(didTapIdCheckBtn), for: .touchUpInside)
-        signUp2View.maleBtn.addTarget(self, action: #selector(didTapMaleBtn), for: .touchUpInside)
-        signUp2View.femaleBtn.addTarget(self, action: #selector(didTapFemaleBtn), for: .touchUpInside)
+        signUpProfileView.rightArrowBtn.addTarget(self, action: #selector(didTapRightArrowBtn), for: .touchUpInside)
+        signUpProfileView.leftArrowBtn.addTarget(self, action: #selector(didTapLeftArrowBtn), for: .touchUpInside)
+        signUpProfileView.nickNameCheckBtn.addTarget(self, action: #selector(didTapNickNameCheckBtn), for: .touchUpInside)
+        signUpProfileView.idCheckBtn.addTarget(self, action: #selector(didTapIdCheckBtn), for: .touchUpInside)
+        signUpProfileView.maleBtn.addTarget(self, action: #selector(didTapMaleBtn), for: .touchUpInside)
+        signUpProfileView.femaleBtn.addTarget(self, action: #selector(didTapFemaleBtn), for: .touchUpInside)
     }
     
 
     @objc func didTapRightArrowBtn() {
-        let signUp3VC = SignUp3ViewController()
+        let signUp3VC = SignUpLoverLinkingViewController()
         signUp3VC.modalPresentationStyle = .fullScreen
         present(signUp3VC, animated: true, completion: nil)
     }
@@ -57,13 +57,13 @@ class SignUp2ViewController: UIViewController {
         print("남 선택")
         
         //버튼의 이미지가 "RadioBtnChecked" ->  "RadioBtnUnchecked"로 바꾸고 else "RadioBtnUnchecked" -> "RadioBtnChecked" 로 바꿈
-        signUp2View.femaleBtn.setImage(UIImage(named: "RadioBtnUnChecked"), for: .normal)
-        if signUp2View.maleBtn.currentImage == UIImage(named: "RadioBtnChecked") {
+        signUpProfileView.femaleBtn.setImage(UIImage(named: "RadioBtnUnChecked"), for: .normal)
+        if signUpProfileView.maleBtn.currentImage == UIImage(named: "RadioBtnChecked") {
            let unChekedimage = UIImage(named: "RadioBtnUnChecked")
-            signUp2View.maleBtn.setImage(unChekedimage, for: .normal)
+            signUpProfileView.maleBtn.setImage(unChekedimage, for: .normal)
         } else {
             let Chekedimage = UIImage(named: "RadioBtnChecked")
-            signUp2View.maleBtn.setImage(Chekedimage, for: .normal)
+            signUpProfileView.maleBtn.setImage(Chekedimage, for: .normal)
         }
     }
     
@@ -71,13 +71,13 @@ class SignUp2ViewController: UIViewController {
         print("남 선택")
         
         //버튼의 이미지가 "RadioBtnChecked" ->  "RadioBtnUnchecked"로 바꾸고 else "RadioBtnUnchecked" -> "RadioBtnChecked" 로 바꿈
-        signUp2View.maleBtn.setImage(UIImage(named: "RadioBtnUnChecked"), for: .normal)
-        if signUp2View.femaleBtn.currentImage == UIImage(named: "RadioBtnChecked") {
+        signUpProfileView.maleBtn.setImage(UIImage(named: "RadioBtnUnChecked"), for: .normal)
+        if signUpProfileView.femaleBtn.currentImage == UIImage(named: "RadioBtnChecked") {
            let unChekedimage = UIImage(named: "RadioBtnUnChecked")
-            signUp2View.femaleBtn.setImage(unChekedimage, for: .normal)
+            signUpProfileView.femaleBtn.setImage(unChekedimage, for: .normal)
         } else {
             let Chekedimage = UIImage(named: "RadioBtnChecked")
-            signUp2View.femaleBtn.setImage(Chekedimage, for: .normal)
+            signUpProfileView.femaleBtn.setImage(Chekedimage, for: .normal)
         }
 
     }

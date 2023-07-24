@@ -10,10 +10,10 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-    private let signupView = SignUpView()
+    private let signUpStartDateView = SignUpStartDateView()
     
     override func loadView() {
-        view = signupView
+        view = signUpStartDateView
     }
     
     override func viewDidLoad() {
@@ -22,11 +22,11 @@ class SignUpViewController: UIViewController {
     }
 
     func addTarget() {
-        signupView.rightArrowBtn.addTarget(self, action: #selector(didTapRightArrowBtn), for: .touchUpInside)
+        signUpStartDateView.rightArrowBtn.addTarget(self, action: #selector(didTapRightArrowBtn), for: .touchUpInside)
     }
     
     @objc func didTapRightArrowBtn() {
-        let signUp2VC = SignUp2ViewController()
+        let signUp2VC = SignUpProfileViewController()
         signUp2VC.modalPresentationStyle = .fullScreen
         present(signUp2VC, animated: true, completion: nil)
     }

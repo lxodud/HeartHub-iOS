@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignUp4View: UIView {
+class SignUpTermAgreeView: UIView {
     
     // MARK: 하트이미지
     // 하트이미지 1/3

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignUpView: UIView {
+class SignUpStartDateView: UIView {
 
     // MARK: 하트이미지
     // 하트이미지 0/3
@@ -293,7 +293,7 @@ class SignUpView: UIView {
 }
 
 // MARK: 텍스트필드 델리게이트
-extension SignUpView: UITextFieldDelegate {
+extension SignUpStartDateView: UITextFieldDelegate {
     
     // 엔터누르면 다음 텍스트필드로 이동
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import DLRadioButton
 
-class SignUp2View: UIView {
+class SignUpProfileView: UIView {
     let textViewHeight: CGFloat = 35
     
 // MARK: 하트이미지
@@ -763,7 +762,7 @@ class SignUp2View: UIView {
 
 // MARK: 텍스트필드 델리게이트
 
-extension SignUp2View: UITextFieldDelegate {
+extension SignUpProfileView: UITextFieldDelegate {
     
     // 키보드 엔터키가 눌렸을때 (다음 동작을 허락할 것인지)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
