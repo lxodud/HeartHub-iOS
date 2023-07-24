@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpStartDateViewController: UIViewController {
     
     private let signUpStartDateView = SignUpStartDateView()
     
@@ -26,9 +26,9 @@ class SignUpViewController: UIViewController {
     }
     
     @objc func didTapRightArrowBtn() {
-        let signUp2VC = SignUpProfileViewController()
-        signUp2VC.modalPresentationStyle = .fullScreen
-        present(signUp2VC, animated: true, completion: nil)
+        let signUpProfileVC = SignUpProfileViewController()
+        
+        self.navigationController?.pushViewController(signUpProfileVC, animated: true)
     }
    
 }

@@ -31,20 +31,17 @@ class FindPwViewController: UIViewController {
 
     @objc private func didTaploginBtn() {
         let loginVC = LoginViewController()
-        loginVC.modalPresentationStyle = .fullScreen
-        present(loginVC, animated: true, completion: nil)
+        navigationController?.pushViewController(loginVC, animated: true)
     }
     
     @objc private func didTapFindIdButton() {
         let findIdVC = FindIdViewController()
-        findIdVC.modalPresentationStyle = .fullScreen
-        present(findIdVC, animated: true, completion: nil)
+        navigationController?.pushViewController(findIdVC, animated: true)
     }
     
     @objc private func didTapSignUpButton() {
-        let signUpVC = SignUpViewController()
-        signUpVC.modalPresentationStyle = .fullScreen
-        present(signUpVC, animated: true, completion: nil)
+        let signUpVC = SignUpStartDateViewController()
+        navigationController?.pushViewController(signUpVC, animated: true)
     }
     
     @objc private func didTapFindPwButton() {

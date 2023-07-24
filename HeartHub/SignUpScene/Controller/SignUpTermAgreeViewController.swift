@@ -41,14 +41,12 @@ class SignUpTermAgreeViewController: UIViewController {
     
     @objc func didTapRightArrowBtn() {
         let loginVC = LoginViewController()
-        loginVC.modalPresentationStyle = .fullScreen
-        present(loginVC, animated: true, completion: nil)
+        navigationController?.pushViewController(loginVC, animated: true)
     }
     
     @objc func didTapLeftArrowBtn() {
-        let signUp3VC = SignUpLoverLinkingViewController()
-        signUp3VC.modalPresentationStyle = .fullScreen
-        present(signUp3VC, animated: true, completion: nil)
+        let signUpLoverLinkingVC = SignUpLoverLinkingViewController()
+        navigationController?.pushViewController(signUpLoverLinkingVC, animated: true)
     }
     
     @objc func didTapAllAgreeBtn() {
@@ -118,7 +116,5 @@ class SignUpTermAgreeViewController: UIViewController {
     @objc func didTapmarketingDescriptionBtn() {
         
     }
-   
-   
 }
 

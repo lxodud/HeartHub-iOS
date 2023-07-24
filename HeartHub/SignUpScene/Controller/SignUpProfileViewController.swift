@@ -32,15 +32,13 @@ class SignUpProfileViewController: UIViewController {
     
 
     @objc func didTapRightArrowBtn() {
-        let signUp3VC = SignUpLoverLinkingViewController()
-        signUp3VC.modalPresentationStyle = .fullScreen
-        present(signUp3VC, animated: true, completion: nil)
+        let signUpLoverLinkingVC = SignUpLoverLinkingViewController()
+        navigationController?.pushViewController(signUpLoverLinkingVC, animated: true)
     }
     
     @objc func didTapLeftArrowBtn() {
-        let signUpVC = SignUpViewController()
-        signUpVC.modalPresentationStyle = .fullScreen
-        present(signUpVC, animated: true, completion: nil)
+        let signUpStartDateVC = SignUpStartDateViewController()
+        navigationController?.pushViewController(signUpStartDateVC, animated: true)
     }
 
     @objc func didTapNickNameCheckBtn() {
@@ -79,6 +77,5 @@ class SignUpProfileViewController: UIViewController {
             let Chekedimage = UIImage(named: "RadioBtnChecked")
             signUpProfileView.femaleBtn.setImage(Chekedimage, for: .normal)
         }
-
     }
 }

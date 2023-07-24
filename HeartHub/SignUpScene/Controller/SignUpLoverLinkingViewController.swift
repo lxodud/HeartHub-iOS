@@ -30,17 +30,14 @@ class SignUpLoverLinkingViewController: UIViewController {
     }
     
     @objc func didTapRightArrowBtn() {
-        let signUp4VC = SignUpTermAgreeViewController()
-        signUp4VC.modalPresentationStyle = .fullScreen
-        present(signUp4VC, animated: true, completion: nil)
+        let signUpTermAgreeVC = SignUpTermAgreeViewController()
+        navigationController?.pushViewController(signUpTermAgreeVC, animated: true)
     }
     
     @objc func didTapLeftArrowBtn() {
-        let signUp2VC = SignUpProfileViewController()
-        signUp2VC.modalPresentationStyle = .fullScreen
-        present(signUp2VC, animated: true, completion: nil)
+        let signUpProfileVC = SignUpProfileViewController()
+        navigationController?.pushViewController(signUpProfileVC, animated: true)
     }
-
     
     @objc func didTapdropDownBtn() {        
         if signUpLoverLinkingView.dropDownBtn.currentImage == UIImage(named: "DropDownArrow.png") {

@@ -31,8 +31,8 @@ class FindIdViewController: UIViewController {
 
     @objc private func didTaploginBtn() {
         let loginVC = LoginViewController()
-        loginVC.modalPresentationStyle = .fullScreen
-        present(loginVC, animated: true, completion: nil)
+        navigationController?.pushViewController(loginVC, animated: true)
+        
     }
     
     @objc private func didTapFindIdButton() {
@@ -41,22 +41,21 @@ class FindIdViewController: UIViewController {
         let isVaildPattern = (findIdView.emailTextField.text!.range(of: idPattern, options: .regularExpression) != nil)
         if isVaildPattern {
             let findIdModalVC = FindIdPopUpViewController()
-            findIdModalVC.modalPresentationStyle = .overFullScreen
-            present(findIdModalVC, animated: true, completion: nil)
+            navigationController?.pushViewController(findIdModalVC, animated: true)
         } else {
             print("올바른 이메일 형식 x")
         }
     }
     
     @objc private func didTapSignUpButton() {
-        let signUpVC = SignUpViewController()
-        signUpVC.modalPresentationStyle = .fullScreen
-        present(signUpVC, animated: true, completion: nil)
+        let signUpVC = SignUpStartDateViewController()
+        
+        navigationController?.pushViewController(signUpVC, animated: true)
     }
     
     @objc private func didTapFindPwButton() {
          let findPwVC = FindPwViewController()
-         findPwVC.modalPresentationStyle = .fullScreen
-         present(findPwVC, animated: true, completion: nil)
+        
+        navigationController?.pushViewController(findPwVC, animated: true)
     }
 }
