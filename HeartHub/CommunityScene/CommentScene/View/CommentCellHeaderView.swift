@@ -45,6 +45,21 @@ extension CommentCellHeaderView {
     func configureContents() {
         
     }
+    
+    var idLabelLeadingAnchor: NSLayoutXAxisAnchor {
+        return profileView.labelLeadingAnchor
+    }
+    
+    var heartButtonLeadingAnchor: NSLayoutXAxisAnchor {
+        return heartButton.leadingAnchor
+    }
+}
+
+// MARK: Community ProfileView Implementation
+extension CommentCellHeaderView: CommunityProfileViewDelegate {
+    func didTapUserProfile() {
+        delegate?.didTapUserProfile()
+    }
 }
 
 // MARK: Configure Action
@@ -58,9 +73,9 @@ extension CommentCellHeaderView {
     }
     
     @objc
-    func tapHeartButton(_ sender: UIButton) {
+    private func tapHeartButton(_ sender: UIButton) {
         sender.isSelected.toggle()
-        delegate?.tapHeartButton()
+        delegate?.didTapHeartButton()
     }
 }
 
@@ -72,9 +87,7 @@ extension CommentCellHeaderView {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        profileView.setContentHuggingPriority(.required, for: .horizontal)
-        postTimeLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        heartCountLabel.setContentHuggingPriority(.required, for: .horizontal)
+        profileView.delegate = self
     }
     
     private func configureLayout() {

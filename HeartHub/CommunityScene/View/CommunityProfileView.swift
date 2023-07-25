@@ -48,6 +48,10 @@ extension CommunityProfileView {
         profileImageView.image = data.profileImage
         profileIdLabel.text = data.profileName
     }
+    
+    var labelLeadingAnchor: NSLayoutXAxisAnchor {
+        return profileIdLabel.leadingAnchor
+    }
 }
 
 // MARK: Configure Action

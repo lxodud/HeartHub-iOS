@@ -24,6 +24,7 @@
 		0C592A012A6D69AF00C21570 /* PanModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C592A002A6D69AF00C21570 /* PanModalTransitioningDelegate.swift */; };
 		0C592A042A6D720700C21570 /* PanModalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C592A032A6D720700C21570 /* PanModalAnimator.swift */; };
 		0C6F45492A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F45482A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift */; };
+		0C6F454B2A7003930044EAC8 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F454A2A7003930044EAC8 /* CommentCell.swift */; };
 		0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */; };
 		0CA858B02A6F981D00DFCFD5 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA858AF2A6F981D00DFCFD5 /* Reusable.swift */; };
 		0CA858B62A6FB44D00DFCFD5 /* CommunityCellHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA858B52A6FB44D00DFCFD5 /* CommunityCellHeaderView.swift */; };
@@ -58,6 +59,7 @@
 		0C592A002A6D69AF00C21570 /* PanModalTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalTransitioningDelegate.swift; sourceTree = "<group>"; };
 		0C592A032A6D720700C21570 /* PanModalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalAnimator.swift; sourceTree = "<group>"; };
 		0C6F45482A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellHeaderViewDelegate.swift; sourceTree = "<group>"; };
+		0C6F454A2A7003930044EAC8 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateViewController.swift; sourceTree = "<group>"; };
 		0CA858AF2A6F981D00DFCFD5 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		0CA858B52A6FB44D00DFCFD5 /* CommunityCellHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellHeaderView.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				0C5929FD2A6D481400C21570 /* BlurView.swift */,
 				0CA858B92A6FE0EA00DFCFD5 /* CommentCellHeaderView.swift */,
+				0C6F454A2A7003930044EAC8 /* CommentCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */,
 				0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */,
 				0CF732452A65653500ED3B01 /* CommunityCellPagingImageView.swift in Sources */,
+				0C6F454B2A7003930044EAC8 /* CommentCell.swift in Sources */,
 				0C382E282A5994A700EA08E0 /* CommunityViewController.swift in Sources */,
 				0CA858B82A6FB75B00DFCFD5 /* CommunityCellHeaderViewDelegate.swift in Sources */,
 				0C592A042A6D720700C21570 /* PanModalAnimator.swift in Sources */,

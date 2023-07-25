@@ -8,5 +8,6 @@
 import Foundation
 
 protocol CommentCellHeaderViewDelegate: AnyObject {
-    func tapHeartButton()
+    func didTapUserProfile()
+    func didTapHeartButton()
 }
