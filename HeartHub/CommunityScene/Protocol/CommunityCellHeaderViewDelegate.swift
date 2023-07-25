@@ -9,4 +9,5 @@ import Foundation
 
 protocol CommunityCellHeaderViewDelegate: AnyObject {
     func didTapPostOptionButton()
+    func didTapUserProfile()
 }

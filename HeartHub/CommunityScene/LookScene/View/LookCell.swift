@@ -10,7 +10,7 @@ import UIKit
 final class LookCell: UICollectionViewCell, CommunityCellable {
     weak var delegate: CommunityCellDelegate?
     
-    private let profileView = CommunityProfileView()
+    private let headerView = CommunityCellHeaderView()
     private let pagingImageView = CommunityCellPagingImageView()
     private let bottomButtonView = CommunityCellBottomButtonView()
     
@@ -32,7 +32,7 @@ extension LookCell {
     }
     
     func configureCell(_ data: MockData) {
-        profileView.configureContents(data)
+        headerView.configureContents(data)
         pagingImageView.configureContents(data.images)
     }
 }
@@ -40,13 +40,16 @@ extension LookCell {
 // MARK: Configure UI
 extension LookCell {
     private func configureSubview() {
-        [profileView, pagingImageView, bottomButtonView].forEach {
+        [headerView, pagingImageView, bottomButtonView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         contentView.addSubview(pagingImageView)
-        pagingImageView.addSubview(profileView)
+        pagingImageView.addSubview(headerView)
         pagingImageView.addSubview(bottomButtonView)
+        
+        headerView.delegate = self
+        bottomButtonView.delegate = self
     }
     
     private func configureLayout() {
@@ -55,19 +58,19 @@ extension LookCell {
         
         NSLayoutConstraint.activate([
             // MARK: profileView Constraint
-            profileView.topAnchor.constraint(
+            headerView.topAnchor.constraint(
                 equalTo: pagingImageViewSafeArea.topAnchor
             ),
-            profileView.leadingAnchor.constraint(
+            headerView.leadingAnchor.constraint(
                 equalTo: pagingImageViewSafeArea.leadingAnchor,
                 constant: 12
             ),
-            profileView.trailingAnchor.constraint(
+            headerView.trailingAnchor.constraint(
                 equalTo: pagingImageViewSafeArea.trailingAnchor,
                 constant: -12
             ),
-            profileView.heightAnchor.constraint(
-                equalTo: profileView.widthAnchor,
+            headerView.heightAnchor.constraint(
+                equalTo: headerView.widthAnchor,
                 multiplier: 0.15
             ),
             
@@ -99,7 +102,7 @@ extension LookCell {
                 constant: -3
             ),
             bottomButtonView.heightAnchor.constraint(
-                equalTo: profileView.heightAnchor
+                equalTo: headerView.heightAnchor
             )
         ])
         

@@ -10,7 +10,7 @@ import UIKit
 final class DailyDateNoImageCell: UICollectionViewCell, CommunityCellable {
     weak var delegate: CommunityCellDelegate?
     
-    private let profileView = CommunityProfileView()
+    private let headerView = CommunityCellHeaderView()
     private let bottomButtonView = CommunityCellBottomButtonView()
     private let postLabel: UILabel = {
         let label = UILabel()
@@ -33,7 +33,7 @@ final class DailyDateNoImageCell: UICollectionViewCell, CommunityCellable {
 // MARK: Public Interface
 extension DailyDateNoImageCell {
     func fetchAdjustedHeight() -> CGFloat {
-        var height = profileView.bounds.height
+        var height = headerView.bounds.height
         height += postLabel.bounds.height
         height += bottomButtonView.bounds.height
         
@@ -41,7 +41,7 @@ extension DailyDateNoImageCell {
     }
     
     func configureCell(_ data: MockData) {
-        profileView.configureContents(data)
+        headerView.configureContents(data)
         postLabel.text = data.postLabel
     }
 }
@@ -49,12 +49,12 @@ extension DailyDateNoImageCell {
 // MARK: Configure UI
 extension DailyDateNoImageCell {
     private func configureSubview() {
-        [profileView, postLabel, bottomButtonView].forEach {
+        [headerView, postLabel, bottomButtonView].forEach {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        profileView.delegate = self
+        headerView.delegate = self
         bottomButtonView.delegate = self
     }
     
@@ -63,25 +63,25 @@ extension DailyDateNoImageCell {
         
         NSLayoutConstraint.activate([
             // MARK: profileView Constraint
-            profileView.topAnchor.constraint(
+            headerView.topAnchor.constraint(
                 equalTo: safeArea.topAnchor
             ),
-            profileView.leadingAnchor.constraint(
+            headerView.leadingAnchor.constraint(
                 equalTo: safeArea.leadingAnchor,
                 constant: 12
             ),
-            profileView.trailingAnchor.constraint(
+            headerView.trailingAnchor.constraint(
                 equalTo: safeArea.trailingAnchor,
                 constant: -12
             ),
-            profileView.heightAnchor.constraint(
-                equalTo: profileView.widthAnchor,
+            headerView.heightAnchor.constraint(
+                equalTo: headerView.widthAnchor,
                 multiplier: 0.15
             ),
             
             // MARK: postLabel Constraint
             postLabel.topAnchor.constraint(
-                equalTo: profileView.bottomAnchor
+                equalTo: headerView.bottomAnchor
             ),
             postLabel.leadingAnchor.constraint(
                 equalTo: safeArea.leadingAnchor,
@@ -92,7 +92,7 @@ extension DailyDateNoImageCell {
                 constant: -12
             ),
             postLabel.heightAnchor.constraint(
-                equalTo: profileView.heightAnchor,
+                equalTo: headerView.heightAnchor,
                 multiplier: 2
             ),
             
@@ -109,7 +109,7 @@ extension DailyDateNoImageCell {
                 constant: -3
             ),
             bottomButtonView.heightAnchor.constraint(
-                equalTo: profileView.heightAnchor
+                equalTo: headerView.heightAnchor
             )
         ])
     }

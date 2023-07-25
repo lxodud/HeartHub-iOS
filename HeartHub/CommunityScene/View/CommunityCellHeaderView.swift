@@ -35,6 +35,13 @@ extension CommunityCellHeaderView {
     }
 }
 
+// MARK: Community Profile View Delegate Implementation
+extension CommunityCellHeaderView: CommunityProfileViewDelegate {
+    func didTapUserProfile() {
+        delegate?.didTapUserProfile()
+    }
+}
+
 // MARK: Configure Action
 extension CommunityCellHeaderView {
     private func configureAction() {
