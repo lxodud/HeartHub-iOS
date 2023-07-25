@@ -38,7 +38,10 @@ final class CommunityCellPagingImageView: UIView {
         configureSubview()
         configureLayout()
     }
-    
+}
+
+// MARK: Public Interface
+extension CommunityCellPagingImageView {
     func configureContents(_ images: [UIImage]) {
         self.images = images
     }

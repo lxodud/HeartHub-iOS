@@ -29,7 +29,10 @@ final class DailyDateImageCell: UICollectionViewCell, CommunityCellable {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
+}
+
+// MARK: Public Interface
+extension DailyDateImageCell {
     func fetchAdjustedHeight() -> CGFloat {
         var height = profileView.bounds.height
         height += pagingImageView.bounds.height
