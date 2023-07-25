@@ -8,6 +8,18 @@
 import UIKit
 
 final class CommunityProfileImageView: UIImageView {
+    init() {
+        super.init(frame: .zero)
+        contentMode = .scaleToFill
+        clipsToBounds = true
+        layer.borderWidth = 0.5
+        layer.borderColor = UIColor.black.cgColor
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func layoutSubviews() {
         layer.cornerRadius = frame.height / 2
     }

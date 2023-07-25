@@ -31,7 +31,7 @@ final class PanModalPresentationController: UIPresentationController {
         configureAction()
     }
 }
-    
+
 // MARK: Life Cycle
 extension PanModalPresentationController{
     override func presentationTransitionWillBegin() {
@@ -63,6 +63,16 @@ extension PanModalPresentationController{
     }
 }
 
+// MARK: UIGestureRecognizerDelegate Implementation
+extension PanModalPresentationController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
+    ) -> Bool {
+        return true
+    }
+}
+
 // MARK: Configure Action
 extension PanModalPresentationController {
     private func configureAction() {
@@ -75,6 +85,8 @@ extension PanModalPresentationController {
             target: self,
             action: #selector(panPresentedView)
         )
+        
+        panGesture.delegate = self
         
         backgroundView.addGestureRecognizer(tapGesture)
         presentedView?.addGestureRecognizer(panGesture)
@@ -95,13 +107,14 @@ extension PanModalPresentationController {
             return
         }
         
-        let dragPosition = recognizer.translation(in: recognizer.view?.superview)
-        var modalPosition = presentedView.center
+        let dragPosition = recognizer.translation(in: presentedView)
         
         switch recognizer.state {
         case .changed:
-            modalPosition.y += dragPosition.y
-            presentedView.center = modalPosition
+            
+            // 최대 높이에서 더 이상 올라가지 못하게 구현
+            let changedPosition = presentedView.frame.origin.y + dragPosition.y
+            presentedView.frame.origin.y = max(changedPosition, fullModalYPosition)
             
             recognizer.setTranslation(.zero, in: containerView)
             gestureDirection = recognizer.velocity(in: containerView).y
@@ -150,7 +163,7 @@ extension PanModalPresentationController {
             })
     }
 }
- 
+
 // MARK: Configure UI
 extension PanModalPresentationController {
     private func configurePresentedViewInitialSetting(with containerView: UIView) {
