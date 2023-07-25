@@ -30,9 +30,7 @@ class FindIdViewController: UIViewController {
     }
 
     @objc private func didTaploginBtn() {
-        let loginVC = LoginViewController()
-        navigationController?.pushViewController(loginVC, animated: true)
-        
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc private func didTapFindIdButton() {
@@ -41,7 +39,8 @@ class FindIdViewController: UIViewController {
         let isVaildPattern = (findIdView.emailTextField.text!.range(of: idPattern, options: .regularExpression) != nil)
         if isVaildPattern {
             let findIdModalVC = FindIdPopUpViewController()
-            navigationController?.pushViewController(findIdModalVC, animated: true)
+            modalPresentationStyle = .overFullScreen
+            present(findIdModalVC, animated: true, completion: nil)
         } else {
             print("올바른 이메일 형식 x")
         }

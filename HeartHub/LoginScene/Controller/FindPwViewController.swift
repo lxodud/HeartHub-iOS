@@ -30,8 +30,7 @@ class FindPwViewController: UIViewController {
     }
 
     @objc private func didTaploginBtn() {
-        let loginVC = LoginViewController()
-        navigationController?.pushViewController(loginVC, animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc private func didTapFindIdButton() {

@@ -40,13 +40,11 @@ class SignUpTermAgreeViewController: UIViewController {
     }
     
     @objc func didTapRightArrowBtn() {
-        let loginVC = LoginViewController()
-        navigationController?.pushViewController(loginVC, animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func didTapLeftArrowBtn() {
-        let signUpLoverLinkingVC = SignUpLoverLinkingViewController()
-        navigationController?.pushViewController(signUpLoverLinkingVC, animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func didTapAllAgreeBtn() {

@@ -35,8 +35,7 @@ class SignUpLoverLinkingViewController: UIViewController {
     }
     
     @objc func didTapLeftArrowBtn() {
-        let signUpProfileVC = SignUpProfileViewController()
-        navigationController?.pushViewController(signUpProfileVC, animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func didTapdropDownBtn() {        

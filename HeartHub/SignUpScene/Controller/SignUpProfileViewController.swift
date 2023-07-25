@@ -37,8 +37,7 @@ class SignUpProfileViewController: UIViewController {
     }
     
     @objc func didTapLeftArrowBtn() {
-        let signUpStartDateVC = SignUpStartDateViewController()
-        navigationController?.pushViewController(signUpStartDateVC, animated: true)
+        navigationController?.popViewController(animated: true)
     }
 
     @objc func didTapNickNameCheckBtn() {
