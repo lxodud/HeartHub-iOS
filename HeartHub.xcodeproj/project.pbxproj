@@ -23,10 +23,12 @@
 		0C5929FE2A6D481400C21570 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929FD2A6D481400C21570 /* BlurView.swift */; };
 		0C592A012A6D69AF00C21570 /* PanModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C592A002A6D69AF00C21570 /* PanModalTransitioningDelegate.swift */; };
 		0C592A042A6D720700C21570 /* PanModalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C592A032A6D720700C21570 /* PanModalAnimator.swift */; };
+		0C6F45492A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F45482A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift */; };
 		0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */; };
 		0CA858B02A6F981D00DFCFD5 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA858AF2A6F981D00DFCFD5 /* Reusable.swift */; };
 		0CA858B62A6FB44D00DFCFD5 /* CommunityCellHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA858B52A6FB44D00DFCFD5 /* CommunityCellHeaderView.swift */; };
 		0CA858B82A6FB75B00DFCFD5 /* CommunityCellHeaderViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA858B72A6FB75B00DFCFD5 /* CommunityCellHeaderViewDelegate.swift */; };
+		0CA858BA2A6FE0EA00DFCFD5 /* CommentCellHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA858B92A6FE0EA00DFCFD5 /* CommentCellHeaderView.swift */; };
 		0CB49BDA2A69234A00C77341 /* LookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB49BD92A69234A00C77341 /* LookViewController.swift */; };
 		0CB49BDC2A69237400C77341 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB49BDB2A69237400C77341 /* MockData.swift */; };
 		0CB49BDF2A69526500C77341 /* LookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB49BDE2A69526500C77341 /* LookCell.swift */; };
@@ -55,10 +57,12 @@
 		0C5929FD2A6D481400C21570 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		0C592A002A6D69AF00C21570 /* PanModalTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalTransitioningDelegate.swift; sourceTree = "<group>"; };
 		0C592A032A6D720700C21570 /* PanModalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalAnimator.swift; sourceTree = "<group>"; };
+		0C6F45482A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellHeaderViewDelegate.swift; sourceTree = "<group>"; };
 		0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateViewController.swift; sourceTree = "<group>"; };
 		0CA858AF2A6F981D00DFCFD5 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		0CA858B52A6FB44D00DFCFD5 /* CommunityCellHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellHeaderView.swift; sourceTree = "<group>"; };
 		0CA858B72A6FB75B00DFCFD5 /* CommunityCellHeaderViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellHeaderViewDelegate.swift; sourceTree = "<group>"; };
+		0CA858B92A6FE0EA00DFCFD5 /* CommentCellHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellHeaderView.swift; sourceTree = "<group>"; };
 		0CB49BD92A69234A00C77341 /* LookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookViewController.swift; sourceTree = "<group>"; };
 		0CB49BDB2A69237400C77341 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		0CB49BDE2A69526500C77341 /* LookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookCell.swift; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				0C5929FD2A6D481400C21570 /* BlurView.swift */,
+				0CA858B92A6FE0EA00DFCFD5 /* CommentCellHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				0C592A002A6D69AF00C21570 /* PanModalTransitioningDelegate.swift */,
+				0C6F45482A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -351,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
+				0CA858BA2A6FE0EA00DFCFD5 /* CommentCellHeaderView.swift in Sources */,
 				0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */,
 				0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */,
 				0CF732452A65653500ED3B01 /* CommunityCellPagingImageView.swift in Sources */,
@@ -376,6 +383,7 @@
 				0C43F6102A659C6D00EED860 /* PagingImageCollectionViewCell.swift in Sources */,
 				0C5929FE2A6D481400C21570 /* BlurView.swift in Sources */,
 				0C5929F52A6ADB4500C21570 /* CommunityFloatingButton.swift in Sources */,
+				0C6F45492A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift in Sources */,
 				0C382E312A5BDB6D00EA08E0 /* CommunityProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

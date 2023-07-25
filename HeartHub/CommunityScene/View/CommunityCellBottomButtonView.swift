@@ -75,7 +75,7 @@ extension CommunityCellBottomButtonView {
         )
         commentButton.addTarget(
             self,
-            action: #selector(tapCommentButton(_:)),
+            action: #selector(tapCommentButton),
             for: .touchUpInside
         )
         heartButton.addTarget(
@@ -92,7 +92,7 @@ extension CommunityCellBottomButtonView {
     }
     
     @objc
-    private func tapCommentButton(_ sender: UIButton) {
+    private func tapCommentButton() {
         delegate?.didTapCommentButton()
     }
     

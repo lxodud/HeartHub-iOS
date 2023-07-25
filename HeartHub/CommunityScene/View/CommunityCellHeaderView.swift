@@ -78,9 +78,6 @@ extension CommunityCellHeaderView {
             profileView.leadingAnchor.constraint(
                 equalTo: safeArea.leadingAnchor
             ),
-            profileView.trailingAnchor.constraint(
-                equalTo: postOptionButton.leadingAnchor
-            ),
             profileView.bottomAnchor.constraint(
                 equalTo: safeArea.bottomAnchor
             ),

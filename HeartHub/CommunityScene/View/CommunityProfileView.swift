@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CommunityProfileView: UIView {
+final class CommunityProfileView: UIStackView {
     weak var delegate: CommunityProfileViewDelegate?
     
     private let profileImageView: UIImageView = {
@@ -32,7 +32,7 @@ final class CommunityProfileView: UIView {
         configureAction()
     }
     
-    required init?(coder: NSCoder) {
+    required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -53,7 +53,10 @@ extension CommunityProfileView {
 // MARK: Configure Action
 extension CommunityProfileView {
     private func configureAction() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapUserProfile))
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(tapUserProfile)
+        )
         profileImageView.addGestureRecognizer(tapGesture)
         profileIdLabel.addGestureRecognizer(tapGesture)
     }
@@ -68,17 +71,18 @@ extension CommunityProfileView {
 extension CommunityProfileView {
     private func configureSubview() {
         [profileImageView, profileIdLabel].forEach {
-            addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
+            addArrangedSubview($0)
         }
+        
+        axis = .horizontal
+        alignment = .center
+        distribution = .fill
+        spacing = 15
     }
     
     private func configureLayout() {
         NSLayoutConstraint.activate([
             // MARK: profileImageView Constraint
-            profileImageView.leadingAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.leadingAnchor
-            ),
             profileImageView.widthAnchor.constraint(
                 equalTo: profileImageView.heightAnchor
             ),
@@ -86,22 +90,6 @@ extension CommunityProfileView {
                 equalTo: safeAreaLayoutGuide.heightAnchor,
                 multiplier: 0.5
             ),
-            profileImageView.centerYAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.centerYAnchor
-            ),
-            
-            // MARK: profileIdLabel Constraint
-            profileIdLabel.leadingAnchor.constraint(
-                equalTo: profileImageView.trailingAnchor,
-                constant: 15
-            ),
-            profileIdLabel.heightAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.heightAnchor,
-                multiplier: 0.5
-            ),
-            profileIdLabel.centerYAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.centerYAnchor
-            )
         ])
     }
 }
