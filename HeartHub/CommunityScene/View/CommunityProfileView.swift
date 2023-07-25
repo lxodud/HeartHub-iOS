@@ -1,5 +1,5 @@
 //
-//  DailyCellProfileStackView.swift
+//  CommunityProfileView.swift
 //  HeartHub
 //
 //  Created by 이태영 on 2023/07/10.
@@ -7,7 +7,9 @@
 
 import UIKit
 
-final class CommunityCellProfileView: UIView {
+final class CommunityProfileView: UIView {
+    weak var delegate: CommunityProfileViewDelegate?
+    
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
@@ -22,14 +24,6 @@ final class CommunityCellProfileView: UIView {
         label.textColor = .black
         return label
     }()
-    
-    private let postOptionButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
-        return button
-    }()
-    
-    weak var delegate: CommunityCellProfileViewDelegate?
     
     init() {
         super.init(frame: .zero)
@@ -49,7 +43,7 @@ final class CommunityCellProfileView: UIView {
 }
 
 // MARK: Public Interface
-extension CommunityCellProfileView {
+extension CommunityProfileView {
     func configureContents(_ data: MockData) {
         profileImageView.image = data.profileImage
         profileIdLabel.text = data.profileName
@@ -57,30 +51,23 @@ extension CommunityCellProfileView {
 }
 
 // MARK: Configure Action
-extension CommunityCellProfileView {
+extension CommunityProfileView {
     private func configureAction() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapUserProfile))
         profileImageView.addGestureRecognizer(tapGesture)
         profileIdLabel.addGestureRecognizer(tapGesture)
-        
-        postOptionButton.addTarget(self, action: #selector(tapOptionButton), for: .touchUpInside)
     }
     
     @objc
     private func tapUserProfile() {
         delegate?.didTapUserProfile()
     }
-    
-    @objc
-    private func tapOptionButton() {
-        delegate?.didTapPostOption()
-    }
 }
 
 // MARK: Configure UI
-extension CommunityCellProfileView {
+extension CommunityProfileView {
     private func configureSubview() {
-        [profileImageView, profileIdLabel, postOptionButton].forEach {
+        [profileImageView, profileIdLabel].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -90,8 +77,7 @@ extension CommunityCellProfileView {
         NSLayoutConstraint.activate([
             // MARK: profileImageView Constraint
             profileImageView.leadingAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.leadingAnchor,
-                constant: 15
+                equalTo: safeAreaLayoutGuide.leadingAnchor
             ),
             profileImageView.widthAnchor.constraint(
                 equalTo: profileImageView.heightAnchor
@@ -104,30 +90,10 @@ extension CommunityCellProfileView {
                 equalTo: safeAreaLayoutGuide.centerYAnchor
             ),
             
-            // MARK: postOptionButton Constraint
-            postOptionButton.trailingAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.trailingAnchor,
-                constant: -15
-            ),
-            postOptionButton.widthAnchor.constraint(
-                equalTo: postOptionButton.heightAnchor
-            ),
-            postOptionButton.heightAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.heightAnchor,
-                multiplier: 0.3
-            ),
-            postOptionButton.centerYAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.centerYAnchor
-            ),
-            
             // MARK: profileIdLabel Constraint
             profileIdLabel.leadingAnchor.constraint(
                 equalTo: profileImageView.trailingAnchor,
                 constant: 15
-            ),
-            profileIdLabel.trailingAnchor.constraint(
-                equalTo: postOptionButton.leadingAnchor,
-                constant: -15
             ),
             profileIdLabel.heightAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.heightAnchor,

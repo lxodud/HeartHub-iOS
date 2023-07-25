@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CommunityCellable: UICollectionViewCell, CommunityCellProfileViewDelegate, CommunityCellBottomButtonViewDelegate {
+protocol CommunityCellable: UICollectionViewCell, CommunityProfileViewDelegate, CommunityCellBottomButtonViewDelegate {
     var delegate: CommunityCellDelegate? { get set }
     
     func fetchAdjustedHeight() -> CGFloat
@@ -18,10 +18,6 @@ protocol CommunityCellable: UICollectionViewCell, CommunityCellProfileViewDelega
 extension CommunityCellable {
     func didTapUserProfile() {
         delegate?.didTapUserProfile()
-    }
-    
-    func didTapPostOption() {
-        delegate?.didTapPostOption()
     }
 }
 

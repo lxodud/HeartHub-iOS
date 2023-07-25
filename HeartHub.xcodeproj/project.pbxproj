@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		0C382E262A5950C700EA08E0 /* CommunitySegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C382E252A5950C700EA08E0 /* CommunitySegmentedControl.swift */; };
 		0C382E282A5994A700EA08E0 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C382E272A5994A700EA08E0 /* CommunityViewController.swift */; };
-		0C382E312A5BDB6D00EA08E0 /* CommunityCellProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C382E302A5BDB6D00EA08E0 /* CommunityCellProfileView.swift */; };
+		0C382E312A5BDB6D00EA08E0 /* CommunityProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C382E302A5BDB6D00EA08E0 /* CommunityProfileView.swift */; };
 		0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C382E322A5C564000EA08E0 /* CommunityCellBottomButtonView.swift */; };
 		0C43F6102A659C6D00EED860 /* PagingImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C43F60F2A659C6D00EED860 /* PagingImageCollectionViewCell.swift */; };
 		0C43F6152A66767700EED860 /* DailyDateImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C43F6142A66767700EED860 /* DailyDateImageCell.swift */; };
 		0C4D32F72A6823A600AD5EFF /* DailyDateNoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32F62A6823A600AD5EFF /* DailyDateNoImageCell.swift */; };
 		0C4D32F92A6825FF00AD5EFF /* CommunityCellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32F82A6825FF00AD5EFF /* CommunityCellable.swift */; };
 		0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32FC2A68312C00AD5EFF /* CommunityCellDelegate.swift */; };
-		0C4D32FF2A68315B00AD5EFF /* CommunityCellProfileViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32FE2A68315B00AD5EFF /* CommunityCellProfileViewDelegate.swift */; };
+		0C4D32FF2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32FE2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift */; };
 		0C4D33012A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */; };
 		0C5929F52A6ADB4500C21570 /* CommunityFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929F42A6ADB4500C21570 /* CommunityFloatingButton.swift */; };
 		0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929F62A6D3EA800C21570 /* PanModalPresentationController.swift */; };
@@ -39,14 +39,14 @@
 /* Begin PBXFileReference section */
 		0C382E252A5950C700EA08E0 /* CommunitySegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitySegmentedControl.swift; sourceTree = "<group>"; };
 		0C382E272A5994A700EA08E0 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
-		0C382E302A5BDB6D00EA08E0 /* CommunityCellProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellProfileView.swift; sourceTree = "<group>"; };
+		0C382E302A5BDB6D00EA08E0 /* CommunityProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityProfileView.swift; sourceTree = "<group>"; };
 		0C382E322A5C564000EA08E0 /* CommunityCellBottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellBottomButtonView.swift; sourceTree = "<group>"; };
 		0C43F60F2A659C6D00EED860 /* PagingImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		0C43F6142A66767700EED860 /* DailyDateImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DailyDateImageCell.swift; path = HeartHub/CommunityScene/DailyDateScene/View/DailyDateCell/DailyDateImageCell.swift; sourceTree = SOURCE_ROOT; };
 		0C4D32F62A6823A600AD5EFF /* DailyDateNoImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateNoImageCell.swift; sourceTree = "<group>"; };
 		0C4D32F82A6825FF00AD5EFF /* CommunityCellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellable.swift; sourceTree = "<group>"; };
 		0C4D32FC2A68312C00AD5EFF /* CommunityCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellDelegate.swift; sourceTree = "<group>"; };
-		0C4D32FE2A68315B00AD5EFF /* CommunityCellProfileViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellProfileViewDelegate.swift; sourceTree = "<group>"; };
+		0C4D32FE2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityProfileViewDelegate.swift; sourceTree = "<group>"; };
 		0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellBottomButtonViewDelegate.swift; sourceTree = "<group>"; };
 		0C5929F42A6ADB4500C21570 /* CommunityFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityFloatingButton.swift; sourceTree = "<group>"; };
 		0C5929F62A6D3EA800C21570 /* PanModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalPresentationController.swift; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				0C382E252A5950C700EA08E0 /* CommunitySegmentedControl.swift */,
-				0C382E302A5BDB6D00EA08E0 /* CommunityCellProfileView.swift */,
+				0C382E302A5BDB6D00EA08E0 /* CommunityProfileView.swift */,
 				0C382E322A5C564000EA08E0 /* CommunityCellBottomButtonView.swift */,
 				0C5929F42A6ADB4500C21570 /* CommunityFloatingButton.swift */,
 				0C43F60E2A659C4E00EED860 /* CommunityCellPagingImageView */,
@@ -154,7 +154,7 @@
 		0C4D32FB2A6830F000AD5EFF /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				0C4D32FE2A68315B00AD5EFF /* CommunityCellProfileViewDelegate.swift */,
+				0C4D32FE2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift */,
 				0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */,
 				0C4D32F82A6825FF00AD5EFF /* CommunityCellable.swift */,
 				0C4D32FC2A68312C00AD5EFF /* CommunityCellDelegate.swift */,
@@ -364,11 +364,11 @@
 				0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */,
 				0C382E262A5950C700EA08E0 /* CommunitySegmentedControl.swift in Sources */,
 				0CA858B02A6F981D00DFCFD5 /* Reusable.swift in Sources */,
-				0C4D32FF2A68315B00AD5EFF /* CommunityCellProfileViewDelegate.swift in Sources */,
+				0C4D32FF2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift in Sources */,
 				0C43F6102A659C6D00EED860 /* PagingImageCollectionViewCell.swift in Sources */,
 				0C5929FE2A6D481400C21570 /* BlurView.swift in Sources */,
 				0C5929F52A6ADB4500C21570 /* CommunityFloatingButton.swift in Sources */,
-				0C382E312A5BDB6D00EA08E0 /* CommunityCellProfileView.swift in Sources */,
+				0C382E312A5BDB6D00EA08E0 /* CommunityProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

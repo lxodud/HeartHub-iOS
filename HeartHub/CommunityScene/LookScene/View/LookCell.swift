@@ -10,7 +10,7 @@ import UIKit
 final class LookCell: UICollectionViewCell, CommunityCellable {
     weak var delegate: CommunityCellDelegate?
     
-    private let profileView = CommunityCellProfileView()
+    private let profileView = CommunityProfileView()
     private let pagingImageView = CommunityCellPagingImageView()
     private let bottomButtonView = CommunityCellBottomButtonView()
     

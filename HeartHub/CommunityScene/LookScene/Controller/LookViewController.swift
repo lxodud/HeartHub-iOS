@@ -102,6 +102,7 @@ extension LookViewController {
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
+            // MARK: lookCollectionView Constraint
             lookCollectionView.topAnchor.constraint(
                 equalTo: safeArea.topAnchor
             ),

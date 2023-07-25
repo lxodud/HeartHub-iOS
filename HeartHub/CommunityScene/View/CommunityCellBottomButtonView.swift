@@ -8,6 +8,8 @@
 import UIKit
 
 final class CommunityCellBottomButtonView: UIView {
+    weak var delegate: CommunityCellBottomButtonViewDelegate?
+    
     private let thumbButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
@@ -50,8 +52,6 @@ final class CommunityCellBottomButtonView: UIView {
         button.setImage(UIImage(systemName: "heart.fill"), for: .selected)
         return button
     }()
-    
-    weak var delegate: CommunityCellBottomButtonViewDelegate?
     
     init() {
         super.init(frame: .zero)
