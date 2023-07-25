@@ -25,6 +25,8 @@
 		0C592A042A6D720700C21570 /* PanModalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C592A032A6D720700C21570 /* PanModalAnimator.swift */; };
 		0C6F45492A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F45482A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift */; };
 		0C6F454B2A7003930044EAC8 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F454A2A7003930044EAC8 /* CommentCell.swift */; };
+		0C6F454D2A700E9E0044EAC8 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F454C2A700E9E0044EAC8 /* CommentViewController.swift */; };
+		0C6F454F2A701D520044EAC8 /* CommunityProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F454E2A701D520044EAC8 /* CommunityProfileImageView.swift */; };
 		0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */; };
 		0CA858B02A6F981D00DFCFD5 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA858AF2A6F981D00DFCFD5 /* Reusable.swift */; };
 		0CA858B62A6FB44D00DFCFD5 /* CommunityCellHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA858B52A6FB44D00DFCFD5 /* CommunityCellHeaderView.swift */; };
@@ -60,6 +62,8 @@
 		0C592A032A6D720700C21570 /* PanModalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalAnimator.swift; sourceTree = "<group>"; };
 		0C6F45482A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellHeaderViewDelegate.swift; sourceTree = "<group>"; };
 		0C6F454A2A7003930044EAC8 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		0C6F454C2A700E9E0044EAC8 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		0C6F454E2A701D520044EAC8 /* CommunityProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityProfileImageView.swift; sourceTree = "<group>"; };
 		0C809A1D2A56DA57009EC362 /* DailyDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateViewController.swift; sourceTree = "<group>"; };
 		0CA858AF2A6F981D00DFCFD5 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		0CA858B52A6FB44D00DFCFD5 /* CommunityCellHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellHeaderView.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 				0CA858B52A6FB44D00DFCFD5 /* CommunityCellHeaderView.swift */,
 				0C382E322A5C564000EA08E0 /* CommunityCellBottomButtonView.swift */,
 				0C5929F42A6ADB4500C21570 /* CommunityFloatingButton.swift */,
+				0C6F454E2A701D520044EAC8 /* CommunityProfileImageView.swift */,
 				0C43F60E2A659C4E00EED860 /* CommunityCellPagingImageView */,
 			);
 			path = View;
@@ -199,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				0C5929F62A6D3EA800C21570 /* PanModalPresentationController.swift */,
+				0C6F454C2A700E9E0044EAC8 /* CommentViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -373,6 +379,7 @@
 				0CB49BDA2A69234A00C77341 /* LookViewController.swift in Sources */,
 				0CB49BDC2A69237400C77341 /* MockData.swift in Sources */,
 				0C4D32F72A6823A600AD5EFF /* DailyDateNoImageCell.swift in Sources */,
+				0C6F454F2A701D520044EAC8 /* CommunityProfileImageView.swift in Sources */,
 				0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */,
 				0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */,
 				0CA858B62A6FB44D00DFCFD5 /* CommunityCellHeaderView.swift in Sources */,
@@ -381,6 +388,7 @@
 				0C4D33012A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift in Sources */,
 				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
 				0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */,
+				0C6F454D2A700E9E0044EAC8 /* CommentViewController.swift in Sources */,
 				0C382E262A5950C700EA08E0 /* CommunitySegmentedControl.swift in Sources */,
 				0CA858B02A6F981D00DFCFD5 /* Reusable.swift in Sources */,
 				0C4D32FF2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift in Sources */,

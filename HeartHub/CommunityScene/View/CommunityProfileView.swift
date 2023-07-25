@@ -10,8 +10,8 @@ import UIKit
 final class CommunityProfileView: UIStackView {
     weak var delegate: CommunityProfileViewDelegate?
     
-    private let profileImageView: UIImageView = {
-        let imageView = UIImageView()
+    private let profileImageView: CommunityProfileImageView = {
+        let imageView = CommunityProfileImageView()
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 0.5
@@ -34,11 +34,6 @@ final class CommunityProfileView: UIStackView {
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
     }
 }
 
