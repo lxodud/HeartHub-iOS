@@ -12,8 +12,10 @@ class SignUpTermAgreeViewController: UIViewController {
 
     private let signUpTermAgreeView = SignUpTermAgreeView()
 
-    let unChekedimage = UIImage(named: "AgreeRadioBtnUnChecked")
-    let Chekedimage = UIImage(named: "AgreeRadioBtnChecked")
+    let unCheckedImage = UIImage(named: "AgreeRadioBtnUnChecked")
+    let checkedImage = UIImage(named: "AgreeRadioBtnChecked")
+    
+    var allTermAgree = false
     
     override func loadView() {
         view = signUpTermAgreeView
@@ -21,7 +23,6 @@ class SignUpTermAgreeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         addTarget()
     }
     
@@ -48,57 +49,71 @@ class SignUpTermAgreeViewController: UIViewController {
     }
     
     @objc func didTapAllAgreeBtn() {
-        if signUpTermAgreeView.allTermAgreeBtn.currentImage == UIImage(named: "AgreeRadioBtnChecked") {
-            signUpTermAgreeView.allTermAgreeBtn.setImage(unChekedimage, for: .normal)
-            signUpTermAgreeView.privacyAgreeBtn.setImage(unChekedimage, for: .normal)
-            signUpTermAgreeView.termOfUseAgreeBtn.setImage(unChekedimage, for: .normal)
-            signUpTermAgreeView.marketingAgreeBtn.setImage(unChekedimage, for: .normal)
+        if signUpTermAgreeView.allTermAgreeBtn.currentImage == checkedImage {
+            signUpTermAgreeView.allTermAgreeBtn.setImage(unCheckedImage, for: .normal)
+            signUpTermAgreeView.privacyAgreeBtn.setImage(unCheckedImage, for: .normal)
+            signUpTermAgreeView.termOfUseAgreeBtn.setImage(unCheckedImage, for: .normal)
+            signUpTermAgreeView.marketingAgreeBtn.setImage(unCheckedImage, for: .normal)
         } else {
-            signUpTermAgreeView.allTermAgreeBtn.setImage(Chekedimage, for: .normal)
-            if signUpTermAgreeView.privacyAgreeBtn.currentImage == Chekedimage ||
-                signUpTermAgreeView.termOfUseAgreeBtn == Chekedimage ||
-                signUpTermAgreeView.marketingAgreeBtn == Chekedimage {
-                signUpTermAgreeView.privacyAgreeBtn.setImage(Chekedimage, for: .normal)
-                signUpTermAgreeView.termOfUseAgreeBtn.setImage(Chekedimage, for: .normal)
-                signUpTermAgreeView.marketingAgreeBtn.setImage(Chekedimage, for: .normal)
-            } else if signUpTermAgreeView.privacyAgreeBtn.currentImage == unChekedimage ||
-                        signUpTermAgreeView.termOfUseAgreeBtn == unChekedimage ||
-                        signUpTermAgreeView.marketingAgreeBtn == unChekedimage  {
-                signUpTermAgreeView.privacyAgreeBtn.setImage(Chekedimage, for: .normal)
-                signUpTermAgreeView.termOfUseAgreeBtn.setImage(Chekedimage, for: .normal)
-                signUpTermAgreeView.marketingAgreeBtn.setImage(Chekedimage, for: .normal)
-            } else{
-                signUpTermAgreeView.privacyAgreeBtn.setImage(unChekedimage, for: .normal)
-                signUpTermAgreeView.termOfUseAgreeBtn.setImage(unChekedimage, for: .normal)
-                signUpTermAgreeView.marketingAgreeBtn.setImage(unChekedimage, for: .normal)
+            signUpTermAgreeView.allTermAgreeBtn.setImage(checkedImage, for: .normal)
+            if signUpTermAgreeView.privacyAgreeBtn.currentImage == checkedImage
+                || signUpTermAgreeView.termOfUseAgreeBtn == checkedImage
+                || signUpTermAgreeView.marketingAgreeBtn == checkedImage {
+                signUpTermAgreeView.privacyAgreeBtn.setImage(checkedImage, for: .normal)
+                signUpTermAgreeView.termOfUseAgreeBtn.setImage(checkedImage, for: .normal)
+                signUpTermAgreeView.marketingAgreeBtn.setImage(checkedImage, for: .normal)
+            } else if signUpTermAgreeView.privacyAgreeBtn.currentImage == unCheckedImage
+                        || signUpTermAgreeView.termOfUseAgreeBtn == unCheckedImage
+                        || signUpTermAgreeView.marketingAgreeBtn == unCheckedImage {
+                signUpTermAgreeView.privacyAgreeBtn.setImage(checkedImage, for: .normal)
+                signUpTermAgreeView.termOfUseAgreeBtn.setImage(checkedImage, for: .normal)
+                signUpTermAgreeView.marketingAgreeBtn.setImage(checkedImage, for: .normal)
+            } else {
+                signUpTermAgreeView.privacyAgreeBtn.setImage(unCheckedImage, for: .normal)
+                signUpTermAgreeView.termOfUseAgreeBtn.setImage(unCheckedImage, for: .normal)
+                signUpTermAgreeView.marketingAgreeBtn.setImage(unCheckedImage, for: .normal)
             }
         }
-        
-
     }
     
     @objc func didTapPrivacyAgreeBtn() {
-        if signUpTermAgreeView.privacyAgreeBtn.currentImage == UIImage(named: "AgreeRadioBtnChecked") {
-            signUpTermAgreeView.privacyAgreeBtn.setImage(unChekedimage, for: .normal)
+        if signUpTermAgreeView.privacyAgreeBtn.currentImage == checkedImage {
+            signUpTermAgreeView.privacyAgreeBtn.setImage(unCheckedImage, for: .normal)
         } else {
-            signUpTermAgreeView.privacyAgreeBtn.setImage(Chekedimage, for: .normal)
+            signUpTermAgreeView.privacyAgreeBtn.setImage(checkedImage, for: .normal)
         }
+        checkAllTermAgree()
     }
     
     @objc func didTapTermOfUseAgreeBtn() {
-        if signUpTermAgreeView.termOfUseAgreeBtn.currentImage == UIImage(named: "AgreeRadioBtnChecked") {
-            signUpTermAgreeView.termOfUseAgreeBtn.setImage(unChekedimage, for: .normal)
+        if signUpTermAgreeView.termOfUseAgreeBtn.currentImage == checkedImage {
+            signUpTermAgreeView.termOfUseAgreeBtn.setImage(unCheckedImage, for: .normal)
         } else {
-            signUpTermAgreeView.termOfUseAgreeBtn.setImage(Chekedimage, for: .normal)
+            signUpTermAgreeView.termOfUseAgreeBtn.setImage(checkedImage, for: .normal)
         }
+        checkAllTermAgree()
     }
     
     @objc func didTapMarketingAgreeBtn() {
-        if signUpTermAgreeView.marketingAgreeBtn.currentImage == UIImage(named: "AgreeRadioBtnChecked") {
-            signUpTermAgreeView.marketingAgreeBtn.setImage(unChekedimage, for: .normal)
+        if signUpTermAgreeView.marketingAgreeBtn.currentImage == checkedImage {
+            signUpTermAgreeView.marketingAgreeBtn.setImage(unCheckedImage, for: .normal)
         } else {
-            signUpTermAgreeView.marketingAgreeBtn.setImage(Chekedimage, for: .normal)
+            signUpTermAgreeView.marketingAgreeBtn.setImage(checkedImage, for: .normal)
         }
+        checkAllTermAgree()
+    }
+    
+    private func checkAllTermAgree() {
+        if signUpTermAgreeView.privacyAgreeBtn.currentImage == unCheckedImage
+            || signUpTermAgreeView.termOfUseAgreeBtn.currentImage == unCheckedImage
+            || signUpTermAgreeView.marketingAgreeBtn.currentImage == unCheckedImage {
+            signUpTermAgreeView.allTermAgreeBtn.setImage(unCheckedImage, for: .normal)
+        } else if signUpTermAgreeView.privacyAgreeBtn.currentImage == checkedImage
+        && signUpTermAgreeView.termOfUseAgreeBtn.currentImage == checkedImage
+        && signUpTermAgreeView.marketingAgreeBtn.currentImage == checkedImage {
+        signUpTermAgreeView.allTermAgreeBtn.setImage(checkedImage, for: .normal)
+    }
+        
     }
         
     @objc func didTapPrivacyArrowBtn() {

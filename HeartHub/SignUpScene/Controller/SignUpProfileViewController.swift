@@ -54,12 +54,12 @@ class SignUpProfileViewController: UIViewController {
         print("남 선택")
         
         //버튼의 이미지가 "RadioBtnChecked" ->  "RadioBtnUnchecked"로 바꾸고 else "RadioBtnUnchecked" -> "RadioBtnChecked" 로 바꿈
-        signUpProfileView.femaleBtn.setImage(UIImage(named: "RadioBtnUnChecked"), for: .normal)
-        if signUpProfileView.maleBtn.currentImage == UIImage(named: "RadioBtnChecked") {
-           let unChekedimage = UIImage(named: "RadioBtnUnChecked")
+        signUpProfileView.femaleBtn.setImage(UIImage(named: "AgreeRadioBtnUnChecked"), for: .normal)
+        if signUpProfileView.maleBtn.currentImage == UIImage(named: "AgreeRadioBtnChecked") {
+           let unChekedimage = UIImage(named: "AgreeRadioBtnUnChecked")
             signUpProfileView.maleBtn.setImage(unChekedimage, for: .normal)
         } else {
-            let Chekedimage = UIImage(named: "RadioBtnChecked")
+            let Chekedimage = UIImage(named: "AgreeRadioBtnChecked")
             signUpProfileView.maleBtn.setImage(Chekedimage, for: .normal)
         }
     }
@@ -68,12 +68,12 @@ class SignUpProfileViewController: UIViewController {
         print("남 선택")
         
         //버튼의 이미지가 "RadioBtnChecked" ->  "RadioBtnUnchecked"로 바꾸고 else "RadioBtnUnchecked" -> "RadioBtnChecked" 로 바꿈
-        signUpProfileView.maleBtn.setImage(UIImage(named: "RadioBtnUnChecked"), for: .normal)
-        if signUpProfileView.femaleBtn.currentImage == UIImage(named: "RadioBtnChecked") {
-           let unChekedimage = UIImage(named: "RadioBtnUnChecked")
+        signUpProfileView.maleBtn.setImage(UIImage(named: "AgreeRadioBtnUnChecked"), for: .normal)
+        if signUpProfileView.femaleBtn.currentImage == UIImage(named: "AgreeRadioBtnChecked") {
+           let unChekedimage = UIImage(named: "AgreeRadioBtnUnChecked")
             signUpProfileView.femaleBtn.setImage(unChekedimage, for: .normal)
         } else {
-            let Chekedimage = UIImage(named: "RadioBtnChecked")
+            let Chekedimage = UIImage(named: "AgreeRadioBtnChecked")
             signUpProfileView.femaleBtn.setImage(Chekedimage, for: .normal)
         }
     }

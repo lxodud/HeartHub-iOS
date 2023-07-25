@@ -288,7 +288,7 @@ class SignUpProfileView: UIView {
         btn.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
         
         // 라디오버튼 구현
-        let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
+        let unCheckedImg = UIImage(named: "AgreeRadioBtnUnChecked")
         btn.setImage(unCheckedImg, for: .normal)
         btn.imageView?.contentMode = .scaleAspectFit
 //        btn.adjustsImageSizeForAccessibilityContentSizeCategory = true
@@ -316,7 +316,7 @@ class SignUpProfileView: UIView {
         btn.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)        
         
         // 라디오버튼 구현
-        let unCheckedImg = UIImage(named: "RadioBtnUnChecked")
+        let unCheckedImg = UIImage(named: "AgreeRadioBtnUnChecked")
         btn.setImage(unCheckedImg, for: .normal)
         btn.imageView?.contentMode = .scaleAspectFit
 //        btn.adjustsImageSizeForAccessibilityContentSizeCategory = true

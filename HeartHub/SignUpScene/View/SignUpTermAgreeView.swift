@@ -9,6 +9,8 @@ import UIKit
 
 class SignUpTermAgreeView: UIView {
     
+    let unCheckedImg = UIImage(named: "AgreeRadioBtnUnChecked")
+    
     // MARK: 하트이미지
     // 하트이미지 1/3
     private lazy var heartImg3View: UIImageView = {
@@ -87,7 +89,6 @@ class SignUpTermAgreeView: UIView {
     lazy var allTermAgreeBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-        let unCheckedImg = UIImage(named: "AgreeRadioBtnUnChecked")
         button.setImage(unCheckedImg, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.contentHorizontalAlignment = .center
@@ -98,7 +99,6 @@ class SignUpTermAgreeView: UIView {
     lazy var privacyAgreeBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-        let unCheckedImg = UIImage(named: "AgreeRadioBtnUnChecked")
         button.setImage(unCheckedImg, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.contentHorizontalAlignment = .center
@@ -109,7 +109,6 @@ class SignUpTermAgreeView: UIView {
     lazy var termOfUseAgreeBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-        let unCheckedImg = UIImage(named: "AgreeRadioBtnUnChecked")
         button.setImage(unCheckedImg, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.contentHorizontalAlignment = .center
@@ -120,7 +119,6 @@ class SignUpTermAgreeView: UIView {
     lazy var marketingAgreeBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
-        let unCheckedImg = UIImage(named: "AgreeRadioBtnUnChecked")
         button.setImage(unCheckedImg, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.contentHorizontalAlignment = .center
@@ -246,10 +244,10 @@ class SignUpTermAgreeView: UIView {
     
     // 약관동의 스택뷰
     private lazy var lineBelowAgreeStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [privacyAgreeStackView, termOfUseAgreeStackView, marketingAgreeStackView])
+        let stView = UIStackView(arrangedSubviews: [allTermAgreeStackView, lineView, privacyAgreeStackView, termOfUseAgreeStackView, marketingAgreeStackView])
         stView.spacing = 16
         stView.axis = .vertical
-        stView.distribution = .fillEqually
+        stView.distribution = .fill
         stView.alignment = .leading
         return stView
     }()
@@ -261,11 +259,9 @@ class SignUpTermAgreeView: UIView {
         return line
     }()
     
-    // MARK: 뷰 초기화
-
+// MARK: 뷰 초기화
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         addViews()
         constraints()
         setup()
@@ -279,29 +275,21 @@ class SignUpTermAgreeView: UIView {
         [heartImg3View,
          arrowBtnStackView,
          startLabelStackView,
-         allTermAgreeStackView,
-         lineView,
          lineBelowAgreeStackView,
-//         agreeStackView
         ].forEach { addSubview($0)}
     }
     
     func setup() {
         backgroundColor = .white
-
-
     }
     
     // MARK: 제약
     private func constraints() {
         heartImg3ViewConstraints()
         startLabelStackViewConstraints()
-        allTermAgreeStackViewConstraints()
         lineViewConstraints()
         lineBelowAgreeStackViewConstraints()
         arrowBtnConstraints()
-
-//        agreeStackViewConstraints()
         privacyArrowBtnConstraints()
     }
     
@@ -323,15 +311,6 @@ class SignUpTermAgreeView: UIView {
             startLabelStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -76),
         ])
     }
-
-    private func allTermAgreeStackViewConstraints() {
-        allTermAgreeStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            allTermAgreeStackView.topAnchor.constraint(equalTo: startLabelStackView.bottomAnchor, constant: 166),
-            allTermAgreeStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 33),
-            allTermAgreeStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -235)
-        ])
-    }
     
     private func lineViewConstraints() {
         lineView.translatesAutoresizingMaskIntoConstraints = false
@@ -339,6 +318,7 @@ class SignUpTermAgreeView: UIView {
             lineView.heightAnchor.constraint(equalToConstant: 1),
             lineView.centerXAnchor.constraint(equalTo: centerXAnchor),
             lineView.topAnchor.constraint(equalTo: allTermAgreeStackView.bottomAnchor, constant: 16),
+            lineView.bottomAnchor.constraint(equalTo: privacyAgreeStackView.topAnchor, constant: -16),
             lineView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 24),
         ])
     }
@@ -347,7 +327,7 @@ class SignUpTermAgreeView: UIView {
         lineBelowAgreeStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             lineBelowAgreeStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            lineBelowAgreeStackView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 16),
+            lineBelowAgreeStackView.topAnchor.constraint(equalTo: startLabelStackView.bottomAnchor, constant: 170),
             lineBelowAgreeStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 33)
         ])
     }
@@ -357,7 +337,6 @@ class SignUpTermAgreeView: UIView {
         NSLayoutConstraint.activate([
             rightArrowBtn.heightAnchor.constraint(equalTo: rightArrowBtn.widthAnchor),
             leftArrowBtn.heightAnchor.constraint(equalTo: leftArrowBtn.widthAnchor),
-//            arrowBtnStackView.topAnchor.constraint(equalTo: agreeStackView.bottomAnchor, constant: 209),
             arrowBtnStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -33),
             arrowBtnStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40),
             arrowBtnStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40)
@@ -379,5 +358,4 @@ class SignUpTermAgreeView: UIView {
             marketingDescriptionBtn.widthAnchor.constraint(equalTo: privacyDescriptionBtn.heightAnchor),
         ])
     }
-     
 }
