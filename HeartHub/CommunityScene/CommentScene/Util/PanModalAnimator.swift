@@ -25,8 +25,7 @@ extension PanModalAnimator {
     private func animatePresentation(
         transitionContext: UIViewControllerContextTransitioning
     ) {
-        guard let toViewController = transitionContext.viewController(forKey: .to),
-              let fromViewController = transitionContext.viewController(forKey: .from)
+        guard let fromViewController = transitionContext.viewController(forKey: .from)
         else {
             return
         }
@@ -38,8 +37,7 @@ extension PanModalAnimator {
         guard let presentedView = fromViewController.presentedViewController?.view else {
             return
         }
-        
-        presentedView.frame = transitionContext.finalFrame(for: toViewController)
+
         presentedView.frame.origin.y = transitionContext.containerView.frame.height
         
         UIView.animate(

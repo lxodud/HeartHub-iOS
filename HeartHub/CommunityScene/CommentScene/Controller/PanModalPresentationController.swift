@@ -136,11 +136,10 @@ extension PanModalPresentationController {
         
         switch recognizer.state {
         case .changed:
-            
             // 최대 높이에서 더 이상 올라가지 못하게 구현
             let changedPosition = presentedView.frame.origin.y + dragPosition.y
             presentedView.frame.origin.y = max(changedPosition, fullModalYPosition)
-            
+           
             recognizer.setTranslation(.zero, in: containerView)
             gestureDirection = recognizer.velocity(in: containerView).y
             
@@ -152,20 +151,51 @@ extension PanModalPresentationController {
             // stickyView의 Yposition 조정
             if let stickyView = presentable?.stickyView {
                 if presentedView.frame.minY > halfModalYPosition {
-                    let changedPosition = stickyView.frame.origin.y + dragPosition.y
+                    let changedPosition = stickyView.frame.minY + dragPosition.y
                     let adjustPosition = min(changedPosition, containerView.frame.height)
                     stickyView.frame.origin.y = max(adjustPosition, stickyViewYPostion)
                 } else {
                     stickyView.frame.origin.y = stickyViewYPostion
+                    let changedHeight = presentedView.frame.size.height - dragPosition.y
+                    presentedView.frame.size.height = changedHeight
                 }
-                
             }
             
         case .ended, .cancelled:
             adjustYPosition(with: presentedView.frame.minY ,to: gestureDirection)
+            adjustPresentedViewHeight(with: presentedView.frame.minY, to: gestureDirection)
         default:
             break
         }
+    }
+    
+    private func adjustPresentedViewHeight(
+        with changedYPosition: CGFloat,
+        to direction: CGFloat
+    ) {
+        guard let presentedView = presentedView
+        else {
+            return
+        }
+        
+        var changedHeight = UIScreen.main.bounds.height
+        
+        if changedYPosition < halfModalYPosition {
+            if direction < 0 {
+                changedHeight -= fullModalYPosition
+            } else {
+                changedHeight -= halfModalYPosition
+            }
+        }
+        
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 1.0,
+            initialSpringVelocity: 0.5,
+            animations: {
+                presentedView.frame.size.height = changedHeight
+            })
     }
     
     private func adjustYPosition(
@@ -193,8 +223,8 @@ extension PanModalPresentationController {
         UIView.animate(
             withDuration: 0.5,
             delay: 0,
-            usingSpringWithDamping: 0.8,
-            initialSpringVelocity: 0,
+            usingSpringWithDamping: 1.0,
+            initialSpringVelocity: 0.5,
             animations: {
                 presentedView.frame.origin.y = resultYPosition
             })
@@ -214,10 +244,18 @@ extension PanModalPresentationController {
         stickyView.frame.origin.y = containerView.frame.height
         
         NSLayoutConstraint.activate([
-            stickyView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            stickyView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            stickyView.heightAnchor.constraint(equalToConstant: 100),
-            stickyView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+            stickyView.leadingAnchor.constraint(
+                equalTo: containerView.leadingAnchor
+            ),
+            stickyView.trailingAnchor.constraint(
+                equalTo: containerView.trailingAnchor
+            ),
+            stickyView.heightAnchor.constraint(
+                equalToConstant: 100
+            ),
+            stickyView.bottomAnchor.constraint(
+                equalTo: containerView.bottomAnchor
+            )
         ])
     }
     
@@ -225,7 +263,11 @@ extension PanModalPresentationController {
         guard let presentedView = presentedView else {
             return
         }
+        
         presentedView.layer.cornerRadius = 40
+        presentedView.clipsToBounds = true
+        
+        presentedView.frame.size.height = (stickyViewYPostion - halfModalYPosition) + 100
         
         containerView.addSubview(presentedView)
         presentedView.addSubview(dragIndicator)
@@ -248,7 +290,7 @@ extension PanModalPresentationController {
             
             dragIndicator.bottomAnchor.constraint(
                 equalTo: presentedView.topAnchor,
-                constant: 8
+                constant: 15
             )
         ])
     }
