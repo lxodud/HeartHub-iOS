@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignUpProfileViewController: UIViewController {
+final class SignUpProfileViewController: UIViewController {
 
     private let signUpProfileView = SignUpProfileView()
     

@@ -9,7 +9,7 @@
 import UIKit
 import DropDown
 
-class SignUpLoverLinkingViewController: UIViewController {
+final class SignUpLoverLinkingViewController: UIViewController {
 
     private let signUpLoverLinkingView = SignUpLoverLinkingView()
 

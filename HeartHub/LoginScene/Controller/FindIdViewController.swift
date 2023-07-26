@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FindIdViewController: UIViewController {
+final class FindIdViewController: UIViewController {
 
     private let findIdView = FindIdView()
     
@@ -38,9 +38,9 @@ class FindIdViewController: UIViewController {
         let idPattern = #"^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"#
         let isVaildPattern = (findIdView.emailTextField.text!.range(of: idPattern, options: .regularExpression) != nil)
         if isVaildPattern {
-            let findIdModalVC = FindIdPopUpViewController()
-            modalPresentationStyle = .overFullScreen
-            present(findIdModalVC, animated: true, completion: nil)
+            let findIdPopUpVC = FindIdPopUpViewController()
+            findIdPopUpVC.modalPresentationStyle = .overFullScreen
+            present(findIdPopUpVC, animated: true, completion: nil)
         } else {
             print("올바른 이메일 형식 x")
         }

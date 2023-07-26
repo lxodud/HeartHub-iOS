@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpTermAgreeViewController: UIViewController {
+final class SignUpTermAgreeViewController: UIViewController {
 
     private let signUpTermAgreeView = SignUpTermAgreeView()
 

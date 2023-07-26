@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FindPwView: UIView {
+final class FindPwView: UIView {
 
 // MARK: 배경 + 하트브랜드
     // 백그라운드 화면

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FindPwViewController: UIViewController {
+final class FindPwViewController: UIViewController {
 
     private let findPwView = FindPwView()
     

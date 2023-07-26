@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FindIdView: UIView {
+final class FindIdView: UIView {
     let screenHeight = UIScreen.main.bounds.size.height
 
     // MARK: 배경 + 하트브랜드

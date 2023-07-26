@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-class SignUpLoverLinkingView: UIView {
+final class SignUpLoverLinkingView: UIView {
     
     let screenHeight = UIScreen.main.bounds.size.height
 //    let textViewHeight: CGFloat = 35

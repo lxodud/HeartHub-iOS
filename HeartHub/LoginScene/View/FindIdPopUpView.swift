@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FindIdPopUpView: UIView {
+final class FindIdPopUpView: UIView {
     
     let screenHeight = UIScreen.main.bounds.size.height
 
@@ -137,7 +137,7 @@ class FindIdPopUpView: UIView {
         closeBtn.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             closeBtn.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            closeBtn.heightAnchor.constraint(equalTo: userNickNameLabel.heightAnchor),
+            closeBtn.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.08),
             closeBtn.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 30),
         ])
     }

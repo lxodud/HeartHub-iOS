@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignUpProfileView: UIView {
+final class SignUpProfileView: UIView {
     let textViewHeight: CGFloat = 35
     
 // MARK: 하트이미지
@@ -291,7 +291,6 @@ class SignUpProfileView: UIView {
         let unCheckedImg = UIImage(named: "AgreeRadioBtnUnChecked")
         btn.setImage(unCheckedImg, for: .normal)
         btn.imageView?.contentMode = .scaleAspectFit
-//        btn.adjustsImageSizeForAccessibilityContentSizeCategory = true
         btn.contentHorizontalAlignment = .leading
         btn.addSubview(maleLabel)
         return btn
@@ -302,7 +301,7 @@ class SignUpProfileView: UIView {
         label.text = "남"
         label.font = UIFont(name: "Pretendard-Regular", size: 14)
         label.textAlignment = .center
-//        label.adjustsFontSizeToFitWidth = true
+        label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
         return label
     }()
@@ -319,7 +318,6 @@ class SignUpProfileView: UIView {
         let unCheckedImg = UIImage(named: "AgreeRadioBtnUnChecked")
         btn.setImage(unCheckedImg, for: .normal)
         btn.imageView?.contentMode = .scaleAspectFit
-//        btn.adjustsImageSizeForAccessibilityContentSizeCategory = true
         btn.contentHorizontalAlignment = .leading
         btn.addSubview(femaleLabel)
         return btn
@@ -330,7 +328,7 @@ class SignUpProfileView: UIView {
         label.text = "여"
         label.font = UIFont(name: "Pretendard-Regular", size: 14)
         label.textAlignment = .center
-//        label.adjustsFontSizeToFitWidth = true
+        label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
         return label
     }()

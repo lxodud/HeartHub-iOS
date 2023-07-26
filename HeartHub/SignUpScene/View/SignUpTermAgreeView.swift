@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignUpTermAgreeView: UIView {
+final class SignUpTermAgreeView: UIView {
     
     let unCheckedImg = UIImage(named: "AgreeRadioBtnUnChecked")
     

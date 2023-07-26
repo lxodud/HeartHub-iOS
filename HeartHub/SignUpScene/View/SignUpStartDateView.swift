@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignUpStartDateView: UIView {
+final class SignUpStartDateView: UIView {
 
     // MARK: 하트이미지
     // 하트이미지 0/3

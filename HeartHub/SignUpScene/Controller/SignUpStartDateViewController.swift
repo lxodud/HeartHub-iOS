@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpStartDateViewController: UIViewController {
+final class SignUpStartDateViewController: UIViewController {
     
     private let signUpStartDateView = SignUpStartDateView()
     

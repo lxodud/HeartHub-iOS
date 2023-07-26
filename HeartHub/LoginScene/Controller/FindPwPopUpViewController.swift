@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FindPwPopUpViewController: UIViewController {
+final class FindPwPopUpViewController: UIViewController {
 
 
     private let findPwPopUpView = FindPwPopUpView()
