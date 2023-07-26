@@ -8,10 +8,12 @@
 import UIKit
 
 final class PanModalPresentationController: UIPresentationController {
-    private let halfModalYPosition: CGFloat = 500
-    private let fullModalYPosition: CGFloat = 50
+    private let halfModalYPosition: CGFloat = UIScreen.main.bounds.size.height / 2.5
+    private let fullModalYPosition: CGFloat = UIScreen.main.bounds.size.height / 11
+    private let stickyViewYPostion: CGFloat = UIScreen.main.bounds.size.height - 100
     private var gestureDirection: CGFloat = 0.0
     
+    private let presentable: PanModalPresentable?
     private let backgroundView = BlurView()
     private let dragIndicator: UIView = {
         let view = UIView()
@@ -24,6 +26,7 @@ final class PanModalPresentationController: UIPresentationController {
         presentedViewController: UIViewController,
         presenting presentingViewController: UIViewController?
     ) {
+        presentable = presentedViewController as? PanModalPresentable
         super.init(
             presentedViewController: presentedViewController,
             presenting: presentingViewController
@@ -42,13 +45,23 @@ extension PanModalPresentationController{
         configureBackgroundViewInitialSetting(with: containerView)
         configureBackgroundViewLayout(with: containerView)
         configurePresentedViewInitialSetting(with: containerView)
+        configurePresentableStickyView(with: containerView)
         
         guard let coordinator = presentedViewController.transitionCoordinator else {
             return
         }
         
         coordinator.animate { [weak self] _ in
+            
             self?.backgroundView.blurState = .max
+            
+            guard let stickyView = self?.presentable?.stickyView,
+                  let stickyViewYPostion = self?.stickyViewYPostion
+            else {
+                return
+            }
+            
+            stickyView.frame.origin.y = stickyViewYPostion
         }
     }
     
@@ -58,7 +71,19 @@ extension PanModalPresentationController{
         }
         
         coordinator.animate(alongsideTransition: { [weak self] _ in
-            self?.backgroundView.blurState = .zero
+            guard let self = self else {
+                return
+            }
+            
+            self.backgroundView.blurState = .zero
+            
+            guard let stickyView = self.presentable?.stickyView,
+                  let containerViewHeight = self.containerView?.frame.height
+            else {
+                return
+            }
+            
+            stickyView.frame.origin.y = containerViewHeight
         })
     }
 }
@@ -124,6 +149,18 @@ extension PanModalPresentationController {
             let y = presentedView.frame.origin.y - halfModalYPosition
             backgroundView.blurState = .calculatedValue(1.0 - (y / presentedView.frame.height))
             
+            // stickyView의 Yposition 조정
+            if let stickyView = presentable?.stickyView {
+                if presentedView.frame.minY > halfModalYPosition {
+                    let changedPosition = stickyView.frame.origin.y + dragPosition.y
+                    let adjustPosition = min(changedPosition, containerView.frame.height)
+                    stickyView.frame.origin.y = max(adjustPosition, stickyViewYPostion)
+                } else {
+                    stickyView.frame.origin.y = stickyViewYPostion
+                }
+                
+            }
+            
         case .ended, .cancelled:
             adjustYPosition(with: presentedView.frame.minY ,to: gestureDirection)
         default:
@@ -166,6 +203,24 @@ extension PanModalPresentationController {
 
 // MARK: Configure UI
 extension PanModalPresentationController {
+    private func configurePresentableStickyView(with containerView: UIView) {
+        guard let stickyView = presentable?.stickyView else {
+            return
+        }
+        
+        containerView.addSubview(stickyView)
+        stickyView.translatesAutoresizingMaskIntoConstraints = false
+        
+        stickyView.frame.origin.y = containerView.frame.height
+        
+        NSLayoutConstraint.activate([
+            stickyView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            stickyView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            stickyView.heightAnchor.constraint(equalToConstant: 100),
+            stickyView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        ])
+    }
+    
     private func configurePresentedViewInitialSetting(with containerView: UIView) {
         guard let presentedView = presentedView else {
             return

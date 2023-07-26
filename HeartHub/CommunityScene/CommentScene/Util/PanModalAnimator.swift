@@ -33,7 +33,7 @@ extension PanModalAnimator {
         
         fromViewController.beginAppearanceTransition(false, animated: true)
         
-        let yPosition = transitionContext.containerView.frame.height / 2
+        let yPosition = UIScreen.main.bounds.height / 2.5
         
         guard let presentedView = fromViewController.presentedViewController?.view else {
             return
@@ -43,7 +43,7 @@ extension PanModalAnimator {
         presentedView.frame.origin.y = transitionContext.containerView.frame.height
         
         UIView.animate(
-            withDuration: 0.3,
+            withDuration: 0.4,
             delay: 0,
             usingSpringWithDamping: 0.8,
             initialSpringVelocity: 0,
@@ -89,7 +89,7 @@ extension PanModalAnimator: UIViewControllerAnimatedTransitioning {
     func transitionDuration(
         using transitionContext: UIViewControllerContextTransitioning?
     ) -> TimeInterval {
-        return 0.4
+        return 0.3
     }
     
     func animateTransition(
