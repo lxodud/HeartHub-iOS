@@ -164,8 +164,19 @@ extension PanModalPresentationController {
         case .ended, .cancelled:
             adjustYPosition(with: presentedView.frame.minY ,to: gestureDirection)
             adjustPresentedViewHeight(with: presentedView.frame.minY, to: gestureDirection)
+            adjustStickyView(with: presentedView.frame.minY)
         default:
             break
+        }
+    }
+    
+    private func adjustStickyView(with changedYPosition: CGFloat) {
+        guard let stickyView = presentable?.stickyView else {
+            return
+        }
+        
+        if changedYPosition > halfModalYPosition {
+            stickyView.removeFromSuperview()
         }
     }
     
@@ -173,8 +184,7 @@ extension PanModalPresentationController {
         with changedYPosition: CGFloat,
         to direction: CGFloat
     ) {
-        guard let presentedView = presentedView
-        else {
+        guard let presentedView = presentedView else {
             return
         }
         
