@@ -38,6 +38,12 @@ final class CommentViewController: UIViewController {
         return button
     }()
     
+    private let headerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .red
+        return view
+    }()
+    
     override func viewDidLoad() {
         configureCommentTableView()
         configureCommentTextView()
@@ -55,6 +61,11 @@ extension CommentViewController: PanModalPresentable {
     var stickyView: UIView? {
         return commentStickyView
     }
+    
+    func canRespond(to panModalGestureRecognizer: UIPanGestureRecognizer) -> Bool {
+        let location = panModalGestureRecognizer.location(in: view)
+        return headerView.frame.contains(location)
+    }
 }
 
 // MARK: UITableView DataSource Implementation
@@ -63,14 +74,16 @@ extension CommentViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return 0
+        return 50
     }
     
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = UITableViewCell()
+        cell.textLabel?.text = "dsadsa"
+        return cell
     }
 }
 
@@ -114,7 +127,11 @@ extension CommentViewController {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        view.addSubview(commentTableView)
+        [commentTableView, headerView].forEach {
+            view.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
         view.backgroundColor = .systemBackground
         commentTableView.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -123,9 +140,23 @@ extension CommentViewController {
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
+            // MARK: headerView Constraint
+            headerView.topAnchor.constraint(
+                equalTo: safeArea.topAnchor
+            ),
+            headerView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor
+            ),
+            headerView.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor
+            ),
+            headerView.heightAnchor.constraint(
+                equalToConstant: 80
+            ),
+            
             // MARK: commentTableView Constraint
             commentTableView.topAnchor.constraint(
-                equalTo: safeArea.topAnchor
+                equalTo: headerView.bottomAnchor
             ),
             commentTableView.leadingAnchor.constraint(
                 equalTo: safeArea.leadingAnchor

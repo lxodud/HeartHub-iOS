@@ -8,10 +8,21 @@
 import UIKit
 
 final class PanModalPresentationController: UIPresentationController {
-    private let halfModalYPosition: CGFloat = UIScreen.main.bounds.size.height / 2.5
-    private let fullModalYPosition: CGFloat = UIScreen.main.bounds.size.height / 11
-    private let stickyViewYPostion: CGFloat = UIScreen.main.bounds.size.height - 100
+    private let screenHeight: CGFloat
+    
+    private lazy var halfModalYPosition: CGFloat = screenHeight / 2.5
+    private lazy var fullModalYPosition: CGFloat = screenHeight / 11
+    private lazy var stickyViewYPostion: CGFloat = screenHeight - 100
+    
     private var gestureDirection: CGFloat = 0.0
+    private var scrollViewYOffSet: CGFloat = 0.0
+    private var scrollObserver: NSKeyValueObservation?
+    private var beganAtCanRespond: Bool = false
+    
+    private var isPresentedViewFixed: Bool {
+        let yPosition = presentedView!.frame.minY
+        return yPosition <= halfModalYPosition + 10 || yPosition <= fullModalYPosition + 10
+    }
     
     private let presentable: PanModalPresentable?
     private let backgroundView = BlurView()
@@ -26,6 +37,7 @@ final class PanModalPresentationController: UIPresentationController {
         presentedViewController: UIViewController,
         presenting presentingViewController: UIViewController?
     ) {
+        screenHeight = UIScreen.current?.bounds.height ?? .zero
         presentable = presentedViewController as? PanModalPresentable
         super.init(
             presentedViewController: presentedViewController,
@@ -46,6 +58,7 @@ extension PanModalPresentationController{
         configureBackgroundViewLayout(with: containerView)
         configurePresentedViewInitialSetting(with: containerView)
         configurePresentableStickyView(with: containerView)
+        configureObserver()
         
         guard let coordinator = presentedViewController.transitionCoordinator else {
             return
@@ -98,6 +111,40 @@ extension PanModalPresentationController: UIGestureRecognizerDelegate {
     }
 }
 
+// MARK: Observe Scroll
+extension PanModalPresentationController {
+    private func configureObserver() {
+        scrollObserver = presentable?
+            .scrollView?.observe(\.contentOffset, changeHandler: { scrollView, value in
+                self.panScrollView(
+                    scrollView,
+                    change: value
+                )
+            })
+    }
+    
+    private func panScrollView(
+        _ scrollView: UIScrollView,
+        change: NSKeyValueObservedChange<CGPoint>
+    ) {
+        guard let presentedView = presentedView,
+              let containerView = containerView
+        else {
+            return
+        }
+        
+        if isPresentedViewFixed == false && scrollView.contentOffset.y > 0 {
+            scrollView.setContentOffset(CGPoint(x: 0, y: scrollViewYOffSet), animated: false)
+            scrollView.showsVerticalScrollIndicator = false
+        } else if isPresentedViewFixed && scrollView.contentOffset.y <= 0 {
+            
+        } else {
+            scrollViewYOffSet = max(scrollView.contentOffset.y, 0)
+            scrollView.showsVerticalScrollIndicator = true
+        }
+    }
+}
+
 // MARK: Configure Action
 extension PanModalPresentationController {
     private func configureAction() {
@@ -110,6 +157,8 @@ extension PanModalPresentationController {
             target: self,
             action: #selector(panPresentedView)
         )
+        panGesture.minimumNumberOfTouches = 1
+        panGesture.maximumNumberOfTouches = 1
         
         panGesture.delegate = self
         
@@ -127,7 +176,8 @@ extension PanModalPresentationController {
         _ recognizer: UIPanGestureRecognizer
     ) {
         guard let containerView = containerView,
-              let presentedView = presentedView
+              let presentedView = presentedView,
+              let canRespond = presentable?.canRespond(to: recognizer)
         else {
             return
         }
@@ -135,14 +185,23 @@ extension PanModalPresentationController {
         let dragPosition = recognizer.translation(in: presentedView)
         
         switch recognizer.state {
+        case .began:
+            if (presentedView.frame.minY <= halfModalYPosition + 10 && !canRespond) {
+                return
+            }
+            
+            beganAtCanRespond = true
         case .changed:
+            if beganAtCanRespond == false {
+                return
+            }
+
             // 최대 높이에서 더 이상 올라가지 못하게 구현
             let changedPosition = presentedView.frame.origin.y + dragPosition.y
             presentedView.frame.origin.y = max(changedPosition, fullModalYPosition)
            
             recognizer.setTranslation(.zero, in: containerView)
             gestureDirection = recognizer.velocity(in: containerView).y
-            
             
             // change blur view alpha with current y position
             let y = presentedView.frame.origin.y - halfModalYPosition
@@ -160,11 +219,11 @@ extension PanModalPresentationController {
                     presentedView.frame.size.height = changedHeight
                 }
             }
-            
         case .ended, .cancelled:
             adjustYPosition(with: presentedView.frame.minY ,to: gestureDirection)
             adjustPresentedViewHeight(with: presentedView.frame.minY, to: gestureDirection)
             adjustStickyView(with: presentedView.frame.minY)
+            beganAtCanRespond = false
         default:
             break
         }
@@ -175,7 +234,7 @@ extension PanModalPresentationController {
             return
         }
         
-        if changedYPosition > halfModalYPosition {
+        if changedYPosition > halfModalYPosition + 100 {
             stickyView.removeFromSuperview()
         }
     }
@@ -188,7 +247,7 @@ extension PanModalPresentationController {
             return
         }
         
-        var changedHeight = UIScreen.main.bounds.height
+        var changedHeight = screenHeight
         
         if changedYPosition < halfModalYPosition {
             if direction < 0 {

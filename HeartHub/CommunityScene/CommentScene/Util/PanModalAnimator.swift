@@ -32,7 +32,8 @@ extension PanModalAnimator {
         
         fromViewController.beginAppearanceTransition(false, animated: true)
         
-        let yPosition = UIScreen.main.bounds.height / 2.5
+        let screenHeight = UIScreen.current?.bounds.height ?? .zero
+        let yPosition = screenHeight / 2.5
         
         guard let presentedView = fromViewController.presentedViewController?.view else {
             return
