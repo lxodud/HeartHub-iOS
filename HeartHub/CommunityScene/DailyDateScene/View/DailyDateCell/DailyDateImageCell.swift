@@ -110,7 +110,8 @@ extension DailyDateImageCell {
                 constant: -12
             ),
             postLabel.heightAnchor.constraint(
-                equalTo: profileView.heightAnchor
+                equalTo: profileView.heightAnchor,
+                multiplier: 0.8
             ),
             
             // MARK: bottomButtonView Constraint
@@ -126,7 +127,8 @@ extension DailyDateImageCell {
                 constant: -3
             ),
             bottomButtonView.heightAnchor.constraint(
-                equalTo: profileView.heightAnchor
+                equalTo: profileView.heightAnchor,
+                multiplier: 0.5
             )
         ])
     }
