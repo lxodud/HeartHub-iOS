@@ -82,15 +82,22 @@ extension CommentViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return 50
+        return mockData.count
     }
     
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "dsadsa"
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: CommentCell.reuseIdentifier,
+            for: indexPath
+        ) as? CommentCell else {
+            return UITableViewCell()
+        }
+        
+        cell.configureCell(mockData[indexPath.row])
+        
         return cell
     }
 }

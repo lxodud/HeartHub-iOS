@@ -21,7 +21,6 @@ final class CommunityProfileView: UIStackView {
     
     private let profileIdLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
         return label
     }()
     
@@ -77,6 +76,8 @@ extension CommunityProfileView {
         alignment = .center
         distribution = .fill
         spacing = 15
+        
+        profileIdLabel.setContentHuggingPriority(.required, for: .horizontal)
     }
     
     private func configureLayout() {

@@ -13,11 +13,13 @@ final class CommentCellHeaderView: UIView {
     private let profileView = CommunityProfileView()
     private let postTimeLabel: UILabel = {
         let label = UILabel()
+        label.text = "1시간전"
         return label
     }()
     
     private let heartCountLabel: UILabel = {
         let label = UILabel()
+        label.text = "123"
         return label
     }()
     
@@ -42,8 +44,8 @@ final class CommentCellHeaderView: UIView {
 
 // MARK: Public Interface
 extension CommentCellHeaderView {
-    func configureContents() {
-        
+    func configureContents(_ data: MockData) {
+        profileView.configureContents(data)
     }
     
     var idLabelLeadingAnchor: NSLayoutXAxisAnchor {
@@ -88,6 +90,11 @@ extension CommentCellHeaderView {
         }
         
         profileView.delegate = self
+        
+        postTimeLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        heartButton.setContentHuggingPriority(.required, for: .horizontal)
+        profileView.setContentHuggingPriority(.required, for: .horizontal)
+        heartCountLabel.setContentHuggingPriority(.required, for: .horizontal)
     }
     
     private func configureLayout() {
@@ -116,6 +123,7 @@ extension CommentCellHeaderView {
             postTimeLabel.bottomAnchor.constraint(
                 equalTo: safeArea.bottomAnchor
             ),
+            postTimeLabel.trailingAnchor.constraint(equalTo: heartCountLabel.leadingAnchor),
 
             // MARK: heartCountLabel Constraint
             heartCountLabel.topAnchor.constraint(

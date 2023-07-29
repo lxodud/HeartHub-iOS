@@ -24,6 +24,9 @@ final class CommentCell: UITableViewCell {
     
     private let leaveCommentButton: UIButton = {
         let button = UIButton()
+        button.setTitle("답글달기", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 10)
         return button
     }()
     
@@ -36,6 +39,14 @@ final class CommentCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: Public Interface
+extension CommentCell {
+    func configureCell(_ data: MockData) {
+        headerView.configureContents(data)
+        commentLabel.text = "안녕하세요"
     }
 }
 
@@ -93,6 +104,9 @@ extension CommentCell {
                 equalTo: safeArea.trailingAnchor,
                 constant: -15
             ),
+            headerView.heightAnchor.constraint(
+                equalToConstant: 40
+            ),
             
             // MARK: commentLabel Constraint
             commentLabel.topAnchor.constraint(
@@ -112,8 +126,10 @@ extension CommentCell {
             leaveCommentButton.leadingAnchor.constraint(
                 equalTo: commentLabel.leadingAnchor,
                 constant: 30
+            ),
+            leaveCommentButton.bottomAnchor.constraint(
+                equalTo: safeArea.bottomAnchor
             )
         ])
-        
     }
 }

@@ -84,8 +84,36 @@ extension DailyDateViewController: UICollectionViewDataSource {
         }
         
         cell.configureCell(mockData[indexPath.row])
+        cell.delegate = self
         
         return cell
+    }
+}
+
+// MARK: Community Cell Delegate Implementation
+extension DailyDateViewController: CommunityCellDelegate {
+    func didTapUserProfile() {
+        
+    }
+    
+    func didTapPostOption() {
+        
+    }
+    
+    func didTapThumbButton() {
+        
+    }
+    
+    func didTapCommentButton() {
+        let commentViewController = CommentViewController()
+        commentViewController.modalPresentationStyle = .custom
+        commentViewController.transitioningDelegate = PanModalTransitioningDelegate.shared
+        
+        present(commentViewController, animated: true)
+    }
+    
+    func didTapHeartButton() {
+        
     }
 }
 
