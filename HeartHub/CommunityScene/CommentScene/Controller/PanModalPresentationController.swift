@@ -175,13 +175,7 @@ extension PanModalPresentationController {
     private func panScrollView(
         _ scrollView: UIScrollView,
         change: NSKeyValueObservedChange<CGPoint>
-    ) {
-//        guard let presentedView = presentedView,
-//              let containerView = containerView
-//        else {
-//            return
-//        }
-        
+    ) {        
         if isPresentedViewFixed == false && scrollView.contentOffset.y > 0 {
             scrollView.setContentOffset(CGPoint(x: 0, y: scrollViewYOffSet), animated: false)
             scrollView.showsVerticalScrollIndicator = false

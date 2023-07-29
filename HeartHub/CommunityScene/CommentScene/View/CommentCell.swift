@@ -25,7 +25,7 @@ final class CommentCell: UITableViewCell {
     private let leaveCommentButton: UIButton = {
         let button = UIButton()
         button.setTitle("답글달기", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.gray, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 10)
         return button
     }()
@@ -46,7 +46,6 @@ final class CommentCell: UITableViewCell {
 extension CommentCell {
     func configureCell(_ data: MockData) {
         headerView.configureContents(data)
-        commentLabel.text = "안녕하세요"
     }
 }
 
