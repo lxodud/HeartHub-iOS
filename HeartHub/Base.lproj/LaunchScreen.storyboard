@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,15 +14,53 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundGradient" translatesAutoresizingMaskIntoConstraints="NO" id="F5Z-Z1-RdU">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeartHubMainLabel" translatesAutoresizingMaskIntoConstraints="NO" id="5mg-HV-ges">
+                                <rect key="frame" x="63" y="261" width="267" height="67.666666666666686"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeartBrand" translatesAutoresizingMaskIntoConstraints="NO" id="098-2B-xhA">
+                                <rect key="frame" x="61.333333333333343" y="361.66666666666669" width="270.33333333333326" height="182.00000000000006"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MountainBackground" translatesAutoresizingMaskIntoConstraints="NO" id="xJW-Go-odU">
+                                <rect key="frame" x="0.0" y="558" width="393" height="300"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xJW-Go-odU" secondAttribute="trailing" id="Ard-DE-mQb"/>
+                            <constraint firstItem="xJW-Go-odU" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="558" id="C4R-q8-uq3"/>
+                            <constraint firstAttribute="bottom" secondItem="xJW-Go-odU" secondAttribute="bottom" constant="-6" id="D6U-x3-niG"/>
+                            <constraint firstItem="F5Z-Z1-RdU" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="ID0-ca-tTN"/>
+                            <constraint firstItem="5mg-HV-ges" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="JCV-sr-Yuc"/>
+                            <constraint firstItem="xJW-Go-odU" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="OgQ-FV-Fui"/>
+                            <constraint firstAttribute="bottom" secondItem="F5Z-Z1-RdU" secondAttribute="bottom" id="W9z-Uo-pZH"/>
+                            <constraint firstItem="F5Z-Z1-RdU" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="XTN-fP-f6j"/>
+                            <constraint firstAttribute="trailing" secondItem="F5Z-Z1-RdU" secondAttribute="trailing" id="XpF-Aj-dgb"/>
+                            <constraint firstItem="5mg-HV-ges" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="63" id="kQq-c3-B5C"/>
+                            <constraint firstItem="098-2B-xhA" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="odF-Nv-DZF"/>
+                            <constraint firstItem="5mg-HV-ges" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="202" id="sBD-ds-tZU"/>
+                            <constraint firstItem="098-2B-xhA" firstAttribute="top" secondItem="5mg-HV-ges" secondAttribute="bottom" constant="33" id="ugl-cY-aTE"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="446.56488549618319" y="228.87323943661974"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BackgroundGradient" width="390" height="844"/>
+        <image name="HeartBrand" width="270.33334350585938" height="182"/>
+        <image name="HeartHubMainLabel" width="280" height="67.333335876464844"/>
+        <image name="MountainBackground" width="390" height="286.33334350585938"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

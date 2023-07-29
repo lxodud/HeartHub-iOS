@@ -33,7 +33,31 @@
 		0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC52A5281C1001EF4E7 /* ViewController.swift */; };
 		0CC33ACB2A5281C3001EF4E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC33ACA2A5281C3001EF4E7 /* Assets.xcassets */; };
 		0CC33ACE2A5281C3001EF4E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CC33ACC2A5281C3001EF4E7 /* LaunchScreen.storyboard */; };
+
+		561462192A6EE50300C0AC1F /* FindIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561462182A6EE50300C0AC1F /* FindIdViewController.swift */; };
+		5626B2D12A57EEB300477EBC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B2D02A57EEB300477EBC /* LoginViewController.swift */; };
+		5626B3372A584A3D00477EBC /* SignUpStartDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B3362A584A3D00477EBC /* SignUpStartDateViewController.swift */; };
+		5626B3452A597FA200477EBC /* SignUpProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B3442A597FA200477EBC /* SignUpProfileViewController.swift */; };
+		5626B34B2A59938700477EBC /* SignUpLoverLinkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B34A2A59938700477EBC /* SignUpLoverLinkingViewController.swift */; };
+		5626B34D2A5993A700477EBC /* SignUpTermAgreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B34C2A5993A700477EBC /* SignUpTermAgreeViewController.swift */; };
+		56348A632A631283005BB635 /* FindIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A622A631283005BB635 /* FindIdView.swift */; };
+		56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A662A6318B0005BB635 /* FindIdPopUpView.swift */; };
+		56348A692A6319EA005BB635 /* FindIdPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A682A6319EA005BB635 /* FindIdPopUpViewController.swift */; };
+		56348A8F2A6E7ECC005BB635 /* FindPwView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A8E2A6E7ECC005BB635 /* FindPwView.swift */; };
+		56348A912A6E8286005BB635 /* FindPwViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A902A6E8286005BB635 /* FindPwViewController.swift */; };
+		56348A932A6E841E005BB635 /* FindPwPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A922A6E841E005BB635 /* FindPwPopUpView.swift */; };
+		56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A942A6E87BF005BB635 /* FindPwPopUpViewController.swift */; };
+		569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EDA2A5C241B00B51898 /* LoginView.swift */; };
+		569E4EE42A5CE18E00B51898 /* SignUpStartDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */; };
+		569E4EE62A5D06C400B51898 /* SignUpProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */; };
+		569E4EEB2A5D40E800B51898 /* SignUpLoverLinkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EEA2A5D40E800B51898 /* SignUpLoverLinkingView.swift */; };
+		569E4EED2A5D499900B51898 /* SignUpTermAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */; };
+		569E4EFE2A5FC58200B51898 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */; };
+		569E4EFF2A5FC58200B51898 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */; };
+		CBCF5AADCFBAC5FAE8CF899C /* Pods_HeartHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D54B5963AADEBA830899999 /* Pods_HeartHub.framework */; };
+
 		0CF732452A65653500ED3B01 /* CommunityCellPagingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF732442A65653500ED3B01 /* CommunityCellPagingImageView.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,7 +89,33 @@
 		0CC33ACA2A5281C3001EF4E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CC33ACD2A5281C3001EF4E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CC33ACF2A5281C3001EF4E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+
+		15B862B20CFD240D7E3F016F /* Pods-HeartHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartHub.debug.xcconfig"; path = "Target Support Files/Pods-HeartHub/Pods-HeartHub.debug.xcconfig"; sourceTree = "<group>"; };
+		1D54B5963AADEBA830899999 /* Pods_HeartHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		561462182A6EE50300C0AC1F /* FindIdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindIdViewController.swift; sourceTree = "<group>"; };
+		5626B2D02A57EEB300477EBC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5626B3362A584A3D00477EBC /* SignUpStartDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpStartDateViewController.swift; sourceTree = "<group>"; };
+		5626B3442A597FA200477EBC /* SignUpProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpProfileViewController.swift; sourceTree = "<group>"; };
+		5626B34A2A59938700477EBC /* SignUpLoverLinkingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpLoverLinkingViewController.swift; sourceTree = "<group>"; };
+		5626B34C2A5993A700477EBC /* SignUpTermAgreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermAgreeViewController.swift; sourceTree = "<group>"; };
+		56348A622A631283005BB635 /* FindIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdView.swift; sourceTree = "<group>"; };
+		56348A662A6318B0005BB635 /* FindIdPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdPopUpView.swift; sourceTree = "<group>"; };
+		56348A682A6319EA005BB635 /* FindIdPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdPopUpViewController.swift; sourceTree = "<group>"; };
+		56348A8E2A6E7ECC005BB635 /* FindPwView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPwView.swift; sourceTree = "<group>"; };
+		56348A902A6E8286005BB635 /* FindPwViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPwViewController.swift; sourceTree = "<group>"; };
+		56348A922A6E841E005BB635 /* FindPwPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPwPopUpView.swift; sourceTree = "<group>"; };
+		56348A942A6E87BF005BB635 /* FindPwPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPwPopUpViewController.swift; sourceTree = "<group>"; };
+		569E4EDA2A5C241B00B51898 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpStartDateView.swift; sourceTree = "<group>"; };
+		569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpProfileView.swift; sourceTree = "<group>"; };
+		569E4EEA2A5D40E800B51898 /* SignUpLoverLinkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpLoverLinkingView.swift; sourceTree = "<group>"; };
+		569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermAgreeView.swift; sourceTree = "<group>"; };
+		569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		9B22F018AA19302771485F16 /* Pods-HeartHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartHub.release.xcconfig"; path = "Target Support Files/Pods-HeartHub/Pods-HeartHub.release.xcconfig"; sourceTree = "<group>"; };
+
 		0CF732442A65653500ED3B01 /* CommunityCellPagingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommunityCellPagingImageView.swift; path = HeartHub/CommunityScene/View/CommunityCellPagingImageView/CommunityCellPagingImageView.swift; sourceTree = SOURCE_ROOT; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,12 +123,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBCF5AADCFBAC5FAE8CF899C /* Pods_HeartHub.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+
+		07263ABD750EA948E9BD0F4F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D54B5963AADEBA830899999 /* Pods_HeartHub.framework */,
+			);
+			name = Frameworks;
+
 		0C382E242A5950AF00EA08E0 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +301,7 @@
 				0CB49BD92A69234A00C77341 /* LookViewController.swift */,
 			);
 			path = Controller;
+
 			sourceTree = "<group>";
 		};
 		0CC33AB52A5281C1001EF4E7 = {
@@ -249,6 +309,8 @@
 			children = (
 				0CC33AC02A5281C1001EF4E7 /* HeartHub */,
 				0CC33ABF2A5281C1001EF4E7 /* Products */,
+				CB34CEB8D5CDE48E63185AFF /* Pods */,
+				07263ABD750EA948E9BD0F4F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -263,15 +325,103 @@
 		0CC33AC02A5281C1001EF4E7 /* HeartHub */ = {
 			isa = PBXGroup;
 			children = (
+
+				561462142A6EE3DF00C0AC1F /* LoginScene */,
+				56348A8D2A6DB4CE005BB635 /* SignUpScene */,
+				0CC33AC52A5281C1001EF4E7 /* ViewController.swift */,
+
 				0C809A1C2A56D17F009EC362 /* CommunityScene */,
+
 				0CC33AC12A5281C1001EF4E7 /* AppDelegate.swift */,
 				0CC33AC32A5281C1001EF4E7 /* SceneDelegate.swift */,
-				0CC33AC52A5281C1001EF4E7 /* ViewController.swift */,
 				0CC33ACA2A5281C3001EF4E7 /* Assets.xcassets */,
+				5626B2C92A57407600477EBC /* Font */,
 				0CC33ACC2A5281C3001EF4E7 /* LaunchScreen.storyboard */,
 				0CC33ACF2A5281C3001EF4E7 /* Info.plist */,
 			);
 			path = HeartHub;
+			sourceTree = "<group>";
+		};
+		561462142A6EE3DF00C0AC1F /* LoginScene */ = {
+			isa = PBXGroup;
+			children = (
+				56348A8A2A6DB17C005BB635 /* View */,
+				561462152A6EE3EA00C0AC1F /* Controller */,
+			);
+			path = LoginScene;
+			sourceTree = "<group>";
+		};
+		561462152A6EE3EA00C0AC1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5626B2D02A57EEB300477EBC /* LoginViewController.swift */,
+				561462182A6EE50300C0AC1F /* FindIdViewController.swift */,
+				56348A902A6E8286005BB635 /* FindPwViewController.swift */,
+				56348A682A6319EA005BB635 /* FindIdPopUpViewController.swift */,
+				56348A942A6E87BF005BB635 /* FindPwPopUpViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		561462162A6EE41200C0AC1F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */,
+				569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */,
+				569E4EEA2A5D40E800B51898 /* SignUpLoverLinkingView.swift */,
+				569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		561462172A6EE41800C0AC1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5626B3362A584A3D00477EBC /* SignUpStartDateViewController.swift */,
+				5626B3442A597FA200477EBC /* SignUpProfileViewController.swift */,
+				5626B34A2A59938700477EBC /* SignUpLoverLinkingViewController.swift */,
+				5626B34C2A5993A700477EBC /* SignUpTermAgreeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5626B2C92A57407600477EBC /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */,
+				569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		56348A8A2A6DB17C005BB635 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				569E4EDA2A5C241B00B51898 /* LoginView.swift */,
+				56348A622A631283005BB635 /* FindIdView.swift */,
+				56348A8E2A6E7ECC005BB635 /* FindPwView.swift */,
+				56348A662A6318B0005BB635 /* FindIdPopUpView.swift */,
+				56348A922A6E841E005BB635 /* FindPwPopUpView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		56348A8D2A6DB4CE005BB635 /* SignUpScene */ = {
+			isa = PBXGroup;
+			children = (
+				561462162A6EE41200C0AC1F /* View */,
+				561462172A6EE41800C0AC1F /* Controller */,
+			);
+			path = SignUpScene;
+			sourceTree = "<group>";
+		};
+		CB34CEB8D5CDE48E63185AFF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				15B862B20CFD240D7E3F016F /* Pods-HeartHub.debug.xcconfig */,
+				9B22F018AA19302771485F16 /* Pods-HeartHub.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,9 +431,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0CC33AD22A5281C3001EF4E7 /* Build configuration list for PBXNativeTarget "HeartHub" */;
 			buildPhases = (
+				D02CB3E1C2644FC4E8F0CC73 /* [CP] Check Pods Manifest.lock */,
 				0CC33ABA2A5281C1001EF4E7 /* Sources */,
 				0CC33ABB2A5281C1001EF4E7 /* Frameworks */,
 				0CC33ABC2A5281C1001EF4E7 /* Resources */,
+				0B3190BB0F71380761799718 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -333,17 +485,64 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CC33ACE2A5281C3001EF4E7 /* LaunchScreen.storyboard in Resources */,
+				569E4EFE2A5FC58200B51898 /* Pretendard-Regular.otf in Resources */,
 				0CC33ACB2A5281C3001EF4E7 /* Assets.xcassets in Resources */,
+				569E4EFF2A5FC58200B51898 /* Pretendard-SemiBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0B3190BB0F71380761799718 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HeartHub/Pods-HeartHub-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HeartHub/Pods-HeartHub-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HeartHub/Pods-HeartHub-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D02CB3E1C2644FC4E8F0CC73 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HeartHub-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0CC33ABA2A5281C1001EF4E7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5626B2D12A57EEB300477EBC /* LoginViewController.swift in Sources */,
+				56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */,
+				561462192A6EE50300C0AC1F /* FindIdViewController.swift in Sources */,
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
 				0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */,
 				0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */,
@@ -356,6 +555,24 @@
 				0CB49BDC2A69237400C77341 /* MockData.swift in Sources */,
 				0C4D32F72A6823A600AD5EFF /* DailyDateNoImageCell.swift in Sources */,
 				0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */,
+
+				56348A932A6E841E005BB635 /* FindPwPopUpView.swift in Sources */,
+				569E4EED2A5D499900B51898 /* SignUpTermAgreeView.swift in Sources */,
+				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
+				569E4EEB2A5D40E800B51898 /* SignUpLoverLinkingView.swift in Sources */,
+				56348A632A631283005BB635 /* FindIdView.swift in Sources */,
+				5626B3372A584A3D00477EBC /* SignUpStartDateViewController.swift in Sources */,
+				569E4EE42A5CE18E00B51898 /* SignUpStartDateView.swift in Sources */,
+				56348A8F2A6E7ECC005BB635 /* FindPwView.swift in Sources */,
+				5626B3452A597FA200477EBC /* SignUpProfileViewController.swift in Sources */,
+				56348A912A6E8286005BB635 /* FindPwViewController.swift in Sources */,
+				56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */,
+				5626B34D2A5993A700477EBC /* SignUpTermAgreeViewController.swift in Sources */,
+				5626B34B2A59938700477EBC /* SignUpLoverLinkingViewController.swift in Sources */,
+				569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */,
+				56348A692A6319EA005BB635 /* FindIdPopUpViewController.swift in Sources */,
+				569E4EE62A5D06C400B51898 /* SignUpProfileView.swift in Sources */,
+
 				0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */,
 				0C43F6152A66767700EED860 /* DailyDateImageCell.swift in Sources */,
 				0C592A012A6D69AF00C21570 /* PanModalTransitioningDelegate.swift in Sources */,
@@ -369,6 +586,7 @@
 				0C5929FE2A6D481400C21570 /* BlurView.swift in Sources */,
 				0C5929F52A6ADB4500C21570 /* CommunityFloatingButton.swift in Sources */,
 				0C382E312A5BDB6D00EA08E0 /* CommunityCellProfileView.swift in Sources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +720,7 @@
 		};
 		0CC33AD32A5281C3001EF4E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15B862B20CFD240D7E3F016F /* Pods-HeartHub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -530,6 +749,7 @@
 		};
 		0CC33AD42A5281C3001EF4E7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B22F018AA19302771485F16 /* Pods-HeartHub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
