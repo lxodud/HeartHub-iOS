@@ -13,13 +13,11 @@ final class CommentCellHeaderView: UIView {
     private let profileView = CommunityProfileView()
     private let postTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = "1시간전"
         return label
     }()
     
     private let heartCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "123"
         return label
     }()
     

@@ -19,7 +19,6 @@ final class CommunityCellBottomButtonView: UIView {
     
     private let thumbCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "하이"
         label.textColor = .black
         return label
     }()
@@ -32,7 +31,6 @@ final class CommunityCellBottomButtonView: UIView {
     
     private let commentCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "하이"
         label.textColor = .black
         return label
     }()

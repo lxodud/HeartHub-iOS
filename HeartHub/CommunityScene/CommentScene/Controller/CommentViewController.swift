@@ -27,7 +27,6 @@ final class CommentViewController: UIViewController {
     
     private let commentStickyView: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
         return view
     }()
     
@@ -40,7 +39,6 @@ final class CommentViewController: UIViewController {
     
     private let headerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
         return view
     }()
     
