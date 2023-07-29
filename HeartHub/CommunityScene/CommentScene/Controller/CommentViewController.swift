@@ -62,9 +62,17 @@ extension CommentViewController: PanModalPresentable {
         return commentStickyView
     }
     
+    var isStickyViewFirstResponder: Bool {
+        return commentTextView.isFirstResponder
+    }
+    
     func canRespond(to panModalGestureRecognizer: UIPanGestureRecognizer) -> Bool {
         let location = panModalGestureRecognizer.location(in: view)
         return headerView.frame.contains(location)
+    }
+    
+    func resignStickyViewFirstResponder() {
+        commentTextView.resignFirstResponder()
     }
 }
 

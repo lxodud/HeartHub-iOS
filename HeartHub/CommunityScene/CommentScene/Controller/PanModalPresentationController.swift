@@ -18,6 +18,7 @@ final class PanModalPresentationController: UIPresentationController {
     private var scrollViewYOffSet: CGFloat = 0.0
     private var scrollObserver: NSKeyValueObservation?
     private var beganAtCanRespond: Bool = false
+    private var stickyViewBottomConstraint: NSLayoutConstraint?
     
     private var isPresentedViewFixed: Bool {
         let yPosition = presentedView!.frame.minY
@@ -59,6 +60,7 @@ extension PanModalPresentationController{
         configurePresentedViewInitialSetting(with: containerView)
         configurePresentableStickyView(with: containerView)
         configureObserver()
+        addKeyboardObserver()
         
         guard let coordinator = presentedViewController.transitionCoordinator else {
             return
@@ -111,6 +113,53 @@ extension PanModalPresentationController: UIGestureRecognizerDelegate {
     }
 }
 
+// MARK: Keyboard Notification
+extension PanModalPresentationController {
+    private func addKeyboardObserver() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willShowKeyboard(_:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willHideKeyboard),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    @objc
+    private func willShowKeyboard(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+              let presentable = presentable,
+              let stickyView = presentable.stickyView,
+              let presentedView = presentedView,
+              presentable.isStickyViewFirstResponder
+        else {
+            return
+        }
+        
+        stickyView.frame.origin.y -= keyboardFrame.cgRectValue.height + stickyView.frame.height
+        self.stickyViewBottomConstraint?.constant = -(keyboardFrame.cgRectValue.height)
+        presentedView.frame.size.height = screenHeight - fullModalYPosition
+        presentedView.frame.origin.y = fullModalYPosition
+    }
+    
+    @objc
+    private func willHideKeyboard() {
+        guard let stickyView = presentable?.stickyView else {
+            return
+        }
+        
+        stickyView.frame.origin.y = stickyViewYPostion
+        self.stickyViewBottomConstraint?.constant = 0
+    }
+}
+
 // MARK: Observe Scroll
 extension PanModalPresentationController {
     private func configureObserver() {
@@ -127,11 +176,11 @@ extension PanModalPresentationController {
         _ scrollView: UIScrollView,
         change: NSKeyValueObservedChange<CGPoint>
     ) {
-        guard let presentedView = presentedView,
-              let containerView = containerView
-        else {
-            return
-        }
+//        guard let presentedView = presentedView,
+//              let containerView = containerView
+//        else {
+//            return
+//        }
         
         if isPresentedViewFixed == false && scrollView.contentOffset.y > 0 {
             scrollView.setContentOffset(CGPoint(x: 0, y: scrollViewYOffSet), animated: false)
@@ -168,6 +217,7 @@ extension PanModalPresentationController {
     
     @objc
     private func tapBackgroundView() {
+        presentable?.resignStickyViewFirstResponder()
         presentedViewController.dismiss(animated: true)
     }
     
@@ -175,6 +225,7 @@ extension PanModalPresentationController {
     private func panPresentedView(
         _ recognizer: UIPanGestureRecognizer
     ) {
+        presentable?.resignStickyViewFirstResponder()
         guard let containerView = containerView,
               let presentedView = presentedView,
               let canRespond = presentable?.canRespond(to: recognizer)
@@ -278,10 +329,10 @@ extension PanModalPresentationController {
         }
         var resultYPosition: CGFloat = 0.0
         
-        if changedYPosition > halfModalYPosition {
+        if changedYPosition > halfModalYPosition + 1 {
             resultYPosition = containerView.frame.height
             presentedViewController.dismiss(animated: true)
-        } else if changedYPosition < halfModalYPosition {
+        } else if changedYPosition < halfModalYPosition + 1 {
             if direction < 0 {
                 resultYPosition = fullModalYPosition
             } else {
@@ -312,6 +363,11 @@ extension PanModalPresentationController {
         
         stickyView.frame.origin.y = containerView.frame.height
         
+        let bottomConstraint = stickyView.bottomAnchor.constraint(
+            equalTo: containerView.bottomAnchor
+        )
+        stickyViewBottomConstraint = bottomConstraint
+        
         NSLayoutConstraint.activate([
             stickyView.leadingAnchor.constraint(
                 equalTo: containerView.leadingAnchor
@@ -322,9 +378,7 @@ extension PanModalPresentationController {
             stickyView.heightAnchor.constraint(
                 equalToConstant: 100
             ),
-            stickyView.bottomAnchor.constraint(
-                equalTo: containerView.bottomAnchor
-            )
+            bottomConstraint
         ])
     }
     
