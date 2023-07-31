@@ -7,7 +7,6 @@
 
 import Foundation
 
-protocol CommunityCellProfileViewDelegate: AnyObject {
+protocol CommunityProfileViewDelegate: AnyObject {
     func didTapUserProfile()
-    func didTapPostOption()
 }

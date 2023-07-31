@@ -74,6 +74,7 @@ extension LookViewController: UICollectionViewDataSource {
         }
         
         cell.configureCell(mockData[indexPath.row])
+        cell.delegate = self
         
         return cell
     }
@@ -91,6 +92,33 @@ extension LookViewController {
     }
 }
 
+// MARK: Community Cell Delegate Implementation
+extension LookViewController: CommunityCellDelegate {
+    func didTapUserProfile() {
+        
+    }
+    
+    func didTapPostOption() {
+        
+    }
+    
+    func didTapThumbButton() {
+        
+    }
+    
+    func didTapCommentButton() {
+        let commentViewController = CommentViewController()
+        commentViewController.modalPresentationStyle = .custom
+        commentViewController.transitioningDelegate = PanModalTransitioningDelegate.shared
+        
+        present(commentViewController, animated: true)
+    }
+    
+    func didTapHeartButton() {
+        
+    }
+}
+
 // MARK: Configure UI
 extension LookViewController {
     private func configureSubview() {
@@ -102,6 +130,7 @@ extension LookViewController {
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
+            // MARK: lookCollectionView Constraint
             lookCollectionView.topAnchor.constraint(
                 equalTo: safeArea.topAnchor
             ),

@@ -8,6 +8,8 @@
 import UIKit
 
 final class CommunityCellBottomButtonView: UIView {
+    weak var delegate: CommunityCellBottomButtonViewDelegate?
+    
     private let thumbButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
@@ -17,7 +19,6 @@ final class CommunityCellBottomButtonView: UIView {
     
     private let thumbCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "하이"
         label.textColor = .black
         return label
     }()
@@ -30,7 +31,6 @@ final class CommunityCellBottomButtonView: UIView {
     
     private let commentCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "하이"
         label.textColor = .black
         return label
     }()
@@ -50,8 +50,6 @@ final class CommunityCellBottomButtonView: UIView {
         button.setImage(UIImage(systemName: "heart.fill"), for: .selected)
         return button
     }()
-    
-    weak var delegate: CommunityCellBottomButtonViewDelegate?
     
     init() {
         super.init(frame: .zero)
@@ -75,7 +73,7 @@ extension CommunityCellBottomButtonView {
         )
         commentButton.addTarget(
             self,
-            action: #selector(tapCommentButton(_:)),
+            action: #selector(tapCommentButton),
             for: .touchUpInside
         )
         heartButton.addTarget(
@@ -92,7 +90,7 @@ extension CommunityCellBottomButtonView {
     }
     
     @objc
-    private func tapCommentButton(_ sender: UIButton) {
+    private func tapCommentButton() {
         delegate?.didTapCommentButton()
     }
     

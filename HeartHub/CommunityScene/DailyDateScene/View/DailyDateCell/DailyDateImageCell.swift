@@ -10,7 +10,7 @@ import UIKit
 final class DailyDateImageCell: UICollectionViewCell, CommunityCellable {
     weak var delegate: CommunityCellDelegate?
     
-    private let profileView = CommunityCellProfileView()
+    private let headerView = CommunityCellHeaderView()
     private let pagingImageView = CommunityCellPagingImageView()
     private let bottomButtonView = CommunityCellBottomButtonView()
     private let postLabel: UILabel = {
@@ -34,7 +34,7 @@ final class DailyDateImageCell: UICollectionViewCell, CommunityCellable {
 // MARK: Public Interface
 extension DailyDateImageCell {
     func fetchAdjustedHeight() -> CGFloat {
-        var height = profileView.bounds.height
+        var height = headerView.bounds.height
         height += pagingImageView.bounds.height
         height += postLabel.bounds.height
         height += bottomButtonView.bounds.height
@@ -43,7 +43,7 @@ extension DailyDateImageCell {
     }
     
     func configureCell(_ data: MockData) {
-        profileView.configureContents(data)
+        headerView.configureContents(data)
         pagingImageView.configureContents(data.images)
         postLabel.text = data.postLabel
     }
@@ -52,12 +52,12 @@ extension DailyDateImageCell {
 // MARK: Configure UI
 extension DailyDateImageCell {
     private func configureSubview() {
-        [profileView, pagingImageView, postLabel, bottomButtonView].forEach {
+        [headerView, pagingImageView, postLabel, bottomButtonView].forEach {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        profileView.delegate = self
+        headerView.delegate = self
         bottomButtonView.delegate = self
     }
     
@@ -66,26 +66,26 @@ extension DailyDateImageCell {
         
         NSLayoutConstraint.activate([
             // MARK: profileView Constraint
-            profileView.topAnchor.constraint(
+            headerView.topAnchor.constraint(
                 equalTo: safeArea.topAnchor
             ),
-            profileView.leadingAnchor.constraint(
+            headerView.leadingAnchor.constraint(
                 equalTo: safeArea.leadingAnchor,
                 constant: 12
             ),
-            profileView.trailingAnchor.constraint(
+            headerView.trailingAnchor.constraint(
                 equalTo: safeArea.trailingAnchor,
                 constant: -12
             ),
-            profileView.heightAnchor.constraint(
-                equalTo: profileView.widthAnchor,
+            headerView.heightAnchor.constraint(
+                equalTo: headerView.widthAnchor,
                 multiplier: 0.15
             ),
             
             
             // MARK: pagingImageView Constarint
             pagingImageView.topAnchor.constraint(
-                equalTo: profileView.bottomAnchor
+                equalTo: headerView.bottomAnchor
             ),
             pagingImageView.leadingAnchor.constraint(
                 equalTo: safeArea.leadingAnchor
@@ -110,7 +110,7 @@ extension DailyDateImageCell {
                 constant: -12
             ),
             postLabel.heightAnchor.constraint(
-                equalTo: profileView.heightAnchor,
+                equalTo: headerView.heightAnchor,
                 multiplier: 0.8
             ),
             
@@ -127,7 +127,7 @@ extension DailyDateImageCell {
                 constant: -3
             ),
             bottomButtonView.heightAnchor.constraint(
-                equalTo: profileView.heightAnchor,
+                equalTo: headerView.heightAnchor,
                 multiplier: 0.5
             )
         ])
