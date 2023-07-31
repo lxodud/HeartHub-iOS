@@ -1,5 +1,5 @@
 //
-//  CommunityProfileImageView.swift
+//  HeartHubProfileImageView.swift
 //  HeartHub
 //
 //  Created by 이태영 on 2023/07/26.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CommunityProfileImageView: UIImageView {
+final class HeartHubProfileImageView: UIImageView {
     init() {
         super.init(frame: .zero)
         contentMode = .scaleToFill
