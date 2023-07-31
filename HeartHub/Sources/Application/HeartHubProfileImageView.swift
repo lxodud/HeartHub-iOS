@@ -1,5 +1,5 @@
 //
-//  CommunityProfileImageView.swift
+//  HeartHubProfileImageView.swift
 //  HeartHub
 //
 //  Created by 이태영 on 2023/07/26.
