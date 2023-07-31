@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CommunityProfileImageView: UIImageView {
+final class HeartHubProfileImageView: UIImageView {
     init() {
         super.init(frame: .zero)
         contentMode = .scaleToFill

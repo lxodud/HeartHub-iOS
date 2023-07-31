@@ -21,7 +21,7 @@ final class CommentViewController: UIViewController {
     }()
     
     private let profileImageView: UIImageView = {
-        let imageView = CommunityProfileImageView()
+        let imageView = HeartHubProfileImageView()
         return imageView
     }()
     

@@ -11,7 +11,7 @@ final class CommunityProfileView: UIStackView {
     weak var delegate: CommunityProfileViewDelegate?
     
     private let profileImageView: UIImageView = {
-        let imageView = CommunityProfileImageView()
+        let imageView = HeartHubProfileImageView()
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 0.5
