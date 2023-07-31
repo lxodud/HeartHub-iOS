@@ -137,7 +137,7 @@
 				1D54B5963AADEBA830899999 /* Pods_HeartHub.framework */,
 			);
 			name = Frameworks;
-
+};
 		0C382E242A5950AF00EA08E0 /* View */ = {
 			isa = PBXGroup;
 			children = (
