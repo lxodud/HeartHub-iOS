@@ -22,6 +22,7 @@ final class CommunityViewController: UIViewController {
         return segmentedControl
     }()
     
+    private let communityFloatingButton = CommunityFloatingButton()
     private let searchBar = UISearchBar()
     private let viewControllers: [UIViewController]
     
@@ -48,14 +49,12 @@ final class CommunityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        communitySegmentedControl.addTarget(
-            self,
-            action: #selector(tapCommunitySegmentedControl(_:)),
-            for: .valueChanged
-        )
+        configureCommunitySegmentedControlInitialSetting()
         configureCommunitySegmentedControlLayout()
-        configurePageViewControllerLayout()
         configurePageViewControllerInitialSetting()
+        configurePageViewControllerLayout()
+        configureFloatingButtonInitialSetting()
+        configureFloatingButtonLayout()
         configureSearchBar()
     }
 }
@@ -151,7 +150,8 @@ extension CommunityViewController {
                 equalTo: communitySegmentedControl.bottomAnchor
             ),
             pageView.leadingAnchor.constraint(
-                equalTo: safeArea.leadingAnchor
+                equalTo: safeArea.leadingAnchor,
+                constant: -1
             ),
             pageView.trailingAnchor.constraint(
                 equalTo: safeArea.trailingAnchor
@@ -170,12 +170,18 @@ extension CommunityViewController {
         currentIndex = sender.selectedSegmentIndex
     }
     
+    private func configureCommunitySegmentedControlInitialSetting() {
+        view.addSubview(communitySegmentedControl)
+        communitySegmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        communitySegmentedControl.addTarget(
+            self,
+            action: #selector(tapCommunitySegmentedControl(_:)),
+            for: .valueChanged
+        )
+    }
+    
     private func configureCommunitySegmentedControlLayout() {
         let safeArea = view.safeAreaLayoutGuide
-        
-        view.addSubview(communitySegmentedControl)
-        
-        communitySegmentedControl.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             communitySegmentedControl.topAnchor.constraint(
@@ -200,5 +206,28 @@ extension CommunityViewController {
         searchBar.placeholder = "Search your interest!"
         navigationItem.titleView = searchBar
         navigationController?.navigationBar.backgroundColor = .systemBackground
+    }
+}
+
+// MARK: Configure FloatingButton
+extension CommunityViewController {
+    private func configureFloatingButtonInitialSetting() {
+        communityPageViewController.view.addSubview(communityFloatingButton)
+        communityFloatingButton.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func configureFloatingButtonLayout() {
+        let safeArea = communityPageViewController.view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            communityFloatingButton.bottomAnchor.constraint(
+                equalTo: safeArea.bottomAnchor,
+                constant: -10
+            ),
+            communityFloatingButton.trailingAnchor.constraint(
+                equalTo: safeArea.trailingAnchor,
+                constant: -10
+            )
+        ])
     }
 }

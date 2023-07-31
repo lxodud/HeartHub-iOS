@@ -8,6 +8,8 @@
 import UIKit
 
 final class CommunityCellBottomButtonView: UIView {
+    weak var delegate: CommunityCellBottomButtonViewDelegate?
+    
     private let thumbButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
@@ -17,7 +19,6 @@ final class CommunityCellBottomButtonView: UIView {
     
     private let thumbCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "하이"
         label.textColor = .black
         return label
     }()
@@ -30,7 +31,6 @@ final class CommunityCellBottomButtonView: UIView {
     
     private let commentCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "하이"
         label.textColor = .black
         return label
     }()
@@ -51,8 +51,6 @@ final class CommunityCellBottomButtonView: UIView {
         return button
     }()
     
-    weak var delegate: CommunityCellBottomButtonViewDelegate?
-    
     init() {
         super.init(frame: .zero)
         configureAction()
@@ -68,9 +66,21 @@ final class CommunityCellBottomButtonView: UIView {
 // MARK: Configure Action
 extension CommunityCellBottomButtonView {
     private func configureAction() {
-        thumbButton.addTarget(self, action: #selector(tapThumbButton(_:)), for: .touchUpInside)
-        commentButton.addTarget(self, action: #selector(tapCommentButton(_:)), for: .touchUpInside)
-        heartButton.addTarget(self, action: #selector(tapHeartButton(_:)), for: .touchUpInside)
+        thumbButton.addTarget(
+            self,
+            action: #selector(tapThumbButton(_:)),
+            for: .touchUpInside
+        )
+        commentButton.addTarget(
+            self,
+            action: #selector(tapCommentButton),
+            for: .touchUpInside
+        )
+        heartButton.addTarget(
+            self,
+            action: #selector(tapHeartButton(_:)),
+            for: .touchUpInside
+        )
     }
     
     @objc
@@ -80,7 +90,7 @@ extension CommunityCellBottomButtonView {
     }
     
     @objc
-    private func tapCommentButton(_ sender: UIButton) {
+    private func tapCommentButton() {
         delegate?.didTapCommentButton()
     }
     

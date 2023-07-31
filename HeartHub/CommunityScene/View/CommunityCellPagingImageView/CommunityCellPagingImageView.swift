@@ -38,7 +38,10 @@ final class CommunityCellPagingImageView: UIView {
         configureSubview()
         configureLayout()
     }
-    
+}
+
+// MARK: Public Interface
+extension CommunityCellPagingImageView {
     func configureContents(_ images: [UIImage]) {
         self.images = images
     }
@@ -133,12 +136,11 @@ extension CommunityCellPagingImageView {
                 equalTo: safeArea.trailingAnchor
             ),
             pagingImageCollectionView.heightAnchor.constraint(
-                equalTo: safeArea.heightAnchor,
-                multiplier: 0.95
+                equalTo: safeArea.heightAnchor
             ),
             
             // MARK: imagePageControl Constraint
-            imagePageControl.topAnchor.constraint(
+            imagePageControl.bottomAnchor.constraint(
                 equalTo: pagingImageCollectionView.bottomAnchor
             ),
             imagePageControl.centerXAnchor.constraint(
