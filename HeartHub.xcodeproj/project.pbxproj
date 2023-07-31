@@ -42,6 +42,7 @@
 		0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC33AC52A5281C1001EF4E7 /* ViewController.swift */; };
 		0CC33ACB2A5281C3001EF4E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC33ACA2A5281C3001EF4E7 /* Assets.xcassets */; };
 		0CC33ACE2A5281C3001EF4E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CC33ACC2A5281C3001EF4E7 /* LaunchScreen.storyboard */; };
+		0CF732452A65653500ED3B01 /* CommunityCellPagingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF732442A65653500ED3B01 /* CommunityCellPagingImageView.swift */; };
 		561462192A6EE50300C0AC1F /* FindIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561462182A6EE50300C0AC1F /* FindIdViewController.swift */; };
 		5626B2D12A57EEB300477EBC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B2D02A57EEB300477EBC /* LoginViewController.swift */; };
 		5626B3372A584A3D00477EBC /* SignUpStartDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B3362A584A3D00477EBC /* SignUpStartDateViewController.swift */; };
@@ -63,9 +64,6 @@
 		569E4EFE2A5FC58200B51898 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */; };
 		569E4EFF2A5FC58200B51898 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */; };
 		CBCF5AADCFBAC5FAE8CF899C /* Pods_HeartHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D54B5963AADEBA830899999 /* Pods_HeartHub.framework */; };
-
-		0CF732452A65653500ED3B01 /* CommunityCellPagingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF732442A65653500ED3B01 /* CommunityCellPagingImageView.swift */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +104,7 @@
 		0CC33ACA2A5281C3001EF4E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CC33ACD2A5281C3001EF4E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CC33ACF2A5281C3001EF4E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CF732442A65653500ED3B01 /* CommunityCellPagingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommunityCellPagingImageView.swift; path = HeartHub/CommunityScene/View/CommunityCellPagingImageView/CommunityCellPagingImageView.swift; sourceTree = SOURCE_ROOT; };
 		15B862B20CFD240D7E3F016F /* Pods-HeartHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartHub.debug.xcconfig"; path = "Target Support Files/Pods-HeartHub/Pods-HeartHub.debug.xcconfig"; sourceTree = "<group>"; };
 		1D54B5963AADEBA830899999 /* Pods_HeartHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		561462182A6EE50300C0AC1F /* FindIdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindIdViewController.swift; sourceTree = "<group>"; };
@@ -129,7 +128,6 @@
 		569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		9B22F018AA19302771485F16 /* Pods-HeartHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartHub.release.xcconfig"; path = "Target Support Files/Pods-HeartHub/Pods-HeartHub.release.xcconfig"; sourceTree = "<group>"; };
-		0CF732442A65653500ED3B01 /* CommunityCellPagingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommunityCellPagingImageView.swift; path = HeartHub/CommunityScene/View/CommunityCellPagingImageView/CommunityCellPagingImageView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +148,8 @@
 				1D54B5963AADEBA830899999 /* Pods_HeartHub.framework */,
 			);
 			name = Frameworks;
-        };
+			sourceTree = "<unknown>";
+		};
 		0C382E242A5950AF00EA08E0 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +285,37 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		0C6F45562A77AC610044EAC8 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				0C6F45582A77AC870044EAC8 /* Application */,
+				0C809A1C2A56D17F009EC362 /* CommunityScene */,
+				56348A8D2A6DB4CE005BB635 /* SignUpScene */,
+				561462142A6EE3DF00C0AC1F /* LoginScene */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		0C6F45572A77AC760044EAC8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5626B2C92A57407600477EBC /* Font */,
+				0CC33ACA2A5281C3001EF4E7 /* Assets.xcassets */,
+				0CC33ACC2A5281C3001EF4E7 /* LaunchScreen.storyboard */,
+				0CC33ACF2A5281C3001EF4E7 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0C6F45582A77AC870044EAC8 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				0CC33AC32A5281C1001EF4E7 /* SceneDelegate.swift */,
+				0CC33AC12A5281C1001EF4E7 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		0C809A1C2A56D17F009EC362 /* CommunityScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,7 +353,6 @@
 				0CB49BD92A69234A00C77341 /* LookViewController.swift */,
 			);
 			path = Controller;
-
 			sourceTree = "<group>";
 		};
 		0CC33AB52A5281C1001EF4E7 = {
@@ -347,19 +376,9 @@
 		0CC33AC02A5281C1001EF4E7 /* HeartHub */ = {
 			isa = PBXGroup;
 			children = (
-
-				561462142A6EE3DF00C0AC1F /* LoginScene */,
-				56348A8D2A6DB4CE005BB635 /* SignUpScene */,
+				0C6F45562A77AC610044EAC8 /* Sources */,
+				0C6F45572A77AC760044EAC8 /* Resources */,
 				0CC33AC52A5281C1001EF4E7 /* ViewController.swift */,
-
-				0C809A1C2A56D17F009EC362 /* CommunityScene */,
-
-				0CC33AC12A5281C1001EF4E7 /* AppDelegate.swift */,
-				0CC33AC32A5281C1001EF4E7 /* SceneDelegate.swift */,
-				0CC33ACA2A5281C3001EF4E7 /* Assets.xcassets */,
-				5626B2C92A57407600477EBC /* Font */,
-				0CC33ACC2A5281C3001EF4E7 /* LaunchScreen.storyboard */,
-				0CC33ACF2A5281C3001EF4E7 /* Info.plist */,
 			);
 			path = HeartHub;
 			sourceTree = "<group>";
@@ -581,7 +600,6 @@
 				0C4D32F72A6823A600AD5EFF /* DailyDateNoImageCell.swift in Sources */,
 				0C6F454F2A701D520044EAC8 /* CommunityProfileImageView.swift in Sources */,
 				0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */,
-
 				56348A932A6E841E005BB635 /* FindPwPopUpView.swift in Sources */,
 				569E4EED2A5D499900B51898 /* SignUpTermAgreeView.swift in Sources */,
 				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
@@ -598,7 +616,6 @@
 				569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */,
 				56348A692A6319EA005BB635 /* FindIdPopUpViewController.swift in Sources */,
 				569E4EE62A5D06C400B51898 /* SignUpProfileView.swift in Sources */,
-
 				0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */,
 				0CA858B62A6FB44D00DFCFD5 /* CommunityCellHeaderView.swift in Sources */,
 				0C43F6152A66767700EED860 /* DailyDateImageCell.swift in Sources */,
@@ -617,7 +634,7 @@
 				0C5929F52A6ADB4500C21570 /* CommunityFloatingButton.swift in Sources */,
 				0C6F45492A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift in Sources */,
 				0C382E312A5BDB6D00EA08E0 /* CommunityProfileView.swift in Sources */,
-				0C382E312A5BDB6D00EA08E0 /* CommunityCellProfileView.swift in Sources */,
+				0C382E312A5BDB6D00EA08E0 /* CommunityProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
