@@ -26,6 +26,7 @@ final class CommunityProfileView: UIStackView {
     
     init() {
         super.init(frame: .zero)
+        configureInitialSetting()
         configureSubview()
         configureLayout()
         configureAction()
@@ -67,15 +68,17 @@ extension CommunityProfileView {
 
 // MARK: Configure UI
 extension CommunityProfileView {
-    private func configureSubview() {
-        [profileImageView, profileIdLabel].forEach {
-            addArrangedSubview($0)
-        }
-        
+    private func configureInitialSetting() {
         axis = .horizontal
         alignment = .center
         distribution = .fill
         spacing = 15
+    }
+    
+    private func configureSubview() {
+        [profileImageView, profileIdLabel].forEach {
+            addArrangedSubview($0)
+        }
         
         profileIdLabel.setContentHuggingPriority(.required, for: .horizontal)
     }
