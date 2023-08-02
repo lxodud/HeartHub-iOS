@@ -26,6 +26,7 @@
 		0C684F432A77D26600A31865 /* DailyDateImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F422A77D26600A31865 /* DailyDateImageCell.swift */; };
 		0C684F452A77D53200A31865 /* CoupleImageBetweenHeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F442A77D53200A31865 /* CoupleImageBetweenHeartView.swift */; };
 		0C684F482A78D4F300A31865 /* HeartHubPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F472A78D4F300A31865 /* HeartHubPageViewController.swift */; };
+		0C684F4C2A78FA4D00A31865 /* CoupleSpaceMainHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F4B2A78FA4D00A31865 /* CoupleSpaceMainHeaderView.swift */; };
 		0C6F45492A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F45482A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift */; };
 		0C6F454B2A7003930044EAC8 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F454A2A7003930044EAC8 /* CommentCell.swift */; };
 		0C6F454D2A700E9E0044EAC8 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6F454C2A700E9E0044EAC8 /* CommentViewController.swift */; };
@@ -88,6 +89,7 @@
 		0C684F422A77D26600A31865 /* DailyDateImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyDateImageCell.swift; sourceTree = "<group>"; };
 		0C684F442A77D53200A31865 /* CoupleImageBetweenHeartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleImageBetweenHeartView.swift; sourceTree = "<group>"; };
 		0C684F472A78D4F300A31865 /* HeartHubPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartHubPageViewController.swift; sourceTree = "<group>"; };
+		0C684F4B2A78FA4D00A31865 /* CoupleSpaceMainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleSpaceMainHeaderView.swift; sourceTree = "<group>"; };
 		0C6F45482A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellHeaderViewDelegate.swift; sourceTree = "<group>"; };
 		0C6F454A2A7003930044EAC8 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		0C6F454C2A700E9E0044EAC8 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
@@ -298,9 +300,26 @@
 		0C684F3B2A77D0BD00A31865 /* VIew */ = {
 			isa = PBXGroup;
 			children = (
-				0C684F442A77D53200A31865 /* CoupleImageBetweenHeartView.swift */,
+				0C684F4B2A78FA4D00A31865 /* CoupleSpaceMainHeaderView.swift */,
 			);
 			path = VIew;
+			sourceTree = "<group>";
+		};
+		0C684F492A78FA1A00A31865 /* MainScene */ = {
+			isa = PBXGroup;
+			children = (
+				0C684F3B2A77D0BD00A31865 /* VIew */,
+				0C684F3A2A77C9E000A31865 /* Controller */,
+			);
+			path = MainScene;
+			sourceTree = "<group>";
+		};
+		0C684F4A2A78FA3600A31865 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0C684F442A77D53200A31865 /* CoupleImageBetweenHeartView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		0C6F45562A77AC610044EAC8 /* Sources */ = {
@@ -340,8 +359,8 @@
 		0C6F45592A77AE9F0044EAC8 /* CoupleSpaceScene */ = {
 			isa = PBXGroup;
 			children = (
-				0C684F3B2A77D0BD00A31865 /* VIew */,
-				0C684F3A2A77C9E000A31865 /* Controller */,
+				0C684F4A2A78FA3600A31865 /* View */,
+				0C684F492A78FA1A00A31865 /* MainScene */,
 			);
 			path = CoupleSpaceScene;
 			sourceTree = "<group>";
@@ -617,6 +636,7 @@
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
 				0CA858BA2A6FE0EA00DFCFD5 /* CommentCellHeaderView.swift in Sources */,
 				0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */,
+				0C684F4C2A78FA4D00A31865 /* CoupleSpaceMainHeaderView.swift in Sources */,
 				0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */,
 				0C6F454B2A7003930044EAC8 /* CommentCell.swift in Sources */,
 				0C382E282A5994A700EA08E0 /* CommunityViewController.swift in Sources */,
