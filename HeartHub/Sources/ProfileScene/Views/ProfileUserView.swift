@@ -82,8 +82,8 @@ extension ProfileUserView {
         
     private func configureLayout() {
         NSLayoutConstraint.activate([
-            // MARK: imageShadowView Constraints
-            imageShadowView.heightAnchor.constraint(equalTo: safeAreaLayoutGuide.heightAnchor, multiplier: 0.7),
+            // MARK: userimage Constraints
+            imageShadowView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.74),
             imageShadowView.widthAnchor.constraint(equalTo: imageShadowView.heightAnchor),
             imageShadowView.centerXAnchor.constraint(equalTo: centerXAnchor),
             imageShadowView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),

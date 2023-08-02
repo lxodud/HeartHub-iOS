@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileDateViewController: UIViewController {
+final class ProfileDateViewController: UIViewController {
   
     private lazy var profileDateCollectionView = UICollectionView(
         frame: .zero,
@@ -44,7 +44,6 @@ extension ProfileDateViewController: UICollectionViewDataSource {
         return profileDatePostcell
     }
 }
-
 
 // MARK: Configure CollectionView
 extension ProfileDateViewController {

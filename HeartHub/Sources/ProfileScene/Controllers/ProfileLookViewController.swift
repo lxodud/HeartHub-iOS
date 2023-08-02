@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileLookViewController: UIViewController {
+final class ProfileLookViewController: UIViewController {
   
     private lazy var profileLookCollectionView = UICollectionView(
         frame: .zero,
@@ -44,7 +44,6 @@ extension ProfileLookViewController: UICollectionViewDataSource {
         return profileLookPostcell
     }
 }
-
 
 // MARK: Configure CollectionView
 extension ProfileLookViewController {

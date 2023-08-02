@@ -117,7 +117,6 @@ extension ProfileViewController {
             userProfileView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             
             // MARK: profilePageView Constraints
-            
             profilePageView.topAnchor.constraint(
                 equalTo: userProfileView.bottomAnchor, constant: 50
             ),
@@ -127,8 +126,9 @@ extension ProfileViewController {
             profilePageView.trailingAnchor.constraint(
                 equalTo: safeArea.trailingAnchor
             ),
+            // 탭바 올리고 다시 확인해보기
             profilePageView.bottomAnchor.constraint(
-                equalTo: safeArea.bottomAnchor
+                equalTo: view.bottomAnchor, constant: 210
             )
         ])
     }

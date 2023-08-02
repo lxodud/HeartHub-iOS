@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileDailyViewController: UIViewController {
+final class ProfileDailyViewController: UIViewController {
   
     private lazy var profileDailyCollectionView = UICollectionView(
         frame: .zero,
@@ -44,7 +44,6 @@ extension ProfileDailyViewController: UICollectionViewDataSource {
         return profileDailyPostCell
     }
 }
-
 
 // MARK: Configure CollectionView
 extension ProfileDailyViewController {
@@ -99,4 +98,3 @@ extension ProfileDailyViewController {
         ])
     }
 }
-
