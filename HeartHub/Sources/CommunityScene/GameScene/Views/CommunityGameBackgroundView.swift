@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CommunityGameBackgroundView: UIView {
+final class CommunityGameBackgroundView: UIView {
 
     private var gameBackgroundImageView: UIImageView = {
         var img = UIImageView()
