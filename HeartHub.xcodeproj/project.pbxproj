@@ -17,6 +17,7 @@
 		0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32FC2A68312C00AD5EFF /* CommunityCellDelegate.swift */; };
 		0C4D32FF2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32FE2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift */; };
 		0C4D33012A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */; };
+		0C4EF98E2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EF98D2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift */; };
 		0C5929F52A6ADB4500C21570 /* CommunityFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929F42A6ADB4500C21570 /* CommunityFloatingButton.swift */; };
 		0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929F62A6D3EA800C21570 /* PanModalPresentationController.swift */; };
 		0C5929FE2A6D481400C21570 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929FD2A6D481400C21570 /* BlurView.swift */; };
@@ -80,6 +81,7 @@
 		0C4D32FC2A68312C00AD5EFF /* CommunityCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellDelegate.swift; sourceTree = "<group>"; };
 		0C4D32FE2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityProfileViewDelegate.swift; sourceTree = "<group>"; };
 		0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellBottomButtonViewDelegate.swift; sourceTree = "<group>"; };
+		0C4EF98D2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleSpaceMainButtonView.swift; sourceTree = "<group>"; };
 		0C5929F42A6ADB4500C21570 /* CommunityFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityFloatingButton.swift; sourceTree = "<group>"; };
 		0C5929F62A6D3EA800C21570 /* PanModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalPresentationController.swift; sourceTree = "<group>"; };
 		0C5929FD2A6D481400C21570 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				0C684F4B2A78FA4D00A31865 /* CoupleSpaceMainHeaderView.swift */,
+				0C4EF98D2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift */,
 			);
 			path = VIew;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				0CA858B62A6FB44D00DFCFD5 /* CommunityCellHeaderView.swift in Sources */,
 				0C684F432A77D26600A31865 /* DailyDateImageCell.swift in Sources */,
 				0C592A012A6D69AF00C21570 /* PanModalTransitioningDelegate.swift in Sources */,
+				0C4EF98E2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift in Sources */,
 				0C4D33012A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift in Sources */,
 				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
 				0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */,

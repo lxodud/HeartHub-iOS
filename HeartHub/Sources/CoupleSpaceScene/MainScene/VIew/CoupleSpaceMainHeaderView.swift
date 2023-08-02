@@ -13,7 +13,6 @@ final class CoupleSpaceMainHeaderView: UIView {
     private let dayLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Pretendard-SemiBold", size: 28)
-        label.text = "D + 999"
         label.textColor = .black
         return label
     }()
