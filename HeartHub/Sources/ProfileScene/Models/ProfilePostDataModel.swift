@@ -11,6 +11,3 @@ struct ProfilePostDataModel {
     var postImage: UIImage?
     var postText: String?
 }
-
-
-

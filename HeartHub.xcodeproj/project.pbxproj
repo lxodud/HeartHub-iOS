@@ -72,6 +72,9 @@
 		569E4EED2A5D499900B51898 /* SignUpTermAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */; };
 		569E4EFE2A5FC58200B51898 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */; };
 		569E4EFF2A5FC58200B51898 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */; };
+		56DEBEE22A7AAAB8000BC687 /* ProfileDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */; };
+		56DEBEE42A7AACFC000BC687 /* ProfileLookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBEE32A7AACFC000BC687 /* ProfileLookViewController.swift */; };
+		56DEBEE62A7AAD10000BC687 /* ProfileDailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBEE52A7AAD10000BC687 /* ProfileDailyViewController.swift */; };
 		CBCF5AADCFBAC5FAE8CF899C /* Pods_HeartHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D54B5963AADEBA830899999 /* Pods_HeartHub.framework */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +148,9 @@
 		569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermAgreeView.swift; sourceTree = "<group>"; };
 		569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDateViewController.swift; sourceTree = "<group>"; };
+		56DEBEE32A7AACFC000BC687 /* ProfileLookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLookViewController.swift; sourceTree = "<group>"; };
+		56DEBEE52A7AAD10000BC687 /* ProfileDailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDailyViewController.swift; sourceTree = "<group>"; };
 		9B22F018AA19302771485F16 /* Pods-HeartHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartHub.release.xcconfig"; path = "Target Support Files/Pods-HeartHub/Pods-HeartHub.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -515,6 +521,9 @@
 			isa = PBXGroup;
 			children = (
 				5651FC522A7A65F700965300 /* ProfileViewController.swift */,
+				56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */,
+				56DEBEE32A7AACFC000BC687 /* ProfileLookViewController.swift */,
+				56DEBEE52A7AAD10000BC687 /* ProfileDailyViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -670,6 +679,7 @@
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
 				0CA858BA2A6FE0EA00DFCFD5 /* CommentCellHeaderView.swift in Sources */,
 				5651FC6D2A7A69B500965300 /* ProfileUserView.swift in Sources */,
+				56DEBEE42A7AACFC000BC687 /* ProfileLookViewController.swift in Sources */,
 				0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */,
 				0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */,
 				0C6F454B2A7003930044EAC8 /* CommentCell.swift in Sources */,
@@ -681,6 +691,7 @@
 				0CB49BDF2A69526500C77341 /* LookCell.swift in Sources */,
 				0C4D32F92A6825FF00AD5EFF /* CommunityCellable.swift in Sources */,
 				0CB49BDA2A69234A00C77341 /* LookViewController.swift in Sources */,
+				56DEBEE62A7AAD10000BC687 /* ProfileDailyViewController.swift in Sources */,
 				0CB49BDC2A69237400C77341 /* MockData.swift in Sources */,
 				0C4D32F72A6823A600AD5EFF /* DailyDateNoImageCell.swift in Sources */,
 				0C6F454F2A701D520044EAC8 /* HeartHubProfileImageView.swift in Sources */,
@@ -720,6 +731,7 @@
 				0C4D32FF2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift in Sources */,
 				0C43F6102A659C6D00EED860 /* PagingImageCollectionViewCell.swift in Sources */,
 				0C6F45512A703B0A0044EAC8 /* PanModalPresentable.swift in Sources */,
+				56DEBEE22A7AAAB8000BC687 /* ProfileDateViewController.swift in Sources */,
 				5651FC692A7A68D700965300 /* ProfilePostDataModel.swift in Sources */,
 				0C5929FE2A6D481400C21570 /* BlurView.swift in Sources */,
 				0C5929F52A6ADB4500C21570 /* CommunityFloatingButton.swift in Sources */,

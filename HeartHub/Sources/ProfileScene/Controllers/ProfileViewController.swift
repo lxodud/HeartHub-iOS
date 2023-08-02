@@ -16,12 +16,18 @@ final class ProfileViewController: UIViewController {
         return imgView
     }()
     
+    private let profilePageViewController: UIViewController? = {
+        let pageViewController = HeartHubPageViewController(
+            viewControllers: [ProfileDailyViewController(), ProfileLookViewController(), ProfileDateViewController()]
+        )
+        return pageViewController
+    }()
+    
     private var userProfileView = ProfileUserView()
     private var userData = ProfileUserDataModel(
         profileImage: UIImage(named: "TestImage"),
         profileNickName: "하트허브하트허브",
-        profileInformaition: "하트허브의 프로필설명란"
-        )
+        profileInformaition: "하트허브의 프로필설명란")
     private var userDataManager = ProfileUserDataManager()
 
     private lazy var userPostCollectionView = UICollectionView(
@@ -110,7 +116,6 @@ extension ProfileViewController {
         userProfileView.profileImageView.image = userData.profileImage
         userProfileView.profileNickNameLabel.text = userData.profileNickName
         userProfileView.profileInformationLabel.text = userData.profileInformaition
-        
     }
 }
 
@@ -140,9 +145,13 @@ extension ProfileViewController {
 // MARK: Configure UI
 extension ProfileViewController {
     private func configureSubview() {
+        guard let communityPageView = profilePageViewController?.view else {
+            return
+        }
         [profileBackgroundView,
-        userPostCollectionView,
-         userProfileView
+         userProfileView,
+         communityPageView,
+         userPostCollectionView,
         ].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -150,6 +159,13 @@ extension ProfileViewController {
     }
     
     private func configureLayout() {
+        
+        guard let profilePageView = profilePageViewController?.view else {
+            return
+        }
+        
+        let safeArea = view.safeAreaLayoutGuide
+
         NSLayoutConstraint.activate([
             profileBackgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             profileBackgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -158,16 +174,31 @@ extension ProfileViewController {
             
             // MARK: userProfileView Constraints
             userProfileView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.32),
-            userProfileView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
+            userProfileView.widthAnchor.constraint(equalTo: safeArea.widthAnchor),
             userProfileView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            userProfileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 69),
-            userProfileView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            userProfileView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 69),
+            userProfileView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            
+            // MARK: profilePageView Constraints
+            
+            profilePageView.topAnchor.constraint(
+                equalTo: userProfileView.bottomAnchor, constant: 50
+            ),
+            profilePageView.leadingAnchor.constraint(
+                equalTo: safeArea.leadingAnchor
+            ),
+            profilePageView.trailingAnchor.constraint(
+                equalTo: safeArea.trailingAnchor
+            ),
+            profilePageView.bottomAnchor.constraint(
+                equalTo: safeArea.bottomAnchor
+            ),
             
             // MARK: userPostCollectionView Constraints
-            userPostCollectionView.topAnchor.constraint(equalTo: userProfileView.bottomAnchor, constant: 10),
-            userPostCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            userPostCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            userPostCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+            userPostCollectionView.topAnchor.constraint(equalTo: profilePageView.bottomAnchor),
+            userPostCollectionView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 0),
+            userPostCollectionView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            userPostCollectionView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)
         ])
     }
 }
