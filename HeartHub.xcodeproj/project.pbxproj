@@ -67,6 +67,7 @@
 		569E4EED2A5D499900B51898 /* SignUpTermAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */; };
 		569E4EFE2A5FC58200B51898 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */; };
 		569E4EFF2A5FC58200B51898 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */; };
+		56DEBEDA2A7A9B24000BC687 /* GameMissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */; };
 		CBCF5AADCFBAC5FAE8CF899C /* Pods_HeartHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D54B5963AADEBA830899999 /* Pods_HeartHub.framework */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +136,7 @@
 		569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermAgreeView.swift; sourceTree = "<group>"; };
 		569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMissionTableViewCell.swift; sourceTree = "<group>"; };
 		9B22F018AA19302771485F16 /* Pods-HeartHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartHub.release.xcconfig"; path = "Target Support Files/Pods-HeartHub/Pods-HeartHub.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -512,6 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				5651FC792A7A7C6A00965300 /* CommunityGameBackgroundView.swift */,
+				56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5626B2D12A57EEB300477EBC /* LoginViewController.swift in Sources */,
+				56DEBEDA2A7A9B24000BC687 /* GameMissionTableViewCell.swift in Sources */,
 				56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */,
 				561462192A6EE50300C0AC1F /* FindIdViewController.swift in Sources */,
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
