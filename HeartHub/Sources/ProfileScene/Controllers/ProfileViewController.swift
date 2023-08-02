@@ -31,7 +31,11 @@ final class ProfileViewController: UIViewController {
     private var profilePostArray: [ProfilePostDataModel] = []
     private var postDataManager = ProfilePostDataManager()
     
-    private let profileFloatingButton = CommunityFloatingButton()
+    private let profileFloatingButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "Pencil"), for: .normal)
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,7 +105,7 @@ extension ProfileViewController {
 
 // MARK: Configure UserProfile Data
 extension ProfileViewController {
-    func configureUserProfileData() {
+    private func configureUserProfileData() {
         userDataManager.configureProfileUserData()
         userProfileView.profileImageView.image = userData.profileImage
         userProfileView.profileNickNameLabel.text = userData.profileNickName

@@ -9,7 +9,7 @@ import UIKit
 
 final class ProfileUserView: UIView {
 
-    lazy var imageShadowView: UIView = {
+    private lazy var imageShadowView: UIView = {
         let view = UIView()
         view.layer.shadowColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.25).cgColor
         view.layer.shadowOpacity = 1.0
@@ -19,7 +19,7 @@ final class ProfileUserView: UIView {
         return view
     }()
     
-   var profileImageView: UIImageView = {
+    var profileImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
@@ -46,7 +46,7 @@ final class ProfileUserView: UIView {
         return label
     }()
     
-    private var profileLabelStackView: UIStackView = {
+    var profileLabelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .fill

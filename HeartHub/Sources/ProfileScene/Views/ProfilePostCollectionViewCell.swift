@@ -25,11 +25,11 @@ final class ProfilePostCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureImageView() {
+    private func configureImageView() {
         self.contentView.addSubview(postImageView)
     }
     
-    func configureConstraints() {
+    private func configureConstraints() {
         postImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             postImageView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
