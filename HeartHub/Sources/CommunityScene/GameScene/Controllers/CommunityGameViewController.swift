@@ -10,6 +10,7 @@ import UIKit
 final class CommunityGameViewController: UIViewController {
     
     private var gameBackgroundView = CommunityGameBackgroundView()
+    private let gameMissiontableView = UITableView()
     
     var gameMissionButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -50,7 +51,33 @@ final class CommunityGameViewController: UIViewController {
         super.viewDidLoad()
         configureSubview()
         configureLayout()
+        configureMissionTableView()
+    }
+}
 
+extension CommunityGameViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    
+}
+
+extension CommunityGameViewController {
+    func configureMissionTableView() {
+        view.addSubview(gameMissiontableView)
+        gameMissiontableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            gameMissiontableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            gameMissiontableView.topAnchor.constraint(equalTo: gameButtonStackView.bottomAnchor, constant: 55),
+            gameMissiontableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -113),
+            gameMissiontableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25)
+        ])
     }
 }
 
