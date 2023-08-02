@@ -10,6 +10,7 @@ import UIKit
 final class CoupleSpaceMainButtonView: UIView {
     private let buttonImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -34,6 +35,7 @@ final class CoupleSpaceMainButtonView: UIView {
         configureContents(image: image, title: title)
         configureSubview()
         configureLayout()
+        configureShadow()
     }
     
     required init?(coder: NSCoder) {
@@ -41,7 +43,7 @@ final class CoupleSpaceMainButtonView: UIView {
     }
 }
 
-// MARK: Configure Action
+// MARK: Public Interface
 extension CoupleSpaceMainButtonView {
     func addAction(_ target: Any,_ action: Selector) {
         let tapGesture = UITapGestureRecognizer(target: target, action: action)
@@ -67,6 +69,7 @@ extension CoupleSpaceMainButtonView {
         }
         
         addSubview(totalStackView)
+        buttonImageView.translatesAutoresizingMaskIntoConstraints = false
         totalStackView.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -74,9 +77,10 @@ extension CoupleSpaceMainButtonView {
         let safeArea = safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            totalStackView.topAnchor.constraint(
-                equalTo: safeArea.topAnchor,
-                constant: 20
+            // MARK: totalStackView Constraints
+            totalStackView.heightAnchor.constraint(
+                equalTo: safeArea.heightAnchor,
+                multiplier: 0.7
             ),
             totalStackView.leadingAnchor.constraint(
                 equalTo: safeArea.leadingAnchor
@@ -84,10 +88,26 @@ extension CoupleSpaceMainButtonView {
             totalStackView.trailingAnchor.constraint(
                 equalTo: safeArea.trailingAnchor
             ),
-            totalStackView.bottomAnchor.constraint(
-                equalTo: safeArea.bottomAnchor,
-                constant: -20
+            totalStackView.centerYAnchor.constraint(
+                equalTo: safeArea.centerYAnchor
+            ),
+            
+            // MARK: buttonImageView Constraints
+            buttonImageView.heightAnchor.constraint(
+                equalTo: totalStackView.heightAnchor,
+                multiplier: 0.5
+            ),
+            buttonImageView.widthAnchor.constraint(
+                equalTo: buttonImageView.widthAnchor
             )
         ])
+    }
+    
+    private func configureShadow() {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.masksToBounds = false
+        layer.shadowOffset = CGSize(width: 0, height: 4)
+        layer.shadowRadius = 5
+        layer.shadowOpacity = 0.3
     }
 }

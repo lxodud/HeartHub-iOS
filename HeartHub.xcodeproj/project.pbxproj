@@ -18,6 +18,7 @@
 		0C4D32FF2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32FE2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift */; };
 		0C4D33012A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */; };
 		0C4EF98E2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EF98D2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift */; };
+		0C4EF9902A7A430100539320 /* CoupleSpaceMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EF98F2A7A430000539320 /* CoupleSpaceMainViewController.swift */; };
 		0C5929F52A6ADB4500C21570 /* CommunityFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929F42A6ADB4500C21570 /* CommunityFloatingButton.swift */; };
 		0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929F62A6D3EA800C21570 /* PanModalPresentationController.swift */; };
 		0C5929FE2A6D481400C21570 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929FD2A6D481400C21570 /* BlurView.swift */; };
@@ -82,6 +83,7 @@
 		0C4D32FE2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityProfileViewDelegate.swift; sourceTree = "<group>"; };
 		0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellBottomButtonViewDelegate.swift; sourceTree = "<group>"; };
 		0C4EF98D2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleSpaceMainButtonView.swift; sourceTree = "<group>"; };
+		0C4EF98F2A7A430000539320 /* CoupleSpaceMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleSpaceMainViewController.swift; sourceTree = "<group>"; };
 		0C5929F42A6ADB4500C21570 /* CommunityFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityFloatingButton.swift; sourceTree = "<group>"; };
 		0C5929F62A6D3EA800C21570 /* PanModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalPresentationController.swift; sourceTree = "<group>"; };
 		0C5929FD2A6D481400C21570 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 		0C684F3A2A77C9E000A31865 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0C4EF98F2A7A430000539320 /* CoupleSpaceMainViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				0C382E282A5994A700EA08E0 /* CommunityViewController.swift in Sources */,
 				0CA858B82A6FB75B00DFCFD5 /* CommunityCellHeaderViewDelegate.swift in Sources */,
 				0C592A042A6D720700C21570 /* PanModalAnimator.swift in Sources */,
+				0C4EF9902A7A430100539320 /* CoupleSpaceMainViewController.swift in Sources */,
 				0CB49BDF2A69526500C77341 /* LookCell.swift in Sources */,
 				0C4D32F92A6825FF00AD5EFF /* CommunityCellable.swift in Sources */,
 				0CB49BDA2A69234A00C77341 /* LookViewController.swift in Sources */,
