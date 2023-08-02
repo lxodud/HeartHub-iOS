@@ -13,8 +13,8 @@ class ProfileDateViewController: UIViewController {
         frame: .zero,
         collectionViewLayout: generateCollectionViewLayout()
     )
-    private var profilePostArray: [ProfilePostDataModel] = []
-    private var postDataManager = ProfilePostDataManager()
+    private var profileDatePostArray: [ProfileDatePostDataModel] = []
+    private var profileDatePostDataManager = ProfileDatePostDataManager()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,20 +28,20 @@ class ProfileDateViewController: UIViewController {
 extension ProfileDateViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return profilePostArray.count
+        return profileDatePostArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "PostCell",
+        guard let profileDatePostcell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "ProfileDatePostCell",
             for: indexPath)
                 as? ProfilePostCollectionViewCell else {
             return UICollectionViewCell()
                 }
         
-        cell.postImageView.image = profilePostArray[indexPath.item].postImage
+        profileDatePostcell.postImageView.image = profileDatePostArray[indexPath.item].profileDatePostImage
         
-        return cell
+        return profileDatePostcell
     }
 }
 
@@ -50,11 +50,11 @@ extension ProfileDateViewController: UICollectionViewDataSource {
 extension ProfileDateViewController {
     private func configureUserPostCollectionView() {
         profileDateCollectionView.dataSource = self
-        profileDateCollectionView.register(ProfilePostCollectionViewCell.self, forCellWithReuseIdentifier: "PostCell")
+        profileDateCollectionView.register(ProfilePostCollectionViewCell.self, forCellWithReuseIdentifier: "ProfileDatePostCell")
         profileDateCollectionView.backgroundColor = .clear
         
-        postDataManager.configureProfilePostData()
-        profilePostArray = postDataManager.fetchProfilePostData()
+        profileDatePostDataManager.configureProfilePostData()
+        profileDatePostArray = profileDatePostDataManager.fetchProfileDatePostData()
     }
         
     private func generateCollectionViewLayout() -> UICollectionViewCompositionalLayout {

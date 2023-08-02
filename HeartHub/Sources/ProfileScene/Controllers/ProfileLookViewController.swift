@@ -13,8 +13,8 @@ class ProfileLookViewController: UIViewController {
         frame: .zero,
         collectionViewLayout: generateCollectionViewLayout()
     )
-    private var profilePostArray: [ProfilePostDataModel] = []
-    private var postDataManager = ProfilePostDataManager()
+    private var profileLookPostArray: [ProfileLookPostDataModel] = []
+    private var profileLookPostDataManager = ProfileLookPostDataManager()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,20 +28,20 @@ class ProfileLookViewController: UIViewController {
 extension ProfileLookViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return profilePostArray.count
+        return profileLookPostArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "PostCell",
+        guard let profileLookPostcell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "ProfileLookPostCell",
             for: indexPath)
                 as? ProfilePostCollectionViewCell else {
             return UICollectionViewCell()
                 }
         
-        cell.postImageView.image = profilePostArray[indexPath.item].postImage
+        profileLookPostcell.postImageView.image = profileLookPostArray[indexPath.item].profileLookPostImage
         
-        return cell
+        return profileLookPostcell
     }
 }
 
@@ -50,11 +50,11 @@ extension ProfileLookViewController: UICollectionViewDataSource {
 extension ProfileLookViewController {
     private func configureUserPostCollectionView() {
         profileLookCollectionView.dataSource = self
-        profileLookCollectionView.register(ProfilePostCollectionViewCell.self, forCellWithReuseIdentifier: "PostCell")
+        profileLookCollectionView.register(ProfilePostCollectionViewCell.self, forCellWithReuseIdentifier: "ProfileLookPostCell")
         profileLookCollectionView.backgroundColor = .clear
         
-        postDataManager.configureProfilePostData()
-        profilePostArray = postDataManager.fetchProfilePostData()
+        profileLookPostDataManager.configureProfileLookPostData()
+        profileLookPostArray = profileLookPostDataManager.fetchProfileLookPostData()
     }
         
     private func generateCollectionViewLayout() -> UICollectionViewCompositionalLayout {

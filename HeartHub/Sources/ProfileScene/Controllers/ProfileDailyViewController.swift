@@ -13,8 +13,8 @@ class ProfileDailyViewController: UIViewController {
         frame: .zero,
         collectionViewLayout: generateCollectionViewLayout()
     )
-    private var profilePostArray: [ProfilePostDataModel] = []
-    private var postDataManager = ProfilePostDataManager()
+    private var profileDailyPostArray: [ProfileDailyPostDataModel] = []
+    private var profileDailyPostDataManager = ProfileDailyPostDataManager()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,20 +28,20 @@ class ProfileDailyViewController: UIViewController {
 extension ProfileDailyViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return profilePostArray.count
+        return profileDailyPostArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "PostCell",
+        guard let profileDailyPostCell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "ProfileDailyPostCell",
             for: indexPath)
                 as? ProfilePostCollectionViewCell else {
             return UICollectionViewCell()
                 }
         
-        cell.postImageView.image = profilePostArray[indexPath.item].postImage
+        profileDailyPostCell.postImageView.image = profileDailyPostArray[indexPath.item].profileDailyPostImage
         
-        return cell
+        return profileDailyPostCell
     }
 }
 
@@ -50,11 +50,11 @@ extension ProfileDailyViewController: UICollectionViewDataSource {
 extension ProfileDailyViewController {
     private func configureUserPostCollectionView() {
         profileDailyCollectionView.dataSource = self
-        profileDailyCollectionView.register(ProfilePostCollectionViewCell.self, forCellWithReuseIdentifier: "PostCell")
+        profileDailyCollectionView.register(ProfilePostCollectionViewCell.self, forCellWithReuseIdentifier: "ProfileDailyPostCell")
         profileDailyCollectionView.backgroundColor = .clear
         
-        postDataManager.configureProfilePostData()
-        profilePostArray = postDataManager.fetchProfilePostData()
+        profileDailyPostDataManager.configureProfilePostData()
+        profileDailyPostArray = profileDailyPostDataManager.fetchProfileDailyPostData()
     }
         
     private func generateCollectionViewLayout() -> UICollectionViewCompositionalLayout {

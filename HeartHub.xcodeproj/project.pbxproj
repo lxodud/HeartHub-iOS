@@ -60,8 +60,8 @@
 		56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A942A6E87BF005BB635 /* FindPwPopUpViewController.swift */; };
 		5651FC532A7A65F700965300 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC522A7A65F700965300 /* ProfileViewController.swift */; };
 		5651FC672A7A686000965300 /* ProfilePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC662A7A686000965300 /* ProfilePostCollectionViewCell.swift */; };
-		5651FC692A7A68D700965300 /* ProfilePostDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC682A7A68D700965300 /* ProfilePostDataModel.swift */; };
-		5651FC6B2A7A68E200965300 /* ProfilePostDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC6A2A7A68E200965300 /* ProfilePostDataManager.swift */; };
+		5651FC692A7A68D700965300 /* ProfileDailyPostDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC682A7A68D700965300 /* ProfileDailyPostDataModel.swift */; };
+		5651FC6B2A7A68E200965300 /* ProfileDailyPostDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC6A2A7A68E200965300 /* ProfileDailyPostDataManager.swift */; };
 		5651FC6D2A7A69B500965300 /* ProfileUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC6C2A7A69B500965300 /* ProfileUserView.swift */; };
 		5651FC6F2A7A69FD00965300 /* ProfileUserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC6E2A7A69FD00965300 /* ProfileUserDataModel.swift */; };
 		5651FC712A7A6A0700965300 /* ProfileUserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC702A7A6A0700965300 /* ProfileUserDataManager.swift */; };
@@ -75,6 +75,10 @@
 		56DEBEE22A7AAAB8000BC687 /* ProfileDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */; };
 		56DEBEE42A7AACFC000BC687 /* ProfileLookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBEE32A7AACFC000BC687 /* ProfileLookViewController.swift */; };
 		56DEBEE62A7AAD10000BC687 /* ProfileDailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBEE52A7AAD10000BC687 /* ProfileDailyViewController.swift */; };
+		56DEBEF22A7AAEEE000BC687 /* ProfileLookPostDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBEF12A7AAEEE000BC687 /* ProfileLookPostDataModel.swift */; };
+		56DEBEF42A7AAEF9000BC687 /* ProfileDatePostDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBEF32A7AAEF9000BC687 /* ProfileDatePostDataModel.swift */; };
+		56DEBEF62A7AAF03000BC687 /* ProfileLookPostDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBEF52A7AAF03000BC687 /* ProfileLookPostDataManager.swift */; };
+		56DEBEF82A7AAF12000BC687 /* ProfileDatePostDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBEF72A7AAF12000BC687 /* ProfileDatePostDataManager.swift */; };
 		CBCF5AADCFBAC5FAE8CF899C /* Pods_HeartHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D54B5963AADEBA830899999 /* Pods_HeartHub.framework */; };
 /* End PBXBuildFile section */
 
@@ -136,8 +140,8 @@
 		56348A942A6E87BF005BB635 /* FindPwPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPwPopUpViewController.swift; sourceTree = "<group>"; };
 		5651FC522A7A65F700965300 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		5651FC662A7A686000965300 /* ProfilePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostCollectionViewCell.swift; sourceTree = "<group>"; };
-		5651FC682A7A68D700965300 /* ProfilePostDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostDataModel.swift; sourceTree = "<group>"; };
-		5651FC6A2A7A68E200965300 /* ProfilePostDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostDataManager.swift; sourceTree = "<group>"; };
+		5651FC682A7A68D700965300 /* ProfileDailyPostDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDailyPostDataModel.swift; sourceTree = "<group>"; };
+		5651FC6A2A7A68E200965300 /* ProfileDailyPostDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDailyPostDataManager.swift; sourceTree = "<group>"; };
 		5651FC6C2A7A69B500965300 /* ProfileUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserView.swift; sourceTree = "<group>"; };
 		5651FC6E2A7A69FD00965300 /* ProfileUserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserDataModel.swift; sourceTree = "<group>"; };
 		5651FC702A7A6A0700965300 /* ProfileUserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserDataManager.swift; sourceTree = "<group>"; };
@@ -151,6 +155,10 @@
 		56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDateViewController.swift; sourceTree = "<group>"; };
 		56DEBEE32A7AACFC000BC687 /* ProfileLookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLookViewController.swift; sourceTree = "<group>"; };
 		56DEBEE52A7AAD10000BC687 /* ProfileDailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDailyViewController.swift; sourceTree = "<group>"; };
+		56DEBEF12A7AAEEE000BC687 /* ProfileLookPostDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLookPostDataModel.swift; sourceTree = "<group>"; };
+		56DEBEF32A7AAEF9000BC687 /* ProfileDatePostDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDatePostDataModel.swift; sourceTree = "<group>"; };
+		56DEBEF52A7AAF03000BC687 /* ProfileLookPostDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLookPostDataManager.swift; sourceTree = "<group>"; };
+		56DEBEF72A7AAF12000BC687 /* ProfileDatePostDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDatePostDataManager.swift; sourceTree = "<group>"; };
 		9B22F018AA19302771485F16 /* Pods-HeartHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartHub.release.xcconfig"; path = "Target Support Files/Pods-HeartHub/Pods-HeartHub.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -540,12 +548,24 @@
 		5651FC512A7A65B800965300 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5651FC682A7A68D700965300 /* ProfilePostDataModel.swift */,
-				5651FC6A2A7A68E200965300 /* ProfilePostDataManager.swift */,
+				56DEBEE72A7AAE1A000BC687 /* PostData */,
 				5651FC6E2A7A69FD00965300 /* ProfileUserDataModel.swift */,
 				5651FC702A7A6A0700965300 /* ProfileUserDataManager.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		56DEBEE72A7AAE1A000BC687 /* PostData */ = {
+			isa = PBXGroup;
+			children = (
+				5651FC682A7A68D700965300 /* ProfileDailyPostDataModel.swift */,
+				56DEBEF12A7AAEEE000BC687 /* ProfileLookPostDataModel.swift */,
+				56DEBEF32A7AAEF9000BC687 /* ProfileDatePostDataModel.swift */,
+				5651FC6A2A7A68E200965300 /* ProfileDailyPostDataManager.swift */,
+				56DEBEF52A7AAF03000BC687 /* ProfileLookPostDataManager.swift */,
+				56DEBEF72A7AAF12000BC687 /* ProfileDatePostDataManager.swift */,
+			);
+			path = PostData;
 			sourceTree = "<group>";
 		};
 		CB34CEB8D5CDE48E63185AFF /* Pods */ = {
@@ -706,13 +726,16 @@
 				56348A8F2A6E7ECC005BB635 /* FindPwView.swift in Sources */,
 				5626B3452A597FA200477EBC /* SignUpProfileViewController.swift in Sources */,
 				56348A912A6E8286005BB635 /* FindPwViewController.swift in Sources */,
+				56DEBEF42A7AAEF9000BC687 /* ProfileDatePostDataModel.swift in Sources */,
+				56DEBEF82A7AAF12000BC687 /* ProfileDatePostDataManager.swift in Sources */,
 				56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */,
 				5651FC672A7A686000965300 /* ProfilePostCollectionViewCell.swift in Sources */,
-				5651FC6B2A7A68E200965300 /* ProfilePostDataManager.swift in Sources */,
+				5651FC6B2A7A68E200965300 /* ProfileDailyPostDataManager.swift in Sources */,
 				0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */,
 				5626B34D2A5993A700477EBC /* SignUpTermAgreeViewController.swift in Sources */,
 				5626B34B2A59938700477EBC /* SignUpLoverLinkingViewController.swift in Sources */,
 				569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */,
+				56DEBEF62A7AAF03000BC687 /* ProfileLookPostDataManager.swift in Sources */,
 				56348A692A6319EA005BB635 /* FindIdPopUpViewController.swift in Sources */,
 				569E4EE62A5D06C400B51898 /* SignUpProfileView.swift in Sources */,
 				0C684F452A77D53200A31865 /* CoupleImageBetweenHeartView.swift in Sources */,
@@ -726,13 +749,14 @@
 				0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */,
 				0C6F454D2A700E9E0044EAC8 /* CommentViewController.swift in Sources */,
 				0C382E262A5950C700EA08E0 /* CommunitySegmentedControl.swift in Sources */,
+				56DEBEF22A7AAEEE000BC687 /* ProfileLookPostDataModel.swift in Sources */,
 				0C6F45532A7384B10044EAC8 /* UIWindow+.swift in Sources */,
 				0CA858B02A6F981D00DFCFD5 /* Reusable.swift in Sources */,
 				0C4D32FF2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift in Sources */,
 				0C43F6102A659C6D00EED860 /* PagingImageCollectionViewCell.swift in Sources */,
 				0C6F45512A703B0A0044EAC8 /* PanModalPresentable.swift in Sources */,
 				56DEBEE22A7AAAB8000BC687 /* ProfileDateViewController.swift in Sources */,
-				5651FC692A7A68D700965300 /* ProfilePostDataModel.swift in Sources */,
+				5651FC692A7A68D700965300 /* ProfileDailyPostDataModel.swift in Sources */,
 				0C5929FE2A6D481400C21570 /* BlurView.swift in Sources */,
 				0C5929F52A6ADB4500C21570 /* CommunityFloatingButton.swift in Sources */,
 				0C6F45492A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift in Sources */,
