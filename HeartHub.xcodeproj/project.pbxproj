@@ -63,6 +63,8 @@
 		5651FC692A7A68D700965300 /* ProfilePostDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC682A7A68D700965300 /* ProfilePostDataModel.swift */; };
 		5651FC6B2A7A68E200965300 /* ProfilePostDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC6A2A7A68E200965300 /* ProfilePostDataManager.swift */; };
 		5651FC6D2A7A69B500965300 /* ProfileUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC6C2A7A69B500965300 /* ProfileUserView.swift */; };
+		5651FC6F2A7A69FD00965300 /* ProfileUserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC6E2A7A69FD00965300 /* ProfileUserDataModel.swift */; };
+		5651FC712A7A6A0700965300 /* ProfileUserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC702A7A6A0700965300 /* ProfileUserDataManager.swift */; };
 		569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EDA2A5C241B00B51898 /* LoginView.swift */; };
 		569E4EE42A5CE18E00B51898 /* SignUpStartDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */; };
 		569E4EE62A5D06C400B51898 /* SignUpProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */; };
@@ -134,6 +136,8 @@
 		5651FC682A7A68D700965300 /* ProfilePostDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostDataModel.swift; sourceTree = "<group>"; };
 		5651FC6A2A7A68E200965300 /* ProfilePostDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostDataManager.swift; sourceTree = "<group>"; };
 		5651FC6C2A7A69B500965300 /* ProfileUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserView.swift; sourceTree = "<group>"; };
+		5651FC6E2A7A69FD00965300 /* ProfileUserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserDataModel.swift; sourceTree = "<group>"; };
+		5651FC702A7A6A0700965300 /* ProfileUserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserDataManager.swift; sourceTree = "<group>"; };
 		569E4EDA2A5C241B00B51898 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpStartDateView.swift; sourceTree = "<group>"; };
 		569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpProfileView.swift; sourceTree = "<group>"; };
@@ -529,6 +533,8 @@
 			children = (
 				5651FC682A7A68D700965300 /* ProfilePostDataModel.swift */,
 				5651FC6A2A7A68E200965300 /* ProfilePostDataManager.swift */,
+				5651FC6E2A7A69FD00965300 /* ProfileUserDataModel.swift */,
+				5651FC702A7A6A0700965300 /* ProfileUserDataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -670,6 +676,7 @@
 				0C382E282A5994A700EA08E0 /* CommunityViewController.swift in Sources */,
 				5651FC532A7A65F700965300 /* ProfileViewController.swift in Sources */,
 				0CA858B82A6FB75B00DFCFD5 /* CommunityCellHeaderViewDelegate.swift in Sources */,
+				5651FC6F2A7A69FD00965300 /* ProfileUserDataModel.swift in Sources */,
 				0C592A042A6D720700C21570 /* PanModalAnimator.swift in Sources */,
 				0CB49BDF2A69526500C77341 /* LookCell.swift in Sources */,
 				0C4D32F92A6825FF00AD5EFF /* CommunityCellable.swift in Sources */,
@@ -717,6 +724,7 @@
 				0C5929FE2A6D481400C21570 /* BlurView.swift in Sources */,
 				0C5929F52A6ADB4500C21570 /* CommunityFloatingButton.swift in Sources */,
 				0C6F45492A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift in Sources */,
+				5651FC712A7A6A0700965300 /* ProfileUserDataManager.swift in Sources */,
 				0C382E312A5BDB6D00EA08E0 /* CommunityProfileView.swift in Sources */,
 				0C382E312A5BDB6D00EA08E0 /* CommunityProfileView.swift in Sources */,
 			);
