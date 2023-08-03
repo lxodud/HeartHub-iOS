@@ -19,7 +19,7 @@
 		0C4D33012A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */; };
 		0C4EF98E2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EF98D2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift */; };
 		0C4EF9902A7A430100539320 /* CoupleSpaceMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EF98F2A7A430000539320 /* CoupleSpaceMainViewController.swift */; };
-		0C4EF9942A7B7F3B00539320 /* CoupleSpaceHeartPickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EF9932A7B7F3B00539320 /* CoupleSpaceHeartPickViewController.swift */; };
+		0C4EF9942A7B7F3B00539320 /* CoupleSpacePickCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EF9932A7B7F3B00539320 /* CoupleSpacePickCollectionViewController.swift */; };
 		0C5929F52A6ADB4500C21570 /* CommunityFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929F42A6ADB4500C21570 /* CommunityFloatingButton.swift */; };
 		0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929F62A6D3EA800C21570 /* PanModalPresentationController.swift */; };
 		0C5929FE2A6D481400C21570 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929FD2A6D481400C21570 /* BlurView.swift */; };
@@ -85,7 +85,7 @@
 		0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellBottomButtonViewDelegate.swift; sourceTree = "<group>"; };
 		0C4EF98D2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleSpaceMainButtonView.swift; sourceTree = "<group>"; };
 		0C4EF98F2A7A430000539320 /* CoupleSpaceMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleSpaceMainViewController.swift; sourceTree = "<group>"; };
-		0C4EF9932A7B7F3B00539320 /* CoupleSpaceHeartPickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleSpaceHeartPickViewController.swift; sourceTree = "<group>"; };
+		0C4EF9932A7B7F3B00539320 /* CoupleSpacePickCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleSpacePickCollectionViewController.swift; sourceTree = "<group>"; };
 		0C5929F42A6ADB4500C21570 /* CommunityFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityFloatingButton.swift; sourceTree = "<group>"; };
 		0C5929F62A6D3EA800C21570 /* PanModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalPresentationController.swift; sourceTree = "<group>"; };
 		0C5929FD2A6D481400C21570 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
@@ -267,7 +267,7 @@
 		0C4EF9952A7B7F4C00539320 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0C4EF9932A7B7F3B00539320 /* CoupleSpaceHeartPickViewController.swift */,
+				0C4EF9932A7B7F3B00539320 /* CoupleSpacePickCollectionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -668,7 +668,7 @@
 				561462192A6EE50300C0AC1F /* FindIdViewController.swift in Sources */,
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
 				0CA858BA2A6FE0EA00DFCFD5 /* CommentCellHeaderView.swift in Sources */,
-				0C4EF9942A7B7F3B00539320 /* CoupleSpaceHeartPickViewController.swift in Sources */,
+				0C4EF9942A7B7F3B00539320 /* CoupleSpacePickCollectionViewController.swift in Sources */,
 				0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */,
 				0C684F4C2A78FA4D00A31865 /* CoupleSpaceMainHeaderView.swift in Sources */,
 				0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */,

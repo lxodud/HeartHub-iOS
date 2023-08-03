@@ -1,5 +1,5 @@
 //
-//  CoupleSpaceHeartPickViewController.swift
+//  CoupleSpacePickCollectionViewController.swift
 //  HeartHub
 //
 //  Created by 이태영 on 2023/08/03.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CoupleSpaceHeartPickViewController: UIViewController {
+final class CoupleSpacePickCollectionViewController: UIViewController {
     private let pickCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
@@ -26,14 +26,14 @@ final class CoupleSpaceHeartPickViewController: UIViewController {
 }
 
 // MARK: Life Cycle
-extension CoupleSpaceHeartPickViewController {
+extension CoupleSpacePickCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 }
 
 // MARK: UICollectionView Delegate FlowLayout Implementation
-extension CoupleSpaceHeartPickViewController: UICollectionViewDelegateFlowLayout {
+extension CoupleSpacePickCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -47,14 +47,14 @@ extension CoupleSpaceHeartPickViewController: UICollectionViewDelegateFlowLayout
 }
 
 // MARK: Configure pickCollectionView
-extension CoupleSpaceHeartPickViewController {
+extension CoupleSpacePickCollectionViewController {
     private func configurePickCollectionView() {
         pickCollectionView.delegate = self
     }
 }
 
 // MARK: Configure UI
-extension CoupleSpaceHeartPickViewController {
+extension CoupleSpacePickCollectionViewController {
     private func configureSubview() {
         [pickCollectionView, pickTransitionButton].forEach {
             view.addSubview($0)
