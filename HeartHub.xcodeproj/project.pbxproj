@@ -60,6 +60,7 @@
 		56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A942A6E87BF005BB635 /* FindPwPopUpViewController.swift */; };
 		5651FC7A2A7A7C6A00965300 /* CommunityGameBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC792A7A7C6A00965300 /* CommunityGameBackgroundView.swift */; };
 		5651FC7C2A7A7FB800965300 /* CommunityGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC7B2A7A7FB800965300 /* CommunityGameViewController.swift */; };
+		569013552A7BB32600715D23 /* MissionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569013542A7BB32600715D23 /* MissionDataManager.swift */; };
 		569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EDA2A5C241B00B51898 /* LoginView.swift */; };
 		569E4EE42A5CE18E00B51898 /* SignUpStartDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */; };
 		569E4EE62A5D06C400B51898 /* SignUpProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */; };
@@ -129,6 +130,7 @@
 		56348A942A6E87BF005BB635 /* FindPwPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPwPopUpViewController.swift; sourceTree = "<group>"; };
 		5651FC792A7A7C6A00965300 /* CommunityGameBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGameBackgroundView.swift; sourceTree = "<group>"; };
 		5651FC7B2A7A7FB800965300 /* CommunityGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGameViewController.swift; sourceTree = "<group>"; };
+		569013542A7BB32600715D23 /* MissionDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDataManager.swift; sourceTree = "<group>"; };
 		569E4EDA2A5C241B00B51898 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpStartDateView.swift; sourceTree = "<group>"; };
 		569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpProfileView.swift; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 		5651FC762A7A7BFB00965300 /* GameScene */ = {
 			isa = PBXGroup;
 			children = (
+				569013512A7BB2E500715D23 /* Models */,
 				5651FC782A7A7C4800965300 /* Views */,
 				5651FC772A7A7C4100965300 /* Controllers */,
 			);
@@ -517,6 +520,14 @@
 				56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		569013512A7BB2E500715D23 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				569013542A7BB32600715D23 /* MissionDataManager.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		CB34CEB8D5CDE48E63185AFF /* Pods */ = {
@@ -693,6 +704,7 @@
 				0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */,
 				0C6F454D2A700E9E0044EAC8 /* CommentViewController.swift in Sources */,
 				0C382E262A5950C700EA08E0 /* CommunitySegmentedControl.swift in Sources */,
+				569013552A7BB32600715D23 /* MissionDataManager.swift in Sources */,
 				0C6F45532A7384B10044EAC8 /* UIWindow+.swift in Sources */,
 				0CA858B02A6F981D00DFCFD5 /* Reusable.swift in Sources */,
 				0C4D32FF2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift in Sources */,
