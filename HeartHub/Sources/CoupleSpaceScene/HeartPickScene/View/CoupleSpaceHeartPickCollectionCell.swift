@@ -63,7 +63,18 @@ extension CoupleSpaceHeartPickCollectionCell {
             ),
             imageView.bottomAnchor.constraint(
                 equalTo: safeArea.bottomAnchor
-            )
+            ),
+            
+            // MARK: label Constraints
+            label.leadingAnchor.constraint(
+                equalTo: imageView.leadingAnchor
+            ),
+            label.trailingAnchor.constraint(
+                equalTo: imageView.trailingAnchor
+            ),
+            label.bottomAnchor.constraint(
+                equalTo: imageView.bottomAnchor
+            ),
         ])
     }
 }

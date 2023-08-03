@@ -7,7 +7,20 @@
 
 import UIKit
 
+private enum Constant {
+    static let myPickImage = UIImage(named: "MyPickButton")
+    static let heartPickImage = UIImage(named: "HeartPickButton")
+}
+
 final class CoupleSpacePickCollectionViewController: UIViewController {
+    private var pickCollectionDataSource: CoupleSpacePickDataSourceable {
+        didSet {
+            configureNavigationBar()
+            pickCollectionView.dataSource = pickCollectionDataSource
+            pickCollectionView.reloadData()
+        }
+    }
+    
     private let pickCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
@@ -19,16 +32,68 @@ final class CoupleSpacePickCollectionViewController: UIViewController {
         return collectionView
     }()
     
-    private let pickTransitionButton: UIButton = {
+    private let myPickTransitionButton: UIButton = {
         let button = UIButton()
+        button.setImage(Constant.myPickImage, for: .normal)
+        button.isHidden = true
         return button
     }()
+    
+    private let heartPickTransitionButton: UIButton = {
+        let button = UIButton()
+        button.setImage(Constant.heartPickImage, for: .normal)
+        return button
+    }()
+    
+    init(pickCollectionDataSource: CoupleSpacePickDataSourceable = HeartPickDataSource()) {
+        self.pickCollectionDataSource = pickCollectionDataSource
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 // MARK: Life Cycle
 extension CoupleSpacePickCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureAction()
+        configurePickCollectionView()
+        configureSubview()
+        configureLayout()
+        configureNavigationBar()
+    }
+}
+
+// MARK: Action Method
+extension CoupleSpacePickCollectionViewController {
+    private func configureAction() {
+        myPickTransitionButton.addTarget(
+            self,
+            action: #selector(tapMyPickTransitionButton),
+            for: .touchUpInside
+        )
+        heartPickTransitionButton.addTarget(
+            self,
+            action: #selector(tapHeartPickTransitionButton),
+            for: .touchUpInside
+        )
+    }
+    
+    @objc
+    private func tapMyPickTransitionButton(_ sender: UIButton) {
+        sender.isHidden = true
+        heartPickTransitionButton.isHidden = false
+        pickCollectionDataSource = HeartPickDataSource()
+    }
+    
+    @objc
+    private func tapHeartPickTransitionButton(_ sender: UIButton) {
+        sender.isHidden = true
+        myPickTransitionButton.isHidden = false
+        pickCollectionDataSource = MyPickDataSource()
     }
 }
 
@@ -49,17 +114,29 @@ extension CoupleSpacePickCollectionViewController: UICollectionViewDelegateFlowL
 // MARK: Configure pickCollectionView
 extension CoupleSpacePickCollectionViewController {
     private func configurePickCollectionView() {
+        pickCollectionView.register(
+            CoupleSpaceMyPickCollectionCell.self,
+            forCellWithReuseIdentifier: CoupleSpaceMyPickCollectionCell.reuseIdentifier
+        )
+        pickCollectionView.register(
+            CoupleSpaceHeartPickCollectionCell.self,
+            forCellWithReuseIdentifier: CoupleSpaceHeartPickCollectionCell.reuseIdentifier
+        )
+        
         pickCollectionView.delegate = self
+        pickCollectionView.dataSource = pickCollectionDataSource
     }
 }
 
 // MARK: Configure UI
 extension CoupleSpacePickCollectionViewController {
     private func configureSubview() {
-        [pickCollectionView, pickTransitionButton].forEach {
+        [pickCollectionView, myPickTransitionButton, heartPickTransitionButton].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
+        
+        view.backgroundColor = .systemBackground
     }
     
     private func configureLayout() {
@@ -74,21 +151,35 @@ extension CoupleSpacePickCollectionViewController {
                 equalTo: safeArea.leadingAnchor
             ),
             pickCollectionView.trailingAnchor.constraint(
-                equalTo: safeArea.leadingAnchor
+                equalTo: safeArea.trailingAnchor
             ),
             pickCollectionView.bottomAnchor.constraint(
                 equalTo: view.bottomAnchor
             ),
             
             // MARK: pickTransitionButton Constraints
-            pickTransitionButton.trailingAnchor.constraint(
+            myPickTransitionButton.trailingAnchor.constraint(
                 equalTo: safeArea.trailingAnchor,
                 constant: -21
             ),
-            pickTransitionButton.bottomAnchor.constraint(
+            myPickTransitionButton.bottomAnchor.constraint(
+                equalTo: safeArea.bottomAnchor,
+                constant: -21
+            ),
+            
+            // MARK: heartPickTransitionButton Constraints
+            heartPickTransitionButton.trailingAnchor.constraint(
+                equalTo: safeArea.trailingAnchor,
+                constant: -21
+            ),
+            heartPickTransitionButton.bottomAnchor.constraint(
                 equalTo: safeArea.bottomAnchor,
                 constant: -21
             ),
         ])
+    }
+    
+    private func configureNavigationBar() {
+        navigationItem.title = pickCollectionDataSource.fetchTitle()
     }
 }
