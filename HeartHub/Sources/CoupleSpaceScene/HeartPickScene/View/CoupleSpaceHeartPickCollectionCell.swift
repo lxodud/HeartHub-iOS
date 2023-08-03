@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CoupleSpaceHeartPickCollectionCell: UICollectionViewCell {
+class CoupleSpaceHeartPickCollectionCell: UICollectionViewCell {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         return imageView
@@ -17,6 +17,16 @@ final class CoupleSpaceHeartPickCollectionCell: UICollectionViewCell {
         let label = UILabel()
         return label
     }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+        configureSubview()
+        configureLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 // MARK: Public Interface
