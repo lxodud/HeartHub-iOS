@@ -13,7 +13,7 @@ final class CommunityGameBackgroundView: UIView {
         var img = UIImageView()
         img.contentMode = .scaleAspectFit
         img.backgroundColor = .clear
-        img.image = UIImage(named: "GameBackground.png")
+        img.image = UIImage(named: "GameBackGround.png")
         return img
     }()
     
@@ -66,13 +66,14 @@ extension CommunityGameBackgroundView {
             
             // MARK: missionTitleImageView Constraints
             missionTitleImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            missionTitleImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 29),
+            missionTitleImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             missionTitleImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 111),
             
             
             // MARK: gameFrontMountainImageView Constraints
             gameFrontMountainImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             gameFrontMountainImageView.topAnchor.constraint(equalTo: missionTitleImageView.topAnchor, constant: 546),
+            gameFrontMountainImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 41.5),
             gameFrontMountainImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
         ])
         

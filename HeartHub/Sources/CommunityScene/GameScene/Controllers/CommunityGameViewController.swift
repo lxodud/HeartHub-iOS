@@ -9,13 +9,13 @@ import UIKit
 
 final class CommunityGameViewController: UIViewController {
     
-    private let gameMissiontableView = UITableView()
+    private let gameMissionTableView = UITableView()
     
     var gameMissionButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .white
         button.setTitle("미션", for: .normal)
-        button.titleLabel?.font = UIFont.init(name: "Pretendard-SemiBold", size: 20)
+        button.titleLabel?.font = UIFont.init(name: "DungGeunMo", size: 20)
         button.setTitleColor(.black, for: .normal)
         button.setTitleColor(UIColor(red: 0.46, green: 0.46, blue: 0.46, alpha: 1), for: .selected)
         button.backgroundColor =  .clear
@@ -28,7 +28,7 @@ final class CommunityGameViewController: UIViewController {
         let button = UIButton(type: .custom)
         button.backgroundColor = .white
         button.setTitle("클리어", for: .normal)
-        button.titleLabel?.font = UIFont.init(name: "Pretendard-SemiBold", size: 20)
+        button.titleLabel?.font = UIFont.init(name: "DungGeunMo", size: 20)
         button.setTitleColor(.black, for: .normal)
         button.setTitleColor(UIColor(red: 0.46, green: 0.46, blue: 0.46, alpha: 1), for: .selected)
         button.backgroundColor =  .clear
@@ -74,30 +74,34 @@ extension CommunityGameViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.gameMissionButton.setTitle(missionDataArray[indexPath.item], for: .normal)
+        cell.gameMissionLabel.text = missionDataArray[indexPath.item]
         
         return cell
     }
 }
 
+// MARK: Configure TableView
 extension CommunityGameViewController {
     private func configureGameMissionTableView() {
-        gameMissiontableView.dataSource = self
-        gameMissiontableView.register(GameMissionTableViewCell.self, forCellReuseIdentifier: "GameMissionCell")
+        gameMissionTableView.dataSource = self
+        gameMissionTableView.register(GameMissionTableViewCell.self, forCellReuseIdentifier: "GameMissionCell")
         missionDataManager.configureMissionData()
         missionDataArray = missionDataManager.fetchGameMissionData()
+        
+        gameMissionTableView.contentSize.height = 80
+        gameMissionTableView.separatorStyle = .none
     }
     
     private func configureGameMissionTableViewLayout() {
-        view.addSubview(gameMissiontableView)
-        gameMissiontableView.backgroundColor = .clear
-        gameMissiontableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(gameMissionTableView)
+        gameMissionTableView.backgroundColor = .clear
+        gameMissionTableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            gameMissiontableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameMissiontableView.topAnchor.constraint(equalTo: gameButtonStackView.bottomAnchor, constant: 55),
-            gameMissiontableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            gameMissiontableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25)
+            gameMissionTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            gameMissionTableView.topAnchor.constraint(equalTo: gameButtonStackView.bottomAnchor, constant: 43),
+            gameMissionTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            gameMissionTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25)
         ])
     }
 }

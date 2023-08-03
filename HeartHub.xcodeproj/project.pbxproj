@@ -60,7 +60,8 @@
 		56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A942A6E87BF005BB635 /* FindPwPopUpViewController.swift */; };
 		5651FC7A2A7A7C6A00965300 /* CommunityGameBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC792A7A7C6A00965300 /* CommunityGameBackgroundView.swift */; };
 		5651FC7C2A7A7FB800965300 /* CommunityGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC7B2A7A7FB800965300 /* CommunityGameViewController.swift */; };
-		569013552A7BB32600715D23 /* MissionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569013542A7BB32600715D23 /* MissionDataManager.swift */; };
+		569013552A7BB32600715D23 /* GameMissionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569013542A7BB32600715D23 /* GameMissionDataManager.swift */; };
+		5690135D2A7BD75C00715D23 /* DungGeunMo.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5690135C2A7BD75C00715D23 /* DungGeunMo.otf */; };
 		569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EDA2A5C241B00B51898 /* LoginView.swift */; };
 		569E4EE42A5CE18E00B51898 /* SignUpStartDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */; };
 		569E4EE62A5D06C400B51898 /* SignUpProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */; };
@@ -130,7 +131,8 @@
 		56348A942A6E87BF005BB635 /* FindPwPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPwPopUpViewController.swift; sourceTree = "<group>"; };
 		5651FC792A7A7C6A00965300 /* CommunityGameBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGameBackgroundView.swift; sourceTree = "<group>"; };
 		5651FC7B2A7A7FB800965300 /* CommunityGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGameViewController.swift; sourceTree = "<group>"; };
-		569013542A7BB32600715D23 /* MissionDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDataManager.swift; sourceTree = "<group>"; };
+		569013542A7BB32600715D23 /* GameMissionDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMissionDataManager.swift; sourceTree = "<group>"; };
+		5690135C2A7BD75C00715D23 /* DungGeunMo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DungGeunMo.otf; sourceTree = "<group>"; };
 		569E4EDA2A5C241B00B51898 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpStartDateView.swift; sourceTree = "<group>"; };
 		569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpProfileView.swift; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 		5626B2C92A57407600477EBC /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				5690135C2A7BD75C00715D23 /* DungGeunMo.otf */,
 				569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */,
 				569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */,
 			);
@@ -525,7 +528,7 @@
 		569013512A7BB2E500715D23 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				569013542A7BB32600715D23 /* MissionDataManager.swift */,
+				569013542A7BB32600715D23 /* GameMissionDataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5690135D2A7BD75C00715D23 /* DungGeunMo.otf in Resources */,
 				0CC33ACE2A5281C3001EF4E7 /* LaunchScreen.storyboard in Resources */,
 				569E4EFE2A5FC58200B51898 /* Pretendard-Regular.otf in Resources */,
 				0CC33ACB2A5281C3001EF4E7 /* Assets.xcassets in Resources */,
@@ -704,7 +708,7 @@
 				0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */,
 				0C6F454D2A700E9E0044EAC8 /* CommentViewController.swift in Sources */,
 				0C382E262A5950C700EA08E0 /* CommunitySegmentedControl.swift in Sources */,
-				569013552A7BB32600715D23 /* MissionDataManager.swift in Sources */,
+				569013552A7BB32600715D23 /* GameMissionDataManager.swift in Sources */,
 				0C6F45532A7384B10044EAC8 /* UIWindow+.swift in Sources */,
 				0CA858B02A6F981D00DFCFD5 /* Reusable.swift in Sources */,
 				0C4D32FF2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift in Sources */,
