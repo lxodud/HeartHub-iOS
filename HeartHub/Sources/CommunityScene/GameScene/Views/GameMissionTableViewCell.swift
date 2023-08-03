@@ -18,8 +18,8 @@ class GameMissionTableViewCell: UITableViewCell {
          view.addSubview(gameMissionButton)
          return view
      }()
-    
-    private let gameMissionButton: UIButton = {
+
+    let gameMissionButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "MissionCheckButtonImage"), for: .normal)
         button.setImage(UIImage(named: "MissionUnCheckButtonImage"), for: .selected)
@@ -31,7 +31,7 @@ class GameMissionTableViewCell: UITableViewCell {
         button.contentMode = .center
         return button
     }()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         configureSubview()

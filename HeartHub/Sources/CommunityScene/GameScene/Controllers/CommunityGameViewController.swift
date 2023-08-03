@@ -9,7 +9,6 @@ import UIKit
 
 final class CommunityGameViewController: UIViewController {
     
-    private var gameBackgroundView = CommunityGameBackgroundView()
     private let gameMissiontableView = UITableView()
     
     var gameMissionButton: UIButton = {
@@ -47,34 +46,57 @@ final class CommunityGameViewController: UIViewController {
         return stackView
     }()
     
+    private var missionDataArray: [String] = []
+    private var missionDataManager = GameMissionDataManager()
+    
+    override func loadView() {
+        view = CommunityGameBackgroundView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSubview()
         configureLayout()
-        configureMissionTableView()
+        configureGameMissionTableView()
+        configureGameMissionTableViewLayout()
     }
 }
 
 // MARK: DataSource Implement
 extension CommunityGameViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return missionDataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GameMissionCell", for: indexPath)
+                as? GameMissionTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.gameMissionButton.setTitle(missionDataArray[indexPath.item], for: .normal)
+        
+        return cell
     }
 }
 
 extension CommunityGameViewController {
-    func configureMissionTableView() {
+    private func configureGameMissionTableView() {
+        gameMissiontableView.dataSource = self
+        gameMissiontableView.register(GameMissionTableViewCell.self, forCellReuseIdentifier: "GameMissionCell")
+        missionDataManager.configureMissionData()
+        missionDataArray = missionDataManager.fetchGameMissionData()
+    }
+    
+    private func configureGameMissionTableViewLayout() {
         view.addSubview(gameMissiontableView)
+        gameMissiontableView.backgroundColor = .clear
         gameMissiontableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             gameMissiontableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameMissiontableView.topAnchor.constraint(equalTo: gameButtonStackView.bottomAnchor, constant: 55),
-            gameMissiontableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -113),
+            gameMissiontableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             gameMissiontableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25)
         ])
     }
@@ -89,8 +111,7 @@ extension CommunityGameViewController {
             gameButtonStackView.addArrangedSubview($0)
         }
         
-        [gameBackgroundView,
-         gameButtonStackView].forEach {
+        [gameButtonStackView].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -100,12 +121,6 @@ extension CommunityGameViewController {
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            // MARK: BackgroundView Constraints
-            gameBackgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameBackgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            gameBackgroundView.topAnchor.constraint(equalTo: view.topAnchor),
-            gameBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            
             // MARK: gameButtonStackView Constraints
             gameButtonStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.07),
             gameButtonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
