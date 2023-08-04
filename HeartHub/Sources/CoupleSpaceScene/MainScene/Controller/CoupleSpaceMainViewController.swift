@@ -150,8 +150,8 @@ extension CoupleSpaceMainViewController {
                 equalTo: safeArea.centerXAnchor
             ),
             headerView.topAnchor.constraint(
-                equalTo: safeArea.topAnchor,
-                constant: 50
+                equalTo: view.topAnchor,
+                constant: 100
             ),
             headerView.heightAnchor.constraint(
                 equalTo: headerBackgroundImageView.heightAnchor,
