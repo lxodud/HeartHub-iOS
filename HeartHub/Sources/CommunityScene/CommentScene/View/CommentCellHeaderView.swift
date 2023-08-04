@@ -23,8 +23,8 @@ final class CommentCellHeaderView: UIView {
     
     private let heartButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "heart"), for: .normal)
-        button.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+        button.setImage(UIImage(named: "HeartHubEmptyHeart"), for: .normal)
+        button.setImage(UIImage(named: "HeartHubFillHeart"), for: .selected)
         return button
     }()
     
