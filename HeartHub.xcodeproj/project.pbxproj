@@ -19,6 +19,12 @@
 		0C4D33012A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */; };
 		0C4EF98E2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EF98D2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift */; };
 		0C4EF9902A7A430100539320 /* CoupleSpaceMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EF98F2A7A430000539320 /* CoupleSpaceMainViewController.swift */; };
+		0C4EF9942A7B7F3B00539320 /* CoupleSpacePickCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EF9932A7B7F3B00539320 /* CoupleSpacePickCollectionViewController.swift */; };
+		0C4EF9972A7B966F00539320 /* CoupleSpaceHeartPickCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EF9962A7B966F00539320 /* CoupleSpaceHeartPickCollectionCell.swift */; };
+		0C4EF9992A7BA19C00539320 /* CoupleSpaceMyPickCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EF9982A7BA19C00539320 /* CoupleSpaceMyPickCollectionCell.swift */; };
+		0C4EF99C2A7BF63100539320 /* HeartPickDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EF99B2A7BF63100539320 /* HeartPickDataSource.swift */; };
+		0C4EF99F2A7BF91500539320 /* CoupleSpacePickDataSourceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EF99E2A7BF91500539320 /* CoupleSpacePickDataSourceable.swift */; };
+		0C4EF9A12A7BFB3700539320 /* MypickDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EF9A02A7BFB3700539320 /* MypickDataSource.swift */; };
 		0C5929F52A6ADB4500C21570 /* CommunityFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929F42A6ADB4500C21570 /* CommunityFloatingButton.swift */; };
 		0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929F62A6D3EA800C21570 /* PanModalPresentationController.swift */; };
 		0C5929FE2A6D481400C21570 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5929FD2A6D481400C21570 /* BlurView.swift */; };
@@ -84,6 +90,12 @@
 		0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellBottomButtonViewDelegate.swift; sourceTree = "<group>"; };
 		0C4EF98D2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleSpaceMainButtonView.swift; sourceTree = "<group>"; };
 		0C4EF98F2A7A430000539320 /* CoupleSpaceMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleSpaceMainViewController.swift; sourceTree = "<group>"; };
+		0C4EF9932A7B7F3B00539320 /* CoupleSpacePickCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleSpacePickCollectionViewController.swift; sourceTree = "<group>"; };
+		0C4EF9962A7B966F00539320 /* CoupleSpaceHeartPickCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleSpaceHeartPickCollectionCell.swift; sourceTree = "<group>"; };
+		0C4EF9982A7BA19C00539320 /* CoupleSpaceMyPickCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleSpaceMyPickCollectionCell.swift; sourceTree = "<group>"; };
+		0C4EF99B2A7BF63100539320 /* HeartPickDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartPickDataSource.swift; sourceTree = "<group>"; };
+		0C4EF99E2A7BF91500539320 /* CoupleSpacePickDataSourceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleSpacePickDataSourceable.swift; sourceTree = "<group>"; };
+		0C4EF9A02A7BFB3700539320 /* MypickDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypickDataSource.swift; sourceTree = "<group>"; };
 		0C5929F42A6ADB4500C21570 /* CommunityFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityFloatingButton.swift; sourceTree = "<group>"; };
 		0C5929F62A6D3EA800C21570 /* PanModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanModalPresentationController.swift; sourceTree = "<group>"; };
 		0C5929FD2A6D481400C21570 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
@@ -246,6 +258,51 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		0C4EF9912A7B7D1300539320 /* HeartPickScene */ = {
+			isa = PBXGroup;
+			children = (
+				0C4EF99D2A7BF8F600539320 /* Protocol */,
+				0C4EF99A2A7BA7C000539320 /* Model */,
+				0C4EF9922A7B7D4000539320 /* View */,
+				0C4EF9952A7B7F4C00539320 /* Controller */,
+			);
+			path = HeartPickScene;
+			sourceTree = "<group>";
+		};
+		0C4EF9922A7B7D4000539320 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0C4EF9962A7B966F00539320 /* CoupleSpaceHeartPickCollectionCell.swift */,
+				0C4EF9982A7BA19C00539320 /* CoupleSpaceMyPickCollectionCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0C4EF9952A7B7F4C00539320 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0C4EF9932A7B7F3B00539320 /* CoupleSpacePickCollectionViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0C4EF99A2A7BA7C000539320 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0C4EF99B2A7BF63100539320 /* HeartPickDataSource.swift */,
+				0C4EF9A02A7BFB3700539320 /* MypickDataSource.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0C4EF99D2A7BF8F600539320 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				0C4EF99E2A7BF91500539320 /* CoupleSpacePickDataSourceable.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		0C5929FA2A6D47D700C21570 /* CommentScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,19 +359,19 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		0C684F3B2A77D0BD00A31865 /* VIew */ = {
+		0C684F3B2A77D0BD00A31865 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				0C684F4B2A78FA4D00A31865 /* CoupleSpaceMainHeaderView.swift */,
 				0C4EF98D2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift */,
 			);
-			path = VIew;
+			path = View;
 			sourceTree = "<group>";
 		};
 		0C684F492A78FA1A00A31865 /* MainScene */ = {
 			isa = PBXGroup;
 			children = (
-				0C684F3B2A77D0BD00A31865 /* VIew */,
+				0C684F3B2A77D0BD00A31865 /* View */,
 				0C684F3A2A77C9E000A31865 /* Controller */,
 			);
 			path = MainScene;
@@ -367,6 +424,7 @@
 			children = (
 				0C684F4A2A78FA3600A31865 /* View */,
 				0C684F492A78FA1A00A31865 /* MainScene */,
+				0C4EF9912A7B7D1300539320 /* HeartPickScene */,
 			);
 			path = CoupleSpaceScene;
 			sourceTree = "<group>";
@@ -640,7 +698,9 @@
 				56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */,
 				561462192A6EE50300C0AC1F /* FindIdViewController.swift in Sources */,
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
+				0C4EF9A12A7BFB3700539320 /* MypickDataSource.swift in Sources */,
 				0CA858BA2A6FE0EA00DFCFD5 /* CommentCellHeaderView.swift in Sources */,
+				0C4EF9942A7B7F3B00539320 /* CoupleSpacePickCollectionViewController.swift in Sources */,
 				0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */,
 				0C684F4C2A78FA4D00A31865 /* CoupleSpaceMainHeaderView.swift in Sources */,
 				0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */,
@@ -659,6 +719,7 @@
 				56348A932A6E841E005BB635 /* FindPwPopUpView.swift in Sources */,
 				569E4EED2A5D499900B51898 /* SignUpTermAgreeView.swift in Sources */,
 				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
+				0C4EF99F2A7BF91500539320 /* CoupleSpacePickDataSourceable.swift in Sources */,
 				569E4EEB2A5D40E800B51898 /* SignUpLoverLinkingView.swift in Sources */,
 				56348A632A631283005BB635 /* FindIdView.swift in Sources */,
 				5626B3372A584A3D00477EBC /* SignUpStartDateViewController.swift in Sources */,
@@ -672,7 +733,10 @@
 				5626B34B2A59938700477EBC /* SignUpLoverLinkingViewController.swift in Sources */,
 				569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */,
 				56348A692A6319EA005BB635 /* FindIdPopUpViewController.swift in Sources */,
+				0C4EF9992A7BA19C00539320 /* CoupleSpaceMyPickCollectionCell.swift in Sources */,
+				0C4EF9972A7B966F00539320 /* CoupleSpaceHeartPickCollectionCell.swift in Sources */,
 				569E4EE62A5D06C400B51898 /* SignUpProfileView.swift in Sources */,
+				0C4EF99C2A7BF63100539320 /* HeartPickDataSource.swift in Sources */,
 				0C684F452A77D53200A31865 /* CoupleImageBetweenHeartView.swift in Sources */,
 				0C684F482A78D4F300A31865 /* HeartHubPageViewController.swift in Sources */,
 				0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */,
