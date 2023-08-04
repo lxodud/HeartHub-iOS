@@ -12,7 +12,7 @@ final class CommunityCellBottomButtonView: UIView {
     
     private let thumbButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+        button.setImage(UIImage(named: "CommunityThumb"), for: .normal)
         button.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .selected)
         return button
     }()
@@ -25,7 +25,7 @@ final class CommunityCellBottomButtonView: UIView {
     
     private let commentButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "bubble.left"), for: .normal)
+        button.setImage(UIImage(named: "CommunityComment"), for: .normal)
         return button
     }()
     
@@ -46,8 +46,8 @@ final class CommunityCellBottomButtonView: UIView {
     
     private let heartButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "heart"), for: .normal)
-        button.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+        button.setImage(UIImage(named: "HeartHubEmptyHeart"), for: .normal)
+        button.setImage(UIImage(systemName: "HeartHubFillHeart"), for: .selected)
         return button
     }()
     
