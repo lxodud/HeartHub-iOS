@@ -47,7 +47,7 @@ extension CommunityCellPagingImageView {
     }
 }
 
-// MARK: UIScrollView Delegate
+// MARK: UIScrollView Delegate Implementation
 extension CommunityCellPagingImageView {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentPosition = scrollView.contentOffset.x / scrollView.frame.width
@@ -55,7 +55,7 @@ extension CommunityCellPagingImageView {
     }
 }
 
-// MARK: UICollectionView Delegate FlowLayout
+// MARK: UICollectionView Delegate FlowLayout Implementation
 extension CommunityCellPagingImageView: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
@@ -69,7 +69,7 @@ extension CommunityCellPagingImageView: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: UICollectionView DataSource
+// MARK: UICollectionView DataSource Implementation
 extension CommunityCellPagingImageView: UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,

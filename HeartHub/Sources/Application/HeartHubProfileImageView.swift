@@ -12,8 +12,6 @@ final class HeartHubProfileImageView: UIImageView {
         super.init(frame: .zero)
         contentMode = .scaleToFill
         clipsToBounds = true
-        layer.borderWidth = 0.5
-        layer.borderColor = UIColor.black.cgColor
     }
     
     required init?(coder: NSCoder) {
