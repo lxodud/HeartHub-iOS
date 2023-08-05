@@ -10,8 +10,9 @@ import UIKit
 final class CommunityGameViewController: UIViewController {
     
     private let gameMissionTableView = UITableView()
+    private let gameMissionTableViewCell = GameMissionTableViewCell()
     
-    var gameMissionButton: UIButton = {
+    var missionButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .white
         button.setTitle("미션", for: .normal)
@@ -110,7 +111,7 @@ extension CommunityGameViewController {
 // MARK: Configure UI
 extension CommunityGameViewController {
     private func configureSubview() {
-        [gameMissionButton,
+        [missionButton,
          gameClearButton].forEach {
             gameButtonStackView.addArrangedSubview($0)
         }

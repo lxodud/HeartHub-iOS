@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "MissionUnCheckButtonImage.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "MissionUnCheckButtonImage.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
