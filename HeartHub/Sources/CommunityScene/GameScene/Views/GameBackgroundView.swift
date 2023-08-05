@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CommunityGameBackgroundView: UIView {
+final class GameBackgroundView: UIView {
 
     private var gameBackgroundImageView: UIImageView = {
         var img = UIImageView()
@@ -45,7 +45,7 @@ final class CommunityGameBackgroundView: UIView {
 }
 
 // MARK: Configure UI
-extension CommunityGameBackgroundView {
+extension GameBackgroundView {
     func configureSubview() {
         [gameBackgroundImageView,
          missionTitleImageView,

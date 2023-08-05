@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CommunityGameViewController: UIViewController {
+final class GameViewController: UIViewController {
     
     private let gameMissionTableView = UITableView()
     private let gameMissionTableViewCell = GameMissionTableViewCell()
@@ -51,7 +51,7 @@ final class CommunityGameViewController: UIViewController {
     private var missionDataManager = GameMissionDataManager()
     
     override func loadView() {
-        view = CommunityGameBackgroundView()
+        view = GameBackgroundView()
     }
     
     override func viewDidLoad() {
@@ -64,7 +64,7 @@ final class CommunityGameViewController: UIViewController {
 }
 
 // MARK: DataSource Implement
-extension CommunityGameViewController: UITableViewDataSource {
+extension GameViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return missionDataArray.count
     }
@@ -82,7 +82,7 @@ extension CommunityGameViewController: UITableViewDataSource {
 }
 
 // MARK: Configure TableView
-extension CommunityGameViewController {
+extension GameViewController {
     private func configureGameMissionTableView() {
         gameMissionTableView.dataSource = self
         gameMissionTableView.register(GameMissionTableViewCell.self, forCellReuseIdentifier: "GameMissionCell")
@@ -109,7 +109,7 @@ extension CommunityGameViewController {
 
 
 // MARK: Configure UI
-extension CommunityGameViewController {
+extension GameViewController {
     private func configureSubview() {
         [missionButton,
          gameClearButton].forEach {

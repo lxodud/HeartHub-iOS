@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameMissionTableViewCell: UITableViewCell {
+final class GameMissionTableViewCell: UITableViewCell {
     
     private lazy var gameMissionContainerShadowView: UIView = {
         let view = UIView()

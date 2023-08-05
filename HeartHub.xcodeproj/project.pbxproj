@@ -58,8 +58,8 @@
 		56348A912A6E8286005BB635 /* FindPwViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A902A6E8286005BB635 /* FindPwViewController.swift */; };
 		56348A932A6E841E005BB635 /* FindPwPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A922A6E841E005BB635 /* FindPwPopUpView.swift */; };
 		56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A942A6E87BF005BB635 /* FindPwPopUpViewController.swift */; };
-		5651FC7A2A7A7C6A00965300 /* CommunityGameBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC792A7A7C6A00965300 /* CommunityGameBackgroundView.swift */; };
-		5651FC7C2A7A7FB800965300 /* CommunityGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC7B2A7A7FB800965300 /* CommunityGameViewController.swift */; };
+		5651FC7A2A7A7C6A00965300 /* GameBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC792A7A7C6A00965300 /* GameBackgroundView.swift */; };
+		5651FC7C2A7A7FB800965300 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC7B2A7A7FB800965300 /* GameViewController.swift */; };
 		569013552A7BB32600715D23 /* GameMissionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569013542A7BB32600715D23 /* GameMissionDataManager.swift */; };
 		5690135D2A7BD75C00715D23 /* DungGeunMo.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5690135C2A7BD75C00715D23 /* DungGeunMo.otf */; };
 		569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EDA2A5C241B00B51898 /* LoginView.swift */; };
@@ -129,8 +129,8 @@
 		56348A902A6E8286005BB635 /* FindPwViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPwViewController.swift; sourceTree = "<group>"; };
 		56348A922A6E841E005BB635 /* FindPwPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPwPopUpView.swift; sourceTree = "<group>"; };
 		56348A942A6E87BF005BB635 /* FindPwPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPwPopUpViewController.swift; sourceTree = "<group>"; };
-		5651FC792A7A7C6A00965300 /* CommunityGameBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGameBackgroundView.swift; sourceTree = "<group>"; };
-		5651FC7B2A7A7FB800965300 /* CommunityGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGameViewController.swift; sourceTree = "<group>"; };
+		5651FC792A7A7C6A00965300 /* GameBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBackgroundView.swift; sourceTree = "<group>"; };
+		5651FC7B2A7A7FB800965300 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		569013542A7BB32600715D23 /* GameMissionDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMissionDataManager.swift; sourceTree = "<group>"; };
 		5690135C2A7BD75C00715D23 /* DungGeunMo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DungGeunMo.otf; sourceTree = "<group>"; };
 		569E4EDA2A5C241B00B51898 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -511,7 +511,7 @@
 		5651FC772A7A7C4100965300 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5651FC7B2A7A7FB800965300 /* CommunityGameViewController.swift */,
+				5651FC7B2A7A7FB800965300 /* GameViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -519,7 +519,7 @@
 		5651FC782A7A7C4800965300 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5651FC792A7A7C6A00965300 /* CommunityGameBackgroundView.swift */,
+				5651FC792A7A7C6A00965300 /* GameBackgroundView.swift */,
 				56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */,
 			);
 			path = Views;
@@ -664,12 +664,12 @@
 				56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */,
 				561462192A6EE50300C0AC1F /* FindIdViewController.swift in Sources */,
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
-				5651FC7C2A7A7FB800965300 /* CommunityGameViewController.swift in Sources */,
+				5651FC7C2A7A7FB800965300 /* GameViewController.swift in Sources */,
 				0CA858BA2A6FE0EA00DFCFD5 /* CommentCellHeaderView.swift in Sources */,
 				0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */,
 				0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */,
 				0C6F454B2A7003930044EAC8 /* CommentCell.swift in Sources */,
-				5651FC7A2A7A7C6A00965300 /* CommunityGameBackgroundView.swift in Sources */,
+				5651FC7A2A7A7C6A00965300 /* GameBackgroundView.swift in Sources */,
 				0C382E282A5994A700EA08E0 /* CommunityViewController.swift in Sources */,
 				0CA858B82A6FB75B00DFCFD5 /* CommunityCellHeaderViewDelegate.swift in Sources */,
 				0C592A042A6D720700C21570 /* PanModalAnimator.swift in Sources */,
