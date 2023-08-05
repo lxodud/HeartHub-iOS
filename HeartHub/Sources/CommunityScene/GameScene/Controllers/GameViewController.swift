@@ -9,8 +9,7 @@ import UIKit
 
 final class GameViewController: UIViewController {
     
-    private let gameMissionTableView = UITableView()
-    private let gameMissionTableViewCell = GameMissionTableViewCell()
+   
     
     var missionButton: UIButton = {
         let button = UIButton(type: .custom)
@@ -47,9 +46,6 @@ final class GameViewController: UIViewController {
         return stackView
     }()
     
-    private var missionDataArray: [String] = []
-    private var missionDataManager = GameMissionDataManager()
-    
     override func loadView() {
         view = GameBackgroundView()
     }
@@ -58,52 +54,6 @@ final class GameViewController: UIViewController {
         super.viewDidLoad()
         configureSubview()
         configureLayout()
-        configureGameMissionTableView()
-        configureGameMissionTableViewLayout()
-    }
-}
-
-// MARK: DataSource Implement
-extension GameViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return missionDataArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GameMissionCell", for: indexPath)
-                as? GameMissionTableViewCell else {
-            return UITableViewCell()
-        }
-        
-        cell.gameMissionLabel.text = missionDataArray[indexPath.item]
-        
-        return cell
-    }
-}
-
-// MARK: Configure TableView
-extension GameViewController {
-    private func configureGameMissionTableView() {
-        gameMissionTableView.dataSource = self
-        gameMissionTableView.register(GameMissionTableViewCell.self, forCellReuseIdentifier: "GameMissionCell")
-        missionDataManager.configureMissionData()
-        missionDataArray = missionDataManager.fetchGameMissionData()
-        
-        gameMissionTableView.contentSize.height = 80
-        gameMissionTableView.separatorStyle = .none
-    }
-    
-    private func configureGameMissionTableViewLayout() {
-        view.addSubview(gameMissionTableView)
-        gameMissionTableView.backgroundColor = .clear
-        gameMissionTableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            gameMissionTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameMissionTableView.topAnchor.constraint(equalTo: gameButtonStackView.bottomAnchor, constant: 43),
-            gameMissionTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            gameMissionTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25)
-        ])
     }
 }
 
