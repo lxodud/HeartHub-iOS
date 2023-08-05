@@ -62,6 +62,8 @@
 		5651FC7C2A7A7FB800965300 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC7B2A7A7FB800965300 /* GameViewController.swift */; };
 		569013552A7BB32600715D23 /* GameMissionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569013542A7BB32600715D23 /* GameMissionDataManager.swift */; };
 		5690135D2A7BD75C00715D23 /* DungGeunMo.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5690135C2A7BD75C00715D23 /* DungGeunMo.otf */; };
+		5690135F2A7E62A200715D23 /* GamePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5690135E2A7E62A200715D23 /* GamePageViewController.swift */; };
+		569013612A7E635200715D23 /* GameSegmentControll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569013602A7E635200715D23 /* GameSegmentControll.swift */; };
 		569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EDA2A5C241B00B51898 /* LoginView.swift */; };
 		569E4EE42A5CE18E00B51898 /* SignUpStartDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */; };
 		569E4EE62A5D06C400B51898 /* SignUpProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */; };
@@ -133,6 +135,8 @@
 		5651FC7B2A7A7FB800965300 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		569013542A7BB32600715D23 /* GameMissionDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMissionDataManager.swift; sourceTree = "<group>"; };
 		5690135C2A7BD75C00715D23 /* DungGeunMo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DungGeunMo.otf; sourceTree = "<group>"; };
+		5690135E2A7E62A200715D23 /* GamePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePageViewController.swift; sourceTree = "<group>"; };
+		569013602A7E635200715D23 /* GameSegmentControll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSegmentControll.swift; sourceTree = "<group>"; };
 		569E4EDA2A5C241B00B51898 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpStartDateView.swift; sourceTree = "<group>"; };
 		569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpProfileView.swift; sourceTree = "<group>"; };
@@ -512,6 +516,7 @@
 			isa = PBXGroup;
 			children = (
 				5651FC7B2A7A7FB800965300 /* GameViewController.swift */,
+				5690135E2A7E62A200715D23 /* GamePageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -521,6 +526,7 @@
 			children = (
 				5651FC792A7A7C6A00965300 /* GameBackgroundView.swift */,
 				56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */,
+				569013602A7E635200715D23 /* GameSegmentControll.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -675,6 +681,7 @@
 				0C592A042A6D720700C21570 /* PanModalAnimator.swift in Sources */,
 				0CB49BDF2A69526500C77341 /* LookCell.swift in Sources */,
 				0C4D32F92A6825FF00AD5EFF /* CommunityCellable.swift in Sources */,
+				5690135F2A7E62A200715D23 /* GamePageViewController.swift in Sources */,
 				0CB49BDA2A69234A00C77341 /* LookViewController.swift in Sources */,
 				0CB49BDC2A69237400C77341 /* MockData.swift in Sources */,
 				0C4D32F72A6823A600AD5EFF /* DailyDateNoImageCell.swift in Sources */,
@@ -690,6 +697,7 @@
 				56348A8F2A6E7ECC005BB635 /* FindPwView.swift in Sources */,
 				5626B3452A597FA200477EBC /* SignUpProfileViewController.swift in Sources */,
 				56348A912A6E8286005BB635 /* FindPwViewController.swift in Sources */,
+				569013612A7E635200715D23 /* GameSegmentControll.swift in Sources */,
 				56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */,
 				0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */,
 				5626B34D2A5993A700477EBC /* SignUpTermAgreeViewController.swift in Sources */,
