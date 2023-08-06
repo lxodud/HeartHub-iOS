@@ -19,11 +19,7 @@ class GameClearViewController: UIViewController {
         super.viewDidLoad()
         configureClearMissionTableView()
         configureClearMissionTableViewLayout()
-
-
-        // Do any additional setup after loading the view.
     }
-
 }
 
 // MARK: DataSource Implement
@@ -37,7 +33,6 @@ extension GameClearViewController: UITableViewDataSource {
                 as? GameClearTableViewCell else {
             return UITableViewCell()
         }
-        
         cell.gameClearLabel.text = clearMissionDataArray[indexPath.item]
         
         return cell
@@ -55,9 +50,7 @@ extension GameClearViewController {
         clearMissionTableView.contentSize.height = 80
         clearMissionTableView.separatorStyle = .none
     }
-    
-    
-    
+
     private func configureClearMissionTableViewLayout() {
         view.addSubview(clearMissionTableView)
         clearMissionTableView.backgroundColor = .clear
@@ -67,7 +60,7 @@ extension GameClearViewController {
             clearMissionTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             clearMissionTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 43),
             clearMissionTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            clearMissionTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            clearMissionTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25)
         ])
     }
 }

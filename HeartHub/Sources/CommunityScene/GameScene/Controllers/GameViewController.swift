@@ -27,7 +27,6 @@ final class GameViewController: UIViewController {
     }
 }
 
-
 // MARK: Configure UI
 extension GameViewController {
     private func configureSubview() {

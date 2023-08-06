@@ -73,7 +73,6 @@ extension GamePageViewController: UIPageViewControllerDelegate {
         else {
             return
         }
-        
         gameSegmentedControl.selectedSegmentIndex = index
     }
     
@@ -88,7 +87,6 @@ extension GamePageViewController: UIPageViewControllerDelegate {
         else {
             return
         }
-        
         gameSegmentedControl.selectedSegmentIndex = index
     }
 }
@@ -104,7 +102,6 @@ extension GamePageViewController: UIPageViewControllerDataSource {
         else {
             return nil
         }
-        
         return viewControllers[index - 1]
     }
     
@@ -117,7 +114,6 @@ extension GamePageViewController: UIPageViewControllerDataSource {
         else {
             return nil
         }
-        
         return viewControllers[index + 1]
     }
 }
@@ -132,7 +128,6 @@ extension GamePageViewController {
                 animated: true
             )
         }
-        
         gamePageViewController.dataSource = self
         gamePageViewController.delegate = self
     }

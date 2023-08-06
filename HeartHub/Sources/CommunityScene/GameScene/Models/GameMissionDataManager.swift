@@ -23,5 +23,3 @@ final class GameMissionDataManager {
         return GameMissionDataArray
     }
 }
-
-

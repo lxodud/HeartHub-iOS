@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameClearTableViewCell: UITableViewCell {
+final class GameClearTableViewCell: UITableViewCell {
 
     private lazy var gameMissionContainerShadowView: UIView = {
         let view = UIView()
@@ -75,7 +75,6 @@ extension GameClearTableViewCell {
          } else {
              gameClearButton.isSelected = true
              gameMissionCheckImage.isHidden = true
-
          }
     }
 }
@@ -121,7 +120,6 @@ extension GameClearTableViewCell {
             gameMissionCheckImage.leadingAnchor.constraint(equalTo: gameClearButton.leadingAnchor, constant: 1),
             gameMissionCheckImage.trailingAnchor.constraint(equalTo: gameClearButton.trailingAnchor, constant: 6),
 
-            
             // MARK: gameMissionLabel Constraints
             gameClearLabel.widthAnchor.constraint(equalTo: gameMissionContainverView.widthAnchor, multiplier: 0.74),
             gameClearLabel.centerYAnchor.constraint(equalTo: gameMissionContainverView.centerYAnchor),

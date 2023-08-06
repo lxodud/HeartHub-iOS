@@ -19,7 +19,6 @@ class GameMissionViewController: UIViewController {
         configureGameMissionTableView()
         configureGameMissionTableViewLayout()
     }
-
 }
 
 // MARK: DataSource Implement
