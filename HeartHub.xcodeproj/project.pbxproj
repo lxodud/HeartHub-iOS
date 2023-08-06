@@ -67,6 +67,7 @@
 		569013652A7E6CFD00715D23 /* GameMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569013642A7E6CFD00715D23 /* GameMissionViewController.swift */; };
 		569013672A7E6D0700715D23 /* GameClearViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569013662A7E6D0700715D23 /* GameClearViewController.swift */; };
 		5690136B2A7E6FA400715D23 /* GameClearMissionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5690136A2A7E6FA400715D23 /* GameClearMissionDataManager.swift */; };
+		5690136D2A7FA60800715D23 /* GameClearTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5690136C2A7FA60800715D23 /* GameClearTableViewCell.swift */; };
 		569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EDA2A5C241B00B51898 /* LoginView.swift */; };
 		569E4EE42A5CE18E00B51898 /* SignUpStartDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */; };
 		569E4EE62A5D06C400B51898 /* SignUpProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */; };
@@ -143,6 +144,7 @@
 		569013642A7E6CFD00715D23 /* GameMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMissionViewController.swift; sourceTree = "<group>"; };
 		569013662A7E6D0700715D23 /* GameClearViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameClearViewController.swift; sourceTree = "<group>"; };
 		5690136A2A7E6FA400715D23 /* GameClearMissionDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameClearMissionDataManager.swift; sourceTree = "<group>"; };
+		5690136C2A7FA60800715D23 /* GameClearTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameClearTableViewCell.swift; sourceTree = "<group>"; };
 		569E4EDA2A5C241B00B51898 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpStartDateView.swift; sourceTree = "<group>"; };
 		569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpProfileView.swift; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 			children = (
 				5651FC792A7A7C6A00965300 /* GameBackgroundView.swift */,
 				56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */,
+				5690136C2A7FA60800715D23 /* GameClearTableViewCell.swift */,
 				569013602A7E635200715D23 /* GameSegmentControll.swift */,
 			);
 			path = Views;
@@ -685,6 +688,7 @@
 				0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */,
 				0C6F454B2A7003930044EAC8 /* CommentCell.swift in Sources */,
 				5651FC7A2A7A7C6A00965300 /* GameBackgroundView.swift in Sources */,
+				5690136D2A7FA60800715D23 /* GameClearTableViewCell.swift in Sources */,
 				0C382E282A5994A700EA08E0 /* CommunityViewController.swift in Sources */,
 				0CA858B82A6FB75B00DFCFD5 /* CommunityCellHeaderViewDelegate.swift in Sources */,
 				0C592A042A6D720700C21570 /* PanModalAnimator.swift in Sources */,

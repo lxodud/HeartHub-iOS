@@ -34,11 +34,11 @@ extension GameClearViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ClearMissionCell", for: indexPath)
-                as? GameMissionTableViewCell else {
+                as? GameClearTableViewCell else {
             return UITableViewCell()
         }
         
-        cell.gameMissionLabel.text = clearMissionDataArray[indexPath.item]
+        cell.gameClearLabel.text = clearMissionDataArray[indexPath.item]
         
         return cell
     }
@@ -48,7 +48,7 @@ extension GameClearViewController: UITableViewDataSource {
 extension GameClearViewController {
     private func configureClearMissionTableView() {
         clearMissionTableView.dataSource = self
-        clearMissionTableView.register(GameMissionTableViewCell.self, forCellReuseIdentifier: "ClearMissionCell")
+        clearMissionTableView.register(GameClearTableViewCell.self, forCellReuseIdentifier: "ClearMissionCell")
         clearMissionDataManager.configureMissionData()
         clearMissionDataArray = clearMissionDataManager.fetchGameMissionData()
         
