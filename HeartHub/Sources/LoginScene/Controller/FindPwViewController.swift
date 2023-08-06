@@ -46,7 +46,7 @@ final class FindPwViewController: UIViewController {
     @objc private func didTapFindPwButton() {
 
         let idPattern = #"^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"#
-        let isVaildPattern = (findPwView.emailEnterTextField.text!.range(of: idPattern, options: .regularExpression) != nil)
+        let isVaildPattern = (findPwView.findPwEmailTextField.text!.range(of: idPattern, options: .regularExpression) != nil)
         if isVaildPattern {
             let findPwPopUpVC = FindPwPopUpViewController()
             findPwPopUpVC.modalPresentationStyle = .overFullScreen

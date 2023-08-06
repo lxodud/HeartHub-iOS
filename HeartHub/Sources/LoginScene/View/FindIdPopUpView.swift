@@ -100,42 +100,29 @@ final class FindIdPopUpView: UIView {
     }
     
     // MARK: 제약
-    func addViews() {
-//        [labelStackView,
-//        closeBtn].forEach { addSubview($0) }
+    private func addViews() {
         addSubview(containerView)
+        
+        [containerView,
+        labelStackView,
+         closeBtn].forEach { $0.translatesAutoresizingMaskIntoConstraints = false}
     }
     
     private func constraints() {
-        labelStackViewConstraints()
-        closeBtnConstraints()
-        containerViewConstraints()
-    }
+        
+        let safeArea = safeAreaLayoutGuide
 
-    
-    private func containerViewConstraints() {
-        containerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             containerView.centerXAnchor.constraint(equalTo: centerXAnchor),
             containerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 138),
             containerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -163),
-            containerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 30)
-        ])
-    }
-    
-    private func labelStackViewConstraints() {
-        labelStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            containerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 30),
+
             labelStackView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             labelStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 119),
             labelStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -30),
             labelStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-        ])
-    }
-    
-    private func closeBtnConstraints() {
-        closeBtn.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+
             closeBtn.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             closeBtn.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.08),
             closeBtn.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 30),

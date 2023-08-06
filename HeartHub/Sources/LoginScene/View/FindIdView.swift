@@ -8,79 +8,14 @@
 import UIKit
 
 final class FindIdView: UIView {
-    let screenHeight = UIScreen.main.bounds.size.height
+    
+    private let loginBackGroundView = LoginBackGroundView()
 
-    // MARK: 배경 + 하트브랜드
-    // 백그라운드 화면
-    private let backgroundView: UIImageView = {
-        var imgView = UIImageView()
-        imgView.contentMode = .scaleAspectFit
-        imgView.image = UIImage(named: "BackgroundGradient.png")
-        return imgView
-    }()
-    
-    // 백그라운드 산
-    private let mountainBackgroundView: UIImageView = {
-        var imgView = UIImageView()
-        imgView.contentMode = .scaleAspectFit
-        imgView.image = UIImage(named: "MountainBackground.png")
-        return imgView
-    }()
-    
-    // 산이미지 앞에 gradient
-    private let LoginMountainFrontView: UIImageView = {
-        var imgView = UIImageView()
-        imgView.contentMode = .scaleAspectFit
-        imgView.image = UIImage(named: "LoginMountainFront.png")
-        return imgView
-    }()
-    
-    // 메인하트 이미지
-    private let heartImageView: UIImageView = {
-        var imgView = UIImageView()
-        imgView.contentMode = .scaleAspectFit
-        imgView.image = UIImage(named: "HeartBrand.png")
-        return imgView
-    }()
-    
-    // MARK: HeartHub main Label Image
-    private let HeartHubMainLabelImageView: UIImageView = {
-        var imgView = UIImageView()
-        imgView.contentMode = .scaleAspectFit
-        imgView.image = UIImage(named: "HeartHubMainLabel")
-        return imgView
-    }()
-    
-    // MARK: 이메일입력
-    // 이메일 입력 텍스트 필드
-    lazy var emailTextField: UITextField = {
-        var tf = UITextField()
-        tf.backgroundColor = .clear
-        tf.textColor = .white
-        tf.keyboardType = .emailAddress
-        tf.autocapitalizationType = .none
-        tf.autocorrectionType = .no
-        tf.spellCheckingType = .no
-        tf.attributedPlaceholder = NSAttributedString(
-                string: "이메일을 입력하세요.",
-                attributes: [NSAttributedString.Key.foregroundColor: UIColor.white,
-                             NSAttributedString.Key.font: UIFont(name: "Pretendard-Regular", size: 16)!
-                            ])
-        tf.textAlignment = .left
-        return tf
-    }()
-    
-    // 이메일 입력 텍스트필드 뷰
-    private lazy var emailTextFieldView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 8
-        view.layer.borderColor = #colorLiteral(red: 1, green: 0.9999999404, blue: 1, alpha: 1)
-        view.layer.borderWidth = 1
-        view.addSubview(emailTextField)
-        return view
-    }()
+    let findIdEmailTextField = LoginTextFieldView(
+        placeholder: "이메일을 입력하세요",
+        keyboardType: .emailAddress,
+        isSecureTextEntry: false
+    )
 
     // 아이디 찾기 버튼
     lazy var findIdBtn: UIButton = {
@@ -98,7 +33,7 @@ final class FindIdView: UIView {
     
     // 이메일입력 + 아이디 찾기 버튼 스택뷰
     private lazy var emailTfFindIdBtnStackView: UIStackView = {
-        let stview = UIStackView(arrangedSubviews: [emailTextFieldView, findIdBtn])
+        let stview = UIStackView(arrangedSubviews: [findIdEmailTextField, findIdBtn])
         stview.spacing = 47
         stview.axis = .vertical
         stview.distribution = .fillEqually
@@ -184,123 +119,47 @@ final class FindIdView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup() {
-        emailTextField.delegate = self
+    private func setup() {
+        findIdEmailTextField.delegate = self
     }
     
-    func addViews() {
-        [backgroundView,
-         mountainBackgroundView,
-         LoginMountainFrontView,
-         HeartHubMainLabelImageView,
-         heartImageView,
+    private func addViews() {
+        [loginBackGroundView,
          emailTfFindIdBtnStackView,
-         signUpFindIdPwStackView].forEach { addSubview($0) }
+         signUpFindIdPwStackView].forEach {
+            addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
     }
     
-    func constraints() {
-        backgroundViewConstraints()
-        mountainBackgroundViewConstraints()
-        LoginMountainFrontViewConstraints()
-        heartHubMainLabelImageViewConstraints()
-        heartImageViewConstraints()
-        emailTextFieldConstraints()
-        emailTfFindIdStackViewConstraints()
-        signUpFindIdPwStackViewConstraints()
-        lineView1Constraints()
-        lineView2Constraints()
-    }
-    
-    private func backgroundViewConstraints() {
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+    private func constraints() {
+        let safeArea = safeAreaLayoutGuide
+        
         NSLayoutConstraint.activate([
-            backgroundView.topAnchor.constraint(equalTo: topAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-    }
-    
-    private func mountainBackgroundViewConstraints() {
-        mountainBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            mountainBackgroundView.topAnchor.constraint(equalTo: topAnchor, constant: 557.76),
-            mountainBackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 6),
-            mountainBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            mountainBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-    }
-    
-    private func LoginMountainFrontViewConstraints() {
-        LoginMountainFrontView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            LoginMountainFrontView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 363),
-            LoginMountainFrontView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 6),
-            LoginMountainFrontView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            LoginMountainFrontView.trailingAnchor.constraint(equalTo: trailingAnchor),
-        ])
-    }
-
-    private func heartHubMainLabelImageViewConstraints() {
-        HeartHubMainLabelImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            HeartHubMainLabelImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            HeartHubMainLabelImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 202),
-            HeartHubMainLabelImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 63),
-        ])
-    }
-
-    private func heartImageViewConstraints() {
-        heartImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            heartImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            heartImageView.topAnchor.constraint(equalTo: HeartHubMainLabelImageView.bottomAnchor, constant: 33),
-            heartImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 60),
-        ])
-    }
-    
-    private func emailTfFindIdStackViewConstraints() {
-        emailTfFindIdBtnStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            
+            // MARK: loginBackGrondView Constraints
+            loginBackGroundView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            loginBackGroundView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            loginBackGroundView.topAnchor.constraint(equalTo: topAnchor),
+            loginBackGroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            
+            // MARK: emailTfFindIdBtnStackView Constraints
+            emailTfFindIdBtnStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.17),
             emailTfFindIdBtnStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            emailTfFindIdBtnStackView.topAnchor.constraint(equalTo: heartImageView.bottomAnchor, constant: 78.62),
-            emailTfFindIdBtnStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 59),
-
-        ])
-    }
-    
-    private func emailTextFieldConstraints() {
-        emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            emailTextField.topAnchor.constraint(equalTo: emailTextFieldView.topAnchor, constant: 12),
-            emailTextField.bottomAnchor.constraint(equalTo: emailTextFieldView.bottomAnchor, constant: -12),
-            emailTextField.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 12),
-            emailTextField.trailingAnchor.constraint(equalTo: emailTextFieldView.trailingAnchor, constant: -12),
-        ])
-    }
-
-    
-    private func signUpFindIdPwStackViewConstraints() {
-        signUpFindIdPwStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            emailTfFindIdBtnStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 544),
+            emailTfFindIdBtnStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 59),
+       
+            // MARK: signUpFindIdPwStackView Constraints
             signUpFindIdPwStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             signUpFindIdPwStackView.topAnchor.constraint(equalTo: emailTfFindIdBtnStackView.bottomAnchor, constant: 28),
-                  signUpFindIdPwStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 12),
-            signUpFindIdPwStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 69),
-        ])
-    }
-    
-    private func lineView1Constraints() {
-        lineView1.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            signUpFindIdPwStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -12),
+            signUpFindIdPwStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 69),
+       
+            // MARK: lineView1 Constraints
             lineView1.widthAnchor.constraint(equalToConstant: 1),
-            lineView1.heightAnchor.constraint(equalTo: signUpBtn.heightAnchor, multiplier: 0.5)
-        ])
-    }
-
-    private func lineView2Constraints() {
-        lineView2.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            lineView1.heightAnchor.constraint(equalTo: signUpBtn.heightAnchor, multiplier: 0.5),
+          
+            // MARK: lineView2 Constraints
             lineView2.widthAnchor.constraint(equalToConstant: 1),
             lineView2.heightAnchor.constraint(equalTo: lineView1.heightAnchor)
         ])
@@ -312,15 +171,15 @@ extension FindIdView: UITextFieldDelegate {
     // 키보드 엔터키가 눌렸을때 (다음 동작을 허락할 것인지)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // 두개의 텍스트필드를 모두 종료 (키보드 내려가기)
-        if emailTextField.text != "" {
-            emailTextField.resignFirstResponder()
+        if findIdEmailTextField.text != "" {
+            findIdEmailTextField.resignFirstResponder()
         }
             return true
         }
     
     // 텍스트필드 이외의 영역을 눌렀을때 키보드 내려가도록
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        emailTextField.resignFirstResponder()
+        findIdEmailTextField.resignFirstResponder()
     }
     
             
@@ -342,7 +201,7 @@ extension FindIdView: UITextFieldDelegate {
         let maxLength: Int
         var allowedCharacterSet: CharacterSet
         
-        if textField == emailTextField {
+        if textField == findIdEmailTextField {
             maxLength = 100
             allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'*+-/=?^_`{|}~.(),:;<>@")
         } else {
@@ -359,6 +218,21 @@ extension FindIdView: UITextFieldDelegate {
         }
 
     }
-    
 }
 
+
+// MARK: 프리뷰
+import SwiftUI
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Container().edgesIgnoringSafeArea(.all)
+    }
+    struct Container: UIViewControllerRepresentable {
+        func makeUIViewController(context: Context) -> UIViewController {
+            return     UINavigationController(rootViewController: FindIdViewController())
+        }
+        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        }
+        typealias  UIViewControllerType = UIViewController
+    }
+}

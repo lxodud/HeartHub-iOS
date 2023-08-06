@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeartHubMainLabel" translatesAutoresizingMaskIntoConstraints="NO" id="5mg-HV-ges">
-                                <rect key="frame" x="63" y="261" width="267" height="67.666666666666686"/>
+                                <rect key="frame" x="56.666666666666657" y="261" width="280" height="67.666666666666686"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeartBrand" translatesAutoresizingMaskIntoConstraints="NO" id="098-2B-xhA">
                                 <rect key="frame" x="61.333333333333343" y="361.66666666666669" width="270.33333333333326" height="182.00000000000006"/>
@@ -42,7 +42,6 @@
                             <constraint firstAttribute="bottom" secondItem="F5Z-Z1-RdU" secondAttribute="bottom" id="W9z-Uo-pZH"/>
                             <constraint firstItem="F5Z-Z1-RdU" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="XTN-fP-f6j"/>
                             <constraint firstAttribute="trailing" secondItem="F5Z-Z1-RdU" secondAttribute="trailing" id="XpF-Aj-dgb"/>
-                            <constraint firstItem="5mg-HV-ges" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="63" id="kQq-c3-B5C"/>
                             <constraint firstItem="098-2B-xhA" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="odF-Nv-DZF"/>
                             <constraint firstItem="5mg-HV-ges" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="202" id="sBD-ds-tZU"/>
                             <constraint firstItem="098-2B-xhA" firstAttribute="top" secondItem="5mg-HV-ges" secondAttribute="bottom" constant="33" id="ugl-cY-aTE"/>

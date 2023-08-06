@@ -8,112 +8,20 @@
 import UIKit
 
 final class LoginView: UIView {
-
-// MARK: 배경 + 하트브랜드
-    // 백그라운드 화면
-    private let backgroundView: UIImageView = {
-        var imgView = UIImageView()
-        imgView.contentMode = .scaleAspectFit
-        imgView.image = UIImage(named: "BackgroundGradient.png")
-        return imgView
-    }()
     
-    // 백그라운드 산
-    private let mountainBackgroundView: UIImageView = {
-        var imgView = UIImageView()
-        imgView.contentMode = .scaleAspectFit
-        imgView.image = UIImage(named: "MountainBackground.png")
-        return imgView
-    }()
+    private let loginBackGroundView = LoginBackGroundView()
     
-    // 산이미지 앞에 gradient
-    private let LoginMountainFrontView: UIImageView = {
-        var imgView = UIImageView()
-        imgView.contentMode = .scaleAspectFit
-        imgView.image = UIImage(named: "LoginMountainFront.png")
-        return imgView
-    }()
+    private let idEnterTextField = LoginTextFieldView(
+        placeholder: "아이디를 입력하세요",
+        keyboardType: .emailAddress,
+        isSecureTextEntry: false
+    )
     
-    // 메인하트 이미지
-    private let heartImageView: UIImageView = {
-        var imgView = UIImageView()
-        imgView.contentMode = .scaleAspectFit
-        imgView.image = UIImage(named: "HeartBrand.png")
-        return imgView
-    }()
-    
-    // MARK: HeartHub main Label Image
-    private let HeartHubMainLabelImageView: UIImageView = {
-        var imgView = UIImageView()
-        imgView.contentMode = .scaleAspectFit
-        imgView.image = UIImage(named: "HeartHubMainLabel")
-        return imgView
-    }()
-    
-    
-
-// MARK: ID,PW 입력, 로그인 버튼
-    // 아이디 입력 텍스트 필드
-    private lazy var idEnterTextField: UITextField = {
-        var tf = UITextField()
-        tf.backgroundColor = .clear
-        tf.textColor = .white
-        tf.keyboardType = .emailAddress
-        tf.autocapitalizationType = .none
-        tf.autocorrectionType = .no
-        tf.spellCheckingType = .no
-        tf.attributedPlaceholder = NSAttributedString(
-                string: "아이디를 입력하세요.",
-                attributes: [NSAttributedString.Key.foregroundColor: UIColor.white,
-                             NSAttributedString.Key.font: UIFont(name: "Pretendard-Regular", size: 16)!
-                            ])
-        tf.textAlignment = .left
-        return tf
-    }()
-    
-    // 아이디 입력 텍스트필드 뷰
-    private lazy var idEnterTextFieldView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 8
-        view.layer.borderColor = #colorLiteral(red: 1, green: 0.9999999404, blue: 1, alpha: 1)
-        view.layer.borderWidth = 1
-        view.addSubview(idEnterTextField)
-        return view
-    }()
-    
-    // 비밀번호 입력 텍스트필드
-    lazy var pwEnterTextField: UITextField = {
-        var tf = UITextField()
-        tf.backgroundColor = .clear
-        tf.textColor = .white
-        tf.keyboardType = .default
-        tf.autocapitalizationType = .none
-        tf.autocorrectionType = .no
-        tf.spellCheckingType = .no
-        tf.isSecureTextEntry = true
-        tf.clearsOnBeginEditing = false
-        tf.attributedPlaceholder = NSAttributedString(
-                string: "비밀번호를 입력하세요.",
-                attributes: [NSAttributedString.Key.foregroundColor: UIColor.white,
-                             NSAttributedString.Key.font: UIFont(name: "Pretendard-Regular", size: 16)!
-                            ])
-        tf.textAlignment = .left
-        return tf
-    }()
-    
-    // 비밀번호 입력 텍스트필드 뷰
-    private lazy var pwEnterTextFieldView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 8
-        view.layer.borderColor = #colorLiteral(red: 1, green: 0.9999999404, blue: 1, alpha: 1)
-        view.layer.borderWidth = 1
-        view.addSubview(pwEnterTextField)
-        return view
-    }()
+    private let pwEnterTextField = LoginTextFieldView(
+        placeholder: "비밀번호를 입력하세요",
+        keyboardType: .default,
+        isSecureTextEntry: true
+    )
     
     // 로그인 버튼
     lazy var loginBtn: UIButton = {
@@ -131,12 +39,12 @@ final class LoginView: UIView {
     
     // 아이디 + 비밀번호 + 로그인 버튼 스택뷰
     private lazy var idPwLoginBtnStackView: UIStackView = {
-        let stview = UIStackView(arrangedSubviews: [idEnterTextFieldView, pwEnterTextFieldView, loginBtn])
+        let stview = UIStackView(arrangedSubviews: [idEnterTextField, pwEnterTextField, loginBtn])
         stview.spacing = 8
         stview.axis = .vertical
         stview.distribution = .fillEqually
         stview.alignment = .fill
-        stview.setCustomSpacing(20, after: pwEnterTextFieldView)
+        stview.setCustomSpacing(20, after: pwEnterTextField)
         return stview
     }()
     
@@ -209,7 +117,6 @@ final class LoginView: UIView {
     // MARK: 뷰 초기화
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         addViews()
         constraints()
         setup()
@@ -219,134 +126,46 @@ final class LoginView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addViews() {
-        [backgroundView,
-         mountainBackgroundView,
-         LoginMountainFrontView,
-         HeartHubMainLabelImageView,
-         heartImageView,
+    private func addViews() {
+        [loginBackGroundView,
          idPwLoginBtnStackView,
-         signUpFindIdPwStackView].forEach { addSubview($0) }
+         signUpFindIdPwStackView].forEach {
+            addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
     }
     
-    func setup() {
+    private func setup() {
         idEnterTextField.delegate = self
         pwEnterTextField.delegate = self
     }
     
-    func constraints() {
-        backgroundViewConstraints()
-        mountainBackgroundViewConstraints()
-        LoginMountainFrontViewConstraints()
-        heartHubMainLabelImageViewConstraints()
+    private func constraints() {
+        
+        let safeArea = safeAreaLayoutGuide
 
-        heartImageViewConstraints()
-        idEnterTextFieldConstraints()
-        pwEnterTextFieldConstraints()
-        idPwLoginBtnStackViewConstraints()
-        signUpFindIdPwStackViewConstraints()
-        lineView1Constraints()
-        lineView2Constraints()
-    }
-    
-    private func backgroundViewConstraints() {
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            backgroundView.topAnchor.constraint(equalTo: topAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-    }
-    
-    private func mountainBackgroundViewConstraints() {
-        mountainBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            mountainBackgroundView.topAnchor.constraint(equalTo: topAnchor, constant: 557.76),
-            mountainBackgroundView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 6),
-            mountainBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            mountainBackgroundView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-    }
-    
-    private func LoginMountainFrontViewConstraints() {
-        LoginMountainFrontView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            LoginMountainFrontView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 363),
-            LoginMountainFrontView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 6),
-            LoginMountainFrontView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            LoginMountainFrontView.trailingAnchor.constraint(equalTo: trailingAnchor),
-        ])
-    }
-    
-    private func heartHubMainLabelImageViewConstraints() {
-        HeartHubMainLabelImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            HeartHubMainLabelImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            HeartHubMainLabelImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 202),
-            HeartHubMainLabelImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 63),
-        ])
-    }
+            // MARK: loginBackGrondView Constraints
+            loginBackGroundView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            loginBackGroundView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            loginBackGroundView.topAnchor.constraint(equalTo: topAnchor),
+            loginBackGroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
-    private func heartImageViewConstraints() {
-        heartImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            heartImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            heartImageView.topAnchor.constraint(equalTo: HeartHubMainLabelImageView.bottomAnchor, constant: 33),
-            heartImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 60),
-        ])
-    }
-    
-    private func idPwLoginBtnStackViewConstraints() {
-        idPwLoginBtnStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            // MARK: ID, PW TextField, LoginButton StackView Constraints
+            idPwLoginBtnStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
             idPwLoginBtnStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            idPwLoginBtnStackView.topAnchor.constraint(equalTo: heartImageView.bottomAnchor, constant: 49.62),
+            idPwLoginBtnStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 515),
             idPwLoginBtnStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 59),
-        ])
-    }
-    
-    private func signUpFindIdPwStackViewConstraints() {
-        signUpFindIdPwStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+
+            // MARK: SignUp button, FindID button, FindPw button StackView Constraints
             signUpFindIdPwStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             signUpFindIdPwStackView.topAnchor.constraint(equalTo: idPwLoginBtnStackView.bottomAnchor, constant: 28),
             signUpFindIdPwStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 12),
             signUpFindIdPwStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 69),
-        ])
-    }
-    
-    private func idEnterTextFieldConstraints() {
-        idEnterTextField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            idEnterTextField.topAnchor.constraint(equalTo: idEnterTextFieldView.topAnchor, constant: 12),
-            idEnterTextField.bottomAnchor.constraint(equalTo: idEnterTextFieldView.bottomAnchor, constant: -12),
-            idEnterTextField.leadingAnchor.constraint(equalTo: idEnterTextFieldView.leadingAnchor, constant: 12),
-            idEnterTextField.trailingAnchor.constraint(equalTo: idEnterTextFieldView.trailingAnchor, constant: -12),
-        ])
-    }
-    
-    private func pwEnterTextFieldConstraints() {
-        pwEnterTextField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-        pwEnterTextField.topAnchor.constraint(equalTo: pwEnterTextFieldView.topAnchor, constant: 12),
-        pwEnterTextField.bottomAnchor.constraint(equalTo: pwEnterTextFieldView.bottomAnchor, constant: -12),
-        pwEnterTextField.leadingAnchor.constraint(equalTo: pwEnterTextFieldView.leadingAnchor, constant: 12),
-        pwEnterTextField.trailingAnchor.constraint(equalTo: pwEnterTextFieldView.trailingAnchor, constant: -12),
-        ])
-    }
-    
-    private func lineView1Constraints() {
-        lineView1.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            lineView1.widthAnchor.constraint(equalToConstant: 1),
-            lineView1.heightAnchor.constraint(equalTo: signUpBtn.heightAnchor, multiplier: 0.5)
-        ])
-    }
 
-    private func lineView2Constraints() {
-        lineView2.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
+            lineView1.widthAnchor.constraint(equalToConstant: 1),
+            lineView1.heightAnchor.constraint(equalTo: signUpBtn.heightAnchor, multiplier: 0.5),
+
             lineView2.widthAnchor.constraint(equalToConstant: 1),
             lineView2.heightAnchor.constraint(equalTo: lineView1.heightAnchor)
         ])
