@@ -10,7 +10,6 @@ import UIKit
 class GameClearViewController: UIViewController {
  
     private let clearMissionTableView = UITableView()
-    private var clearMissionTableViewCell = GameMissionTableViewCell()
     
     private var clearMissionDataArray: [String] = []
     private var clearMissionDataManager = GameClearMissionDataManager()
@@ -43,7 +42,12 @@ extension GameClearViewController: UITableViewDataSource {
 extension GameClearViewController {
     private func configureClearMissionTableView() {
         clearMissionTableView.dataSource = self
-        clearMissionTableView.register(GameClearTableViewCell.self, forCellReuseIdentifier: "ClearMissionCell")
+        
+        clearMissionTableView.register(
+            GameClearTableViewCell.self,
+            forCellReuseIdentifier:GameClearTableViewCell.reuseIdentifier
+        )
+        
         clearMissionDataManager.configureMissionData()
         clearMissionDataArray = clearMissionDataManager.fetchGameMissionData()
         

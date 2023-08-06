@@ -9,7 +9,6 @@ import UIKit
 
 class GameMissionViewController: UIViewController {
     private let gameMissionTableView = UITableView()
-    private var gameMissionTableViewCell = GameMissionTableViewCell()
     
     private var missionDataArray: [String] = []
     private var missionDataManager = GameMissionDataManager()
@@ -43,7 +42,12 @@ extension GameMissionViewController: UITableViewDataSource {
 extension GameMissionViewController {
     private func configureGameMissionTableView() {
         gameMissionTableView.dataSource = self
-        gameMissionTableView.register(GameMissionTableViewCell.self, forCellReuseIdentifier: "GameMissionCell")
+        
+        gameMissionTableView.register(
+            GameMissionTableViewCell.self,
+            forCellReuseIdentifier:GameMissionTableViewCell.reuseIdentifier
+        )
+        
         missionDataManager.configureMissionData()
         missionDataArray = missionDataManager.fetchGameMissionData()
         
