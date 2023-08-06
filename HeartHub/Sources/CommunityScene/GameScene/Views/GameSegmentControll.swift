@@ -34,7 +34,6 @@ class GameSegmentControll: UISegmentedControl {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         setupTitleAttributes()
-        configureUnderLineview()
     }
     
     override func layoutSubviews() {
@@ -52,6 +51,8 @@ extension GameSegmentControll {
     private func setupTitleAttributes() {
         setTitleTextAttributes([.foregroundColor: normalColor, .font: font], for: .normal)
         setTitleTextAttributes([.foregroundColor: selectedColor, .font: font], for: .selected)
+        setBackgroundImage(UIImage(named: "GameSementUnSelectedBackground"), for: .normal, barMetrics: .default)
+        setBackgroundImage(UIImage(), for: .selected, barMetrics: .default)
     }
     
     private func setupInitialStatus() {
@@ -70,20 +71,5 @@ extension GameSegmentControll {
             rightSegmentState: .normal,
             barMetrics: .default
         )
-    }
-}
-
-// MARK: Configure UI
-extension GameSegmentControll {
-    private func configureUnderLineview() {
-        let originX: CGFloat = 0
-        let originY: CGFloat = bounds.size.height - 3
-        let width: CGFloat = bounds.size.width / CGFloat(numberOfSegments)
-        let height: CGFloat = 3
-        
-        underLine.frame = CGRect(x: originX, y: originY, width: width, height: height)
-        
-        underLine.backgroundColor = selectedColor
-        addSubview(underLine)
     }
 }

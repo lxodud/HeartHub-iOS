@@ -16,7 +16,7 @@ class GamePageViewController: UIViewController {
     
     private let gameSegmentedControl: GameSegmentControll = {
         let segmentedControl = GameSegmentControll(
-            items: ["미션", "클리어"],
+            items: ["미션", "클리어!"],
             normalColor: UIColor(red: 0.463, green: 0.463, blue: 0.463, alpha: 1),
             selectedColor: UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         )
@@ -197,9 +197,8 @@ extension GamePageViewController {
                 equalTo: safeArea.trailingAnchor
             ),
             gameSegmentedControl.heightAnchor.constraint(
-                equalTo: safeArea.heightAnchor, multiplier: 0.08
+                equalTo: view.heightAnchor, multiplier: 0.1
             )
         ])
     }
 }
-

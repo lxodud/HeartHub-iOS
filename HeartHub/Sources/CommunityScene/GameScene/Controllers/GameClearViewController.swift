@@ -64,11 +64,10 @@ extension GameClearViewController {
         clearMissionTableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            clearMissionTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            clearMissionTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            clearMissionTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 43),
             clearMissionTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            clearMissionTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            clearMissionTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+            clearMissionTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
         ])
     }
 }
-

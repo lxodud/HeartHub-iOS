@@ -18,9 +18,6 @@ class GameMissionViewController: UIViewController {
         super.viewDidLoad()
         configureGameMissionTableView()
         configureGameMissionTableViewLayout()
-
-
-        // Do any additional setup after loading the view.
     }
 
 }
@@ -54,20 +51,18 @@ extension GameMissionViewController {
         gameMissionTableView.contentSize.height = 80
         gameMissionTableView.separatorStyle = .none
     }
-    
-    
-    
+
     private func configureGameMissionTableViewLayout() {
         view.addSubview(gameMissionTableView)
         gameMissionTableView.backgroundColor = .clear
         gameMissionTableView.translatesAutoresizingMaskIntoConstraints = false
         
+        // MARK: gameMissionTableView Constraints
         NSLayoutConstraint.activate([
-            gameMissionTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            gameMissionTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            gameMissionTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 43),
             gameMissionTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            gameMissionTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            gameMissionTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+            gameMissionTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
         ])
     }
 }
-

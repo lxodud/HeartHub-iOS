@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "Rectangle 203GameButtonUnSelectedBackground.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Rectangle 203.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
