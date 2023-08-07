@@ -24,17 +24,17 @@ final class SignUpLoverLinkingViewController: UIViewController {
     }
     
     func addTarget() {
-        signUpLoverLinkingView.rightArrowBtn.addTarget(self, action: #selector(didTapRightArrowBtn), for: .touchUpInside)
-        signUpLoverLinkingView.leftArrowBtn.addTarget(self, action: #selector(didTapLeftArrowBtn), for: .touchUpInside)
+        signUpLoverLinkingView.nextPageButton.addTarget(self, action: #selector(didTapnextPageButton), for: .touchUpInside)
+        signUpLoverLinkingView.previousPageButton.addTarget(self, action: #selector(didTappreviousPageButton), for: .touchUpInside)
         signUpLoverLinkingView.dropDownBtn.addTarget(self, action: #selector(didTapdropDownBtn), for: .touchUpInside)
     }
     
-    @objc func didTapRightArrowBtn() {
+    @objc func didTapnextPageButton() {
         let signUpTermAgreeVC = SignUpTermAgreeViewController()
         navigationController?.pushViewController(signUpTermAgreeVC, animated: true)
     }
     
-    @objc func didTapLeftArrowBtn() {
+    @objc func didTappreviousPageButton() {
         navigationController?.popViewController(animated: true)
     }
     

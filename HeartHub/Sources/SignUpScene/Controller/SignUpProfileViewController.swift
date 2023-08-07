@@ -22,28 +22,23 @@ final class SignUpProfileViewController: UIViewController {
     }
     
     func addTarget() {
-        signUpProfileView.rightArrowBtn.addTarget(self, action: #selector(didTapRightArrowBtn), for: .touchUpInside)
-        signUpProfileView.leftArrowBtn.addTarget(self, action: #selector(didTapLeftArrowBtn), for: .touchUpInside)
-        signUpProfileView.nickNameCheckBtn.addTarget(self, action: #selector(didTapNickNameCheckBtn), for: .touchUpInside)
+        signUpProfileView.nextPageButton.addTarget(self, action: #selector(didTapNextPageButton), for: .touchUpInside)
+        signUpProfileView.previousPageButton.addTarget(self, action: #selector(didTappreviousPageButton), for: .touchUpInside)
         signUpProfileView.idCheckBtn.addTarget(self, action: #selector(didTapIdCheckBtn), for: .touchUpInside)
         signUpProfileView.maleBtn.addTarget(self, action: #selector(didTapMaleBtn), for: .touchUpInside)
         signUpProfileView.femaleBtn.addTarget(self, action: #selector(didTapFemaleBtn), for: .touchUpInside)
     }
     
 
-    @objc func didTapRightArrowBtn() {
+    @objc func didTapNextPageButton() {
         let signUpLoverLinkingVC = SignUpLoverLinkingViewController()
         navigationController?.pushViewController(signUpLoverLinkingVC, animated: true)
     }
     
-    @objc func didTapLeftArrowBtn() {
+    @objc func didTappreviousPageButton() {
         navigationController?.popViewController(animated: true)
     }
 
-    @objc func didTapNickNameCheckBtn() {
-        
-        
-    }
     
     @objc func didTapIdCheckBtn() {
         

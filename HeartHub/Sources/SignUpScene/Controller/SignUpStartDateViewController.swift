@@ -22,13 +22,18 @@ final class SignUpStartDateViewController: UIViewController {
     }
 
     func addTarget() {
-        signUpStartDateView.rightArrowBtn.addTarget(self, action: #selector(didTapRightArrowBtn), for: .touchUpInside)
+        signUpStartDateView.nextPageButton.addTarget(self, action: #selector(didTapNextPageButton), for: .touchUpInside)
+        signUpStartDateView.previousPageButton.addTarget(self, action: #selector(didTapPreviousPageButton), for: .touchUpInside)
     }
     
-    @objc func didTapRightArrowBtn() {
+    @objc func didTapNextPageButton() {
         let signUpProfileVC = SignUpProfileViewController()
-        
         self.navigationController?.pushViewController(signUpProfileVC, animated: true)
+    }
+    
+    @objc func didTapPreviousPageButton() {
+        let LoginVC = LoginViewController()
+        self.navigationController?.pushViewController(LoginVC, animated: true)
     }
    
 }

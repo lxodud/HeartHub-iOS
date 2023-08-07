@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginTextFieldView: UITextField {
+final class LoginTextFieldView: UITextField {
 
         private let loginTextField: UITextField = {
             var tf = UITextField()
@@ -22,7 +22,6 @@ class LoginTextFieldView: UITextField {
             return tf
         }()
         
-        // 아이디 입력 텍스트필드 뷰
         private lazy var loginTextFieldView: UIView = {
             let view = UIView()
             view.backgroundColor = .clear
