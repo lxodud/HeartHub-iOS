@@ -24,13 +24,16 @@ final class CoupleSpaceAlbumCell: UICollectionViewCell {
     
     private let albumImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "TestImage")
+        imageView.backgroundColor = .black
         return imageView
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Pretendard-SemiBold", size: 20)
+        label.text = "안녕 히히"
         return label
     }()
     
@@ -77,8 +80,8 @@ final class CoupleSpaceAlbumCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        configureSubview()
         configureDecorateView()
+        configureSubview()
         configureLayout()
     }
     
@@ -104,7 +107,8 @@ extension CoupleSpaceAlbumCell {
         }
         
         clipsToBounds = false
-        layer.cornerRadius = 20
+        contentView.layer.cornerRadius = 20
+        contentView.clipsToBounds = true
     }
     
     private func configureLayout() {
@@ -113,7 +117,7 @@ extension CoupleSpaceAlbumCell {
         NSLayoutConstraint.activate([
             // MARK: albumImageView Constraints
             albumImageView.topAnchor.constraint(
-                equalTo: safeArea.topAnchor
+                equalTo: contentView.topAnchor
             ),
             albumImageView.leadingAnchor.constraint(
                 equalTo: safeArea.leadingAnchor
@@ -169,7 +173,7 @@ extension CoupleSpaceAlbumCell {
     
     private func configureDecorateView() {
         [firstDecorationView, secondDecorationView].forEach {
-            contentView.addSubview($0)
+            addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
