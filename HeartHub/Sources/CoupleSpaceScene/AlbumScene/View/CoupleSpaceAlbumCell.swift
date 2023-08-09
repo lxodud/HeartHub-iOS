@@ -11,12 +11,14 @@ final class CoupleSpaceAlbumCell: UICollectionViewCell {
     private let firstDecorationView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 0.951, green: 0.77, blue: 0.896, alpha: 0.2)
+        view.layer.cornerRadius = 20
         return view
     }()
     
     private let secondDecorationView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(red: 0.98, green: 0.184, blue: 0.741, alpha: 0.2)
+        view.layer.cornerRadius = 20
         return view
     }()
     
@@ -102,6 +104,7 @@ extension CoupleSpaceAlbumCell {
         }
         
         clipsToBounds = false
+        layer.cornerRadius = 20
     }
     
     private func configureLayout() {
@@ -132,7 +135,7 @@ extension CoupleSpaceAlbumCell {
                 constant: 15
             ),
             titleOptionStackView.trailingAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.leadingAnchor,
+                equalTo: safeAreaLayoutGuide.trailingAnchor,
                 constant: -15
             ),
             
@@ -172,25 +175,33 @@ extension CoupleSpaceAlbumCell {
         
         NSLayoutConstraint.activate([
             firstDecorationView.bottomAnchor.constraint(
-                equalTo: secondDecorationView.topAnchor
+                equalTo: secondDecorationView.topAnchor,
+                constant: 40
             ),
             firstDecorationView.widthAnchor.constraint(
                 equalTo: contentView.widthAnchor,
-                multiplier: 0.8
+                multiplier: 0.9
             ),
             firstDecorationView.heightAnchor.constraint(
-                equalToConstant: 8
+                equalToConstant: 50
+            ),
+            firstDecorationView.centerXAnchor.constraint(
+                equalTo: contentView.centerXAnchor
             ),
             
             secondDecorationView.bottomAnchor.constraint(
-                equalTo: contentView.topAnchor
+                equalTo: contentView.topAnchor,
+                constant: 20
             ),
             secondDecorationView.widthAnchor.constraint(
                 equalTo: contentView.widthAnchor,
-                multiplier: 0.8
+                multiplier: 0.95
             ),
             secondDecorationView.heightAnchor.constraint(
-                equalToConstant: 8
+                equalToConstant: 30
+            ),
+            secondDecorationView.centerXAnchor.constraint(
+                equalTo: contentView.centerXAnchor
             ),
         ])
     }
