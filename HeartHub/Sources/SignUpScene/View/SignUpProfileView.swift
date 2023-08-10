@@ -193,9 +193,10 @@ final class SignUpProfileView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        configureInitialSetting()
         configureSubViews()
         configureLayout()
-        setup()
+        configureAddTarget()
     }
     
     required init?(coder: NSCoder) {
@@ -203,17 +204,29 @@ final class SignUpProfileView: UIView {
     }
 }
 
-// MARK: Configure Layout
+// MARK: Configure InitialSetting
 extension SignUpProfileView {
-    private func setup() {
+    private func configureInitialSetting() {
         backgroundColor = .white
         idTextField.delegate = self
         pwTextField.delegate = self
         birthdayYearTextField.delegate = self
         birthdayMonthTextField.delegate = self
         birthdayDayTextField.delegate = self
+        
+        signUpProfileNextPageButton.isEnabled = false
     }
     
+    private func configureAddTarget() {
+        [idTextField, pwTextField, birthdayYearTextField, birthdayMonthTextField, birthdayDayTextField].forEach {
+            $0.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        }
+        
+    }
+}
+
+// MARK: Configure Layout
+extension SignUpProfileView {
      private func configureSubViews() {
          idTextField.addSubview(idCheckBtn)
          pwTextField.addSubview(pwCheckBtn)
@@ -318,6 +331,27 @@ extension SignUpProfileView {
 
 // MARK: 텍스트필드 델리게이트
 extension SignUpProfileView: UITextFieldDelegate {
+    
+    @objc private func textFieldEditingChanged(_ textField: UITextField) {
+        if textField.text?.count == 1 {
+            if textField.text?.first == " " {
+                textField.text = ""
+                return
+            }
+        }
+        guard
+            let id = idTextField.text, !id.isEmpty,
+            let pw = pwTextField.text, !pw.isEmpty,
+            let year = birthdayYearTextField.text, !year.isEmpty,
+            let month = birthdayMonthTextField.text, !month.isEmpty,
+            let day = birthdayDayTextField.text, !day.isEmpty,
+            (maleBtn.isSelected || femaleBtn.isSelected)
+        else {
+            signUpProfileNextPageButton.isEnabled = false
+            return
+        }
+        signUpProfileNextPageButton.isEnabled = true
+    }
     
     // 키보드 엔터키가 눌렸을때 (다음 동작을 허락할 것인지)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

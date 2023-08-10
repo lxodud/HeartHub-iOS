@@ -43,9 +43,10 @@ final class SignUpStartDateView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setup()
+        cofigureInitialSetting()
         configureSubviews()
         configureLayout()
+        configureAddTarget()
     }
     
     required init?(coder: NSCoder) {
@@ -54,16 +55,26 @@ final class SignUpStartDateView: UIView {
     
 }
 
-// MARK: Configure Layout
+// MARK: Configure InitialSetting
 extension SignUpStartDateView {
     
-    private func setup() {
+    private func cofigureInitialSetting() {
         backgroundColor = .white
         startYearTextField.delegate = self
         startMonthTextField.delegate = self
         startDayTextField.delegate = self
+        signUpStartDateNextPageButton.isEnabled = false
     }
     
+    private func configureAddTarget() {
+        [startYearTextField, startMonthTextField, startDayTextField].forEach {
+            $0.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        }
+    }
+}
+
+// MARK: Configure Layout
+extension SignUpStartDateView {
     private func configureSubviews() {
         [signUpBackgroundView,
          changePageButtonStackView,
@@ -115,6 +126,24 @@ extension SignUpStartDateView {
 
 // MARK: 텍스트필드 델리게이트
 extension SignUpStartDateView: UITextFieldDelegate {
+    
+    @objc private func textFieldEditingChanged(_ textField: UITextField) {
+        if textField.text?.count == 1 {
+            if textField.text?.first == " " {
+                textField.text = ""
+                return
+            }
+        }
+        guard
+            let year = startYearTextField.text, !year.isEmpty,
+            let month = startMonthTextField.text, !month.isEmpty,
+            let day = startDayTextField.text, !day.isEmpty
+        else {
+            signUpStartDateNextPageButton.isEnabled = false
+            return
+        }
+        signUpStartDateNextPageButton.isEnabled = true
+    }
     
     // 엔터누르면 다음 텍스트필드로 이동
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -137,11 +137,32 @@ final class SignUpLoverLinkingView: UIView {
         
         configureSubViews()
         configureLayout()
-        setup()
+        configureInitialSetting()
+        configureAddTarget()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: Configure InitialSetting
+extension SignUpLoverLinkingView {
+    
+    private func configureInitialSetting() {
+        backgroundColor = .white
+        
+        emailTextField.delegate = self
+        nickNameTextField.delegate = self
+        nickNameTextField.delegate = self
+        
+        signUpLoverNextPageButton.isEnabled = false
+    }
+    
+    private func configureAddTarget() {
+        [nickNameTextField, emailTextField].forEach {
+            $0.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        }
     }
 }
 
@@ -169,16 +190,6 @@ extension SignUpLoverLinkingView {
         ].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
     }
     
-    func setup() {
-        backgroundColor = .white
-
-        emailTextField.delegate = self
-        nickNameTextField.delegate = self
-        nickNameTextField.delegate = self
-    }
-    
-    // MARK: 제약
-
     private func configureLayout() {
         let safeArea = safeAreaLayoutGuide
         NSLayoutConstraint.activate([
@@ -204,10 +215,12 @@ extension SignUpLoverLinkingView {
             nickNameCheckButton.trailingAnchor.constraint(equalTo: nickNameTextField.trailingAnchor),
 
             // MARK: nickNameDescriptionLabel Constraints
+            nickNameDescriptionLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.02),
             nickNameDescriptionLabel.topAnchor.constraint(equalTo: nickNameTextField.bottomAnchor, constant: 3),
             nickNameDescriptionLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 42),
             
             // MARK: emailFormatDescriptionLabel Constraints
+            emailFormatDescriptionLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.02),
             emailFormatDescriptionLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor),
             emailFormatDescriptionLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 46),
 
@@ -220,7 +233,6 @@ extension SignUpLoverLinkingView {
             // MARK: changePageButton Constraints
             signUpLoverPreviousPageButton.heightAnchor.constraint(equalTo: signUpLoverPreviousPageButton.widthAnchor),
             signUpLoverNextPageButton.heightAnchor.constraint(equalTo: signUpLoverNextPageButton.widthAnchor),
-            changePageButtonStackView.topAnchor.constraint(equalTo: emailFormatDescriptionLabel.bottomAnchor, constant: 219),
             changePageButtonStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -33),
             changePageButtonStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 40),
             changePageButtonStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -40)
@@ -230,6 +242,24 @@ extension SignUpLoverLinkingView {
 
 // MARK: 텍스트필드 델리게이트
 extension SignUpLoverLinkingView: UITextFieldDelegate {
+    
+    @objc private func textFieldEditingChanged(_ textField: UITextField) {
+        if textField.text?.count == 1 {
+            if textField.text?.first == " " {
+                textField.text = ""
+                return
+            }
+        }
+        guard
+            let nickName = nickNameTextField.text, !nickName.isEmpty,
+            let email = emailTextField.text, !email.isEmpty
+        else {
+            signUpLoverNextPageButton.isEnabled = false
+            return
+        }
+        signUpLoverNextPageButton.isEnabled = true
+    }
+    
     // 키보드 엔터키가 눌렸을때 (다음 동작을 허락할 것인지)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // 두개의 텍스트필드를 모두 종료 (키보드 내려가기)
