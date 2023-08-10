@@ -16,10 +16,9 @@ final class SignUpProfileView: UIView {
     
     // MARK: 아이디, 비밀번호 입력란
     // 아이디 입력 텍스트필드
-    private lazy var idTextField = userInfoTextFieldView(
+    private lazy var idTextField = SignUpUserInfoTextField(
         placeholder: "아이디를 입력하세요",
         keyboardType: .default, isSecureTextEntry: false)
-    
     
     // 아이디 중복확인 버튼
     lazy var idCheckBtn: UIButton = {
@@ -47,7 +46,7 @@ final class SignUpProfileView: UIView {
     }()
     
     // 비밀번호 입력 텍스트필드
-    private var pwTextField = userInfoTextFieldView(
+    private var pwTextField = SignUpUserInfoTextField(
         placeholder: "비밀번호를 입력하세요",
         keyboardType: .default,
         isSecureTextEntry: true)
@@ -99,8 +98,8 @@ final class SignUpProfileView: UIView {
         btn.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
         
         // 라디오버튼 구현
-        let unCheckedImg = UIImage(named: "AgreeRadioBtnUnChecked")
-        btn.setImage(unCheckedImg, for: .normal)
+        btn.setImage(UIImage(named:"AgreeRadioBtnUnChecked"), for: .normal)
+        btn.setImage(UIImage(named: "AgreeRadioBtnChecked"), for: .selected)
         btn.imageView?.contentMode = .scaleAspectFit
         btn.contentHorizontalAlignment = .leading
         btn.addSubview(maleLabel)
@@ -117,17 +116,16 @@ final class SignUpProfileView: UIView {
         return label
     }()
     
-    // 여자 버튼
     lazy var femaleBtn: UIButton = {
         var btn = UIButton(type: .custom)
         btn.backgroundColor = .clear
         btn.layer.cornerRadius = 18
         btn.layer.borderWidth = 1
         btn.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
-        
+
         // 라디오버튼 구현
-        let unCheckedImg = UIImage(named: "AgreeRadioBtnUnChecked")
-        btn.setImage(unCheckedImg, for: .normal)
+        btn.setImage(UIImage(named:"AgreeRadioBtnUnChecked"), for: .normal)
+        btn.setImage(UIImage(named: "AgreeRadioBtnChecked"), for: .selected)
         btn.imageView?.contentMode = .scaleAspectFit
         btn.contentHorizontalAlignment = .leading
         btn.addSubview(femaleLabel)
@@ -155,9 +153,9 @@ final class SignUpProfileView: UIView {
     }()
     
     // MARK: 생년월일 텍스트필드
-    private let birthdayYearTextField = SignUpDateTextFieldView(placeholder: "YYYY")
-    private let birthdayMonthTextField = SignUpDateTextFieldView(placeholder: "MM")
-    private let birthdayDayTextField = SignUpDateTextFieldView(placeholder: "DD")
+    private let birthdayYearTextField = SignUpDateTextField(placeholder: "YYYY")
+    private let birthdayMonthTextField = SignUpDateTextField(placeholder: "MM")
+    private let birthdayDayTextField = SignUpDateTextField(placeholder: "DD")
     
     private lazy var birthdayStackView: UIStackView = {
         let stView = UIStackView(arrangedSubviews: [birthdayYearTextField, birthdayMonthTextField, birthdayDayTextField])
@@ -179,11 +177,11 @@ final class SignUpProfileView: UIView {
         return label
     }()
     
-    let previousPageButton = SignUpChangePageButtonView(buttonImage: "LeftArrow")
-    let nextPageButton = SignUpChangePageButtonView(buttonImage: "RightArrow")
+    let signUpProfilePreviousPageButton = SignUpChangePageButton(buttonImage: "LeftArrow")
+    let signUpProfileNextPageButton = SignUpChangePageButton(buttonImage: "RightArrow")
     
     private lazy var changePageButtonStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [previousPageButton, nextPageButton])
+        let stView = UIStackView(arrangedSubviews: [signUpProfilePreviousPageButton, signUpProfileNextPageButton])
         stView.axis = .horizontal
         stView.spacing = 198
         stView.distribution = .fillEqually
@@ -239,8 +237,8 @@ extension SignUpProfileView {
          femaleLabel,
          birthdayMonthTextField,
          birthdayDayTextField,
-         previousPageButton,
-         nextPageButton].forEach {
+         signUpProfilePreviousPageButton,
+         signUpProfileNextPageButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
          }
     }
@@ -258,7 +256,7 @@ extension SignUpProfileView {
             
             // MARK: enterStackView Constraints
             enterStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            enterStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 285),
+            enterStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 170),
             enterStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 30),
             
             idTextField.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.04),
@@ -308,8 +306,8 @@ extension SignUpProfileView {
             birthdayDescriptionLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -236),
             
             // MARK: changePageButton Constraints
-            previousPageButton.heightAnchor.constraint(equalTo: previousPageButton.widthAnchor),
-            nextPageButton.heightAnchor.constraint(equalTo: nextPageButton.widthAnchor),
+            signUpProfilePreviousPageButton.heightAnchor.constraint(equalTo: signUpProfilePreviousPageButton.widthAnchor),
+            signUpProfileNextPageButton.heightAnchor.constraint(equalTo: signUpProfileNextPageButton.widthAnchor),
 //            changePageButtonStackView.topAnchor.constraint(equalTo: birthdayDescriptionLabel.bottomAnchor, constant: 118),
             changePageButtonStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -33),
             changePageButtonStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40),

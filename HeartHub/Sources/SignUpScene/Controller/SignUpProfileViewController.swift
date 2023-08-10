@@ -22,8 +22,8 @@ final class SignUpProfileViewController: UIViewController {
     }
     
     func addTarget() {
-        signUpProfileView.nextPageButton.addTarget(self, action: #selector(didTapNextPageButton), for: .touchUpInside)
-        signUpProfileView.previousPageButton.addTarget(self, action: #selector(didTappreviousPageButton), for: .touchUpInside)
+        signUpProfileView.signUpProfileNextPageButton.addTarget(self, action: #selector(didTapNextPageButton), for: .touchUpInside)
+        signUpProfileView.signUpProfilePreviousPageButton.addTarget(self, action: #selector(didTappreviousPageButton), for: .touchUpInside)
         signUpProfileView.idCheckBtn.addTarget(self, action: #selector(didTapIdCheckBtn), for: .touchUpInside)
         signUpProfileView.maleBtn.addTarget(self, action: #selector(didTapMaleBtn), for: .touchUpInside)
         signUpProfileView.femaleBtn.addTarget(self, action: #selector(didTapFemaleBtn), for: .touchUpInside)
@@ -47,29 +47,18 @@ final class SignUpProfileViewController: UIViewController {
     
     @objc func didTapMaleBtn() {
         print("남 선택")
-        
-        //버튼의 이미지가 "RadioBtnChecked" ->  "RadioBtnUnchecked"로 바꾸고 else "RadioBtnUnchecked" -> "RadioBtnChecked" 로 바꿈
-        signUpProfileView.femaleBtn.setImage(UIImage(named: "AgreeRadioBtnUnChecked"), for: .normal)
-        if signUpProfileView.maleBtn.currentImage == UIImage(named: "AgreeRadioBtnChecked") {
-           let unChekedimage = UIImage(named: "AgreeRadioBtnUnChecked")
-            signUpProfileView.maleBtn.setImage(unChekedimage, for: .normal)
-        } else {
-            let Chekedimage = UIImage(named: "AgreeRadioBtnChecked")
-            signUpProfileView.maleBtn.setImage(Chekedimage, for: .normal)
-        }
+        if signUpProfileView.maleBtn.isSelected == true {
+            signUpProfileView.maleBtn.isSelected = false
+         } else {
+             signUpProfileView.maleBtn.isSelected = true
+         }
     }
     
     @objc func didTapFemaleBtn() {
-        print("남 선택")
-        
-        //버튼의 이미지가 "RadioBtnChecked" ->  "RadioBtnUnchecked"로 바꾸고 else "RadioBtnUnchecked" -> "RadioBtnChecked" 로 바꿈
-        signUpProfileView.maleBtn.setImage(UIImage(named: "AgreeRadioBtnUnChecked"), for: .normal)
-        if signUpProfileView.femaleBtn.currentImage == UIImage(named: "AgreeRadioBtnChecked") {
-           let unChekedimage = UIImage(named: "AgreeRadioBtnUnChecked")
-            signUpProfileView.femaleBtn.setImage(unChekedimage, for: .normal)
-        } else {
-            let Chekedimage = UIImage(named: "AgreeRadioBtnChecked")
-            signUpProfileView.femaleBtn.setImage(Chekedimage, for: .normal)
-        }
+        if signUpProfileView.femaleBtn.isSelected == true {
+            signUpProfileView.femaleBtn.isSelected = false
+         } else {
+             signUpProfileView.femaleBtn.isSelected = true
+         }
     }
 }

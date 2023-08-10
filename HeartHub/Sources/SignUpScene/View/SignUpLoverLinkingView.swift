@@ -15,14 +15,14 @@ final class SignUpLoverLinkingView: UIView {
         ourStartLabelText: "사랑을 시작해볼까요?",
         descriptionLabelText: "계정을 생성하여 HeartHuB를 즐겨보아요.")
     
-    private lazy var nickNameTextField = userInfoTextFieldView(
+    private lazy var nickNameTextField = SignUpUserInfoTextField(
         placeholder: "닉네임을 입력해주세요.",
         keyboardType: .default,
         isSecureTextEntry: false)
     
     private var nickNameDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = "한글/영문/숫자/특수문자 구성"
         label.font = UIFont(name: "Pretendard-Regular", size: 14)
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
@@ -46,7 +46,7 @@ final class SignUpLoverLinkingView: UIView {
     
     // MARK: 이메일 입력 + dropDown 버튼
     // 이메일 입력 텍스트 필드
-    private var emailTextField = userInfoTextFieldView(
+    private var emailTextField = SignUpUserInfoTextField(
         placeholder: "이메일을 입력해주세요",
         keyboardType: .emailAddress,
         isSecureTextEntry: false)
@@ -119,11 +119,11 @@ final class SignUpLoverLinkingView: UIView {
         return stView
     }()
     
-    let previousPageButton = SignUpChangePageButtonView(buttonImage: "LeftArrow")
-    let nextPageButton = SignUpChangePageButtonView(buttonImage: "RightArrow")
+    let signUpLoverPreviousPageButton = SignUpChangePageButton(buttonImage: "LeftArrow")
+    let signUpLoverNextPageButton = SignUpChangePageButton(buttonImage: "RightArrow")
     
     private lazy var changePageButtonStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [previousPageButton, nextPageButton])
+        let stView = UIStackView(arrangedSubviews: [signUpLoverPreviousPageButton, signUpLoverNextPageButton])
         stView.axis = .horizontal
         stView.spacing = 198
         stView.distribution = .fillEqually
@@ -164,8 +164,8 @@ extension SignUpLoverLinkingView {
          emailTextField,
          nickNameCheckButton,
          dropDownBtn,
-         previousPageButton,
-         nextPageButton
+         signUpLoverPreviousPageButton,
+         signUpLoverNextPageButton
         ].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
     }
     
@@ -191,7 +191,7 @@ extension SignUpLoverLinkingView {
             
             // MARK: enterStackView Constraints
             enterStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            enterStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 313),
+            enterStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 170),
             enterStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 30),
             
             nickNameTextField.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.04),
@@ -218,8 +218,8 @@ extension SignUpLoverLinkingView {
             dropDownBtn.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor, constant: -12),
             
             // MARK: changePageButton Constraints
-            previousPageButton.heightAnchor.constraint(equalTo: previousPageButton.widthAnchor),
-            nextPageButton.heightAnchor.constraint(equalTo: nextPageButton.widthAnchor),
+            signUpLoverPreviousPageButton.heightAnchor.constraint(equalTo: signUpLoverPreviousPageButton.widthAnchor),
+            signUpLoverNextPageButton.heightAnchor.constraint(equalTo: signUpLoverNextPageButton.widthAnchor),
             changePageButtonStackView.topAnchor.constraint(equalTo: emailFormatDescriptionLabel.bottomAnchor, constant: 219),
             changePageButtonStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -33),
             changePageButtonStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 40),
@@ -305,21 +305,5 @@ extension SignUpLoverLinkingView: UITextFieldDelegate {
             return false
         }
 
-    }
-}
-
-// MARK: 프리뷰
-import SwiftUI
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Container().edgesIgnoringSafeArea(.all)
-    }
-    struct Container: UIViewControllerRepresentable {
-        func makeUIViewController(context: Context) -> UIViewController {
-            return     UINavigationController(rootViewController: SignUpLoverLinkingViewController())
-        }
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
-        typealias  UIViewControllerType = UIViewController
     }
 }

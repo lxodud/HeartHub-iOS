@@ -14,11 +14,11 @@ final class SignUpStartDateView: UIView {
         ourStartLabelText: "우리의 시작",
         descriptionLabelText: "당신이 애인과 처음 사귀기 시작한 날은 언제인가요?")
     
-    let previousPageButton = SignUpChangePageButtonView(buttonImage: "LeftArrow")
-    let nextPageButton = SignUpChangePageButtonView(buttonImage: "RightArrow")
+    let signUpStartDatePreviousPageButton: UIButton = SignUpChangePageButton(buttonImage: "LeftArrow")
+    let signUpStartDateNextPageButton: UIButton = SignUpChangePageButton(buttonImage: "RightArrow")
     
     private lazy var changePageButtonStackView: UIStackView = {
-       let stView = UIStackView(arrangedSubviews: [previousPageButton, nextPageButton])
+       let stView = UIStackView(arrangedSubviews: [signUpStartDatePreviousPageButton, signUpStartDateNextPageButton])
         stView.axis = .horizontal
         stView.spacing = 198
         stView.distribution = .fillEqually
@@ -26,9 +26,9 @@ final class SignUpStartDateView: UIView {
         return stView
     }()
     
-    private let startYearTextField = SignUpDateTextFieldView(placeholder: "YYYY")
-    private let startMonthTextField = SignUpDateTextFieldView(placeholder: "MM")
-    private let startDayTextField = SignUpDateTextFieldView(placeholder: "DD")
+    private let startYearTextField: UITextField = SignUpDateTextField(placeholder: "YYYY")
+    private let startMonthTextField: UITextField = SignUpDateTextField(placeholder: "MM")
+    private let startDayTextField: UITextField = SignUpDateTextField(placeholder: "DD")
     
     private lazy var startDateStackView: UIStackView = {
         let stView = UIStackView(arrangedSubviews: [startYearTextField, startMonthTextField, startDayTextField])
@@ -72,7 +72,7 @@ extension SignUpStartDateView {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
-        [previousPageButton, nextPageButton].forEach {
+        [signUpStartDatePreviousPageButton, signUpStartDateNextPageButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
 
@@ -92,7 +92,7 @@ extension SignUpStartDateView {
             // MARK: startDateStackView Constraints
             startDateStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.04),
             startDateStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            startDateStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 345),
+            startDateStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 170),
             startDateStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 50),
             
             // MARK: startMonthTextFieldView Constraints
@@ -102,10 +102,10 @@ extension SignUpStartDateView {
             startDayTextField.widthAnchor.constraint(equalTo: startMonthTextField.widthAnchor),
 
             // MARK: changePageButton Constraints
-            previousPageButton.heightAnchor.constraint(equalTo: previousPageButton.widthAnchor),
-            nextPageButton.heightAnchor.constraint(equalTo: nextPageButton.widthAnchor),
+            signUpStartDatePreviousPageButton.heightAnchor.constraint(equalTo: signUpStartDatePreviousPageButton.widthAnchor),
+            signUpStartDateNextPageButton.heightAnchor.constraint(equalTo: signUpStartDateNextPageButton.widthAnchor),
             
-            changePageButtonStackView.topAnchor.constraint(equalTo: startDateStackView.bottomAnchor, constant: 225),
+//            changePageButtonStackView.topAnchor.constraint(equalTo: startDateStackView.bottomAnchor, constant: 225),
             changePageButtonStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -33),
             changePageButtonStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40),
             changePageButtonStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40)

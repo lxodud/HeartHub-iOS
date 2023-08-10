@@ -11,7 +11,7 @@ import UIKit
 final class SignUpStartDateViewController: UIViewController {
     
     private let signUpStartDateView = SignUpStartDateView()
-    
+        
     override func loadView() {
         view = signUpStartDateView
     }
@@ -22,18 +22,17 @@ final class SignUpStartDateViewController: UIViewController {
     }
 
     func addTarget() {
-        signUpStartDateView.nextPageButton.addTarget(self, action: #selector(didTapNextPageButton), for: .touchUpInside)
-        signUpStartDateView.previousPageButton.addTarget(self, action: #selector(didTapPreviousPageButton), for: .touchUpInside)
+        signUpStartDateView.signUpStartDateNextPageButton.addTarget(self, action: #selector(didTapNextPageButton), for: .touchUpInside)
+        signUpStartDateView.signUpStartDatePreviousPageButton.addTarget(self, action: #selector(didTapPreviousPageButton), for: .touchUpInside)
     }
     
     @objc func didTapNextPageButton() {
-        let signUpProfileVC = SignUpProfileViewController()
-        self.navigationController?.pushViewController(signUpProfileVC, animated: true)
+        let signUpProfileViewController = SignUpProfileViewController()
+        self.navigationController?.pushViewController(signUpProfileViewController, animated: true)
     }
     
     @objc func didTapPreviousPageButton() {
-        let LoginVC = LoginViewController()
-        self.navigationController?.pushViewController(LoginVC, animated: true)
+        navigationController?.popViewController(animated: true)
     }
    
 }

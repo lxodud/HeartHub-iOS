@@ -109,8 +109,6 @@ final class FindIdPopUpView: UIView {
     }
     
     private func constraints() {
-        
-        let safeArea = safeAreaLayoutGuide
 
         NSLayoutConstraint.activate([
             containerView.centerXAnchor.constraint(equalTo: centerXAnchor),

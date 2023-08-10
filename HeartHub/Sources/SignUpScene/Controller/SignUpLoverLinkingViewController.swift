@@ -24,8 +24,8 @@ final class SignUpLoverLinkingViewController: UIViewController {
     }
     
     func addTarget() {
-        signUpLoverLinkingView.nextPageButton.addTarget(self, action: #selector(didTapnextPageButton), for: .touchUpInside)
-        signUpLoverLinkingView.previousPageButton.addTarget(self, action: #selector(didTappreviousPageButton), for: .touchUpInside)
+        signUpLoverLinkingView.signUpLoverNextPageButton.addTarget(self, action: #selector(didTapnextPageButton), for: .touchUpInside)
+        signUpLoverLinkingView.signUpLoverPreviousPageButton.addTarget(self, action: #selector(didTappreviousPageButton), for: .touchUpInside)
         signUpLoverLinkingView.dropDownBtn.addTarget(self, action: #selector(didTapdropDownBtn), for: .touchUpInside)
     }
     
