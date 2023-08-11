@@ -8,8 +8,15 @@
 import UIKit
 
 final class FindPwView: UIView {
-
+    
     private let loginBackGroundView = LoginBackGroundView()
+    
+    private let keyboardBackgroundView: UIImageView = {
+        var imgView = UIImageView()
+        imgView.contentMode = .scaleAspectFit
+        imgView.image = UIImage(named: "KeyboardBackground")
+        return imgView
+    }()
     
     private let findPwIdTextField = LoginTextFieldView(
         placeholder: "아이디를 입력하세요",
@@ -48,7 +55,7 @@ final class FindPwView: UIView {
         return stview
     }()
     
-// MARK: 아이디 찾기 + 회원가입 + 비밀번호찾기 버튼
+    // MARK: 아이디 찾기 + 회원가입 + 비밀번호찾기 버튼
     // 아이디 찾기 버튼
     lazy var findIdBtn: UIButton = {
         let button = UIButton(type: .custom)
@@ -105,7 +112,7 @@ final class FindPwView: UIView {
     }()
     
     // 아이디찾기 + 선 + 회원가입 + 선 + 비밀번호 찾기 버튼 스택뷰
-    lazy var findIdSignUpLoginBtnStackView: UIStackView = {
+    private lazy var selectPageButtonStackView: UIStackView = {
         let stView = UIStackView(arrangedSubviews: [findIdBtn, lineView1, signUpBtn, lineView2, loginBtn])
         stView.spacing = 10
         stView.axis = .horizontal
@@ -114,36 +121,60 @@ final class FindPwView: UIView {
         return stView
     }()
     
+    private var idEmailFindPwBtnStackViewTopConstraint: NSLayoutConstraint!
+    
+    private var keyboardBackgroundViewTopConstraint: NSLayoutConstraint!
+    
     // MARK: 뷰 초기화
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addViews()
-        constraints()
-        setup()
+        configureInitialSetting()
+        configureNotification()
+        configureSubviews()
     }
-        
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func addViews() {
+    override func updateConstraints() {
+        configureLayout()
+        super.updateConstraints()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+}
+
+// MARK: Configure Layout
+extension FindPwView {
+    
+    private func configureInitialSetting() {
+        findPwIdTextField.delegate = self
+        findPwEmailTextField.delegate = self
+    }
+    
+    private func configureSubviews() {
         [loginBackGroundView,
-         idEmailFindPwBtnStackView,
-         findIdSignUpLoginBtnStackView].forEach {
+         selectPageButtonStackView,
+         keyboardBackgroundView,
+         idEmailFindPwBtnStackView].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
     }
     
-    private func setup() {
-        findPwIdTextField.delegate = self
-        findPwEmailTextField.delegate = self
-    }
-    
-    private func constraints() {
+    private func configureLayout() {
         
         let safeArea = safeAreaLayoutGuide
+        
+        idEmailFindPwBtnStackViewTopConstraint =
+        idEmailFindPwBtnStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 527)
+        
+        keyboardBackgroundViewTopConstraint = keyboardBackgroundView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height)
 
         NSLayoutConstraint.activate([
             // MARK: loginBackGrondView Constraints
@@ -152,17 +183,23 @@ final class FindPwView: UIView {
             loginBackGroundView.topAnchor.constraint(equalTo: topAnchor),
             loginBackGroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
             
+            // MARK: keyboardBackgroundView Constraints
+            keyboardBackgroundView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            keyboardBackgroundView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            keyboardBackgroundViewTopConstraint,
+            keyboardBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            
             // MARK: ID, Email TextField, FindPw StackView Constraints
             idEmailFindPwBtnStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
             idEmailFindPwBtnStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            idEmailFindPwBtnStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 527),
+            idEmailFindPwBtnStackViewTopConstraint,
             idEmailFindPwBtnStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 59),
 
             // MARK: findIdSignUpLoginBtnStackView Constraints
-            findIdSignUpLoginBtnStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            findIdSignUpLoginBtnStackView.topAnchor.constraint(equalTo: idEmailFindPwBtnStackView.bottomAnchor, constant: 28),
-            findIdSignUpLoginBtnStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 12),
-            findIdSignUpLoginBtnStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 69),
+            selectPageButtonStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            selectPageButtonStackView.topAnchor.constraint(equalTo: idEmailFindPwBtnStackView.bottomAnchor, constant: 28),
+            selectPageButtonStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 12),
+            selectPageButtonStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 69),
 
             // MARK: lineView1 Constraints
             lineView1.widthAnchor.constraint(equalToConstant: 1),
@@ -175,12 +212,41 @@ final class FindPwView: UIView {
     }
 }
 
+// MARK: 키보드 올라오고 내려갈 때 레이아웃 변경
+extension FindPwView {
+    private func configureNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(moveUpAction), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveDownAction), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
+    @objc private func moveUpAction() {
+        idEmailFindPwBtnStackViewTopConstraint.constant = 289
+        keyboardBackgroundViewTopConstraint.constant = 0
+        UIView.animate(withDuration: 0.2) {
+            self.layoutIfNeeded()
+        }
+    }
+    
+    @objc private func moveDownAction() {
+        guard let idEmailFindPwBtnStackViewTopConstraint = idEmailFindPwBtnStackViewTopConstraint else {
+            return
+        }
+        idEmailFindPwBtnStackViewTopConstraint.constant = 527
+        
+        keyboardBackgroundViewTopConstraint.constant = frame.height
+        UIView.animate(withDuration: 0.2) {
+            self.layoutIfNeeded()
+        }
+    }
+}
+
 extension FindPwView: UITextFieldDelegate {
     
     // 키보드 엔터키가 눌렸을때 (다음 동작을 허락할 것인지)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // 두개의 텍스트필드를 모두 종료 (키보드 내려가기)
-        if findPwIdTextField.text != "", findPwEmailTextField.text != "", findPwEmailTextField.text != "" {
+        if findPwIdTextField.text != "", findPwEmailTextField.text != "" {
             findPwEmailTextField.resignFirstResponder()
             return true
         } else if findPwIdTextField.text != "" {

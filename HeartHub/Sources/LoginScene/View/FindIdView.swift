@@ -10,14 +10,20 @@ import UIKit
 final class FindIdView: UIView {
     
     private let loginBackGroundView = LoginBackGroundView()
-
+    
+    private let keyboardBackgroundView: UIImageView = {
+        var imgView = UIImageView()
+        imgView.contentMode = .scaleAspectFit
+        imgView.image = UIImage(named: "KeyboardBackground")
+        return imgView
+    }()
+    
     let findIdEmailTextField = LoginTextFieldView(
         placeholder: "이메일을 입력하세요",
         keyboardType: .emailAddress,
         isSecureTextEntry: false
     )
-
-    // 아이디 찾기 버튼
+    
     lazy var findIdBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .white
@@ -50,7 +56,7 @@ final class FindIdView: UIView {
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Pretendard-Regular", size: 16)
-       // button.sizeToFit()
+        // button.sizeToFit()
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.numberOfLines = 1
         return button
@@ -64,7 +70,7 @@ final class FindIdView: UIView {
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Pretendard-Regular", size: 16)
-       // button.sizeToFit()
+        // button.sizeToFit()
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.numberOfLines = 1
         return button
@@ -78,7 +84,7 @@ final class FindIdView: UIView {
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Pretendard-Regular", size: 16)
-       // button.sizeToFit()
+        // button.sizeToFit()
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.numberOfLines = 1
         return button
@@ -98,7 +104,7 @@ final class FindIdView: UIView {
     }()
     
     // 아이디찾기 + 선 + 회원가입 + 선 + 비밀번호 찾기 버튼 스택뷰
-    lazy var signUpFindIdPwStackView: UIStackView = {
+    private lazy var selectPageButtonStackView: UIStackView = {
         let stView = UIStackView(arrangedSubviews: [loginBtn, lineView1, signUpBtn, lineView2, findPwBtn])
         stView.spacing = 10
         stView.axis = .horizontal
@@ -107,33 +113,57 @@ final class FindIdView: UIView {
         return stView
     }()
     
+    private var emailTfFindIdBtnStackViewTopConstraint: NSLayoutConstraint!
+    
+    private var keyboardBackgroundViewTopConstraint: NSLayoutConstraint!
+    
     // MARK: 뷰 초기화
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
-        addViews()
-        constraints()
+        configureInitialSetting()
+        configureNotification()
+        configureSubviews()
     }
-        
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setup() {
+    override func updateConstraints() {
+        configureLayout()
+        super.updateConstraints()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+}
+
+// MARK: Configure Layout
+extension FindIdView {
+    
+    private func configureInitialSetting() {
         findIdEmailTextField.delegate = self
     }
     
-    private func addViews() {
+    private func configureSubviews() {
         [loginBackGroundView,
-         emailTfFindIdBtnStackView,
-         signUpFindIdPwStackView].forEach {
+         selectPageButtonStackView,
+         keyboardBackgroundView,
+         emailTfFindIdBtnStackView].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
     }
     
-    private func constraints() {
+    private func configureLayout() {
         let safeArea = safeAreaLayoutGuide
+        
+        emailTfFindIdBtnStackViewTopConstraint =
+        emailTfFindIdBtnStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 546)
+        
+        keyboardBackgroundViewTopConstraint = keyboardBackgroundView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height)
         
         NSLayoutConstraint.activate([
             
@@ -143,17 +173,23 @@ final class FindIdView: UIView {
             loginBackGroundView.topAnchor.constraint(equalTo: topAnchor),
             loginBackGroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
             
+            // MARK: keyboardBackgroundView Constraints
+            keyboardBackgroundView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            keyboardBackgroundView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            keyboardBackgroundViewTopConstraint,
+            keyboardBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            
             // MARK: emailTfFindIdBtnStackView Constraints
             emailTfFindIdBtnStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.17),
             emailTfFindIdBtnStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            emailTfFindIdBtnStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 556),
+            emailTfFindIdBtnStackViewTopConstraint,
             emailTfFindIdBtnStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 59),
        
             // MARK: signUpFindIdPwStackView Constraints
-            signUpFindIdPwStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            signUpFindIdPwStackView.topAnchor.constraint(equalTo: emailTfFindIdBtnStackView.bottomAnchor, constant: 28),
-            signUpFindIdPwStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 12),
-            signUpFindIdPwStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 69),
+            selectPageButtonStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            selectPageButtonStackView.topAnchor.constraint(equalTo: emailTfFindIdBtnStackView.bottomAnchor, constant: 28),
+            selectPageButtonStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 12),
+            selectPageButtonStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 69),
        
             // MARK: lineView1 Constraints
             lineView1.widthAnchor.constraint(equalToConstant: 1),
@@ -166,11 +202,38 @@ final class FindIdView: UIView {
     }
 }
 
+// MARK: 키보드 올라오고 내려갈 때 레이아웃 변경
+extension FindIdView {
+    private func configureNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(moveUpAction), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveDownAction), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func moveUpAction() {
+        emailTfFindIdBtnStackViewTopConstraint.constant = 318
+        keyboardBackgroundViewTopConstraint.constant = 0
+        UIView.animate(withDuration: 0.2) {
+            self.layoutIfNeeded()
+        }
+    }
+    
+    @objc private func moveDownAction() {
+        guard let emailTfFindIdBtnStackViewTopConstraint = emailTfFindIdBtnStackViewTopConstraint else {
+            return
+        }
+        emailTfFindIdBtnStackViewTopConstraint.constant = 546
+        
+        keyboardBackgroundViewTopConstraint.constant = frame.height
+        UIView.animate(withDuration: 0.2) {
+            self.layoutIfNeeded()
+        }
+    }
+}
+
 extension FindIdView: UITextFieldDelegate {
     
     // 키보드 엔터키가 눌렸을때 (다음 동작을 허락할 것인지)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // 두개의 텍스트필드를 모두 종료 (키보드 내려가기)
         if findIdEmailTextField.text != "" {
             findIdEmailTextField.resignFirstResponder()
         }

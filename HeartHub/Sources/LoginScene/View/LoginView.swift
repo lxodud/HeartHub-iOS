@@ -11,6 +11,13 @@ final class LoginView: UIView {
     
     private let loginBackGroundView = LoginBackGroundView()
     
+    private let keyboardBackgroundView: UIImageView = {
+        var imgView = UIImageView()
+        imgView.contentMode = .scaleAspectFit
+        imgView.image = UIImage(named: "KeyboardBackground")
+        return imgView
+    }()
+    
     private let idEnterTextField = LoginTextFieldView(
         placeholder: "아이디를 입력하세요",
         keyboardType: .emailAddress,
@@ -48,7 +55,7 @@ final class LoginView: UIView {
         return stview
     }()
     
-// MARK: 아이디 찾기 + 회원가입 + 비밀번호찾기 버튼
+    // MARK: 아이디 찾기 + 회원가입 + 비밀번호찾기 버튼
     // 아이디 찾기 버튼
     lazy var findIdBtn: UIButton = {
         let button = UIButton(type: .custom)
@@ -105,7 +112,7 @@ final class LoginView: UIView {
     }()
     
     // 아이디찾기 + 선 + 회원가입 + 선 + 비밀번호 찾기 버튼 스택뷰
-    lazy var signUpFindIdPwStackView: UIStackView = {
+    private lazy var selectPageButtonStackView: UIStackView = {
         let stView = UIStackView(arrangedSubviews: [findIdBtn, lineView1, signUpBtn, lineView2, findPwBtn])
         stView.spacing = 10
         stView.axis = .horizontal
@@ -114,54 +121,86 @@ final class LoginView: UIView {
         return stView
     }()
     
+    private var idPwLoginBtnStackViewTopConstraint: NSLayoutConstraint!
+    
+    private var keyboardBackgroundViewTopConstraint: NSLayoutConstraint!
+    
     // MARK: 뷰 초기화
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addViews()
-        constraints()
-        setup()
+        configureInitialSetting()
+        configureNotification()
+        configureSubviews()
     }
-        
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func addViews() {
+    override func updateConstraints() {
+        configureLayout()
+        super.updateConstraints()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+}
+
+// MARK: Configure Layout
+extension LoginView {
+    
+    private func configureInitialSetting() {
+        idEnterTextField.delegate = self
+        pwEnterTextField.delegate = self
+    }
+    
+    private func configureSubviews() {
         [loginBackGroundView,
+         selectPageButtonStackView,
+         keyboardBackgroundView,
          idPwLoginBtnStackView,
-         signUpFindIdPwStackView].forEach {
+        ].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
     }
     
-    private func setup() {
-        idEnterTextField.delegate = self
-        pwEnterTextField.delegate = self
-    }
-    
-    private func constraints() {
+    private func configureLayout() {
         
         let safeArea = safeAreaLayoutGuide
+        
+        idPwLoginBtnStackViewTopConstraint =
+        idPwLoginBtnStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 527)
+        
+        keyboardBackgroundViewTopConstraint = keyboardBackgroundView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height)
 
         NSLayoutConstraint.activate([
+            
             // MARK: loginBackGrondView Constraints
             loginBackGroundView.centerXAnchor.constraint(equalTo: centerXAnchor),
             loginBackGroundView.centerYAnchor.constraint(equalTo: centerYAnchor),
             loginBackGroundView.topAnchor.constraint(equalTo: topAnchor),
             loginBackGroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            
+            // MARK: keyboardBackgroundView Constraints
+            keyboardBackgroundView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            keyboardBackgroundView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            keyboardBackgroundViewTopConstraint,
+            keyboardBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
             // MARK: ID, PW TextField, LoginButton StackView Constraints
             idPwLoginBtnStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
             idPwLoginBtnStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            idPwLoginBtnStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 527),
+            idPwLoginBtnStackViewTopConstraint,
             idPwLoginBtnStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 59),
 
             // MARK: SignUp button, FindID button, FindPw button StackView Constraints
-            signUpFindIdPwStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            signUpFindIdPwStackView.topAnchor.constraint(equalTo: idPwLoginBtnStackView.bottomAnchor, constant: 28),
-            signUpFindIdPwStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 12),
-            signUpFindIdPwStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 69),
+            selectPageButtonStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            selectPageButtonStackView.topAnchor.constraint(equalTo: idPwLoginBtnStackView.bottomAnchor, constant: 28),
+            selectPageButtonStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 12),
+            selectPageButtonStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 69),
 
             lineView1.widthAnchor.constraint(equalToConstant: 1),
             lineView1.heightAnchor.constraint(equalTo: signUpBtn.heightAnchor, multiplier: 0.5),
@@ -172,16 +211,40 @@ final class LoginView: UIView {
     }
 }
 
+// MARK: 키보드 올라오고 내려갈 때 레이아웃 변경
+extension LoginView {
+    private func configureNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(moveUpAction), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(moveDownAction), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func moveUpAction() {
+        idPwLoginBtnStackViewTopConstraint.constant = 289
+        keyboardBackgroundViewTopConstraint.constant = 0
+        UIView.animate(withDuration: 0.2) {
+            self.layoutIfNeeded()
+        }
+    }
+    
+    @objc private func moveDownAction() {
+        idPwLoginBtnStackViewTopConstraint.constant = 527
+        keyboardBackgroundViewTopConstraint.constant = frame.height
+        UIView.animate(withDuration: 0.2) {
+            self.layoutIfNeeded()
+        }
+    }
+    
+    
+}
+
+// MARK: TextField Delegate Implement
 extension LoginView: UITextFieldDelegate {
     
     // 키보드 엔터키가 눌렸을때 (다음 동작을 허락할 것인지)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // 두개의 텍스트필드를 모두 종료 (키보드 내려가기)
-        if idEnterTextField.text != "", pwEnterTextField.text != "", pwEnterTextField.text != "" {
+        if idEnterTextField.text != "", pwEnterTextField.text != "" {
             pwEnterTextField.resignFirstResponder()
-            return true
-        } else if idEnterTextField.text != "", pwEnterTextField.text != "" {
-            pwEnterTextField.becomeFirstResponder()
             return true
         } else if idEnterTextField.text != "" {
             pwEnterTextField.becomeFirstResponder()
