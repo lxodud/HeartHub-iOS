@@ -146,13 +146,13 @@ final class FindIdView: UIView {
             // MARK: emailTfFindIdBtnStackView Constraints
             emailTfFindIdBtnStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.17),
             emailTfFindIdBtnStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            emailTfFindIdBtnStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 544),
+            emailTfFindIdBtnStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 556),
             emailTfFindIdBtnStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 59),
        
             // MARK: signUpFindIdPwStackView Constraints
             signUpFindIdPwStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             signUpFindIdPwStackView.topAnchor.constraint(equalTo: emailTfFindIdBtnStackView.bottomAnchor, constant: 28),
-            signUpFindIdPwStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -12),
+            signUpFindIdPwStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 12),
             signUpFindIdPwStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 69),
        
             // MARK: lineView1 Constraints

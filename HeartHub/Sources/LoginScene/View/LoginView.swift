@@ -154,14 +154,14 @@ final class LoginView: UIView {
             // MARK: ID, PW TextField, LoginButton StackView Constraints
             idPwLoginBtnStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
             idPwLoginBtnStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            idPwLoginBtnStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 515),
-            idPwLoginBtnStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 59),
+            idPwLoginBtnStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 527),
+            idPwLoginBtnStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 59),
 
             // MARK: SignUp button, FindID button, FindPw button StackView Constraints
             signUpFindIdPwStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             signUpFindIdPwStackView.topAnchor.constraint(equalTo: idPwLoginBtnStackView.bottomAnchor, constant: 28),
-            signUpFindIdPwStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 12),
-            signUpFindIdPwStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 69),
+            signUpFindIdPwStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 12),
+            signUpFindIdPwStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 69),
 
             lineView1.widthAnchor.constraint(equalToConstant: 1),
             lineView1.heightAnchor.constraint(equalTo: signUpBtn.heightAnchor, multiplier: 0.5),

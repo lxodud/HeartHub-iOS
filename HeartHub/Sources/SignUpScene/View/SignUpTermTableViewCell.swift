@@ -93,24 +93,6 @@ extension SignUpTermTableViewCell {
     }
 }
 
-// MARK: 프리뷰
-import SwiftUI
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Container().edgesIgnoringSafeArea(.all)
-    }
-    struct Container: UIViewControllerRepresentable {
-        func makeUIViewController(context: Context) -> UIViewController {
-            return     UINavigationController(rootViewController: SignUpTermAgreeViewController())
-        }
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
-        typealias  UIViewControllerType = UIViewController
-    }
-}
-
-
-
 // MARK: termAgreeButton Constraints
 //            termAgreeButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor),
 //            termAgreeButton.widthAnchor.constraint(equalTo: heightAnchor),

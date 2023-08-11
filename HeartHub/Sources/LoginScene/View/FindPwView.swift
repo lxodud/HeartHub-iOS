@@ -18,7 +18,7 @@ final class FindPwView: UIView {
     )
     
     let findPwEmailTextField = LoginTextFieldView(
-        placeholder: "비밀번호를 입력하세요",
+        placeholder: "이메일을 입력하세요",
         keyboardType: .default,
         isSecureTextEntry: true
     )
@@ -155,7 +155,7 @@ final class FindPwView: UIView {
             // MARK: ID, Email TextField, FindPw StackView Constraints
             idEmailFindPwBtnStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
             idEmailFindPwBtnStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            idEmailFindPwBtnStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 515),
+            idEmailFindPwBtnStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 527),
             idEmailFindPwBtnStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 59),
 
             // MARK: findIdSignUpLoginBtnStackView Constraints
