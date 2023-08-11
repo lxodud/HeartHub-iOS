@@ -11,9 +11,10 @@ final class SignUpTermTableViewCell: UITableViewCell {
 
     var termAgreeButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "AgreeRadioBtnUnChecked"), for: .normal)
-        button.setImage(UIImage(named: "AgreeRadioBtnChecked"), for: .selected)
+        button.setImage(UIImage(named: "RadioBtnUnChecked"), for: .normal)
+        button.setImage(UIImage(named: "RadioBtnChecked"), for: .selected)
         button.contentMode = .center
+        button.isEnabled = true
         return button
     }()
     
@@ -50,46 +51,81 @@ final class SignUpTermTableViewCell: UITableViewCell {
 
 extension SignUpTermTableViewCell {
     private func configureButton() {
-        termAgreeButton.addTarget(self, action: #selector(didTapTermAgreeBtn), for: .touchUpInside)
+        termAgreeButton.addTarget(self, action: #selector(didTapMissionButton), for: .touchUpInside)
     }
-
-    @objc private func didTapTermAgreeBtn() {
+    
+    @objc private func didTapMissionButton() {
+        
         if termAgreeButton.isSelected == true {
             termAgreeButton.isSelected = false
-         } else {
-             termAgreeButton.isSelected = true
-         }
+        } else {
+            termAgreeButton.isSelected = true            
+        }
     }
 }
 
 extension SignUpTermTableViewCell {
     private func configureSubViews() {
         [termAgreeButton, termLabel, termDescriptionButton].forEach {
-            addSubview($0)
+            self.contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
     }
     
     private func configureLayout() {
+        let contentView = self.contentView
         NSLayoutConstraint.activate([
-            // MARK: termAgreeButton Constraints
-            termAgreeButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor),
-            termAgreeButton.widthAnchor.constraint(equalTo: heightAnchor),
-            termAgreeButton.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            termAgreeButton.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            termAgreeButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            termAgreeButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            termAgreeButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            termAgreeButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            termAgreeButton.topAnchor.constraint(equalTo: contentView.topAnchor),
+            termAgreeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             
-            // MARK: termLabel Constraints
-            termLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            termLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
+            termLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            termLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 9),
             termLabel.leadingAnchor.constraint(equalTo: termAgreeButton.trailingAnchor, constant: 2),
             
-            // MARK: termDescriptionButton Constraints
-            termDescriptionButton.heightAnchor.constraint(equalTo: termAgreeButton.heightAnchor, multiplier: 0.35),
-            termDescriptionButton.widthAnchor.constraint(equalTo: termAgreeButton.heightAnchor, multiplier: 0.35),
-            termDescriptionButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            termDescriptionButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -13),
+//            termDescriptionButton.heightAnchor.constraint(equalTo: termDescriptionButton.widthAnchor),
+            termDescriptionButton.widthAnchor.constraint(equalTo: termAgreeButton.heightAnchor, multiplier: 0.35),           termDescriptionButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            termDescriptionButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            termDescriptionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -13)
+
             ])
     }
 }
+
+// MARK: 프리뷰
+import SwiftUI
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Container().edgesIgnoringSafeArea(.all)
+    }
+    struct Container: UIViewControllerRepresentable {
+        func makeUIViewController(context: Context) -> UIViewController {
+            return     UINavigationController(rootViewController: SignUpTermAgreeViewController())
+        }
+        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        }
+        typealias  UIViewControllerType = UIViewController
+    }
+}
+
+
+
+// MARK: termAgreeButton Constraints
+//            termAgreeButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor),
+//            termAgreeButton.widthAnchor.constraint(equalTo: heightAnchor),
+//termAgreeButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+//termAgreeButton.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+//termAgreeButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+//termAgreeButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+//
+//// MARK: termLabel Constraints
+//termLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+//termLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
+//termLabel.leadingAnchor.constraint(equalTo: termAgreeButton.trailingAnchor, constant: 2),
+//
+//// MARK: termDescriptionButton Constraints
+//termDescriptionButton.heightAnchor.constraint(equalTo: termAgreeButton.heightAnchor, multiplier: 0.35),
+//termDescriptionButton.widthAnchor.constraint(equalTo: termAgreeButton.heightAnchor, multiplier: 0.35),
+//termDescriptionButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+//termDescriptionButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -13),

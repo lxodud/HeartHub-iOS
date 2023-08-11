@@ -17,17 +17,32 @@ final class SignUpTermAgreeView: UIView {
         descriptionLabelText: "계정을 생성하여 HeartHuB를 즐겨보아요.")
     
     let signUpTermAgreePreviousPageButton = SignUpChangePageButton(buttonImage: "LeftArrow")
-    let signUpTermAgreeNextPageButton = SignUpChangePageButton(buttonImage: "RightArrow")
     
-    private lazy var changePageButtonStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [signUpTermAgreePreviousPageButton, signUpTermAgreeNextPageButton])
-        stView.axis = .horizontal
-        stView.spacing = 198
-        stView.distribution = .fillEqually
-        stView.alignment = .fill
-        return stView
+    let createAccountButton: UIButton = {
+        let btn = UIButton(type: .custom)
+        btn.backgroundColor = .white
+        btn.layer.borderWidth = 1
+        btn.layer.cornerRadius = 18
+        btn.layer.borderColor = #colorLiteral(red: 0.9803773761, green: 0.1853338182, blue: 0.7394250631, alpha: 1)
+ 
+        btn.setTitle("계정 생성하기", for: .normal)
+        btn.titleLabel?.font = UIFont.init(name: "Pretendard-Regular", size: 14)
+        btn.titleLabel?.textAlignment = .center
+        btn.setTitleColor(UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 1), for: .normal)
+        btn.sizeToFit()
+        btn.titleLabel?.adjustsFontSizeToFitWidth = true
+        btn.titleLabel?.numberOfLines = 1
+        
+        btn.layer.shadowColor = UIColor(red: 0.98, green: 0.184, blue: 0.741, alpha: 0.25).cgColor
+        btn.layer.shadowOpacity = 1.0
+        btn.layer.shadowOffset = CGSize(width: 0, height: 4)
+        btn.layer.shadowRadius = 6
+        
+        return btn
+        
     }()
     
+
     // MARK: 뷰 초기화
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,7 +59,8 @@ final class SignUpTermAgreeView: UIView {
 extension SignUpTermAgreeView {
     func configureSubViews() {
         [signUpBackgroundView,
-         changePageButtonStackView
+         signUpTermAgreePreviousPageButton,
+         createAccountButton
         ].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -64,10 +80,16 @@ extension SignUpTermAgreeView {
             
             // MARK: changePageButton Constraints
             signUpTermAgreePreviousPageButton.heightAnchor.constraint(equalTo: signUpTermAgreePreviousPageButton.widthAnchor),
-            signUpTermAgreeNextPageButton.heightAnchor.constraint(equalTo: signUpTermAgreeNextPageButton.widthAnchor),
-            changePageButtonStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -33),
-            changePageButtonStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 40),
-            changePageButtonStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -40)
+            signUpTermAgreePreviousPageButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -33),
+            signUpTermAgreePreviousPageButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 40),
+            signUpTermAgreePreviousPageButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -33),
+
+            
+            createAccountButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.066),
+            createAccountButton.topAnchor.constraint(equalTo: signUpTermAgreePreviousPageButton.topAnchor),
+            createAccountButton.leadingAnchor.constraint(equalTo: signUpTermAgreePreviousPageButton.trailingAnchor, constant: 113),
+            createAccountButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -40)
+
         ])
     }
 }

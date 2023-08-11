@@ -98,8 +98,8 @@ final class SignUpProfileView: UIView {
         btn.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
         
         // 라디오버튼 구현
-        btn.setImage(UIImage(named:"AgreeRadioBtnUnChecked"), for: .normal)
-        btn.setImage(UIImage(named: "AgreeRadioBtnChecked"), for: .selected)
+        btn.setImage(UIImage(named:"RadioBtnUnChecked"), for: .normal)
+        btn.setImage(UIImage(named: "RadioBtnChecked"), for: .selected)
         btn.imageView?.contentMode = .scaleAspectFit
         btn.contentHorizontalAlignment = .leading
         btn.addSubview(maleLabel)
@@ -124,8 +124,8 @@ final class SignUpProfileView: UIView {
         btn.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
 
         // 라디오버튼 구현
-        btn.setImage(UIImage(named:"AgreeRadioBtnUnChecked"), for: .normal)
-        btn.setImage(UIImage(named: "AgreeRadioBtnChecked"), for: .selected)
+        btn.setImage(UIImage(named:"RadioBtnUnChecked"), for: .normal)
+        btn.setImage(UIImage(named: "RadioBtnChecked"), for: .selected)
         btn.imageView?.contentMode = .scaleAspectFit
         btn.contentHorizontalAlignment = .leading
         btn.addSubview(femaleLabel)
@@ -404,12 +404,6 @@ extension SignUpProfileView: UITextFieldDelegate {
         var allowedCharacterSet: CharacterSet
         
         switch textField {
-//        case nickNameTextField:
-//            maxLength = 10
-//            allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_?+=~")
-//                .union(CharacterSet(charactersIn: "\u{AC00}"..."\u{D7A3}"))
-//                .union(CharacterSet(charactersIn: "\u{3131}"..."\u{314E}"))
-//                .union(CharacterSet(charactersIn: "\u{314F}"..."\u{3163}"))
         case idTextField:
             maxLength = 18
             allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")

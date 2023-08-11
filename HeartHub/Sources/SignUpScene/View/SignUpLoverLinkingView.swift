@@ -320,8 +320,11 @@ extension SignUpLoverLinkingView: UITextFieldDelegate {
             maxLength = 100
             allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'*+-/=?^_`{|}~.(),:;<>@")
         case nickNameTextField:
-            maxLength = 18
+            maxLength = 10
             allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_?+=~")
+                .union(CharacterSet(charactersIn: "\u{AC00}"..."\u{D7A3}"))
+                .union(CharacterSet(charactersIn: "\u{3131}"..."\u{314E}"))
+                .union(CharacterSet(charactersIn: "\u{314F}"..."\u{3163}"))
         default:
             return true
         }

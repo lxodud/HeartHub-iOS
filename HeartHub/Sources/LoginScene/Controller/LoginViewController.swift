@@ -29,7 +29,6 @@ final class LoginViewController: UIViewController {
     }
 
     @objc private func didTapLoginButton() {
-        // 로그인 버튼을 눌렀을 때의 동작 정의
         print("로그인 버튼이 눌렸습니다.")
     }
     

@@ -26,17 +26,27 @@ final class SignUpTermAgreeViewController: UIViewController {
         view.addSubview(lineView)
         return view
     }()
+    
+    private let termDescriptionsLabel: UILabel = {
+       let label = UILabel()
+        label.font = UIFont(name: "Pretendard-Regular", size: 14)
+        label.text = """
+        HeartHuB 서비스를 이용하기 위해서는 만 14세 이상이 되어야 합니다. 만 14세 미만의 이용자일 경우 이용이 제한됩니다.
+        
+        개인정보의 마케팅 활용(마케팅 및 광고성 정보 전송)에 동의하지 않으실 수 있으며, 동의하지 않으시더라도 HeartHuB 서비스를 이용하실 수 있습니다.
+        """
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 0
+        label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        return label
+    }()
 
     private let termsArray = [
         "(필수) 개인정보 수집 및 이용동의",
         "(필수) 이용 약관 동의",
     ]
 
-    let unCheckedImage = UIImage(named: "RadioBtnUnChecked")
-    let checkedImage = UIImage(named: "RadioBtnChecked")
-    
-    var allTermAgree = false
-    
     override func loadView() {
         view = signUpTermAgreeView
     }
@@ -86,9 +96,11 @@ extension SignUpTermAgreeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = signUpTermTableView.dequeueReusableCell(
+        guard let cell = tableView.dequeueReusableCell(
             withIdentifier: SignUpTermTableViewCell.reuseIdentifier,
-            for: indexPath) as! SignUpTermTableViewCell
+            for: indexPath) as? SignUpTermTableViewCell else {
+                return UITableViewCell()
+            }
   
         cell.selectionStyle = .none
         
@@ -115,7 +127,7 @@ extension SignUpTermAgreeViewController {
             SignUpTermTableViewCell.self,
             forCellReuseIdentifier: SignUpTermTableViewCell.reuseIdentifier)
         signUpTermTableView.isScrollEnabled = false
-        signUpTermTableView.contentSize.height = view.frame.height * 0.047
+        signUpTermTableView.contentSize.height = 24
         signUpTermTableView.separatorStyle = .none
     }
 }
@@ -123,7 +135,7 @@ extension SignUpTermAgreeViewController {
 // MARK: Configure Layout
 extension SignUpTermAgreeViewController {
     private func configureSubViews() {
-        [signUpTermTableView].forEach {
+        [signUpTermTableView, termDescriptionsLabel].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -136,48 +148,35 @@ extension SignUpTermAgreeViewController {
         NSLayoutConstraint.activate([
             // MARK: signUpTermTableView Constraints
             signUpTermTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signUpTermTableView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 290),
-            signUpTermTableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -100),
+            signUpTermTableView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 162),
+            signUpTermTableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -300),
             signUpTermTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 25),
 
             // MARK: lineView Constraints
             lineView.heightAnchor.constraint(equalToConstant: 1),
             lineView.centerYAnchor.constraint(equalTo: footerSpacingView.centerYAnchor),
             lineView.leadingAnchor.constraint(equalTo: footerSpacingView.leadingAnchor),
-            lineView.trailingAnchor.constraint(equalTo: footerSpacingView.trailingAnchor)
+            lineView.trailingAnchor.constraint(equalTo: footerSpacingView.trailingAnchor),
+            
+            termDescriptionsLabel.topAnchor.constraint(equalTo: signUpTermTableView.bottomAnchor),
+            termDescriptionsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            termDescriptionsLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 70),
+            termDescriptionsLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -25)
         ])
     }
 }
 
-// MARK: 프리뷰
-import SwiftUI
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Container().edgesIgnoringSafeArea(.all)
-    }
-    struct Container: UIViewControllerRepresentable {
-        func makeUIViewController(context: Context) -> UIViewController {
-            return     UINavigationController(rootViewController: SignUpTermAgreeViewController())
-        }
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
-        typealias  UIViewControllerType = UIViewController
-    }
-}
+
 
 extension SignUpTermAgreeViewController {
 
     func addTarget() {
-        signUpTermAgreeView.signUpTermAgreeNextPageButton.addTarget(self, action: #selector(didTapRightArrowBtn), for: .touchUpInside)
+//        signUpTermAgreeView.signUpTermAgreeNextPageButton.addTarget(self, action: #selector(didTapRightArrowBtn), for: .touchUpInside)
         signUpTermAgreeView.signUpTermAgreePreviousPageButton.addTarget(self, action: #selector(didTapLeftArrowBtn), for: .touchUpInside)
 //        signUpTermAgreeView.allTermAgreeBtn.addTarget(self, action: #selector(didTapAllAgreeBtn), for: .touchUpInside)
 //        signUpTermAgreeView.privacyAgreeBtn.addTarget(self, action: #selector(didTapPrivacyAgreeBtn), for: .touchUpInside)
 //        signUpTermAgreeView.termOfUseAgreeBtn.addTarget(self, action: #selector(didTapTermOfUseAgreeBtn), for: .touchUpInside)
 //        signUpTermAgreeView.marketingAgreeBtn.addTarget(self, action: #selector(didTapMarketingAgreeBtn), for: .touchUpInside)
-//
-//        signUpTermAgreeView.privacyDescriptionBtn.addTarget(self, action: #selector(didTapPrivacyArrowBtn), for: .touchUpInside)
-//        signUpTermAgreeView.termOfUseDescriptionBtn.addTarget(self, action: #selector(didTapTermOfUseArrowBtn), for: .touchUpInside)
-//        signUpTermAgreeView.marketingDescriptionBtn.addTarget(self, action: #selector(didTapmarketingDescriptionBtn), for: .touchUpInside)
 
     }
 
