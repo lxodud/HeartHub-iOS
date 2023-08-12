@@ -17,8 +17,8 @@ protocol NetworkManager {
 final class DefaultNetworkManager: NetworkManager {
     func request(
         endpoint: Requestable,
-        completion: @escaping (Result<Data, Error>
-        ) -> Void) {
+        completion: @escaping (Result<Data, Error>) -> Void
+    ) {
         
     }
 }
