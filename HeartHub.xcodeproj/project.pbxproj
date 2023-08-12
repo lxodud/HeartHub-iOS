@@ -456,9 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				0C59CF4C2A84D76D00D847B7 /* NetworkManager.swift */,
-				0C59CF4F2A84DB0400D847B7 /* Requestable.swift */,
 				0C59CF5B2A87D7E800D847B7 /* Request */,
-				0C59CF5C2A87D85A00D847B7 /* DTO */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -466,9 +464,11 @@
 		0C59CF5B2A87D7E800D847B7 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				0C59CF4F2A84DB0400D847B7 /* Requestable.swift */,
 				0C59CF562A87C79500D847B7 /* Request.swift */,
 				0C59CF582A87CCBC00D847B7 /* JSONBodyRequest.swift */,
 				0C59CF542A87C1AE00D847B7 /* UserRelatedRequestFactory.swift */,
+				0C59CF5C2A87D85A00D847B7 /* DTO */,
 			);
 			path = Request;
 			sourceTree = "<group>";
