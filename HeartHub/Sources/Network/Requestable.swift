@@ -54,7 +54,7 @@ final class Endpoint: Requestable {
     let headers: [String : String]
     
     init(
-        baseURL: String,
+        baseURL: String = "http://43.200.191.238:9000",
         httpMethod: HTTPMethod = .get,
         path: String = "",
         queryItems: [URLQueryItem] = [],
