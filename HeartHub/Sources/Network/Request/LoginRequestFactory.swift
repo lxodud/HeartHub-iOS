@@ -42,4 +42,12 @@ struct LoginRequestFactory {
             jsonBody: body
         )
     }
+    
+    static func makeGetDatingDateRequest(of token: String) -> Requestable {
+        return Request(
+            httpMethod: .get,
+            path: "api/join",
+            headers: ["Authorization": token]
+        )
+    }
 }
