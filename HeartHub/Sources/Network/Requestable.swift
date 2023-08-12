@@ -20,6 +20,8 @@ protocol Requestable {
     var path: String { get }
     var queryItems: [URLQueryItem] { get }
     var headers: [String: String] { get }
+    
+    func makeURLRequest() -> URLRequest?
 }
 
 extension Requestable {
@@ -33,15 +35,8 @@ extension Requestable {
         
         return component.url
     }
-    
-    func makeURLRequest() -> URLRequest? {
-        guard let url = makeURL() else {
-            return nil
-        }
-        var urlRequest = URLRequest(url: url)
-        urlRequest.allHTTPHeaderFields = headers
-        urlRequest.httpMethod = httpMethod.rawValue
-        
-        return urlRequest
-    }
+}
+
+protocol JSONBodyRequestable: Requestable {
+    var jsonBody: Encodable { get }
 }

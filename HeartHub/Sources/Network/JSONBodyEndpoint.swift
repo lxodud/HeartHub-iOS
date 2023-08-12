@@ -1,5 +1,5 @@
 //
-//  Endpoint.swift
+//  JSONBodyEndpoint.swift
 //  HeartHub
 //
 //  Created by 이태영 on 2023/08/12.
@@ -7,26 +7,13 @@
 
 import Foundation
 
-final class Endpoint: Requestable {
+struct JSONBodyEndpoint: JSONBodyRequestable {
     let baseURL: String
     let httpMethod: HTTPMethod
     let path: String
     let queryItems: [URLQueryItem]
     let headers: [String : String]
-    
-    init(
-        baseURL: String = "http://43.200.191.238:9000",
-        httpMethod: HTTPMethod = .get,
-        path: String = "",
-        queryItems: [URLQueryItem] = [],
-        headers: [String: String] = [:]
-    ) {
-        self.baseURL = baseURL
-        self.httpMethod = httpMethod
-        self.path = path
-        self.queryItems = queryItems
-        self.headers = headers
-    }
+    let jsonBody: Encodable
     
     func makeURLRequest() -> URLRequest? {
         guard let url = makeURL() else {
@@ -35,7 +22,11 @@ final class Endpoint: Requestable {
         
         var urlRequest = URLRequest(url: url)
         urlRequest.allHTTPHeaderFields = headers
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.httpMethod = httpMethod.rawValue
+        
+        let body = try? JSONEncoder().encode(jsonBody)
+        urlRequest.httpBody = body
         
         return urlRequest
     }
