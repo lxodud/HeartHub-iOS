@@ -56,7 +56,7 @@ final class SignUpTermAgreeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addTarget()
+        configureAddTarget()
         tableViewInitialSetting()
         configureSubViews()
         configureLayout()
@@ -179,11 +179,9 @@ extension SignUpTermAgreeViewController {
     }
 }
 
-
-
+// MARK: Configure AddTarget
 extension SignUpTermAgreeViewController {
-
-    func addTarget() {
+    private func configureAddTarget() {
         signUpTermAgreeView.createAccountButton.addTarget(self, action: #selector(didTapcreateAccountButton), for: .touchUpInside)
         signUpTermAgreeView.signUpTermAgreePreviousPageButton.addTarget(self, action: #selector(didTapsignUpTermAgreePreviousPageButton), for: .touchUpInside)
 //        signUpTermAgreeView.allTermAgreeBtn.addTarget(self, action: #selector(didTapAllAgreeBtn), for: .touchUpInside)
@@ -193,13 +191,13 @@ extension SignUpTermAgreeViewController {
 
     }
 
-    @objc func didTapcreateAccountButton() {
+    @objc private func didTapcreateAccountButton() {
         // MARK: 계정생성 버튼 누를 시 동작 지정
         
         navigationController?.popToRootViewController(animated: true)
     }
 
-    @objc func didTapsignUpTermAgreePreviousPageButton() {
+    @objc private func didTapsignUpTermAgreePreviousPageButton() {
         navigationController?.popViewController(animated: true)
     }
 //

@@ -10,35 +10,38 @@ import UIKit
 import DropDown
 
 final class SignUpLoverLinkingViewController: UIViewController {
-
+    
     private let signUpLoverLinkingView = SignUpLoverLinkingView()
-
+    
     override func loadView() {
         view = signUpLoverLinkingView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addTarget()
-
+        ConfigureAddTarget()
+        
     }
-    
-    func addTarget() {
+}
+
+// MARK: Configure AddTarget
+extension SignUpLoverLinkingViewController {
+    private func ConfigureAddTarget() {
         signUpLoverLinkingView.signUpLoverNextPageButton.addTarget(self, action: #selector(didTapnextPageButton), for: .touchUpInside)
         signUpLoverLinkingView.signUpLoverPreviousPageButton.addTarget(self, action: #selector(didTappreviousPageButton), for: .touchUpInside)
         signUpLoverLinkingView.dropDownBtn.addTarget(self, action: #selector(didTapdropDownBtn), for: .touchUpInside)
     }
     
-    @objc func didTapnextPageButton() {
+    @objc private func didTapnextPageButton() {
         let signUpTermAgreeVC = SignUpTermAgreeViewController()
         navigationController?.pushViewController(signUpTermAgreeVC, animated: true)
     }
     
-    @objc func didTappreviousPageButton() {
+    @objc private func didTappreviousPageButton() {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func didTapdropDownBtn() {        
+    @objc private func didTapdropDownBtn() {
         if signUpLoverLinkingView.dropDownBtn.currentImage == UIImage(named: "DropDownArrow.png") {
             let upArrow = UIImage(named: "DropUpArrow.png")
             signUpLoverLinkingView.dropDownBtn.setImage(upArrow, for: .normal)

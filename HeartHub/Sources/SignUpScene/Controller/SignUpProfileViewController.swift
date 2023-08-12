@@ -8,7 +8,7 @@
 import UIKit
 
 final class SignUpProfileViewController: UIViewController {
-
+    
     private let signUpProfileView = SignUpProfileView()
     
     private var sexButtons: [UIButton] = []
@@ -19,12 +19,15 @@ final class SignUpProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        addTarget()
+        
+        configureAddTarget()
         configureSexButton()
     }
-    
-    private func addTarget() {
+}
+
+// MARK: Configure AddTarget
+extension SignUpProfileViewController {
+    private func configureAddTarget() {
         signUpProfileView.signUpProfileNextPageButton.addTarget(self, action: #selector(didTapNextPageButton), for: .touchUpInside)
         signUpProfileView.signUpProfilePreviousPageButton.addTarget(self, action: #selector(didTappreviousPageButton), for: .touchUpInside)
         signUpProfileView.idCheckBtn.addTarget(self, action: #selector(didTapIdCheckBtn), for: .touchUpInside)
@@ -42,17 +45,17 @@ final class SignUpProfileViewController: UIViewController {
         }
     }
 
-    @objc func didTapNextPageButton() {
+    @objc private func didTapNextPageButton() {
         let signUpLoverLinkingVC = SignUpLoverLinkingViewController()
         navigationController?.pushViewController(signUpLoverLinkingVC, animated: true)
     }
     
-    @objc func didTappreviousPageButton() {
+    @objc private func didTappreviousPageButton() {
         navigationController?.popViewController(animated: true)
     }
 
     
-    @objc func didTapIdCheckBtn() {
+    @objc private func didTapIdCheckBtn() {
         
         
     }
@@ -67,7 +70,7 @@ final class SignUpProfileViewController: UIViewController {
         }
     }
     
-    @objc func didTapMaleBtn() {
+    @objc private func didTapMaleBtn() {
         if signUpProfileView.maleBtn.isSelected == true {
             signUpProfileView.maleBtn.isSelected = false
          } else {
@@ -75,7 +78,7 @@ final class SignUpProfileViewController: UIViewController {
          }
     }
     
-    @objc func didTapFemaleBtn() {
+    @objc private func didTapFemaleBtn() {
         if signUpProfileView.femaleBtn.isSelected == true {
             signUpProfileView.femaleBtn.isSelected = false
          } else {
