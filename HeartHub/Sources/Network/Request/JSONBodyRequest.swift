@@ -15,6 +15,22 @@ struct JSONBodyRequest: JSONBodyRequestable {
     let headers: [String : String]
     let jsonBody: Encodable
     
+    init(
+        baseURL: String = "http://43.200.191.238:9000",
+        httpMethod: HTTPMethod = .get,
+        path: String = "",
+        queryItems: [URLQueryItem] = [],
+        headers: [String: String] = [:],
+        jsonBody: Encodable
+    ) {
+        self.baseURL = baseURL
+        self.httpMethod = httpMethod
+        self.path = path
+        self.queryItems = queryItems
+        self.headers = headers
+        self.jsonBody = jsonBody
+    }
+    
     func makeURLRequest() -> URLRequest? {
         guard let url = makeURL() else {
             return nil

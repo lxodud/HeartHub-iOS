@@ -1,5 +1,5 @@
 //
-//  LoginEndpoint.swift
+//  LoginRequestFactory.swift
 //  HeartHub
 //
 //  Created by 이태영 on 2023/08/12.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LoginRequest {
+struct LoginRequestFactory {
     static func makeEmailCheckRequest(of email: String) -> Requestable {
         return Request(
             path: "api/check/email/" + email
@@ -24,6 +24,14 @@ struct LoginRequest {
         return Request(
             httpMethod: .post,
             path: "api/join"
+        )
+    }
+    
+    static func makeJoinRequest(of body: JoinRequestDTO) -> Requestable {
+        return JSONBodyRequest(
+            httpMethod: .post,
+            path: "api/join",
+            jsonBody: body
         )
     }
 }
