@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct JSONBodyEndpoint: JSONBodyRequestable {
+struct JSONBodyRequest: JSONBodyRequestable {
     let baseURL: String
     let httpMethod: HTTPMethod
     let path: String

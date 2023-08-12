@@ -9,19 +9,19 @@ import Foundation
 
 struct LoginEndpoint {
     static func makeEmailCheckEndpoint(of email: String) -> Requestable {
-        return Endpoint(
+        return Request(
             path: "api/check/email/" + email
         )
     }
     
     static func makeIdCheckApiEndpoint(of id: String) -> Requestable {
-        return Endpoint(
+        return Request(
             path: "api/check/username/" + id
         )
     }
     
     static func makeVerificateEmailEndPoint(of email: String) -> Requestable {
-        return Endpoint(
+        return Request(
             httpMethod: .post,
             path: "api/join"
         )

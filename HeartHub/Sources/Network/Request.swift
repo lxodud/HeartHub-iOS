@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class Endpoint: Requestable {
+final class Request: Requestable {
     let baseURL: String
     let httpMethod: HTTPMethod
     let path: String
