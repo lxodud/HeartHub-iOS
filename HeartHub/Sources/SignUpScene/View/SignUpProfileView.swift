@@ -332,6 +332,7 @@ extension SignUpProfileView {
 // MARK: 텍스트필드 델리게이트
 extension SignUpProfileView: UITextFieldDelegate {
     
+    // MARK: textFieldEditingChanged
     @objc private func textFieldEditingChanged(_ textField: UITextField) {
         if textField.text?.count == 1 {
             if textField.text?.first == " " {
@@ -353,6 +354,7 @@ extension SignUpProfileView: UITextFieldDelegate {
         signUpProfileNextPageButton.isEnabled = true
     }
     
+    // MARK: textFieldShouldReturn
     // 키보드 엔터키가 눌렸을때 (다음 동작을 허락할 것인지)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // 두개의 텍스트필드를 모두 종료 (키보드 내려가기)
@@ -386,7 +388,10 @@ extension SignUpProfileView: UITextFieldDelegate {
         birthdayDayTextField.resignFirstResponder()
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    // MARK: textFieldShouldChangeCharactersIn
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
       
         // 백스페이스 감지
         if let char = string.cString(using: String.Encoding.utf8) {
@@ -400,6 +405,8 @@ extension SignUpProfileView: UITextFieldDelegate {
             return true
         }
         
+        let updatedText = (text as NSString).replacingCharacters(in: range, with: string)
+        
         let maxLength: Int
         var allowedCharacterSet: CharacterSet
         
@@ -407,34 +414,39 @@ extension SignUpProfileView: UITextFieldDelegate {
         case idTextField:
             maxLength = 18
             allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+            return updatedText.count <= maxLength && allowedCharacterSet.isSuperset(of: CharacterSet(charactersIn: string))
+
         case pwTextField:
             maxLength = 15
-            allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_?+=~")
+            allowedCharacterSet = CharacterSet(charactersIn:
+                                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_?+=~"
+            )
+            return updatedText.count <= maxLength && allowedCharacterSet.isSuperset(of: CharacterSet(charactersIn: string))
+        
         case birthdayYearTextField:
             maxLength = 4
             allowedCharacterSet = CharacterSet(charactersIn: "0123456789")
-            let updatedText = (text as NSString).replacingCharacters(in: range, with: string)
-            let currentYear = Calendar.current.component(.year, from: Date())
             if let year = Int(updatedText) {
-                     if year >= 1950 && year <= currentYear {
-                         return true
-                     }
-                 }
+                let currentYear = Calendar.current.component(.year, from: Date())
+                if year >= 1950 && year <= currentYear {
+                    return true
+                }
+            }
+            
         case birthdayMonthTextField:
             maxLength = 2
             allowedCharacterSet = CharacterSet(charactersIn: "0123456789")
-            let updatedText = (text as NSString).replacingCharacters(in: range, with: string)
             if let month = Int(updatedText) {
-                     if month >= 01 && month <= 12 {
+                     if month >= 1 && month <= 12 {
                          return true
                      }
                  }
+            
         case birthdayDayTextField:
             maxLength = 2
             allowedCharacterSet = CharacterSet(charactersIn: "0123456789")
-            let updatedText = (text as NSString).replacingCharacters(in: range, with: string)
             if let date = Int(updatedText) {
-                     if date >= 01 && date <= 31 {
+                     if date >= 1 && date <= 31 {
                          return true
                      }
                  }

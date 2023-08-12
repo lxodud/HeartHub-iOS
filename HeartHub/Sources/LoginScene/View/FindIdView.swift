@@ -18,13 +18,13 @@ final class FindIdView: UIView {
         return imgView
     }()
     
-    let findIdEmailTextField = LoginTextFieldView(
+    let findIdEmailTextField = LoginTextField(
         placeholder: "이메일을 입력하세요",
         keyboardType: .emailAddress,
         isSecureTextEntry: false
     )
     
-    lazy var findIdBtn: UIButton = {
+    var findIdBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .white
         button.layer.cornerRadius = 8
@@ -49,55 +49,52 @@ final class FindIdView: UIView {
     
     // MARK: 아이디 찾기 + 회원가입 + 비밀번호찾기 버튼
     // 아이디 찾기 버튼
-    lazy var loginBtn: UIButton = {
+    var loginBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
         button.setTitle("로그인", for: .normal)
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Pretendard-Regular", size: 16)
-        // button.sizeToFit()
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.numberOfLines = 1
         return button
     }()
     
     // 회원가입 버튼
-    lazy var signUpBtn: UIButton = {
+    var signUpBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
         button.setTitle("회원가입", for: .normal)
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Pretendard-Regular", size: 16)
-        // button.sizeToFit()
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.numberOfLines = 1
         return button
     }()
     
     // 비밀번호 찾기 버튼
-    lazy var findPwBtn: UIButton = {
+    var findPwBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
         button.setTitle("비밀번호 찾기", for: .normal)
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Pretendard-Regular", size: 16)
-        // button.sizeToFit()
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.numberOfLines = 1
         return button
     }()
     
     // 회원가입 닉네임 로그인 사이 선
-    private lazy var lineView1: UIView = {
+    private var lineView1: UIView = {
         let line = UIView()
         line.backgroundColor = #colorLiteral(red: 1, green: 0.9999999404, blue: 1, alpha: 1)
         return line
     }()
     
-    private lazy var lineView2: UIView = {
+    private  var lineView2: UIView = {
         let line = UIView()
         line.backgroundColor = #colorLiteral(red: 1, green: 0.9999999404, blue: 1, alpha: 1)
         return line
@@ -108,7 +105,7 @@ final class FindIdView: UIView {
         let stView = UIStackView(arrangedSubviews: [loginBtn, lineView1, signUpBtn, lineView2, findPwBtn])
         stView.spacing = 10
         stView.axis = .horizontal
-        stView.distribution = .equalCentering
+        stView.distribution = .equalSpacing
         stView.alignment = .center
         return stView
     }()
@@ -161,7 +158,7 @@ extension FindIdView {
         let safeArea = safeAreaLayoutGuide
         
         emailTfFindIdBtnStackViewTopConstraint =
-        emailTfFindIdBtnStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 546)
+        emailTfFindIdBtnStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 556)
         
         keyboardBackgroundViewTopConstraint = keyboardBackgroundView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height)
         
@@ -180,7 +177,7 @@ extension FindIdView {
             keyboardBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
             
             // MARK: emailTfFindIdBtnStackView Constraints
-            emailTfFindIdBtnStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.17),
+            emailTfFindIdBtnStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.169),
             emailTfFindIdBtnStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             emailTfFindIdBtnStackViewTopConstraint,
             emailTfFindIdBtnStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 59),
@@ -188,8 +185,8 @@ extension FindIdView {
             // MARK: signUpFindIdPwStackView Constraints
             selectPageButtonStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             selectPageButtonStackView.topAnchor.constraint(equalTo: emailTfFindIdBtnStackView.bottomAnchor, constant: 28),
-            selectPageButtonStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 12),
-            selectPageButtonStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 69),
+            selectPageButtonStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -12),
+            selectPageButtonStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 68),
        
             // MARK: lineView1 Constraints
             lineView1.widthAnchor.constraint(equalToConstant: 1),
@@ -221,7 +218,7 @@ extension FindIdView {
         guard let emailTfFindIdBtnStackViewTopConstraint = emailTfFindIdBtnStackViewTopConstraint else {
             return
         }
-        emailTfFindIdBtnStackViewTopConstraint.constant = 546
+        emailTfFindIdBtnStackViewTopConstraint.constant = 556
         
         keyboardBackgroundViewTopConstraint.constant = frame.height
         UIView.animate(withDuration: 0.2) {

@@ -18,20 +18,20 @@ final class LoginView: UIView {
         return imgView
     }()
     
-    private let idEnterTextField = LoginTextFieldView(
+    private let idEnterTextField = LoginTextField(
         placeholder: "아이디를 입력하세요",
-        keyboardType: .emailAddress,
+        keyboardType: .default,
         isSecureTextEntry: false
     )
     
-    private let pwEnterTextField = LoginTextFieldView(
+    private let pwEnterTextField = LoginTextField(
         placeholder: "비밀번호를 입력하세요",
         keyboardType: .default,
         isSecureTextEntry: true
     )
     
     // 로그인 버튼
-    lazy var loginBtn: UIButton = {
+    var loginBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .white
         button.layer.cornerRadius = 8
@@ -57,55 +57,52 @@ final class LoginView: UIView {
     
     // MARK: 아이디 찾기 + 회원가입 + 비밀번호찾기 버튼
     // 아이디 찾기 버튼
-    lazy var findIdBtn: UIButton = {
+    var findIdBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
         button.setTitle("아이디 찾기", for: .normal)
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Pretendard-Regular", size: 16)
-        button.sizeToFit()
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.numberOfLines = 1
         return button
     }()
     
     // 회원가입 버튼
-    lazy var signUpBtn: UIButton = {
+    var signUpBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
         button.setTitle("회원가입", for: .normal)
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Pretendard-Regular", size: 16)
-        button.sizeToFit()
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.numberOfLines = 1
         return button
     }()
     
     // 비밀번호 찾기 버튼
-    lazy var findPwBtn: UIButton = {
+    var findPwBtn: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
         button.setTitle("비밀번호 찾기", for: .normal)
         button.titleLabel?.textAlignment = .center
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.init(name: "Pretendard-Regular", size: 16)
-        button.sizeToFit()
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.numberOfLines = 1
         return button
     }()
     
     // 회원가입 닉네임 로그인 사이 선
-    private lazy var lineView1: UIView = {
+    private var lineView1: UIView = {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 1, green: 0.9999999404, blue: 1, alpha: 1)
         return view
     }()
     
-    private lazy var lineView2: UIView = {
+    private var lineView2: UIView = {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 1, green: 0.9999999404, blue: 1, alpha: 1)
         return view
@@ -116,7 +113,7 @@ final class LoginView: UIView {
         let stView = UIStackView(arrangedSubviews: [findIdBtn, lineView1, signUpBtn, lineView2, findPwBtn])
         stView.spacing = 10
         stView.axis = .horizontal
-        stView.distribution = .fillProportionally
+        stView.distribution = .equalCentering
         stView.alignment = .center
         return stView
     }()
@@ -191,16 +188,17 @@ extension LoginView {
             keyboardBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
             // MARK: ID, PW TextField, LoginButton StackView Constraints
-            idPwLoginBtnStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
             idPwLoginBtnStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             idPwLoginBtnStackViewTopConstraint,
             idPwLoginBtnStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 59),
 
             // MARK: SignUp button, FindID button, FindPw button StackView Constraints
+            selectPageButtonStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.028),
             selectPageButtonStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             selectPageButtonStackView.topAnchor.constraint(equalTo: idPwLoginBtnStackView.bottomAnchor, constant: 28),
-            selectPageButtonStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: 12),
-            selectPageButtonStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 69),
+            selectPageButtonStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -12),
+            selectPageButtonStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 66),
+             
 
             lineView1.widthAnchor.constraint(equalToConstant: 1),
             lineView1.heightAnchor.constraint(equalTo: signUpBtn.heightAnchor, multiplier: 0.5),
