@@ -13,8 +13,7 @@ final class SignUpTermTableViewCell: UITableViewCell {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "RadioBtnUnChecked"), for: .normal)
         button.setImage(UIImage(named: "RadioBtnChecked"), for: .selected)
-        button.contentMode = .center
-        button.isEnabled = true
+        button.contentMode = .scaleAspectFit
         return button
     }()
     
@@ -31,7 +30,7 @@ final class SignUpTermTableViewCell: UITableViewCell {
         let button = UIButton(type: .system)
         let symbolImage = UIImage(systemName: "chevron.right")
         button.setImage(symbolImage, for: .normal)
-        button.contentMode = .center
+        button.contentMode = .scaleAspectFit
         button.tintColor = #colorLiteral(red: 0.06666665524, green: 0.06666665524, blue: 0.06666665524, alpha: 1)
         return button
     }()
@@ -75,19 +74,44 @@ extension SignUpTermTableViewCell {
     private func configureLayout() {
         let contentView = self.contentView
         NSLayoutConstraint.activate([
+            // MARK: termAgreeButton Constraints
             termAgreeButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             termAgreeButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            termAgreeButton.topAnchor.constraint(equalTo: contentView.topAnchor),
             termAgreeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             
+            // MARK: termLabel Constraints
             termLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            termLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 9),
-            termLabel.leadingAnchor.constraint(equalTo: termAgreeButton.trailingAnchor, constant: 2),
+            termLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            termLabel.leadingAnchor.constraint(equalTo: termAgreeButton.trailingAnchor, constant: 9),
             
-//            termDescriptionButton.heightAnchor.constraint(equalTo: termDescriptionButton.widthAnchor),
-            termDescriptionButton.widthAnchor.constraint(equalTo: termAgreeButton.heightAnchor, multiplier: 0.35),           termDescriptionButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            termDescriptionButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-            termDescriptionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -13)
+            // MARK: termDescriptionLabel Constraints
+            termDescriptionButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            termDescriptionButton.widthAnchor.constraint(equalTo: termDescriptionButton.heightAnchor),
+            termDescriptionButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13),
+            termDescriptionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+////            termDescriptionButton.heightAnchor.constraint(equalTo: termDescriptionButton.widthAnchor),
+//            termDescriptionButton.widthAnchor.constraint(equalTo: termAgreeButton.heightAnchor, multiplier: 0.35),           termDescriptionButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+//            termDescriptionButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+//            termDescriptionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -13)
 
             ])
     }

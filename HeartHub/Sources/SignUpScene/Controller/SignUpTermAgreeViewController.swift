@@ -43,8 +43,11 @@ final class SignUpTermAgreeViewController: UIViewController {
     }()
 
     private let termsArray = [
+        "약관 전체 동의",
+        "(필수) 만 14세 이상입니다.",
         "(필수) 개인정보 수집 및 이용동의",
         "(필수) 이용 약관 동의",
+        "(선택) 마케팅 활용 동의"
     ]
 
     override func loadView() {
@@ -72,9 +75,15 @@ extension SignUpTermAgreeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 17
+            let footerHeight = signUpTermTableView.rowHeight
+            return footerHeight
         }
         return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let rowHeight = tableView.frame.height / CGFloat(termsArray.count + 1)
+        return rowHeight
     }
 }
 
@@ -82,13 +91,15 @@ extension SignUpTermAgreeViewController: UITableViewDelegate {
 extension SignUpTermAgreeViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
         } else if section == 1 {
+            return 1
+        } else if section == 2 {
             return 2
         } else {
             return 1
@@ -105,15 +116,17 @@ extension SignUpTermAgreeViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         
         if indexPath.section == 0 {
-            cell.termLabel.text = "약관 전체 동의"
+            cell.termLabel.text = termsArray[indexPath.row]
             cell.termDescriptionButton.isHidden = true
         } else if indexPath.section == 1 {
-            cell.termLabel.text = termsArray[indexPath.row]
+            cell.termLabel.text = termsArray[indexPath.row + 1]
+            cell.termDescriptionButton.isHidden = true
+        } else if indexPath.section == 2 {
+            cell.termLabel.text = termsArray[indexPath.row + 2]
         } else {
-            cell.termLabel.text = "(선택) 마케팅 활용 동의"
+            cell.termLabel.text = termsArray[indexPath.row + 4]
             cell.termDescriptionButton.isHidden = true
         }
-        
         return cell
     }
 }
@@ -126,8 +139,8 @@ extension SignUpTermAgreeViewController {
         signUpTermTableView.register(
             SignUpTermTableViewCell.self,
             forCellReuseIdentifier: SignUpTermTableViewCell.reuseIdentifier)
+//        signUpTermTableView.rowHeight = 40
         signUpTermTableView.isScrollEnabled = false
-        signUpTermTableView.contentSize.height = 24
         signUpTermTableView.separatorStyle = .none
     }
 }
@@ -148,9 +161,9 @@ extension SignUpTermAgreeViewController {
         NSLayoutConstraint.activate([
             // MARK: signUpTermTableView Constraints
             signUpTermTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signUpTermTableView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 162),
-            signUpTermTableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -300),
-            signUpTermTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 25),
+            signUpTermTableView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 166),
+            signUpTermTableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -357),
+            signUpTermTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 33),
 
             // MARK: lineView Constraints
             lineView.heightAnchor.constraint(equalToConstant: 1),
@@ -161,7 +174,7 @@ extension SignUpTermAgreeViewController {
             termDescriptionsLabel.topAnchor.constraint(equalTo: signUpTermTableView.bottomAnchor),
             termDescriptionsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             termDescriptionsLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 70),
-            termDescriptionsLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -25)
+            termDescriptionsLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -33)
         ])
     }
 }
@@ -171,8 +184,8 @@ extension SignUpTermAgreeViewController {
 extension SignUpTermAgreeViewController {
 
     func addTarget() {
-//        signUpTermAgreeView.signUpTermAgreeNextPageButton.addTarget(self, action: #selector(didTapRightArrowBtn), for: .touchUpInside)
-        signUpTermAgreeView.signUpTermAgreePreviousPageButton.addTarget(self, action: #selector(didTapLeftArrowBtn), for: .touchUpInside)
+        signUpTermAgreeView.createAccountButton.addTarget(self, action: #selector(didTapcreateAccountButton), for: .touchUpInside)
+        signUpTermAgreeView.signUpTermAgreePreviousPageButton.addTarget(self, action: #selector(didTapsignUpTermAgreePreviousPageButton), for: .touchUpInside)
 //        signUpTermAgreeView.allTermAgreeBtn.addTarget(self, action: #selector(didTapAllAgreeBtn), for: .touchUpInside)
 //        signUpTermAgreeView.privacyAgreeBtn.addTarget(self, action: #selector(didTapPrivacyAgreeBtn), for: .touchUpInside)
 //        signUpTermAgreeView.termOfUseAgreeBtn.addTarget(self, action: #selector(didTapTermOfUseAgreeBtn), for: .touchUpInside)
@@ -180,11 +193,13 @@ extension SignUpTermAgreeViewController {
 
     }
 
-    @objc func didTapRightArrowBtn() {
+    @objc func didTapcreateAccountButton() {
+        // MARK: 계정생성 버튼 누를 시 동작 지정
+        
         navigationController?.popToRootViewController(animated: true)
     }
 
-    @objc func didTapLeftArrowBtn() {
+    @objc func didTapsignUpTermAgreePreviousPageButton() {
         navigationController?.popViewController(animated: true)
     }
 //
