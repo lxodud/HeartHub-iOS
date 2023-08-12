@@ -34,4 +34,12 @@ struct LoginRequestFactory {
             jsonBody: body
         )
     }
+    
+    static func makeSignInRequest(of body: SignInRequestDTO) -> Requestable {
+        return JSONBodyRequest(
+            httpMethod: .post,
+            path: "api/login",
+            jsonBody: body
+        )
+    }
 }
