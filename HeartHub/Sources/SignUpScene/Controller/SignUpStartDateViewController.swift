@@ -18,19 +18,23 @@ final class SignUpStartDateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addTarget()
+        configureAddTarget()
     }
-
-    func addTarget() {
-        signUpStartDateView.rightArrowBtn.addTarget(self, action: #selector(didTapRightArrowBtn), for: .touchUpInside)
-    }
-    
-    @objc func didTapRightArrowBtn() {
-        let signUpProfileVC = SignUpProfileViewController()
-        
-        self.navigationController?.pushViewController(signUpProfileVC, animated: true)
-    }
-   
 }
 
-
+// MARK: Configure AddTarget
+extension SignUpStartDateViewController {
+    private func configureAddTarget() {
+        signUpStartDateView.signUpStartDateNextPageButton.addTarget(self, action: #selector(didTapNextPageButton), for: .touchUpInside)
+        signUpStartDateView.signUpStartDatePreviousPageButton.addTarget(self, action: #selector(didTapPreviousPageButton), for: .touchUpInside)
+    }
+    
+    @objc private func didTapNextPageButton() {
+        let signUpProfileViewController = SignUpProfileViewController()
+        self.navigationController?.pushViewController(signUpProfileViewController, animated: true)
+    }
+    
+    @objc private func didTapPreviousPageButton() {
+        navigationController?.popViewController(animated: true)
+    }
+}

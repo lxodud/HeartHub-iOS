@@ -36,7 +36,7 @@ final class FindIdViewController: UIViewController {
     @objc private func didTapFindIdButton() {
         
         let idPattern = #"^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"#
-        let isVaildPattern = (findIdView.emailTextField.text!.range(of: idPattern, options: .regularExpression) != nil)
+        let isVaildPattern = (findIdView.findIdEmailTextField.text!.range(of: idPattern, options: .regularExpression) != nil)
         if isVaildPattern {
             let findIdPopUpVC = FindIdPopUpViewController()
             findIdPopUpVC.modalPresentationStyle = .overFullScreen
