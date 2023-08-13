@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-final class SignUpLoverLinkingView: UIView {
+final class SignUpEnterNickNameEmailView: UIView {
     
     private let signUpBackgroundView = SignUpBackgroundView(
         heartImage: "HeartIcon2:3",
@@ -115,7 +115,7 @@ final class SignUpLoverLinkingView: UIView {
 }
 
 // MARK: Configure InitialSetting
-extension SignUpLoverLinkingView {
+extension SignUpEnterNickNameEmailView {
     
     private func configureInitialSetting() {
         backgroundColor = .white
@@ -135,7 +135,7 @@ extension SignUpLoverLinkingView {
 }
 
 // MARK: Configure Layout
-extension SignUpLoverLinkingView {
+extension SignUpEnterNickNameEmailView {
     func configureSubViews() {
         nickNameTextField.addSubview(nickNameCheckButton)
         emailTextField.addSubview(emailVerifyButton)
@@ -209,7 +209,7 @@ extension SignUpLoverLinkingView {
 }
 
 // MARK: 텍스트필드 델리게이트
-extension SignUpLoverLinkingView: UITextFieldDelegate {
+extension SignUpEnterNickNameEmailView: UITextFieldDelegate {
     
     @objc private func textFieldEditingChanged(_ textField: UITextField) {
         if textField.text?.count == 1 {

@@ -9,9 +9,9 @@
 import UIKit
 import DropDown
 
-final class SignUpLoverLinkingViewController: UIViewController {
+final class SignUpEnterNickNameEmailViewController: UIViewController {
     
-    private let signUpLoverLinkingView = SignUpLoverLinkingView()
+    private let signUpLoverLinkingView = SignUpEnterNickNameEmailView()
     
     override func loadView() {
         view = signUpLoverLinkingView
@@ -25,7 +25,7 @@ final class SignUpLoverLinkingViewController: UIViewController {
 }
 
 // MARK: Configure AddTarget
-extension SignUpLoverLinkingViewController {
+extension SignUpEnterNickNameEmailViewController {
     private func ConfigureAddTarget() {
         signUpLoverLinkingView.signUpLoverNextPageButton.addTarget(self, action: #selector(didTapnextPageButton), for: .touchUpInside)
         signUpLoverLinkingView.signUpLoverPreviousPageButton.addTarget(self, action: #selector(didTappreviousPageButton), for: .touchUpInside)

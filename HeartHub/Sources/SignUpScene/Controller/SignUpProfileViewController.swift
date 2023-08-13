@@ -46,7 +46,7 @@ extension SignUpProfileViewController {
     }
 
     @objc private func didTapNextPageButton() {
-        let signUpLoverLinkingVC = SignUpLoverLinkingViewController()
+        let signUpLoverLinkingVC = SignUpEnterNickNameEmailViewController()
         navigationController?.pushViewController(signUpLoverLinkingVC, animated: true)
     }
     

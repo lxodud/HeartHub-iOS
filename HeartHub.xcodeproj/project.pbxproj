@@ -58,7 +58,7 @@
 		5626B2D12A57EEB300477EBC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B2D02A57EEB300477EBC /* LoginViewController.swift */; };
 		5626B3372A584A3D00477EBC /* SignUpStartDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B3362A584A3D00477EBC /* SignUpStartDateViewController.swift */; };
 		5626B3452A597FA200477EBC /* SignUpProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B3442A597FA200477EBC /* SignUpProfileViewController.swift */; };
-		5626B34B2A59938700477EBC /* SignUpLoverLinkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B34A2A59938700477EBC /* SignUpLoverLinkingViewController.swift */; };
+		5626B34B2A59938700477EBC /* SignUpEnterNickNameEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B34A2A59938700477EBC /* SignUpEnterNickNameEmailViewController.swift */; };
 		5626B34D2A5993A700477EBC /* SignUpTermAgreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B34C2A5993A700477EBC /* SignUpTermAgreeViewController.swift */; };
 		56348A632A631283005BB635 /* FindIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A622A631283005BB635 /* FindIdView.swift */; };
 		56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A662A6318B0005BB635 /* FindIdPopUpView.swift */; };
@@ -94,7 +94,7 @@
 		569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EDA2A5C241B00B51898 /* LoginView.swift */; };
 		569E4EE42A5CE18E00B51898 /* SignUpStartDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */; };
 		569E4EE62A5D06C400B51898 /* SignUpProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */; };
-		569E4EEB2A5D40E800B51898 /* SignUpLoverLinkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EEA2A5D40E800B51898 /* SignUpLoverLinkingView.swift */; };
+		569E4EEB2A5D40E800B51898 /* SignUpEnterNickNameEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EEA2A5D40E800B51898 /* SignUpEnterNickNameEmailView.swift */; };
 		569E4EED2A5D499900B51898 /* SignUpTermAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */; };
 		569E4EFE2A5FC58200B51898 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */; };
 		569E4EFF2A5FC58200B51898 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */; };
@@ -166,7 +166,7 @@
 		5626B2D02A57EEB300477EBC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5626B3362A584A3D00477EBC /* SignUpStartDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpStartDateViewController.swift; sourceTree = "<group>"; };
 		5626B3442A597FA200477EBC /* SignUpProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpProfileViewController.swift; sourceTree = "<group>"; };
-		5626B34A2A59938700477EBC /* SignUpLoverLinkingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpLoverLinkingViewController.swift; sourceTree = "<group>"; };
+		5626B34A2A59938700477EBC /* SignUpEnterNickNameEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEnterNickNameEmailViewController.swift; sourceTree = "<group>"; };
 		5626B34C2A5993A700477EBC /* SignUpTermAgreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermAgreeViewController.swift; sourceTree = "<group>"; };
 		56348A622A631283005BB635 /* FindIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdView.swift; sourceTree = "<group>"; };
 		56348A662A6318B0005BB635 /* FindIdPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdPopUpView.swift; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 		569E4EDA2A5C241B00B51898 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpStartDateView.swift; sourceTree = "<group>"; };
 		569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpProfileView.swift; sourceTree = "<group>"; };
-		569E4EEA2A5D40E800B51898 /* SignUpLoverLinkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpLoverLinkingView.swift; sourceTree = "<group>"; };
+		569E4EEA2A5D40E800B51898 /* SignUpEnterNickNameEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEnterNickNameEmailView.swift; sourceTree = "<group>"; };
 		569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermAgreeView.swift; sourceTree = "<group>"; };
 		569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
@@ -590,7 +590,7 @@
 			children = (
 				569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */,
 				569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */,
-				569E4EEA2A5D40E800B51898 /* SignUpLoverLinkingView.swift */,
+				569E4EEA2A5D40E800B51898 /* SignUpEnterNickNameEmailView.swift */,
 				569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */,
 				569013722A80167700715D23 /* SignUpBackgroundView.swift */,
 				569013742A80D7FD00715D23 /* SignUpChangePageButton.swift */,
@@ -606,7 +606,7 @@
 			children = (
 				5626B3362A584A3D00477EBC /* SignUpStartDateViewController.swift */,
 				5626B3442A597FA200477EBC /* SignUpProfileViewController.swift */,
-				5626B34A2A59938700477EBC /* SignUpLoverLinkingViewController.swift */,
+				5626B34A2A59938700477EBC /* SignUpEnterNickNameEmailViewController.swift */,
 				5626B34C2A5993A700477EBC /* SignUpTermAgreeViewController.swift */,
 			);
 			path = Controller;
@@ -910,7 +910,7 @@
 				569013672A7E6D0700715D23 /* GameClearViewController.swift in Sources */,
 				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
 				0C4EF99F2A7BF91500539320 /* CoupleSpacePickDataSourceable.swift in Sources */,
-				569E4EEB2A5D40E800B51898 /* SignUpLoverLinkingView.swift in Sources */,
+				569E4EEB2A5D40E800B51898 /* SignUpEnterNickNameEmailView.swift in Sources */,
 				56348A632A631283005BB635 /* FindIdView.swift in Sources */,
 				5626B3372A584A3D00477EBC /* SignUpStartDateViewController.swift in Sources */,
 				569E4EE42A5CE18E00B51898 /* SignUpStartDateView.swift in Sources */,
@@ -925,7 +925,7 @@
 				5651FC6B2A7A68E200965300 /* ProfileDailyPostDataManager.swift in Sources */,
 				0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */,
 				5626B34D2A5993A700477EBC /* SignUpTermAgreeViewController.swift in Sources */,
-				5626B34B2A59938700477EBC /* SignUpLoverLinkingViewController.swift in Sources */,
+				5626B34B2A59938700477EBC /* SignUpEnterNickNameEmailViewController.swift in Sources */,
 				569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */,
 				56DEBEF62A7AAF03000BC687 /* ProfileLookPostDataManager.swift in Sources */,
 				56348A692A6319EA005BB635 /* FindIdPopUpViewController.swift in Sources */,
