@@ -29,7 +29,7 @@ extension SignUpLoverLinkingViewController {
     private func ConfigureAddTarget() {
         signUpLoverLinkingView.signUpLoverNextPageButton.addTarget(self, action: #selector(didTapnextPageButton), for: .touchUpInside)
         signUpLoverLinkingView.signUpLoverPreviousPageButton.addTarget(self, action: #selector(didTappreviousPageButton), for: .touchUpInside)
-        signUpLoverLinkingView.dropDownBtn.addTarget(self, action: #selector(didTapdropDownBtn), for: .touchUpInside)
+        signUpLoverLinkingView.emailVerifyButton.addTarget(self, action: #selector(didTapemailVerifyButton), for: .touchUpInside)
     }
     
     @objc private func didTapnextPageButton() {
@@ -41,15 +41,7 @@ extension SignUpLoverLinkingViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc private func didTapdropDownBtn() {
-        if signUpLoverLinkingView.dropDownBtn.currentImage == UIImage(named: "DropDownArrow.png") {
-            let upArrow = UIImage(named: "DropUpArrow.png")
-            signUpLoverLinkingView.dropDownBtn.setImage(upArrow, for: .normal)
-            signUpLoverLinkingView.emailDropDown.show()
-        } else {
-            let downArrow = UIImage(named: "DropDownArrow.png")
-            signUpLoverLinkingView.dropDownBtn.setImage(downArrow, for: .normal)
-            signUpLoverLinkingView.emailDropDown.hide()
-        }
+    @objc private func didTapemailVerifyButton() {
+        
     }
 }

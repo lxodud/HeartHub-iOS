@@ -188,6 +188,7 @@ extension LoginView {
             keyboardBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
 
             // MARK: ID, PW TextField, LoginButton StackView Constraints
+            idPwLoginBtnStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2037),
             idPwLoginBtnStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             idPwLoginBtnStackViewTopConstraint,
             idPwLoginBtnStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 59),

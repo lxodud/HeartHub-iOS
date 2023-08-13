@@ -23,7 +23,7 @@ final class SignUpLoverLinkingView: UIView {
     private var nickNameDescriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "한글/영문/숫자/특수문자 구성"
-        label.font = UIFont(name: "Pretendard-Regular", size: 14)
+        label.font = UIFont(name: "Pretendard-Regular", size: 12)
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
@@ -51,57 +51,25 @@ final class SignUpLoverLinkingView: UIView {
         keyboardType: .emailAddress,
         isSecureTextEntry: false)
     
-    lazy var emailDropDown: DropDown = {
-        var dropDown = DropDown()
-        dropDown.dataSource = ["@naver.com", "@gmail.com", "@hanmail.com", "@kakao.com"]
-        dropDown.textColor = UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 0.5)
-        dropDown.textFont = UIFont(name: "Pretendard-Regular", size: 14)!
-        dropDown.backgroundColor = .white
-        dropDown.width = 117
-        dropDown.anchorView = emailTextField
-        let xOffset = emailTextField.bounds.width - (dropDown.width)!
-        dropDown.bottomOffset = CGPoint(x: xOffset, y:(dropDown.anchorView?.plainView.bounds.height)!)
-        dropDown.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        dropDown.dismissMode = .onTap
-        dropDown.separatorColor = #colorLiteral(red: 0.850980401, green: 0.850980401, blue: 0.850980401, alpha: 1)
-        
-        // dropDown 셀 중 하나가 선택되면
-        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-            if var emailAdress = emailTextField.text {
-                emailAdress = emailTextField.text! + item
-                emailTextField.text! = emailAdress
-            }
-            if dropDownBtn.currentImage == UIImage(named: "DropUpArrow.png") {
-                let downArrow = UIImage(named: "DropDownArrow.png")
-                dropDownBtn.setImage(downArrow, for: .normal)}
-            print("Selected item: \(item) at index: \(index)")
-        }
-        
-        // dropDown이 해제될 때
-        dropDown.cancelAction = { [unowned self] in
-            if dropDownBtn.currentImage == UIImage(named: "DropUpArrow.png") {
-                let downArrow = UIImage(named: "DropDownArrow.png")
-                dropDownBtn.setImage(downArrow, for: .normal)}
-        }
-        return dropDown
-    }()
-    
-    lazy var dropDownBtn: UIButton = {
-        let btn = UIButton()
-        let downArrow = UIImage(named: "DropDownArrow.png")
-        let upArrow = UIImage(named: "DropUpArrow.png")
-        
-        btn.setImage(downArrow, for: .normal)
-        btn.contentMode = .center
-        btn.tintColor = .black
-        return btn
+    var emailVerifyButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
+        button.setTitle("인증", for: .normal)
+        button.setTitleColor(UIColor(red: 0.46, green: 0.46, blue: 0.46, alpha: 1), for: .normal)
+        button.titleLabel?.font = UIFont(name: "Pretendard-Regular", size: 14)
+        button.titleLabel?.contentMode = .scaleAspectFill
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 18
+        button.contentMode = .center
+        button.tintColor = .black
+        return button
     }()
     
     // 이메일 형식 제약조건 레이블
     private lazy var emailFormatDescriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "이메일의 형식이 올바르지 않습니다."
-        label.font = UIFont(name: "Pretendard-Regular", size: 14)
+        label.font = UIFont(name: "Pretendard-Regular", size: 12)
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.isHidden = true
@@ -170,7 +138,7 @@ extension SignUpLoverLinkingView {
 extension SignUpLoverLinkingView {
     func configureSubViews() {
         nickNameTextField.addSubview(nickNameCheckButton)
-        emailTextField.addSubview(dropDownBtn)
+        emailTextField.addSubview(emailVerifyButton)
         
         [signUpBackgroundView,
          enterStackView,
@@ -184,7 +152,7 @@ extension SignUpLoverLinkingView {
         [nickNameTextField,
          emailTextField,
          nickNameCheckButton,
-         dropDownBtn,
+         emailVerifyButton,
          signUpLoverPreviousPageButton,
          signUpLoverNextPageButton
         ].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
@@ -209,9 +177,9 @@ extension SignUpLoverLinkingView {
             
             emailTextField.heightAnchor.constraint(equalTo: nickNameTextField.heightAnchor),
             
+            nickNameCheckButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.19),
             nickNameCheckButton.topAnchor.constraint(equalTo: nickNameTextField.topAnchor),
             nickNameCheckButton.bottomAnchor.constraint(equalTo: nickNameTextField.bottomAnchor),
-            nickNameCheckButton.leadingAnchor.constraint(equalTo: nickNameTextField.leadingAnchor, constant: 255.22),
             nickNameCheckButton.trailingAnchor.constraint(equalTo: nickNameTextField.trailingAnchor),
 
             // MARK: nickNameDescriptionLabel Constraints
@@ -225,10 +193,10 @@ extension SignUpLoverLinkingView {
             emailFormatDescriptionLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 46),
 
             // MARK: dropDownBtn Constraints
-            dropDownBtn.topAnchor.constraint(equalTo: emailTextField.topAnchor, constant: 6),
-            dropDownBtn.bottomAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: -5),
-            dropDownBtn.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor, constant: 293),
-            dropDownBtn.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor, constant: -12),
+            emailVerifyButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.19),
+            emailVerifyButton.topAnchor.constraint(equalTo: emailTextField.topAnchor),
+            emailVerifyButton.bottomAnchor.constraint(equalTo: emailTextField.bottomAnchor),
+            emailVerifyButton.trailingAnchor.constraint(equalTo: emailTextField.trailingAnchor),
             
             // MARK: changePageButton Constraints
             signUpLoverPreviousPageButton.heightAnchor.constraint(equalTo: signUpLoverPreviousPageButton.widthAnchor),

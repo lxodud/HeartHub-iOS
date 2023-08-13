@@ -98,8 +98,8 @@ final class SignUpProfileView: UIView {
         btn.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
         
         // 라디오버튼 구현
-        btn.setImage(UIImage(named:"RadioBtnUnChecked"), for: .normal)
-        btn.setImage(UIImage(named: "RadioBtnChecked"), for: .selected)
+        btn.setImage(UIImage(named: "AgreeRadioBtnUnChecked"), for: .normal)
+        btn.setImage(UIImage(named: "AgreeRadioBtnChecked"), for: .selected)
         btn.imageView?.contentMode = .scaleAspectFit
         btn.contentHorizontalAlignment = .leading
         btn.addSubview(maleLabel)
@@ -124,8 +124,8 @@ final class SignUpProfileView: UIView {
         btn.layer.borderColor = #colorLiteral(red: 0.8588235378, green: 0.8588235378, blue: 0.8588235378, alpha: 1)
 
         // 라디오버튼 구현
-        btn.setImage(UIImage(named:"RadioBtnUnChecked"), for: .normal)
-        btn.setImage(UIImage(named: "RadioBtnChecked"), for: .selected)
+        btn.setImage(UIImage(named:"AgreeRadioBtnUnChecked"), for: .normal)
+        btn.setImage(UIImage(named: "AgreeRadioBtnChecked"), for: .selected)
         btn.imageView?.contentMode = .scaleAspectFit
         btn.contentHorizontalAlignment = .leading
         btn.addSubview(femaleLabel)

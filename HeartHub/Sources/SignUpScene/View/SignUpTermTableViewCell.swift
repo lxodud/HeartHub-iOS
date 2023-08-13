@@ -89,49 +89,6 @@ extension SignUpTermTableViewCell {
             termDescriptionButton.widthAnchor.constraint(equalTo: termDescriptionButton.heightAnchor),
             termDescriptionButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 13),
             termDescriptionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-////            termDescriptionButton.heightAnchor.constraint(equalTo: termDescriptionButton.widthAnchor),
-//            termDescriptionButton.widthAnchor.constraint(equalTo: termAgreeButton.heightAnchor, multiplier: 0.35),           termDescriptionButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-//            termDescriptionButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-//            termDescriptionButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -13)
-
             ])
     }
 }
-
-// MARK: termAgreeButton Constraints
-//            termAgreeButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor),
-//            termAgreeButton.widthAnchor.constraint(equalTo: heightAnchor),
-//termAgreeButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-//termAgreeButton.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-//termAgreeButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-//termAgreeButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-//
-//// MARK: termLabel Constraints
-//termLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-//termLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
-//termLabel.leadingAnchor.constraint(equalTo: termAgreeButton.trailingAnchor, constant: 2),
-//
-//// MARK: termDescriptionButton Constraints
-//termDescriptionButton.heightAnchor.constraint(equalTo: termAgreeButton.heightAnchor, multiplier: 0.35),
-//termDescriptionButton.widthAnchor.constraint(equalTo: termAgreeButton.heightAnchor, multiplier: 0.35),
-//termDescriptionButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-//termDescriptionButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -13),

@@ -72,5 +72,3 @@ extension SignUpUserInfoTextField {
         ])
     }
 }
-
-

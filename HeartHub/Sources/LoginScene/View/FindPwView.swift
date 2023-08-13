@@ -110,7 +110,7 @@ final class FindPwView: UIView {
     
     // 아이디찾기 + 선 + 회원가입 + 선 + 비밀번호 찾기 버튼 스택뷰
     private lazy var selectPageButtonStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [findIdBtn, lineView1, signUpBtn, lineView2, loginBtn])
+        let stView = UIStackView(arrangedSubviews: [loginBtn, lineView1, signUpBtn, lineView2, findIdBtn])
         stView.spacing = 10
         stView.axis = .horizontal
         stView.distribution = .equalSpacing
@@ -187,7 +187,6 @@ extension FindPwView {
             keyboardBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
             
             // MARK: ID, Email TextField, FindPw StackView Constraints
-            idEmailFindPwBtnStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2037),
             idEmailFindPwBtnStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             idEmailFindPwBtnStackViewTopConstraint,
             idEmailFindPwBtnStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 59),
