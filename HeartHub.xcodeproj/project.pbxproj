@@ -43,6 +43,7 @@
 		0C59CF622A87E1FD00D847B7 /* SetMateRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C59CF612A87E1FD00D847B7 /* SetMateRequestDTO.swift */; };
 		0C59CF642A87E38100D847B7 /* FindUsernameRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C59CF632A87E38100D847B7 /* FindUsernameRequestDTO.swift */; };
 		0C59CF662A87E64000D847B7 /* FindPasswordRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C59CF652A87E64000D847B7 /* FindPasswordRequestDTO.swift */; };
+		0C59CF6A2A87EA9E00D847B7 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C59CF692A87EA9E00D847B7 /* KeychainManager.swift */; };
 		0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F402A77D24000A31865 /* CommunityCellPagingImageView.swift */; };
 		0C684F432A77D26600A31865 /* DailyDateImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F422A77D26600A31865 /* DailyDateImageCell.swift */; };
 		0C684F452A77D53200A31865 /* CoupleImageBetweenHeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F442A77D53200A31865 /* CoupleImageBetweenHeartView.swift */; };
@@ -152,6 +153,7 @@
 		0C59CF612A87E1FD00D847B7 /* SetMateRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMateRequestDTO.swift; sourceTree = "<group>"; };
 		0C59CF632A87E38100D847B7 /* FindUsernameRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUsernameRequestDTO.swift; sourceTree = "<group>"; };
 		0C59CF652A87E64000D847B7 /* FindPasswordRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordRequestDTO.swift; sourceTree = "<group>"; };
+		0C59CF692A87EA9E00D847B7 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		0C684F402A77D24000A31865 /* CommunityCellPagingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityCellPagingImageView.swift; sourceTree = "<group>"; };
 		0C684F422A77D26600A31865 /* DailyDateImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyDateImageCell.swift; sourceTree = "<group>"; };
 		0C684F442A77D53200A31865 /* CoupleImageBetweenHeartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleImageBetweenHeartView.swift; sourceTree = "<group>"; };
@@ -485,6 +487,31 @@
 			path = DTO;
 			sourceTree = "<group>";
 		};
+		0C59CF672A87EA3E00D847B7 /* Infra */ = {
+			isa = PBXGroup;
+			children = (
+				0C59CF682A87EA6B00D847B7 /* PersistentStorages */,
+				0C59CF4B2A84D75A00D847B7 /* Network */,
+			);
+			path = Infra;
+			sourceTree = "<group>";
+		};
+		0C59CF682A87EA6B00D847B7 /* PersistentStorages */ = {
+			isa = PBXGroup;
+			children = (
+				0C59CF6B2A891B7100D847B7 /* Keychain */,
+			);
+			path = PersistentStorages;
+			sourceTree = "<group>";
+		};
+		0C59CF6B2A891B7100D847B7 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				0C59CF692A87EA9E00D847B7 /* KeychainManager.swift */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
 		0C684F3A2A77C9E000A31865 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,7 +549,7 @@
 		0C6F45562A77AC610044EAC8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				0C59CF4B2A84D75A00D847B7 /* Network */,
+				0C59CF672A87EA3E00D847B7 /* Infra */,
 				0C6F45582A77AC870044EAC8 /* Application */,
 				56348A8D2A6DB4CE005BB635 /* SignUpScene */,
 				561462142A6EE3DF00C0AC1F /* LoginScene */,
@@ -929,6 +956,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C59CF6A2A87EA9E00D847B7 /* KeychainManager.swift in Sources */,
 				5626B2D12A57EEB300477EBC /* LoginViewController.swift in Sources */,
 				56DEBEDA2A7A9B24000BC687 /* GameMissionTableViewCell.swift in Sources */,
 				56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */,
