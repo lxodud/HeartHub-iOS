@@ -18,13 +18,13 @@ final class FindIdView: UIView {
         return imgView
     }()
     
-    let findIdEmailTextField = LoginTextField(
+    let enterEmailTextField = LoginTextField(
         placeholder: "이메일을 입력하세요",
         keyboardType: .emailAddress,
         isSecureTextEntry: false
     )
     
-    var findIdBtn: UIButton = {
+    var findIdButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .white
         button.layer.cornerRadius = 8
@@ -39,7 +39,7 @@ final class FindIdView: UIView {
     
     // 이메일입력 + 아이디 찾기 버튼 스택뷰
     private lazy var emailTfFindIdBtnStackView: UIStackView = {
-        let stview = UIStackView(arrangedSubviews: [findIdEmailTextField, findIdBtn])
+        let stview = UIStackView(arrangedSubviews: [enterEmailTextField, findIdButton])
         stview.spacing = 47
         stview.axis = .vertical
         stview.distribution = .fillEqually
@@ -120,6 +120,7 @@ final class FindIdView: UIView {
         configureInitialSetting()
         configureNotification()
         configureSubviews()
+        configureAddTarget()
     }
     
     required init?(coder: NSCoder) {
@@ -137,11 +138,19 @@ final class FindIdView: UIView {
     }
 }
 
+// MARK: Configure AddTarget
+extension FindIdView {
+    private func configureAddTarget() {
+        enterEmailTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+    }
+}
+
 // MARK: Configure Layout
 extension FindIdView {
     
     private func configureInitialSetting() {
-        findIdEmailTextField.delegate = self
+        enterEmailTextField.delegate = self
+        findIdButton.isEnabled = false
     }
     
     private func configureSubviews() {
@@ -227,19 +236,37 @@ extension FindIdView {
     }
 }
 
+// MARK: TextField Delegate Implement
 extension FindIdView: UITextFieldDelegate {
+    
+    // id, pw 텍스트필드 입력값 없을 시 아이디찾기 버튼 비활성화
+    @objc private func textFieldEditingChanged(_ textField: UITextField) {
+        if textField.text?.count == 1 {
+            if textField.text?.first == " " {
+                textField.text = ""
+                return
+            }
+        }
+        guard
+            let email = enterEmailTextField.text, !email.isEmpty
+        else {
+            findIdButton.isEnabled = false
+            return
+        }
+        findIdButton.isEnabled = true
+    }
     
     // 키보드 엔터키가 눌렸을때 (다음 동작을 허락할 것인지)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if findIdEmailTextField.text != "" {
-            findIdEmailTextField.resignFirstResponder()
+        if enterEmailTextField.text != "" {
+            enterEmailTextField.resignFirstResponder()
         }
             return true
         }
     
     // 텍스트필드 이외의 영역을 눌렀을때 키보드 내려가도록
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        findIdEmailTextField.resignFirstResponder()
+        enterEmailTextField.resignFirstResponder()
     }
     
             
@@ -261,7 +288,7 @@ extension FindIdView: UITextFieldDelegate {
         let maxLength: Int
         var allowedCharacterSet: CharacterSet
         
-        if textField == findIdEmailTextField {
+        if textField == enterEmailTextField {
             maxLength = 100
             allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'*+-/=?^_`{|}~.(),:;<>@")
         } else {
