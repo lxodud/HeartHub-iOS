@@ -277,24 +277,24 @@ extension SignUpProfileView {
             pwTextField.heightAnchor.constraint(equalTo: idTextField.heightAnchor),
 
             // MARK: idCheckBtn Constraints
+            idCheckBtn.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.19),
             idCheckBtn.topAnchor.constraint(equalTo: idTextField.topAnchor),
             idCheckBtn.bottomAnchor.constraint(equalTo: idTextField.bottomAnchor),
-            idCheckBtn.leadingAnchor.constraint(equalTo: idTextField.leadingAnchor, constant: 255.22),
             idCheckBtn.trailingAnchor.constraint(equalTo: idTextField.trailingAnchor),
 
             // MARK: ID,PW idDescriptionLabel Constraints
             idDescriptionLabel.topAnchor.constraint(equalTo: idTextField.bottomAnchor, constant: 3),
-            idDescriptionLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 44),
-            idDescriptionLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 211),
+            idDescriptionLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 44),
+            idDescriptionLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: 211),
 
             pwDescriptionLabel.topAnchor.constraint(equalTo: pwTextField.bottomAnchor, constant: 3),
-            pwDescriptionLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 44),
+            pwDescriptionLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 44),
             
             // MARK: sexBtnStackView Constraints
             sexBtnStackView.heightAnchor.constraint(equalTo: idTextField.heightAnchor),
             sexBtnStackView.topAnchor.constraint(equalTo: pwDescriptionLabel.bottomAnchor, constant: 15),
-            sexBtnStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 32),
-            sexBtnStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -203),
+            sexBtnStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 32),
+            sexBtnStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -203),
             
             maleLabel.centerYAnchor.constraint(equalTo: maleBtn.centerYAnchor),
             maleLabel.leadingAnchor.constraint(equalTo: maleBtn.leadingAnchor, constant: 41),
@@ -307,24 +307,23 @@ extension SignUpProfileView {
             // MARK: birthdayStackView Constraints
             birthdayStackView.heightAnchor.constraint(equalTo: idTextField.heightAnchor),
             birthdayStackView.topAnchor.constraint(equalTo: maleBtn.bottomAnchor, constant: 22),
-            birthdayStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 32),
-            birthdayStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -67),
-            birthdayStackView.heightAnchor.constraint(equalTo: idTextField.heightAnchor),
+            birthdayStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 32),
+            birthdayStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -67),
       
             birthdayMonthTextField.widthAnchor.constraint(equalTo: birthdayYearTextField.widthAnchor, multiplier: 0.81 ),
             birthdayDayTextField.widthAnchor.constraint(equalTo: birthdayMonthTextField.widthAnchor),
 
             birthdayDescriptionLabel.topAnchor.constraint(equalTo: birthdayStackView.bottomAnchor, constant: 2),
-            birthdayDescriptionLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 44),
-            birthdayDescriptionLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -236),
+            birthdayDescriptionLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 44),
+            birthdayDescriptionLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -236),
             
             // MARK: changePageButton Constraints
             signUpProfilePreviousPageButton.heightAnchor.constraint(equalTo: signUpProfilePreviousPageButton.widthAnchor),
             signUpProfileNextPageButton.heightAnchor.constraint(equalTo: signUpProfileNextPageButton.widthAnchor),
-//            changePageButtonStackView.topAnchor.constraint(equalTo: birthdayDescriptionLabel.bottomAnchor, constant: 118),
-            changePageButtonStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -33),
-            changePageButtonStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 40),
-            changePageButtonStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -40)
+            
+            changePageButtonStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -33),
+            changePageButtonStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 40),
+            changePageButtonStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -40)
         ])
     }
 }

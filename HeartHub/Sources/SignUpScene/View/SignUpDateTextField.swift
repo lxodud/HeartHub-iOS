@@ -44,7 +44,8 @@ extension SignUpDateTextField {
         textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         keyboardType = .numberPad
         textAlignment = .center
-        
+        font = UIFont(name: "Pretendard-Regular", size: 14)
+
         clipsToBounds = true
         layer.cornerRadius = 18
         layer.borderColor = #colorLiteral(red: 0.86, green: 0.86, blue: 0.86, alpha: 1)
