@@ -9,7 +9,11 @@ import Foundation
 
 final class KeychainManager {
     private let queue = DispatchQueue.global()
-    
+}
+
+
+// MARK: Public Interface
+extension KeychainManager {
     func fetchItem(
         with query: [String: Any],
         completion: @escaping (OSStatus, CFTypeRef?) -> Void
