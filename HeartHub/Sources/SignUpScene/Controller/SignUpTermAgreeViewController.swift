@@ -49,6 +49,8 @@ final class SignUpTermAgreeViewController: UIViewController {
         "(필수) 이용 약관 동의",
         "(선택) 마케팅 활용 동의"
     ]
+    
+    private var termAgreeButtonStates: [Int: Bool] = [:]
 
     override func loadView() {
         view = signUpTermAgreeView
@@ -60,6 +62,7 @@ final class SignUpTermAgreeViewController: UIViewController {
         tableViewInitialSetting()
         configureSubViews()
         configureLayout()
+        signUpTermAgreeView.createAccountButton.isEnabled = false
     }
 }
 
@@ -112,9 +115,7 @@ extension SignUpTermAgreeViewController: UITableViewDataSource {
             for: indexPath) as? SignUpTermTableViewCell else {
                 return UITableViewCell()
             }
-  
-        cell.selectionStyle = .none
-        
+        // termDescriptionButton 구성
         if indexPath.section == 0 {
             cell.termLabel.text = termsArray[indexPath.row]
             cell.termDescriptionButton.isHidden = true
@@ -127,11 +128,22 @@ extension SignUpTermAgreeViewController: UITableViewDataSource {
             cell.termLabel.text = termsArray[indexPath.row + 4]
             cell.termDescriptionButton.isHidden = true
         }
+        
+        // termAgreeButton 이벤트 처리
+        cell.termAgreeButton.tag = indexPath.section
+        cell.termDescriptionButton.tag = indexPath.row
+        cell.termAgreeButton.addTarget(self, action: #selector(termAgreeButtonTapped(sender:)), for: .touchUpInside)
+        cell.termDescriptionButton.addTarget(self, action: #selector(termDescriptionButtonTapped(sender:)), for: .touchUpInside)
+        
+//        for index in 0..<5 {
+//            termAgreeButtonStates[index] = false
+//        }
+        
         return cell
     }
 }
 
-// MARK: Configure TableView
+// MARK: TableView InitialSetting
 extension SignUpTermAgreeViewController {
     private func tableViewInitialSetting() {
         signUpTermTableView.delegate = self
@@ -139,9 +151,12 @@ extension SignUpTermAgreeViewController {
         signUpTermTableView.register(
             SignUpTermTableViewCell.self,
             forCellReuseIdentifier: SignUpTermTableViewCell.reuseIdentifier)
-//        signUpTermTableView.rowHeight = 40
         signUpTermTableView.isScrollEnabled = false
         signUpTermTableView.separatorStyle = .none
+        
+        for key in 0..<5 {
+            termAgreeButtonStates[key] = false
+        }
     }
 }
 
@@ -182,104 +197,65 @@ extension SignUpTermAgreeViewController {
 // MARK: Configure AddTarget
 extension SignUpTermAgreeViewController {
     private func configureAddTarget() {
-        signUpTermAgreeView.createAccountButton.addTarget(self, action: #selector(didTapcreateAccountButton), for: .touchUpInside)
+        signUpTermAgreeView.createAccountButton.addTarget(self, action: #selector(didTapCreateAccountButton), for: .touchUpInside)
         signUpTermAgreeView.signUpTermAgreePreviousPageButton.addTarget(self, action: #selector(didTapsignUpTermAgreePreviousPageButton), for: .touchUpInside)
-//        signUpTermAgreeView.allTermAgreeBtn.addTarget(self, action: #selector(didTapAllAgreeBtn), for: .touchUpInside)
-//        signUpTermAgreeView.privacyAgreeBtn.addTarget(self, action: #selector(didTapPrivacyAgreeBtn), for: .touchUpInside)
-//        signUpTermAgreeView.termOfUseAgreeBtn.addTarget(self, action: #selector(didTapTermOfUseAgreeBtn), for: .touchUpInside)
-//        signUpTermAgreeView.marketingAgreeBtn.addTarget(self, action: #selector(didTapMarketingAgreeBtn), for: .touchUpInside)
-
+        //        signUpTermAgreeView.allTermAgreeBtn.addTarget(self, action: #selector(didTapAllAgreeBtn), for: .touchUpInside)
+        //        signUpTermAgreeView.privacyAgreeBtn.addTarget(self, action: #selector(didTapPrivacyAgreeBtn), for: .touchUpInside)
+        //        signUpTermAgreeView.termOfUseAgreeBtn.addTarget(self, action: #selector(didTapTermOfUseAgreeBtn), for: .touchUpInside)
+        //        signUpTermAgreeView.marketingAgreeBtn.addTarget(self, action: #selector(didTapMarketingAgreeBtn), for: .touchUpInside)
+        
     }
-
-    @objc private func didTapcreateAccountButton() {
+    
+    @objc private func didTapCreateAccountButton() {
         // MARK: 계정생성 버튼 누를 시 동작 지정
         
         navigationController?.popToRootViewController(animated: true)
     }
-
+    
     @objc private func didTapsignUpTermAgreePreviousPageButton() {
         navigationController?.popViewController(animated: true)
     }
-//
-//    @objc func didTapAllAgreeBtn() {
-//        if signUpTermAgreeView.allTermAgreeBtn.currentImage == checkedImage {
-//            signUpTermAgreeView.allTermAgreeBtn.setImage(unCheckedImage, for: .normal)
-//            signUpTermAgreeView.privacyAgreeBtn.setImage(unCheckedImage, for: .normal)
-//            signUpTermAgreeView.termOfUseAgreeBtn.setImage(unCheckedImage, for: .normal)
-//            signUpTermAgreeView.marketingAgreeBtn.setImage(unCheckedImage, for: .normal)
-//        } else {
-//            signUpTermAgreeView.allTermAgreeBtn.setImage(checkedImage, for: .normal)
-//            if signUpTermAgreeView.privacyAgreeBtn.currentImage == checkedImage
-//                || signUpTermAgreeView.termOfUseAgreeBtn == checkedImage
-//                || signUpTermAgreeView.marketingAgreeBtn == checkedImage {
-//                signUpTermAgreeView.privacyAgreeBtn.setImage(checkedImage, for: .normal)
-//                signUpTermAgreeView.termOfUseAgreeBtn.setImage(checkedImage, for: .normal)
-//                signUpTermAgreeView.marketingAgreeBtn.setImage(checkedImage, for: .normal)
-//            } else if signUpTermAgreeView.privacyAgreeBtn.currentImage == unCheckedImage
-//                        || signUpTermAgreeView.termOfUseAgreeBtn == unCheckedImage
-//                        || signUpTermAgreeView.marketingAgreeBtn == unCheckedImage {
-//                signUpTermAgreeView.privacyAgreeBtn.setImage(checkedImage, for: .normal)
-//                signUpTermAgreeView.termOfUseAgreeBtn.setImage(checkedImage, for: .normal)
-//                signUpTermAgreeView.marketingAgreeBtn.setImage(checkedImage, for: .normal)
-//            } else {
-//                signUpTermAgreeView.privacyAgreeBtn.setImage(unCheckedImage, for: .normal)
-//                signUpTermAgreeView.termOfUseAgreeBtn.setImage(unCheckedImage, for: .normal)
-//                signUpTermAgreeView.marketingAgreeBtn.setImage(unCheckedImage, for: .normal)
-//            }
-//        }
-//    }
-//
-//    @objc func didTapPrivacyAgreeBtn() {
-//        if signUpTermAgreeView.privacyAgreeBtn.currentImage == checkedImage {
-//            signUpTermAgreeView.privacyAgreeBtn.setImage(unCheckedImage, for: .normal)
-//        } else {
-//            signUpTermAgreeView.privacyAgreeBtn.setImage(checkedImage, for: .normal)
-//        }
-//        checkAllTermAgree()
-//    }
-//
-//    @objc func didTapTermOfUseAgreeBtn() {
-//        if signUpTermAgreeView.termOfUseAgreeBtn.currentImage == checkedImage {
-//            signUpTermAgreeView.termOfUseAgreeBtn.setImage(unCheckedImage, for: .normal)
-//        } else {
-//            signUpTermAgreeView.termOfUseAgreeBtn.setImage(checkedImage, for: .normal)
-//        }
-//        checkAllTermAgree()
-//    }
-//
-//    @objc func didTapMarketingAgreeBtn() {
-//        if signUpTermAgreeView.marketingAgreeBtn.currentImage == checkedImage {
-//            signUpTermAgreeView.marketingAgreeBtn.setImage(unCheckedImage, for: .normal)
-//        } else {
-//            signUpTermAgreeView.marketingAgreeBtn.setImage(checkedImage, for: .normal)
-//        }
-//        checkAllTermAgree()
-//    }
-//
-//    private func checkAllTermAgree() {
-//        if signUpTermAgreeView.privacyAgreeBtn.currentImage == unCheckedImage
-//            || signUpTermAgreeView.termOfUseAgreeBtn.currentImage == unCheckedImage
-//            || signUpTermAgreeView.marketingAgreeBtn.currentImage == unCheckedImage {
-//            signUpTermAgreeView.allTermAgreeBtn.setImage(unCheckedImage, for: .normal)
-//        } else if signUpTermAgreeView.privacyAgreeBtn.currentImage == checkedImage
-//        && signUpTermAgreeView.termOfUseAgreeBtn.currentImage == checkedImage
-//        && signUpTermAgreeView.marketingAgreeBtn.currentImage == checkedImage {
-//        signUpTermAgreeView.allTermAgreeBtn.setImage(checkedImage, for: .normal)
-//    }
-//
-//    }
-//
-//    @objc func didTapPrivacyArrowBtn() {
-//
-//
-//    }
-//
-//    @objc func didTapTermOfUseArrowBtn() {
-//
-//
-//    }
-//
-//    @objc func didTapmarketingDescriptionBtn() {
-//
-//    }
+    
+    @objc func termAgreeButtonTapped(sender: UIButton) {
+        // 필수 버튼 미선택시 계정생성 버튼 비활성화
+        switch sender.tag {
+        case 0:
+            let allTermAgreed = sender.isSelected
+            for key in 1...3 {
+                termAgreeButtonStates[key] = allTermAgreed
+            }
+            for s in 1...3 {
+                for r in 0...1 {
+                    if let cell = signUpTermTableView.cellForRow(at: IndexPath(row: r, section: s)) as? SignUpTermTableViewCell {
+                        cell.termAgreeButton.isSelected = allTermAgreed
+                    }
+                }
+            }
+            if let cell = signUpTermTableView.cellForRow(at: IndexPath(row: 2, section: 1)) as? SignUpTermTableViewCell {
+                cell.termAgreeButton.isSelected = allTermAgreed
+            }
+        case 1...3:
+            termAgreeButtonStates[sender.tag] = sender.isSelected
+        default:
+            termAgreeButtonStates[sender.tag] = false
+        }
+        
+        let essentialButtonSelected = (1...2).allSatisfy({termAgreeButtonStates[$0] == true})
+        signUpTermAgreeView.createAccountButton.isEnabled = essentialButtonSelected
+        
+        // 전체 동의 로직
+        let allTermAgreeButtonSelected = (1...3).allSatisfy({termAgreeButtonStates[$0] == true})
+        
+        if let cell = signUpTermTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SignUpTermTableViewCell {
+            cell.termAgreeButton.isSelected = allTermAgreeButtonSelected
+        }
+    }
+    
+    @objc func termDescriptionButtonTapped(sender: UIButton) {
+        if sender.tag == 0 {
+            print("개인정보 수집 및 이용동의 약관 페이지 호출")
+        } else {
+            print("이용 약관 동의 페이지 호출")
+        }
+    }
 }
