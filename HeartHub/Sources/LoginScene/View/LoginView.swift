@@ -18,20 +18,20 @@ final class LoginView: UIView {
         return imgView
     }()
     
-    private let idEnterTextField = LoginTextField(
+    private let enterIdTextField = LoginTextField(
         placeholder: "아이디를 입력하세요",
         keyboardType: .default,
         isSecureTextEntry: false
     )
     
-    private let pwEnterTextField = LoginTextField(
+    private let enterPwTextField = LoginTextField(
         placeholder: "비밀번호를 입력하세요",
         keyboardType: .default,
         isSecureTextEntry: true
     )
     
     // 로그인 버튼
-    var loginBtn: UIButton = {
+    var loginButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .white
         button.layer.cornerRadius = 8
@@ -46,12 +46,12 @@ final class LoginView: UIView {
     
     // 아이디 + 비밀번호 + 로그인 버튼 스택뷰
     private lazy var idPwLoginBtnStackView: UIStackView = {
-        let stview = UIStackView(arrangedSubviews: [idEnterTextField, pwEnterTextField, loginBtn])
+        let stview = UIStackView(arrangedSubviews: [enterIdTextField, enterPwTextField, loginButton])
         stview.spacing = 8
         stview.axis = .vertical
         stview.distribution = .fillEqually
         stview.alignment = .fill
-        stview.setCustomSpacing(20, after: pwEnterTextField)
+        stview.setCustomSpacing(20, after: enterPwTextField)
         return stview
     }()
     
@@ -128,6 +128,7 @@ final class LoginView: UIView {
         configureInitialSetting()
         configureNotification()
         configureSubviews()
+        configureAddTarget()
     }
     
     required init?(coder: NSCoder) {
@@ -145,12 +146,22 @@ final class LoginView: UIView {
     }
 }
 
+// MARK: Configure AddTarget
+extension LoginView {
+    private func configureAddTarget() {
+        [enterIdTextField, enterPwTextField].forEach {
+            $0.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        }
+    }
+}
+
 // MARK: Configure Layout
 extension LoginView {
     
     private func configureInitialSetting() {
-        idEnterTextField.delegate = self
-        pwEnterTextField.delegate = self
+        enterIdTextField.delegate = self
+        enterPwTextField.delegate = self
+        loginButton.isEnabled = false
     }
     
     private func configureSubviews() {
@@ -238,15 +249,34 @@ extension LoginView {
 
 // MARK: TextField Delegate Implement
 extension LoginView: UITextFieldDelegate {
+ 
+    // id, pw 텍스트필드 입력값 없을 시 로그인 버튼 비활성화
+    @objc private func textFieldEditingChanged(_ textField: UITextField) {
+        if textField.text?.count == 1 {
+            if textField.text?.first == " " {
+                textField.text = ""
+                return
+            }
+        }
+        guard
+            let id = enterIdTextField.text, !id.isEmpty,
+            let pw = enterPwTextField.text, !pw.isEmpty
+        else {
+            loginButton.isEnabled = false
+            return
+        }
+        loginButton.isEnabled = true
+    }
+
     
     // 키보드 엔터키가 눌렸을때 (다음 동작을 허락할 것인지)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // 두개의 텍스트필드를 모두 종료 (키보드 내려가기)
-        if idEnterTextField.text != "", pwEnterTextField.text != "" {
-            pwEnterTextField.resignFirstResponder()
+        if enterIdTextField.text != "", enterPwTextField.text != "" {
+            enterPwTextField.resignFirstResponder()
             return true
-        } else if idEnterTextField.text != "" {
-            pwEnterTextField.becomeFirstResponder()
+        } else if enterIdTextField.text != "" {
+            enterPwTextField.becomeFirstResponder()
             return true
         }
             return false
@@ -254,8 +284,8 @@ extension LoginView: UITextFieldDelegate {
     
     // 텍스트필드 이외의 영역을 눌렀을때 키보드 내려가도록
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        idEnterTextField.resignFirstResponder()
-        pwEnterTextField.resignFirstResponder()
+        enterIdTextField.resignFirstResponder()
+        enterPwTextField.resignFirstResponder()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -276,10 +306,10 @@ extension LoginView: UITextFieldDelegate {
         var allowedCharacterSet: CharacterSet
         
         switch textField {
-        case idEnterTextField:
+        case enterIdTextField:
             maxLength = 18
             allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
-        case pwEnterTextField:
+        case enterPwTextField:
             maxLength = 15
             allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_?+=~")
 
@@ -296,5 +326,4 @@ extension LoginView: UITextFieldDelegate {
             return false
         }
     }
-    
 }

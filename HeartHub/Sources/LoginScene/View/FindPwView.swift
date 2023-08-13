@@ -18,20 +18,20 @@ final class FindPwView: UIView {
         return imgView
     }()
     
-    private let findPwIdTextField = LoginTextField(
+    let enterIdTextField = LoginTextField(
         placeholder: "아이디를 입력하세요",
         keyboardType: .default,
         isSecureTextEntry: false
     )
     
-    let findPwEmailTextField = LoginTextField(
+     let enterEmailTextField = LoginTextField(
         placeholder: "이메일을 입력하세요",
         keyboardType: .emailAddress,
         isSecureTextEntry: false
     )
     
     // 비밀번호 찾기 버튼
-    var findPwBtn: UIButton = {
+    var findPwButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .white
         button.layer.cornerRadius = 8
@@ -46,12 +46,12 @@ final class FindPwView: UIView {
     
     // 아이디 + 비밀번호 + 로그인 버튼 스택뷰
     private lazy var idEmailFindPwBtnStackView: UIStackView = {
-        let stview = UIStackView(arrangedSubviews: [findPwIdTextField, findPwEmailTextField, findPwBtn])
+        let stview = UIStackView(arrangedSubviews: [enterIdTextField, enterEmailTextField, findPwButton])
         stview.spacing = 8
         stview.axis = .vertical
         stview.distribution = .fillEqually
         stview.alignment = .fill
-        stview.setCustomSpacing(20, after: findPwEmailTextField)
+        stview.setCustomSpacing(20, after: enterEmailTextField)
         return stview
     }()
     
@@ -129,6 +129,7 @@ final class FindPwView: UIView {
         configureInitialSetting()
         configureNotification()
         configureSubviews()
+        configureAddTarget()
     }
     
     required init?(coder: NSCoder) {
@@ -146,12 +147,22 @@ final class FindPwView: UIView {
     }
 }
 
+// MARK: Configure AddTarget
+extension FindPwView {
+    private func configureAddTarget() {
+        [enterIdTextField, enterEmailTextField].forEach {
+            $0.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        }
+    }
+}
+
 // MARK: Configure Layout
 extension FindPwView {
     
     private func configureInitialSetting() {
-        findPwIdTextField.delegate = self
-        findPwEmailTextField.delegate = self
+        enterIdTextField.delegate = self
+        enterEmailTextField.delegate = self
+        findPwButton.isEnabled = false
     }
     
     private func configureSubviews() {
@@ -237,16 +248,35 @@ extension FindPwView {
     }
 }
 
+// MARK: TextField Delegate Implement
 extension FindPwView: UITextFieldDelegate {
+    
+    // id, pw 텍스트필드 입력값 없을 시 비밀번호찾기 버튼 비활성화
+    @objc private func textFieldEditingChanged(_ textField: UITextField) {
+        if textField.text?.count == 1 {
+            if textField.text?.first == " " {
+                textField.text = ""
+                return
+            }
+        }
+        guard
+            let id = enterIdTextField.text, !id.isEmpty,
+            let email = enterEmailTextField.text, !email.isEmpty
+        else {
+            findPwButton.isEnabled = false
+            return
+        }
+        findPwButton.isEnabled = true
+    }
     
     // 키보드 엔터키가 눌렸을때 (다음 동작을 허락할 것인지)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // 두개의 텍스트필드를 모두 종료 (키보드 내려가기)
-        if findPwIdTextField.text != "", findPwEmailTextField.text != "" {
-            findPwEmailTextField.resignFirstResponder()
+        if enterIdTextField.text != "", enterEmailTextField.text != "" {
+            enterEmailTextField.resignFirstResponder()
             return true
-        } else if findPwIdTextField.text != "" {
-            findPwEmailTextField.becomeFirstResponder()
+        } else if enterIdTextField.text != "" {
+            enterEmailTextField.becomeFirstResponder()
             return true
         }
             return false
@@ -254,8 +284,8 @@ extension FindPwView: UITextFieldDelegate {
     
     // 텍스트필드 이외의 영역을 눌렀을때 키보드 내려가도록
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        findPwIdTextField.resignFirstResponder()
-        findPwEmailTextField.resignFirstResponder()
+        enterIdTextField.resignFirstResponder()
+        enterEmailTextField.resignFirstResponder()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -276,10 +306,10 @@ extension FindPwView: UITextFieldDelegate {
         var allowedCharacterSet: CharacterSet
         
         switch textField {
-        case findPwIdTextField:
+        case enterIdTextField:
             maxLength = 18
             allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
-        case findPwEmailTextField:
+        case enterEmailTextField:
             maxLength = 100
             allowedCharacterSet = CharacterSet(charactersIn:
                                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'*+-/=?^_`{|}~.(),:;<>@")

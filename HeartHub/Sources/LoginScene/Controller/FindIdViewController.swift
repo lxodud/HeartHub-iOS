@@ -22,7 +22,7 @@ final class FindIdViewController: UIViewController {
     }
     
     func setupAddTarget() {
-        findIdView.findIdBtn.addTarget(self, action: #selector(didTapFindIdButton), for: .touchUpInside)
+        findIdView.findIdButton.addTarget(self, action: #selector(didTapFindIdButton), for: .touchUpInside)
         findIdView.signUpBtn.addTarget(self, action: #selector(didTapSignUpButton), for: .touchUpInside)
         findIdView.findPwBtn.addTarget(self, action: #selector(didTapFindPwButton), for: .touchUpInside)
         findIdView.loginBtn.addTarget(self, action: #selector(didTaploginBtn), for: .touchUpInside)
@@ -36,7 +36,7 @@ final class FindIdViewController: UIViewController {
     @objc private func didTapFindIdButton() {
         
         let idPattern = #"^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"#
-        let isVaildPattern = (findIdView.findIdEmailTextField.text!.range(of: idPattern, options: .regularExpression) != nil)
+        let isVaildPattern = (findIdView.enterEmailTextField.text!.range(of: idPattern, options: .regularExpression) != nil)
         if isVaildPattern {
             let findIdPopUpVC = FindIdPopUpViewController()
             findIdPopUpVC.modalPresentationStyle = .overFullScreen

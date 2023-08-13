@@ -24,7 +24,7 @@ final class FindPwViewController: UIViewController {
     func setupAddTarget() {
         findPwView.findIdBtn.addTarget(self, action: #selector(didTapFindIdButton), for: .touchUpInside)
         findPwView.signUpBtn.addTarget(self, action: #selector(didTapSignUpButton), for: .touchUpInside)
-        findPwView.findPwBtn.addTarget(self, action: #selector(didTapFindPwButton), for: .touchUpInside)
+        findPwView.findPwButton.addTarget(self, action: #selector(didTapFindPwButton), for: .touchUpInside)
         findPwView.loginBtn.addTarget(self, action: #selector(didTaploginBtn), for: .touchUpInside)
 
     }
@@ -46,7 +46,7 @@ final class FindPwViewController: UIViewController {
     @objc private func didTapFindPwButton() {
 
         let idPattern = #"^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"#
-        let isVaildPattern = (findPwView.findPwEmailTextField.text!.range(of: idPattern, options: .regularExpression) != nil)
+        let isVaildPattern = (findPwView.enterEmailTextField.text!.range(of: idPattern, options: .regularExpression) != nil)
         if isVaildPattern {
             let findPwPopUpVC = FindPwPopUpViewController()
             findPwPopUpVC.modalPresentationStyle = .overFullScreen
