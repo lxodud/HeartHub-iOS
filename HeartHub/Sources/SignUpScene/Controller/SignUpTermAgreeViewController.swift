@@ -115,6 +115,8 @@ extension SignUpTermAgreeViewController: UITableViewDataSource {
             for: indexPath) as? SignUpTermTableViewCell else {
                 return UITableViewCell()
             }
+        cell.selectionStyle = .none
+        
         // termDescriptionButton 구성
         if indexPath.section == 0 {
             cell.termLabel.text = termsArray[indexPath.row]
@@ -134,10 +136,6 @@ extension SignUpTermAgreeViewController: UITableViewDataSource {
         cell.termDescriptionButton.tag = indexPath.row
         cell.termAgreeButton.addTarget(self, action: #selector(termAgreeButtonTapped(sender:)), for: .touchUpInside)
         cell.termDescriptionButton.addTarget(self, action: #selector(termDescriptionButtonTapped(sender:)), for: .touchUpInside)
-        
-//        for index in 0..<5 {
-//            termAgreeButtonStates[index] = false
-//        }
         
         return cell
     }
