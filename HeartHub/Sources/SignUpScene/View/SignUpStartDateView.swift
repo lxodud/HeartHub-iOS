@@ -28,18 +28,7 @@ final class SignUpStartDateView: UIView {
     
     let startDatePicker = SignUpDatePicker()
     
-    let startYearTextField: UITextField = SignUpDateTextField(placeholder: "YYYY")
-    private let startMonthTextField: UITextField = SignUpDateTextField(placeholder: "MM")
-    private let startDayTextField: UITextField = SignUpDateTextField(placeholder: "DD")
-    
-    private lazy var startDateStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [startYearTextField, startMonthTextField, startDayTextField])
-        stView.spacing = 7
-        stView.axis = .horizontal
-        stView.distribution = .fill
-        stView.alignment = .fill
-        return stView
-    }()
+    let startDateTextField: UITextField = SignUpDateTextField(placeholder: "우리의 시작 날짜")
     
     // MARK: 뷰 초기화
     override init(frame: CGRect) {
@@ -63,19 +52,15 @@ extension SignUpStartDateView {
     private func cofigureInitialSetting() {
         backgroundColor = .white
         
-        startYearTextField.inputView = startDatePicker
+        startDateTextField.inputView = startDatePicker
 
-        startYearTextField.delegate = self
-        startMonthTextField.delegate = self
-        startDayTextField.delegate = self
+        startDateTextField.delegate = self
         signUpStartDateNextPageButton.isEnabled = false
     }
     
     private func configureAddTarget() {
-        [startYearTextField, startMonthTextField, startDayTextField].forEach {
-            $0.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        startDateTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .allEditingEvents)
         }
-    }
 }
 
 // MARK: Configure Layout
@@ -83,7 +68,7 @@ extension SignUpStartDateView {
     private func configureSubviews() {
         [signUpBackgroundView,
          changePageButtonStackView,
-         startDateStackView
+         startDateTextField
         ].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -106,16 +91,10 @@ extension SignUpStartDateView {
             signUpBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
             
             // MARK: startDateStackView Constraints
-            startDateStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.04),
-            startDateStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            startDateStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 170),
-            startDateStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 50),
-            
-            // MARK: startMonthTextFieldView Constraints
-            startMonthTextField.widthAnchor.constraint(equalTo: startYearTextField.widthAnchor, multiplier: 0.81),
-
-            // MARK: startDayTextFieldView Constraints
-            startDayTextField.widthAnchor.constraint(equalTo: startMonthTextField.widthAnchor),
+            startDateTextField.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.04),
+            startDateTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
+            startDateTextField.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 170),
+            startDateTextField.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 50),
 
             // MARK: changePageButton Constraints
             signUpStartDatePreviousPageButton.heightAnchor.constraint(equalTo: signUpStartDatePreviousPageButton.widthAnchor),
@@ -140,9 +119,7 @@ extension SignUpStartDateView: UITextFieldDelegate {
             }
         }
         guard
-            let year = startYearTextField.text, !year.isEmpty,
-            let month = startMonthTextField.text, !month.isEmpty,
-            let day = startDayTextField.text, !day.isEmpty
+            let date = startDateTextField.text, date != ""
         else {
             signUpStartDateNextPageButton.isEnabled = false
             return
@@ -152,14 +129,8 @@ extension SignUpStartDateView: UITextFieldDelegate {
     
     // 엔터누르면 다음 텍스트필드로 이동
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if startYearTextField.text != "", startMonthTextField.text != "", startDayTextField.text != "" {
-            startDayTextField.resignFirstResponder()
-            return true
-        } else if startYearTextField.text != "", startMonthTextField.text != "" {
-            startDayTextField.becomeFirstResponder()
-            return true
-        } else if startYearTextField.text != "" {
-            startMonthTextField.becomeFirstResponder()
+        if startDateTextField.text != "" {
+            startDateTextField.resignFirstResponder()
             return true
         }
             return false
@@ -167,9 +138,7 @@ extension SignUpStartDateView: UITextFieldDelegate {
     
     // 텍스트필드 이외의 영역을 눌렀을때 키보드 내려가도록
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        startYearTextField.resignFirstResponder()
-        startMonthTextField.resignFirstResponder()
-        startDayTextField.resignFirstResponder()
+        startDateTextField.resignFirstResponder()
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -190,7 +159,7 @@ extension SignUpStartDateView: UITextFieldDelegate {
         var allowedCharacterSet: CharacterSet
         
         switch textField {
-        case startYearTextField:
+        case startDateTextField:
             maxLength = 4
             allowedCharacterSet = CharacterSet(charactersIn: "0123456789")
             let updatedText = (text as NSString).replacingCharacters(in: range, with: string)
@@ -200,27 +169,6 @@ extension SignUpStartDateView: UITextFieldDelegate {
                          return true
                      }
                  }
-            
-        case startMonthTextField:
-            maxLength = 2
-            allowedCharacterSet = CharacterSet(charactersIn: "0123456789")
-            let updatedText = (text as NSString).replacingCharacters(in: range, with: string)
-            if let month = Int(updatedText) {
-                     if month >= 01 && month <= 12 {
-                         return true
-                     }
-                 }
-            
-        case startDayTextField:
-            maxLength = 2
-            allowedCharacterSet = CharacterSet(charactersIn: "0123456789")
-            let updatedText = (text as NSString).replacingCharacters(in: range, with: string)
-            if let date = Int(updatedText) {
-                     if date >= 01 && date <= 31 {
-                         return true
-                     }
-                 }
-            
         default:
             return true
         }

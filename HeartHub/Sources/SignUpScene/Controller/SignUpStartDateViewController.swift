@@ -40,7 +40,7 @@ extension SignUpStartDateViewController {
     }
     
     @objc private func didChangedStartDate(_ sender: UIDatePicker) {
-        signUpStartDateView.startYearTextField.text = dateFormat(date: sender.date)
+        signUpStartDateView.startDateTextField.text = dateFormat(date: sender.date)
     }
 }
 

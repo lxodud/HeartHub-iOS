@@ -88,7 +88,7 @@ extension SignUpProfileViewController {
     }
     
     @objc private func didChangedBirthDayDate(_ sender: UIDatePicker) {
-        signUpProfileView.birthdayYearTextField.text = dateFormat(date: sender.date)
+        signUpProfileView.birthdayDateTextField.text = dateFormat(date: sender.date)
     }
 }
 

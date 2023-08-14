@@ -77,7 +77,6 @@ final class SignUpProfileView: UIView {
         return label
     }()
     
-    
     // 닉네임, 이메일, 비밀번호 입력 스택뷰
     private lazy var enterStackView: UIStackView = {
         let stView = UIStackView(arrangedSubviews: [idTextField, pwTextField])
@@ -155,18 +154,7 @@ final class SignUpProfileView: UIView {
     // MARK: 생년월일 텍스트필드
     let birthdayDatePicker = SignUpDatePicker()
     
-    let birthdayYearTextField = SignUpDateTextField(placeholder: "YYYY")
-    private let birthdayMonthTextField = SignUpDateTextField(placeholder: "MM")
-    private let birthdayDayTextField = SignUpDateTextField(placeholder: "DD")
-    
-    private lazy var birthdayStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [birthdayYearTextField, birthdayMonthTextField, birthdayDayTextField])
-        stView.spacing = 7
-        stView.axis = .horizontal
-        stView.distribution = .fill
-        stView.alignment = .fill
-        return stView
-    }()
+    let birthdayDateTextField = SignUpDateTextField(placeholder: "생년월일")
     
     // 생년월일 입력란 입니다.
     private var birthdayDescriptionLabel: UILabel = {
@@ -211,22 +199,18 @@ extension SignUpProfileView {
     private func configureInitialSetting() {
         backgroundColor = .white
         
-        birthdayYearTextField.inputView = birthdayDatePicker
+        birthdayDateTextField.inputView = birthdayDatePicker
         
         idTextField.delegate = self
         pwTextField.delegate = self
-        birthdayYearTextField.delegate = self
-        birthdayMonthTextField.delegate = self
-        birthdayDayTextField.delegate = self
-        
+        birthdayDateTextField.delegate = self
         signUpProfileNextPageButton.isEnabled = false
     }
     
     private func configureAddTarget() {
-        [idTextField, pwTextField, birthdayYearTextField, birthdayMonthTextField, birthdayDayTextField].forEach {
-            $0.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        [idTextField, pwTextField, birthdayDateTextField].forEach {
+            $0.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .allEditingEvents)
         }
-        
     }
 }
 
@@ -241,7 +225,7 @@ extension SignUpProfileView {
          idDescriptionLabel,
          pwDescriptionLabel,
          sexBtnStackView,
-         birthdayStackView,
+         birthdayDateTextField,
          birthdayDescriptionLabel,
          changePageButtonStackView].forEach {
             addSubview($0)
@@ -253,8 +237,6 @@ extension SignUpProfileView {
          idCheckBtn,
          maleLabel,
          femaleLabel,
-         birthdayMonthTextField,
-         birthdayDayTextField,
          signUpProfilePreviousPageButton,
          signUpProfileNextPageButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -310,15 +292,12 @@ extension SignUpProfileView {
             femaleLabel.trailingAnchor.constraint(equalTo: femaleBtn.trailingAnchor, constant: -14),
             
             // MARK: birthdayStackView Constraints
-            birthdayStackView.heightAnchor.constraint(equalTo: idTextField.heightAnchor),
-            birthdayStackView.topAnchor.constraint(equalTo: maleBtn.bottomAnchor, constant: 22),
-            birthdayStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 32),
-            birthdayStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -67),
-      
-            birthdayMonthTextField.widthAnchor.constraint(equalTo: birthdayYearTextField.widthAnchor, multiplier: 0.81 ),
-            birthdayDayTextField.widthAnchor.constraint(equalTo: birthdayMonthTextField.widthAnchor),
+            birthdayDateTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
+            birthdayDateTextField.heightAnchor.constraint(equalTo: idTextField.heightAnchor),
+            birthdayDateTextField.topAnchor.constraint(equalTo: maleBtn.bottomAnchor, constant: 22),
+            birthdayDateTextField.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 32),
 
-            birthdayDescriptionLabel.topAnchor.constraint(equalTo: birthdayStackView.bottomAnchor, constant: 2),
+            birthdayDescriptionLabel.topAnchor.constraint(equalTo: birthdayDateTextField.bottomAnchor, constant: 2),
             birthdayDescriptionLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 44),
             birthdayDescriptionLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -236),
             
@@ -347,9 +326,7 @@ extension SignUpProfileView: UITextFieldDelegate {
         guard
             let id = idTextField.text, !id.isEmpty,
             let pw = pwTextField.text, !pw.isEmpty,
-            let year = birthdayYearTextField.text, !year.isEmpty,
-            let month = birthdayMonthTextField.text, !month.isEmpty,
-            let day = birthdayDayTextField.text, !day.isEmpty,
+            let date = birthdayDateTextField.text, !date.isEmpty,
             (maleBtn.isSelected || femaleBtn.isSelected)
         else {
             signUpProfileNextPageButton.isEnabled = false
@@ -371,14 +348,8 @@ extension SignUpProfileView: UITextFieldDelegate {
             return true
         }
         
-        if birthdayYearTextField.text != "", birthdayMonthTextField.text != "", birthdayDayTextField.text != "" {
-            birthdayDayTextField.resignFirstResponder()
-            return true
-        } else if birthdayYearTextField.text != "", birthdayMonthTextField.text != "" {
-            birthdayDayTextField.becomeFirstResponder()
-            return true
-        } else if birthdayYearTextField.text != "" {
-            birthdayMonthTextField.becomeFirstResponder()
+        if birthdayDateTextField.text != "" {
+            birthdayDateTextField.resignFirstResponder()
             return true
         }
             return false
@@ -387,9 +358,7 @@ extension SignUpProfileView: UITextFieldDelegate {
     // 텍스트필드 이외의 영역을 눌렀을때 키보드 내려가도록
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         idTextField.resignFirstResponder()
-        birthdayYearTextField.resignFirstResponder()
-        birthdayMonthTextField.resignFirstResponder()
-        birthdayDayTextField.resignFirstResponder()
+        birthdayDateTextField.resignFirstResponder()
     }
     
     // MARK: textFieldShouldChangeCharactersIn
@@ -427,7 +396,7 @@ extension SignUpProfileView: UITextFieldDelegate {
             )
             return updatedText.count <= maxLength && allowedCharacterSet.isSuperset(of: CharacterSet(charactersIn: string))
         
-        case birthdayYearTextField:
+        case birthdayDateTextField:
             maxLength = 4
             allowedCharacterSet = CharacterSet(charactersIn: "0123456789")
             if let year = Int(updatedText) {
@@ -436,24 +405,6 @@ extension SignUpProfileView: UITextFieldDelegate {
                     return true
                 }
             }
-            
-        case birthdayMonthTextField:
-            maxLength = 2
-            allowedCharacterSet = CharacterSet(charactersIn: "0123456789")
-            if let month = Int(updatedText) {
-                     if month >= 1 && month <= 12 {
-                         return true
-                     }
-                 }
-            
-        case birthdayDayTextField:
-            maxLength = 2
-            allowedCharacterSet = CharacterSet(charactersIn: "0123456789")
-            if let date = Int(updatedText) {
-                     if date >= 1 && date <= 31 {
-                         return true
-                     }
-                 }
         default:
             return true
         }
