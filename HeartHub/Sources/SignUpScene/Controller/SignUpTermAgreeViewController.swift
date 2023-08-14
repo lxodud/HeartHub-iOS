@@ -133,10 +133,12 @@ extension SignUpTermAgreeViewController: UITableViewDataSource {
         
         // termAgreeButton 이벤트 처리
         cell.termAgreeButton.tag = indexPath.section
-        cell.termDescriptionButton.tag = indexPath.row
         cell.termAgreeButton.addTarget(self, action: #selector(termAgreeButtonTapped(sender:)), for: .touchUpInside)
-        cell.termDescriptionButton.addTarget(self, action: #selector(termDescriptionButtonTapped(sender:)), for: .touchUpInside)
         
+        // termDiscriptionButton 이벤트 처리
+        cell.termDescriptionButton.tag = indexPath.row
+        cell.termDescriptionButton.addTarget(self, action: #selector(termDescriptionButtonTapped(sender:)), for: .touchUpInside)
+
         return cell
     }
 }
@@ -197,11 +199,6 @@ extension SignUpTermAgreeViewController {
     private func configureAddTarget() {
         signUpTermAgreeView.createAccountButton.addTarget(self, action: #selector(didTapCreateAccountButton), for: .touchUpInside)
         signUpTermAgreeView.signUpTermAgreePreviousPageButton.addTarget(self, action: #selector(didTapsignUpTermAgreePreviousPageButton), for: .touchUpInside)
-        //        signUpTermAgreeView.allTermAgreeBtn.addTarget(self, action: #selector(didTapAllAgreeBtn), for: .touchUpInside)
-        //        signUpTermAgreeView.privacyAgreeBtn.addTarget(self, action: #selector(didTapPrivacyAgreeBtn), for: .touchUpInside)
-        //        signUpTermAgreeView.termOfUseAgreeBtn.addTarget(self, action: #selector(didTapTermOfUseAgreeBtn), for: .touchUpInside)
-        //        signUpTermAgreeView.marketingAgreeBtn.addTarget(self, action: #selector(didTapMarketingAgreeBtn), for: .touchUpInside)
-        
     }
     
     @objc private func didTapCreateAccountButton() {
@@ -251,9 +248,13 @@ extension SignUpTermAgreeViewController {
     
     @objc func termDescriptionButtonTapped(sender: UIButton) {
         if sender.tag == 0 {
-            print("개인정보 수집 및 이용동의 약관 페이지 호출")
+            let privacyTermViewController = SignUpPrivacyTermViewController()
+            privacyTermViewController.modalPresentationStyle = .automatic
+            present(privacyTermViewController, animated: true, completion: nil)
         } else {
-            print("이용 약관 동의 페이지 호출")
+            let termOfUseViewController = SignUpTermOfUseViewController()
+            termOfUseViewController.modalPresentationStyle = .automatic
+            present(termOfUseViewController, animated: true, completion: nil)
         }
     }
 }
