@@ -525,6 +525,7 @@
 				0C684F492A78FA1A00A31865 /* MainScene */,
 				0C4EF9A52A8223DE00539320 /* AlbumScene */,
 				0C4EF9912A7B7D1300539320 /* HeartPickScene */,
+				5651FC762A7A7BFB00965300 /* GameScene */,
 			);
 			path = CoupleSpaceScene;
 			sourceTree = "<group>";
@@ -532,7 +533,6 @@
 		0C809A1C2A56D17F009EC362 /* CommunityScene */ = {
 			isa = PBXGroup;
 			children = (
-				5651FC762A7A7BFB00965300 /* GameScene */,
 				0C43F6112A659CB000EED860 /* Util */,
 				0C4D32FB2A6830F000AD5EFF /* Protocol */,
 				0C382E242A5950AF00EA08E0 /* View */,
