@@ -101,6 +101,7 @@
 		569E4EED2A5D499900B51898 /* SignUpTermAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */; };
 		569E4EFE2A5FC58200B51898 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */; };
 		569E4EFF2A5FC58200B51898 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */; };
+		56C048772A8A02D7001BAAB5 /* DDayCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048762A8A02D7001BAAB5 /* DDayCalculator.swift */; };
 		56D4E6172A814049005215D1 /* SignUpTermTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E6162A814049005215D1 /* SignUpTermTableViewCell.swift */; };
 		56DEBEDA2A7A9B24000BC687 /* GameMissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */; };
 		56DEBEE22A7AAAB8000BC687 /* ProfileDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */; };
@@ -212,6 +213,7 @@
 		569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermAgreeView.swift; sourceTree = "<group>"; };
 		569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		56C048762A8A02D7001BAAB5 /* DDayCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayCalculator.swift; sourceTree = "<group>"; };
 		56D4E6162A814049005215D1 /* SignUpTermTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermTableViewCell.swift; sourceTree = "<group>"; };
 		56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMissionTableViewCell.swift; sourceTree = "<group>"; };
 		56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDateViewController.swift; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 		0C684F492A78FA1A00A31865 /* MainScene */ = {
 			isa = PBXGroup;
 			children = (
+				56C048762A8A02D7001BAAB5 /* DDayCalculator.swift */,
 				0C684F3B2A77D0BD00A31865 /* View */,
 				0C684F3A2A77C9E000A31865 /* Controller */,
 			);
@@ -959,6 +962,7 @@
 				5651FC672A7A686000965300 /* ProfilePostCollectionViewCell.swift in Sources */,
 				5651FC6B2A7A68E200965300 /* ProfileDailyPostDataManager.swift in Sources */,
 				0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */,
+				56C048772A8A02D7001BAAB5 /* DDayCalculator.swift in Sources */,
 				5626B34D2A5993A700477EBC /* SignUpTermAgreeViewController.swift in Sources */,
 				5626B34B2A59938700477EBC /* SignUpEnterNickNameEmailViewController.swift in Sources */,
 				569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */,
