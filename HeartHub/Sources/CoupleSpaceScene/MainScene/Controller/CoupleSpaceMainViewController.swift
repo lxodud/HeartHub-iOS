@@ -87,7 +87,8 @@ extension CoupleSpaceMainViewController {
     
     @objc
     private func tapConnectButton() {
-        
+        let connectViewController = ConnectViewController()
+        navigationController?.pushViewController(connectViewController, animated: true)
     }
 }
 
