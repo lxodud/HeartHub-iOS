@@ -26,7 +26,9 @@ final class SignUpStartDateView: UIView {
         return stView
     }()
     
-    private let startYearTextField: UITextField = SignUpDateTextField(placeholder: "YYYY")
+    let startDatePicker = SignUpDatePicker()
+    
+    let startYearTextField: UITextField = SignUpDateTextField(placeholder: "YYYY")
     private let startMonthTextField: UITextField = SignUpDateTextField(placeholder: "MM")
     private let startDayTextField: UITextField = SignUpDateTextField(placeholder: "DD")
     
@@ -60,6 +62,9 @@ extension SignUpStartDateView {
     
     private func cofigureInitialSetting() {
         backgroundColor = .white
+        
+        startYearTextField.inputView = startDatePicker
+
         startYearTextField.delegate = self
         startMonthTextField.delegate = self
         startDayTextField.delegate = self

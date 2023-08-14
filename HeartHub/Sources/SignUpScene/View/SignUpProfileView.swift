@@ -153,7 +153,9 @@ final class SignUpProfileView: UIView {
     }()
     
     // MARK: 생년월일 텍스트필드
-    private let birthdayYearTextField = SignUpDateTextField(placeholder: "YYYY")
+    let birthdayDatePicker = SignUpDatePicker()
+    
+    let birthdayYearTextField = SignUpDateTextField(placeholder: "YYYY")
     private let birthdayMonthTextField = SignUpDateTextField(placeholder: "MM")
     private let birthdayDayTextField = SignUpDateTextField(placeholder: "DD")
     
@@ -208,6 +210,9 @@ final class SignUpProfileView: UIView {
 extension SignUpProfileView {
     private func configureInitialSetting() {
         backgroundColor = .white
+        
+        birthdayYearTextField.inputView = birthdayDatePicker
+        
         idTextField.delegate = self
         pwTextField.delegate = self
         birthdayYearTextField.delegate = self

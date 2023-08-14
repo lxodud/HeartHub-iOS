@@ -33,6 +33,7 @@ extension SignUpProfileViewController {
         signUpProfileView.idCheckBtn.addTarget(self, action: #selector(didTapIdCheckBtn), for: .touchUpInside)
         signUpProfileView.maleBtn.addTarget(self, action: #selector(didTapMaleBtn), for: .touchUpInside)
         signUpProfileView.femaleBtn.addTarget(self, action: #selector(didTapMaleBtn), for: .touchUpInside)
+        signUpProfileView.birthdayDatePicker.addTarget(self, action: #selector(didChangedBirthDayDate), for: .valueChanged)
     }
     
     private func configureSexButton() {
@@ -84,5 +85,18 @@ extension SignUpProfileViewController {
          } else {
              signUpProfileView.femaleBtn.isSelected = true
          }
+    }
+    
+    @objc private func didChangedBirthDayDate(_ sender: UIDatePicker) {
+        signUpProfileView.birthdayYearTextField.text = dateFormat(date: sender.date)
+    }
+}
+
+extension SignUpProfileViewController {
+    private func dateFormat(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 MM월 dd일"
+        
+        return formatter.string(from: date)
     }
 }
