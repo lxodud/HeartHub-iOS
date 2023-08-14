@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ConnectView: UIView {
+final class ConnectView: UIView {
 
     private let connectTextField = SignUpUserInfoTextField(
         placeholder: "내 애인의 아이디를 입력하세요",

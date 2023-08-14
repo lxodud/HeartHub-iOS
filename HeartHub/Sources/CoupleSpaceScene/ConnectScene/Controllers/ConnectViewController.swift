@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ConnectViewController: UIViewController {
+final class ConnectViewController: UIViewController {
 
     private let connectView = ConnectView()
     
@@ -27,6 +27,9 @@ extension ConnectViewController {
     
     @objc private func didTapConnectAccountButton() {
         print("내 애인의 계정이 맞나요?")
+        let connectCheckPopUpViewController = ConnectCheckPopUpViewController()
+        connectCheckPopUpViewController.modalPresentationStyle = .overFullScreen
+        present(connectCheckPopUpViewController, animated: true, completion: nil)
     }
 }
 
