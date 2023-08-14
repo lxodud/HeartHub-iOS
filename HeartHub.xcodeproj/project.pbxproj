@@ -216,7 +216,7 @@
 		569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermAgreeView.swift; sourceTree = "<group>"; };
 		569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
-		56C0487B2A8A2CBA001BAAB5 /* SignUpPrivacyTermScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpPrivacyTermScrollView.swift; path = HeartHub/Sources/SignUpScene/View/SignUpPrivacyTermScrollView.swift; sourceTree = SOURCE_ROOT; };
+		56C0487B2A8A2CBA001BAAB5 /* SignUpPrivacyTermScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpPrivacyTermScrollView.swift; path = HeartHub/Sources/SignUpScene/View/ComponentView/SignUpPrivacyTermScrollView.swift; sourceTree = SOURCE_ROOT; };
 		56C0487D2A8A309C001BAAB5 /* SignUpPrivacyTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPrivacyTermViewController.swift; sourceTree = "<group>"; };
 		56C0487F2A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermOfUseScrollView.swift; sourceTree = "<group>"; };
 		56C048812A8A501B001BAAB5 /* SignUpTermOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermOfUseViewController.swift; sourceTree = "<group>"; };
@@ -630,12 +630,10 @@
 			isa = PBXGroup;
 			children = (
 				569013722A80167700715D23 /* SignUpBackgroundView.swift */,
-				569013742A80D7FD00715D23 /* SignUpChangePageButton.swift */,
-				569013782A80E26400715D23 /* SignUpDateTextField.swift */,
-				5690137C2A80EEA200715D23 /* SignUpUserInfoTextField.swift */,
-				56D4E6162A814049005215D1 /* SignUpTermTableViewCell.swift */,
-				56C0487B2A8A2CBA001BAAB5 /* SignUpPrivacyTermScrollView.swift */,
-				56C0487F2A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift */,
+				569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */,
+				569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */,
+				569E4EEA2A5D40E800B51898 /* SignUpEnterNickNameEmailView.swift */,
+				569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */,
 				56C0487A2A8A296A001BAAB5 /* ComponentView */,
 			);
 			path = View;
@@ -772,10 +770,12 @@
 		56C0487A2A8A296A001BAAB5 /* ComponentView */ = {
 			isa = PBXGroup;
 			children = (
-				569E4EE32A5CE18E00B51898 /* SignUpStartDateView.swift */,
-				569E4EE52A5D06C400B51898 /* SignUpProfileView.swift */,
-				569E4EEA2A5D40E800B51898 /* SignUpEnterNickNameEmailView.swift */,
-				569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */,
+				569013742A80D7FD00715D23 /* SignUpChangePageButton.swift */,
+				569013782A80E26400715D23 /* SignUpDateTextField.swift */,
+				5690137C2A80EEA200715D23 /* SignUpUserInfoTextField.swift */,
+				56D4E6162A814049005215D1 /* SignUpTermTableViewCell.swift */,
+				56C0487B2A8A2CBA001BAAB5 /* SignUpPrivacyTermScrollView.swift */,
+				56C0487F2A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift */,
 			);
 			path = ComponentView;
 			sourceTree = "<group>";
