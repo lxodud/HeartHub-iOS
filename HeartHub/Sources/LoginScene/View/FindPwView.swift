@@ -198,11 +198,13 @@ extension FindPwView {
             keyboardBackgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
             
             // MARK: ID, Email TextField, FindPw StackView Constraints
+            idEmailFindPwBtnStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2037),
             idEmailFindPwBtnStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             idEmailFindPwBtnStackViewTopConstraint,
             idEmailFindPwBtnStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 59),
 
             // MARK: findIdSignUpLoginBtnStackView Constraints
+            selectPageButtonStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.028),
             selectPageButtonStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             selectPageButtonStackView.topAnchor.constraint(equalTo: idEmailFindPwBtnStackView.bottomAnchor, constant: 28),
             selectPageButtonStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -12),

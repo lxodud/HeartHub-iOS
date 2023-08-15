@@ -192,6 +192,7 @@ extension FindIdView {
             emailTfFindIdBtnStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 59),
        
             // MARK: signUpFindIdPwStackView Constraints
+            selectPageButtonStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.028),
             selectPageButtonStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             selectPageButtonStackView.topAnchor.constraint(equalTo: emailTfFindIdBtnStackView.bottomAnchor, constant: 28),
             selectPageButtonStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -12),
