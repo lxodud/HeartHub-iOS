@@ -476,7 +476,7 @@
 				0C59CF562A87C79500D847B7 /* Request.swift */,
 				0C59CF582A87CCBC00D847B7 /* JSONBodyRequest.swift */,
 				0C59CF722A8A107400D847B7 /* MultipartBodyRequest.swift */,
-				0C59CF542A87C1AE00D847B7 /* UserRelatedRequestFactory.swift */,
+				0C63FF1B2A8BA3D60020D137 /* Factory */,
 				0C59CF5C2A87D85A00D847B7 /* DTO */,
 			);
 			path = Request;
@@ -485,11 +485,7 @@
 		0C59CF5C2A87D85A00D847B7 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				0C59CF5D2A87D86D00D847B7 /* JoinRequestDTO.swift */,
-				0C59CF5F2A87DB1200D847B7 /* SignInRequestDTO.swift */,
-				0C59CF612A87E1FD00D847B7 /* SetMateRequestDTO.swift */,
-				0C59CF632A87E38100D847B7 /* FindUsernameRequestDTO.swift */,
-				0C59CF652A87E64000D847B7 /* FindPasswordRequestDTO.swift */,
+				0C63FF1A2A8BA3C00020D137 /* UserRelatedRequestDTO */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -526,6 +522,26 @@
 				0C59CF6F2A89236A00D847B7 /* JWTToken.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		0C63FF1A2A8BA3C00020D137 /* UserRelatedRequestDTO */ = {
+			isa = PBXGroup;
+			children = (
+				0C59CF5D2A87D86D00D847B7 /* JoinRequestDTO.swift */,
+				0C59CF5F2A87DB1200D847B7 /* SignInRequestDTO.swift */,
+				0C59CF612A87E1FD00D847B7 /* SetMateRequestDTO.swift */,
+				0C59CF632A87E38100D847B7 /* FindUsernameRequestDTO.swift */,
+				0C59CF652A87E64000D847B7 /* FindPasswordRequestDTO.swift */,
+			);
+			path = UserRelatedRequestDTO;
+			sourceTree = "<group>";
+		};
+		0C63FF1B2A8BA3D60020D137 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				0C59CF542A87C1AE00D847B7 /* UserRelatedRequestFactory.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		0C684F3A2A77C9E000A31865 /* Controller */ = {
