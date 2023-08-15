@@ -31,4 +31,13 @@ struct CommunityRequestFactory {
             multipartData: multipartData
         )
     }
+    
+    static func makeFetchCommunityArticleRequest(
+        with theme: CommunityTheme,
+        token: String
+    ) -> Requestable {
+        return Request(
+            path: "api/user/board/\(theme.rawValue)/articles"
+        )
+    }
 }
