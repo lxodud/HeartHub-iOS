@@ -9,7 +9,6 @@ import UIKit
 
 final class ConnectCheckPopUpView: UIView {
     
-    
     // MARK: 레이블
     private let connectLoverLabel: UILabel = {
         let label = UILabel()
@@ -118,6 +117,9 @@ final class ConnectCheckPopUpView: UIView {
     
     override func layoutSubviews() {
         loverProfileImage.layer.cornerRadius = loverProfileImage.frame.height / 2
+        connectPopUpCorrectButton.layer.cornerRadius = connectPopUpCorrectButton.frame.height / 2
+        connectPopUpReFindButton.layer.cornerRadius = connectPopUpReFindButton.frame.height / 2
+
     }
 }
 

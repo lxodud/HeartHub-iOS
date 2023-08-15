@@ -110,6 +110,8 @@
 		56C0488B2A8A91DE001BAAB5 /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0488A2A8A91DE001BAAB5 /* ConnectView.swift */; };
 		56C0488D2A8A9C5B001BAAB5 /* ConnectCheckPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0488C2A8A9C5B001BAAB5 /* ConnectCheckPopUpView.swift */; };
 		56C0488F2A8AA03A001BAAB5 /* ConnectCheckPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0488E2A8AA03A001BAAB5 /* ConnectCheckPopUpViewController.swift */; };
+		56C048912A8ABB99001BAAB5 /* ConnectCompletePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048902A8ABB99001BAAB5 /* ConnectCompletePopUpView.swift */; };
+		56C048932A8ABC88001BAAB5 /* ConnectCompletePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048922A8ABC88001BAAB5 /* ConnectCompletePopUpViewController.swift */; };
 		56D4E6172A814049005215D1 /* SignUpTermTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E6162A814049005215D1 /* SignUpTermTableViewCell.swift */; };
 		56DEBEDA2A7A9B24000BC687 /* GameMissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */; };
 		56DEBEE22A7AAAB8000BC687 /* ProfileDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */; };
@@ -230,6 +232,8 @@
 		56C0488A2A8A91DE001BAAB5 /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
 		56C0488C2A8A9C5B001BAAB5 /* ConnectCheckPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCheckPopUpView.swift; sourceTree = "<group>"; };
 		56C0488E2A8AA03A001BAAB5 /* ConnectCheckPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCheckPopUpViewController.swift; sourceTree = "<group>"; };
+		56C048902A8ABB99001BAAB5 /* ConnectCompletePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCompletePopUpView.swift; sourceTree = "<group>"; };
+		56C048922A8ABC88001BAAB5 /* ConnectCompletePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCompletePopUpViewController.swift; sourceTree = "<group>"; };
 		56D4E6162A814049005215D1 /* SignUpTermTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermTableViewCell.swift; sourceTree = "<group>"; };
 		56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMissionTableViewCell.swift; sourceTree = "<group>"; };
 		56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDateViewController.swift; sourceTree = "<group>"; };
@@ -806,6 +810,7 @@
 			children = (
 				56C0488A2A8A91DE001BAAB5 /* ConnectView.swift */,
 				56C0488C2A8A9C5B001BAAB5 /* ConnectCheckPopUpView.swift */,
+				56C048902A8ABB99001BAAB5 /* ConnectCompletePopUpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -815,6 +820,7 @@
 			children = (
 				56C048882A8A91BE001BAAB5 /* ConnectViewController.swift */,
 				56C0488E2A8AA03A001BAAB5 /* ConnectCheckPopUpViewController.swift */,
+				56C048922A8ABC88001BAAB5 /* ConnectCompletePopUpViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -986,6 +992,7 @@
 				56D4E6172A814049005215D1 /* SignUpTermTableViewCell.swift in Sources */,
 				0C382E282A5994A700EA08E0 /* CommunityViewController.swift in Sources */,
 				569013752A80D7FD00715D23 /* SignUpChangePageButton.swift in Sources */,
+				56C048932A8ABC88001BAAB5 /* ConnectCompletePopUpViewController.swift in Sources */,
 				5651FC532A7A65F700965300 /* ProfileViewController.swift in Sources */,
 				56C0487E2A8A309C001BAAB5 /* SignUpPrivacyTermViewController.swift in Sources */,
 				0CA858B82A6FB75B00DFCFD5 /* CommunityCellHeaderViewDelegate.swift in Sources */,
@@ -1015,6 +1022,7 @@
 				56348A632A631283005BB635 /* FindIdView.swift in Sources */,
 				5626B3372A584A3D00477EBC /* SignUpStartDateViewController.swift in Sources */,
 				569E4EE42A5CE18E00B51898 /* SignUpStartDateView.swift in Sources */,
+				56C048912A8ABB99001BAAB5 /* ConnectCompletePopUpView.swift in Sources */,
 				56348A8F2A6E7ECC005BB635 /* FindPwView.swift in Sources */,
 				5626B3452A597FA200477EBC /* SignUpProfileViewController.swift in Sources */,
 				56348A912A6E8286005BB635 /* FindPwViewController.swift in Sources */,

@@ -29,7 +29,9 @@ extension ConnectCheckPopUpViewController {
     }
     
     @objc private func didTapConnectPopUpCorrectButton() {
-        
+        let connectCompletePopUpViewController = ConnectCompletePopUpViewController()
+        connectCompletePopUpViewController.modalPresentationStyle = .fullScreen
+        present(connectCompletePopUpViewController, animated: true)
     }
     
     @objc private func didTapConnectPopUpReFindButton() {
