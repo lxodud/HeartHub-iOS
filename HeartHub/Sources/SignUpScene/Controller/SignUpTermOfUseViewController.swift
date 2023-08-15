@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignUpTermOfUseViewController: UIViewController {
+final class SignUpTermOfUseViewController: UIViewController {
     
     private let termOfUseScrollView = SignUpTermOfUseScrollView(termOfUseString:
         """
