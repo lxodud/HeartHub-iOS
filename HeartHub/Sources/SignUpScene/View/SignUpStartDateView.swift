@@ -28,7 +28,7 @@ final class SignUpStartDateView: UIView {
     
     let startDatePicker = SignUpDatePicker()
     
-    let startDateTextField: UITextField = SignUpDateTextField(placeholder: "우리의 시작 날짜")
+    let startDateTextField: UITextField = SignUpDateTextField(placeholder: "우리의 시작")
     
     // MARK: 뷰 초기화
     override init(frame: CGRect) {

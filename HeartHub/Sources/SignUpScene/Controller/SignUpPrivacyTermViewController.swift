@@ -8,14 +8,6 @@
 import UIKit
 
 final class SignUpPrivacyTermViewController: UIViewController {
-
-    //    private var privacyDismissButton: UIButton = {
-    //        let button = UIButton(type: .custom)
-    //        button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-    //        button.contentMode = .scaleAspectFit
-    //        button.tintColor = .black
-    //        return button
-    //    }()
     
     private let privacyTermScrollView = SignUpPrivacyTermScrollView(privacyTermString:
     """
@@ -85,15 +77,12 @@ final class SignUpPrivacyTermViewController: UIViewController {
         super.viewDidLoad()
         configureSubviews()
         configureLayout()
-//        configureAddTarget()
         view.backgroundColor = .white
     }
 }
 
 extension SignUpPrivacyTermViewController {
     private func configureSubviews() {
-//        headerView.addSubview(privacyTermDismissButton)
-//        privacyTermDismissButton.translatesAutoresizingMaskIntoConstraints = false
         
         [privacyTermScrollView, headerView].forEach {
             view.addSubview($0)
@@ -110,11 +99,6 @@ extension SignUpPrivacyTermViewController {
             headerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             
-//            // MARK: privacyTermDismissButton Constraints
-//            privacyTermDismissButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
-//            privacyTermDismissButton.heightAnchor.constraint(equalTo: headerView.heightAnchor, multiplier: 0.5),
-//            privacyTermDismissButton.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 30),
-            
             // MARK: privacyTermScrollView Constraints
             privacyTermScrollView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 15),
             privacyTermScrollView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
@@ -123,14 +107,3 @@ extension SignUpPrivacyTermViewController {
         ])
     }
 }
-
-//extension SignUpPrivacyTermViewController {
-//    private func configureAddTarget() {
-//        privacyTermDismissButton.addTarget(self, action: #selector(didTapPrivacyTermDismissButton), for: .touchUpInside)
-//    }
-//    
-//    @objc private func didTapPrivacyTermDismissButton() {
-//        self.dismiss(animated: true, completion: nil)
-//        print("해산")
-//    }
-//}

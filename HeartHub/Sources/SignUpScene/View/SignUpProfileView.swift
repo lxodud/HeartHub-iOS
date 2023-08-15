@@ -156,17 +156,6 @@ final class SignUpProfileView: UIView {
     
     let birthdayDateTextField = SignUpDateTextField(placeholder: "생년월일")
     
-    // 생년월일 입력란 입니다.
-    private var birthdayDescriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "생년월일 입력란 입니다."
-        label.font = UIFont(name: "Pretendard-Regular", size: 12)
-        label.textAlignment = .left
-        label.adjustsFontSizeToFitWidth = true
-        label.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
-        return label
-    }()
-    
     let signUpProfilePreviousPageButton = SignUpChangePageButton(buttonImage: "LeftArrow")
     let signUpProfileNextPageButton = SignUpChangePageButton(buttonImage: "RightArrow")
     
@@ -226,7 +215,6 @@ extension SignUpProfileView {
          pwDescriptionLabel,
          sexBtnStackView,
          birthdayDateTextField,
-         birthdayDescriptionLabel,
          changePageButtonStackView].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -296,10 +284,6 @@ extension SignUpProfileView {
             birthdayDateTextField.heightAnchor.constraint(equalTo: idTextField.heightAnchor),
             birthdayDateTextField.topAnchor.constraint(equalTo: maleBtn.bottomAnchor, constant: 22),
             birthdayDateTextField.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 32),
-
-            birthdayDescriptionLabel.topAnchor.constraint(equalTo: birthdayDateTextField.bottomAnchor, constant: 2),
-            birthdayDescriptionLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 44),
-            birthdayDescriptionLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -236),
             
             // MARK: changePageButton Constraints
             signUpProfilePreviousPageButton.heightAnchor.constraint(equalTo: signUpProfilePreviousPageButton.widthAnchor),

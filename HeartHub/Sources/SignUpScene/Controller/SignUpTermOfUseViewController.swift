@@ -8,14 +8,6 @@
 import UIKit
 
 class SignUpTermOfUseViewController: UIViewController {
-
-//    private var termOfUseDismissButton: UIButton = {
-//        let button = UIButton(type: .custom)
-//        button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-//        button.contentMode = .scaleAspectFit
-//        button.tintColor = .black
-//        return button
-//    }()
     
     private let termOfUseScrollView = SignUpTermOfUseScrollView(termOfUseString:
         """
@@ -170,16 +162,12 @@ class SignUpTermOfUseViewController: UIViewController {
         super.viewDidLoad()
         configureSubviews()
         configureLayout()
-//        configureAddTarget()
         view.backgroundColor = .white
     }
 }
 
 extension SignUpTermOfUseViewController {
     private func configureSubviews() {
-//        headerView.addSubview(termOfUseDismissButton)
-//        termOfUseDismissButton.translatesAutoresizingMaskIntoConstraints = false
-
         
         [headerView, termOfUseScrollView].forEach {
             view.addSubview($0)
@@ -190,16 +178,13 @@ extension SignUpTermOfUseViewController {
     private func configureLayout() {
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
+            // MARK: headerView Constraints
             headerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.07),
             headerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             headerView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             
-//            // MARK: privacyTermDismissButton Constraints
-//            privacyTermDismissButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
-//            privacyTermDismissButton.heightAnchor.constraint(equalTo: headerView.heightAnchor, multiplier: 0.5),
-//            privacyTermDismissButton.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 30),
-
+            // MARK: termOfUseScrollView Constraints
             termOfUseScrollView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 15),
             termOfUseScrollView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             termOfUseScrollView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
@@ -207,13 +192,3 @@ extension SignUpTermOfUseViewController {
         ])
     }
 }
-
-//extension SignUpTermOfUseViewController {
-//    private func configureAddTarget() {
-//        termOfUseDismissButton.addTarget(self, action: #selector(didTaptermOfUseDismissButton), for: .touchUpInside)
-//    }
-//    
-//    @objc private func didTaptermOfUseDismissButton() {
-//        self.dismiss(animated: true, completion: nil)
-//    }
-//}
