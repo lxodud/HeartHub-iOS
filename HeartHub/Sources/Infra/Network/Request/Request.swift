@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class Request: Requestable {
+struct Request: Requestable {
     let baseURL: String
     let httpMethod: HTTPMethod
     let path: String
@@ -36,6 +36,8 @@ final class Request: Requestable {
         var urlRequest = URLRequest(url: url)
         urlRequest.allHTTPHeaderFields = headers
         urlRequest.httpMethod = httpMethod.rawValue
+        
+        
         
         return urlRequest
     }

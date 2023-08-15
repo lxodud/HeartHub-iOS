@@ -40,3 +40,9 @@ extension Requestable {
 protocol JSONBodyRequestable: Requestable {
     var jsonBody: Encodable { get }
 }
+
+protocol MultipartBodyRequestable: Requestable {
+    var multipartData: [(fieldName: String, fileName: String, mimeType: String, data: Data)] { get }
+    var boundary: UUID { get }
+}
+

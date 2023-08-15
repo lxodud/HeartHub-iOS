@@ -46,6 +46,7 @@
 		0C59CF6A2A87EA9E00D847B7 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C59CF692A87EA9E00D847B7 /* KeychainManager.swift */; };
 		0C59CF6E2A89223500D847B7 /* TokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C59CF6D2A89223500D847B7 /* TokenRepository.swift */; };
 		0C59CF702A89236A00D847B7 /* JWTToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C59CF6F2A89236A00D847B7 /* JWTToken.swift */; };
+		0C59CF732A8A107400D847B7 /* MultipartBodyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C59CF722A8A107400D847B7 /* MultipartBodyRequest.swift */; };
 		0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F402A77D24000A31865 /* CommunityCellPagingImageView.swift */; };
 		0C684F432A77D26600A31865 /* DailyDateImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F422A77D26600A31865 /* DailyDateImageCell.swift */; };
 		0C684F452A77D53200A31865 /* CoupleImageBetweenHeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F442A77D53200A31865 /* CoupleImageBetweenHeartView.swift */; };
@@ -158,6 +159,7 @@
 		0C59CF692A87EA9E00D847B7 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		0C59CF6D2A89223500D847B7 /* TokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRepository.swift; sourceTree = "<group>"; };
 		0C59CF6F2A89236A00D847B7 /* JWTToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTToken.swift; sourceTree = "<group>"; };
+		0C59CF722A8A107400D847B7 /* MultipartBodyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartBodyRequest.swift; sourceTree = "<group>"; };
 		0C684F402A77D24000A31865 /* CommunityCellPagingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityCellPagingImageView.swift; sourceTree = "<group>"; };
 		0C684F422A77D26600A31865 /* DailyDateImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyDateImageCell.swift; sourceTree = "<group>"; };
 		0C684F442A77D53200A31865 /* CoupleImageBetweenHeartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleImageBetweenHeartView.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				0C59CF4F2A84DB0400D847B7 /* Requestable.swift */,
 				0C59CF562A87C79500D847B7 /* Request.swift */,
 				0C59CF582A87CCBC00D847B7 /* JSONBodyRequest.swift */,
+				0C59CF722A8A107400D847B7 /* MultipartBodyRequest.swift */,
 				0C59CF542A87C1AE00D847B7 /* UserRelatedRequestFactory.swift */,
 				0C59CF5C2A87D85A00D847B7 /* DTO */,
 			);
@@ -1034,6 +1037,7 @@
 				0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */,
 				5626B34D2A5993A700477EBC /* SignUpTermAgreeViewController.swift in Sources */,
 				5626B34B2A59938700477EBC /* SignUpLoverLinkingViewController.swift in Sources */,
+				0C59CF732A8A107400D847B7 /* MultipartBodyRequest.swift in Sources */,
 				569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */,
 				56DEBEF62A7AAF03000BC687 /* ProfileLookPostDataManager.swift in Sources */,
 				56348A692A6319EA005BB635 /* FindIdPopUpViewController.swift in Sources */,
