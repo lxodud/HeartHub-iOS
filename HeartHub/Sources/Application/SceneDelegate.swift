@@ -20,10 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         // 네비게이션 컨트롤러
-//        let loginVC = LoginViewController()
-//        let navigationController = UINavigationController(rootViewController: loginVC)
-//        navigationController.isNavigationBarHidden = true
-        window?.rootViewController = HeartHubTabBarController()
+        let loginVC = LoginViewController()
+        let navigationController = UINavigationController(rootViewController: loginVC)
+        navigationController.isNavigationBarHidden = true
+        window?.rootViewController = navigationController
+
+//        window?.rootViewController = HeartHubTabBarController()
         
         window?.backgroundColor = .systemBackground
         window?.makeKeyAndVisible()

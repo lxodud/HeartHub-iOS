@@ -18,19 +18,37 @@ final class SignUpStartDateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addTarget()
+        configureAddTarget()
     }
-
-    func addTarget() {
-        signUpStartDateView.rightArrowBtn.addTarget(self, action: #selector(didTapRightArrowBtn), for: .touchUpInside)
-    }
-    
-    @objc func didTapRightArrowBtn() {
-        let signUpProfileVC = SignUpProfileViewController()
-        
-        self.navigationController?.pushViewController(signUpProfileVC, animated: true)
-    }
-   
 }
 
+// MARK: Configure AddTarget
+extension SignUpStartDateViewController {
+    private func configureAddTarget() {
+        signUpStartDateView.signUpStartDateNextPageButton.addTarget(self, action: #selector(didTapNextPageButton), for: .touchUpInside)
+        signUpStartDateView.signUpStartDatePreviousPageButton.addTarget(self, action: #selector(didTapPreviousPageButton), for: .touchUpInside)
+        signUpStartDateView.startDatePicker.addTarget(self, action: #selector(didChangedStartDate), for: .valueChanged)
+    }
+    
+    @objc private func didTapNextPageButton() {
+        let signUpProfileViewController = SignUpProfileViewController()
+        self.navigationController?.pushViewController(signUpProfileViewController, animated: true)
+    }
+    
+    @objc private func didTapPreviousPageButton() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func didChangedStartDate(_ sender: UIDatePicker) {
+        signUpStartDateView.startDateTextField.text = dateFormat(date: sender.date)
+    }
+}
 
+extension SignUpStartDateViewController {
+    private func dateFormat(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 MM월 dd일"
+        
+        return formatter.string(from: date)
+    }
+}
