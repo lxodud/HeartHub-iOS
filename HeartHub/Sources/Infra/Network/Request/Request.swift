@@ -37,8 +37,6 @@ struct Request: Requestable {
         urlRequest.allHTTPHeaderFields = headers
         urlRequest.httpMethod = httpMethod.rawValue
         
-        
-        
         return urlRequest
     }
 }

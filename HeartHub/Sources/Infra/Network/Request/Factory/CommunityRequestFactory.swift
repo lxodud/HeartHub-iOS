@@ -37,7 +37,18 @@ struct CommunityRequestFactory {
         token: String
     ) -> Requestable {
         return Request(
-            path: "api/user/board/\(theme.rawValue)/articles"
+            path: "api/user/board/\(theme.rawValue)/articles",
+            headers: ["Authorization": token]
+        )
+    }
+    
+    static func makeFetchCommunityArticleDetailRequest(
+        with articleID: Int,
+        token: String
+    ) -> Requestable {
+        return Request(
+            path: "api/user/board/articles/\(articleID)",
+            headers: ["Authorization": token]
         )
     }
 }
