@@ -50,6 +50,7 @@
 		0C63FF1D2A8BA4280020D137 /* CommunityRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63FF1C2A8BA4280020D137 /* CommunityRequestFactory.swift */; };
 		0C63FF202A8BCB560020D137 /* PostArticleRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63FF1F2A8BCB560020D137 /* PostArticleRequestDTO.swift */; };
 		0C63FF222A8BCD4A0020D137 /* CommunityTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63FF212A8BCD4A0020D137 /* CommunityTheme.swift */; };
+		0C63FF242A8CE10D0020D137 /* PostArticleGoodRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63FF232A8CE10D0020D137 /* PostArticleGoodRequestDTO.swift */; };
 		0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F402A77D24000A31865 /* CommunityCellPagingImageView.swift */; };
 		0C684F432A77D26600A31865 /* DailyDateImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F422A77D26600A31865 /* DailyDateImageCell.swift */; };
 		0C684F452A77D53200A31865 /* CoupleImageBetweenHeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F442A77D53200A31865 /* CoupleImageBetweenHeartView.swift */; };
@@ -166,6 +167,7 @@
 		0C63FF1C2A8BA4280020D137 /* CommunityRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityRequestFactory.swift; sourceTree = "<group>"; };
 		0C63FF1F2A8BCB560020D137 /* PostArticleRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostArticleRequestDTO.swift; sourceTree = "<group>"; };
 		0C63FF212A8BCD4A0020D137 /* CommunityTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTheme.swift; sourceTree = "<group>"; };
+		0C63FF232A8CE10D0020D137 /* PostArticleGoodRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostArticleGoodRequestDTO.swift; sourceTree = "<group>"; };
 		0C684F402A77D24000A31865 /* CommunityCellPagingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityCellPagingImageView.swift; sourceTree = "<group>"; };
 		0C684F422A77D26600A31865 /* DailyDateImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyDateImageCell.swift; sourceTree = "<group>"; };
 		0C684F442A77D53200A31865 /* CoupleImageBetweenHeartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleImageBetweenHeartView.swift; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 			children = (
 				0C63FF212A8BCD4A0020D137 /* CommunityTheme.swift */,
 				0C63FF1F2A8BCB560020D137 /* PostArticleRequestDTO.swift */,
+				0C63FF232A8CE10D0020D137 /* PostArticleGoodRequestDTO.swift */,
 			);
 			path = CommunityRequestDTO;
 			sourceTree = "<group>";
@@ -1065,6 +1068,7 @@
 				0C59CF602A87DB1200D847B7 /* SignInRequestDTO.swift in Sources */,
 				56DEBEF42A7AAEF9000BC687 /* ProfileDatePostDataModel.swift in Sources */,
 				56DEBEF82A7AAF12000BC687 /* ProfileDatePostDataManager.swift in Sources */,
+				0C63FF242A8CE10D0020D137 /* PostArticleGoodRequestDTO.swift in Sources */,
 				56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */,
 				5651FC672A7A686000965300 /* ProfilePostCollectionViewCell.swift in Sources */,
 				5651FC6B2A7A68E200965300 /* ProfileDailyPostDataManager.swift in Sources */,

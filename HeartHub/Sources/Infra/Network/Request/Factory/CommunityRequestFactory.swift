@@ -51,4 +51,16 @@ struct CommunityRequestFactory {
             headers: ["Authorization": token]
         )
     }
+    
+    static func makePostArticleGoodRequest(
+        username: String,
+        articleID: Int,
+        token: String
+    ) -> Requestable {
+        return JSONBodyRequest(
+            path: "api/user/board/\(articleID)/good",
+            headers: ["Authorization": token],
+            jsonBody: PostArticleGoodRequestDTO(username: username)
+        )
+    }
 }
