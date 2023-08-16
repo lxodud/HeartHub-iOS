@@ -22,15 +22,16 @@ final class LoginViewController: UIViewController {
     }
     
     func setupAddTarget() {
-        loginView.loginBtn.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
+        loginView.loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
         loginView.findIdBtn.addTarget(self, action: #selector(didTapFindIdButton), for: .touchUpInside)
         loginView.signUpBtn.addTarget(self, action: #selector(didTapSignUpButton), for: .touchUpInside)
         loginView.findPwBtn.addTarget(self, action: #selector(didTapFindPwButton), for: .touchUpInside)
     }
 
     @objc private func didTapLoginButton() {
-        // 로그인 버튼을 눌렀을 때의 동작 정의
         print("로그인 버튼이 눌렸습니다.")
+        let findPwVC = SignUpTermAgreeViewController()
+       navigationController?.pushViewController(findPwVC, animated: true)
     }
     
     @objc private func didTapFindPwButton() {
