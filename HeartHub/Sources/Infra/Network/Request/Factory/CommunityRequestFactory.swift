@@ -63,4 +63,14 @@ struct CommunityRequestFactory {
             jsonBody: PostArticleGoodRequestDTO(username: username)
         )
     }
+    
+    static func makeFetchArticleGoodCountRequest(
+        with articleID: Int,
+        token: String
+    ) -> Requestable {
+        return Request(
+            path: "api/user/board/\(articleID)/good/count",
+            headers: ["Authorization": token]
+        )
+    }
 }
