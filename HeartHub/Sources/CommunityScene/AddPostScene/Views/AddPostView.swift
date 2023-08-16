@@ -22,7 +22,11 @@ final class AddPostView: UIView {
         textField.font = UIFont(name: "Pretendard-Regular", size: 16)
         textField.attributedPlaceholder = NSAttributedString(
             string: "문구를 입력해주세요",
-            attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)]
+            attributes: [
+                NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5),
+                .font: UIFont(name: "Pretendard-Regular", size: 16)!
+//                .baselineOffset: NSNumber(value: 150)
+            ]
         )
         textField.textColor = .black
         textField.autocapitalizationType = .none
@@ -66,7 +70,7 @@ extension AddPostView {
             // MARK: addPostProfileView Constraints
             addPostProfileView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.077),
             addPostProfileView.topAnchor.constraint(equalTo: postImageView.bottomAnchor),
-            addPostProfileView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            addPostProfileView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 25),
             addPostProfileView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
 
             // MARK: addPostTextField Constraints
@@ -74,7 +78,7 @@ extension AddPostView {
             addPostTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
             addPostTextField.topAnchor.constraint(equalTo: addPostProfileView.bottomAnchor),
             addPostTextField.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-            addPostTextField.leadingAnchor.constraint(equalTo: leadingAnchor),
+            addPostTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
         ])
     }
 }
