@@ -72,22 +72,26 @@ extension CoupleSpaceMainViewController {
     
     @objc
     private func tapAlbumButton() {
-        
+        let coupleSpaceAlbumViewController = CoupleSpaceAlbumViewController()
+        navigationController?.pushViewController(coupleSpaceAlbumViewController, animated: true)
     }
     
     @objc
     private func tapPickButton() {
-        
+        let coupleSpacePickCollectionViewController = CoupleSpacePickCollectionViewController()
+        navigationController?.pushViewController(coupleSpacePickCollectionViewController, animated: true)
     }
     
     @objc
     private func tapMissionButton() {
-        
+        let gameViewController = GameViewController()
+        navigationController?.pushViewController(gameViewController, animated: true)
     }
     
     @objc
     private func tapConnectButton() {
-        
+        let coupleSpaceAlbumViewController = CoupleSpaceAlbumViewController()
+        navigationController?.pushViewController(coupleSpaceAlbumViewController, animated: true)
     }
 }
 

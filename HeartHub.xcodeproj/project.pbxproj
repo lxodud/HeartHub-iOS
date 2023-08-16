@@ -106,6 +106,7 @@
 		56C048802A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0487F2A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift */; };
 		56C048822A8A501B001BAAB5 /* SignUpTermOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048812A8A501B001BAAB5 /* SignUpTermOfUseViewController.swift */; };
 		56C048842A8A7663001BAAB5 /* SignUpDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048832A8A7663001BAAB5 /* SignUpDatePicker.swift */; };
+		56C048772A8A02D7001BAAB5 /* DDayCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048762A8A02D7001BAAB5 /* DDayCalculator.swift */; };
 		56D4E6172A814049005215D1 /* SignUpTermTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E6162A814049005215D1 /* SignUpTermTableViewCell.swift */; };
 		56DEBEDA2A7A9B24000BC687 /* GameMissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */; };
 		56DEBEE22A7AAAB8000BC687 /* ProfileDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */; };
@@ -222,6 +223,7 @@
 		56C0487F2A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermOfUseScrollView.swift; sourceTree = "<group>"; };
 		56C048812A8A501B001BAAB5 /* SignUpTermOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermOfUseViewController.swift; sourceTree = "<group>"; };
 		56C048832A8A7663001BAAB5 /* SignUpDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDatePicker.swift; sourceTree = "<group>"; };
+		56C048762A8A02D7001BAAB5 /* DDayCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayCalculator.swift; sourceTree = "<group>"; };
 		56D4E6162A814049005215D1 /* SignUpTermTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermTableViewCell.swift; sourceTree = "<group>"; };
 		56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMissionTableViewCell.swift; sourceTree = "<group>"; };
 		56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDateViewController.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 		0C684F492A78FA1A00A31865 /* MainScene */ = {
 			isa = PBXGroup;
 			children = (
+				56C048762A8A02D7001BAAB5 /* DDayCalculator.swift */,
 				0C684F3B2A77D0BD00A31865 /* View */,
 				0C684F3A2A77C9E000A31865 /* Controller */,
 			);
@@ -535,6 +538,7 @@
 				0C684F492A78FA1A00A31865 /* MainScene */,
 				0C4EF9A52A8223DE00539320 /* AlbumScene */,
 				0C4EF9912A7B7D1300539320 /* HeartPickScene */,
+				5651FC762A7A7BFB00965300 /* GameScene */,
 			);
 			path = CoupleSpaceScene;
 			sourceTree = "<group>";
@@ -549,7 +553,6 @@
 				0C382E2A2A5B016800EA08E0 /* DailyDateScene */,
 				0CB49BD72A69230200C77341 /* LookScene */,
 				0C5929FA2A6D47D700C21570 /* CommentScene */,
-				5651FC762A7A7BFB00965300 /* GameScene */,
 			);
 			path = CommunityScene;
 			sourceTree = "<group>";
@@ -986,6 +989,7 @@
 				5651FC672A7A686000965300 /* ProfilePostCollectionViewCell.swift in Sources */,
 				5651FC6B2A7A68E200965300 /* ProfileDailyPostDataManager.swift in Sources */,
 				0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */,
+				56C048772A8A02D7001BAAB5 /* DDayCalculator.swift in Sources */,
 				5626B34D2A5993A700477EBC /* SignUpTermAgreeViewController.swift in Sources */,
 				5626B34B2A59938700477EBC /* SignUpEnterNickNameEmailViewController.swift in Sources */,
 				569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */,
