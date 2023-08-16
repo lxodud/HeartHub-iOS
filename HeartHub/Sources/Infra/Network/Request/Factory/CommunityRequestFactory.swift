@@ -38,6 +38,7 @@ struct CommunityRequestFactory {
         token: String
     ) -> Requestable {
         return Request(
+            httpMethod: .get,
             path: "api/user/board/\(theme.rawValue)/articles",
             headers: ["Authorization": token]
         )
@@ -48,28 +49,31 @@ struct CommunityRequestFactory {
         token: String
     ) -> Requestable {
         return Request(
+            httpMethod: .get,
             path: "api/user/board/articles/\(articleID)",
             headers: ["Authorization": token]
         )
     }
     
-    static func makePostArticleGoodRequest(
+    static func makePostArticleLikeRequest(
         username: String,
         articleID: Int,
         token: String
     ) -> Requestable {
         return JSONBodyRequest(
+            httpMethod: .post,
             path: "api/user/board/\(articleID)/good",
             headers: ["Authorization": token],
-            jsonBody: PostArticleGoodRequestDTO(username: username)
+            jsonBody: PostArticleLikeRequestDTO(username: username)
         )
     }
     
-    static func makeFetchArticleGoodCountRequest(
+    static func makeFetchArticleLikeCountRequest(
         with articleID: Int,
         token: String
     ) -> Requestable {
         return Request(
+            httpMethod: .get,
             path: "api/user/board/\(articleID)/good/count",
             headers: ["Authorization": token]
         )
@@ -103,6 +107,87 @@ struct CommunityRequestFactory {
             httpMethod: .delete,
             path: "api/user/board/articles/\(articleID)",
             headers: ["Authorization": token]
+        )
+    }
+    
+    static func makeFetchLookRankingRequest(
+        token: String
+    ) -> Requestable {
+        return Request(
+            httpMethod: .get,
+            path: "api/user/board/look/lank",
+            headers: ["Authorization": token]
+        )
+    }
+    
+    static func makeFetchCommentRequest(
+        with articleID: Int,
+        token: String
+    ) -> Requestable {
+        return JSONBodyRequest(
+            httpMethod: .get,
+            path: "api/user/board/comments",
+            headers: ["Authorization": token],
+            jsonBody: FetchCommentRequestDTO(articleID: articleID)
+        )
+    }
+    
+    static func makeRegisterCommentRequest(
+        with commentInformation: RegisterCommentRequestDTO,
+        token: String
+    ) -> Requestable {
+        return JSONBodyRequest(
+            httpMethod: .post,
+            path: "api/user/\(commentInformation.articleID)/comments",
+            headers: ["Authorization": token],
+            jsonBody: commentInformation
+        )
+    }
+    
+    static func makeDeleteCommentRequest(
+        with commentID: Int,
+        token: String
+    ) -> Requestable {
+        return JSONBodyRequest(
+            httpMethod: .delete,
+            path: "api/user/board",
+            headers: ["Authorization": token],
+            jsonBody: DeleteCommentRequestDTO(commentID: commentID)
+        )
+    }
+    
+    static func makeCommentLikeRequest(
+        with commentID: Int,
+        token: String
+    ) -> Requestable {
+        return JSONBodyRequest(
+            httpMethod: .post,
+            path: "api/user/board",
+            headers: ["Authorization": token],
+            jsonBody: CommentLikeRequestDTO(commentID: commentID)
+        )
+    }
+    
+    static func makeFetchCommentLikeCountRequest(
+        with commentID: Int,
+        token: String
+    ) -> Requestable {
+        return Request(
+            httpMethod: .get,
+            path: "api/user/board/comment/\(commentID)/counts",
+            headers: ["Authorization": token]
+        )
+    }
+    
+    static func makeCancleCommentLikeRequest(
+        with body: CancleCommentLikeRequestDTO,
+        token: String
+    ) -> Requestable {
+        return JSONBodyRequest(
+            httpMethod: .delete,
+            path: "api/user/board/comment/unGood",
+            headers: ["Authorization": token],
+            jsonBody: body
         )
     }
 }

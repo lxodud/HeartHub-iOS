@@ -10,12 +10,14 @@ import Foundation
 struct UserRelatedRequestFactory {
     static func makeEmailCheckRequest(of email: String) -> Requestable {
         return Request(
+            httpMethod: .get,
             path: "api/check/email/" + email
         )
     }
     
     static func makeIdCheckApiRequest(of id: String) -> Requestable {
         return Request(
+            httpMethod: .get,
             path: "api/check/username/" + id
         )
     }
