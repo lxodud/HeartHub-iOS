@@ -47,12 +47,12 @@ extension ProfileDailyViewController: UICollectionViewDataSource {
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: ProfilePostCollectionViewCell.reuseIdentifier,
+                withReuseIdentifier: ProfilePostImageCollectionViewCell.reuseIdentifier,
                 for: indexPath
-            ) as? ProfilePostCollectionViewCell else {
+            ) as? ProfilePostImageCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            cell.postImageView.image = profileDailyPostArray[indexPath.item].profileDailyPostImage
+            cell.profilePostImage.image = profileDailyPostArray[indexPath.item].profileDailyPostImage
             
             return cell
         }
@@ -64,7 +64,7 @@ extension ProfileDailyViewController {
     private func configureUserPostCollectionView() {
         profileDailyCollectionView.dataSource = self
         
-        profileDailyCollectionView.register(ProfilePostCollectionViewCell.self, forCellWithReuseIdentifier: ProfilePostCollectionViewCell.reuseIdentifier)
+        profileDailyCollectionView.register(ProfilePostImageCollectionViewCell.self, forCellWithReuseIdentifier: ProfilePostImageCollectionViewCell.reuseIdentifier)
         profileDailyCollectionView.register(ProfilePostTextCollectionViewCell.self, forCellWithReuseIdentifier: ProfilePostTextCollectionViewCell.reuseIdentifier)
 
         

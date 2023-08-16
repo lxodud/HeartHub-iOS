@@ -47,12 +47,12 @@ extension ProfileDateViewController: UICollectionViewDataSource {
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: ProfilePostCollectionViewCell.reuseIdentifier,
+                withReuseIdentifier: ProfilePostImageCollectionViewCell.reuseIdentifier,
                 for: indexPath)
-                    as? ProfilePostCollectionViewCell else {
+                    as? ProfilePostImageCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            cell.postImageView.image = profileDatePostArray[indexPath.item].profileDatePostImage
+            cell.profilePostImage.image = profileDatePostArray[indexPath.item].profileDatePostImage
            
             return cell
         }
@@ -64,7 +64,7 @@ extension ProfileDateViewController: UICollectionViewDataSource {
         private func configureUserPostCollectionView() {
             profileDateCollectionView.dataSource = self
             
-            profileDateCollectionView.register(ProfilePostCollectionViewCell.self, forCellWithReuseIdentifier: ProfilePostCollectionViewCell.reuseIdentifier)
+            profileDateCollectionView.register(ProfilePostImageCollectionViewCell.self, forCellWithReuseIdentifier: ProfilePostImageCollectionViewCell.reuseIdentifier)
             profileDateCollectionView.register(ProfilePostTextCollectionViewCell.self, forCellWithReuseIdentifier: ProfilePostTextCollectionViewCell.reuseIdentifier)
             
             profileDateCollectionView.backgroundColor = .clear

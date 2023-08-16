@@ -71,7 +71,7 @@
 		56348A932A6E841E005BB635 /* FindPwPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A922A6E841E005BB635 /* FindPwPopUpView.swift */; };
 		56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A942A6E87BF005BB635 /* FindPwPopUpViewController.swift */; };
 		5651FC532A7A65F700965300 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC522A7A65F700965300 /* ProfileViewController.swift */; };
-		5651FC672A7A686000965300 /* ProfilePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC662A7A686000965300 /* ProfilePostCollectionViewCell.swift */; };
+		5651FC672A7A686000965300 /* ProfilePostImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC662A7A686000965300 /* ProfilePostImageCollectionViewCell.swift */; };
 		5651FC692A7A68D700965300 /* ProfileDailyPostDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC682A7A68D700965300 /* ProfileDailyPostDataModel.swift */; };
 		5651FC6B2A7A68E200965300 /* ProfileDailyPostDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC6A2A7A68E200965300 /* ProfileDailyPostDataManager.swift */; };
 		5651FC6D2A7A69B500965300 /* ProfileUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC6C2A7A69B500965300 /* ProfileUserView.swift */; };
@@ -188,7 +188,7 @@
 		56348A922A6E841E005BB635 /* FindPwPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPwPopUpView.swift; sourceTree = "<group>"; };
 		56348A942A6E87BF005BB635 /* FindPwPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPwPopUpViewController.swift; sourceTree = "<group>"; };
 		5651FC522A7A65F700965300 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		5651FC662A7A686000965300 /* ProfilePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostCollectionViewCell.swift; sourceTree = "<group>"; };
+		5651FC662A7A686000965300 /* ProfilePostImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		5651FC682A7A68D700965300 /* ProfileDailyPostDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDailyPostDataModel.swift; sourceTree = "<group>"; };
 		5651FC6A2A7A68E200965300 /* ProfileDailyPostDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDailyPostDataManager.swift; sourceTree = "<group>"; };
 		5651FC6C2A7A69B500965300 /* ProfileUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserView.swift; sourceTree = "<group>"; };
@@ -715,7 +715,7 @@
 			isa = PBXGroup;
 			children = (
 				5651FC6C2A7A69B500965300 /* ProfileUserView.swift */,
-				5651FC662A7A686000965300 /* ProfilePostCollectionViewCell.swift */,
+				5651FC662A7A686000965300 /* ProfilePostImageCollectionViewCell.swift */,
 				56C048942A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift */,
 			);
 			path = Views;
@@ -986,7 +986,7 @@
 				56DEBEF42A7AAEF9000BC687 /* ProfileDatePostDataModel.swift in Sources */,
 				56DEBEF82A7AAF12000BC687 /* ProfileDatePostDataManager.swift in Sources */,
 				56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */,
-				5651FC672A7A686000965300 /* ProfilePostCollectionViewCell.swift in Sources */,
+				5651FC672A7A686000965300 /* ProfilePostImageCollectionViewCell.swift in Sources */,
 				5651FC6B2A7A68E200965300 /* ProfileDailyPostDataManager.swift in Sources */,
 				0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */,
 				5626B34D2A5993A700477EBC /* SignUpTermAgreeViewController.swift in Sources */,

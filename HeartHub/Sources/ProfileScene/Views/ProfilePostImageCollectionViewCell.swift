@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class ProfilePostCollectionViewCell: UICollectionViewCell {
+final class ProfilePostImageCollectionViewCell: UICollectionViewCell {
 
-    var postImageView: UIImageView = {
+    var profilePostImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         return image
@@ -26,21 +26,21 @@ final class ProfilePostCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureImageView() {
-        self.contentView.addSubview(postImageView)
+        self.contentView.addSubview(profilePostImage)
     }
     
     private func configureConstraints() {
-        postImageView.translatesAutoresizingMaskIntoConstraints = false
+        profilePostImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            postImageView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            postImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            postImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            postImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor)
+            profilePostImage.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            profilePostImage.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            profilePostImage.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            profilePostImage.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor)
         ])
     }
 }
 
-extension ProfilePostCollectionViewCell {
+extension ProfilePostImageCollectionViewCell {
     func configureAddTarget() {
         
     }

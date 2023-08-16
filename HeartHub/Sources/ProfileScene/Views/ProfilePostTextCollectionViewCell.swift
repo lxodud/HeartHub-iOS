@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfilePostTextCollectionViewCell: UICollectionViewCell {
+final class ProfilePostTextCollectionViewCell: UICollectionViewCell {
     
     var profilePostText: UILabel = {
         let label = UILabel()
