@@ -9,5 +9,5 @@ import UIKit
 
 struct ProfileDatePostDataModel {
     var profileDatePostImage: UIImage?
-    var profileDatePosttext: String?
+    var profileDatePostText: String?
 }

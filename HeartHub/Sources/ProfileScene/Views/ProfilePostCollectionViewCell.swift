@@ -39,3 +39,10 @@ final class ProfilePostCollectionViewCell: UICollectionViewCell {
         ])
     }
 }
+
+extension ProfilePostCollectionViewCell {
+    func configureAddTarget() {
+        
+    }
+    
+}

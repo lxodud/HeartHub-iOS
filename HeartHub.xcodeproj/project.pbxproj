@@ -704,9 +704,9 @@
 			isa = PBXGroup;
 			children = (
 				5651FC522A7A65F700965300 /* ProfileViewController.swift */,
-				56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */,
-				56DEBEE32A7AACFC000BC687 /* ProfileLookViewController.swift */,
 				56DEBEE52A7AAD10000BC687 /* ProfileDailyViewController.swift */,
+				56DEBEE32A7AACFC000BC687 /* ProfileLookViewController.swift */,
+				56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -714,8 +714,8 @@
 		5651FC502A7A65B300965300 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5651FC662A7A686000965300 /* ProfilePostCollectionViewCell.swift */,
 				5651FC6C2A7A69B500965300 /* ProfileUserView.swift */,
+				5651FC662A7A686000965300 /* ProfilePostCollectionViewCell.swift */,
 				56C048942A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift */,
 			);
 			path = Views;

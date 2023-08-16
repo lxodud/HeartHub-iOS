@@ -8,6 +8,7 @@
 import UIKit
 
 class ProfilePostTextCollectionViewCell: UICollectionViewCell {
+    
     var profilePostText: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Pretendard-Regular", size: 12)

@@ -87,7 +87,8 @@ extension CoupleSpaceMainViewController {
     
     @objc
     private func tapConnectButton() {
-        
+        let profileVC = ProfileViewController()
+        navigationController?.pushViewController(profileVC, animated: true)
     }
 }
 
