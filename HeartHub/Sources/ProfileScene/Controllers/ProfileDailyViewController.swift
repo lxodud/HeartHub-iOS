@@ -32,16 +32,30 @@ extension ProfileDailyViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let profileDailyPostCell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "ProfileDailyPostCell",
-            for: indexPath)
-                as? ProfilePostCollectionViewCell else {
-            return UICollectionViewCell()
-                }
         
-        profileDailyPostCell.postImageView.image = profileDailyPostArray[indexPath.item].profileDailyPostImage
+        let post = profileDailyPostArray[indexPath.item]
         
-        return profileDailyPostCell
+        if post.profileDailyPostImage == nil {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: ProfilePostTextCollectionViewCell.reuseIdentifier,
+                for: indexPath
+            ) as? ProfilePostTextCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            cell.profilePostText.text = profileDailyPostArray[indexPath.item].profileDailyPostText
+
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: ProfilePostImageCollectionViewCell.reuseIdentifier,
+                for: indexPath
+            ) as? ProfilePostImageCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            cell.profilePostImage.image = profileDailyPostArray[indexPath.item].profileDailyPostImage
+            
+            return cell
+        }
     }
 }
 
@@ -49,7 +63,11 @@ extension ProfileDailyViewController: UICollectionViewDataSource {
 extension ProfileDailyViewController {
     private func configureUserPostCollectionView() {
         profileDailyCollectionView.dataSource = self
-        profileDailyCollectionView.register(ProfilePostCollectionViewCell.self, forCellWithReuseIdentifier: "ProfileDailyPostCell")
+        
+        profileDailyCollectionView.register(ProfilePostImageCollectionViewCell.self, forCellWithReuseIdentifier: ProfilePostImageCollectionViewCell.reuseIdentifier)
+        profileDailyCollectionView.register(ProfilePostTextCollectionViewCell.self, forCellWithReuseIdentifier: ProfilePostTextCollectionViewCell.reuseIdentifier)
+
+        
         profileDailyCollectionView.backgroundColor = .clear
         
         profileDailyPostDataManager.configureProfilePostData()

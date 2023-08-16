@@ -71,7 +71,7 @@
 		56348A932A6E841E005BB635 /* FindPwPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A922A6E841E005BB635 /* FindPwPopUpView.swift */; };
 		56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A942A6E87BF005BB635 /* FindPwPopUpViewController.swift */; };
 		5651FC532A7A65F700965300 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC522A7A65F700965300 /* ProfileViewController.swift */; };
-		5651FC672A7A686000965300 /* ProfilePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC662A7A686000965300 /* ProfilePostCollectionViewCell.swift */; };
+		5651FC672A7A686000965300 /* ProfilePostImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC662A7A686000965300 /* ProfilePostImageCollectionViewCell.swift */; };
 		5651FC692A7A68D700965300 /* ProfileDailyPostDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC682A7A68D700965300 /* ProfileDailyPostDataModel.swift */; };
 		5651FC6B2A7A68E200965300 /* ProfileDailyPostDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC6A2A7A68E200965300 /* ProfileDailyPostDataManager.swift */; };
 		5651FC6D2A7A69B500965300 /* ProfileUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5651FC6C2A7A69B500965300 /* ProfileUserView.swift */; };
@@ -107,6 +107,7 @@
 		56C048822A8A501B001BAAB5 /* SignUpTermOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048812A8A501B001BAAB5 /* SignUpTermOfUseViewController.swift */; };
 		56C048842A8A7663001BAAB5 /* SignUpDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048832A8A7663001BAAB5 /* SignUpDatePicker.swift */; };
 		56C048772A8A02D7001BAAB5 /* DDayCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048762A8A02D7001BAAB5 /* DDayCalculator.swift */; };
+		56C048952A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048942A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift */; };
 		56D4E6172A814049005215D1 /* SignUpTermTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E6162A814049005215D1 /* SignUpTermTableViewCell.swift */; };
 		56DEBEDA2A7A9B24000BC687 /* GameMissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */; };
 		56DEBEE22A7AAAB8000BC687 /* ProfileDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */; };
@@ -188,7 +189,7 @@
 		56348A922A6E841E005BB635 /* FindPwPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPwPopUpView.swift; sourceTree = "<group>"; };
 		56348A942A6E87BF005BB635 /* FindPwPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPwPopUpViewController.swift; sourceTree = "<group>"; };
 		5651FC522A7A65F700965300 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		5651FC662A7A686000965300 /* ProfilePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostCollectionViewCell.swift; sourceTree = "<group>"; };
+		5651FC662A7A686000965300 /* ProfilePostImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		5651FC682A7A68D700965300 /* ProfileDailyPostDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDailyPostDataModel.swift; sourceTree = "<group>"; };
 		5651FC6A2A7A68E200965300 /* ProfileDailyPostDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDailyPostDataManager.swift; sourceTree = "<group>"; };
 		5651FC6C2A7A69B500965300 /* ProfileUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserView.swift; sourceTree = "<group>"; };
@@ -224,6 +225,7 @@
 		56C048812A8A501B001BAAB5 /* SignUpTermOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermOfUseViewController.swift; sourceTree = "<group>"; };
 		56C048832A8A7663001BAAB5 /* SignUpDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDatePicker.swift; sourceTree = "<group>"; };
 		56C048762A8A02D7001BAAB5 /* DDayCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayCalculator.swift; sourceTree = "<group>"; };
+		56C048942A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostTextCollectionViewCell.swift; sourceTree = "<group>"; };
 		56D4E6162A814049005215D1 /* SignUpTermTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermTableViewCell.swift; sourceTree = "<group>"; };
 		56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMissionTableViewCell.swift; sourceTree = "<group>"; };
 		56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDateViewController.swift; sourceTree = "<group>"; };
@@ -705,9 +707,9 @@
 			isa = PBXGroup;
 			children = (
 				5651FC522A7A65F700965300 /* ProfileViewController.swift */,
-				56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */,
-				56DEBEE32A7AACFC000BC687 /* ProfileLookViewController.swift */,
 				56DEBEE52A7AAD10000BC687 /* ProfileDailyViewController.swift */,
+				56DEBEE32A7AACFC000BC687 /* ProfileLookViewController.swift */,
+				56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -715,8 +717,9 @@
 		5651FC502A7A65B300965300 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5651FC662A7A686000965300 /* ProfilePostCollectionViewCell.swift */,
 				5651FC6C2A7A69B500965300 /* ProfileUserView.swift */,
+				5651FC662A7A686000965300 /* ProfilePostImageCollectionViewCell.swift */,
+				56C048942A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -986,7 +989,7 @@
 				56DEBEF42A7AAEF9000BC687 /* ProfileDatePostDataModel.swift in Sources */,
 				56DEBEF82A7AAF12000BC687 /* ProfileDatePostDataManager.swift in Sources */,
 				56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */,
-				5651FC672A7A686000965300 /* ProfilePostCollectionViewCell.swift in Sources */,
+				5651FC672A7A686000965300 /* ProfilePostImageCollectionViewCell.swift in Sources */,
 				5651FC6B2A7A68E200965300 /* ProfileDailyPostDataManager.swift in Sources */,
 				0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */,
 				56C048772A8A02D7001BAAB5 /* DDayCalculator.swift in Sources */,
@@ -1023,6 +1026,7 @@
 				0C43F6102A659C6D00EED860 /* PagingImageCollectionViewCell.swift in Sources */,
 				0C6F45512A703B0A0044EAC8 /* PanModalPresentable.swift in Sources */,
 				56DEBEE22A7AAAB8000BC687 /* ProfileDateViewController.swift in Sources */,
+				56C048952A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift in Sources */,
 				5651FC692A7A68D700965300 /* ProfileDailyPostDataModel.swift in Sources */,
 				0C5929FE2A6D481400C21570 /* BlurView.swift in Sources */,
 				0C5929F52A6ADB4500C21570 /* CommunityFloatingButton.swift in Sources */,

@@ -90,8 +90,7 @@ extension CoupleSpaceMainViewController {
     
     @objc
     private func tapConnectButton() {
-        let coupleSpaceAlbumViewController = CoupleSpaceAlbumViewController()
-        navigationController?.pushViewController(coupleSpaceAlbumViewController, animated: true)
+
     }
 }
 
