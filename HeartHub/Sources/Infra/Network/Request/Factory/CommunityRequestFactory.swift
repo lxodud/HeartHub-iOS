@@ -94,4 +94,15 @@ struct CommunityRequestFactory {
             multipartData: multipartData
         )
     }
+    
+    static func makeDeleteArticleRequest(
+        with articleID: Int,
+        token: String
+    ) -> Requestable {
+        return Request(
+            httpMethod: .delete,
+            path: "api/user/board/articles/\(articleID)",
+            headers: ["Authorization": token]
+        )
+    }
 }
