@@ -27,6 +27,7 @@ struct CommunityRequestFactory {
         
         return MultipartBodyRequest(
             httpMethod: .post,
+            path: "api/user/board/articles/write",
             headers: ["Authorization": token],
             multipartData: multipartData
         )
@@ -71,6 +72,26 @@ struct CommunityRequestFactory {
         return Request(
             path: "api/user/board/\(articleID)/good/count",
             headers: ["Authorization": token]
+        )
+    }
+    
+    static func makeScrapArticleRequest(
+        with scrapArticleInformation: ScrapArticleRequestDTO,
+        token: String
+    ) -> Requestable? {
+        guard let jsonData = try? JSONEncoder().encode(scrapArticleInformation) else {
+            return nil
+        }
+        
+        let multipartData = [
+            ("params", UUID().uuidString, "application/json", jsonData)
+        ]
+
+        return MultipartBodyRequest(
+            httpMethod: .post,
+            path: "/api/user/board/heart",
+            headers: ["Authorization": token],
+            multipartData: multipartData
         )
     }
 }

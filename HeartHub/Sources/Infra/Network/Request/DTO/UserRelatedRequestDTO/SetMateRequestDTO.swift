@@ -9,5 +9,10 @@ import Foundation
 
 struct SetMateRequestDTO: Encodable {
     let currentUsername: String
-    let mateName: String
+    let matename: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case currentUsername
+        case matename = "mateName"
+    }
 }
