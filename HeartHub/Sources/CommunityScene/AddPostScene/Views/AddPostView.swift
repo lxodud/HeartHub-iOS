@@ -8,7 +8,7 @@
 import UIKit
 
 final class AddPostView: UIView {
-    private let postImageView: UIImageView = {
+    let postImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "TestImage")
@@ -58,20 +58,32 @@ extension AddPostView {
         let safeArea = safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             // MARK: postImageView Constraints
+            postImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.462),
             postImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             postImageView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             postImageView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
 
             // MARK: addPostProfileView Constraints
-            addPostProfileView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            addPostProfileView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.077),
             addPostProfileView.topAnchor.constraint(equalTo: postImageView.bottomAnchor),
             addPostProfileView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            addPostProfileView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
 
             // MARK: addPostTextField Constraints
+            addPostTextField.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.246),
             addPostTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
             addPostTextField.topAnchor.constraint(equalTo: addPostProfileView.bottomAnchor),
             addPostTextField.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             addPostTextField.leadingAnchor.constraint(equalTo: leadingAnchor),
         ])
+    }
+}
+
+extension AddPostView: UIGestureRecognizerDelegate {
+    func configureTapPostImageAction(_ target: Any, _ action: Selector) {
+        let tapGesture = UITapGestureRecognizer(target: target, action: action)
+        tapGesture.delegate = self
+        postImageView.isUserInteractionEnabled = true
+        postImageView.addGestureRecognizer(tapGesture)
     }
 }
