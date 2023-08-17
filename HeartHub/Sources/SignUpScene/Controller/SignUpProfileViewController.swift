@@ -10,8 +10,18 @@ import UIKit
 final class SignUpProfileViewController: UIViewController {
     
     private let signUpProfileView = SignUpProfileView()
+    private let userInformationManager: UserInformationManager
     
     private var sexButtons: [UIButton] = []
+    
+    init(userInformationManager: UserInformationManager) {
+        self.userInformationManager = userInformationManager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         view = signUpProfileView

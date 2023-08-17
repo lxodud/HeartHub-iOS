@@ -11,7 +11,7 @@ import UIKit
 final class SignUpStartDateViewController: UIViewController {
     
     private let signUpStartDateView = SignUpStartDateView()
-    private var userInformation = UserInformation()
+    private let userInformationManager = UserInformationManager()
     
     override func loadView() {
         view = signUpStartDateView
@@ -32,7 +32,10 @@ extension SignUpStartDateViewController {
     }
     
     @objc private func didTapNextPageButton() {
-        let signUpProfileViewController = SignUpProfileViewController()
+        let datingDate = signUpStartDateView.startDateTextField.text
+        userInformationManager.inputDatingDate(with: datingDate)
+        let signUpProfileViewController = SignUpProfileViewController(userInformationManager: userInformationManager)
+        
         self.navigationController?.pushViewController(signUpProfileViewController, animated: true)
     }
     
