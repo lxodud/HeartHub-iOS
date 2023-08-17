@@ -15,7 +15,7 @@ final class AddPostView: UIView {
         return imageView
     }()
     
-    private var addPostProfileView = CommunityProfileView()
+    var addPostProfileView = CommunityProfileView()
         
     private let addPostTextView: UITextView = {
         let textView = UITextView()

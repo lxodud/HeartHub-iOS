@@ -13,7 +13,7 @@ final class AddPostViewController: UIViewController {
     private let addPostView = AddPostView()
     
     private var postCategoryButtonArray: [UIButton] = []
-        
+            
     override func loadView() {
         view = addPostView
     }
@@ -23,6 +23,8 @@ final class AddPostViewController: UIViewController {
         
         configureButtonAction()
         addPostView.configureTapPostImageAction(self, #selector(configureSelectImageAlert))
+        
+        addPostView.addPostProfileView.configureContents(mockData[0])
     }
 }
 
