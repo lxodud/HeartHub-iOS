@@ -109,6 +109,7 @@
 		56C048B02A8C9D6D001BAAB5 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048AF2A8C9D6D001BAAB5 /* AddPostViewController.swift */; };
 		56C048B22A8C9DF1001BAAB5 /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048B12A8C9DF1001BAAB5 /* AddPostView.swift */; };
 		56C048B42A8DBD0E001BAAB5 /* AddPostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048B32A8DBD0E001BAAB5 /* AddPostButton.swift */; };
+		56C048B62A8DED7D001BAAB5 /* AddPostTextScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048B52A8DED7D001BAAB5 /* AddPostTextScrollView.swift */; };
 		56D4E6172A814049005215D1 /* SignUpTermTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D4E6162A814049005215D1 /* SignUpTermTableViewCell.swift */; };
 		56DEBEDA2A7A9B24000BC687 /* GameMissionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */; };
 		56DEBEE22A7AAAB8000BC687 /* ProfileDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */; };
@@ -228,6 +229,7 @@
 		56C048AF2A8C9D6D001BAAB5 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		56C048B12A8C9DF1001BAAB5 /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
 		56C048B32A8DBD0E001BAAB5 /* AddPostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostButton.swift; sourceTree = "<group>"; };
+		56C048B52A8DED7D001BAAB5 /* AddPostTextScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostTextScrollView.swift; sourceTree = "<group>"; };
 		56D4E6162A814049005215D1 /* SignUpTermTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermTableViewCell.swift; sourceTree = "<group>"; };
 		56DEBED92A7A9B24000BC687 /* GameMissionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMissionTableViewCell.swift; sourceTree = "<group>"; };
 		56DEBEE12A7AAAB8000BC687 /* ProfileDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDateViewController.swift; sourceTree = "<group>"; };
@@ -813,6 +815,7 @@
 			children = (
 				56C048B12A8C9DF1001BAAB5 /* AddPostView.swift */,
 				56C048B32A8DBD0E001BAAB5 /* AddPostButton.swift */,
+				56C048B52A8DED7D001BAAB5 /* AddPostTextScrollView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -968,6 +971,7 @@
 				56DEBEDA2A7A9B24000BC687 /* GameMissionTableViewCell.swift in Sources */,
 				56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */,
 				561462192A6EE50300C0AC1F /* FindIdViewController.swift in Sources */,
+				56C048B62A8DED7D001BAAB5 /* AddPostTextScrollView.swift in Sources */,
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
 				569013712A80004700715D23 /* LoginTextField.swift in Sources */,
 				5651FC7C2A7A7FB800965300 /* GameViewController.swift in Sources */,
