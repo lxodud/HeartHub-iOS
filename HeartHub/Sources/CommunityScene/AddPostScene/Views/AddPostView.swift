@@ -29,9 +29,9 @@ final class AddPostView: UIView {
         return textView
     }()
     
-    var addPostDailyButton = AddPostButton(text: "Daily")
-    var addPostLookButton = AddPostButton(text: "Look")
-    var addPostDateButton = AddPostButton(text: "Date")
+    var addPostDailyButton = AddPostButton(text: "Daily", backgroundColor: .black)
+    var addPostLookButton = AddPostButton(text: "Look", backgroundColor: .white)
+    var addPostDateButton = AddPostButton(text: "Date", backgroundColor: .white)
     
     private let addPostButtonStackView: UIStackView = {
         let stackView = UIStackView()
@@ -52,7 +52,7 @@ final class AddPostView: UIView {
     }()
     
     private var addPostTextViewTopConstraints: NSLayoutConstraint!
-    private var textViewTopConstant: CGFloat!
+    private var textViewTopConstant: CGFloat = 390
     
     // MARK: Initializer
     override init(frame: CGRect) {
@@ -61,6 +61,7 @@ final class AddPostView: UIView {
         configureNotification()
         configureLayout()
         addPostTextView.delegate = self
+        addPostDailyButton.isSelected = true
     }
     
     required init?(coder: NSCoder) {
@@ -76,7 +77,7 @@ final class AddPostView: UIView {
         addPostButtonStackView.layer.cornerRadius = addPostButtonStackView.frame.height / CGFloat(2)
         
         addPostTextView.textContainerInset = UIEdgeInsets(top: addPostProfileView.frame.height, left: 25, bottom: 0, right: 25)
-        var textViewTopConstant = postImageView.frame.height
+        textViewTopConstant = postImageView.frame.height
         
     }
     

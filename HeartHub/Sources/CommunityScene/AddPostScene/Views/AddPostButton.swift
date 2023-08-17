@@ -9,19 +9,14 @@ import UIKit
 
 class AddPostButton: UIButton {
 
-    init(text: String) {
+    init(text: String, backgroundColor: UIColor) {
         super.init(frame: .zero)
-
+        
         self.setTitle(text, for: .normal)
+        self.backgroundColor = backgroundColor
         
         configureInitialSetting()
         configureLayout()
-        
-        if self.isSelected == true {
-            self.backgroundColor = .black
-        } else {
-            self.backgroundColor = .white
-        }
     }
     
     required init?(coder: NSCoder) {
@@ -34,6 +29,7 @@ class AddPostButton: UIButton {
     }
 }
 
+// MARK: Configure InitialSetting
 extension AddPostButton {
     private func configureInitialSetting() {
         self.setTitleColor(.black, for: .normal)
@@ -41,6 +37,7 @@ extension AddPostButton {
         
         titleLabel?.font = UIFont(name: "Pretendard-SemiBold", size: 16)
         clipsToBounds = true
+        
     }
 }
 
@@ -59,3 +56,17 @@ extension AddPostButton {
     }
 }
 
+import SwiftUI
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Container().edgesIgnoringSafeArea(.all)
+    }
+    struct Container: UIViewControllerRepresentable {
+        func makeUIViewController(context: Context) -> UIViewController {
+            return     UINavigationController(rootViewController: AddPostViewController())
+        }
+        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        }
+        typealias  UIViewControllerType = UIViewController
+    }
+}

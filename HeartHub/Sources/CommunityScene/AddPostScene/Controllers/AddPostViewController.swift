@@ -21,7 +21,7 @@ final class AddPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureAddTarget()
+        configureButtonAction()
         addPostView.configureTapPostImageAction(self, #selector(configureSelectImageAlert))
     }
 }
@@ -98,7 +98,7 @@ extension AddPostViewController: UIImagePickerControllerDelegate, UINavigationCo
 
 // MARK: Configure AddTarget
 extension AddPostViewController {
-    private func configureAddTarget() {
+    private func configureButtonAction() {
         let dailyButton = addPostView.addPostDailyButton
         let lookButton = addPostView.addPostLookButton
         let dateButton = addPostView.addPostDateButton
