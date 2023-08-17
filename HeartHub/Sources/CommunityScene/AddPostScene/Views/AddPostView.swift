@@ -35,6 +35,43 @@ final class AddPostView: UIView {
         return textField
     }()
     
+    var addPostDailyButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setTitle("Daily", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Pretendard-SemiBold", size: 16)
+        button.backgroundColor = .black
+        button.titleLabel?.textColor = .white
+        button.clipsToBounds = true
+        return button
+    }()
+    
+    var addPostLookButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setTitle("Daily", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Pretendard-SemiBold", size: 16)
+        button.backgroundColor = .white
+        button.titleLabel?.textColor = .black
+        return button
+    }()
+    
+    var addPostDateButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setTitle("Daily", for: .normal)
+        button.titleLabel?.font = UIFont(name: "Pretendard-SemiBold", size: 16)
+        button.backgroundColor = .black
+        button.titleLabel?.textColor = .white
+        return button
+    }()
+    
+    private let addPostButtonStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 0
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         configureSubviews()
@@ -44,12 +81,23 @@ final class AddPostView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        addPostDailyButton.layer.cornerRadius = addPostDailyButton.frame.height * CGFloat(0.392)
+        addPostDateButton.layer.cornerRadius = addPostDateButton.frame.height * CGFloat(0.392)
+        addPostLookButton.layer.cornerRadius = addPostLookButton.frame.height * CGFloat(0.392)
+    }
 }
 
 // MARK: Configure Layout
 extension AddPostView {
     
     private func configureSubviews() {
+        [addPostDailyButton, addPostLookButton, addPostDateButton].forEach {
+            addPostButtonStackView.addArrangedSubview($0)
+        }
+        
         [postImageView,
          addPostProfileView,
          addPostTextField].forEach {

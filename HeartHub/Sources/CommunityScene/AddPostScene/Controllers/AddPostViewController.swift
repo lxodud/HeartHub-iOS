@@ -94,3 +94,24 @@ extension AddPostViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
 }
 
+// MARK: Configure AddTarget
+extension AddPostViewController {
+    private func configureAddTarget() {
+        addPostView.addPostDailyButton.addTarget(self, action: didTapAddPostDailyButton, for: .touchUpInside)
+        addPostView.addPostLookButton.addTarget(self, action: didTapAddPostLookButton, for: .touchUpInside)
+        addPostView.addPostDateButton.addTarget(self, action: didTapAddPostDateButton, for: .touchUpInside)
+    }
+    
+    @objc private func didTapAddPostDailyButton() {
+        addPostView.addPostDailyButton.isSelected.toggle()
+    }
+    
+    @objc private func didTapAddPostLookButton() {
+        addPostView.addPostLookButton.isSelected.toggle()
+    }
+    
+    @objc private func didTapAddPostDateButton() {
+        addPostView.addPostDateButton.isSelected.toggle()
+    }
+}
+
