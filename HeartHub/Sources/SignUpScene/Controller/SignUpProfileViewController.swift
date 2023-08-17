@@ -57,6 +57,19 @@ extension SignUpProfileViewController {
     }
 
     @objc private func didTapNextPageButton() {
+        sexButtons.forEach {
+            if $0.isSelected {
+                if $0 == signUpProfileView.maleBtn {
+                    userInformationManager.gender = "M"
+                } else {
+                    userInformationManager.gender = "W"
+                }
+            }
+        }
+        
+        userInformationManager.password = signUpProfileView.pwTextField.text
+        userInformationManager.birth = signUpProfileView.birthdayDateTextField.text
+        
         let signUpLoverLinkingVC = SignUpEnterNickNameEmailViewController()
         navigationController?.pushViewController(signUpLoverLinkingVC, animated: true)
     }

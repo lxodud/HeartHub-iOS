@@ -22,12 +22,8 @@ final class UserInformationManager {
     
 }
 
-// MARK: Input
+// MARK: Requst Network
 extension UserInformationManager {
-    func inputDatingDate(with date: String?) {
-        self.datingDate = date
-    }
-    
     func checkIDAvailability(
         with id: String,
         completion: @escaping (Bool) -> Void

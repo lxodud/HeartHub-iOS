@@ -33,7 +33,7 @@ extension SignUpStartDateViewController {
     
     @objc private func didTapNextPageButton() {
         let datingDate = signUpStartDateView.startDateTextField.text
-        userInformationManager.inputDatingDate(with: datingDate)
+        userInformationManager.datingDate = datingDate
         let signUpProfileViewController = SignUpProfileViewController(userInformationManager: userInformationManager)
         
         self.navigationController?.pushViewController(signUpProfileViewController, animated: true)
