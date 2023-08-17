@@ -11,7 +11,7 @@ final class AddPostView: UIView {
     let postImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "TestImage")
+        imageView.image = UIImage(named: "AddPostImage")
         return imageView
     }()
     
@@ -51,9 +51,14 @@ final class AddPostView: UIView {
         return stackView
     }()
     
+    private var addPostTextViewTopConstraints: NSLayoutConstraint!
+    private var textViewTopConstant: CGFloat!
+    
+    // MARK: Initializer
     override init(frame: CGRect) {
         super.init(frame: .zero)
         configureSubviews()
+        configureNotification()
         configureLayout()
         addPostTextView.delegate = self
     }
@@ -62,9 +67,57 @@ final class AddPostView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func updateConstraints() {
+        super.updateConstraints()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         addPostButtonStackView.layer.cornerRadius = addPostButtonStackView.frame.height / CGFloat(2)
+        
+        addPostTextView.textContainerInset = UIEdgeInsets(top: addPostProfileView.frame.height, left: 25, bottom: 0, right: 25)
+        var textViewTopConstant = postImageView.frame.height
+        
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+}
+
+// MARK: Configure Notification
+extension AddPostView {
+    private func configureNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardUpAction),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardDownAction),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    @objc private func keyboardUpAction() {
+        addPostTextViewTopConstraints.constant = 0
+        
+        UIView.animate(withDuration: 0.2) {
+            self.layoutIfNeeded()
+        }
+    }
+    
+    @objc private func keyboardDownAction() {
+        addPostTextViewTopConstraints.constant = postImageView.frame.height
+        
+        UIView.animate(withDuration: 0.2) {
+            self.layoutIfNeeded()
+        }
     }
 }
 
@@ -72,14 +125,18 @@ final class AddPostView: UIView {
 extension AddPostView {
     
     private func configureSubviews() {
+        addPostTextView.addSubview(addPostProfileView)
+        addPostTextView.translatesAutoresizingMaskIntoConstraints = false
+        
         [addPostDailyButton, addPostLookButton, addPostDateButton].forEach {
             addPostButtonStackView.addArrangedSubview($0)
         }
         
         [postImageView,
-         addPostProfileView,
          addPostTextView,
-         addPostButtonStackView].forEach {
+         addPostProfileView,
+         addPostButtonStackView
+        ].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -87,6 +144,12 @@ extension AddPostView {
     
     private func configureLayout() {
         let safeArea = safeAreaLayoutGuide
+        
+        addPostTextViewTopConstraints = addPostTextView.topAnchor.constraint(
+            equalTo: safeArea.topAnchor,
+            constant: textViewTopConstant
+        )
+        
         NSLayoutConstraint.activate([
             // MARK: postImageView Constraints
             postImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.462),
@@ -96,16 +159,15 @@ extension AddPostView {
 
             // MARK: addPostProfileView Constraints
             addPostProfileView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.077),
-            addPostProfileView.topAnchor.constraint(equalTo: postImageView.bottomAnchor),
-            addPostProfileView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 25),
-            addPostProfileView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            addPostProfileView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            addPostProfileView.topAnchor.constraint(equalTo: addPostTextView.topAnchor),
+            addPostProfileView.leadingAnchor.constraint(equalTo: addPostTextView.leadingAnchor, constant: 25),
 
             // MARK: addPostTextField Constraints
-            addPostTextView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.246),
             addPostTextView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            addPostTextView.topAnchor.constraint(equalTo: addPostProfileView.bottomAnchor),
+            addPostTextViewTopConstraints,
             addPostTextView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-            addPostTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
+            addPostTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
             
             // MARK: addPostButtonStackView Constraints
             addPostButtonStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.066),
@@ -116,25 +178,6 @@ extension AddPostView {
     }
 }
 
-// MARK: TextView Delegate Implement
-extension AddPostView: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        addPostTextView.text = ""
-        addPostTextView.textColor = .black
-    }
-    
-    // 텍스트필드를 모두 종료 (키보드 내려가기)
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            addPostTextView.resignFirstResponder()
-        }
-    
-    // 텍스트필드 이외의 영역을 눌렀을때 키보드 내려가도록
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        addPostTextView.resignFirstResponder()
-    }
-    
-}
-
 // MARK: GestureRecognizer Delegate Implement
 extension AddPostView: UIGestureRecognizerDelegate {
     func configureTapPostImageAction(_ target: Any, _ action: Selector) {
@@ -143,4 +186,34 @@ extension AddPostView: UIGestureRecognizerDelegate {
         postImageView.isUserInteractionEnabled = true
         postImageView.addGestureRecognizer(tapGesture)
     }
+}
+
+// MARK: TextView Delegate Implement
+extension AddPostView: UITextViewDelegate {
+    // 플레이스홀더 기능 구현
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if addPostTextView.text == "문구를 입력해주세요." {
+            addPostTextView.text = nil
+            addPostTextView.textColor = .black
+        }
+        addPostTextView.textColor = .black
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if addPostTextView.text == "" {
+            addPostTextView.text = "문구를 입력해주세요."
+            addPostTextView.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
+        }
+    }
+    
+    // 텍스트뷰를 종료
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            addPostTextView.resignFirstResponder()
+        }
+    
+    // 텍스트뷰를 이외의 영역을 눌렀을때 키보드 내려가도록
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        addPostTextView.resignFirstResponder()
+    }
+    
 }
