@@ -11,7 +11,6 @@ enum NetworkError: Error {
     case transportError
     case serverError
     case missingData
-    case failedToParse
 }
 
 extension NetworkError: LocalizedError {
@@ -23,8 +22,6 @@ extension NetworkError: LocalizedError {
             return NSLocalizedString("server error", comment: "server error")
         case .missingData:
             return NSLocalizedString("missing data", comment: "missing data")
-        case .failedToParse:
-            return NSLocalizedString("failed to parse", comment: "failed to parse")
         }
     }
 }

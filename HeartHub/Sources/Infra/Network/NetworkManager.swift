@@ -43,17 +43,19 @@ final class DefaultNetworkManager: NetworkManager {
     ) {
         session.dataTask(with: request) { data, response, error in
             guard error == nil else {
+                completion(.failure(NetworkError.transportError))
                 return
             }
             
             guard let httpResponse = response as? HTTPURLResponse,
                   (200...2999) ~= httpResponse.statusCode
             else {
-                // TODO: Error Handling
+                completion(.failure(NetworkError.serverError))
                 return
             }
             
             guard let data = data else {
+                completion(.failure(NetworkError.missingData))
                 return
             }
             

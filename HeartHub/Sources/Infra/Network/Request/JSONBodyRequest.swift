@@ -16,7 +16,7 @@ struct JSONBodyRequest: JSONBodyRequestable {
     let jsonBody: Encodable
     
     init(
-        baseURL: String = "http://43.200.191.238:9000",
+        baseURL: String = "https://usus.shop",
         httpMethod: HTTPMethod,
         path: String = "",
         queryItems: [URLQueryItem] = [],
