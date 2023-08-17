@@ -27,7 +27,7 @@ struct CommunityRequestFactory {
         
         return MultipartBodyRequest(
             httpMethod: .post,
-            path: "api/user/board/articles/write",
+            path: "/api/user/board/articles/write",
             headers: ["Authorization": token],
             multipartData: multipartData
         )
@@ -39,7 +39,7 @@ struct CommunityRequestFactory {
     ) -> Requestable {
         return Request(
             httpMethod: .get,
-            path: "api/user/board/\(theme.rawValue)/articles",
+            path: "/api/user/board/\(theme.rawValue)/articles",
             headers: ["Authorization": token]
         )
     }
@@ -50,7 +50,7 @@ struct CommunityRequestFactory {
     ) -> Requestable {
         return Request(
             httpMethod: .get,
-            path: "api/user/board/articles/\(articleID)",
+            path: "/api/user/board/articles/\(articleID)",
             headers: ["Authorization": token]
         )
     }
@@ -62,7 +62,7 @@ struct CommunityRequestFactory {
     ) -> Requestable {
         return JSONBodyRequest(
             httpMethod: .post,
-            path: "api/user/board/\(articleID)/good",
+            path: "/api/user/board/\(articleID)/good",
             headers: ["Authorization": token],
             jsonBody: PostArticleLikeRequestDTO(username: username)
         )
@@ -74,7 +74,7 @@ struct CommunityRequestFactory {
     ) -> Requestable {
         return Request(
             httpMethod: .get,
-            path: "api/user/board/\(articleID)/good/count",
+            path: "/api/user/board/\(articleID)/good/count",
             headers: ["Authorization": token]
         )
     }
@@ -105,7 +105,7 @@ struct CommunityRequestFactory {
     ) -> Requestable {
         return Request(
             httpMethod: .delete,
-            path: "api/user/board/articles/\(articleID)",
+            path: "/api/user/board/articles/\(articleID)",
             headers: ["Authorization": token]
         )
     }
@@ -115,7 +115,7 @@ struct CommunityRequestFactory {
     ) -> Requestable {
         return Request(
             httpMethod: .get,
-            path: "api/user/board/look/lank",
+            path: "/api/user/board/look/lank",
             headers: ["Authorization": token]
         )
     }
@@ -126,7 +126,7 @@ struct CommunityRequestFactory {
     ) -> Requestable {
         return JSONBodyRequest(
             httpMethod: .get,
-            path: "api/user/board/comments",
+            path: "/api/user/board/comments",
             headers: ["Authorization": token],
             jsonBody: FetchCommentRequestDTO(articleID: articleID)
         )
@@ -138,7 +138,7 @@ struct CommunityRequestFactory {
     ) -> Requestable {
         return JSONBodyRequest(
             httpMethod: .post,
-            path: "api/user/\(commentInformation.articleID)/comments",
+            path: "/api/user/\(commentInformation.articleID)/comments",
             headers: ["Authorization": token],
             jsonBody: commentInformation
         )
@@ -150,7 +150,7 @@ struct CommunityRequestFactory {
     ) -> Requestable {
         return JSONBodyRequest(
             httpMethod: .delete,
-            path: "api/user/board",
+            path: "/api/user/board",
             headers: ["Authorization": token],
             jsonBody: DeleteCommentRequestDTO(commentID: commentID)
         )
@@ -162,7 +162,7 @@ struct CommunityRequestFactory {
     ) -> Requestable {
         return JSONBodyRequest(
             httpMethod: .post,
-            path: "api/user/board",
+            path: "/api/user/board",
             headers: ["Authorization": token],
             jsonBody: CommentLikeRequestDTO(commentID: commentID)
         )
@@ -174,7 +174,7 @@ struct CommunityRequestFactory {
     ) -> Requestable {
         return Request(
             httpMethod: .get,
-            path: "api/user/board/comment/\(commentID)/counts",
+            path: "/api/user/board/comment/\(commentID)/counts",
             headers: ["Authorization": token]
         )
     }
@@ -185,7 +185,7 @@ struct CommunityRequestFactory {
     ) -> Requestable {
         return JSONBodyRequest(
             httpMethod: .delete,
-            path: "api/user/board/comment/unGood",
+            path: "/api/user/board/comment/unGood",
             headers: ["Authorization": token],
             jsonBody: body
         )

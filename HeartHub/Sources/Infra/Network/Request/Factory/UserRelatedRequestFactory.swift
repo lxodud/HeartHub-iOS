@@ -11,28 +11,28 @@ struct UserRelatedRequestFactory {
     static func makeEmailCheckRequest(of email: String) -> Requestable {
         return Request(
             httpMethod: .get,
-            path: "api/check/email/" + email
+            path: "/api/check/email/" + email
         )
     }
     
-    static func makeIdCheckApiRequest(of id: String) -> Requestable {
+    static func makeIdCheckRequest(of id: String) -> Requestable {
         return Request(
             httpMethod: .get,
-            path: "api/check/username/" + id
+            path: "/api/check/username/" + id
         )
     }
     
     static func makeVerificateEmailRequest(of email: String) -> Requestable {
         return Request(
             httpMethod: .post,
-            path: "api/join"
+            path: "/api/join"
         )
     }
     
     static func makeJoinRequest(of body: JoinRequestDTO) -> Requestable {
         return JSONBodyRequest(
             httpMethod: .post,
-            path: "api/join",
+            path: "/api/join",
             jsonBody: body
         )
     }
@@ -40,7 +40,7 @@ struct UserRelatedRequestFactory {
     static func makeSignInRequest(of body: SignInRequestDTO) -> Requestable {
         return JSONBodyRequest(
             httpMethod: .post,
-            path: "api/login",
+            path: "/api/login",
             jsonBody: body
         )
     }
@@ -48,7 +48,7 @@ struct UserRelatedRequestFactory {
     static func makeGetDatingDateRequest(token: String) -> Requestable {
         return Request(
             httpMethod: .get,
-            path: "api/user/datingDate",
+            path: "/api/user/datingDate",
             headers: ["Authorization": token]
         )
     }
@@ -56,7 +56,7 @@ struct UserRelatedRequestFactory {
     static func makeGetUserInfo(of id: String, token: String) -> Requestable {
         return Request(
             httpMethod: .get,
-            path: "api/user/info/" + id,
+            path: "/api/user/info/" + id,
             headers: ["Authorization": token]
         )
     }
@@ -64,7 +64,7 @@ struct UserRelatedRequestFactory {
     static func makeCheckMateExistRequest(token: String) -> Requestable {
         return Request(
             httpMethod: .get,
-            path: "api/user/exist-mate",
+            path: "/api/user/exist-mate",
             headers: ["Authorization": token]
         )
     }
@@ -72,7 +72,7 @@ struct UserRelatedRequestFactory {
     static func makeSetMateRequest(of body: SetMateRequestDTO, token: String) -> Requestable {
         return JSONBodyRequest(
             httpMethod: .post,
-            path: "api/user/set/mate",
+            path: "/api/user/set/mate",
             headers: ["Authorization": token],
             jsonBody: body
         )
@@ -81,7 +81,7 @@ struct UserRelatedRequestFactory {
     static func makeFindUsernameRequest(of body: FindUsernameRequestDTO) -> Requestable {
         return JSONBodyRequest(
             httpMethod: .post,
-            path: "api/find/username",
+            path: "/api/find/username",
             jsonBody: body
         )
     }
@@ -89,7 +89,7 @@ struct UserRelatedRequestFactory {
     static func makeReissueTokenRequest(token: String) -> Requestable {
         return Request(
             httpMethod: .post,
-            path: "api/reissue",
+            path: "/api/reissue",
             headers: ["Authorization": token]
         )
     }
@@ -97,7 +97,7 @@ struct UserRelatedRequestFactory {
     static func makeLogoutRequest(token: String) -> Requestable {
         return Request(
             httpMethod: .post,
-            path: "api/member/logout",
+            path: "/api/member/logout",
             headers: ["Authorization": token]
         )
     }
@@ -105,7 +105,7 @@ struct UserRelatedRequestFactory {
     static func makeFindPasswordRequest(of body: FindPasswordRequestDTO) -> Requestable {
         return JSONBodyRequest(
             httpMethod: .post,
-            path: "api/find/passwd",
+            path: "/api/find/passwd",
             jsonBody: body
         )
     }
@@ -113,7 +113,7 @@ struct UserRelatedRequestFactory {
     static func makeDeleteUserRequest(token: String) -> Requestable {
         return Request(
             httpMethod: .post,
-            path: "api/member/delete/user",
+            path: "/api/member/delete/user",
             headers: ["Authorization": token]
         )
     }

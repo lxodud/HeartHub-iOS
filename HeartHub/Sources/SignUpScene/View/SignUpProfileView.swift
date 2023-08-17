@@ -36,7 +36,7 @@ final class SignUpProfileView: UIView {
     }()
     
     // 아이디 제약
-    private var idDescriptionLabel: UILabel = {
+    var idDescriptionLabel: UILabel = {
         var label = UILabel()
         label.text = "영문/숫자 구성"
         label.font = UIFont(name: "Pretendard-Regular", size: 12)

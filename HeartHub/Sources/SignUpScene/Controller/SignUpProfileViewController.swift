@@ -71,8 +71,27 @@ extension SignUpProfileViewController {
             return
         }
         
-        userInformationManager.checkIDAvailability(with: id) { isDuplicate in
-            // TODO: 중복 유무에 따른 작업
+        userInformationManager.checkIDAvailability(with: id) { isNotDuplicate in
+            DispatchQueue.main.async {
+                if isNotDuplicate {
+                    self.signUpProfileView.idDescriptionLabel.text = "사용 가능한 아이디 입니다."
+                    self.signUpProfileView.idDescriptionLabel.textColor = UIColor(
+                        red: 0.105,
+                        green: 0.751,
+                        blue: 0.325,
+                        alpha: 1
+                    )
+
+                } else {
+                    self.signUpProfileView.idDescriptionLabel.text = "중복된 아이디 입니다."
+                    self.signUpProfileView.idDescriptionLabel.textColor = UIColor(
+                        red: 1,
+                        green: 0.004,
+                        blue: 0.004,
+                        alpha: 1
+                    )
+                }
+            }
         }
     }
     

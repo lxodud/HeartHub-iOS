@@ -19,6 +19,7 @@ final class UserInformationManager {
     var birth: String?
     
     private let networkManager: NetworkManager = DefaultNetworkManager()
+    
 }
 
 // MARK: Input
@@ -35,12 +36,18 @@ extension UserInformationManager {
             return
         }
         
-        let request = UserRelatedRequestFactory.makeEmailCheckRequest(of: id)
+        let request = UserRelatedRequestFactory.makeIdCheckRequest(of: id)
         
         networkManager.request(endpoint: request) { result in
             switch result {
-            case .success(_):
-                // TODO: data decoding
+            case .success(let data):
+                self.userID = id
+                do {
+                    let deserializedData = try JSONDecoder().decode(CheckAvailabilityResponseDTO.self, from: data)
+                    completion(deserializedData.data)
+                } catch let error {
+                    print(error)
+                }
                 break
             case .failure(let error):
                 print(error)

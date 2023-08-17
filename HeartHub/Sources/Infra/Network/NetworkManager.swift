@@ -41,7 +41,7 @@ final class DefaultNetworkManager: NetworkManager {
         request: URLRequest,
         completion: @escaping (Result<Data, Error>) -> Void
     ) {
-        session.dataTask(with: request) { data, response, error in
+        let task = session.dataTask(with: request) { data, response, error in
             guard error == nil else {
                 completion(.failure(NetworkError.transportError))
                 return
@@ -61,6 +61,8 @@ final class DefaultNetworkManager: NetworkManager {
             
             completion(.success(data))
         }
+        
+        task.resume()
     }
     
     private func uploadData(
@@ -68,7 +70,7 @@ final class DefaultNetworkManager: NetworkManager {
         body: Data,
         completion: @escaping (Result<Data, Error>) -> Void
     ) {
-        session.uploadTask(with: request, from: body) { data, response, error in
+        let task = session.uploadTask(with: request, from: body) { data, response, error in
             guard error == nil else {
                 return
             }
@@ -86,5 +88,7 @@ final class DefaultNetworkManager: NetworkManager {
             
             completion(.success(data))
         }
+        
+        task.resume()
     }
 }
