@@ -35,40 +35,25 @@ final class AddPostView: UIView {
         return textField
     }()
     
-    var addPostDailyButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setTitle("Daily", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Pretendard-SemiBold", size: 16)
-        button.backgroundColor = .black
-        button.titleLabel?.textColor = .white
-        button.clipsToBounds = true
-        return button
-    }()
-    
-    var addPostLookButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setTitle("Daily", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Pretendard-SemiBold", size: 16)
-        button.backgroundColor = .white
-        button.titleLabel?.textColor = .black
-        return button
-    }()
-    
-    var addPostDateButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setTitle("Daily", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Pretendard-SemiBold", size: 16)
-        button.backgroundColor = .black
-        button.titleLabel?.textColor = .white
-        return button
-    }()
+    var addPostDailyButton = AddPostButton(text: "Daily")
+    var addPostLookButton = AddPostButton(text: "Look")
+    var addPostDateButton = AddPostButton(text: "Date")
     
     private let addPostButtonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 0
-        stackView.alignment = .center
+        stackView.alignment = .fill
         stackView.distribution = .fillEqually
+        
+        stackView.backgroundColor = .white
+        
+        stackView.layer.shadowColor = UIColor.black.cgColor
+        stackView.layer.masksToBounds = false
+        stackView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        stackView.layer.shadowRadius = 5
+        stackView.layer.shadowOpacity = 0.3
+        
         return stackView
     }()
     
@@ -84,9 +69,7 @@ final class AddPostView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        addPostDailyButton.layer.cornerRadius = addPostDailyButton.frame.height * CGFloat(0.392)
-        addPostDateButton.layer.cornerRadius = addPostDateButton.frame.height * CGFloat(0.392)
-        addPostLookButton.layer.cornerRadius = addPostLookButton.frame.height * CGFloat(0.392)
+        addPostButtonStackView.layer.cornerRadius = addPostButtonStackView.frame.height / CGFloat(2)
     }
 }
 
@@ -100,7 +83,8 @@ extension AddPostView {
         
         [postImageView,
          addPostProfileView,
-         addPostTextField].forEach {
+         addPostTextField,
+         addPostButtonStackView].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -127,6 +111,12 @@ extension AddPostView {
             addPostTextField.topAnchor.constraint(equalTo: addPostProfileView.bottomAnchor),
             addPostTextField.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
             addPostTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
+            
+            // MARK: addPostButtonStackView Constraints
+            addPostButtonStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.066),
+            addPostButtonStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.512),
+            addPostButtonStackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -21),
+            addPostButtonStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -21),
         ])
     }
 }

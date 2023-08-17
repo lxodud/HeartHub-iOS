@@ -11,6 +11,8 @@ import PhotosUI
 final class AddPostViewController: UIViewController {
 
     private let addPostView = AddPostView()
+    
+    private var postCategoryButtonArray: [UIButton] = []
         
     override func loadView() {
         view = addPostView
@@ -19,6 +21,7 @@ final class AddPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureAddTarget()
         addPostView.configureTapPostImageAction(self, #selector(configureSelectImageAlert))
     }
 }
@@ -74,7 +77,6 @@ extension AddPostViewController: PHPickerViewControllerDelegate {
         } else {
             print("이미지 로딩 실패")
         }
-        
     }
 }
 
@@ -97,21 +99,30 @@ extension AddPostViewController: UIImagePickerControllerDelegate, UINavigationCo
 // MARK: Configure AddTarget
 extension AddPostViewController {
     private func configureAddTarget() {
-        addPostView.addPostDailyButton.addTarget(self, action: didTapAddPostDailyButton, for: .touchUpInside)
-        addPostView.addPostLookButton.addTarget(self, action: didTapAddPostLookButton, for: .touchUpInside)
-        addPostView.addPostDateButton.addTarget(self, action: didTapAddPostDateButton, for: .touchUpInside)
+        let dailyButton = addPostView.addPostDailyButton
+        let lookButton = addPostView.addPostLookButton
+        let dateButton = addPostView.addPostDateButton
+
+        postCategoryButtonArray.append(dailyButton)
+        postCategoryButtonArray.append(lookButton)
+        postCategoryButtonArray.append(dateButton)
+        
+        for (index, button) in postCategoryButtonArray.enumerated() {
+            button.addTarget(self, action: #selector(didTapPostCategoryButton(_:)), for: .touchUpInside)
+            button.tag = index
+        }
     }
     
-    @objc private func didTapAddPostDailyButton() {
-        addPostView.addPostDailyButton.isSelected.toggle()
-    }
-    
-    @objc private func didTapAddPostLookButton() {
-        addPostView.addPostLookButton.isSelected.toggle()
-    }
-    
-    @objc private func didTapAddPostDateButton() {
-        addPostView.addPostDateButton.isSelected.toggle()
+    @objc private func didTapPostCategoryButton(_ sender: UIButton) {
+        self.postCategoryButtonArray.forEach {
+            if $0.tag == sender.tag {
+                $0.isSelected.toggle()
+                $0.backgroundColor = $0.isSelected ? .black : .white
+            } else {
+                $0.isSelected = false
+                $0.backgroundColor = .white
+            }
+        }
     }
 }
 
