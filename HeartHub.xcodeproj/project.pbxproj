@@ -58,6 +58,7 @@
 		0C63FF2E2A8D15060020D137 /* CommentLikeRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63FF2D2A8D15060020D137 /* CommentLikeRequestDTO.swift */; };
 		0C63FF302A8D16F10020D137 /* CancleCommentLikeRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63FF2F2A8D16F00020D137 /* CancleCommentLikeRequestDTO.swift */; };
 		0C63FF332A8DF0800020D137 /* UserInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63FF322A8DF0800020D137 /* UserInformationManager.swift */; };
+		0C63FF352A8E0FD70020D137 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63FF342A8E0FD70020D137 /* NetworkError.swift */; };
 		0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F402A77D24000A31865 /* CommunityCellPagingImageView.swift */; };
 		0C684F432A77D26600A31865 /* DailyDateImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F422A77D26600A31865 /* DailyDateImageCell.swift */; };
 		0C684F452A77D53200A31865 /* CoupleImageBetweenHeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F442A77D53200A31865 /* CoupleImageBetweenHeartView.swift */; };
@@ -195,6 +196,7 @@
 		0C63FF2D2A8D15060020D137 /* CommentLikeRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentLikeRequestDTO.swift; sourceTree = "<group>"; };
 		0C63FF2F2A8D16F00020D137 /* CancleCommentLikeRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancleCommentLikeRequestDTO.swift; sourceTree = "<group>"; };
 		0C63FF322A8DF0800020D137 /* UserInformationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationManager.swift; sourceTree = "<group>"; };
+		0C63FF342A8E0FD70020D137 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0C684F402A77D24000A31865 /* CommunityCellPagingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityCellPagingImageView.swift; sourceTree = "<group>"; };
 		0C684F422A77D26600A31865 /* DailyDateImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyDateImageCell.swift; sourceTree = "<group>"; };
 		0C684F442A77D53200A31865 /* CoupleImageBetweenHeartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleImageBetweenHeartView.swift; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				0C59CF4C2A84D76D00D847B7 /* NetworkManager.swift */,
+				0C63FF342A8E0FD70020D137 /* NetworkError.swift */,
 				0C59CF5B2A87D7E800D847B7 /* Request */,
 			);
 			path = Network;
@@ -567,8 +570,7 @@
 		0C59CF6C2A89222100D847B7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				0C59CF6D2A89223500D847B7 /* TokenRepository.swift */,
-				0C59CF6F2A89236A00D847B7 /* JWTToken.swift */,
+				0C63FF422A8E40620020D137 /* Token */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -616,6 +618,15 @@
 				0C63FF322A8DF0800020D137 /* UserInformationManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0C63FF422A8E40620020D137 /* Token */ = {
+			isa = PBXGroup;
+			children = (
+				0C59CF6D2A89223500D847B7 /* TokenRepository.swift */,
+				0C59CF6F2A89236A00D847B7 /* JWTToken.swift */,
+			);
+			path = Token;
 			sourceTree = "<group>";
 		};
 		0C684F3A2A77C9E000A31865 /* Controller */ = {
@@ -1160,6 +1171,7 @@
 				0C63FF242A8CE10D0020D137 /* PostArticleLikeRequestDTO.swift in Sources */,
 				56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */,
 				5651FC672A7A686000965300 /* ProfilePostCollectionViewCell.swift in Sources */,
+				0C63FF352A8E0FD70020D137 /* NetworkError.swift in Sources */,
 				5651FC6B2A7A68E200965300 /* ProfileDailyPostDataManager.swift in Sources */,
 				0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */,
 				5626B34D2A5993A700477EBC /* SignUpTermAgreeViewController.swift in Sources */,

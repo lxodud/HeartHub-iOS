@@ -11,7 +11,6 @@ final class KeychainManager {
     private let queue = DispatchQueue.global()
 }
 
-
 // MARK: Public Interface
 extension KeychainManager {
     func fetchItem(

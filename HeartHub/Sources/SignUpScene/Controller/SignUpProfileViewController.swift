@@ -67,8 +67,13 @@ extension SignUpProfileViewController {
 
     
     @objc private func didTapIdCheckBtn() {
+        guard let id = signUpProfileView.idTextField.text else {
+            return
+        }
         
-        
+        userInformationManager.checkIDAvailability(with: id) { isDuplicate in
+            // TODO: 중복 유무에 따른 작업
+        }
     }
     
     @objc private func didTapSexButton(_ sender: UIButton) {

@@ -16,7 +16,7 @@ final class SignUpProfileView: UIView {
     
     // MARK: 아이디, 비밀번호 입력란
     // 아이디 입력 텍스트필드
-    private lazy var idTextField = SignUpUserInfoTextField(
+    let idTextField = SignUpUserInfoTextField(
         placeholder: "아이디를 입력하세요",
         keyboardType: .default, isSecureTextEntry: false)
     
