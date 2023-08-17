@@ -116,7 +116,7 @@ extension AddPostViewController {
     @objc private func didTapPostCategoryButton(_ sender: UIButton) {
         self.postCategoryButtonArray.forEach {
             if $0.tag == sender.tag {
-                $0.isSelected.toggle()
+                $0.isSelected = true
                 $0.backgroundColor = $0.isSelected ? .black : .white
             } else {
                 $0.isSelected = false
