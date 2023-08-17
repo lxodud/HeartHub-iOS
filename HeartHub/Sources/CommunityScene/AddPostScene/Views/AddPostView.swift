@@ -16,23 +16,17 @@ final class AddPostView: UIView {
     }()
     
     private var addPostProfileView = CommunityProfileView()
-    
-    private let addPostTextField: UITextField = {
-       let textField = UITextField()
-        textField.font = UIFont(name: "Pretendard-Regular", size: 16)
-        textField.attributedPlaceholder = NSAttributedString(
-            string: "문구를 입력해주세요",
-            attributes: [
-                NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5),
-                .font: UIFont(name: "Pretendard-Regular", size: 16)!
-//                .baselineOffset: NSNumber(value: 150)
-            ]
-        )
-        textField.textColor = .black
-        textField.autocapitalizationType = .none
-        textField.autocorrectionType = .no
-        textField.spellCheckingType = .no
-        return textField
+        
+    private let addPostTextView: UITextView = {
+        let textView = UITextView()
+        textView.font = UIFont(name: "Pretendard-Regular", size: 16)
+        textView.textColor = .black
+        textView.autocapitalizationType = .none
+        textView.autocorrectionType = .no
+        textView.spellCheckingType = .no
+        textView.text = "문구를 입력해주세요."
+        textView.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
+        return textView
     }()
     
     var addPostDailyButton = AddPostButton(text: "Daily")
@@ -61,6 +55,7 @@ final class AddPostView: UIView {
         super.init(frame: .zero)
         configureSubviews()
         configureLayout()
+        addPostTextView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -83,7 +78,7 @@ extension AddPostView {
         
         [postImageView,
          addPostProfileView,
-         addPostTextField,
+         addPostTextView,
          addPostButtonStackView].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -106,11 +101,11 @@ extension AddPostView {
             addPostProfileView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
 
             // MARK: addPostTextField Constraints
-            addPostTextField.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.246),
-            addPostTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
-            addPostTextField.topAnchor.constraint(equalTo: addPostProfileView.bottomAnchor),
-            addPostTextField.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-            addPostTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
+            addPostTextView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.246),
+            addPostTextView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            addPostTextView.topAnchor.constraint(equalTo: addPostProfileView.bottomAnchor),
+            addPostTextView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+            addPostTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             
             // MARK: addPostButtonStackView Constraints
             addPostButtonStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.066),
@@ -121,6 +116,14 @@ extension AddPostView {
     }
 }
 
+extension AddPostView: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        addPostTextView.text = ""
+        addPostTextView.textColor = .black
+    }
+}
+
+// MARK: GestureRecognizer Delegate Implement
 extension AddPostView: UIGestureRecognizerDelegate {
     func configureTapPostImageAction(_ target: Any, _ action: Selector) {
         let tapGesture = UITapGestureRecognizer(target: target, action: action)
