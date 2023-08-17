@@ -116,11 +116,23 @@ extension AddPostView {
     }
 }
 
+// MARK: TextView Delegate Implement
 extension AddPostView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         addPostTextView.text = ""
         addPostTextView.textColor = .black
     }
+    
+    // 텍스트필드를 모두 종료 (키보드 내려가기)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            addPostTextView.resignFirstResponder()
+        }
+    
+    // 텍스트필드 이외의 영역을 눌렀을때 키보드 내려가도록
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        addPostTextView.resignFirstResponder()
+    }
+    
 }
 
 // MARK: GestureRecognizer Delegate Implement
