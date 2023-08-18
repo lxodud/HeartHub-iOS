@@ -36,12 +36,17 @@ final class SignUpEnterNickNameEmailViewController: UIViewController {
 // MARK: Configure AddTarget
 extension SignUpEnterNickNameEmailViewController {
     private func configureAddTarget() {
-        signUpLoverLinkingView.signUpLoverNextPageButton.addTarget(self, action: #selector(didTapnextPageButton), for: .touchUpInside)
+        signUpLoverLinkingView.signUpLoverNextPageButton.addTarget(self, action: #selector(didTapNextPageButton), for: .touchUpInside)
         signUpLoverLinkingView.signUpLoverPreviousPageButton.addTarget(self, action: #selector(didTapPreviousPageButton), for: .touchUpInside)
         signUpLoverLinkingView.emailVerifyButton.addTarget(self, action: #selector(didTapemailVerifyButton), for: .touchUpInside)
+        signUpLoverLinkingView.nickNameCheckButton.addTarget(self, action: #selector(didTapNickNameCheckButton), for: .touchUpInside)
     }
     
-    @objc private func didTapnextPageButton() {
+    @objc private func didTapNickNameCheckButton() {
+        
+    }
+    
+    @objc private func didTapNextPageButton() {
         let signUpTermAgreeVC = SignUpTermAgreeViewController()
         navigationController?.pushViewController(signUpTermAgreeVC, animated: true)
     }

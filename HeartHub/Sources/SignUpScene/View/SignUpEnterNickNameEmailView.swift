@@ -20,7 +20,7 @@ final class SignUpEnterNickNameEmailView: UIView {
         keyboardType: .default,
         isSecureTextEntry: false)
     
-    private var nickNameDescriptionLabel: UILabel = {
+    var nickNameDescriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "한글/영문/숫자/특수문자 구성"
         label.font = UIFont(name: "Pretendard-Regular", size: 12)
