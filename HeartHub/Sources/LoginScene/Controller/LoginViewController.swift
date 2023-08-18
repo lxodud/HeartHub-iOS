@@ -30,8 +30,6 @@ final class LoginViewController: UIViewController {
 
     @objc private func didTapLoginButton() {
         print("로그인 버튼이 눌렸습니다.")
-        let findPwVC = SignUpTermAgreeViewController()
-       navigationController?.pushViewController(findPwVC, animated: true)
     }
     
     @objc private func didTapFindPwButton() {

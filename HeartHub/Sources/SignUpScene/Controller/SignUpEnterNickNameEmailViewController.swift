@@ -73,7 +73,7 @@ extension SignUpEnterNickNameEmailViewController {
     }
     
     @objc private func didTapNextPageButton() {
-        let signUpTermAgreeVC = SignUpTermAgreeViewController()
+        let signUpTermAgreeVC = SignUpTermAgreeViewController(userInformationManager: userInformationManager)
         navigationController?.pushViewController(signUpTermAgreeVC, animated: true)
     }
     
