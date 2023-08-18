@@ -22,6 +22,13 @@ struct UserRelatedRequestFactory {
         )
     }
     
+    static func makeNicknameCheckRequest(of nickname: String) -> Requestable {
+        return Request(
+            httpMethod: .get,
+            path: "/api/check/nickname/" + nickname
+        )
+    }
+    
     static func makeVerificateEmailRequest(of email: String) -> Requestable {
         return Request(
             httpMethod: .get,
