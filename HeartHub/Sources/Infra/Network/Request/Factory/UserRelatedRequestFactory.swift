@@ -24,8 +24,8 @@ struct UserRelatedRequestFactory {
     
     static func makeVerificateEmailRequest(of email: String) -> Requestable {
         return Request(
-            httpMethod: .post,
-            path: "/api/join"
+            httpMethod: .get,
+            path: "/api/email-verification/\(email)"
         )
     }
     

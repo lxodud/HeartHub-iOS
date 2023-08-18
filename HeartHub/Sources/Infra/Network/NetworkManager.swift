@@ -48,7 +48,7 @@ final class DefaultNetworkManager: NetworkManager {
             }
             
             guard let httpResponse = response as? HTTPURLResponse,
-                  (200...2999) ~= httpResponse.statusCode
+                  (200...299) ~= httpResponse.statusCode
             else {
                 completion(.failure(NetworkError.serverError))
                 return

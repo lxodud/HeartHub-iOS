@@ -46,7 +46,7 @@ final class SignUpEnterNickNameEmailView: UIView {
     
     // MARK: 이메일 입력 + dropDown 버튼
     // 이메일 입력 텍스트 필드
-    private var emailTextField = SignUpUserInfoTextField(
+    var emailTextField = SignUpUserInfoTextField(
         placeholder: "이메일을 입력해주세요",
         keyboardType: .emailAddress,
         isSecureTextEntry: false)

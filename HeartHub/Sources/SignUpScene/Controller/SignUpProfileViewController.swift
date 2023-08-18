@@ -70,7 +70,9 @@ extension SignUpProfileViewController {
         userInformationManager.password = signUpProfileView.pwTextField.text
         userInformationManager.birth = signUpProfileView.birthdayDateTextField.text
         
-        let signUpLoverLinkingVC = SignUpEnterNickNameEmailViewController()
+        let signUpLoverLinkingVC = SignUpEnterNickNameEmailViewController(
+            userInformationManager: userInformationManager
+        )
         navigationController?.pushViewController(signUpLoverLinkingVC, animated: true)
     }
     

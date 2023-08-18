@@ -12,6 +12,16 @@ import DropDown
 final class SignUpEnterNickNameEmailViewController: UIViewController {
     
     private let signUpLoverLinkingView = SignUpEnterNickNameEmailView()
+    private let userInformationManager: UserInformationManager
+    
+    init(userInformationManager: UserInformationManager) {
+        self.userInformationManager = userInformationManager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         view = signUpLoverLinkingView
@@ -19,16 +29,15 @@ final class SignUpEnterNickNameEmailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ConfigureAddTarget()
-        
+        configureAddTarget()
     }
 }
 
 // MARK: Configure AddTarget
 extension SignUpEnterNickNameEmailViewController {
-    private func ConfigureAddTarget() {
+    private func configureAddTarget() {
         signUpLoverLinkingView.signUpLoverNextPageButton.addTarget(self, action: #selector(didTapnextPageButton), for: .touchUpInside)
-        signUpLoverLinkingView.signUpLoverPreviousPageButton.addTarget(self, action: #selector(didTappreviousPageButton), for: .touchUpInside)
+        signUpLoverLinkingView.signUpLoverPreviousPageButton.addTarget(self, action: #selector(didTapPreviousPageButton), for: .touchUpInside)
         signUpLoverLinkingView.emailVerifyButton.addTarget(self, action: #selector(didTapemailVerifyButton), for: .touchUpInside)
     }
     
@@ -37,11 +46,15 @@ extension SignUpEnterNickNameEmailViewController {
         navigationController?.pushViewController(signUpTermAgreeVC, animated: true)
     }
     
-    @objc private func didTappreviousPageButton() {
+    @objc private func didTapPreviousPageButton() {
         navigationController?.popViewController(animated: true)
     }
     
     @objc private func didTapemailVerifyButton() {
+        guard let email = signUpLoverLinkingView.emailTextField.text else {
+            return
+        }
         
+        userInformationManager.sendVerificationCodeToEmail(with: email)
     }
 }

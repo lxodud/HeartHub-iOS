@@ -59,7 +59,8 @@
 		0C63FF302A8D16F10020D137 /* CancleCommentLikeRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63FF2F2A8D16F00020D137 /* CancleCommentLikeRequestDTO.swift */; };
 		0C63FF332A8DF0800020D137 /* UserInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63FF322A8DF0800020D137 /* UserInformationManager.swift */; };
 		0C63FF352A8E0FD70020D137 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63FF342A8E0FD70020D137 /* NetworkError.swift */; };
-		0C63FF462A8E6A700020D137 /* CheckAvailabilityResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63FF452A8E6A700020D137 /* CheckAvailabilityResponseDTO.swift */; };
+		0C63FF462A8E6A700020D137 /* CheckAvailabilityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63FF452A8E6A700020D137 /* CheckAvailabilityResponse.swift */; };
+		0C63FF4D2A8F31AE0020D137 /* EmailVerificationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63FF4C2A8F31AE0020D137 /* EmailVerificationResponse.swift */; };
 		0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F402A77D24000A31865 /* CommunityCellPagingImageView.swift */; };
 		0C684F432A77D26600A31865 /* DailyDateImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F422A77D26600A31865 /* DailyDateImageCell.swift */; };
 		0C684F452A77D53200A31865 /* CoupleImageBetweenHeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C684F442A77D53200A31865 /* CoupleImageBetweenHeartView.swift */; };
@@ -198,7 +199,8 @@
 		0C63FF2F2A8D16F00020D137 /* CancleCommentLikeRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancleCommentLikeRequestDTO.swift; sourceTree = "<group>"; };
 		0C63FF322A8DF0800020D137 /* UserInformationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationManager.swift; sourceTree = "<group>"; };
 		0C63FF342A8E0FD70020D137 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		0C63FF452A8E6A700020D137 /* CheckAvailabilityResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAvailabilityResponseDTO.swift; sourceTree = "<group>"; };
+		0C63FF452A8E6A700020D137 /* CheckAvailabilityResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAvailabilityResponse.swift; sourceTree = "<group>"; };
+		0C63FF4C2A8F31AE0020D137 /* EmailVerificationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationResponse.swift; sourceTree = "<group>"; };
 		0C684F402A77D24000A31865 /* CommunityCellPagingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityCellPagingImageView.swift; sourceTree = "<group>"; };
 		0C684F422A77D26600A31865 /* DailyDateImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyDateImageCell.swift; sourceTree = "<group>"; };
 		0C684F442A77D53200A31865 /* CoupleImageBetweenHeartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleImageBetweenHeartView.swift; sourceTree = "<group>"; };
@@ -538,9 +540,8 @@
 		0C59CF5C2A87D85A00D847B7 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				0C63FF442A8E6A430020D137 /* UserRelatedResponseDTO */,
+				0C63FF4A2A8F31790020D137 /* UserRelated */,
 				0C63FF1E2A8BCB3A0020D137 /* CommunityRequestDTO */,
-				0C63FF1A2A8BA3C00020D137 /* UserRelatedRequestDTO */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -578,7 +579,7 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		0C63FF1A2A8BA3C00020D137 /* UserRelatedRequestDTO */ = {
+		0C63FF1A2A8BA3C00020D137 /* RequestDTO */ = {
 			isa = PBXGroup;
 			children = (
 				0C59CF5D2A87D86D00D847B7 /* JoinRequestDTO.swift */,
@@ -587,7 +588,7 @@
 				0C59CF632A87E38100D847B7 /* FindUsernameRequestDTO.swift */,
 				0C59CF652A87E64000D847B7 /* FindPasswordRequestDTO.swift */,
 			);
-			path = UserRelatedRequestDTO;
+			path = RequestDTO;
 			sourceTree = "<group>";
 		};
 		0C63FF1B2A8BA3D60020D137 /* Factory */ = {
@@ -632,12 +633,22 @@
 			path = Token;
 			sourceTree = "<group>";
 		};
-		0C63FF442A8E6A430020D137 /* UserRelatedResponseDTO */ = {
+		0C63FF442A8E6A430020D137 /* ResponseDTO */ = {
 			isa = PBXGroup;
 			children = (
-				0C63FF452A8E6A700020D137 /* CheckAvailabilityResponseDTO.swift */,
+				0C63FF452A8E6A700020D137 /* CheckAvailabilityResponse.swift */,
+				0C63FF4C2A8F31AE0020D137 /* EmailVerificationResponse.swift */,
 			);
-			path = UserRelatedResponseDTO;
+			path = ResponseDTO;
+			sourceTree = "<group>";
+		};
+		0C63FF4A2A8F31790020D137 /* UserRelated */ = {
+			isa = PBXGroup;
+			children = (
+				0C63FF1A2A8BA3C00020D137 /* RequestDTO */,
+				0C63FF442A8E6A430020D137 /* ResponseDTO */,
+			);
+			path = UserRelated;
 			sourceTree = "<group>";
 		};
 		0C684F3A2A77C9E000A31865 /* Controller */ = {
@@ -1109,7 +1120,7 @@
 			files = (
 				0C59CF6A2A87EA9E00D847B7 /* KeychainManager.swift in Sources */,
 				5690136F2A7FCC7700715D23 /* LoginBackGroundView.swift in Sources */,
-				0C63FF462A8E6A700020D137 /* CheckAvailabilityResponseDTO.swift in Sources */,
+				0C63FF462A8E6A700020D137 /* CheckAvailabilityResponse.swift in Sources */,
 				5626B2D12A57EEB300477EBC /* LoginViewController.swift in Sources */,
 				56DEBEDA2A7A9B24000BC687 /* GameMissionTableViewCell.swift in Sources */,
 				56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */,
@@ -1214,6 +1225,7 @@
 				0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */,
 				56C048802A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift in Sources */,
 				0C6F454D2A700E9E0044EAC8 /* CommentViewController.swift in Sources */,
+				0C63FF4D2A8F31AE0020D137 /* EmailVerificationResponse.swift in Sources */,
 				0C63FF2A2A8D0A580020D137 /* RegisterCommentRequestDTO.swift in Sources */,
 				0C382E262A5950C700EA08E0 /* CommunitySegmentedControl.swift in Sources */,
 				569013552A7BB32600715D23 /* GameMissionDataManager.swift in Sources */,

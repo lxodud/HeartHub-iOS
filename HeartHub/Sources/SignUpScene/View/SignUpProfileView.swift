@@ -351,6 +351,10 @@ extension SignUpProfileView: UITextFieldDelegate {
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
+        if textField == idTextField {
+            idDescriptionLabel.text = "영문/숫자 구성"
+            idDescriptionLabel.textColor = #colorLiteral(red: 0.46, green: 0.46, blue: 0.46, alpha: 1)
+        }
         
         // 백스페이스 감지
         if let char = string.cString(using: String.Encoding.utf8) {
