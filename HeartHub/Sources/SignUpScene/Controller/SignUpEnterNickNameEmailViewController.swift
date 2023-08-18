@@ -43,6 +43,32 @@ extension SignUpEnterNickNameEmailViewController {
     }
     
     @objc private func didTapNickNameCheckButton() {
+        guard let nickname = signUpLoverLinkingView.nickNameTextField.text else {
+            return
+        }
+        
+        userInformationManager.checkNicknameAvailability(with: nickname) { isNotDuplicate in
+            DispatchQueue.main.async {
+                if isNotDuplicate {
+                    self.signUpLoverLinkingView.nickNameDescriptionLabel.text = "사용 가능한 닉네임입니다."
+                    self.signUpLoverLinkingView.nickNameDescriptionLabel.textColor = UIColor(
+                        red: 0.105,
+                        green: 0.751,
+                        blue: 0.325,
+                        alpha: 1
+                    )
+                    
+                } else {
+                    self.signUpLoverLinkingView.nickNameDescriptionLabel.text = "중복된 닉네임입니다."
+                    self.signUpLoverLinkingView.nickNameDescriptionLabel.textColor = UIColor(
+                        red: 1,
+                        green: 0.004,
+                        blue: 0.004,
+                        alpha: 1
+                    )
+                }
+            }
+        }
         
     }
     

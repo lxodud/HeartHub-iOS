@@ -53,6 +53,30 @@ extension UserInformationManager {
         }
     }
     
+    func checkNicknameAvailability(with inputNickname: String, completion: @escaping (Bool) -> Void) {
+        guard nickname != inputNickname else {
+            return
+        }
+        
+        let request = UserRelatedRequestFactory.makeNicknameCheckRequest(of: inputNickname)
+        
+        networkManager.request(endpoint: request) { result in
+            switch result {
+            case .success(let data):
+                self.nickname = inputNickname
+                do {
+                    let deserializedData: CheckAvailabilityResponse = try self.decode(from: data)
+                    completion(deserializedData.data)
+                } catch let error {
+                    print(error)
+                }
+                break
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     func sendVerificationCodeToEmail(with email: String) {
         let request = UserRelatedRequestFactory.makeVerificateEmailRequest(of: email)
         
