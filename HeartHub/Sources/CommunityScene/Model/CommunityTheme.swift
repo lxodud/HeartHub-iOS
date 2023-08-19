@@ -9,6 +9,6 @@ import Foundation
 
 enum CommunityTheme: String, Encodable {
     case Daily = "D"
-    case Date = "Da"
+    case Date = "T"
     case Look = "L"
 }
