@@ -35,7 +35,7 @@ final class TokenRepository {
 
 // MARK: Public Interface
 extension TokenRepository {
-    func saveToken(with token: JWTToken) {
+    func saveToken(with token: Token) {
         guard let accessToken = convertTokenTokSecValueData(token: token.accessToken),
               let refreshToken = convertTokenTokSecValueData(token: token.refreshToken)
         else {
@@ -48,6 +48,7 @@ extension TokenRepository {
         self.keychainManager.addItem(
             with: AccessTokenAttributesWithData,
             completion: { status in
+                debugPrint("add: \(status)")
                 guard status != errSecDuplicateItem else {
                     self.updateToken(with: token)
                     return
@@ -57,6 +58,7 @@ extension TokenRepository {
         self.keychainManager.addItem(
             with: fullRefreshTokenAttributesWithData,
             completion: { status in
+                debugPrint("add: \(status)")
                 guard status != errSecDuplicateItem else {
                     self.updateToken(with: token)
                     return
@@ -64,7 +66,7 @@ extension TokenRepository {
             })
     }
     
-    func updateToken(with token: JWTToken) {
+    func updateToken(with token: Token) {
         guard let accessToken = convertTokenTokSecValueData(token: token.accessToken),
               let refreshToken = convertTokenTokSecValueData(token: token.refreshToken)
         else {
@@ -75,6 +77,7 @@ extension TokenRepository {
             with: self.accessTokenAttributes,
             as: accessToken,
             completion: { status in
+                debugPrint("update: \(status)")
                 // TODO: Handling Result
             })
 
@@ -82,6 +85,7 @@ extension TokenRepository {
             with: self.refreshTokenAttributes,
             as: refreshToken,
             completion: { status in
+                debugPrint("update: \(status)")
                 // TODO: Handling Result
             })
     }

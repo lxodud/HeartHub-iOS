@@ -19,16 +19,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        // 네비게이션 컨트롤러
-        let loginVC = LoginViewController()
-        let navigationController = UINavigationController(rootViewController: loginVC)
-        navigationController.isNavigationBarHidden = true
-        window?.rootViewController = navigationController
-
-//        window?.rootViewController = HeartHubTabBarController()
+        let tokenRepository = TokenRepository()
         
-        window?.backgroundColor = .systemBackground
-        window?.makeKeyAndVisible()
+        tokenRepository.fetchAccessToken { token in
+            DispatchQueue.main.async {
+                if token == nil {
+                    let loginVC = LoginViewController()
+                    let navigationController = UINavigationController(rootViewController: loginVC)
+                    navigationController.isNavigationBarHidden = true
+                    self.window?.rootViewController = navigationController
+                } else {
+                    let heartHubTabBarController = HeartHubTabBarController()
+                    self.window?.rootViewController = heartHubTabBarController
+                }
+                
+                self.window?.backgroundColor = .systemBackground
+                self.window?.makeKeyAndVisible()
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
