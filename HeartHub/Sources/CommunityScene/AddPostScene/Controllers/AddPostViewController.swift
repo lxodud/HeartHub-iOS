@@ -12,6 +12,8 @@ final class AddPostViewController: UIViewController {
 
     private let addPostView = AddPostView()
     
+    private var postImages: [UIImage] = [UIImage(named: "AddPostImage")!]
+    
     private var postCategoryButtonArray: [UIButton] = []
             
     override func loadView() {
@@ -22,9 +24,18 @@ final class AddPostViewController: UIViewController {
         super.viewDidLoad()
         
         configureButtonAction()
-        addPostView.configureTapPostImageAction(self, #selector(configureSelectImageAlert))
-        
+        configureInitialSetting()
+    }
+}
+
+// MARK: Configure InitialSetting
+extension AddPostViewController {
+    
+    private func configureInitialSetting() {
         addPostView.addPostProfileView.configureContents(mockData[0])
+        addPostView.addPostCellPagingImageView.configureContents(self.postImages)
+        
+        addPostView.configureTapPostImageAction(self, #selector(configureSelectImageAlert))
     }
 }
 
@@ -58,27 +69,32 @@ extension AddPostViewController: PHPickerViewControllerDelegate {
         configuration.selectionLimit = 10
         configuration.filter = .any(of: [.images])
         
-        let picker = PHPickerViewController(configuration: configuration)
-        picker.delegate = self
-        self.present(picker, animated: true, completion: nil)
+        let phPickerVC = PHPickerViewController(configuration: configuration)
+        phPickerVC.delegate = self
+        self.present(phPickerVC, animated: true, completion: nil)
     }
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-        
         picker.dismiss(animated: true)
+        postImages = []
         
-        let itemProvider = results.first?.itemProvider
-        
-        if let itemProvider = itemProvider,
-           itemProvider.canLoadObject(ofClass: UIImage.self) {
-            itemProvider.loadObject(ofClass: UIImage.self) { (image, ErrorPointer) in
-                DispatchQueue.main.async {
-                    self.addPostView.postImageView.image = image as? UIImage
+        results.forEach { result in
+            let itemProvider = result.itemProvider
+            if itemProvider.canLoadObject(ofClass: UIImage.self) {
+                itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                    if let image = image as? UIImage {
+                        self.postImages.append(image)
+                        DispatchQueue.main.async {
+                            self.addPostView.addPostCellPagingImageView.configureContents(self.postImages)
+                        }
+                    }
+                    if let error = error {
+                        print("에러")
+                    }
                 }
             }
-        } else {
-            print("이미지 로딩 실패")
         }
+        dismiss(animated: true)
     }
 }
 
@@ -94,6 +110,13 @@ extension AddPostViewController: UIImagePickerControllerDelegate, UINavigationCo
             present(addPostImagePicker, animated: true, completion: nil)
         } else {
             print("Camera not available")
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? [UIImage] {
+            addPostView.addPostCellPagingImageView.configureContents(image)
+            dismiss(animated: true)
         }
     }
 }

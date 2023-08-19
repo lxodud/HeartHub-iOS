@@ -87,8 +87,7 @@ extension CoupleSpaceMainViewController {
     
     @objc
     private func tapConnectButton() {
-        let addPostVC = AddPostViewController()
-        navigationController?.pushViewController(addPostVC, animated: true)
+        
     }
 }
 
