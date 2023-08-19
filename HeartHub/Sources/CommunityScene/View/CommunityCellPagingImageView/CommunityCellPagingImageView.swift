@@ -50,8 +50,13 @@ extension CommunityCellPagingImageView {
 // MARK: UIScrollView Delegate Implementation
 extension CommunityCellPagingImageView {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let currentPosition = scrollView.contentOffset.x / scrollView.frame.width
-        imagePageControl.currentPage = Int(currentPosition)
+        
+        let width = scrollView.frame.width
+
+        if width != 0 {
+            let currentPosition = scrollView.contentOffset.x / width
+            imagePageControl.currentPage = Int(currentPosition)
+        }
     }
 }
 
