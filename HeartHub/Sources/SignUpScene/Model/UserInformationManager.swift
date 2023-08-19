@@ -81,7 +81,7 @@ extension UserInformationManager {
             case .success(let data):
                 self.userID = id
                 do {
-                    let deserializedData: CheckAvailabilityResponse = try self.decode(from: data)
+                    let deserializedData: CheckAvailabilityResponseDTO = try self.decode(from: data)
                     completion(deserializedData.data)
                 } catch let error {
                     print(error)
@@ -105,7 +105,7 @@ extension UserInformationManager {
             case .success(let data):
                 self.nickname = inputNickname
                 do {
-                    let deserializedData: CheckAvailabilityResponse = try self.decode(from: data)
+                    let deserializedData: CheckAvailabilityResponseDTO = try self.decode(from: data)
                     completion(deserializedData.data)
                 } catch let error {
                     print(error)
@@ -128,7 +128,7 @@ extension UserInformationManager {
             switch result {
             case .success(let data):
                 do {
-                    let deserializedData: EmailVerificationResponse = try self.decode(from: data)
+                    let deserializedData: EmailVerificationResponseDTO = try self.decode(from: data)
                     self.emailCertificationNumber = Int(deserializedData.data)
                 } catch let error {
                     print(error)

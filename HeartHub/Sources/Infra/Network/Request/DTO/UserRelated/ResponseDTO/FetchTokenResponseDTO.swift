@@ -1,5 +1,5 @@
 //
-//  FetchTokenResponse.swift
+//  FetchTokenResponseDTO.swift
 //  HeartHub
 //
 //  Created by 이태영 on 2023/08/19.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FetchTokenResponse: Decodable {
+struct FetchTokenResponseDTO: Decodable {
     let isSuccess: Bool
     let code: Int
     let message: String

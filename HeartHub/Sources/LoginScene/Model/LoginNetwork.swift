@@ -37,7 +37,7 @@ extension LoginNetwork {
             switch result {
             case .success(let data):
                 do {
-                    let deserializedData: FetchTokenResponse = try self.decode(from: data)
+                    let deserializedData: FetchTokenResponseDTO = try self.decode(from: data)
                     guard deserializedData.isSuccess == true else {
                         return
                     }

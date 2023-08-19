@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CheckAvailabilityResponse: Decodable {
+struct CheckAvailabilityResponseDTO: Decodable {
     let isSuccess: Bool
     let code: Int
     let message: String
