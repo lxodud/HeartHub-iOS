@@ -28,7 +28,7 @@ struct CommunityRequestFactory {
         return MultipartBodyRequest(
             httpMethod: .post,
             path: "/api/user/board/articles/write",
-            headers: ["Authorization": token],
+            headers: ["Authorization": "Bearer " + token],
             multipartData: multipartData
         )
     }
@@ -40,7 +40,7 @@ struct CommunityRequestFactory {
         return Request(
             httpMethod: .get,
             path: "/api/user/board/\(theme.rawValue)/articles",
-            headers: ["Authorization": token]
+            headers: ["Authorization": "Bearer " + token]
         )
     }
     
@@ -51,7 +51,7 @@ struct CommunityRequestFactory {
         return Request(
             httpMethod: .get,
             path: "/api/user/board/articles/\(articleID)",
-            headers: ["Authorization": token]
+            headers: ["Authorization": "Bearer " + token]
         )
     }
     
@@ -63,7 +63,7 @@ struct CommunityRequestFactory {
         return JSONBodyRequest(
             httpMethod: .post,
             path: "/api/user/board/\(articleID)/good",
-            headers: ["Authorization": token],
+            headers: ["Authorization": "Bearer " + token],
             jsonBody: PostArticleLikeRequestDTO(username: username)
         )
     }
@@ -75,7 +75,7 @@ struct CommunityRequestFactory {
         return Request(
             httpMethod: .get,
             path: "/api/user/board/\(articleID)/good/count",
-            headers: ["Authorization": token]
+            headers: ["Authorization": "Bearer " + token]
         )
     }
     
@@ -94,7 +94,7 @@ struct CommunityRequestFactory {
         return MultipartBodyRequest(
             httpMethod: .post,
             path: "/api/user/board/heart",
-            headers: ["Authorization": token],
+            headers: ["Authorization": "Bearer " + token],
             multipartData: multipartData
         )
     }
@@ -106,7 +106,7 @@ struct CommunityRequestFactory {
         return Request(
             httpMethod: .delete,
             path: "/api/user/board/articles/\(articleID)",
-            headers: ["Authorization": token]
+            headers: ["Authorization": "Bearer " + token]
         )
     }
     
@@ -116,7 +116,7 @@ struct CommunityRequestFactory {
         return Request(
             httpMethod: .get,
             path: "/api/user/board/look/lank",
-            headers: ["Authorization": token]
+            headers: ["Authorization": "Bearer " + token]
         )
     }
     
@@ -127,7 +127,7 @@ struct CommunityRequestFactory {
         return JSONBodyRequest(
             httpMethod: .get,
             path: "/api/user/board/comments",
-            headers: ["Authorization": token],
+            headers: ["Authorization": "Bearer " + token],
             jsonBody: FetchCommentRequestDTO(articleID: articleID)
         )
     }
@@ -139,7 +139,7 @@ struct CommunityRequestFactory {
         return JSONBodyRequest(
             httpMethod: .post,
             path: "/api/user/\(commentInformation.articleID)/comments",
-            headers: ["Authorization": token],
+            headers: ["Authorization": "Bearer " + token],
             jsonBody: commentInformation
         )
     }
@@ -151,7 +151,7 @@ struct CommunityRequestFactory {
         return JSONBodyRequest(
             httpMethod: .delete,
             path: "/api/user/board",
-            headers: ["Authorization": token],
+            headers: ["Authorization": "Bearer " + token],
             jsonBody: DeleteCommentRequestDTO(commentID: commentID)
         )
     }
@@ -163,7 +163,7 @@ struct CommunityRequestFactory {
         return JSONBodyRequest(
             httpMethod: .post,
             path: "/api/user/board",
-            headers: ["Authorization": token],
+            headers: ["Authorization": "Bearer " + token],
             jsonBody: CommentLikeRequestDTO(commentID: commentID)
         )
     }
@@ -175,7 +175,7 @@ struct CommunityRequestFactory {
         return Request(
             httpMethod: .get,
             path: "/api/user/board/comment/\(commentID)/counts",
-            headers: ["Authorization": token]
+            headers: ["Authorization": "Bearer " + token]
         )
     }
     
@@ -186,7 +186,7 @@ struct CommunityRequestFactory {
         return JSONBodyRequest(
             httpMethod: .delete,
             path: "/api/user/board/comment/unGood",
-            headers: ["Authorization": token],
+            headers: ["Authorization": "Bearer " + token],
             jsonBody: body
         )
     }

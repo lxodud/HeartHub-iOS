@@ -10,14 +10,14 @@ import Foundation
 final class TokenRepository {
     private let keychainManager = KeychainManager()
     private let accessTokenAttributes: [String: Any] = [
-        kSecClass as String: kSecClassKey,
-        kSecAttrLabel as String: "accessToken",
-        kSecAttrApplicationLabel as String: "HeartHub"
+        kSecClass as String: kSecClassGenericPassword,
+        kSecAttrAccount as String: "HeartHub",
+        kSecAttrService as String: "accessToken"
     ]
     private let refreshTokenAttributes: [String: Any] = [
-        kSecClass as String: kSecClassKey,
-        kSecAttrLabel as String: "refreshToken",
-        kSecAttrApplicationLabel as String: "HeartHub"
+        kSecClass as String: kSecClassGenericPassword,
+        kSecAttrAccount as String: "HeartHub",
+        kSecAttrService as String: "refreshToken"
     ]
     private let fetchQuery: [String: Any] = [
         kSecMatchLimit as String: kSecMatchLimitOne,
@@ -35,38 +35,42 @@ final class TokenRepository {
 
 // MARK: Public Interface
 extension TokenRepository {
-    func saveToken(with token: Token) {
+    func saveToken(with token: Token, completion: (() -> Void)? = nil) {
         guard let accessToken = convertTokenTokSecValueData(token: token.accessToken),
               let refreshToken = convertTokenTokSecValueData(token: token.refreshToken)
         else {
             return
         }
         
-        let AccessTokenAttributesWithData = self.accessTokenAttributes.merging(accessToken) { _, _ in }
+        let accessTokenAttributesWithData = self.accessTokenAttributes.merging(accessToken) { _, _ in }
         let fullRefreshTokenAttributesWithData = self.refreshTokenAttributes.merging(refreshToken) { _, _ in }
         
         self.keychainManager.addItem(
-            with: AccessTokenAttributesWithData,
+            with: accessTokenAttributesWithData,
             completion: { status in
-                debugPrint("add: \(status)")
+                debugPrint("add access: \(status)")
                 guard status != errSecDuplicateItem else {
                     self.updateToken(with: token)
                     return
                 }
+                
+                completion?()
             })
         
         self.keychainManager.addItem(
             with: fullRefreshTokenAttributesWithData,
             completion: { status in
-                debugPrint("add: \(status)")
+                debugPrint("add refresh: \(status)")
                 guard status != errSecDuplicateItem else {
                     self.updateToken(with: token)
                     return
                 }
+                
+                completion?()
             })
     }
     
-    func updateToken(with token: Token) {
+    func updateToken(with token: Token, completion: (() -> Void)? = nil) {
         guard let accessToken = convertTokenTokSecValueData(token: token.accessToken),
               let refreshToken = convertTokenTokSecValueData(token: token.refreshToken)
         else {
@@ -79,6 +83,8 @@ extension TokenRepository {
             completion: { status in
                 debugPrint("update: \(status)")
                 // TODO: Handling Result
+                
+                completion?()
             })
 
         self.keychainManager.updateItem(
@@ -87,6 +93,8 @@ extension TokenRepository {
             completion: { status in
                 debugPrint("update: \(status)")
                 // TODO: Handling Result
+                
+                completion?()
             })
     }
     
@@ -128,13 +136,13 @@ extension TokenRepository {
         keychainManager.deleteItem(
             with: accessTokenAttributes,
             completion: { status in
-                
+               print("access delete: \(status)")
             })
         
         keychainManager.deleteItem(
             with: refreshTokenAttributes,
             completion: { status in
-                
+                print("refresh delete: \(status)")
             })
     }
 }

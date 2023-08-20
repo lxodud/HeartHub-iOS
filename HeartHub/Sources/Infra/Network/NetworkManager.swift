@@ -47,10 +47,13 @@ final class DefaultNetworkManager: NetworkManager {
                 return
             }
             
-            guard let httpResponse = response as? HTTPURLResponse,
-                  (200...299) ~= httpResponse.statusCode
-            else {
-                completion(.failure(NetworkError.serverError))
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.failure(NetworkError.transportError))
+                return
+            }
+            
+            guard (200...299) ~= httpResponse.statusCode else {
+                completion(.failure(NetworkError.requestFail(statusCode: httpResponse.statusCode, data: data)))
                 return
             }
             
@@ -72,17 +75,22 @@ final class DefaultNetworkManager: NetworkManager {
     ) {
         let task = session.uploadTask(with: request, from: body) { data, response, error in
             guard error == nil else {
+                completion(.failure(NetworkError.transportError))
                 return
             }
             
-            guard let httpResponse = response as? HTTPURLResponse,
-                  (200...2999) ~= httpResponse.statusCode
-            else {
-                // TODO: Error Handling
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.failure(NetworkError.translateResponseError))
+                return
+            }
+            
+            guard (200...299) ~= httpResponse.statusCode else {
+                completion(.failure(NetworkError.requestFail(statusCode: httpResponse.statusCode, data: data)))
                 return
             }
             
             guard let data = data else {
+                completion(.failure(NetworkError.missingData))
                 return
             }
             

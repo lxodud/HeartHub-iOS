@@ -10,14 +10,14 @@ import Foundation
 struct Article: Decodable {
     let articleID: Int
     let content: String
-    let goodStatus: Bool
-    let heartStatus: Bool
+    let goodStatus: Bool?
+    let heartStatus: Bool?
     let theme: String
     let username: String
     let communityImageUrl: [String]
     
     enum CodingKeys: String, CodingKey {
-        case articleID
+        case articleID = "boardId"
         case content
         case goodStatus
         case heartStatus

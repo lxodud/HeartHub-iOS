@@ -56,7 +56,7 @@ struct UserRelatedRequestFactory {
         return Request(
             httpMethod: .get,
             path: "/api/user/datingDate",
-            headers: ["Authorization": token]
+            headers: ["Authorization": "Bearer " + token]
         )
     }
     
@@ -64,7 +64,7 @@ struct UserRelatedRequestFactory {
         return Request(
             httpMethod: .get,
             path: "/api/user/info/" + id,
-            headers: ["Authorization": token]
+            headers: ["Authorization": "Bearer " + token]
         )
     }
     
@@ -80,7 +80,7 @@ struct UserRelatedRequestFactory {
         return JSONBodyRequest(
             httpMethod: .post,
             path: "/api/user/set/mate",
-            headers: ["Authorization": token],
+            headers: ["Authorization": "Bearer " + token],
             jsonBody: body
         )
     }
@@ -97,7 +97,7 @@ struct UserRelatedRequestFactory {
         return Request(
             httpMethod: .post,
             path: "/api/reissue",
-            headers: ["Authorization": token]
+            headers: ["Authorization": "Bearer " + token]
         )
     }
     
@@ -105,7 +105,7 @@ struct UserRelatedRequestFactory {
         return Request(
             httpMethod: .post,
             path: "/api/member/logout",
-            headers: ["Authorization": token]
+            headers: ["Authorization": "Bearer " + token]
         )
     }
     
@@ -121,7 +121,7 @@ struct UserRelatedRequestFactory {
         return Request(
             httpMethod: .post,
             path: "/api/member/delete/user",
-            headers: ["Authorization": token]
+            headers: ["Authorization": "Bearer " + token]
         )
     }
 }

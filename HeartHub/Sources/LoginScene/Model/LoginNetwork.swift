@@ -10,7 +10,6 @@ import Foundation
 final class LoginNetwork {
     private let tokenRepository: TokenRepository
     private let networkManager: NetworkManager
-    
     private let decoder = JSONDecoder()
     
     init(

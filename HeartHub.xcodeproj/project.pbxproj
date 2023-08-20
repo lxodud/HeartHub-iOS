@@ -92,6 +92,7 @@
 		0CE2CD852A91105800129724 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CD842A91105800129724 /* Comment.swift */; };
 		0CE2CD872A91109D00129724 /* FetchArticleResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CD862A91109D00129724 /* FetchArticleResponseDTO.swift */; };
 		0CE2CD892A9110DB00129724 /* FetchCommentResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CD882A9110DB00129724 /* FetchCommentResponseDTO.swift */; };
+		0CE2CD8B2A91277000129724 /* RequestFailResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CD8A2A91277000129724 /* RequestFailResponseDTO.swift */; };
 		561462192A6EE50300C0AC1F /* FindIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561462182A6EE50300C0AC1F /* FindIdViewController.swift */; };
 		5626B2D12A57EEB300477EBC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B2D02A57EEB300477EBC /* LoginViewController.swift */; };
 		5626B3372A584A3D00477EBC /* SignUpStartDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B3362A584A3D00477EBC /* SignUpStartDateViewController.swift */; };
@@ -241,6 +242,7 @@
 		0CE2CD842A91105800129724 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		0CE2CD862A91109D00129724 /* FetchArticleResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchArticleResponseDTO.swift; sourceTree = "<group>"; };
 		0CE2CD882A9110DB00129724 /* FetchCommentResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCommentResponseDTO.swift; sourceTree = "<group>"; };
+		0CE2CD8A2A91277000129724 /* RequestFailResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFailResponseDTO.swift; sourceTree = "<group>"; };
 		15B862B20CFD240D7E3F016F /* Pods-HeartHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartHub.debug.xcconfig"; path = "Target Support Files/Pods-HeartHub/Pods-HeartHub.debug.xcconfig"; sourceTree = "<group>"; };
 		1D54B5963AADEBA830899999 /* Pods_HeartHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		561462182A6EE50300C0AC1F /* FindIdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindIdViewController.swift; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 		0C59CF5C2A87D85A00D847B7 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				0CE2CD8A2A91277000129724 /* RequestFailResponseDTO.swift */,
 				0C63FF4A2A8F31790020D137 /* UserRelated */,
 				0C63FF1E2A8BCB3A0020D137 /* Community */,
 			);
@@ -1292,6 +1295,7 @@
 				0C4EF99C2A7BF63100539320 /* HeartPickDataSource.swift in Sources */,
 				0C684F452A77D53200A31865 /* CoupleImageBetweenHeartView.swift in Sources */,
 				0C63FF222A8BCD4A0020D137 /* CommunityTheme.swift in Sources */,
+				0CE2CD8B2A91277000129724 /* RequestFailResponseDTO.swift in Sources */,
 				0C684F482A78D4F300A31865 /* HeartHubPageViewController.swift in Sources */,
 				0C809A1E2A56DA57009EC362 /* DailyDateViewController.swift in Sources */,
 				569013652A7E6CFD00715D23 /* GameMissionViewController.swift in Sources */,
