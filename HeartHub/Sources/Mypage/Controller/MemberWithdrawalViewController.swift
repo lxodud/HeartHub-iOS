@@ -55,7 +55,8 @@ final class MemberWithdrawalViewController: UIViewController {
         } else {
             memberWithdrawalView.allAgreebtn.setImage(checkBox, for: .normal)
         }
-        updateWithdrawalButtonState()
+        updateWithdrawalButtonState() // 버튼 상태 업데이트
+    }
     
     @objc func reasonbtn1Tapped() {
         if memberWithdrawalView.reasonbtn1.currentImage == checkedImage {
@@ -63,7 +64,7 @@ final class MemberWithdrawalViewController: UIViewController {
         } else {
             memberWithdrawalView.reasonbtn1.setImage(checkedImage, for: .normal)
         }
-        updateWithdrawalButtonState()
+        updateWithdrawalButtonState() // 버튼 상태 업데이트
     }
     
     @objc func reasonbtn2Tapped() {
@@ -72,7 +73,7 @@ final class MemberWithdrawalViewController: UIViewController {
         } else {
             memberWithdrawalView.reasonbtn2.setImage(checkedImage, for: .normal)
         }
-        updateWithdrawalButtonState()
+        updateWithdrawalButtonState() // 버튼 상태 업데이트
     }
     
     @objc func reasonbtn3Tapped() {
@@ -81,7 +82,7 @@ final class MemberWithdrawalViewController: UIViewController {
         } else {
             memberWithdrawalView.reasonbtn3.setImage(checkedImage, for: .normal)
         }
-        updateWithdrawalButtonState()
+        updateWithdrawalButtonState() // 버튼 상태 업데이트
     }
     
     @objc func reasonbtn4Tapped() {
@@ -90,7 +91,7 @@ final class MemberWithdrawalViewController: UIViewController {
         } else {
             memberWithdrawalView.reasonbtn4.setImage(checkedImage, for: .normal)
         }
-        updateWithdrawalButtonState()
+        updateWithdrawalButtonState() // 버튼 상태 업데이트
     }
     
     @objc func withdrawalButtonTapped() {
