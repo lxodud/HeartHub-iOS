@@ -101,19 +101,19 @@
 		569E4EED2A5D499900B51898 /* SignUpTermAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */; };
 		569E4EFE2A5FC58200B51898 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */; };
 		569E4EFF2A5FC58200B51898 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */; };
+		56C048772A8A02D7001BAAB5 /* DDayCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048762A8A02D7001BAAB5 /* DDayCalculator.swift */; };
 		56C0487C2A8A2CBA001BAAB5 /* SignUpPrivacyTermScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0487B2A8A2CBA001BAAB5 /* SignUpPrivacyTermScrollView.swift */; };
 		56C0487E2A8A309C001BAAB5 /* SignUpPrivacyTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0487D2A8A309C001BAAB5 /* SignUpPrivacyTermViewController.swift */; };
 		56C048802A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0487F2A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift */; };
 		56C048822A8A501B001BAAB5 /* SignUpTermOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048812A8A501B001BAAB5 /* SignUpTermOfUseViewController.swift */; };
 		56C048842A8A7663001BAAB5 /* SignUpDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048832A8A7663001BAAB5 /* SignUpDatePicker.swift */; };
-		56C048772A8A02D7001BAAB5 /* DDayCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048762A8A02D7001BAAB5 /* DDayCalculator.swift */; };
-		56C048952A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048942A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift */; };
 		56C048892A8A91BE001BAAB5 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048882A8A91BE001BAAB5 /* ConnectViewController.swift */; };
 		56C0488B2A8A91DE001BAAB5 /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0488A2A8A91DE001BAAB5 /* ConnectView.swift */; };
 		56C0488D2A8A9C5B001BAAB5 /* ConnectCheckPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0488C2A8A9C5B001BAAB5 /* ConnectCheckPopUpView.swift */; };
 		56C0488F2A8AA03A001BAAB5 /* ConnectCheckPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0488E2A8AA03A001BAAB5 /* ConnectCheckPopUpViewController.swift */; };
 		56C048912A8ABB99001BAAB5 /* ConnectCompletePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048902A8ABB99001BAAB5 /* ConnectCompletePopUpView.swift */; };
 		56C048932A8ABC88001BAAB5 /* ConnectCompletePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048922A8ABC88001BAAB5 /* ConnectCompletePopUpViewController.swift */; };
+		56C048952A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048942A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift */; };
 		56C048B02A8C9D6D001BAAB5 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048AF2A8C9D6D001BAAB5 /* AddPostViewController.swift */; };
 		56C048B22A8C9DF1001BAAB5 /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048B12A8C9DF1001BAAB5 /* AddPostView.swift */; };
 		56C048B42A8DBD0E001BAAB5 /* AddPostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048B32A8DBD0E001BAAB5 /* AddPostButton.swift */; };
@@ -228,19 +228,19 @@
 		569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermAgreeView.swift; sourceTree = "<group>"; };
 		569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		56C048762A8A02D7001BAAB5 /* DDayCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayCalculator.swift; sourceTree = "<group>"; };
 		56C0487B2A8A2CBA001BAAB5 /* SignUpPrivacyTermScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpPrivacyTermScrollView.swift; path = HeartHub/Sources/SignUpScene/View/ComponentView/SignUpPrivacyTermScrollView.swift; sourceTree = SOURCE_ROOT; };
 		56C0487D2A8A309C001BAAB5 /* SignUpPrivacyTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPrivacyTermViewController.swift; sourceTree = "<group>"; };
 		56C0487F2A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermOfUseScrollView.swift; sourceTree = "<group>"; };
 		56C048812A8A501B001BAAB5 /* SignUpTermOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermOfUseViewController.swift; sourceTree = "<group>"; };
 		56C048832A8A7663001BAAB5 /* SignUpDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDatePicker.swift; sourceTree = "<group>"; };
-		56C048762A8A02D7001BAAB5 /* DDayCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayCalculator.swift; sourceTree = "<group>"; };
-		56C048942A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostTextCollectionViewCell.swift; sourceTree = "<group>"; };
 		56C048882A8A91BE001BAAB5 /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		56C0488A2A8A91DE001BAAB5 /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
 		56C0488C2A8A9C5B001BAAB5 /* ConnectCheckPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCheckPopUpView.swift; sourceTree = "<group>"; };
 		56C0488E2A8AA03A001BAAB5 /* ConnectCheckPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCheckPopUpViewController.swift; sourceTree = "<group>"; };
 		56C048902A8ABB99001BAAB5 /* ConnectCompletePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCompletePopUpView.swift; sourceTree = "<group>"; };
 		56C048922A8ABC88001BAAB5 /* ConnectCompletePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCompletePopUpViewController.swift; sourceTree = "<group>"; };
+		56C048942A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostTextCollectionViewCell.swift; sourceTree = "<group>"; };
 		56C048AF2A8C9D6D001BAAB5 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		56C048B12A8C9DF1001BAAB5 /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
 		56C048B32A8DBD0E001BAAB5 /* AddPostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostButton.swift; sourceTree = "<group>"; };
@@ -567,11 +567,11 @@
 		0C809A1C2A56D17F009EC362 /* CommunityScene */ = {
 			isa = PBXGroup;
 			children = (
-				56C048A72A8C95DE001BAAB5 /* AddPostScene */,
 				0C43F6112A659CB000EED860 /* Util */,
 				0C4D32FB2A6830F000AD5EFF /* Protocol */,
 				0C382E242A5950AF00EA08E0 /* View */,
 				0C382E292A59A1F100EA08E0 /* Controller */,
+				56C048A72A8C95DE001BAAB5 /* AddPostScene */,
 				0C382E2A2A5B016800EA08E0 /* DailyDateScene */,
 				0CB49BD72A69230200C77341 /* LookScene */,
 				0C5929FA2A6D47D700C21570 /* CommentScene */,
@@ -689,6 +689,13 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		562ABF4C2A92035F006FA182 /* ReportViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ReportViews;
+			sourceTree = "<group>";
+		};
 		56348A8A2A6DB17C005BB635 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -737,6 +744,7 @@
 		5651FC502A7A65B300965300 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				562ABF4C2A92035F006FA182 /* ReportViews */,
 				5651FC6C2A7A69B500965300 /* ProfileUserView.swift */,
 				5651FC662A7A686000965300 /* ProfilePostImageCollectionViewCell.swift */,
 				56C048942A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift */,
@@ -828,6 +836,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		56C048872A8A919E001BAAB5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				56C048882A8A91BE001BAAB5 /* ConnectViewController.swift */,
+				56C0488E2A8AA03A001BAAB5 /* ConnectCheckPopUpViewController.swift */,
+				56C048922A8ABC88001BAAB5 /* ConnectCompletePopUpViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		56C048A72A8C95DE001BAAB5 /* AddPostScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,7 +860,7 @@
 			isa = PBXGroup;
 			children = (
 				56C048AF2A8C9D6D001BAAB5 /* AddPostViewController.swift */,
-            );
+			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
@@ -855,18 +873,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-
-		56C048872A8A919E001BAAB5 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				56C048882A8A91BE001BAAB5 /* ConnectViewController.swift */,
-				56C0488E2A8AA03A001BAAB5 /* ConnectCheckPopUpViewController.swift */,
-				56C048922A8ABC88001BAAB5 /* ConnectCompletePopUpViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-
 		56C048AA2A8C95F0001BAAB5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1343,4 +1349,3 @@
 	};
 	rootObject = 0CC33AB62A5281C1001EF4E7 /* Project object */;
 }
-

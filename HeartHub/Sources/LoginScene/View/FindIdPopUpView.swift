@@ -10,38 +10,27 @@ import UIKit
 final class FindIdPopUpView: UIView {
     
     let screenHeight = UIScreen.main.bounds.size.height
-
-    private var userNickName: String = "heartHuB"
-    private var userId: String = "zizlp0018"
     
     // MARK: 레이블
     private lazy var userNickNameLabel: UILabel = {
         let label = UILabel()
-        label.text = userNickName + "님의 아이디는"
+        label.text = "메일로 아이디가\n 전송되었습니다."
+        label.numberOfLines = 2
+        label.textAlignment = .center
         label.font = UIFont(name: "Pretendard-SemiBold", size: 24)
         label.adjustsFontForContentSizeCategory = true
         label.textColor = .black
         return label
     }()
     
-    private lazy var idLabel: UILabel = {
-        let label = UILabel()
-        label.text = userId
-        label.font = UIFont(name: "Pretendard-SemiBold", size: 24)
-        label.adjustsFontForContentSizeCategory = true
-        label.textColor = .black
-        return label
+    // 종이비행기 이미지뷰
+    private let paperPlaneImgView: UIImageView = {
+        var imgView = UIImageView()
+        imgView.contentMode = .scaleAspectFit
+        imgView.image = UIImage(named: "PaperPlane.png")
+        return imgView
     }()
-    
-    private lazy var endLabel: UILabel = {
-        let label = UILabel()
-        label.text = "입니다"
-        label.font = UIFont(name: "Pretendard-SemiBold", size: 24)
-        label.adjustsFontForContentSizeCategory = true
-        label.textColor = .black
-        return label
-    }()
-    
+
     // MARK: 닫기버튼
     lazy var closeBtn: UIButton = {
         let btn = UIButton(type: .custom)
@@ -63,17 +52,16 @@ final class FindIdPopUpView: UIView {
         btn.layer.shadowOffset = CGSize(width: 0, height: 4)
         btn.layer.shadowRadius = 6
         
-        
         return btn
     }()
     
-    private lazy var labelStackView: UIStackView = {
-        let stView = UIStackView(arrangedSubviews: [userNickNameLabel, idLabel, endLabel, closeBtn])
+    private lazy var labelImgStackView: UIStackView = {
+        let stView = UIStackView(arrangedSubviews: [userNickNameLabel, paperPlaneImgView, closeBtn])
         stView.axis = .vertical
-        stView.spacing = 45.84
-        stView.setCustomSpacing(78, after: endLabel)
+        stView.spacing = 34
+        stView.setCustomSpacing(81, after: paperPlaneImgView)
         stView.alignment = .center
-        stView.distribution = .fillEqually
+        stView.distribution = .fillProportionally
         return stView
     }()
     
@@ -83,7 +71,7 @@ final class FindIdPopUpView: UIView {
         view.backgroundColor = .white
         view.clipsToBounds = true
         view.layer.cornerRadius = 18
-        view.addSubview(labelStackView)
+        view.addSubview(labelImgStackView)
         return view
     }()
     
@@ -101,28 +89,31 @@ final class FindIdPopUpView: UIView {
     
     // MARK: 제약
     private func addViews() {
-        addSubview(containerView)
         
         [containerView,
-        labelStackView,
-         closeBtn].forEach { $0.translatesAutoresizingMaskIntoConstraints = false}
+        labelImgStackView,
+         closeBtn].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        
+        addSubview(containerView)
     }
     
     private func constraints() {
+        
+        let safeArea = safeAreaLayoutGuide
 
         NSLayoutConstraint.activate([
             containerView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            containerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 138),
-            containerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -163),
-            containerView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            containerView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 138),
+            containerView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -163),
+            containerView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 30),
 
-            labelStackView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            labelStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 119),
-            labelStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -30),
-            labelStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            labelImgStackView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            labelImgStackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 119),
+            labelImgStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -30),
+            labelImgStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
 
-            closeBtn.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             closeBtn.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.08),
+            closeBtn.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             closeBtn.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 30),
         ])
     }
