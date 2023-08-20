@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileReportUserViewController: UIViewController {
+final class ProfileReportUserViewController: UIViewController {
 
     private let reportUserView = ProfileReportUserView()
     

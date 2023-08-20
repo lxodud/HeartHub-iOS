@@ -66,6 +66,8 @@
 		562ABF4E2A920584006FA182 /* ProfileReportUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF4D2A920584006FA182 /* ProfileReportUserView.swift */; };
 		562ABF502A920703006FA182 /* AlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF4F2A920703006FA182 /* AlertButton.swift */; };
 		562ABF532A920E1A006FA182 /* ProfileReportUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF522A920E1A006FA182 /* ProfileReportUserViewController.swift */; };
+		562ABF552A921587006FA182 /* ProfileReportCancelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF542A921587006FA182 /* ProfileReportCancelView.swift */; };
+		562ABF572A921659006FA182 /* ProfileReportCancelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF562A921659006FA182 /* ProfileReportCancelViewController.swift */; };
 		56348A632A631283005BB635 /* FindIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A622A631283005BB635 /* FindIdView.swift */; };
 		56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A662A6318B0005BB635 /* FindIdPopUpView.swift */; };
 		56348A692A6319EA005BB635 /* FindIdPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A682A6319EA005BB635 /* FindIdPopUpViewController.swift */; };
@@ -196,6 +198,8 @@
 		562ABF4D2A920584006FA182 /* ProfileReportUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReportUserView.swift; sourceTree = "<group>"; };
 		562ABF4F2A920703006FA182 /* AlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertButton.swift; sourceTree = "<group>"; };
 		562ABF522A920E1A006FA182 /* ProfileReportUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReportUserViewController.swift; sourceTree = "<group>"; };
+		562ABF542A921587006FA182 /* ProfileReportCancelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReportCancelView.swift; sourceTree = "<group>"; };
+		562ABF562A921659006FA182 /* ProfileReportCancelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReportCancelViewController.swift; sourceTree = "<group>"; };
 		56348A622A631283005BB635 /* FindIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdView.swift; sourceTree = "<group>"; };
 		56348A662A6318B0005BB635 /* FindIdPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdPopUpView.swift; sourceTree = "<group>"; };
 		56348A682A6319EA005BB635 /* FindIdPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdPopUpViewController.swift; sourceTree = "<group>"; };
@@ -700,6 +704,7 @@
 			isa = PBXGroup;
 			children = (
 				562ABF4D2A920584006FA182 /* ProfileReportUserView.swift */,
+				562ABF542A921587006FA182 /* ProfileReportCancelView.swift */,
 			);
 			path = ReportViews;
 			sourceTree = "<group>";
@@ -708,6 +713,7 @@
 			isa = PBXGroup;
 			children = (
 				562ABF522A920E1A006FA182 /* ProfileReportUserViewController.swift */,
+				562ABF562A921659006FA182 /* ProfileReportCancelViewController.swift */,
 			);
 			path = ReportViewControllers;
 			sourceTree = "<group>";
@@ -1039,6 +1045,7 @@
 				5690136F2A7FCC7700715D23 /* LoginBackGroundView.swift in Sources */,
 				5626B2D12A57EEB300477EBC /* LoginViewController.swift in Sources */,
 				56DEBEDA2A7A9B24000BC687 /* GameMissionTableViewCell.swift in Sources */,
+				562ABF572A921659006FA182 /* ProfileReportCancelViewController.swift in Sources */,
 				56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */,
 				561462192A6EE50300C0AC1F /* FindIdViewController.swift in Sources */,
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
@@ -1082,6 +1089,7 @@
 				56C0488D2A8A9C5B001BAAB5 /* ConnectCheckPopUpView.swift in Sources */,
 				0CB49BDC2A69237400C77341 /* MockData.swift in Sources */,
 				0C4D32F72A6823A600AD5EFF /* DailyDateNoImageCell.swift in Sources */,
+				562ABF552A921587006FA182 /* ProfileReportCancelView.swift in Sources */,
 				0C6F454F2A701D520044EAC8 /* HeartHubProfileImageView.swift in Sources */,
 				0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */,
 				569013732A80167700715D23 /* SignUpBackgroundView.swift in Sources */,
