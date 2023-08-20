@@ -6,6 +6,10 @@ target 'HeartHub' do
   use_frameworks!
 
 pod 'DropDown'
+pod 'FSCalendar'
+pod 'SnapKit'
+pod 'Then'
+
 
 
 post_install do |installer|
