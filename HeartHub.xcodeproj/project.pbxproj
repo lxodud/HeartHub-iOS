@@ -826,7 +826,7 @@
 				56C048902A8ABB99001BAAB5 /* ConnectCompletePopUpView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>;
+			sourceTree = "<group>";
 		};
 		56C048A72A8C95DE001BAAB5 /* AddPostScene */ = {
 			isa = PBXGroup;
@@ -842,7 +842,7 @@
 			isa = PBXGroup;
 			children = (
 				56C048AF2A8C9D6D001BAAB5 /* AddPostViewController.swift */,
-			);
+            );
 			path = Controllers;
 			sourceTree = "<group>";
 		};
@@ -865,7 +865,7 @@
 			);
 			path = Controllers;
 			sourceTree = "<group>";
-		{;}
+		};
 
 		56C048AA2A8C95F0001BAAB5 /* Model */ = {
 			isa = PBXGroup;
@@ -1343,4 +1343,4 @@
 	};
 	rootObject = 0CC33AB62A5281C1001EF4E7 /* Project object */;
 }
-}
+
