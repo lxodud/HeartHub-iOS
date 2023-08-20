@@ -87,22 +87,26 @@ extension ProfileViewController {
     @objc private func configureReportAlert() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let library = UIAlertAction(title: "신고하기", style: .default)
-//        { (action)
-//            in self.openLibrary()
-//        }
-        let camera = UIAlertAction(title: "차단하기", style: .default)
-//        { (action) in
-//            self.openCamera()
-//        }
-//
+        let report = UIAlertAction(title: "신고하기", style: .default) { (action) in
+            self.reportUserViewController()
+        }
+        let block = UIAlertAction(title: "차단하기", style: .default) { (action) in
+//            present(LoginViewController, animated: true)
+        }
+
         let cancel = UIAlertAction(title: "취소", style: .cancel)
                 
-        alert.addAction(library)
-        alert.addAction(camera)
+        alert.addAction(report)
+        alert.addAction(block)
         alert.addAction(cancel)
                 
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func reportUserViewController() {
+        let reportUserViewController = ProfileReportUserViewController()
+        modalPresentationStyle = .fullScreen
+        present(reportUserViewController, animated: true)
     }
 }
 
