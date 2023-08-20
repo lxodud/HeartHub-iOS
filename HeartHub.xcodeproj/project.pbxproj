@@ -63,6 +63,10 @@
 		336E0F712A92041700547013 /* ProfileResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F702A92041700547013 /* ProfileResetViewController.swift */; };
 		336E0F732A92042A00547013 /* AlertSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F722A92042A00547013 /* AlertSetting.swift */; };
 		336E0F752A92043F00547013 /* AlertSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F742A92043F00547013 /* AlertSettingViewController.swift */; };
+		336E0F772A92076E00547013 /* MemberWithDrawalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F762A92076E00547013 /* MemberWithDrawalView.swift */; };
+		336E0F792A92078D00547013 /* PasswordChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F782A92078D00547013 /* PasswordChangeView.swift */; };
+		336E0F7B2A9207AD00547013 /* MemberWithdrawalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F7A2A9207AD00547013 /* MemberWithdrawalViewController.swift */; };
+		336E0F7D2A9207EA00547013 /* PasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F7C2A9207EA00547013 /* PasswordChangeViewController.swift */; };
 		561462192A6EE50300C0AC1F /* FindIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561462182A6EE50300C0AC1F /* FindIdViewController.swift */; };
 		5626B2D12A57EEB300477EBC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B2D02A57EEB300477EBC /* LoginViewController.swift */; };
 		5626B3372A584A3D00477EBC /* SignUpStartDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B3362A584A3D00477EBC /* SignUpStartDateViewController.swift */; };
@@ -185,6 +189,10 @@
 		336E0F702A92041700547013 /* ProfileResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResetViewController.swift; sourceTree = "<group>"; };
 		336E0F722A92042A00547013 /* AlertSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSetting.swift; sourceTree = "<group>"; };
 		336E0F742A92043F00547013 /* AlertSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSettingViewController.swift; sourceTree = "<group>"; };
+		336E0F762A92076E00547013 /* MemberWithDrawalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberWithDrawalView.swift; sourceTree = "<group>"; };
+		336E0F782A92078D00547013 /* PasswordChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeView.swift; sourceTree = "<group>"; };
+		336E0F7A2A9207AD00547013 /* MemberWithdrawalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberWithdrawalViewController.swift; sourceTree = "<group>"; };
+		336E0F7C2A9207EA00547013 /* PasswordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeViewController.swift; sourceTree = "<group>"; };
 		561462182A6EE50300C0AC1F /* FindIdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindIdViewController.swift; sourceTree = "<group>"; };
 		5626B2D02A57EEB300477EBC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5626B3362A584A3D00477EBC /* SignUpStartDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpStartDateViewController.swift; sourceTree = "<group>"; };
@@ -635,6 +643,8 @@
 				336E0F6A2A9203B000547013 /* MyPageMainView.swift */,
 				336E0F6C2A9203D200547013 /* ProfileResetView.swift */,
 				336E0F722A92042A00547013 /* AlertSetting.swift */,
+				336E0F762A92076E00547013 /* MemberWithDrawalView.swift */,
+				336E0F782A92078D00547013 /* PasswordChangeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -645,6 +655,8 @@
 				336E0F6E2A9203F100547013 /* MyPageMainViewController.swift */,
 				336E0F702A92041700547013 /* ProfileResetViewController.swift */,
 				336E0F742A92043F00547013 /* AlertSettingViewController.swift */,
+				336E0F7A2A9207AD00547013 /* MemberWithdrawalViewController.swift */,
+				336E0F7C2A9207EA00547013 /* PasswordChangeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -971,6 +983,7 @@
 				561462192A6EE50300C0AC1F /* FindIdViewController.swift in Sources */,
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
 				569013712A80004700715D23 /* LoginTextField.swift in Sources */,
+				336E0F7D2A9207EA00547013 /* PasswordChangeViewController.swift in Sources */,
 				5651FC7C2A7A7FB800965300 /* GameViewController.swift in Sources */,
 				336E0F6B2A9203B000547013 /* MyPageMainView.swift in Sources */,
 				0C4EF9A12A7BFB3700539320 /* MypickDataSource.swift in Sources */,
@@ -1013,6 +1026,7 @@
 				5690137D2A80EEA200715D23 /* SignUpUserInfoTextField.swift in Sources */,
 				56348A932A6E841E005BB635 /* FindPwPopUpView.swift in Sources */,
 				336E0F6F2A9203F100547013 /* MyPageMainViewController.swift in Sources */,
+				336E0F7B2A9207AD00547013 /* MemberWithdrawalViewController.swift in Sources */,
 				569E4EED2A5D499900B51898 /* SignUpTermAgreeView.swift in Sources */,
 				569013672A7E6D0700715D23 /* GameClearViewController.swift in Sources */,
 				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
@@ -1029,6 +1043,7 @@
 				56DEBEF42A7AAEF9000BC687 /* ProfileDatePostDataModel.swift in Sources */,
 				56DEBEF82A7AAF12000BC687 /* ProfileDatePostDataManager.swift in Sources */,
 				56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */,
+				336E0F792A92078D00547013 /* PasswordChangeView.swift in Sources */,
 				5651FC672A7A686000965300 /* ProfilePostCollectionViewCell.swift in Sources */,
 				5651FC6B2A7A68E200965300 /* ProfileDailyPostDataManager.swift in Sources */,
 				0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */,
@@ -1075,6 +1090,7 @@
 				0C4EF9AB2A829E0B00539320 /* CoupleSpaceAlbumViewController.swift in Sources */,
 				0C382E312A5BDB6D00EA08E0 /* CommunityProfileView.swift in Sources */,
 				0C382E312A5BDB6D00EA08E0 /* CommunityProfileView.swift in Sources */,
+				336E0F772A92076E00547013 /* MemberWithDrawalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
