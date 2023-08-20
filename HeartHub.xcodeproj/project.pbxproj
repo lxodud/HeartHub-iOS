@@ -68,6 +68,13 @@
 		562ABF532A920E1A006FA182 /* ProfileReportUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF522A920E1A006FA182 /* ProfileReportUserViewController.swift */; };
 		562ABF552A921587006FA182 /* ProfileReportCancelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF542A921587006FA182 /* ProfileReportCancelView.swift */; };
 		562ABF572A921659006FA182 /* ProfileReportCancelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF562A921659006FA182 /* ProfileReportCancelViewController.swift */; };
+		562ABF592A9217F8006FA182 /* ProfileReportReasonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF582A9217F8006FA182 /* ProfileReportReasonView.swift */; };
+		562ABF5B2A921809006FA182 /* ProfileReportReasonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF5A2A921809006FA182 /* ProfileReportReasonViewController.swift */; };
+		562ABF5D2A921844006FA182 /* ProfileDoneReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF5C2A921844006FA182 /* ProfileDoneReportView.swift */; };
+		562ABF5F2A92186C006FA182 /* ProfileDoneReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF5E2A92186C006FA182 /* ProfileDoneReportViewController.swift */; };
+		562ABF612A921885006FA182 /* ProfileDoneBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF602A921885006FA182 /* ProfileDoneBlockView.swift */; };
+		562ABF632A921894006FA182 /* ProfileDoneBlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF622A921894006FA182 /* ProfileDoneBlockViewController.swift */; };
+		562ABF652A921C33006FA182 /* ProfileReportReasonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF642A921C33006FA182 /* ProfileReportReasonTableViewCell.swift */; };
 		56348A632A631283005BB635 /* FindIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A622A631283005BB635 /* FindIdView.swift */; };
 		56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A662A6318B0005BB635 /* FindIdPopUpView.swift */; };
 		56348A692A6319EA005BB635 /* FindIdPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A682A6319EA005BB635 /* FindIdPopUpViewController.swift */; };
@@ -200,6 +207,13 @@
 		562ABF522A920E1A006FA182 /* ProfileReportUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReportUserViewController.swift; sourceTree = "<group>"; };
 		562ABF542A921587006FA182 /* ProfileReportCancelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReportCancelView.swift; sourceTree = "<group>"; };
 		562ABF562A921659006FA182 /* ProfileReportCancelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReportCancelViewController.swift; sourceTree = "<group>"; };
+		562ABF582A9217F8006FA182 /* ProfileReportReasonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReportReasonView.swift; sourceTree = "<group>"; };
+		562ABF5A2A921809006FA182 /* ProfileReportReasonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReportReasonViewController.swift; sourceTree = "<group>"; };
+		562ABF5C2A921844006FA182 /* ProfileDoneReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDoneReportView.swift; sourceTree = "<group>"; };
+		562ABF5E2A92186C006FA182 /* ProfileDoneReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDoneReportViewController.swift; sourceTree = "<group>"; };
+		562ABF602A921885006FA182 /* ProfileDoneBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDoneBlockView.swift; sourceTree = "<group>"; };
+		562ABF622A921894006FA182 /* ProfileDoneBlockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDoneBlockViewController.swift; sourceTree = "<group>"; };
+		562ABF642A921C33006FA182 /* ProfileReportReasonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReportReasonTableViewCell.swift; sourceTree = "<group>"; };
 		56348A622A631283005BB635 /* FindIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdView.swift; sourceTree = "<group>"; };
 		56348A662A6318B0005BB635 /* FindIdPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdPopUpView.swift; sourceTree = "<group>"; };
 		56348A682A6319EA005BB635 /* FindIdPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdPopUpViewController.swift; sourceTree = "<group>"; };
@@ -705,6 +719,10 @@
 			children = (
 				562ABF4D2A920584006FA182 /* ProfileReportUserView.swift */,
 				562ABF542A921587006FA182 /* ProfileReportCancelView.swift */,
+				562ABF582A9217F8006FA182 /* ProfileReportReasonView.swift */,
+				562ABF5C2A921844006FA182 /* ProfileDoneReportView.swift */,
+				562ABF602A921885006FA182 /* ProfileDoneBlockView.swift */,
+				562ABF642A921C33006FA182 /* ProfileReportReasonTableViewCell.swift */,
 			);
 			path = ReportViews;
 			sourceTree = "<group>";
@@ -714,6 +732,9 @@
 			children = (
 				562ABF522A920E1A006FA182 /* ProfileReportUserViewController.swift */,
 				562ABF562A921659006FA182 /* ProfileReportCancelViewController.swift */,
+				562ABF5A2A921809006FA182 /* ProfileReportReasonViewController.swift */,
+				562ABF5E2A92186C006FA182 /* ProfileDoneReportViewController.swift */,
+				562ABF622A921894006FA182 /* ProfileDoneBlockViewController.swift */,
 			);
 			path = ReportViewControllers;
 			sourceTree = "<group>";
@@ -1057,6 +1078,7 @@
 				56DEBEE42A7AACFC000BC687 /* ProfileLookViewController.swift in Sources */,
 				0C4EF9942A7B7F3B00539320 /* CoupleSpacePickCollectionViewController.swift in Sources */,
 				0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */,
+				562ABF632A921894006FA182 /* ProfileDoneBlockViewController.swift in Sources */,
 				56C0487C2A8A2CBA001BAAB5 /* SignUpPrivacyTermScrollView.swift in Sources */,
 				56C048892A8A91BE001BAAB5 /* ConnectViewController.swift in Sources */,
 				56C048842A8A7663001BAAB5 /* SignUpDatePicker.swift in Sources */,
@@ -1064,8 +1086,10 @@
 				0C684F4C2A78FA4D00A31865 /* CoupleSpaceMainHeaderView.swift in Sources */,
 				0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */,
 				0C4EF9A42A7CE2EC00539320 /* HeartHubTabBarController.swift in Sources */,
+				562ABF652A921C33006FA182 /* ProfileReportReasonTableViewCell.swift in Sources */,
 				0C6F454B2A7003930044EAC8 /* CommentCell.swift in Sources */,
 				0C4EF9A82A8233A100539320 /* CoupleSpaceAlbumCell.swift in Sources */,
+				562ABF5D2A921844006FA182 /* ProfileDoneReportView.swift in Sources */,
 				5651FC7A2A7A7C6A00965300 /* GameBackgroundView.swift in Sources */,
 				5690136D2A7FA60800715D23 /* GameClearTableViewCell.swift in Sources */,
 				56D4E6172A814049005215D1 /* SignUpTermTableViewCell.swift in Sources */,
@@ -1083,6 +1107,7 @@
 				0C4D32F92A6825FF00AD5EFF /* CommunityCellable.swift in Sources */,
 				562ABF4E2A920584006FA182 /* ProfileReportUserView.swift in Sources */,
 				5690135F2A7E62A200715D23 /* GamePageViewController.swift in Sources */,
+				562ABF5F2A92186C006FA182 /* ProfileDoneReportViewController.swift in Sources */,
 				0CB49BDA2A69234A00C77341 /* LookViewController.swift in Sources */,
 				56DEBEE62A7AAD10000BC687 /* ProfileDailyViewController.swift in Sources */,
 				56C048822A8A501B001BAAB5 /* SignUpTermOfUseViewController.swift in Sources */,
@@ -1100,6 +1125,7 @@
 				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
 				0C4EF99F2A7BF91500539320 /* CoupleSpacePickDataSourceable.swift in Sources */,
 				569E4EEB2A5D40E800B51898 /* SignUpEnterNickNameEmailView.swift in Sources */,
+				562ABF592A9217F8006FA182 /* ProfileReportReasonView.swift in Sources */,
 				56348A632A631283005BB635 /* FindIdView.swift in Sources */,
 				5626B3372A584A3D00477EBC /* SignUpStartDateViewController.swift in Sources */,
 				569E4EE42A5CE18E00B51898 /* SignUpStartDateView.swift in Sources */,
@@ -1117,7 +1143,9 @@
 				5651FC6B2A7A68E200965300 /* ProfileDailyPostDataManager.swift in Sources */,
 				0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */,
 				56C048772A8A02D7001BAAB5 /* DDayCalculator.swift in Sources */,
+				562ABF5B2A921809006FA182 /* ProfileReportReasonViewController.swift in Sources */,
 				5626B34D2A5993A700477EBC /* SignUpTermAgreeViewController.swift in Sources */,
+				562ABF612A921885006FA182 /* ProfileDoneBlockView.swift in Sources */,
 				562ABF532A920E1A006FA182 /* ProfileReportUserViewController.swift in Sources */,
 				56C048B02A8C9D6D001BAAB5 /* AddPostViewController.swift in Sources */,
 				5626B34B2A59938700477EBC /* SignUpEnterNickNameEmailViewController.swift in Sources */,

@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 //        window?.rootViewController = HeartHubTabBarController()
         
-        window?.rootViewController = ProfileViewController()
+        window?.rootViewController = ProfileReportReasonViewController()
 
         
         window?.backgroundColor = .systemBackground

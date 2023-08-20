@@ -8,7 +8,7 @@
 import UIKit
 
 final class ProfileReportCancelView: UIView {
-
+    
     
     private var userNickName: String = "우리자기 사랑행"
     
@@ -22,10 +22,10 @@ final class ProfileReportCancelView: UIView {
         label.textColor = .black
         return label
     }()
-
+    
     var profileCancelReportCancelButton = AlertButton(buttonColor: .white, borderColor: #colorLiteral(red: 0.9803773761, green: 0.1853338182, blue: 0.7394250631, alpha: 1), title: "취소", titleColor: .black)
     var profileCancelReportVerifyButton = AlertButton(buttonColor: .white, borderColor: #colorLiteral(red: 0.9803773761, green: 0.1853338182, blue: 0.7394250631, alpha: 1), title: "확인", titleColor: .black)
-
+    
     private lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [profileCancelReportCancelButton, profileCancelReportVerifyButton])
         stackView.axis = .horizontal
@@ -34,15 +34,15 @@ final class ProfileReportCancelView: UIView {
         stackView.distribution = .fillEqually
         return stackView
     }()
-
+    
     lazy var containerView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = .white
         view.clipsToBounds = true
         view.layer.cornerRadius = 18
         return view
     }()
-
+    
     // MARK: 뷰 초기화
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,10 +50,13 @@ final class ProfileReportCancelView: UIView {
         configureSubviews()
         configureConstraints()
     }
-        
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension ProfileReportCancelView {
 
     // MARK: 제약
     private func configureSubviews() {
@@ -85,21 +88,5 @@ final class ProfileReportCancelView: UIView {
             buttonStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -48),
             buttonStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 55),
         ])
-    }
-}
-
-// MARK: 프리뷰
-import SwiftUI
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Container().edgesIgnoringSafeArea(.all)
-    }
-    struct Container: UIViewControllerRepresentable {
-        func makeUIViewController(context: Context) -> UIViewController {
-            return     UINavigationController(rootViewController: ProfileReportCancelViewController())
-        }
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        }
-        typealias  UIViewControllerType = UIViewController
     }
 }
