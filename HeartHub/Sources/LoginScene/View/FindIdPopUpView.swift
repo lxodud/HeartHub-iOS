@@ -8,9 +8,7 @@
 import UIKit
 
 final class FindIdPopUpView: UIView {
-    
-    let screenHeight = UIScreen.main.bounds.size.height
-    
+        
     // MARK: 레이블
     private lazy var userNickNameLabel: UILabel = {
         let label = UILabel()
