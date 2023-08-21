@@ -68,14 +68,13 @@ extension GameMissionTableViewCell {
     }
     
     @objc private func didTapMissionButton() {
-
+        // 이미지 변경
         if gameMissionButton.isSelected == true {
             gameMissionButton.isSelected = false
             gameMissionCheckImage.isHidden = true
          } else {
              gameMissionButton.isSelected = true
              gameMissionCheckImage.isHidden = false
-
          }
     }
 }

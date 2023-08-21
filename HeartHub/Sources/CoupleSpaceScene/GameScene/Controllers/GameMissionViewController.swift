@@ -10,7 +10,7 @@ import UIKit
 class GameMissionViewController: UIViewController {
     private let gameMissionTableView = UITableView()
     
-    private var missionDataArray: [String] = []
+    var missionDataArray: [String] = []
     private var missionDataManager = GameMissionDataManager()
     
     override func viewDidLoad() {
@@ -20,14 +20,22 @@ class GameMissionViewController: UIViewController {
     }
 }
 
-// MARK: DataSource Implement
+// MARK: TableView Delegate Implement
+extension GameMissionViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let rowHeight = tableView.frame.height / CGFloat(4)
+        return rowHeight
+    }
+}
+
+// MARK: TableView DataSource Implement
 extension GameMissionViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return missionDataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GameMissionCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: GameMissionTableViewCell.reuseIdentifier, for: indexPath)
                 as? GameMissionTableViewCell else {
             return UITableViewCell()
         }
@@ -41,18 +49,19 @@ extension GameMissionViewController: UITableViewDataSource {
 // MARK: Configure TableView
 extension GameMissionViewController {
     private func configureGameMissionTableView() {
+        gameMissionTableView.delegate = self
         gameMissionTableView.dataSource = self
         
         gameMissionTableView.register(
             GameMissionTableViewCell.self,
-            forCellReuseIdentifier:GameMissionTableViewCell.reuseIdentifier
+            forCellReuseIdentifier: GameMissionTableViewCell.reuseIdentifier
         )
         
         missionDataManager.configureMissionData()
         missionDataArray = missionDataManager.fetchGameMissionData()
         
-        gameMissionTableView.contentSize.height = 80
         gameMissionTableView.separatorStyle = .none
+        gameMissionTableView.showsVerticalScrollIndicator = false
     }
 
     private func configureGameMissionTableViewLayout() {
