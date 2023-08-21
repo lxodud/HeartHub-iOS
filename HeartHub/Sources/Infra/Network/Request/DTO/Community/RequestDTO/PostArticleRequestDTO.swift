@@ -9,6 +9,6 @@ import Foundation
 
 struct PostArticleRequestDTO: Encodable {
     let content: String
-    let theme: CommunityTheme
+    let theme: ArticleTheme
     let userName: String
 }

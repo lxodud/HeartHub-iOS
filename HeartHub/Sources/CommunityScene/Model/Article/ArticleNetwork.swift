@@ -37,7 +37,7 @@ final class ArticleNetwork {
 // MARK: Public Interface
 extension ArticleNetwork {
     func fetchArticle(
-        with theme: CommunityTheme,
+        with theme: ArticleTheme,
         completion: @escaping ([Article]) -> Void
     ) {
         guard let accessToken = accessToken else {

@@ -17,12 +17,12 @@ final class CommunityArticleDataSource {
         tokenRepository: TokenRepository(),
         networkManager: DefaultNetworkManager()
     )
-    private let theme: CommunityTheme
+    private let theme: ArticleTheme
     
     // MARK: - Output
     var articlesPublisher: (([Article]) -> Void)?
     
-    init(theme: CommunityTheme) {
+    init(theme: ArticleTheme) {
         self.theme = theme
     }
 }

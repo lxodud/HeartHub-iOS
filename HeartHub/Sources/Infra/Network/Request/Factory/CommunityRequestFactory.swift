@@ -34,7 +34,7 @@ struct CommunityRequestFactory {
     }
     
     static func makeFetchCommunityArticleRequest(
-        with theme: CommunityTheme,
+        with theme: ArticleTheme,
         token: String
     ) -> Requestable {
         return Request(
