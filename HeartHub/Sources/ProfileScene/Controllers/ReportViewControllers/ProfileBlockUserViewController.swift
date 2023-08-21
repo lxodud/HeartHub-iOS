@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class ProfileReportUserViewController: UIViewController {
-
-    private let reportUserView = ProfileReportUserView()
+final class ProfileBlockUserViewController: UIViewController {
+    
+    private let reportUserView = ProfileBlockUserView()
     
     override func loadView() {
         view = reportUserView
@@ -20,17 +20,21 @@ final class ProfileReportUserViewController: UIViewController {
         super.viewDidLoad()
         configureAddTarget()
     }
-    
+}
+
+extension ProfileBlockUserViewController {
     private func configureAddTarget() {
         reportUserView.profileReportCancelButton.addTarget(self, action: #selector(didTapReportCancelButton), for: .touchUpInside)
         reportUserView.profileReportBlockButton.addTarget(self, action: #selector(didTapReportBlockButton), for: .touchUpInside)
     }
 
-    @objc private func didTapReportCancelButton() {
+    @objc func didTapReportCancelButton() {
         dismiss(animated: true)
     }
     
     @objc private func didTapReportBlockButton() {
-//        navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: true)
+        let profileDoneBlockViewController = ProfileDoneBlockViewController()
+        modalPresentationStyle = .overFullScreen
+        present(profileDoneBlockViewController, animated: true)
     }
 }

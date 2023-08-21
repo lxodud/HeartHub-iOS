@@ -18,5 +18,20 @@ final class ProfileDoneReportViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureAddTarget()
+    }
+}
+
+extension ProfileDoneReportViewController {
+    private func configureAddTarget() {
+        profileDoneReportView.profileDoneReportCloseButton.addTarget(
+            self,
+            action: #selector(didTapprofileDoneReportClosebutton),
+            for: .touchUpInside
+        )
+    }
+
+    @objc private func didTapprofileDoneReportClosebutton() {
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }

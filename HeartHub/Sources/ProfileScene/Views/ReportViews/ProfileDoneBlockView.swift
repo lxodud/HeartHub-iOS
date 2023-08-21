@@ -46,6 +46,8 @@ final class ProfileDoneBlockView: UIView {
         return view
     }()
     
+    var profileDoneBlockCloseButton = AlertButton(buttonColor: .white, borderColor: #colorLiteral(red: 0.9803773761, green: 0.1853338182, blue: 0.7394250631, alpha: 1), title: "닫기", titleColor: .black)
+    
     // MARK: 뷰 초기화
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,7 +65,7 @@ final class ProfileDoneBlockView: UIView {
 extension ProfileDoneBlockView {
     // MARK: 제약
     private func configureSubviews() {
-        [doneBlockLabel, blockCheckImage, bottomDoneBlockLabel].forEach {
+        [doneBlockLabel, blockCheckImage, bottomDoneBlockLabel, profileDoneBlockCloseButton].forEach {
             containerView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -87,12 +89,16 @@ extension ProfileDoneBlockView {
             doneBlockLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             
             blockCheckImage.centerXAnchor.constraint(equalTo: centerXAnchor),
-            blockCheckImage.topAnchor.constraint(equalTo: doneBlockLabel.bottomAnchor, constant: 36),
+            blockCheckImage.topAnchor.constraint(equalTo: doneBlockLabel.bottomAnchor, constant: 25),
             blockCheckImage.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 87),
 
             bottomDoneBlockLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            bottomDoneBlockLabel.topAnchor.constraint(equalTo: blockCheckImage.bottomAnchor, constant: 36),
-            bottomDoneBlockLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
+            bottomDoneBlockLabel.topAnchor.constraint(equalTo: blockCheckImage.bottomAnchor, constant: 25),
+            bottomDoneBlockLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            
+            profileDoneBlockCloseButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            profileDoneBlockCloseButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -30),
+            profileDoneBlockCloseButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 30),
         ])
     }
 }

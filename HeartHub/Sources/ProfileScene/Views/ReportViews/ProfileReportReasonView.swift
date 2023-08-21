@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileReportReasonView: UIView {
+final class ProfileReportReasonView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -82,9 +82,7 @@ final class ProfileReportReasonViewController: UIViewController {
     ]
     
     private var reasonCheckButtonStates: [Int: Bool] = [:]
-    
-//    private var isKeyboardShown = false
-    
+        
     override func loadView() {
         view = reportReasonView
     }
@@ -127,10 +125,6 @@ extension ProfileReportReasonViewController {
     
     @objc private func keyboardUpAction(notification: NSNotification) {
         
-//        guard !isKeyboardShown else {
-//            return
-//        }
-        
         guard let userInfo: NSDictionary = notification.userInfo as? NSDictionary else {
             return
         }
@@ -140,7 +134,6 @@ extension ProfileReportReasonViewController {
         let keyboardRectangle = keyboardFrame.cgRectValue
         let keyboardHeight = keyboardRectangle.height
         
-//        isKeyboardShown = true
 
         view.frame.origin.y -= keyboardHeight
         
@@ -150,7 +143,6 @@ extension ProfileReportReasonViewController {
     }
     
     @objc private func keyboardDownAction() {
-//        isKeyboardShown = false
         
         view.frame.origin.y = 0
 
@@ -213,6 +205,8 @@ extension ProfileReportReasonViewController {
         for key in 0..<5 {
             reasonCheckButtonStates[key] = false
         }
+        
+        profileReasonBlockButton.isEnabled = false
     }
 }
 
@@ -286,25 +280,30 @@ extension ProfileReportReasonViewController {
     }
     
     @objc private func didTapProfileReasonCancelButton() {
-        navigationController?.popToRootViewController(animated: true)
+        dismiss(animated: true)
     }
     
     @objc private func didTapProfileReasonBlockButton() {
-        //        navigationController?.popViewController(animated: true)
+        let profileDoneReportViewController = ProfileDoneReportViewController()
+        modalPresentationStyle = .overFullScreen
+        present(profileDoneReportViewController, animated: true)
     }
     
     @objc func reasonCheckButton(sender: UIButton) {
         switch sender.tag {
-        case 0:
+        case 0...3:
             reasonCheckButtonStates[sender.tag] = sender.isSelected
-        case 1:
-            reasonCheckButtonStates[sender.tag] = sender.isSelected
-        case 2:
-            reasonCheckButtonStates[sender.tag] = sender.isSelected
-        case 3:
-            reasonCheckButtonStates[sender.tag] = sender.isSelected
+            let buttonSelected = (0...3).contains(where: {reasonCheckButtonStates[$0] == true})
+            profileReasonBlockButton.isEnabled = buttonSelected
+            reportReasonTextView.isEditable = false
         case 4:
             reasonCheckButtonStates[sender.tag] = sender.isSelected
+            if reportReasonTextView.text == "" {
+                profileReasonBlockButton.isEnabled = false
+            }
+            else {
+                profileReasonBlockButton.isEnabled = true
+            }
         default:
             reasonCheckButtonStates[sender.tag] = false
         }
@@ -316,8 +315,9 @@ extension ProfileReportReasonViewController: UITextViewDelegate {
     // 플레이스홀더 기능 구현
     func textViewDidBeginEditing(_ textView: UITextView) {
         if reportReasonTextView.text == "이유를 작성해주십시오." {
-            reportReasonTextView.text = nil
+            reportReasonTextView.text = ""
             reportReasonTextView.textColor = .black
+            profileReasonBlockButton.isEnabled = false
         }
         reportReasonTextView.textColor = .black
     }

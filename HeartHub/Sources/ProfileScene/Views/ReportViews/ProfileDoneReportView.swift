@@ -45,6 +45,8 @@ final class ProfileDoneReportView: UIView {
         return view
     }()
     
+    var profileDoneReportCloseButton = AlertButton(buttonColor: .white, borderColor: #colorLiteral(red: 0.9803773761, green: 0.1853338182, blue: 0.7394250631, alpha: 1), title: "닫기", titleColor: .black)
+    
     // MARK: 뷰 초기화
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,7 +64,7 @@ final class ProfileDoneReportView: UIView {
 extension ProfileDoneReportView {
     // MARK: 제약
     private func configureSubviews() {
-        [doneReportLabel, reportCheckImage, bottomDoneReportLabel].forEach {
+        [doneReportLabel, reportCheckImage, bottomDoneReportLabel, profileDoneReportCloseButton].forEach {
             containerView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -86,12 +88,16 @@ extension ProfileDoneReportView {
             doneReportLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             
             reportCheckImage.centerXAnchor.constraint(equalTo: centerXAnchor),
-            reportCheckImage.topAnchor.constraint(equalTo: doneReportLabel.bottomAnchor, constant: 36),
+            reportCheckImage.topAnchor.constraint(equalTo: doneReportLabel.bottomAnchor, constant: 25),
             reportCheckImage.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 87),
 
             bottomDoneReportLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            bottomDoneReportLabel.topAnchor.constraint(equalTo: reportCheckImage.bottomAnchor, constant: 36),
-            bottomDoneReportLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor)
+            bottomDoneReportLabel.topAnchor.constraint(equalTo: reportCheckImage.bottomAnchor, constant: 25),
+            bottomDoneReportLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            
+            profileDoneReportCloseButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            profileDoneReportCloseButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -30),
+            profileDoneReportCloseButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 30),
         ])
     }
 }

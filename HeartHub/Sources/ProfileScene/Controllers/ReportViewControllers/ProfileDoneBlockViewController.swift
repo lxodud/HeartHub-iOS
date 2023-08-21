@@ -17,5 +17,20 @@ final class ProfileDoneBlockViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureAddTarget()
+    }
+}
+
+extension ProfileDoneBlockViewController {
+    private func configureAddTarget() {
+        profileDoneBlockView.profileDoneBlockCloseButton.addTarget(
+            self,
+            action: #selector(didTaProfileDoneBlockClosebutton),
+            for: .touchUpInside
+        )
+    }
+
+    @objc private func didTaProfileDoneBlockClosebutton() {
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }

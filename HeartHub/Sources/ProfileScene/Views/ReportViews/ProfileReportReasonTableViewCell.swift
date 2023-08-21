@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileReportReasonTableViewCell: UITableViewCell {
+final class ProfileReportReasonTableViewCell: UITableViewCell {
 
     var reasonCheckButton: UIButton = {
         let button = UIButton(type: .custom)

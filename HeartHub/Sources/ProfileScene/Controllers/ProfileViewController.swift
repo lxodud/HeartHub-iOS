@@ -88,10 +88,10 @@ extension ProfileViewController {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let report = UIAlertAction(title: "신고하기", style: .default) { (action) in
-            self.reportUserViewController()
+            self.presentReportUserViewController()
         }
         let block = UIAlertAction(title: "차단하기", style: .default) { (action) in
-//            present(LoginViewController, animated: true)
+            self.presentBlockUserViewController()
         }
 
         let cancel = UIAlertAction(title: "취소", style: .cancel)
@@ -103,10 +103,16 @@ extension ProfileViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    private func reportUserViewController() {
-        let reportUserViewController = ProfileReportUserViewController()
-        modalPresentationStyle = .fullScreen
+    private func presentReportUserViewController() {
+        let reportUserViewController = ProfileReportReasonViewController()
+        modalPresentationStyle = .overFullScreen
         present(reportUserViewController, animated: true)
+    }
+    
+    private func presentBlockUserViewController() {
+        let blockUserViewController = ProfileBlockUserViewController()
+        modalPresentationStyle = .overFullScreen
+        present(blockUserViewController, animated: true)
     }
 }
 
@@ -156,7 +162,7 @@ extension ProfileViewController {
             profilePageView.trailingAnchor.constraint(
                 equalTo: safeArea.trailingAnchor
             ),
-            // 탭바 올리고 다시 확인해보기
+
             profilePageView.bottomAnchor.constraint(
                 equalTo: view.bottomAnchor, constant: 210
             )

@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class ProfileReportCancelViewController: UIViewController {
+final class ProfileBlockCancelViewController: UIViewController {
 
-    private let cancelReportUserView = ProfileReportCancelView()
+    private let cancelReportUserView = ProfileBlockCancelView()
     
     override func loadView() {
         view = cancelReportUserView
@@ -31,6 +31,8 @@ final class ProfileReportCancelViewController: UIViewController {
     }
     
     @objc private func didTapVerifyButton() {
-//        navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: true)
+        let profileDoneBlockViewController = ProfileDoneBlockViewController()
+        modalPresentationStyle = .overFullScreen
+        present(profileDoneBlockViewController, animated: true)
     }
 }
