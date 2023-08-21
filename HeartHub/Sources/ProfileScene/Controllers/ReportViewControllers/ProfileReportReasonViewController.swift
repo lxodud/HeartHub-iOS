@@ -9,7 +9,6 @@ import UIKit
 
 final class ProfileReportReasonViewController: UIViewController {
     
-    
     private var userNickName: String = "우리자기 사랑행"
     
     private lazy var userNickNameLabel: UILabel = {
@@ -32,7 +31,6 @@ final class ProfileReportReasonViewController: UIViewController {
         label.textColor = .black
         return label
     }()
-    
     
     var profileReasonCancelButton = AlertButton(buttonColor: .white, borderColor: #colorLiteral(red: 0.9803773761, green: 0.1853338182, blue: 0.7394250631, alpha: 1), title: "취소", titleColor: .black)
     var profileReasonBlockButton = AlertButton(buttonColor:  #colorLiteral(red: 1, green: 0, blue: 0.008081941865, alpha: 1), borderColor: #colorLiteral(red: 1, green: 0, blue: 0.008081941865, alpha: 1), title: "차단", titleColor: .white)
@@ -74,7 +72,6 @@ final class ProfileReportReasonViewController: UIViewController {
     private let reportReasonView = ProfileReportReasonView()
     
     private let profileReportReasonTableView = UITableView()
-
     
     private let reasonsArray = [
     "욕설, 혐오 발언",
@@ -86,7 +83,7 @@ final class ProfileReportReasonViewController: UIViewController {
     
     private var reasonCheckButtonStates: [Int: Bool] = [:]
     
-    private var isKeyboardShown = false
+//    private var isKeyboardShown = false
     
     override func loadView() {
         view = reportReasonView
@@ -99,6 +96,7 @@ final class ProfileReportReasonViewController: UIViewController {
         configureLayout()
         tableViewInitialSetting()
         configureAddTarget()
+        
         configureNotification()
         reportReasonTextView.delegate = self
     }
@@ -129,9 +127,9 @@ extension ProfileReportReasonViewController {
     
     @objc private func keyboardUpAction(notification: NSNotification) {
         
-        guard !isKeyboardShown else {
-            return
-        }
+//        guard !isKeyboardShown else {
+//            return
+//        }
         
         guard let userInfo: NSDictionary = notification.userInfo as? NSDictionary else {
             return
@@ -142,9 +140,9 @@ extension ProfileReportReasonViewController {
         let keyboardRectangle = keyboardFrame.cgRectValue
         let keyboardHeight = keyboardRectangle.height
         
-        isKeyboardShown = true
+//        isKeyboardShown = true
 
-        containerView.frame.origin.y -= keyboardHeight
+        view.frame.origin.y -= keyboardHeight
         
         UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
@@ -152,9 +150,9 @@ extension ProfileReportReasonViewController {
     }
     
     @objc private func keyboardDownAction() {
-        isKeyboardShown = false
+//        isKeyboardShown = false
         
-        containerView.frame.origin.y = 0
+        view.frame.origin.y = 0
 
         UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
@@ -235,7 +233,6 @@ extension ProfileReportReasonViewController {
         view.addSubview(containerView)
         containerView.translatesAutoresizingMaskIntoConstraints = false
     }
-        
     
     private func configureLayout() {
         let safeArea = view.safeAreaLayoutGuide
@@ -260,11 +257,11 @@ extension ProfileReportReasonViewController {
             profileReportReasonTableView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -170),
             
             reportReasonTextView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            reportReasonTextView.topAnchor.constraint(equalTo: profileReportReasonTableView.bottomAnchor, constant: 10),
+            reportReasonTextView.topAnchor.constraint(equalTo: profileReportReasonTableView.bottomAnchor, constant: 4),
             reportReasonTextView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 30),
 
             buttonStackView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.063),
-            buttonStackView.topAnchor.constraint(equalTo: reportReasonTextView.bottomAnchor, constant: 10),
+            buttonStackView.topAnchor.constraint(equalTo: reportReasonTextView.bottomAnchor, constant: 24),
             buttonStackView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             buttonStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -48),
             buttonStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 55),
@@ -318,7 +315,7 @@ extension ProfileReportReasonViewController {
 extension ProfileReportReasonViewController: UITextViewDelegate {
     // 플레이스홀더 기능 구현
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if reportReasonTextView.text == "문구를 입력해주세요." {
+        if reportReasonTextView.text == "이유를 작성해주십시오." {
             reportReasonTextView.text = nil
             reportReasonTextView.textColor = .black
         }
@@ -327,7 +324,7 @@ extension ProfileReportReasonViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if reportReasonTextView.text == "" {
-            reportReasonTextView.text = "문구를 입력해주세요."
+            reportReasonTextView.text = "이유를 작성해주십시오."
             reportReasonTextView.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
         }
     }
@@ -337,5 +334,3 @@ extension ProfileReportReasonViewController: UITextViewDelegate {
         reportReasonTextView.resignFirstResponder()
     }
 }
-
-
