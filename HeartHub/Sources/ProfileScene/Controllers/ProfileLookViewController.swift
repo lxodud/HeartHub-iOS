@@ -32,16 +32,16 @@ extension ProfileLookViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let profileLookPostcell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "ProfileLookPostCell",
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: ProfilePostImageCollectionViewCell.reuseIdentifier,
             for: indexPath)
-                as? ProfilePostCollectionViewCell else {
+                as? ProfilePostImageCollectionViewCell else {
             return UICollectionViewCell()
                 }
         
-        profileLookPostcell.postImageView.image = profileLookPostArray[indexPath.item].profileLookPostImage
+        cell.profilePostImage.image = profileLookPostArray[indexPath.item].profileLookPostImage
         
-        return profileLookPostcell
+        return cell
     }
 }
 
@@ -49,7 +49,9 @@ extension ProfileLookViewController: UICollectionViewDataSource {
 extension ProfileLookViewController {
     private func configureUserPostCollectionView() {
         profileLookCollectionView.dataSource = self
-        profileLookCollectionView.register(ProfilePostCollectionViewCell.self, forCellWithReuseIdentifier: "ProfileLookPostCell")
+        
+        profileLookCollectionView.register(ProfilePostImageCollectionViewCell.self, forCellWithReuseIdentifier: ProfilePostImageCollectionViewCell.reuseIdentifier)
+        
         profileLookCollectionView.backgroundColor = .clear
         
         profileLookPostDataManager.configureProfileLookPostData()

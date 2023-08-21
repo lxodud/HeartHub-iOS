@@ -19,6 +19,7 @@ final class HeartHubProfileImageView: UIImageView {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         layer.cornerRadius = frame.height / 2
     }
 }
