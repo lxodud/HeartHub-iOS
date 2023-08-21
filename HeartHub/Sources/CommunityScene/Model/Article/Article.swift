@@ -14,6 +14,7 @@ struct Article: Decodable {
     let heartStatus: Bool?
     let theme: String
     let username: String
+    let userID: Int
     let communityImageUrl: [String]
     
     enum CodingKeys: String, CodingKey {
@@ -23,6 +24,7 @@ struct Article: Decodable {
         case heartStatus
         case theme
         case username = "userName"
+        case userID = "userId"
         case communityImageUrl = "communityImgUrl"
     }
 }

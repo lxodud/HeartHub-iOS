@@ -45,7 +45,7 @@ final class LookViewController: UIViewController {
     }
     
     private func bindToArticleDataSource() {
-        articleDataSource.bind { [weak self] articles in
+        articleDataSource.articlesPublisher = { [weak self] articles in
             self?.articles = articles
         }
     }

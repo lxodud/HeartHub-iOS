@@ -8,27 +8,27 @@
 import Foundation
 
 final class CommunityArticleDataSource {
-    var articles: [Article] = [] {
+    private var articles: [Article] = [] {
         didSet {
-            articlesHandler?(articles)
+            articlesPublisher?(articles)
         }
     }
-    
     private let articleNetwork = ArticleNetwork(
         tokenRepository: TokenRepository(),
         networkManager: DefaultNetworkManager()
     )
     private let theme: CommunityTheme
-    private var articlesHandler: (([Article]) -> Void)?
+    
+    // MARK: - Output
+    var articlesPublisher: (([Article]) -> Void)?
     
     init(theme: CommunityTheme) {
         self.theme = theme
     }
-    
-    func bind(_ handler: @escaping ([Article]) -> Void) {
-        self.articlesHandler = handler
-    }
-    
+}
+
+// MARK: - Input
+extension CommunityArticleDataSource {
     func fetchArticle() {
         articleNetwork.fetchArticle(with: theme) { articles in
             self.articles = articles

@@ -111,7 +111,7 @@ extension ArticleNetwork {
                     }
                 case .failure(let error):
                     if case NetworkError.requestFail(_, let data) = error {
-                        
+                        print(error.localizedDescription)
                     }
                     break
                 }
