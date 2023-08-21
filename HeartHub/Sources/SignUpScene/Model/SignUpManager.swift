@@ -1,5 +1,5 @@
 //
-//  UserInformationManager.swift
+//  SignUpManager.swift
 //  HeartHub
 //
 //  Created by 이태영 on 2023/08/17.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class UserInformationManager {
+final class SignUpManager {
     var userID: String?
     var password: String?
     var gender: String?
@@ -16,6 +16,7 @@ final class UserInformationManager {
     var marketingStatus: Bool?
     var datingDate: String?
     var birth: String?
+    var basicProfileImage: Data?
     
     private var marketingStatusString: String {
         marketingStatus ?? false ? "T" : "F"
@@ -68,7 +69,7 @@ final class UserInformationManager {
 }
 
 // MARK: Requst Network
-extension UserInformationManager {
+extension SignUpManager {
     func checkIDAvailability(with id: String, completion: @escaping (Bool) -> Void) {
         guard userID != id else {
             return

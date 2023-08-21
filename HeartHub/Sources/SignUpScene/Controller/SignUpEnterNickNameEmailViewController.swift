@@ -11,9 +11,9 @@ import UIKit
 final class SignUpEnterNickNameEmailViewController: UIViewController {
     
     private let signUpLoverLinkingView = SignUpEnterNickNameEmailView()
-    private let userInformationManager: UserInformationManager
+    private let userInformationManager: SignUpManager
     
-    init(userInformationManager: UserInformationManager) {
+    init(userInformationManager: SignUpManager) {
         self.userInformationManager = userInformationManager
         super.init(nibName: nil, bundle: nil)
     }

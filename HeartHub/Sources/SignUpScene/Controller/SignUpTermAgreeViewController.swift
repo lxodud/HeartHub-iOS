@@ -11,7 +11,7 @@ import UIKit
 final class SignUpTermAgreeViewController: UIViewController {
 
     private let signUpTermAgreeView = SignUpTermAgreeView()
-    private let userInformationManager: UserInformationManager
+    private let userInformationManager: SignUpManager
     
     private let signUpTermTableView = UITableView()
     // 약관동의 사이 선
@@ -53,7 +53,7 @@ final class SignUpTermAgreeViewController: UIViewController {
     
     private var termAgreeButtonStates: [Int: Bool] = [:]
     
-    init(userInformationManager: UserInformationManager) {
+    init(userInformationManager: SignUpManager) {
         self.userInformationManager = userInformationManager
         super.init(nibName: nil, bundle: nil)
     }

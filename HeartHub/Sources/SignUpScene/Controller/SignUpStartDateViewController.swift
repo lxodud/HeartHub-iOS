@@ -11,7 +11,7 @@ import UIKit
 final class SignUpStartDateViewController: UIViewController {
     
     private let signUpStartDateView = SignUpStartDateView()
-    private let userInformationManager = UserInformationManager()
+    private let userInformationManager = SignUpManager()
     
     override func loadView() {
         view = signUpStartDateView

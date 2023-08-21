@@ -5,7 +5,7 @@
 //  Created by 이태영 on 2023/08/19.
 //
 
-import Foundation
+import UIKit
 
 final class LoginNetwork {
     private let tokenRepository: TokenRepository
@@ -41,6 +41,7 @@ extension LoginNetwork {
                         return
                     }
                     
+                    self.saveCurrentUserInformation(id: id, token: deserializedData.data.accessToken)
                     self.tokenRepository.saveToken(with: deserializedData.data)
                     completion()
                 } catch let error {
@@ -50,5 +51,46 @@ extension LoginNetwork {
                 print(error)
             }
         }
+    }
+    
+    private func saveCurrentUserInformation(id: String, token: String) {
+        let request = UserRelatedRequestFactory.makeGetUserInfo(of: id, token: token)
+        let userInformationRepository = UserInformationRepository()
+        
+        networkManager.request(endpoint: request) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let deserializedData: GetUserInfoResponseDTO = try self.decode(from: data)
+                    
+                    let nickname = deserializedData.data.nickname
+                    userInformationRepository.saveNickname(with: nickname)
+                    
+                    guard let imageUrlString = deserializedData.data.userImageUrl,
+                          let imageUrl = URL(string: imageUrlString)
+                          
+                    else {
+                        let imageData = UIImage(named: "BasicProfileImage")!.pngData()!
+                        
+                        userInformationRepository.saveProfileImage(with: imageData)
+                        return
+                    }
+                    
+                    ImageProvider.shared.fetch(from: imageUrl) { result in
+                        switch result {
+                        case .success(let data):
+                            userInformationRepository.saveProfileImage(with: data)
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                } catch let error {
+                    print(error)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
     }
 }

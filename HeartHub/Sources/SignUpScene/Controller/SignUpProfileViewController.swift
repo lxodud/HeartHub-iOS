@@ -10,11 +10,11 @@ import UIKit
 final class SignUpProfileViewController: UIViewController {
     
     private let signUpProfileView = SignUpProfileView()
-    private let userInformationManager: UserInformationManager
+    private let userInformationManager: SignUpManager
     
     private var sexButtons: [UIButton] = []
     
-    init(userInformationManager: UserInformationManager) {
+    init(userInformationManager: SignUpManager) {
         self.userInformationManager = userInformationManager
         super.init(nibName: nil, bundle: nil)
     }
