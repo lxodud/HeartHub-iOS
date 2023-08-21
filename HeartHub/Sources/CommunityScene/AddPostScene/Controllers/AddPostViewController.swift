@@ -11,9 +11,7 @@ import PhotosUI
 final class AddPostViewController: UIViewController {
 
     private let addPostView = AddPostView()
-    
     private var postImages: [UIImage] = [UIImage(named: "AddPostImage")!]
-    
     private var postCategoryButtonArray: [UIButton] = []
             
     override func loadView() {

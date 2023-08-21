@@ -19,7 +19,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-<<<<<<< HEAD
         let tokenRepository = TokenRepository()
 
         tokenRepository.fetchAccessToken { token in
@@ -38,18 +37,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 self.window?.makeKeyAndVisible()
             }
         }
-=======
-        // 네비게이션 컨트롤러
-//        let loginVC = LoginViewController()
-//        let navigationController = UINavigationController(rootViewController: loginVC)
-//        navigationController.isNavigationBarHidden = true
-//        window?.rootViewController = navigationController
-
-        window?.rootViewController = HeartHubTabBarController()
-        
-        window?.backgroundColor = .systemBackground
-        window?.makeKeyAndVisible()
->>>>>>> upstream/develop
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
