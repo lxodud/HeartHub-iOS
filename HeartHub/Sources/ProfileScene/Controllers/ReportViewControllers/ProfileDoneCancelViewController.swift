@@ -1,18 +1,18 @@
 //
-//  ProfileDoneBlockViewController.swift
+//  ProfileDoneCancelViewController.swift
 //  HeartHub
 //
-//  Created by 제민우 on 2023/08/20.
+//  Created by 제민우 on 2023/08/22.
 //
 
 import UIKit
 
-final class ProfileDoneBlockViewController: UIViewController {
+class ProfileDoneCancelViewController: UIViewController {
 
-    let profileDoneBlockView = ProfileDoneEditUserStatusView(mainText: "정상적으로 차단되었습니다.")
+    let profileDoneCancelBlockView = ProfileDoneEditUserStatusView(mainText: "차단 해제 되었습니다.")
     
     override func loadView() {
-        view = profileDoneBlockView
+        view = profileDoneCancelBlockView
     }
     
     override func viewDidLoad() {
@@ -21,9 +21,9 @@ final class ProfileDoneBlockViewController: UIViewController {
     }
 }
 
-extension ProfileDoneBlockViewController {
+extension ProfileDoneCancelViewController {
     private func configureAddTarget() {
-        profileDoneBlockView.profileDoneCloseButton.addTarget(
+        profileDoneCancelBlockView.profileDoneCloseButton.addTarget(
             self,
             action: #selector(didTaProfileDoneBlockClosebutton),
             for: .touchUpInside

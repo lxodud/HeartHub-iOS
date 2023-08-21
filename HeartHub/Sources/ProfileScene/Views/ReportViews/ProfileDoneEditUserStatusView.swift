@@ -1,17 +1,15 @@
 //
-//  ProfileDoneBlockView.swift
+//  ProfileDoneReportView.swift
 //  HeartHub
 //
 //  Created by 제민우 on 2023/08/20.
 //
 
 import UIKit
-
-final class ProfileDoneBlockView: UIView {
-
-    private lazy var doneBlockLabel: UILabel = {
+final class ProfileDoneEditUserStatusView: UIView {
+    
+    private lazy var doneMainLabel: UILabel = {
         let label = UILabel()
-        label.text = "정상적으로 차단되었습니다."
         label.numberOfLines = 1
         label.textAlignment = .center
         label.font = UIFont(name: "Pretendard-SemiBold", size: 24)
@@ -20,14 +18,14 @@ final class ProfileDoneBlockView: UIView {
         return label
     }()
     
-    private let blockCheckImage: UIImageView = {
+    private let doneCheckImage: UIImageView = {
         var imgView = UIImageView()
         imgView.contentMode = .scaleAspectFit
         imgView.image = UIImage(named: "ReportCheck")
         return imgView
     }()
     
-    private var bottomDoneBlockLabel: UILabel = {
+    private var bottomDoneReportLabel: UILabel = {
         let label = UILabel()
         label.text = "더욱 완벽한 HeartHub가\n 되도록 하겠습니다."
         label.numberOfLines = 2
@@ -46,11 +44,13 @@ final class ProfileDoneBlockView: UIView {
         return view
     }()
     
-    var profileDoneBlockCloseButton = AlertButton(buttonColor: .white, borderColor: #colorLiteral(red: 0.9803773761, green: 0.1853338182, blue: 0.7394250631, alpha: 1), title: "닫기", titleColor: .black)
+    var profileDoneCloseButton = AlertButton(buttonColor: .white, borderColor: #colorLiteral(red: 0.9803773761, green: 0.1853338182, blue: 0.7394250631, alpha: 1), title: "닫기", titleColor: .black)
     
     // MARK: 뷰 초기화
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(mainText: String) {
+        super.init(frame: .zero)
+
+        doneMainLabel.text = mainText
         backgroundColor = UIColor(red: 0.067, green: 0.067, blue: 0.067, alpha: 0.2)
         configureSubviews()
         configureConstraints()
@@ -62,10 +62,10 @@ final class ProfileDoneBlockView: UIView {
 }
 
 // MARK: Configure Layout
-extension ProfileDoneBlockView {
+extension ProfileDoneEditUserStatusView {
     // MARK: 제약
     private func configureSubviews() {
-        [doneBlockLabel, blockCheckImage, bottomDoneBlockLabel, profileDoneBlockCloseButton].forEach {
+        [doneMainLabel, doneCheckImage, bottomDoneReportLabel, profileDoneCloseButton].forEach {
             containerView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -84,21 +84,21 @@ extension ProfileDoneBlockView {
             containerView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -159),
             containerView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 30),
             
-            doneBlockLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            doneBlockLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 60),
-            doneBlockLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            doneMainLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            doneMainLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 60),
+            doneMainLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             
-            blockCheckImage.centerXAnchor.constraint(equalTo: centerXAnchor),
-            blockCheckImage.topAnchor.constraint(equalTo: doneBlockLabel.bottomAnchor, constant: 25),
-            blockCheckImage.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 87),
+            doneCheckImage.centerXAnchor.constraint(equalTo: centerXAnchor),
+            doneCheckImage.topAnchor.constraint(equalTo: doneMainLabel.bottomAnchor, constant: 25),
+            doneCheckImage.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 87),
 
-            bottomDoneBlockLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            bottomDoneBlockLabel.topAnchor.constraint(equalTo: blockCheckImage.bottomAnchor, constant: 25),
-            bottomDoneBlockLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            bottomDoneReportLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            bottomDoneReportLabel.topAnchor.constraint(equalTo: doneCheckImage.bottomAnchor, constant: 25),
+            bottomDoneReportLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
             
-            profileDoneBlockCloseButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            profileDoneBlockCloseButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -30),
-            profileDoneBlockCloseButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 30),
+            profileDoneCloseButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            profileDoneCloseButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -30),
+            profileDoneCloseButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 30),
         ])
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 final class ProfileDoneReportViewController: UIViewController {
 
     
-    let profileDoneReportView = ProfileDoneReportView()
+    let profileDoneReportView = ProfileDoneEditUserStatusView(mainText: "정상적으로 신고되었습니다.")
     
     override func loadView() {
         view = profileDoneReportView
@@ -24,7 +24,7 @@ final class ProfileDoneReportViewController: UIViewController {
 
 extension ProfileDoneReportViewController {
     private func configureAddTarget() {
-        profileDoneReportView.profileDoneReportCloseButton.addTarget(
+        profileDoneReportView.profileDoneCloseButton.addTarget(
             self,
             action: #selector(didTapprofileDoneReportClosebutton),
             for: .touchUpInside

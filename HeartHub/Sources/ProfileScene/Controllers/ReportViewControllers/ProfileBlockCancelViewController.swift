@@ -31,8 +31,8 @@ final class ProfileBlockCancelViewController: UIViewController {
     }
     
     @objc private func didTapVerifyButton() {
-        let profileDoneBlockViewController = ProfileDoneBlockViewController()
+        let profileDoneCancelViewController = ProfileDoneCancelViewController()
         modalPresentationStyle = .overFullScreen
-        present(profileDoneBlockViewController, animated: true)
+        present(profileDoneCancelViewController, animated: true)
     }
 }

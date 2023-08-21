@@ -298,7 +298,7 @@ extension ProfileReportReasonViewController {
             reportReasonTextView.isEditable = false
         case 4:
             reasonCheckButtonStates[sender.tag] = sender.isSelected
-            if reportReasonTextView.text == "" {
+            if reportReasonTextView.text == "" && reportReasonTextView.text == "이유를 작성해주십시오." {
                 profileReasonBlockButton.isEnabled = false
             }
             else {
@@ -317,7 +317,6 @@ extension ProfileReportReasonViewController: UITextViewDelegate {
         if reportReasonTextView.text == "이유를 작성해주십시오." {
             reportReasonTextView.text = ""
             reportReasonTextView.textColor = .black
-            profileReasonBlockButton.isEnabled = false
         }
         reportReasonTextView.textColor = .black
     }

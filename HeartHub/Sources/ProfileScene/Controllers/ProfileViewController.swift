@@ -37,6 +37,8 @@ final class ProfileViewController: UIViewController {
         return button
     }()
     
+    private var blockStatus: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUserProfileData()
@@ -93,11 +95,18 @@ extension ProfileViewController {
         let block = UIAlertAction(title: "차단하기", style: .default) { (action) in
             self.presentBlockUserViewController()
         }
+        let cancelBlock = UIAlertAction(title: "차단 해제", style: .default) { (action) in
+            self.presentCancelBlockUserViewController()
+        }
 
         let cancel = UIAlertAction(title: "취소", style: .cancel)
                 
         alert.addAction(report)
-        alert.addAction(block)
+        if blockStatus == true {
+            alert.addAction(cancelBlock)
+        } else {
+            alert.addAction(block)
+        }
         alert.addAction(cancel)
                 
         present(alert, animated: true, completion: nil)
@@ -113,6 +122,12 @@ extension ProfileViewController {
         let blockUserViewController = ProfileBlockUserViewController()
         modalPresentationStyle = .overFullScreen
         present(blockUserViewController, animated: true)
+    }
+    
+    private func presentCancelBlockUserViewController() {
+        let profileBlockCancelViewController = ProfileBlockCancelViewController()
+        modalPresentationStyle = .overFullScreen
+        present(profileBlockCancelViewController, animated: true)
     }
 }
 
