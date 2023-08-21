@@ -8,17 +8,14 @@
 import UIKit
 
 final class CommunityViewController: UIViewController {
-    private let communityPageViewController: UIViewController? = {
-        let pageViewController = HeartHubPageViewController(
-            viewControllers: [
-                DailyDateViewController(articleDataSource: CommunityArticleDataSource(theme: .daily)),
-                LookViewController(articleDataSource: CommunityArticleDataSource(theme: .look)),
-                DailyDateViewController(articleDataSource: CommunityArticleDataSource(theme: .date))
-            ]
-        )
-        return pageViewController
-    }()
+    private var communityPageViewController: UIViewController?
     
+    private let articleDataSources: [CommunityArticleDataSource] = [
+        CommunityArticleDataSource(articleTheme: .daily),
+        CommunityArticleDataSource(articleTheme: .look),
+        CommunityArticleDataSource(articleTheme: .date)
+    ]
+        
     private let writeArticleButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "WriteArticleButton"), for: .normal)
@@ -46,6 +43,20 @@ final class CommunityViewController: UIViewController {
 // MARK: Configure CommunityPageViewController
 extension CommunityViewController {
     private func configureCommunityPageViewInitialSetting() {
+        communityPageViewController = HeartHubPageViewController(
+            viewControllers: [
+                DailyDateViewController(
+                    articleDataSource: articleDataSources[0]
+                ),
+                LookViewController(
+                    articleDataSource: articleDataSources[1]
+                ),
+                DailyDateViewController(
+                    articleDataSource: articleDataSources[2]
+                )
+            ]
+        )
+        
         guard let communityPageView = communityPageViewController?.view else {
             return
         }
@@ -105,7 +116,7 @@ extension CommunityViewController {
     
     @objc
     private func tapWriteArticleButton() {
-        let addPostViewController = AddPostViewController()
-        navigationController?.show(addPostViewController, sender: nil)
+//        let addPostViewController = AddPostViewController(articleDataSource: )
+//        navigationController?.show(addPostViewController, sender: nil)
     }
 }

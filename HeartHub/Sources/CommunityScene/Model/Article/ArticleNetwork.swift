@@ -77,7 +77,10 @@ extension ArticleNetwork {
             }
         }
     }
-    
+}
+
+// MARK: Resolve Error
+extension ArticleNetwork {
     private func resolveExpireAccessToken(completion: @escaping () -> Void) {
         tokenRepository.fetchRefreshToken { refreshToken in
             guard let refreshToken = refreshToken else {

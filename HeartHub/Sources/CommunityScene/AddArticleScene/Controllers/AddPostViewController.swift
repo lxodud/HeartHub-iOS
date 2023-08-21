@@ -10,10 +10,22 @@ import PhotosUI
 
 final class AddPostViewController: UIViewController {
 
-    private let addPostView = AddPostView()
+    private let addPostView = PostArticleView()
     private var postImages: [UIImage] = [UIImage(named: "AddPostImage")!]
     private var postCategoryButtonArray: [UIButton] = []
-            
+    private var articleTheme: ArticleTheme = .daily
+    
+    private let articleDataSource: CommunityArticleDataSource
+    
+    init(articleDataSource: CommunityArticleDataSource) {
+        self.articleDataSource = articleDataSource
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         view = addPostView
     }
@@ -30,10 +42,22 @@ final class AddPostViewController: UIViewController {
 extension AddPostViewController {
     
     private func configureInitialSetting() {
-//        addPostView.addPostProfileView.configureContents()
-        addPostView.addPostCellPagingImageView.configureContents(self.postImages)
-        
+        addPostView.postArticleCellPagingImageView.configureContents(self.postImages)
         addPostView.configureTapPostImageAction(self, #selector(configureSelectImageAlert))
+    }
+    
+    private func configureNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "완료",
+            style: .plain,
+            target: self,
+            action: #selector(tapDoneButton)
+        )
+    }
+    
+    @objc
+    private func tapDoneButton() {
+        
     }
 }
 
@@ -83,7 +107,7 @@ extension AddPostViewController: PHPickerViewControllerDelegate {
                     if let image = image as? UIImage {
                         self.postImages.append(image)
                         DispatchQueue.main.async {
-                            self.addPostView.addPostCellPagingImageView.configureContents(self.postImages)
+                            self.addPostView.postArticleCellPagingImageView.configureContents(self.postImages)
                         }
                     }
                     if let error = error {
@@ -113,7 +137,7 @@ extension AddPostViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? [UIImage] {
-            addPostView.addPostCellPagingImageView.configureContents(image)
+            addPostView.postArticleCellPagingImageView.configureContents(image)
             dismiss(animated: true)
         }
     }
@@ -122,9 +146,9 @@ extension AddPostViewController: UIImagePickerControllerDelegate, UINavigationCo
 // MARK: Configure AddTarget
 extension AddPostViewController {
     private func configureButtonAction() {
-        let dailyButton = addPostView.addPostDailyButton
-        let lookButton = addPostView.addPostLookButton
-        let dateButton = addPostView.addPostDateButton
+        let dailyButton = addPostView.postArticleDailyButton
+        let lookButton = addPostView.postArticleLookButton
+        let dateButton = addPostView.postArticleDateButton
 
         postCategoryButtonArray.append(dailyButton)
         postCategoryButtonArray.append(lookButton)
@@ -136,7 +160,8 @@ extension AddPostViewController {
         }
     }
     
-    @objc private func didTapPostCategoryButton(_ sender: UIButton) {
+    @objc private func didTapPostCategoryButton(_ sender: PostArticleButton) {
+        self.articleTheme = sender.theme
         self.postCategoryButtonArray.forEach {
             if $0.tag == sender.tag {
                 $0.isSelected = true
