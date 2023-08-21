@@ -10,7 +10,11 @@ import UIKit
 final class CommunityViewController: UIViewController {
     private let communityPageViewController: UIViewController? = {
         let pageViewController = HeartHubPageViewController(
-            viewControllers: [DailyDateViewController(), LookViewController(), DailyDateViewController()]
+            viewControllers: [
+                DailyDateViewController(articleDataSource: CommunityArticleDataSource(theme: .daily)),
+                LookViewController(articleDataSource: CommunityArticleDataSource(theme: .look)),
+                DailyDateViewController(articleDataSource: CommunityArticleDataSource(theme: .date))
+            ]
         )
         return pageViewController
     }()

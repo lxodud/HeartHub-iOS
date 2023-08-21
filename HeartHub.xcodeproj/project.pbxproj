@@ -99,6 +99,7 @@
 		0CE2CD992A93462100129724 /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CD982A93462100129724 /* UserInformation.swift */; };
 		0CE2CD9B2A9347EB00129724 /* GetUserInformationResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CD9A2A9347EB00129724 /* GetUserInformationResponseDTO.swift */; };
 		0CE2CD9D2A93875100129724 /* GetMyInformationResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CD9C2A93875100129724 /* GetMyInformationResponseDTO.swift */; };
+		0CE2CD9F2A938E8800129724 /* CommunityAriticleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CD9E2A938E8800129724 /* CommunityAriticleDataSource.swift */; };
 		336E0F6B2A9203B000547013 /* MyPageMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F6A2A9203B000547013 /* MyPageMainView.swift */; };
 		336E0F6D2A9203D200547013 /* ProfileResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F6C2A9203D200547013 /* ProfileResetView.swift */; };
 		336E0F6F2A9203F100547013 /* MyPageMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F6E2A9203F100547013 /* MyPageMainViewController.swift */; };
@@ -276,6 +277,7 @@
 		0CE2CD982A93462100129724 /* UserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
 		0CE2CD9A2A9347EB00129724 /* GetUserInformationResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInformationResponseDTO.swift; sourceTree = "<group>"; };
 		0CE2CD9C2A93875100129724 /* GetMyInformationResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyInformationResponseDTO.swift; sourceTree = "<group>"; };
+		0CE2CD9E2A938E8800129724 /* CommunityAriticleDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityAriticleDataSource.swift; sourceTree = "<group>"; };
 		15B862B20CFD240D7E3F016F /* Pods-HeartHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartHub.debug.xcconfig"; path = "Target Support Files/Pods-HeartHub/Pods-HeartHub.debug.xcconfig"; sourceTree = "<group>"; };
 		1D54B5963AADEBA830899999 /* Pods_HeartHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		336E0F6A2A9203B000547013 /* MyPageMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMainView.swift; sourceTree = "<group>"; };
@@ -896,6 +898,7 @@
 		0CE2CD792A90FC0000129724 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0CE2CD9E2A938E8800129724 /* CommunityAriticleDataSource.swift */,
 				0C63FF212A8BCD4A0020D137 /* CommunityTheme.swift */,
 				0CE2CD8C2A93333000129724 /* Comment */,
 				0CE2CD812A9107A700129724 /* Article */,
@@ -1433,6 +1436,7 @@
 				0C63FF1D2A8BA4280020D137 /* CommunityRequestFactory.swift in Sources */,
 				56C048912A8ABB99001BAAB5 /* ConnectCompletePopUpView.swift in Sources */,
 				56348A8F2A6E7ECC005BB635 /* FindPwView.swift in Sources */,
+				0CE2CD9F2A938E8800129724 /* CommunityAriticleDataSource.swift in Sources */,
 				56C048B22A8C9DF1001BAAB5 /* AddPostView.swift in Sources */,
 				0CE2CD9B2A9347EB00129724 /* GetUserInformationResponseDTO.swift in Sources */,
 				5626B3452A597FA200477EBC /* SignUpProfileViewController.swift in Sources */,

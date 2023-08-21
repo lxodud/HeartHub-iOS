@@ -19,28 +19,34 @@ final class DailyDateViewController: UIViewController {
         return collectionView
     }()
     
+    private let articleDataSource: CommunityArticleDataSource
     private var articles: [Article] = [] {
         didSet {
             dailyCollectionView.reloadData()
         }
     }
     
-    private var articleNetwork = ArticleNetwork(
-        tokenRepository: TokenRepository(),
-        networkManager: DefaultNetworkManager()
-    )
+    init(articleDataSource: CommunityArticleDataSource) {
+        self.articleDataSource = articleDataSource
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDailyCollectionView()
         configureSubview()
         configureLayout()
-        fetchArticle()
+        bindToArticleDataSource()
+        articleDataSource.fetchArticle()
     }
     
-    private func fetchArticle() {
-        articleNetwork.fetchArticle(with: .daily) { articles in
-            self.articles = articles
+    private func bindToArticleDataSource() {
+        articleDataSource.bind { [weak self] articles in
+            self?.articles = articles
         }
     }
 }
@@ -102,8 +108,6 @@ extension DailyDateViewController: UICollectionViewDataSource {
         }
         
         cell.configureCell(articles[indexPath.row])
-        cell.delegate = self
-        
         return cell
     }
 }

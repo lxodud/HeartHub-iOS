@@ -19,10 +19,20 @@ final class LookViewController: UIViewController {
         return collectionView
     }()
     
+    private let articleDataSource: CommunityArticleDataSource
     private var articles: [Article] = [] {
         didSet {
             lookCollectionView.reloadData()
         }
+    }
+    
+    init(articleDataSource: CommunityArticleDataSource) {
+        self.articleDataSource = articleDataSource
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -30,6 +40,14 @@ final class LookViewController: UIViewController {
         configureLookCollectionView()
         configureSubview()
         configureLayout()
+        bindToArticleDataSource()
+        articleDataSource.fetchArticle()
+    }
+    
+    private func bindToArticleDataSource() {
+        articleDataSource.bind { [weak self] articles in
+            self?.articles = articles
+        }
     }
 }
 
@@ -80,8 +98,6 @@ extension LookViewController: UICollectionViewDataSource {
         }
         
         cell.configureCell(articles[indexPath.row])
-        cell.delegate = self
-        
         return cell
     }
 }
