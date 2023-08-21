@@ -14,8 +14,6 @@ final class CommunityProfileView: UIStackView {
         let imageView = HeartHubProfileImageView()
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
-        imageView.layer.borderWidth = 0.5
-        imageView.layer.borderColor = UIColor.black.cgColor
         return imageView
     }()
     
@@ -39,9 +37,9 @@ final class CommunityProfileView: UIStackView {
 
 // MARK: Public Interface
 extension CommunityProfileView {
-    func configureContents(_ username: Article) {
-//        profileImageView.image = data.profileImage
-//        profileIdLabel.text = data.profileName
+    func configureContents(_ username: String, _ profileImage: UIImage) {
+        profileImageView.image = profileImage
+        profileIdLabel.text = username
     }
     
     var labelLeadingAnchor: NSLayoutXAxisAnchor {

@@ -42,17 +42,22 @@ extension LoginNetwork {
                     return
                 }
                 
-                self.tokenRepository.saveToken(with: deserializedData.data)
-                completion()
+                let token = deserializedData.data
+                self.tokenRepository.saveToken(with: token) {
+                    completion()
+                }
+                self.saveCurrentUserInformation(token: token.accessToken, username: id)
+                
             case .failure(let error):
                 print(error)
             }
         }
     }
     
-    private func saveCurrentUserInformation(token: String) {
+    private func saveCurrentUserInformation(token: String, username: String) {
         let request = UserRelatedRequestFactory.makeGetMyInformationRequest(token: token)
         let userInformationRepository = UserInformationRepository()
+        userInformationRepository.saveUsername(with: username)
         
         networkManager.request(endpoint: request) { result in
             switch result {

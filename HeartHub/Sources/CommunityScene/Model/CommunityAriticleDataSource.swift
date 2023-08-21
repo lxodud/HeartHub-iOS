@@ -37,7 +37,7 @@ extension CommunityArticleDataSource {
 }
 
 // MARK: - Add Article Delegate Implementation
-extension CommunityArticleDataSource: PostArticleDelegate {
+extension CommunityArticleDataSource: UpdateArticleDelegate {
     func updateNewArticle(_ theme: ArticleTheme, _ article: Article) {
         guard self.articleTheme == theme else {
             return

@@ -15,7 +15,7 @@ final class PostArticleView: UIView {
     
     private var isKeyboardShown = false
         
-    private let postArticleTextView: UITextView = {
+    let postArticleTextView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont(name: "Pretendard-Regular", size: 16)
         textView.textColor = .black

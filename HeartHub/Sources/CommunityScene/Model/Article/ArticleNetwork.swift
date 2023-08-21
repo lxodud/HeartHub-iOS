@@ -61,18 +61,70 @@ extension ArticleNetwork {
                 }
                 
             case .failure(let error):
-                if case NetworkError.requestFail(_, let data) = error {
-                    guard let data = data else {
-                        return
-                    }
-                    
-                    let deserializedData: RequestFailResponseDTO? = try? self.decode(from: data)
-                    
-                    if deserializedData?.code == 3000 {
-                        self.resolveExpireAccessToken {
-                            self.fetchArticle(with: theme, completion: completion)
-                        }
-                    }
+                self.validateExpireAccessTokenError(error) {
+                    self.fetchArticle(with: theme, completion: completion)
+                }
+            }
+        }
+    }
+    
+    func postArticle(
+        username: String,
+        imageData: [Data],
+        content: String,
+        theme: ArticleTheme,
+        completion: @escaping (Result<Data, Error>) -> Void
+    ) {
+        guard let accessToken = accessToken else {
+            return
+        }
+        
+        guard let request = CommunityRequestFactory.makePostArticleRequest(
+            articleContent: PostArticleRequestDTO(content: content, theme: theme, userName: username),
+            imageData: imageData,
+            token: accessToken
+        ) else {
+            return
+        }
+        
+        networkManager.request(endpoint: request) { result in
+            switch result {
+            case .success(let data):
+                break
+            case .failure(let error):
+                self.validateExpireAccessTokenError(error) {
+                    self.postArticle(
+                        username: username,
+                        imageData: imageData,
+                        content: content,
+                        theme: theme,
+                        completion: completion
+                    )
+                }
+            }
+        }
+    }
+}
+
+// MARK: Private Method
+extension ArticleNetwork {
+    private func fetchArticleDetail(with articleID: Int, completion: @escaping () -> Void) {
+        guard let accessToken = accessToken else {
+            return
+        }
+        
+        let request = CommunityRequestFactory.makeFetchCommunityArticleDetailRequest(
+            with: articleID,
+            token: accessToken
+        )
+        
+        networkManager.request(endpoint: request) { result in
+            switch result {
+            case .success(let data):
+                completion()
+            case .failure(let error):
+                self.validateExpireAccessTokenError(error) {
+                    self.fetchArticleDetail(with: articleID, completion: completion)
                 }
             }
         }
@@ -81,6 +133,24 @@ extension ArticleNetwork {
 
 // MARK: Resolve Error
 extension ArticleNetwork {
+    private func validateExpireAccessTokenError(_ error: Error, completion: @escaping () -> Void) {
+        if case NetworkError.requestFail(_, let data) = error {
+            guard let data = data else {
+                return
+            }
+            
+            let deserializedData: RequestFailResponseDTO? = try? self.decode(from: data)
+            
+            if deserializedData?.code == 3000 {
+                self.resolveExpireAccessToken {
+                    completion()
+                }
+            }
+        } else {
+            print(error.localizedDescription)
+        }
+    }
+    
     private func resolveExpireAccessToken(completion: @escaping () -> Void) {
         tokenRepository.fetchRefreshToken { refreshToken in
             guard let refreshToken = refreshToken else {

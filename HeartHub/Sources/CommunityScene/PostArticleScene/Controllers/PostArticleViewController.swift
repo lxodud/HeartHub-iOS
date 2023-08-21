@@ -1,5 +1,5 @@
 //
-//  AddPostViewController.swift
+//  PostArticleViewController.swift
 //  HeartHub
 //
 //  Created by 제민우 on 2023/08/16.
@@ -8,17 +8,17 @@
 import UIKit
 import PhotosUI
 
-final class AddPostViewController: UIViewController {
+final class PostArticleViewController: UIViewController {
 
-    private let addPostView = PostArticleView()
+    private let postArticleView = PostArticleView()
     private var postImages: [UIImage] = [UIImage(named: "AddPostImage")!]
     private var postCategoryButtonArray: [UIButton] = []
     private var articleTheme: ArticleTheme = .daily
     
-    private let articleDataSource: CommunityArticleDataSource
+    private let postArticleDataSource: PostArticleDataSource
     
-    init(articleDataSource: CommunityArticleDataSource) {
-        self.articleDataSource = articleDataSource
+    init(postArticleDataSource: PostArticleDataSource) {
+        self.postArticleDataSource = postArticleDataSource
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -27,7 +27,7 @@ final class AddPostViewController: UIViewController {
     }
     
     override func loadView() {
-        view = addPostView
+        view = postArticleView
     }
     
     override func viewDidLoad() {
@@ -35,15 +35,28 @@ final class AddPostViewController: UIViewController {
         
         configureButtonAction()
         configureInitialSetting()
+        configureNavigationBar()
+        bind(to: postArticleDataSource)
+        postArticleDataSource.fetchUserInformation()
+    }
+    
+    private func bind(to dataSource: PostArticleDataSource) {
+        dataSource.userInformationPublisher = { [weak self] username, imageData in
+            guard let image = UIImage(data: imageData) else {
+                return
+            }
+            
+            self?.postArticleView.postArticleProfileView.configureContents(username, image)
+        }
     }
 }
 
 // MARK: Configure InitialSetting
-extension AddPostViewController {
+extension PostArticleViewController {
     
     private func configureInitialSetting() {
-        addPostView.postArticleCellPagingImageView.configureContents(self.postImages)
-        addPostView.configureTapPostImageAction(self, #selector(configureSelectImageAlert))
+        postArticleView.postArticleCellPagingImageView.configureContents(self.postImages)
+        postArticleView.configureTapPostImageAction(self, #selector(configureSelectImageAlert))
     }
     
     private func configureNavigationBar() {
@@ -57,12 +70,31 @@ extension AddPostViewController {
     
     @objc
     private func tapDoneButton() {
+        guard let content = postArticleView.postArticleTextView.text else {
+            return
+        }
         
+        let imageData = postImages.map { image in
+            guard let resizeImage = image.resizeWithWidth(width: 500),
+                  let imageData = resizeImage.pngData()
+            else {
+                return Data()
+            }
+            
+            return imageData
+        }
+        postArticleDataSource.postArticle(
+            imageData,
+            content,
+            articleTheme
+        ) {
+            self.dismiss(animated: true)
+        }
     }
 }
 
 // MARK: Configure ActionSheet
-extension AddPostViewController {
+extension PostArticleViewController {
     
     @objc private func configureSelectImageAlert() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -84,7 +116,7 @@ extension AddPostViewController {
 }
 
 // MARK: Configure PHPicker
-extension AddPostViewController: PHPickerViewControllerDelegate {
+extension PostArticleViewController: PHPickerViewControllerDelegate {
     
     private func openLibrary() {
         var configuration = PHPickerConfiguration()
@@ -107,7 +139,7 @@ extension AddPostViewController: PHPickerViewControllerDelegate {
                     if let image = image as? UIImage {
                         self.postImages.append(image)
                         DispatchQueue.main.async {
-                            self.addPostView.postArticleCellPagingImageView.configureContents(self.postImages)
+                            self.postArticleView.postArticleCellPagingImageView.configureContents(self.postImages)
                         }
                     }
                     if let error = error {
@@ -121,7 +153,7 @@ extension AddPostViewController: PHPickerViewControllerDelegate {
 }
 
 // MARK: Configure ImagePicker
-extension AddPostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension PostArticleViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private func openCamera() {
         if(UIImagePickerController.isSourceTypeAvailable(.camera)) {
@@ -137,18 +169,18 @@ extension AddPostViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? [UIImage] {
-            addPostView.postArticleCellPagingImageView.configureContents(image)
+            postArticleView.postArticleCellPagingImageView.configureContents(image)
             dismiss(animated: true)
         }
     }
 }
 
 // MARK: Configure AddTarget
-extension AddPostViewController {
+extension PostArticleViewController {
     private func configureButtonAction() {
-        let dailyButton = addPostView.postArticleDailyButton
-        let lookButton = addPostView.postArticleLookButton
-        let dateButton = addPostView.postArticleDateButton
+        let dailyButton = postArticleView.postArticleDailyButton
+        let lookButton = postArticleView.postArticleLookButton
+        let dateButton = postArticleView.postArticleDateButton
 
         postCategoryButtonArray.append(dailyButton)
         postCategoryButtonArray.append(lookButton)
@@ -171,5 +203,19 @@ extension AddPostViewController {
                 $0.backgroundColor = .white
             }
         }
+    }
+}
+
+fileprivate extension UIImage {
+    func resizeWithWidth(width: CGFloat) -> UIImage? {
+        let imageView = UIImageView(frame: CGRect(origin: .zero, size: CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = self
+        UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, scale)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        imageView.layer.render(in: context)
+        guard let result = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
+        UIGraphicsEndImageContext()
+        return result
     }
 }

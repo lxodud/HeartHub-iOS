@@ -116,7 +116,13 @@ extension CommunityViewController {
     
     @objc
     private func tapWriteArticleButton() {
-//        let addPostViewController = AddPostViewController(articleDataSource: )
-//        navigationController?.show(addPostViewController, sender: nil)
+        let postArticleDatasourcec = PostArticleDataSource(
+            updateArticleDelegateList: articleDataSources
+        )
+        
+        let postArticleViewController = PostArticleViewController(
+            postArticleDataSource: postArticleDatasourcec
+        )
+        navigationController?.show(postArticleViewController, sender: nil)
     }
 }
