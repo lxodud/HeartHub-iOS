@@ -52,14 +52,14 @@ extension ArticleNetwork {
         networkManager.request(endpoint: request) { result in
             switch result {
             case .success(let data):
-                do {
-                    let deserializedData: FetchArticleResponseDTO = try self.decode(from: data)
-                    DispatchQueue.main.async {
-                        completion(deserializedData.data)
-                    }
-                } catch let error {
-                    print(error)
+                guard let deserializedData: FetchArticleResponseDTO = try? self.decode(from: data) else {
+                    return
                 }
+                
+                DispatchQueue.main.async {
+                    completion(deserializedData.data)
+                }
+                
             case .failure(let error):
                 if case NetworkError.requestFail(_, let data) = error {
                     guard let data = data else {
@@ -89,26 +89,26 @@ extension ArticleNetwork {
             self.networkManager.request(endpoint: request) { result in
                 switch result {
                 case .success(let data):
-                    do {
-                        let deserializedData: FetchTokenResponseDTO = try self.decode(from: data)
-                        guard deserializedData.isSuccess == true else {
-                            return
-                        }
-                        
-                        self.tokenRepository.saveToken(with: deserializedData.data) {
-                            self.tokenRepository.fetchAccessToken(completion: { accessToken in
-                                guard let accessToken = accessToken else {
-                                    return
-                                }
-                                        
-                                self.accessToken = accessToken
-                                completion()
-                            })
-                        }
-                        
-                    } catch let error {
-                        print(error)
+                    guard let deserializedData: FetchReissueTokenResponseDTO = try? self.decode(from: data)
+                    else {
+                        return
                     }
+                    
+                    let accessToken = deserializedData.data.newAccessToken
+                    let refreshToken = deserializedData.data.newRefreshToken
+                    let token = Token(accessToken: accessToken, refreshToken: refreshToken)
+                    
+                    self.tokenRepository.saveToken(with: token) {
+                        self.tokenRepository.fetchAccessToken(completion: { accessToken in
+                            guard let accessToken = accessToken else {
+                                return
+                            }
+                            
+                            self.accessToken = accessToken
+                            completion()
+                        })
+                    }
+                    
                 case .failure(let error):
                     if case NetworkError.requestFail(_, let data) = error {
                         print(error.localizedDescription)

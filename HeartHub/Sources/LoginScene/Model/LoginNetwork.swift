@@ -35,17 +35,15 @@ extension LoginNetwork {
         networkManager.request(endpoint: request) { result in
             switch result {
             case .success(let data):
-                do {
-                    let deserializedData: FetchTokenResponseDTO = try self.decode(from: data)
-                    guard deserializedData.isSuccess == true else {
-                        return
-                    }
-                    
-                    self.tokenRepository.saveToken(with: deserializedData.data)
-                    completion()
-                } catch let error {
-                    print(error)
+                
+                guard let deserializedData: FetchTokenResponseDTO = try? self.decode(from: data),
+                      deserializedData.isSuccess == true
+                else {
+                    return
                 }
+                
+                self.tokenRepository.saveToken(with: deserializedData.data)
+                completion()
             case .failure(let error):
                 print(error)
             }
@@ -59,26 +57,25 @@ extension LoginNetwork {
         networkManager.request(endpoint: request) { result in
             switch result {
             case .success(let data):
-                do {
-                    let deserializedData: GetMyInformationResponseDTO = try self.decode(from: data)
-                    
-                    let nickname = deserializedData.data.myNickname
-                    userInformationRepository.saveNickname(with: nickname)
-                    
-                    guard let imageUrl = URL(string: deserializedData.data.myImageUrl) else {
-                        return
+                guard let deserializedData: GetMyInformationResponseDTO = try? self.decode(from: data)
+                else {
+                    return
+                }
+                
+                let nickname = deserializedData.data.myNickname
+                userInformationRepository.saveNickname(with: nickname)
+                
+                guard let imageUrl = URL(string: deserializedData.data.myImageUrl) else {
+                    return
+                }
+                
+                ImageProvider.shared.fetch(from: imageUrl) { result in
+                    switch result {
+                    case .success(let data):
+                        userInformationRepository.saveProfileImage(with: data)
+                    case .failure(let error):
+                        print(error)
                     }
-                    
-                    ImageProvider.shared.fetch(from: imageUrl) { result in
-                        switch result {
-                        case .success(let data):
-                            userInformationRepository.saveProfileImage(with: data)
-                        case .failure(let error):
-                            print(error)
-                        }
-                    }
-                } catch let error {
-                    print(error)
                 }
             case .failure(let error):
                 print(error)
