@@ -39,9 +39,9 @@ final class CommunityProfileView: UIStackView {
 
 // MARK: Public Interface
 extension CommunityProfileView {
-    func configureContents(_ data: MockData) {
-        profileImageView.image = data.profileImage
-        profileIdLabel.text = data.profileName
+    func configureContents(_ username: Article) {
+//        profileImageView.image = data.profileImage
+//        profileIdLabel.text = data.profileName
     }
     
     var labelLeadingAnchor: NSLayoutXAxisAnchor {

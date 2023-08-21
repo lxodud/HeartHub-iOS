@@ -54,7 +54,9 @@ extension ArticleNetwork {
             case .success(let data):
                 do {
                     let deserializedData: FetchArticleResponseDTO = try self.decode(from: data)
-                    completion(deserializedData.data)
+                    DispatchQueue.main.async {
+                        completion(deserializedData.data)
+                    }
                 } catch let error {
                     print(error)
                 }
@@ -94,7 +96,7 @@ extension ArticleNetwork {
                         }
                         
                         self.tokenRepository.saveToken(with: deserializedData.data) {
-                            self.tokenRepository.fetchRefreshToken(completion: { accessToken in
+                            self.tokenRepository.fetchAccessToken(completion: { accessToken in
                                 guard let accessToken = accessToken else {
                                     return
                                 }
@@ -107,7 +109,10 @@ extension ArticleNetwork {
                     } catch let error {
                         print(error)
                     }
-                case .failure(_):
+                case .failure(let error):
+                    if case NetworkError.requestFail(_, let data) = error {
+                        
+                    }
                     break
                 }
             }

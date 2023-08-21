@@ -11,7 +11,7 @@ protocol CommunityCellable: UICollectionViewCell, CommunityCellHeaderViewDelegat
     var delegate: CommunityCellDelegate? { get set }
     
     func fetchAdjustedHeight() -> CGFloat
-    func configureCell(_ data: MockData)
+    func configureCell(_ data: Article)
 }
 
 // MARK: Profile View Delegate Implementation

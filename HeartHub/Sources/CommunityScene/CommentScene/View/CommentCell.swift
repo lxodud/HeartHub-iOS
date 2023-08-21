@@ -45,7 +45,6 @@ final class CommentCell: UITableViewCell {
 // MARK: Public Interface
 extension CommentCell {
     func configureCell(_ data: MockData) {
-        headerView.configureContents(data)
     }
 }
 

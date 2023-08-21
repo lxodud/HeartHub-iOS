@@ -31,9 +31,8 @@ extension LookCell {
         return pagingImageView.bounds.height
     }
     
-    func configureCell(_ data: MockData) {
+    func configureCell(_ data: Article) {
         headerView.configureContents(data)
-        pagingImageView.configureContents(data.images)
     }
 }
 

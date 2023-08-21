@@ -41,7 +41,6 @@ extension LoginNetwork {
                         return
                     }
                     
-                    self.saveCurrentUserInformation(id: id, token: deserializedData.data.accessToken)
                     self.tokenRepository.saveToken(with: deserializedData.data)
                     completion()
                 } catch let error {
@@ -53,26 +52,20 @@ extension LoginNetwork {
         }
     }
     
-    private func saveCurrentUserInformation(id: String, token: String) {
-        let request = UserRelatedRequestFactory.makeGetUserInfo(of: id, token: token)
+    private func saveCurrentUserInformation(token: String) {
+        let request = UserRelatedRequestFactory.makeGetMyInformationRequest(token: token)
         let userInformationRepository = UserInformationRepository()
         
         networkManager.request(endpoint: request) { result in
             switch result {
             case .success(let data):
                 do {
-                    let deserializedData: GetUserInfoResponseDTO = try self.decode(from: data)
+                    let deserializedData: GetMyInformationResponseDTO = try self.decode(from: data)
                     
-                    let nickname = deserializedData.data.nickname
+                    let nickname = deserializedData.data.myNickname
                     userInformationRepository.saveNickname(with: nickname)
                     
-                    guard let imageUrlString = deserializedData.data.userImageUrl,
-                          let imageUrl = URL(string: imageUrlString)
-                          
-                    else {
-                        let imageData = UIImage(named: "BasicProfileImage")!.pngData()!
-                        
-                        userInformationRepository.saveProfileImage(with: imageData)
+                    guard let imageUrl = URL(string: deserializedData.data.myImageUrl) else {
                         return
                     }
                     
@@ -91,6 +84,5 @@ extension LoginNetwork {
                 print(error)
             }
         }
-        
     }
 }

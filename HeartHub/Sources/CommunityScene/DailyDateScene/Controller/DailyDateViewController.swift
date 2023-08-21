@@ -19,11 +19,29 @@ final class DailyDateViewController: UIViewController {
         return collectionView
     }()
     
+    private var articles: [Article] = [] {
+        didSet {
+            dailyCollectionView.reloadData()
+        }
+    }
+    
+    private var articleNetwork = ArticleNetwork(
+        tokenRepository: TokenRepository(),
+        networkManager: DefaultNetworkManager()
+    )
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDailyCollectionView()
         configureSubview()
         configureLayout()
+        fetchArticle()
+    }
+    
+    private func fetchArticle() {
+        articleNetwork.fetchArticle(with: .daily) { articles in
+            self.articles = articles
+        }
     }
 }
 
@@ -39,7 +57,7 @@ extension DailyDateViewController: UICollectionViewDelegateFlowLayout {
         let size = CGRect(x: 0, y: 0, width: width, height: estimateHeight)
         var dummyCell: CommunityCellable
         
-        if mockData[indexPath.row].images.isEmpty {
+        if articles[indexPath.row].communityImageUrl.isEmpty {
             dummyCell = DailyDateNoImageCell(frame: size)
         } else {
             dummyCell = DailyDateImageCell(frame: size)
@@ -60,7 +78,7 @@ extension DailyDateViewController: UICollectionViewDataSource {
         numberOfItemsInSection section: Int
     ) -> Int {
         
-        return mockData.count
+        return articles.count
     }
     
     func collectionView(
@@ -70,7 +88,7 @@ extension DailyDateViewController: UICollectionViewDataSource {
         
         let cellType: CommunityCellable.Type
         
-        if mockData[indexPath.row].images.isEmpty {
+        if articles[indexPath.row].communityImageUrl.isEmpty {
             cellType = DailyDateNoImageCell.self
         } else {
             cellType = DailyDateImageCell.self
@@ -83,7 +101,7 @@ extension DailyDateViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.configureCell(mockData[indexPath.row])
+        cell.configureCell(articles[indexPath.row])
         cell.delegate = self
         
         return cell

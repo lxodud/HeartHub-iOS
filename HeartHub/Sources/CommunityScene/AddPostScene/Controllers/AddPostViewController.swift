@@ -30,7 +30,7 @@ final class AddPostViewController: UIViewController {
 extension AddPostViewController {
     
     private func configureInitialSetting() {
-        addPostView.addPostProfileView.configureContents(mockData[0])
+//        addPostView.addPostProfileView.configureContents()
         addPostView.addPostCellPagingImageView.configureContents(self.postImages)
         
         addPostView.configureTapPostImageAction(self, #selector(configureSelectImageAlert))

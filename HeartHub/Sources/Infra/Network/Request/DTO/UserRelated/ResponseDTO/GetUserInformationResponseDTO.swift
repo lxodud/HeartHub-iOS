@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetUserInfoResponseDTO: Decodable {
+struct GetUserInformationResponseDTO: Decodable {
     let isSuccess: Bool
     let code: Int
     let message: String

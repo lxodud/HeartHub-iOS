@@ -40,9 +40,8 @@ extension DailyDateNoImageCell {
         return height
     }
     
-    func configureCell(_ data: MockData) {
+    func configureCell(_ data: Article) {
         headerView.configureContents(data)
-        postLabel.text = data.postLabel
     }
 }
 

@@ -42,10 +42,8 @@ extension DailyDateImageCell {
         return height
     }
     
-    func configureCell(_ data: MockData) {
+    func configureCell(_ data: Article) {
         headerView.configureContents(data)
-        pagingImageView.configureContents(data.images)
-        postLabel.text = data.postLabel
     }
 }
 

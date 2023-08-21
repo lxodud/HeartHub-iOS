@@ -60,7 +60,7 @@ struct UserRelatedRequestFactory {
         )
     }
     
-    static func makeGetUserInfo(of id: String, token: String) -> Requestable {
+    static func makeGetUserInformation(of id: String, token: String) -> Requestable {
         return Request(
             httpMethod: .get,
             path: "/api/user/info/" + id,
@@ -96,7 +96,7 @@ struct UserRelatedRequestFactory {
     static func makeReissueTokenRequest(token: String) -> Requestable {
         return Request(
             httpMethod: .post,
-            path: "/api/reissue",
+            path: "/api/member/reissue",
             headers: ["Authorization": "Bearer " + token]
         )
     }
@@ -121,6 +121,14 @@ struct UserRelatedRequestFactory {
         return Request(
             httpMethod: .post,
             path: "/api/member/delete/user",
+            headers: ["Authorization": "Bearer " + token]
+        )
+    }
+    
+    static func makeGetMyInformationRequest(token: String) -> Requestable {
+        return Request(
+            httpMethod: .get,
+            path: "/api/user/myPage/first",
             headers: ["Authorization": "Bearer " + token]
         )
     }

@@ -30,7 +30,7 @@ final class CommunityCellHeaderView: UIView {
 
 // MARK: Public Interface
 extension CommunityCellHeaderView {
-    func configureContents(_ data: MockData) {
+    func configureContents(_ data: Article) {
         profileView.configureContents(data)
     }
 }

@@ -19,6 +19,12 @@ final class LookViewController: UIViewController {
         return collectionView
     }()
     
+    private var articles: [Article] = [] {
+        didSet {
+            lookCollectionView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLookCollectionView()
@@ -39,7 +45,7 @@ extension LookViewController: UICollectionViewDelegateFlowLayout {
         let size = CGRect(x: 0, y: 0, width: width, height: estimateHeight)
         let dummyCell = LookCell(frame: size)
         
-        dummyCell.configureCell(mockData[indexPath.row])
+        dummyCell.configureCell(articles[indexPath.row])
         dummyCell.layoutIfNeeded()
         
         var height = dummyCell.fetchAdjustedHeight()
@@ -58,7 +64,7 @@ extension LookViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return mockData.count
+        return articles.count
     }
     
     func collectionView(
@@ -73,7 +79,7 @@ extension LookViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.configureCell(mockData[indexPath.row])
+        cell.configureCell(articles[indexPath.row])
         cell.delegate = self
         
         return cell

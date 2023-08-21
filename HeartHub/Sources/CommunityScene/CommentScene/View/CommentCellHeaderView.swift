@@ -42,8 +42,7 @@ final class CommentCellHeaderView: UIView {
 
 // MARK: Public Interface
 extension CommentCellHeaderView {
-    func configureContents(_ data: MockData) {
-        profileView.configureContents(data)
+    func configureContents(_ data: Article) {
     }
     
     var idLabelLeadingAnchor: NSLayoutXAxisAnchor {
