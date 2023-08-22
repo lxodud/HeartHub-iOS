@@ -1045,7 +1045,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					0CC33ABD2A5281C1001EF4E7 = {
 						CreatedOnToolsVersion = 14.2;
@@ -1219,7 +1219,6 @@
 				56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */,
 				5651FC672A7A686000965300 /* ProfilePostImageCollectionViewCell.swift in Sources */,
 				336E0F792A92078D00547013 /* PasswordChangeView.swift in Sources */,
-				5651FC672A7A686000965300 /* ProfilePostImageCollectionViewCell.swift in Sources */,
 				5651FC6B2A7A68E200965300 /* ProfileDailyPostDataManager.swift in Sources */,
 				0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */,
 				56C048772A8A02D7001BAAB5 /* DDayCalculator.swift in Sources */,
@@ -1251,7 +1250,6 @@
 				5690136B2A7E6FA400715D23 /* GameClearMissionDataManager.swift in Sources */,
 				0C4EF98E2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift in Sources */,
 				0C4D33012A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift in Sources */,
-				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
 				33E473252A92672A00C26A2E /* CalendarViewController.swift in Sources */,
 				0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */,
 				56C048802A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift in Sources */,
@@ -1273,7 +1271,6 @@
 				0C6F45492A7002C40044EAC8 /* CommentCellHeaderViewDelegate.swift in Sources */,
 				5651FC712A7A6A0700965300 /* ProfileUserDataManager.swift in Sources */,
 				0C4EF9AB2A829E0B00539320 /* CoupleSpaceAlbumViewController.swift in Sources */,
-				0C382E312A5BDB6D00EA08E0 /* CommunityProfileView.swift in Sources */,
 				0C382E312A5BDB6D00EA08E0 /* CommunityProfileView.swift in Sources */,
 				336E0F772A92076E00547013 /* MemberWithDrawalView.swift in Sources */,
 			);
