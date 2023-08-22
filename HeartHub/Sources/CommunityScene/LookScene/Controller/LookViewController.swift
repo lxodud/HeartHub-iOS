@@ -123,16 +123,12 @@ extension LookViewController {
 }
 
 // MARK: Community Cell Delegate Implementation
-extension LookViewController: CommunityCellDelegate {
+extension LookViewController: CommunityCellTransitionDelegate {
     func didTapUserProfile() {
         
     }
     
     func didTapPostOption() {
-        
-    }
-    
-    func didTapThumbButton() {
         
     }
     
@@ -142,10 +138,6 @@ extension LookViewController: CommunityCellDelegate {
         commentViewController.transitioningDelegate = PanModalTransitioningDelegate.shared
         
         present(commentViewController, animated: true)
-    }
-    
-    func didTapHeartButton() {
-        
     }
 }
 

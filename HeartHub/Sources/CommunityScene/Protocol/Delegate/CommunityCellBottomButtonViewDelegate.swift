@@ -10,5 +10,5 @@ import Foundation
 protocol CommunityCellBottomButtonViewDelegate: AnyObject {
     func didTapThumbButton(_ status: Bool)
     func didTapCommentButton()
-    func didTapHeartButton()
+    func didTapHeartButton(_ status: Bool)
 }

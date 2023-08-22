@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CommunityCellable: UICollectionViewCell, CommunityCellHeaderViewDelegate, CommunityCellBottomButtonViewDelegate {
-    var delegate: CommunityCellDelegate? { get set }
+    var delegate: CommunityCellTransitionDelegate? { get set }
     var communityCellDataSource: CommunityCellDataSource? { get set }
     
     func fetchAdjustedHeight() -> CGFloat
@@ -35,7 +35,7 @@ extension CommunityCellable {
         delegate?.didTapCommentButton()
     }
     
-    func didTapHeartButton() {
-        delegate?.didTapHeartButton()
+    func didTapHeartButton(_ status: Bool) {
+        communityCellDataSource?.scrapOrCancelArticle(status)
     }
 }

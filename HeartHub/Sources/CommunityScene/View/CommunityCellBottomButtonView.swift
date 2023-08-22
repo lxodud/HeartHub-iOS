@@ -47,7 +47,7 @@ final class CommunityCellBottomButtonView: UIView {
     let heartButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "HeartHubEmptyHeart"), for: .normal)
-        button.setImage(UIImage(systemName: "HeartHubFillHeart"), for: .selected)
+        button.setImage(UIImage(named: "HeartHubFillHeart"), for: .selected)
         return button
     }()
     
@@ -95,8 +95,7 @@ extension CommunityCellBottomButtonView {
     
     @objc
     private func tapHeartButton(_ sender: UIButton) {
-        sender.isSelected.toggle()
-        delegate?.didTapHeartButton()
+        delegate?.didTapHeartButton(sender.isSelected)
     }
 }
 

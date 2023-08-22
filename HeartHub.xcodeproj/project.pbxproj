@@ -14,7 +14,7 @@
 		0C43F6102A659C6D00EED860 /* PagingImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C43F60F2A659C6D00EED860 /* PagingImageCollectionViewCell.swift */; };
 		0C4D32F72A6823A600AD5EFF /* DailyDateNoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32F62A6823A600AD5EFF /* DailyDateNoImageCell.swift */; };
 		0C4D32F92A6825FF00AD5EFF /* CommunityCellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32F82A6825FF00AD5EFF /* CommunityCellable.swift */; };
-		0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32FC2A68312C00AD5EFF /* CommunityCellDelegate.swift */; };
+		0C4D32FD2A68312C00AD5EFF /* CommunityCellTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32FC2A68312C00AD5EFF /* CommunityCellTransitionDelegate.swift */; };
 		0C4D32FF2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D32FE2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift */; };
 		0C4D33012A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */; };
 		0C4EF98E2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EF98D2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift */; };
@@ -198,7 +198,7 @@
 		0C43F60F2A659C6D00EED860 /* PagingImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		0C4D32F62A6823A600AD5EFF /* DailyDateNoImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateNoImageCell.swift; sourceTree = "<group>"; };
 		0C4D32F82A6825FF00AD5EFF /* CommunityCellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellable.swift; sourceTree = "<group>"; };
-		0C4D32FC2A68312C00AD5EFF /* CommunityCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellDelegate.swift; sourceTree = "<group>"; };
+		0C4D32FC2A68312C00AD5EFF /* CommunityCellTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellTransitionDelegate.swift; sourceTree = "<group>"; };
 		0C4D32FE2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityProfileViewDelegate.swift; sourceTree = "<group>"; };
 		0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellBottomButtonViewDelegate.swift; sourceTree = "<group>"; };
 		0C4EF98D2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleSpaceMainButtonView.swift; sourceTree = "<group>"; };
@@ -909,7 +909,7 @@
 				0C4D32FE2A68315B00AD5EFF /* CommunityProfileViewDelegate.swift */,
 				0C4D33002A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift */,
 				0CA858B72A6FB75B00DFCFD5 /* CommunityCellHeaderViewDelegate.swift */,
-				0C4D32FC2A68312C00AD5EFF /* CommunityCellDelegate.swift */,
+				0C4D32FC2A68312C00AD5EFF /* CommunityCellTransitionDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -1431,7 +1431,7 @@
 				569013792A80E26500715D23 /* SignUpDateTextField.swift in Sources */,
 				0C684F4C2A78FA4D00A31865 /* CoupleSpaceMainHeaderView.swift in Sources */,
 				0CE2CD872A91109D00129724 /* FetchArticleResponseDTO.swift in Sources */,
-				0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */,
+				0C4D32FD2A68312C00AD5EFF /* CommunityCellTransitionDelegate.swift in Sources */,
 				0C4EF9A42A7CE2EC00539320 /* HeartHubTabBarController.swift in Sources */,
 				0C6F454B2A7003930044EAC8 /* CommentCell.swift in Sources */,
 				0C4EF9A82A8233A100539320 /* CoupleSpaceAlbumCell.swift in Sources */,

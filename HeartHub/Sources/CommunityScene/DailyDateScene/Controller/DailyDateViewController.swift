@@ -122,16 +122,12 @@ extension DailyDateViewController: UICollectionViewDataSource {
 }
 
 // MARK: Community Cell Delegate Implementation
-extension DailyDateViewController: CommunityCellDelegate {
+extension DailyDateViewController: CommunityCellTransitionDelegate {
     func didTapUserProfile() {
         
     }
     
     func didTapPostOption() {
-        
-    }
-    
-    func didTapThumbButton() {
         
     }
     
@@ -141,10 +137,6 @@ extension DailyDateViewController: CommunityCellDelegate {
         commentViewController.transitioningDelegate = PanModalTransitioningDelegate.shared
         
         present(commentViewController, animated: true)
-    }
-    
-    func didTapHeartButton() {
-        
     }
 }
 

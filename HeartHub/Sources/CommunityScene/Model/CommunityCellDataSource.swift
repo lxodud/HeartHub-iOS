@@ -92,7 +92,6 @@ extension CommunityCellDataSource {
     }
     
     func checkGoodArticle(_ status: Bool) {
-        print(status)
         if status {
             goodInformation.status = false
             goodInformation.count -= 1
@@ -105,6 +104,14 @@ extension CommunityCellDataSource {
             username: article.username,
             articleID: article.articleID
         )
+    }
+    
+    func scrapOrCancelArticle(_ status: Bool) {
+        if status {
+            heartStatus = false
+        } else {
+            heartStatus = true
+        }
     }
 }
 

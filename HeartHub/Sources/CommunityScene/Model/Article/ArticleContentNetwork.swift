@@ -28,6 +28,33 @@ final class ArticleContentNetwork {
 
 // MARK: Public Interface
 extension ArticleContentNetwork {
+    func postScrapOrCancelArticle(
+        username: String,
+        articleID: Int
+    ) {
+        guard let accessToken = tokenRepository.fetchAccessToken() else {
+            return
+        }
+        
+        guard let request = CommunityRequestFactory.makeScrapArticleRequest(
+            with: ScrapArticleRequestDTO(username: username, articleID: articleID),
+            token: accessToken
+        ) else {
+            return
+        }
+        
+        networkManager.request(endpoint: request) { result in
+            switch result {
+            case .success(_):
+                break
+            case .failure(let error):
+                self.tokenExpierResolver.validateExpireAccessTokenError(error) {
+                    self.postGoodArticle(username: username, articleID: articleID)
+                }
+            }
+        }
+    }
+    
     func postGoodArticle(
         username: String,
         articleID: Int
@@ -52,8 +79,8 @@ extension ArticleContentNetwork {
                 }
             }
         }
-        
     }
+    
     func fetchGoodCount(
         from articleId: Int,
         completion: @escaping (Int) -> Void
