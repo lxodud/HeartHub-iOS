@@ -84,8 +84,8 @@ extension CommunityCellDataSource {
     func fetchCellContents() -> [Cancellable?] {
         var tasks: [Cancellable?] = []
         
-        tasks.append(fetchGoodCount())
         tasks.append(fetchAuthorInformation())
+        tasks += fetchGoodInformation()
         tasks += fetchImages()
         
         content = article.content
@@ -115,6 +115,12 @@ extension CommunityCellDataSource {
 
 // MARK: - Network
 extension CommunityCellDataSource {
+    private func fetchHeartStatus() -> Cancellable? {
+        articleContentNetwork.fetchHeartStatus(from: article.articleID) { status in
+            self.heartStatus = status
+        }
+    }
+    
     private func postScrabOrCancel() -> Cancellable? {
         articleContentNetwork.postScrapOrCancelArticle(
             username: article.username,
@@ -154,10 +160,28 @@ extension CommunityCellDataSource {
         return tasks
     }
     
-    private func fetchGoodCount() -> Cancellable? {
-        return articleContentNetwork.fetchGoodCount(from: article.articleID) { count in
-            self.goodInformation = (self.article.goodStatus ?? false, count)
+    private func fetchGoodInformation() -> [Cancellable?] {
+        let dispatchGroup = DispatchGroup()
+        var goodCount: Int = 0
+        var goodStatus: Bool = false
+        
+        dispatchGroup.enter()
+        let countTask = articleContentNetwork.fetchGoodCount(from: article.articleID) { count in
+            goodCount = count
+            dispatchGroup.leave()
         }
+        
+        dispatchGroup.enter()
+        let statuTask = articleContentNetwork.fetchGoodStatus(from: article.articleID) { status in
+            goodStatus = status
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.goodInformation = (goodStatus, goodCount)
+        }
+        
+        return [countTask, statuTask]
     }
     
     private func fetchAuthorInformation() -> Cancellable? {

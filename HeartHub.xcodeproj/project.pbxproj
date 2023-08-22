@@ -116,6 +116,7 @@
 		0CE2CDC62A94EC3C00129724 /* UserNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDC52A94EC3C00129724 /* UserNetwork.swift */; };
 		0CE2CDC82A94ED9C00129724 /* CommentContentNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDC72A94ED9C00129724 /* CommentContentNetwork.swift */; };
 		0CE2CDCD2A94F8BF00129724 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDCC2A94F8BF00129724 /* Cancellable.swift */; };
+		0CE2CDCF2A95029F00129724 /* FetchButtonStatusResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDCE2A95029F00129724 /* FetchButtonStatusResponseDTO.swift */; };
 		336E0F6B2A9203B000547013 /* MyPageMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F6A2A9203B000547013 /* MyPageMainView.swift */; };
 		336E0F6D2A9203D200547013 /* ProfileResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F6C2A9203D200547013 /* ProfileResetView.swift */; };
 		336E0F6F2A9203F100547013 /* MyPageMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F6E2A9203F100547013 /* MyPageMainViewController.swift */; };
@@ -310,6 +311,7 @@
 		0CE2CDC52A94EC3C00129724 /* UserNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetwork.swift; sourceTree = "<group>"; };
 		0CE2CDC72A94ED9C00129724 /* CommentContentNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentContentNetwork.swift; sourceTree = "<group>"; };
 		0CE2CDCC2A94F8BF00129724 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
+		0CE2CDCE2A95029F00129724 /* FetchButtonStatusResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchButtonStatusResponseDTO.swift; sourceTree = "<group>"; };
 		15B862B20CFD240D7E3F016F /* Pods-HeartHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartHub.debug.xcconfig"; path = "Target Support Files/Pods-HeartHub/Pods-HeartHub.debug.xcconfig"; sourceTree = "<group>"; };
 		1D54B5963AADEBA830899999 /* Pods_HeartHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		336E0F6A2A9203B000547013 /* MyPageMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMainView.swift; sourceTree = "<group>"; };
@@ -966,6 +968,7 @@
 				0CE2CD882A9110DB00129724 /* FetchCommentResponseDTO.swift */,
 				0CE2CDB42A93F17100129724 /* FetchGoodCountResponse.swift */,
 				0CE2CDBB2A94CD7100129724 /* PostArticleResponseDTO.swift */,
+				0CE2CDCE2A95029F00129724 /* FetchButtonStatusResponseDTO.swift */,
 			);
 			path = ResponseDTO;
 			sourceTree = "<group>";
@@ -1519,6 +1522,7 @@
 				56348A8F2A6E7ECC005BB635 /* FindPwView.swift in Sources */,
 				0CE2CD9F2A938E8800129724 /* CommunityAriticleDataSource.swift in Sources */,
 				56C048B22A8C9DF1001BAAB5 /* PostArticleView.swift in Sources */,
+				0CE2CDCF2A95029F00129724 /* FetchButtonStatusResponseDTO.swift in Sources */,
 				0CE2CD9B2A9347EB00129724 /* GetUserInformationResponseDTO.swift in Sources */,
 				5626B3452A597FA200477EBC /* SignUpProfileViewController.swift in Sources */,
 				56348A912A6E8286005BB635 /* FindPwViewController.swift in Sources */,

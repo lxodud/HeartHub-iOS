@@ -189,4 +189,26 @@ struct CommunityRequestFactory {
             jsonBody: body
         )
     }
+    
+    static func makeFetchGoodStatusRequest(
+        with articleID: Int,
+        token: String
+    ) -> Requestable {
+        return Request(
+            httpMethod: .get,
+            path: "/api/user/board/\(articleID)/good/check",
+            headers: ["Authorization": "Bearer " + token]
+        )
+    }
+    
+    static func makeFetchHeartStatusRequest(
+        with articleID: Int,
+        token: String
+    ) -> Requestable {
+        return Request(
+            httpMethod: .get,
+            path: "/api/user/board/\(articleID)/heart/check",
+            headers: ["Authorization": "Bearer " + token]
+        )
+    }
 }

@@ -87,6 +87,81 @@ extension ArticleContentNetwork {
     }
     
     @discardableResult
+    func fetchGoodStatus(
+        from articleId: Int,
+        completion: @escaping (Bool) -> Void
+    ) -> Cancellable? {
+        guard let accessToken = tokenRepository.fetchAccessToken() else {
+            return nil
+        }
+        
+        let request = CommunityRequestFactory.makeFetchGoodStatusRequest(
+            with: articleId,
+            token: accessToken
+        )
+        
+        let task = networkManager.request(endpoint: request) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    guard let deserializedData: FetchButtonStatusResponseDTO = try self.decode(from: data) else {
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        completion(deserializedData.data.status)
+                    }
+                } catch {
+                    print(error)
+                }
+                
+            case .failure(let error):
+                print(#function)
+                self.tokenExpierResolver.validateExpireAccessTokenError(error) {
+                    self.fetchGoodStatus(from: articleId, completion: completion)
+                }
+            }
+        }
+        
+        return task
+    }
+    
+    @discardableResult
+    func fetchHeartStatus(
+        from articleId: Int,
+        completion: @escaping (Bool) -> Void
+    ) -> Cancellable? {
+        guard let accessToken = tokenRepository.fetchAccessToken() else {
+            return nil
+        }
+        
+        let request = CommunityRequestFactory.makeFetchHeartStatusRequest(
+            with: articleId,
+            token: accessToken
+        )
+        
+        let task = networkManager.request(endpoint: request) { result in
+            switch result {
+            case .success(let data):
+                guard let deserializedData: FetchButtonStatusResponseDTO = try? self.decode(from: data) else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    completion(deserializedData.data.status)
+                }
+            case .failure(let error):
+                print(#function)
+                self.tokenExpierResolver.validateExpireAccessTokenError(error) {
+                    self.fetchGoodStatus(from: articleId, completion: completion)
+                }
+            }
+        }
+        
+        return task
+    }
+    
+    @discardableResult
     func fetchGoodCount(
         from articleId: Int,
         completion: @escaping (Int) -> Void
