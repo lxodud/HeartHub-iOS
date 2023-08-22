@@ -8,7 +8,7 @@
 import UIKit
 import YPImagePicker
 
-class ViewController: UIViewController  {
+class AlbumImagePickerViewController: UIViewController  {
 
     private var albumWriteLabel: UILabel = {
         let name = UILabel()
