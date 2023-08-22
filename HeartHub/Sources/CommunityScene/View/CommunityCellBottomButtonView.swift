@@ -85,8 +85,7 @@ extension CommunityCellBottomButtonView {
     
     @objc
     private func tapThumbButton(_ sender: UIButton) {
-        sender.isSelected.toggle()
-        delegate?.didTapThumbButton()
+        delegate?.didTapThumbButton(sender.isSelected)
     }
     
     @objc

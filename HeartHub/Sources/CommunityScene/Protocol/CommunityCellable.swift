@@ -27,8 +27,8 @@ extension CommunityCellable {
 
 // MARK: BottomButton Delegate Implementation
 extension CommunityCellable {
-    func didTapThumbButton() {
-        delegate?.didTapThumbButton()
+    func didTapThumbButton(_ status: Bool) {
+        communityCellDataSource?.checkGoodArticle(status)
     }
     
     func didTapCommentButton() {

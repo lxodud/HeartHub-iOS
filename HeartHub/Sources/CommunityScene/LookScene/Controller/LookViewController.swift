@@ -96,6 +96,16 @@ extension LookViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
+        let dataSource = CommunityCellDataSource(
+            article: articles[indexPath.row],
+            articleContentNetwork: ArticleContentNetwork(
+                tokenRepository: TokenRepository(),
+                networkManager: DefaultNetworkManager()
+            )
+        )
+        
+        cell.communityCellDataSource = dataSource
+        
         return cell
     }
 }

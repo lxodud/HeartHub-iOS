@@ -28,6 +28,32 @@ final class ArticleContentNetwork {
 
 // MARK: Public Interface
 extension ArticleContentNetwork {
+    func postGoodArticle(
+        username: String,
+        articleID: Int
+    ) {
+        guard let accessToken = tokenRepository.fetchAccessToken() else {
+            return
+        }
+        
+        let request = CommunityRequestFactory.makePostArticleGoodRequest(
+            username: username,
+            articleID: articleID,
+            token: accessToken
+        )
+        
+        networkManager.request(endpoint: request) { result in
+            switch result {
+            case .success(_):
+                break
+            case .failure(let error):
+                self.tokenExpierResolver.validateExpireAccessTokenError(error) {
+                    self.postGoodArticle(username: username, articleID: articleID)
+                }
+            }
+        }
+        
+    }
     func fetchGoodCount(
         from articleId: Int,
         completion: @escaping (Int) -> Void

@@ -101,7 +101,6 @@
 		0CE2CD9D2A93875100129724 /* GetMyInformationResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CD9C2A93875100129724 /* GetMyInformationResponseDTO.swift */; };
 		0CE2CD9F2A938E8800129724 /* CommunityAriticleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CD9E2A938E8800129724 /* CommunityAriticleDataSource.swift */; };
 		0CE2CDA12A93919300129724 /* CommunityCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDA02A93919300129724 /* CommunityCellDataSource.swift */; };
-		0CE2CDA52A9391C100129724 /* DailyDateNoImageCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDA42A9391C100129724 /* DailyDateNoImageCellDataSource.swift */; };
 		0CE2CDA72A93A93400129724 /* NewToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDA62A93A93400129724 /* NewToken.swift */; };
 		0CE2CDA92A93A95F00129724 /* FetchReissueTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDA82A93A95F00129724 /* FetchReissueTokenResponseDTO.swift */; };
 		0CE2CDAD2A93BE1900129724 /* UpdateArticleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDAC2A93BE1900129724 /* UpdateArticleDelegate.swift */; };
@@ -288,7 +287,6 @@
 		0CE2CD9C2A93875100129724 /* GetMyInformationResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyInformationResponseDTO.swift; sourceTree = "<group>"; };
 		0CE2CD9E2A938E8800129724 /* CommunityAriticleDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityAriticleDataSource.swift; sourceTree = "<group>"; };
 		0CE2CDA02A93919300129724 /* CommunityCellDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCellDataSource.swift; sourceTree = "<group>"; };
-		0CE2CDA42A9391C100129724 /* DailyDateNoImageCellDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateNoImageCellDataSource.swift; sourceTree = "<group>"; };
 		0CE2CDA62A93A93400129724 /* NewToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToken.swift; sourceTree = "<group>"; };
 		0CE2CDA82A93A95F00129724 /* FetchReissueTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchReissueTokenResponseDTO.swift; sourceTree = "<group>"; };
 		0CE2CDAC2A93BE1900129724 /* UpdateArticleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateArticleDelegate.swift; sourceTree = "<group>"; };
@@ -919,6 +917,7 @@
 		0CE2CD792A90FC0000129724 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0CE2CDA02A93919300129724 /* CommunityCellDataSource.swift */,
 				0CE2CD9E2A938E8800129724 /* CommunityAriticleDataSource.swift */,
 				0C63FF212A8BCD4A0020D137 /* ArticleTheme.swift */,
 				0CE2CD8C2A93333000129724 /* Comment */,
@@ -982,7 +981,6 @@
 		0CE2CDA22A93919B00129724 /* DailyDateImageCell */ = {
 			isa = PBXGroup;
 			children = (
-				0CE2CDA02A93919300129724 /* CommunityCellDataSource.swift */,
 				0C684F422A77D26600A31865 /* DailyDateImageCell.swift */,
 			);
 			path = DailyDateImageCell;
@@ -992,7 +990,6 @@
 			isa = PBXGroup;
 			children = (
 				0C4D32F62A6823A600AD5EFF /* DailyDateNoImageCell.swift */,
-				0CE2CDA42A9391C100129724 /* DailyDateNoImageCellDataSource.swift */,
 			);
 			path = DailyDateNoImageCell;
 			sourceTree = "<group>";
@@ -1422,7 +1419,6 @@
 				0C59CF6E2A89223500D847B7 /* TokenRepository.swift in Sources */,
 				0CE2CDAF2A93C1D100129724 /* PostArticleDataSource.swift in Sources */,
 				5651FC6D2A7A69B500965300 /* ProfileUserView.swift in Sources */,
-				0CE2CDA52A9391C100129724 /* DailyDateNoImageCellDataSource.swift in Sources */,
 				56DEBEE42A7AACFC000BC687 /* ProfileLookViewController.swift in Sources */,
 				0C59CF572A87C79500D847B7 /* Request.swift in Sources */,
 				0C4EF9942A7B7F3B00539320 /* CoupleSpacePickCollectionViewController.swift in Sources */,

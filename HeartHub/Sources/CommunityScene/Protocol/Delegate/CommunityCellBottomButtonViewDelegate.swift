@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CommunityCellBottomButtonViewDelegate: AnyObject {
-    func didTapThumbButton()
+    func didTapThumbButton(_ status: Bool)
     func didTapCommentButton()
     func didTapHeartButton()
 }

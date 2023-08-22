@@ -9,7 +9,12 @@ import UIKit
 
 final class DailyDateNoImageCell: UICollectionViewCell, CommunityCellable {
     weak var delegate: CommunityCellDelegate?
-    var communityCellDataSource: CommunityCellDataSource?
+    var communityCellDataSource: CommunityCellDataSource? {
+        didSet {
+            bind(to: communityCellDataSource)
+            communityCellDataSource?.fetchCellContents()
+        }
+    }
     
     private let headerView = CommunityCellHeaderView()
     private let bottomButtonView = CommunityCellBottomButtonView()
@@ -28,6 +33,39 @@ final class DailyDateNoImageCell: UICollectionViewCell, CommunityCellable {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func bind(to dataSource: CommunityCellDataSource?) {
+        dataSource?.commentCountPublisher = { [weak self] count in
+            self?.bottomButtonView.commentCountLabel.text = count.description
+        }
+        
+        dataSource?.authorProfileInformationPublisher = { [weak self] username, imageData in
+            var authorProfile: (String, UIImage) = (username, UIImage())
+            
+            if let imageData = imageData,
+               let image = UIImage(data: imageData)
+            {
+                authorProfile.1 = image
+            } else {
+                authorProfile.1 = UIImage(named: "BasicProfileImage")!
+            }
+            
+            self?.headerView.configureContents(authorProfile)
+        }
+        
+        dataSource?.heartStatusPublisher = { [weak self] isHeart in
+            self?.bottomButtonView.heartButton.isSelected = isHeart
+        }
+        
+        dataSource?.goodInformationPublisher = { [weak self] isGood, count in
+            self?.bottomButtonView.thumbButton.isSelected = isGood
+            self?.bottomButtonView.thumbCountLabel.text = count.description
+        }
+        
+        dataSource?.contentPublisher = { [weak self] content in
+            self?.postLabel.text = content
+        }
     }
 }
 

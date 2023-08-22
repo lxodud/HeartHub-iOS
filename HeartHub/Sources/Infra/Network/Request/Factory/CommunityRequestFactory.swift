@@ -55,7 +55,7 @@ struct CommunityRequestFactory {
         )
     }
     
-    static func makePostArticleLikeRequest(
+    static func makePostArticleGoodRequest(
         username: String,
         articleID: Int,
         token: String

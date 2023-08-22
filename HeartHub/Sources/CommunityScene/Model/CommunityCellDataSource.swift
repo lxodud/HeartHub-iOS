@@ -12,7 +12,10 @@ final class CommunityCellDataSource {
     private var goodInformation: (status: Bool, count: Int) = (false, 0) {
         didSet {
             DispatchQueue.main.async {
-                self.goodInformationPublisher?(self.goodInformation.status, self.goodInformation.count)
+                self.goodInformationPublisher?(
+                    self.goodInformation.status,
+                    self.goodInformation.count
+                )
             }
         }
     }
@@ -86,6 +89,22 @@ extension CommunityCellDataSource {
         content = article.content
         heartStatus = article.heartStatus
         commentCount = article.commentList.count
+    }
+    
+    func checkGoodArticle(_ status: Bool) {
+        print(status)
+        if status {
+            goodInformation.status = false
+            goodInformation.count -= 1
+        } else {
+            goodInformation.status = true
+            goodInformation.count += 1
+        }
+        
+        articleContentNetwork.postGoodArticle(
+            username: article.username,
+            articleID: article.articleID
+        )
     }
 }
 

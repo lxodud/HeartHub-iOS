@@ -9,11 +9,6 @@ import UIKit
 
 final class DailyDateImageCell: UICollectionViewCell, CommunityCellable {
     weak var delegate: CommunityCellDelegate?
-    
-    private let headerView = CommunityCellHeaderView()
-    private let pagingImageView = CommunityCellPagingImageView()
-    private let bottomButtonView = CommunityCellBottomButtonView()
-    
     var communityCellDataSource: CommunityCellDataSource? {
         didSet {
             bind(to: communityCellDataSource)
@@ -21,9 +16,14 @@ final class DailyDateImageCell: UICollectionViewCell, CommunityCellable {
         }
     }
     
+    private let headerView = CommunityCellHeaderView()
+    private let pagingImageView = CommunityCellPagingImageView()
+    private let bottomButtonView = CommunityCellBottomButtonView()
+    
     private let postLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        label.font = UIFont(name: "Pretendard-Regular", size: 16)
         label.numberOfLines = 0
         return label
     }()
