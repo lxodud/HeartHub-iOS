@@ -61,8 +61,13 @@ extension PostArticleDataSource {
             imageData: imageData,
             content: content,
             theme: theme
-        ) { _ in
-            completion()
+        ) { article in
+            DispatchQueue.main.async {
+                self.updateArticleDelegateList.forEach {
+                    $0.updateNewArticle(theme, article)
+                }
+                completion()
+            }
         }
     }
 }

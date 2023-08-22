@@ -76,7 +76,7 @@ extension PostArticleViewController {
         }
         
         let imageData = postImages.map { image in
-            guard let resizeImage = image.resizeWithWidth(width: 500),
+            guard let resizeImage = image.resizeWithWidth(width: 400),
                   let imageData = resizeImage.pngData()
             else {
                 return Data()
@@ -89,7 +89,7 @@ extension PostArticleViewController {
             content,
             articleTheme
         ) {
-            self.dismiss(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }

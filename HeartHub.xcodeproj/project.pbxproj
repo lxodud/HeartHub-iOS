@@ -108,6 +108,8 @@
 		0CE2CDB12A93E82200129724 /* ArticleContentNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDB02A93E82200129724 /* ArticleContentNetwork.swift */; };
 		0CE2CDB32A93EB3400129724 /* TokenExpireResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDB22A93EB3400129724 /* TokenExpireResolver.swift */; };
 		0CE2CDB52A93F17100129724 /* FetchGoodCountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDB42A93F17100129724 /* FetchGoodCountResponse.swift */; };
+		0CE2CDBC2A94CD7100129724 /* PostArticleResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDBB2A94CD7100129724 /* PostArticleResponseDTO.swift */; };
+		0CE2CDBE2A94CDE300129724 /* FetchArticleDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDBD2A94CDE300129724 /* FetchArticleDetailDTO.swift */; };
 		336E0F6B2A9203B000547013 /* MyPageMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F6A2A9203B000547013 /* MyPageMainView.swift */; };
 		336E0F6D2A9203D200547013 /* ProfileResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F6C2A9203D200547013 /* ProfileResetView.swift */; };
 		336E0F6F2A9203F100547013 /* MyPageMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F6E2A9203F100547013 /* MyPageMainViewController.swift */; };
@@ -294,6 +296,8 @@
 		0CE2CDB02A93E82200129724 /* ArticleContentNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContentNetwork.swift; sourceTree = "<group>"; };
 		0CE2CDB22A93EB3400129724 /* TokenExpireResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenExpireResolver.swift; sourceTree = "<group>"; };
 		0CE2CDB42A93F17100129724 /* FetchGoodCountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGoodCountResponse.swift; sourceTree = "<group>"; };
+		0CE2CDBB2A94CD7100129724 /* PostArticleResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostArticleResponseDTO.swift; sourceTree = "<group>"; };
+		0CE2CDBD2A94CDE300129724 /* FetchArticleDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchArticleDetailDTO.swift; sourceTree = "<group>"; };
 		15B862B20CFD240D7E3F016F /* Pods-HeartHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartHub.debug.xcconfig"; path = "Target Support Files/Pods-HeartHub/Pods-HeartHub.debug.xcconfig"; sourceTree = "<group>"; };
 		1D54B5963AADEBA830899999 /* Pods_HeartHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		336E0F6A2A9203B000547013 /* MyPageMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMainView.swift; sourceTree = "<group>"; };
@@ -556,6 +560,7 @@
 			children = (
 				0C592A022A6D6C7F00C21570 /* Util */,
 				0C5929FF2A6D693F00C21570 /* Protocol */,
+				0CE2CDB82A94CA5A00129724 /* Model */,
 				0C5929FB2A6D47EB00C21570 /* View */,
 				0C5929FC2A6D47F000C21570 /* Controller */,
 			);
@@ -920,7 +925,6 @@
 				0CE2CDA02A93919300129724 /* CommunityCellDataSource.swift */,
 				0CE2CD9E2A938E8800129724 /* CommunityAriticleDataSource.swift */,
 				0C63FF212A8BCD4A0020D137 /* ArticleTheme.swift */,
-				0CE2CD8C2A93333000129724 /* Comment */,
 				0CE2CD812A9107A700129724 /* Article */,
 			);
 			path = Model;
@@ -945,8 +949,10 @@
 			isa = PBXGroup;
 			children = (
 				0CE2CD862A91109D00129724 /* FetchArticleResponseDTO.swift */,
+				0CE2CDBD2A94CDE300129724 /* FetchArticleDetailDTO.swift */,
 				0CE2CD882A9110DB00129724 /* FetchCommentResponseDTO.swift */,
 				0CE2CDB42A93F17100129724 /* FetchGoodCountResponse.swift */,
+				0CE2CDBB2A94CD7100129724 /* PostArticleResponseDTO.swift */,
 			);
 			path = ResponseDTO;
 			sourceTree = "<group>";
@@ -959,14 +965,6 @@
 				0CE2CDB02A93E82200129724 /* ArticleContentNetwork.swift */,
 			);
 			path = Article;
-			sourceTree = "<group>";
-		};
-		0CE2CD8C2A93333000129724 /* Comment */ = {
-			isa = PBXGroup;
-			children = (
-				0CE2CD8D2A93333000129724 /* Comment.swift */,
-			);
-			path = Comment;
 			sourceTree = "<group>";
 		};
 		0CE2CD912A933DE600129724 /* UserInformation */ = {
@@ -1000,6 +998,14 @@
 				0CE2CDAC2A93BE1900129724 /* UpdateArticleDelegate.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		0CE2CDB82A94CA5A00129724 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0CE2CD8D2A93333000129724 /* Comment.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		336E0F672A92036D00547013 /* Mypage */ = {
@@ -1434,6 +1440,7 @@
 				0C4D32FD2A68312C00AD5EFF /* CommunityCellTransitionDelegate.swift in Sources */,
 				0C4EF9A42A7CE2EC00539320 /* HeartHubTabBarController.swift in Sources */,
 				0C6F454B2A7003930044EAC8 /* CommentCell.swift in Sources */,
+				0CE2CDBE2A94CDE300129724 /* FetchArticleDetailDTO.swift in Sources */,
 				0C4EF9A82A8233A100539320 /* CoupleSpaceAlbumCell.swift in Sources */,
 				5651FC7A2A7A7C6A00965300 /* GameBackgroundView.swift in Sources */,
 				0C59CF4D2A84D76D00D847B7 /* NetworkManager.swift in Sources */,
@@ -1476,6 +1483,7 @@
 				336E0F6F2A9203F100547013 /* MyPageMainViewController.swift in Sources */,
 				336E0F7B2A9207AD00547013 /* MemberWithdrawalViewController.swift in Sources */,
 				569E4EED2A5D499900B51898 /* SignUpTermAgreeView.swift in Sources */,
+				0CE2CDBC2A94CD7100129724 /* PostArticleResponseDTO.swift in Sources */,
 				569013672A7E6D0700715D23 /* GameClearViewController.swift in Sources */,
 				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
 				0C63FF302A8D16F10020D137 /* CancleCommentLikeRequestDTO.swift in Sources */,

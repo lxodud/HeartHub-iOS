@@ -67,7 +67,7 @@ extension ArticleNetwork {
         imageData: [Data],
         content: String,
         theme: ArticleTheme,
-        completion: @escaping (Result<Data, Error>) -> Void
+        completion: @escaping (Article) -> Void
     ) {
         guard let accessToken = tokenRepository.fetchAccessToken() else {
             return
@@ -83,8 +83,17 @@ extension ArticleNetwork {
         
         networkManager.request(endpoint: request) { result in
             switch result {
-            case .success(let _):
-                break
+            case .success(let data):
+                guard let deserializedData: PostArticleResponseDTO = try? self.decode(from: data),
+                      let id = Int(deserializedData.data)
+                else {
+                    return
+                }
+                
+                self.fetchArticleDetail(with: id) { article in
+                    completion(article)
+                }
+                
             case .failure(let error):
                 self.tokenExpireResolver.validateExpireAccessTokenError(error) {
                     self.postArticle(
@@ -102,7 +111,7 @@ extension ArticleNetwork {
 
 // MARK: Private Method
 extension ArticleNetwork {
-    private func fetchArticleDetail(with articleID: Int, completion: @escaping () -> Void) {
+    private func fetchArticleDetail(with articleID: Int, completion: @escaping (Article) -> Void) {
         guard let accessToken = tokenRepository.fetchAccessToken() else {
             return
         }
@@ -115,7 +124,11 @@ extension ArticleNetwork {
         networkManager.request(endpoint: request) { result in
             switch result {
             case .success(let data):
-                completion()
+                guard let deserializedData: FetchArticleDetailDTO = try? self.decode(from: data) else {
+                    return
+                }
+                
+                completion(deserializedData.data)
             case .failure(let error):
                 self.tokenExpireResolver.validateExpireAccessTokenError(error) {
                     self.fetchArticleDetail(with: articleID, completion: completion)
