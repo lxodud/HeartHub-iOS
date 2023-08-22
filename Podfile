@@ -6,6 +6,13 @@ target 'HeartHub' do
   use_frameworks!
 
 
+pod 'DropDown'
+pod 'FSCalendar'
+pod 'SnapKit'
+pod 'Then'
+pod 'YPImagePicker'
+
+
 post_install do |installer|
     installer.pods_project.targets.each do |target|
       target.build_configurations.each do |config|

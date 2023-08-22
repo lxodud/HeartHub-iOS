@@ -263,11 +263,11 @@ extension SignUpTermAgreeViewController {
     @objc func termDescriptionButtonTapped(sender: UIButton) {
         if sender.tag == 0 {
             let privacyTermViewController = SignUpPrivacyTermViewController()
-            privacyTermViewController.modalPresentationStyle = .automatic
+            privacyTermViewController.modalPresentationStyle = .overFullScreen
             present(privacyTermViewController, animated: true, completion: nil)
         } else {
             let termOfUseViewController = SignUpTermOfUseViewController()
-            termOfUseViewController.modalPresentationStyle = .automatic
+            termOfUseViewController.modalPresentationStyle = .overFullScreen
             present(termOfUseViewController, animated: true, completion: nil)
         }
     }

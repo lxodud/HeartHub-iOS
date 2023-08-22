@@ -24,6 +24,7 @@ final class GameViewController: UIViewController {
         super.viewDidLoad()
         configureSubview()
         configureLayout()
+        configureNavigationBar()
     }
 }
 
@@ -51,5 +52,15 @@ extension GameViewController {
             gamePageView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -101),
             gamePageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
         ])
+    }
+    
+    private func configureNavigationBar() {
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(didTapBackButton))
+        backButton.tintColor = .black
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
+    @objc private func didTapBackButton() {
+        navigationController?.popViewController(animated: true)
     }
 }

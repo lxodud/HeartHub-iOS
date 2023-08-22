@@ -16,6 +16,7 @@ final class ConnectViewController: UIViewController {
         configureAddTarget()
         configureSubviews()
         configureLayout()
+        configureNavigationBar()
     }
 }
 
@@ -47,5 +48,16 @@ extension ConnectViewController {
             connectView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             connectView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor)
         ])
+    }
+    
+    private func configureNavigationBar() {
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(didTapBackButton))
+        backButton.tintColor = .black
+        navigationItem.leftBarButtonItem = backButton
+        navigationItem.title = "계정 연동"
+    }
+    
+    @objc private func didTapBackButton() {
+        navigationController?.popViewController(animated: true)
     }
 }

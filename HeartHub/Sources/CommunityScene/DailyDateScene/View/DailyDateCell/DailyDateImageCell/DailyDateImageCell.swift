@@ -52,7 +52,7 @@ final class DailyDateImageCell: UICollectionViewCell, CommunityCellable {
             {
                 authorProfile.1 = image
             } else {
-                authorProfile.1 = UIImage(named: "BasicProfileImage")!
+                authorProfile.1 = UIImage(named: "basicProfileImage")!
             }
             
             self?.headerView.configureContents(authorProfile)

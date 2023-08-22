@@ -33,9 +33,11 @@ final class ProfileViewController: UIViewController {
     
     private let profileFloatingButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "Pencil"), for: .normal)
+        button.setImage(UIImage(named: "ReportButton"), for: .normal)
         return button
     }()
+    
+    private var blockStatus: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +64,7 @@ extension ProfileViewController {
     private func configureFloatingButtonInitialSetting() {
         view.addSubview(profileFloatingButton)
         profileFloatingButton.translatesAutoresizingMaskIntoConstraints = false
+        profileFloatingButton.addTarget(self, action: #selector(configureReportAlert), for: .touchUpInside)
     }
     
     private func configureFloatingButtonLayout() {
@@ -77,6 +80,54 @@ extension ProfileViewController {
                 constant: -21
             )
         ])
+    }
+}
+
+// MARK: Configure ActionSheet
+extension ProfileViewController {
+    
+    @objc private func configureReportAlert() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let report = UIAlertAction(title: "신고하기", style: .default) { (action) in
+            self.presentReportUserViewController()
+        }
+        let block = UIAlertAction(title: "차단하기", style: .default) { (action) in
+            self.presentBlockUserViewController()
+        }
+        let cancelBlock = UIAlertAction(title: "차단 해제", style: .default) { (action) in
+            self.presentCancelBlockUserViewController()
+        }
+
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+                
+        alert.addAction(report)
+        if blockStatus == true {
+            alert.addAction(cancelBlock)
+        } else {
+            alert.addAction(block)
+        }
+        alert.addAction(cancel)
+                
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func presentReportUserViewController() {
+        let reportUserViewController = ProfileReportReasonViewController()
+        modalPresentationStyle = .overFullScreen
+        present(reportUserViewController, animated: true)
+    }
+    
+    private func presentBlockUserViewController() {
+        let blockUserViewController = ProfileBlockUserViewController()
+        modalPresentationStyle = .overFullScreen
+        present(blockUserViewController, animated: true)
+    }
+    
+    private func presentCancelBlockUserViewController() {
+        let profileBlockCancelViewController = ProfileBlockCancelViewController()
+        modalPresentationStyle = .overFullScreen
+        present(profileBlockCancelViewController, animated: true)
     }
 }
 
@@ -126,10 +177,11 @@ extension ProfileViewController {
             profilePageView.trailingAnchor.constraint(
                 equalTo: safeArea.trailingAnchor
             ),
-            // 탭바 올리고 다시 확인해보기
+
             profilePageView.bottomAnchor.constraint(
                 equalTo: view.bottomAnchor, constant: 210
             )
         ])
     }
 }
+
