@@ -12,10 +12,12 @@ final class LookCell: UICollectionViewCell, CommunityCellable {
     var communityCellDataSource: CommunityCellDataSource? {
         didSet {
             bind(to: communityCellDataSource)
-            communityCellDataSource?.fetchCellContents()
+            let task = communityCellDataSource?.fetchCellContents()
+            tasks = task ?? []
         }
     }
     
+    var tasks: [Cancellable?] = []
     private let headerView = CommunityCellHeaderView()
     private let pagingImageView = CommunityCellPagingImageView()
     private let bottomButtonView = CommunityCellBottomButtonView()
@@ -66,8 +68,20 @@ final class LookCell: UICollectionViewCell, CommunityCellable {
             self?.bottomButtonView.thumbCountLabel.text = count.description
         }
         
+        dataSource?.imagesPublisher = { [weak self] imageData in
+            let images = imageData.map { UIImage(data: $0) }
+            self?.pagingImageView.configureContents(images)
+        }
+        
         dataSource?.contentPublisher = { [weak self] content in
             self?.postLabel.text = content
+        }
+    }
+    
+    // MARK: - override
+    override func prepareForReuse() {
+        tasks.forEach {
+            $0?.cancel()
         }
     }
 }
@@ -151,11 +165,11 @@ extension LookCell {
             // MARK: postLabel Constraints
             postLabel.leadingAnchor.constraint(
                 equalTo: pagingImageViewSafeArea.leadingAnchor,
-                constant: 3
+                constant: 18
             ),
             postLabel.trailingAnchor.constraint(
                 equalTo: pagingImageViewSafeArea.trailingAnchor,
-                constant: -3
+                constant: -18
             ),
             postLabel.bottomAnchor.constraint(
                 equalTo: bottomButtonView.topAnchor

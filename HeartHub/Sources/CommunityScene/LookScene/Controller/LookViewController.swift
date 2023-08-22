@@ -96,11 +96,18 @@ extension LookViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
+        let tokenRepository = TokenRepository()
+        let networkManager = DefaultNetworkManager()
+        
         let dataSource = CommunityCellDataSource(
             article: articles[indexPath.row],
             articleContentNetwork: ArticleContentNetwork(
-                tokenRepository: TokenRepository(),
-                networkManager: DefaultNetworkManager()
+                tokenRepository: tokenRepository,
+                networkManager: networkManager
+            ),
+            userNetwork: UserNetwork(
+                tokenRepository: tokenRepository,
+                networkManager: networkManager
             )
         )
         

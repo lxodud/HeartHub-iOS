@@ -124,11 +124,10 @@ struct CommunityRequestFactory {
         with articleID: Int,
         token: String
     ) -> Requestable {
-        return JSONBodyRequest(
+        return Request(
             httpMethod: .get,
-            path: "/api/user/board/comments",
-            headers: ["Authorization": "Bearer " + token],
-            jsonBody: FetchCommentRequestDTO(articleID: articleID)
+            path: "/api/user/board/\(articleID)/comments",
+            headers: ["Authorization": "Bearer " + token]
         )
     }
     

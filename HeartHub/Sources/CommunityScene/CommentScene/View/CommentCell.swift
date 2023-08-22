@@ -7,14 +7,13 @@
 
 import UIKit
 
-protocol CommentCellDelegate: AnyObject {
+protocol CommentCellTransitionDelegate: AnyObject {
     func didTapUserProfile()
-    func didTapHeartButton()
-    func didTapLeaveCommentButton()
 }
 
 final class CommentCell: UITableViewCell {
-    weak var delegate: CommentCellDelegate?
+    weak var transitionDelegate: CommentCellTransitionDelegate?
+    var commentCellDataSource: CommentCellDataSource?
     
     private let headerView = CommentCellHeaderView()
     private let commentLabel: UILabel = {
@@ -34,44 +33,45 @@ final class CommentCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureSubview()
         configureLayout()
-        configureAction()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
-
-// MARK: Public Interface
-extension CommentCell {
-    func configureCell(_ data: MockData) {
+    
+    func bind(to dataSource: CommentCellDataSource?) {
+        dataSource?.authorProfileInformationPublisher = { [weak self] username, imageData in
+            var authorProfile: (String, UIImage) = (username, UIImage())
+            
+            if let imageData = imageData,
+               let image = UIImage(data: imageData)
+            {
+                authorProfile.1 = image
+            } else {
+                authorProfile.1 = UIImage(named: "BasicProfileImage")!
+            }
+            
+            self?.headerView.configureProfile(authorProfile)
+        }
+        
+        dataSource?.heartInformationPublisher = { [weak self] isGood, count in
+            self?.headerView.configureHeartInformation((isGood, count.description))
+        }
+        
+        dataSource?.contentPublisher = { [weak self] content in
+            self?.commentLabel.text = content
+        }
     }
 }
 
 // MARK: Comment Cell HeaderView Delegate Implementation
 extension CommentCell: CommentCellHeaderViewDelegate {
     func didTapUserProfile() {
-        delegate?.didTapUserProfile()
+        transitionDelegate?.didTapUserProfile()
     }
     
     func didTapHeartButton() {
-        delegate?.didTapHeartButton()
-    }
-}
-
-// MARK: Configure Action
-extension CommentCell {
-    private func configureAction() {
-        leaveCommentButton.addTarget(
-            self,
-            action: #selector(tapLeaveCommentButton),
-            for: .touchUpInside
-        )
-    }
-    
-    @objc
-    private func tapLeaveCommentButton() {
-        delegate?.didTapLeaveCommentButton()
+        
     }
 }
 

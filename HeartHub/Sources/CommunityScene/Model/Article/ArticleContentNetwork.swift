@@ -31,19 +31,19 @@ extension ArticleContentNetwork {
     func postScrapOrCancelArticle(
         username: String,
         articleID: Int
-    ) {
+    ) -> Cancellable? {
         guard let accessToken = tokenRepository.fetchAccessToken() else {
-            return
+            return nil
         }
         
         guard let request = CommunityRequestFactory.makeScrapArticleRequest(
             with: ScrapArticleRequestDTO(username: username, articleID: articleID),
             token: accessToken
         ) else {
-            return
+            return nil
         }
         
-        networkManager.request(endpoint: request) { result in
+        let task = networkManager.request(endpoint: request) { result in
             switch result {
             case .success(_):
                 break
@@ -53,14 +53,17 @@ extension ArticleContentNetwork {
                 }
             }
         }
+        
+        return task
     }
     
+    @discardableResult
     func postGoodArticle(
         username: String,
         articleID: Int
-    ) {
+    ) -> Cancellable? {
         guard let accessToken = tokenRepository.fetchAccessToken() else {
-            return
+            return nil
         }
         
         let request = CommunityRequestFactory.makePostArticleGoodRequest(
@@ -69,7 +72,7 @@ extension ArticleContentNetwork {
             token: accessToken
         )
         
-        networkManager.request(endpoint: request) { result in
+        let task = networkManager.request(endpoint: request) { result in
             switch result {
             case .success(_):
                 break
@@ -79,14 +82,17 @@ extension ArticleContentNetwork {
                 }
             }
         }
+        
+        return task
     }
     
+    @discardableResult
     func fetchGoodCount(
         from articleId: Int,
         completion: @escaping (Int) -> Void
-    ) {
+    ) -> Cancellable? {
         guard let accessToken = tokenRepository.fetchAccessToken() else {
-            return
+            return nil
         }
         
         let request = CommunityRequestFactory.makeFetchArticleLikeCountRequest(
@@ -94,7 +100,7 @@ extension ArticleContentNetwork {
             token: accessToken
         )
         
-        networkManager.request(endpoint: request) { result in
+        let task = networkManager.request(endpoint: request) { result in
             switch result {
             case .success(let data):
                 guard let deserializedData: FetchGoodCountResponseDTO = try? self.decode(from: data) else {
@@ -111,38 +117,7 @@ extension ArticleContentNetwork {
                 }
             }
         }
-    }
-    
-    func fetchAuthorInformation(
-        from userId: Int,
-        completion: @escaping (String?) -> Void
-    ) {
-        guard let accessToken = tokenRepository.fetchAccessToken() else {
-            return
-        }
         
-        let request = UserRelatedRequestFactory.makeGetUserInformation(
-            of: userId,
-            token: accessToken
-        )
-        
-        networkManager.request(endpoint: request) { result in
-            switch result {
-            case .success(let data):
-                guard let deserializedData: GetUserInformationResponseDTO = try? self.decode(from: data),
-                      let imageUrl = deserializedData.data.userImageUrl
-                else {
-                    completion(nil)
-                    return
-                }
-                
-                completion(imageUrl)
-            case .failure(let error):
-                print(#function)
-                self.tokenExpierResolver.validateExpireAccessTokenError(error) {
-                    self.fetchAuthorInformation(from: userId, completion: completion)
-                }
-            }
-        }
+        return task
     }
 }

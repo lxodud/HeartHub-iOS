@@ -85,7 +85,7 @@ extension CommunityCellBottomButtonView {
     
     @objc
     private func tapThumbButton(_ sender: UIButton) {
-        delegate?.didTapThumbButton(sender.isSelected)
+        delegate?.didTapThumbButton()
     }
     
     @objc
@@ -95,7 +95,7 @@ extension CommunityCellBottomButtonView {
     
     @objc
     private func tapHeartButton(_ sender: UIButton) {
-        delegate?.didTapHeartButton(sender.isSelected)
+        delegate?.didTapHeartButton()
     }
 }
 

@@ -10,6 +10,7 @@ import UIKit
 protocol CommunityCellable: UICollectionViewCell, CommunityCellHeaderViewDelegate, CommunityCellBottomButtonViewDelegate {
     var transitionDelegate: CommunityCellTransitionDelegate? { get set }
     var communityCellDataSource: CommunityCellDataSource? { get set }
+    var tasks: [Cancellable?] { get set }
     
     func fetchAdjustedHeight() -> CGFloat
 }
@@ -27,8 +28,9 @@ extension CommunityCellable {
 
 // MARK: BottomButton Delegate Implementation
 extension CommunityCellable {
-    func didTapThumbButton(_ status: Bool) {
-        communityCellDataSource?.checkGoodArticle(status)
+    func didTapThumbButton() {
+        let task = communityCellDataSource?.checkGoodArticle()
+        tasks.append(task)
     }
     
     func didTapCommentButton() {
@@ -36,7 +38,8 @@ extension CommunityCellable {
         transitionDelegate?.didTapCommentButton(articleID)
     }
     
-    func didTapHeartButton(_ status: Bool) {
-        communityCellDataSource?.scrapOrCancelArticle(status)
+    func didTapHeartButton() {
+        let task = communityCellDataSource?.scrapOrCancelArticle()
+        tasks.append(task)
     }
 }

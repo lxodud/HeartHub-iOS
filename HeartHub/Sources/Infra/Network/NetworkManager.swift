@@ -8,10 +8,11 @@
 import Foundation
 
 protocol NetworkManager {
+    @discardableResult
     func request(
         endpoint: Requestable,
         completion: @escaping (Result<Data, Error>) -> Void
-     )
+     ) -> Cancellable?
 }
 
 final class DefaultNetworkManager: NetworkManager {
@@ -24,23 +25,26 @@ final class DefaultNetworkManager: NetworkManager {
     func request(
         endpoint: Requestable,
         completion: @escaping (Result<Data, Error>) -> Void
-    ) {
+    ) -> Cancellable? {
         guard let request = endpoint.makeURLRequest() else {
             // TODO: Error Handling
-            return
+            return nil
         }
+        let task: Cancellable
         
         if let body = request.httpBody {
-            uploadData(request: request, body: body, completion: completion)
+            task = uploadData(request: request, body: body, completion: completion)
         } else {
-            requestData(request: request, completion: completion)
+            task = requestData(request: request, completion: completion)
         }
+        
+        return task
     }
     
     private func requestData(
         request: URLRequest,
         completion: @escaping (Result<Data, Error>) -> Void
-    ) {
+    ) -> Cancellable {
         let task = session.dataTask(with: request) { data, response, error in
             guard error == nil else {
                 completion(.failure(NetworkError.transportError))
@@ -66,13 +70,15 @@ final class DefaultNetworkManager: NetworkManager {
         }
         
         task.resume()
+        
+        return task
     }
     
     private func uploadData(
         request: URLRequest,
         body: Data,
         completion: @escaping (Result<Data, Error>) -> Void
-    ) {
+    ) -> Cancellable {
         let task = session.uploadTask(with: request, from: body) { data, response, error in
             guard error == nil else {
                 completion(.failure(NetworkError.transportError))
@@ -98,5 +104,7 @@ final class DefaultNetworkManager: NetworkManager {
         }
         
         task.resume()
+        
+        return task
     }
 }

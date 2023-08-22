@@ -17,7 +17,7 @@ final class CommunityProfileView: UIStackView {
         return imageView
     }()
     
-    let profileIdLabel: UILabel = {
+    let profileIDLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         label.font = UIFont(name: "Pretendard-SemiBold", size: 16)
@@ -41,11 +41,11 @@ final class CommunityProfileView: UIStackView {
 extension CommunityProfileView {
     func configureContents(_ username: String, _ profileImage: UIImage) {
         profileImageView.image = profileImage
-        profileIdLabel.text = username
+        profileIDLabel.text = username
     }
     
     var labelLeadingAnchor: NSLayoutXAxisAnchor {
-        return profileIdLabel.leadingAnchor
+        return profileIDLabel.leadingAnchor
     }
 }
 
@@ -57,7 +57,7 @@ extension CommunityProfileView {
             action: #selector(tapUserProfile)
         )
         profileImageView.addGestureRecognizer(tapGesture)
-        profileIdLabel.addGestureRecognizer(tapGesture)
+        profileIDLabel.addGestureRecognizer(tapGesture)
     }
     
     @objc
@@ -76,11 +76,11 @@ extension CommunityProfileView {
     }
     
     private func configureSubview() {
-        [profileImageView, profileIdLabel].forEach {
+        [profileImageView, profileIDLabel].forEach {
             addArrangedSubview($0)
         }
         
-        profileIdLabel.setContentHuggingPriority(.required, for: .horizontal)
+        profileIDLabel.setContentHuggingPriority(.required, for: .horizontal)
     }
     
     private func configureLayout() {

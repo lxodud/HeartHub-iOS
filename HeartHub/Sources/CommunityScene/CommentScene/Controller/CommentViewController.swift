@@ -64,6 +64,8 @@ final class CommentViewController: UIViewController {
         configureCommentTextView()
         configureSubview()
         configureLayout()
+        bind(to: commentDataSource)
+        commentDataSource.fetchComment()
     }
     
     private func bind(to dataSource: CommentDataSource) {

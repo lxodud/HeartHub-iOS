@@ -10,18 +10,38 @@ import Foundation
 final class ImageProvider {
     static let shared = ImageProvider()
     
+    @discardableResult
     func fetch(
         from url: URL,
         queue: DispatchQueue = DispatchQueue.global(),
         completion: @escaping (Result<Data, Error>) -> Void
-    ) {
-        queue.async {
-            guard let imageData = try? Data(contentsOf: url) else {
-                completion(.failure(ImageProviderError.missingImageData))
+    ) -> Cancellable {
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard error == nil else {
+                completion(.failure(NetworkError.transportError))
                 return
             }
             
-            completion(.success(imageData))
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.failure(NetworkError.transportError))
+                return
+            }
+            
+            guard (200...299) ~= httpResponse.statusCode else {
+                completion(.failure(NetworkError.requestFail(statusCode: httpResponse.statusCode, data: data)))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(NetworkError.missingData))
+                return
+            }
+            
+            completion(.success(data))
         }
+        
+        task.resume()
+        
+        return task
     }
 }

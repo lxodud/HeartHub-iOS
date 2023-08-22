@@ -19,13 +19,10 @@ final class CommunityCellDataSource {
             }
         }
     }
-    private var heartStatus: Bool? = false {
+    private var heartStatus: Bool = false {
         didSet {
-            guard let heartStatus = heartStatus else {
-                return
-            }
             DispatchQueue.main.async {
-                self.heartStatusPublisher?(heartStatus)
+                self.heartStatusPublisher?(self.heartStatus)
             }
         }
     }
@@ -61,6 +58,7 @@ final class CommunityCellDataSource {
         }
     }
     private let articleContentNetwork: ArticleContentNetwork
+    private let userNetwork: UserNetwork
     
     // MARK: - Output
     var goodInformationPublisher: ((Bool, Int) -> Void)?
@@ -72,27 +70,32 @@ final class CommunityCellDataSource {
     
     init(
         article: Article,
-        articleContentNetwork: ArticleContentNetwork
+        articleContentNetwork: ArticleContentNetwork,
+        userNetwork: UserNetwork
     ) {
         self.article = article
         self.articleContentNetwork = articleContentNetwork
+        self.userNetwork = userNetwork
     }
 }
 
 // MARK: - Input
 extension CommunityCellDataSource {
-    func fetchCellContents() {
-        fetchGoodCount()
-        fetchAuthorInformation()
-        fetchImages()
+    func fetchCellContents() -> [Cancellable?] {
+        var tasks: [Cancellable?] = []
+        
+        tasks.append(fetchGoodCount())
+        tasks.append(fetchAuthorInformation())
+        tasks += fetchImages()
         
         content = article.content
-        heartStatus = article.heartStatus
         commentCount = article.commentList.count
+        
+        return tasks
     }
     
-    func checkGoodArticle(_ status: Bool) {
-        if status {
+    func checkGoodArticle() -> Cancellable? {
+        if goodInformation.status {
             goodInformation.status = false
             goodInformation.count -= 1
         } else {
@@ -100,32 +103,43 @@ extension CommunityCellDataSource {
             goodInformation.count += 1
         }
         
-        articleContentNetwork.postGoodArticle(
-            username: article.username,
-            articleID: article.articleID
-        )
+        return postGoodStatus()
     }
     
-    func scrapOrCancelArticle(_ status: Bool) {
-        if status {
-            heartStatus = false
-        } else {
-            heartStatus = true
-        }
+    func scrapOrCancelArticle() -> Cancellable? {
+        heartStatus = !heartStatus
+        
+        return postScrabOrCancel()
     }
 }
 
 // MARK: - Network
 extension CommunityCellDataSource {
-    private func fetchImages() {
+    private func postScrabOrCancel() -> Cancellable? {
+        articleContentNetwork.postScrapOrCancelArticle(
+            username: article.username,
+            articleID: article.articleID
+        )
+    }
+    
+    private func postGoodStatus() -> Cancellable? {
+        return articleContentNetwork.postGoodArticle(
+            username: article.username,
+            articleID: article.articleID
+        )
+    }
+    
+    private func fetchImages() -> [Cancellable?] {
         let serialQueue = DispatchQueue(label: "fetch image")
+        
+        var tasks: [Cancellable?] = []
         
         article.communityImageUrl.forEach {
             guard let url = URL(string: $0) else {
                 return
             }
             
-            ImageProvider.shared.fetch(from: url, queue: serialQueue) { result in
+            let task = ImageProvider.shared.fetch(from: url, queue: serialQueue) { result in
                 switch result {
                 case .success(let data):
                     self.images.append(data)
@@ -133,17 +147,21 @@ extension CommunityCellDataSource {
                     print(error)
                 }
             }
+            
+            tasks.append(task)
         }
+        
+        return tasks
     }
     
-    private func fetchGoodCount() {
-        articleContentNetwork.fetchGoodCount(from: article.articleID) { count in
+    private func fetchGoodCount() -> Cancellable? {
+        return articleContentNetwork.fetchGoodCount(from: article.articleID) { count in
             self.goodInformation = (self.article.goodStatus ?? false, count)
         }
     }
     
-    private func fetchAuthorInformation() {
-        articleContentNetwork.fetchAuthorInformation(from: article.userID) { imageLocation in
+    private func fetchAuthorInformation() -> Cancellable? {
+        return userNetwork.fetchAuthorInformation(from: article.userID) { imageLocation in
             guard let imageLocation = imageLocation,
                   let imageUrl = URL(string: imageLocation)
             else {

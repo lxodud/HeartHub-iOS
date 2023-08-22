@@ -12,10 +12,11 @@ final class DailyDateNoImageCell: UICollectionViewCell, CommunityCellable {
     var communityCellDataSource: CommunityCellDataSource? {
         didSet {
             bind(to: communityCellDataSource)
-            communityCellDataSource?.fetchCellContents()
+            let task = communityCellDataSource?.fetchCellContents()
+            tasks = task ?? []
         }
     }
-    
+    var tasks: [Cancellable?] = []
     private let headerView = CommunityCellHeaderView()
     private let bottomButtonView = CommunityCellBottomButtonView()
     private let postLabel: UILabel = {
@@ -65,6 +66,13 @@ final class DailyDateNoImageCell: UICollectionViewCell, CommunityCellable {
         
         dataSource?.contentPublisher = { [weak self] content in
             self?.postLabel.text = content
+        }
+    }
+    
+    // MARK: - override
+    override func prepareForReuse() {
+        tasks.forEach {
+            $0?.cancel()
         }
     }
 }

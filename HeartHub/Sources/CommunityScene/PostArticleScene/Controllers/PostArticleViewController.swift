@@ -71,8 +71,18 @@ extension PostArticleViewController {
     
     @objc
     private func tapDoneButton() {
-        guard let content = postArticleView.postArticleTextView.text else {
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        guard var content = postArticleView.postArticleTextView.text else {
+            navigationItem.rightBarButtonItem?.isEnabled = true
             return
+        }
+        
+        if UIImage(named: "AddPostImage") == postImages.first {
+            postImages.removeAll()
+        }
+        
+        if postArticleView.postArticleTextView.text == "문구를 입력해주세요." {
+            content = ""
         }
         
         let imageData = postImages.map { image in

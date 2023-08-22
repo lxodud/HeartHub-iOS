@@ -31,7 +31,7 @@ final class CommunityCellHeaderView: UIView {
 // MARK: Public Interface
 extension CommunityCellHeaderView {
     func configureContents(_ data: (username: String, image: UIImage)) {
-        profileView.profileIdLabel.text = data.username
+        profileView.profileIDLabel.text = data.username
         profileView.profileImageView.image = data.image
     }
 }

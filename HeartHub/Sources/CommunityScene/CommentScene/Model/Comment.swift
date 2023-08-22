@@ -12,6 +12,7 @@ struct Comment: Decodable {
     let username: String
     let content: String
     let replyComment: [Comment]
+    let userID: Int
     let heartCount: Int
     
     enum CodingKeys: String, CodingKey {
@@ -19,6 +20,7 @@ struct Comment: Decodable {
         case username = "userName"
         case content
         case replyComment = "responseList"
+        case userID = "userId"
         case heartCount = "count"
     }
 }

@@ -18,7 +18,7 @@ extension KeychainManager {
         with query: [String: Any]
     ) -> AnyObject? {
         var item: CFTypeRef?
-        let status = SecItemCopyMatching(query as CFDictionary, &item)
+        let _ = SecItemCopyMatching(query as CFDictionary, &item)
         return item
     }
     
