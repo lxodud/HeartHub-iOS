@@ -9,6 +9,7 @@ pod 'DropDown'
 pod 'FSCalendar'
 pod 'SnapKit'
 pod 'Then'
+pod 'YPImagePicker'
 
 
 
