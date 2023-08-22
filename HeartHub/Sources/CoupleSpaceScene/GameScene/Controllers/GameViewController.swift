@@ -48,7 +48,7 @@ extension GameViewController {
             // MARK: gameButtonStackView Constraints
             gamePageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gamePageView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 76),
-            gamePageView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -113),
+            gamePageView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -101),
             gamePageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
         ])
     }

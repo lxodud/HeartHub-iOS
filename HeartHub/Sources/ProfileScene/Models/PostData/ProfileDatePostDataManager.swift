@@ -14,7 +14,8 @@ final class ProfileDatePostDataManager {
         profileDatePostDataArray = [
             ProfileDatePostDataModel(profileDatePostImage: UIImage(named: "TestImage")),
             ProfileDatePostDataModel(profileDatePostImage: UIImage(named: "TestImage")),
-            ProfileDatePostDataModel(profileDatePostImage: UIImage(named: "TestImage")),
+            ProfileDatePostDataModel(profileDatePostText: "안녕"),
+            ProfileDatePostDataModel(profileDatePostText: "하세요"),
             ProfileDatePostDataModel(profileDatePostImage: UIImage(named: "TestImage")),
             ProfileDatePostDataModel(profileDatePostImage: UIImage(named: "TestImage")),
             ProfileDatePostDataModel(profileDatePostImage: UIImage(named: "TestImage")),

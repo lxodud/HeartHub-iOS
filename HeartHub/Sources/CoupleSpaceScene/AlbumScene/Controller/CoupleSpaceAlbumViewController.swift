@@ -24,7 +24,7 @@ final class CoupleSpaceAlbumViewController: UIViewController {
     
     private let ddayLabel: UILabel = {
         let label = UILabel()
-        label.text = "D+999"
+        label.text = "D + 0"
         label.textColor = .black
         label.font = UIFont(name: "Pretendard-SemiBold", size: 24)
         return label
@@ -38,6 +38,7 @@ final class CoupleSpaceAlbumViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureInitialSetting()
         configureAlbumCollectionView()
         configureSubview()
         configureLayout()
@@ -79,6 +80,13 @@ extension CoupleSpaceAlbumViewController: UICollectionViewDelegateFlowLayout {
         let width = view.bounds.width * 0.8
         
         return CGSize(width: width, height: height)
+    }
+}
+
+extension CoupleSpaceAlbumViewController {
+    private func configureInitialSetting() {
+        let dDayCalculator = DDayCalculator()
+        dDayCalculator.calculateAndDisplayDDay(dayLabel: ddayLabel)
     }
 }
 

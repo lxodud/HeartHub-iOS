@@ -5,12 +5,12 @@ target 'HeartHub' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
+
 pod 'DropDown'
 pod 'FSCalendar'
 pod 'SnapKit'
 pod 'Then'
 pod 'YPImagePicker'
-
 
 
 post_install do |installer|
