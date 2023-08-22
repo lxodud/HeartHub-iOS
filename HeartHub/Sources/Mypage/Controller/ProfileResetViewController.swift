@@ -22,7 +22,7 @@ final class ProfileResetViewController: UIViewController, UIImagePickerControlle
     
     func setupAddTarget() {
         profileResetView.cameraButton.addTarget(self, action: #selector(showImagePicker), for: .touchUpInside)
-        
+        profileResetView.profileSetbtn.addTarget(self, action: #selector(didTapProfileSetButton), for: .touchUpInside)
     }
     
     
@@ -50,5 +50,10 @@ final class ProfileResetViewController: UIViewController, UIImagePickerControlle
         
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    @objc private func didTapProfileSetButton() {
+        let myPageDoneProfileSetViewController = MyPageDoneProfileSetViewController()
+        modalPresentationStyle = .overFullScreen
+        present(myPageDoneProfileSetViewController, animated: true)
+    }
 }
-

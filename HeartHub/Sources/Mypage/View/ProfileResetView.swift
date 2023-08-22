@@ -67,7 +67,7 @@ final class ProfileResetView: UIView {
         return tf
     }()
     
-    private let profileSetbtn: UIButton = {
+    let profileSetbtn: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
         button.layer.cornerRadius = 15
