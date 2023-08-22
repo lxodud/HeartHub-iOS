@@ -43,7 +43,7 @@ extension CoupleSpaceMainHeaderView {
         clipsToBounds = true
         
         let dDayCalculator = DDayCalculator()
-        dDayCalculator.calculateAndDisplayDDay(dayLabel: dayLabel)
+        dayLabel.text = dDayCalculator.calculateDDay(startDate: "2019-04-29")
     }
     
     private func configureSubview() {

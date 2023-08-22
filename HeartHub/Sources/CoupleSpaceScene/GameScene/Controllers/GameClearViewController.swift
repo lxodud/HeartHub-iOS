@@ -41,6 +41,7 @@ extension GameClearViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.gameClearLabel.text = clearMissionDataArray[indexPath.item]
+        cell.selectionStyle = .none
         
         return cell
     }

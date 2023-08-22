@@ -5,15 +5,11 @@
 //  Created by 제민우 on 2023/08/14.
 //
 
-import UIKit
+import Foundation
 
 final class DDayCalculator {
-    
-    // 서버에서 getDatingDate 가져와서 저장
-    private let startDateString: String = "2022-07-03"
-    
     private let dateFormatter: DateFormatter = {
-       let formatter = DateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
@@ -35,11 +31,12 @@ final class DDayCalculator {
         return components.day ?? 0
     }
     
-    func calculateAndDisplayDDay(dayLabel: UILabel) {
-        if let startDate = dateFormatter.date(from: startDateString) {
-            let dDay = calculateDDay(startDate: startDate)
-            
-            dayLabel.text = "D + \(dDay)"
+    func calculateDDay(startDate: String) -> String? {
+        guard let startDate = dateFormatter.date(from: startDate) else {
+            return nil
         }
+        
+        let dDay = calculateDDay(startDate: startDate)
+        return "D + \(dDay)"
     }
 }

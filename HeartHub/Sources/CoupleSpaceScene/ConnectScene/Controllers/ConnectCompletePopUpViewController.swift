@@ -8,6 +8,7 @@
 import UIKit
 
 class ConnectCompletePopUpViewController: UIViewController {
+    weak var delegate: ConnectCompletePopUpDelegate?
 
     private let connectCompletePopUpView = ConnectCompletePopUpView()
     
@@ -31,6 +32,7 @@ extension ConnectCompletePopUpViewController {
     }
     
     @objc private func didTapconnectCompleteCloseButton() {
-        dismiss(animated: true)
+        dismiss(animated: false)
+        self.delegate?.completeConnect()
     }
 }

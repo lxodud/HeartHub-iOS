@@ -18,6 +18,7 @@ final class GameViewController: UIViewController {
     
     override func loadView() {
         view = GameBackgroundView()
+        view.backgroundColor = .systemBackground
     }
     
     override func viewDidLoad() {

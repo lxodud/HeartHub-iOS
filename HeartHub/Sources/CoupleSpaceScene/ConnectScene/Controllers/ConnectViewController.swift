@@ -13,6 +13,7 @@ final class ConnectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         configureAddTarget()
         configureSubviews()
         configureLayout()
@@ -30,7 +31,7 @@ extension ConnectViewController {
         print("내 애인의 계정이 맞나요?")
         let connectCheckPopUpViewController = ConnectCheckPopUpViewController()
         connectCheckPopUpViewController.modalPresentationStyle = .overFullScreen
-        present(connectCheckPopUpViewController, animated: true, completion: nil)
+        present(connectCheckPopUpViewController, animated: false) 
     }
 }
 

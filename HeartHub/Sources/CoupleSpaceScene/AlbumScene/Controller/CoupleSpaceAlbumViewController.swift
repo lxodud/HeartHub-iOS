@@ -86,7 +86,7 @@ extension CoupleSpaceAlbumViewController: UICollectionViewDelegateFlowLayout {
 extension CoupleSpaceAlbumViewController {
     private func configureInitialSetting() {
         let dDayCalculator = DDayCalculator()
-        dDayCalculator.calculateAndDisplayDDay(dayLabel: ddayLabel)
+        ddayLabel.text = dDayCalculator.calculateDDay(startDate: "2019-04-29")
     }
 }
 

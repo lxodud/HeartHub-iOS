@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ConnectCompletePopUpDelegate: AnyObject {
+    func completeConnect()
+}
+
 final class ConnectCheckPopUpViewController: UIViewController {
 
     private let connectCheckPopUpView = ConnectCheckPopUpView()
@@ -30,11 +34,18 @@ extension ConnectCheckPopUpViewController {
     
     @objc private func didTapConnectPopUpCorrectButton() {
         let connectCompletePopUpViewController = ConnectCompletePopUpViewController()
-        connectCompletePopUpViewController.modalPresentationStyle = .fullScreen
-        present(connectCompletePopUpViewController, animated: true)
+        connectCompletePopUpViewController.delegate = self
+        connectCompletePopUpViewController.modalPresentationStyle = .overFullScreen
+        present(connectCompletePopUpViewController, animated: false)
     }
     
     @objc private func didTapConnectPopUpReFindButton() {
-        dismiss(animated: true)
+        
+    }
+}
+
+extension ConnectCheckPopUpViewController: ConnectCompletePopUpDelegate {
+    func completeConnect() {
+        dismiss(animated: false)
     }
 }
