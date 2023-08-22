@@ -46,9 +46,6 @@ extension TokenRepository {
         let fullRefreshTokenAttributesWithData = self.refreshTokenAttributes.merging(refreshToken) { _, _ in }
         
         let accessStatus = keychainManager.addItem(with: accessTokenAttributesWithData)
-        
-        
-        
         let refreshStatus = keychainManager.addItem(with: fullRefreshTokenAttributesWithData)
         
         if accessStatus == errSecDuplicateItem || refreshStatus == errSecDuplicateItem {

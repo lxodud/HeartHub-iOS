@@ -27,7 +27,7 @@ final class ArticleNetwork {
     }
 }
 
-// MARK: Public Interface
+// MARK: - Public Interface
 extension ArticleNetwork {
     func fetchArticle(
         with theme: ArticleTheme,
@@ -109,7 +109,7 @@ extension ArticleNetwork {
     }
 }
 
-// MARK: Private Method
+// MARK: - Private Method
 extension ArticleNetwork {
     private func fetchArticleDetail(with articleID: Int, completion: @escaping (Article) -> Void) {
         guard let accessToken = tokenRepository.fetchAccessToken() else {

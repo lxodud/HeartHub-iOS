@@ -8,6 +8,13 @@
 import UIKit
 
 final class CommentViewController: UIViewController {
+    private let commentDataSource: CommentDataSource
+    private var comments: [Comment] = [] {
+        didSet {
+            commentTableView.reloadData()
+        }
+    }
+    
     private let commentTableView = UITableView()
     private let commentTextView: UITextView = {
         let textView = UITextView()
@@ -43,11 +50,26 @@ final class CommentViewController: UIViewController {
         return view
     }()
     
+    init(commentDataSource: CommentDataSource) {
+        self.commentDataSource = commentDataSource
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         configureCommentTableView()
         configureCommentTextView()
         configureSubview()
         configureLayout()
+    }
+    
+    private func bind(to dataSource: CommentDataSource) {
+        dataSource.commentsPublisher = { [weak self] comments in
+            self?.comments = comments
+        }
     }
 }
 
@@ -81,7 +103,7 @@ extension CommentViewController: UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return mockData.count
+        return comments.count
     }
     
     func tableView(
@@ -94,8 +116,6 @@ extension CommentViewController: UITableViewDataSource {
         ) as? CommentCell else {
             return UITableViewCell()
         }
-        
-        cell.configureCell(mockData[indexPath.row])
         
         return cell
     }

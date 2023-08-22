@@ -110,6 +110,8 @@
 		0CE2CDB52A93F17100129724 /* FetchGoodCountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDB42A93F17100129724 /* FetchGoodCountResponse.swift */; };
 		0CE2CDBC2A94CD7100129724 /* PostArticleResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDBB2A94CD7100129724 /* PostArticleResponseDTO.swift */; };
 		0CE2CDBE2A94CDE300129724 /* FetchArticleDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDBD2A94CDE300129724 /* FetchArticleDetailDTO.swift */; };
+		0CE2CDC02A94D3DD00129724 /* CommentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDBF2A94D3DD00129724 /* CommentDataSource.swift */; };
+		0CE2CDC22A94D4CC00129724 /* CommentNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDC12A94D4CC00129724 /* CommentNetwork.swift */; };
 		336E0F6B2A9203B000547013 /* MyPageMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F6A2A9203B000547013 /* MyPageMainView.swift */; };
 		336E0F6D2A9203D200547013 /* ProfileResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F6C2A9203D200547013 /* ProfileResetView.swift */; };
 		336E0F6F2A9203F100547013 /* MyPageMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F6E2A9203F100547013 /* MyPageMainViewController.swift */; };
@@ -298,6 +300,8 @@
 		0CE2CDB42A93F17100129724 /* FetchGoodCountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGoodCountResponse.swift; sourceTree = "<group>"; };
 		0CE2CDBB2A94CD7100129724 /* PostArticleResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostArticleResponseDTO.swift; sourceTree = "<group>"; };
 		0CE2CDBD2A94CDE300129724 /* FetchArticleDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchArticleDetailDTO.swift; sourceTree = "<group>"; };
+		0CE2CDBF2A94D3DD00129724 /* CommentDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDataSource.swift; sourceTree = "<group>"; };
+		0CE2CDC12A94D4CC00129724 /* CommentNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentNetwork.swift; sourceTree = "<group>"; };
 		15B862B20CFD240D7E3F016F /* Pods-HeartHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HeartHub.debug.xcconfig"; path = "Target Support Files/Pods-HeartHub/Pods-HeartHub.debug.xcconfig"; sourceTree = "<group>"; };
 		1D54B5963AADEBA830899999 /* Pods_HeartHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HeartHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		336E0F6A2A9203B000547013 /* MyPageMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMainView.swift; sourceTree = "<group>"; };
@@ -1004,6 +1008,8 @@
 			isa = PBXGroup;
 			children = (
 				0CE2CD8D2A93333000129724 /* Comment.swift */,
+				0CE2CDBF2A94D3DD00129724 /* CommentDataSource.swift */,
+				0CE2CDC12A94D4CC00129724 /* CommentNetwork.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1414,6 +1420,7 @@
 				56DEBEDA2A7A9B24000BC687 /* GameMissionTableViewCell.swift in Sources */,
 				56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */,
 				561462192A6EE50300C0AC1F /* FindIdViewController.swift in Sources */,
+				0CE2CDC22A94D4CC00129724 /* CommentNetwork.swift in Sources */,
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
 				569013712A80004700715D23 /* LoginTextField.swift in Sources */,
 				336E0F7D2A9207EA00547013 /* PasswordChangeViewController.swift in Sources */,
@@ -1554,6 +1561,7 @@
 				0CE2CD6C2A8FD04F00129724 /* LoginNetwork.swift in Sources */,
 				56C048802A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift in Sources */,
 				56C0488F2A8AA03A001BAAB5 /* ConnectCheckPopUpViewController.swift in Sources */,
+				0CE2CDC02A94D3DD00129724 /* CommentDataSource.swift in Sources */,
 				0C6F454D2A700E9E0044EAC8 /* CommentViewController.swift in Sources */,
 				0C63FF4D2A8F31AE0020D137 /* EmailVerificationResponseDTO.swift in Sources */,
 				0C63FF2A2A8D0A580020D137 /* RegisterCommentRequestDTO.swift in Sources */,

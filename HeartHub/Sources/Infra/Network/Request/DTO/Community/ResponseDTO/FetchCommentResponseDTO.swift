@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FetchCommentResponseDTO {
+struct FetchCommentResponseDTO: Decodable {
     let isSuccess: Bool
     let code: Int
     let message: String

@@ -8,7 +8,7 @@
 import UIKit
 
 final class DailyDateNoImageCell: UICollectionViewCell, CommunityCellable {
-    weak var delegate: CommunityCellTransitionDelegate?
+    weak var transitionDelegate: CommunityCellTransitionDelegate?
     var communityCellDataSource: CommunityCellDataSource? {
         didSet {
             bind(to: communityCellDataSource)

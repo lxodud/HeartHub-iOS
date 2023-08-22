@@ -13,5 +13,5 @@ protocol CommunityCellTransitionDelegate: AnyObject {
     func didTapPostOption()
     
     // MARK: Bottom Button View Delegate
-    func didTapCommentButton()
+    func didTapCommentButton(_ articleID: Int?)
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CommunityCellable: UICollectionViewCell, CommunityCellHeaderViewDelegate, CommunityCellBottomButtonViewDelegate {
-    var delegate: CommunityCellTransitionDelegate? { get set }
+    var transitionDelegate: CommunityCellTransitionDelegate? { get set }
     var communityCellDataSource: CommunityCellDataSource? { get set }
     
     func fetchAdjustedHeight() -> CGFloat
@@ -17,11 +17,11 @@ protocol CommunityCellable: UICollectionViewCell, CommunityCellHeaderViewDelegat
 // MARK: Profile View Delegate Implementation
 extension CommunityCellable {
     func didTapUserProfile() {
-        delegate?.didTapUserProfile()
+        transitionDelegate?.didTapUserProfile()
     }
     
     func didTapPostOptionButton() {
-        delegate?.didTapPostOption()
+        transitionDelegate?.didTapPostOption()
     }
 }
 
@@ -32,7 +32,8 @@ extension CommunityCellable {
     }
     
     func didTapCommentButton() {
-        delegate?.didTapCommentButton()
+        let articleID = communityCellDataSource?.article.articleID
+        transitionDelegate?.didTapCommentButton(articleID)
     }
     
     func didTapHeartButton(_ status: Bool) {

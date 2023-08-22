@@ -116,6 +116,7 @@ extension DailyDateViewController: UICollectionViewDataSource {
         )
         
         cell.communityCellDataSource = dataSource
+        cell.transitionDelegate = self
         
         return cell
     }
@@ -131,8 +132,15 @@ extension DailyDateViewController: CommunityCellTransitionDelegate {
         
     }
     
-    func didTapCommentButton() {
-        let commentViewController = CommentViewController()
+    func didTapCommentButton(_ articleID: Int?) {
+        guard let articleID = articleID else {
+            return
+        }
+        
+        let commentDataSource = CommentDataSource(articleID: articleID)
+        let commentViewController = CommentViewController(
+            commentDataSource: commentDataSource
+        )
         commentViewController.modalPresentationStyle = .custom
         commentViewController.transitioningDelegate = PanModalTransitioningDelegate.shared
         

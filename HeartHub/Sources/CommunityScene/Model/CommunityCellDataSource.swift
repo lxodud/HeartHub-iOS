@@ -8,7 +8,7 @@
 import Foundation
 
 final class CommunityCellDataSource {
-    private let article: Article
+    let article: Article
     private var goodInformation: (status: Bool, count: Int) = (false, 0) {
         didSet {
             DispatchQueue.main.async {

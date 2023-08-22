@@ -26,7 +26,7 @@ final class ArticleContentNetwork {
     }
 }
 
-// MARK: Public Interface
+// MARK: - Public Interface
 extension ArticleContentNetwork {
     func postScrapOrCancelArticle(
         username: String,

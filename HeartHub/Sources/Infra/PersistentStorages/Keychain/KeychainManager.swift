@@ -45,6 +45,7 @@ extension KeychainManager {
         with query: [String: Any]
     ) -> OSStatus {
         let status = SecItemDelete(query as CFDictionary)
+        print(status)
         return status
     }
 }
