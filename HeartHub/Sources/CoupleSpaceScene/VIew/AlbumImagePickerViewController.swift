@@ -119,3 +119,25 @@ extension AlbumImagePickerViewController: UIImagePickerControllerDelegate, UINav
         }
     }
 }
+
+// MARK: Configure NaviBar
+extension AlbumImagePickerViewController {
+    private func configureNavigationBar() {
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(didTapBackButton))
+        let doneButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(didTapDoneButton))
+        
+        backButton.tintColor = .black
+        
+        navigationItem.leftBarButtonItem = backButton
+        navigationItem.rightBarButtonItem = doneButton
+        navigationItem.title = "앨범 작성"
+    }
+    
+    @objc private func didTapBackButton() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func didTapDoneButton() {
+        // 게시물 등록
+    }
+}
