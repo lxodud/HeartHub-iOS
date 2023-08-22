@@ -61,7 +61,8 @@ extension CommentNetwork {
     func postComment(
         username: String,
         articleID: Int,
-        content: String
+        content: String,
+        completion: @escaping () -> Void
     ) {
         guard let accessToken = tokenRepository.fetchAccessToken() else {
             return
@@ -80,6 +81,7 @@ extension CommentNetwork {
         networkManager.request(endpoint: request) { result in
             switch result {
             case .success(_):
+                completion()
                 break
             case .failure(let error):
                 print(#function)
@@ -87,7 +89,8 @@ extension CommentNetwork {
                     self.postComment(
                         username: username,
                         articleID: articleID,
-                        content: content
+                        content: content,
+                        completion: completion
                     )
                 }
             }

@@ -16,6 +16,16 @@ final class CommentDataSource {
         }
     }
     
+    private var userProfileImage: Data? {
+        didSet {
+            guard let userProfileImage = userProfileImage else {
+                return
+            }
+            
+            userProfileImagePublisher?(userProfileImage)
+        }
+    }
+    
     private let commentNetwork = CommentNetwork(
         tokenRepository: TokenRepository(),
         networkManager: DefaultNetworkManager()
@@ -24,6 +34,7 @@ final class CommentDataSource {
     
     // MARK: - Output
     var commentsPublisher: (([Comment]) -> Void)?
+    var userProfileImagePublisher: ((Data) -> Void)?
     
     init(articleID: Int) {
         self.articleID = articleID
@@ -32,13 +43,18 @@ final class CommentDataSource {
 
 // MARK: - Input
 extension CommentDataSource {
+    func fetchUserProfile() {
+        let userInformationRepository = UserInformationRepository()
+        userProfileImage = userInformationRepository.fetchProfileImage()
+    }
+    
     func fetchComment() {
         commentNetwork.fetchComment(with: articleID) { comments in
             self.comments = comments
         }
     }
     
-    func postComment(_ content: String) {
+    func postComment(_ content: String, completion: @escaping () -> Void) {
         guard let username = UserInformationRepository().fetchUsername() else {
             return
         }
@@ -47,17 +63,11 @@ extension CommentDataSource {
             username: username,
             articleID: articleID,
             content: content
-        )
-        
-        let newComment = Comment(
-            commentID: 0,
-            username: username,
-            content: content,
-            replyComment: [],
-            userID: 0,
-            heartCount: 0
-        )
-        
-        comments.insert(newComment, at: 0)
+        ) {
+            self.fetchComment()
+            DispatchQueue.main.async {
+                completion()
+            }
+        }
     }
 }

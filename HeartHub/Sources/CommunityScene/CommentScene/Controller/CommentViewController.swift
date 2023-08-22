@@ -16,6 +16,7 @@ final class CommentViewController: UIViewController {
     }
     
     private let commentTableView = UITableView()
+    private let activityIndicator = UIActivityIndicatorView()
     private let commentTextView: UITextView = {
         let textView = UITextView()
         textView.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 40)
@@ -29,6 +30,7 @@ final class CommentViewController: UIViewController {
     
     private let profileImageView: UIImageView = {
         let imageView = HeartHubProfileImageView()
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -67,11 +69,16 @@ final class CommentViewController: UIViewController {
         configureAction()
         bind(to: commentDataSource)
         commentDataSource.fetchComment()
+        commentDataSource.fetchUserProfile()
     }
     
     private func bind(to dataSource: CommentDataSource) {
         dataSource.commentsPublisher = { [weak self] comments in
             self?.comments = comments
+        }
+        
+        dataSource.userProfileImagePublisher = { [weak self] imageData in
+            self?.profileImageView.image = UIImage(data: imageData)
         }
     }
 }
@@ -92,7 +99,14 @@ extension CommentViewController {
             return
         }
         
-        commentDataSource.postComment(content)
+        activityIndicator.startAnimating()
+        commentPostButton.isEnabled = false
+        
+        commentDataSource.postComment(content) {
+            self.activityIndicator.stopAnimating()
+            self.commentPostButton.isEnabled = true
+            self.commentTextView.text = ""
+        }
     }
 }
 
@@ -201,7 +215,7 @@ extension CommentViewController {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        [commentTableView, headerView].forEach {
+        [commentTableView, headerView, activityIndicator].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -214,6 +228,14 @@ extension CommentViewController {
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
+            // MARK: activityIndicator Constraint
+            activityIndicator.centerXAnchor.constraint(
+                equalTo: safeArea.centerXAnchor
+            ),
+            activityIndicator.centerYAnchor.constraint(
+                equalTo: safeArea.centerYAnchor
+            ),
+            
             // MARK: headerView Constraint
             headerView.topAnchor.constraint(
                 equalTo: safeArea.topAnchor
@@ -240,7 +262,7 @@ extension CommentViewController {
             ),
             commentTableView.bottomAnchor.constraint(
                 equalTo: view.bottomAnchor,
-                constant: -100
+                constant: -110
             ),
             
             // MARK: profileImageView Constraint
