@@ -120,6 +120,8 @@
 		0CE2CDD12A9528C400129724 /* PostArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDD02A9528C400129724 /* PostArticleViewController.swift */; };
 		0CE2CDD42A9528D500129724 /* AddArticleViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDD22A9528D500129724 /* AddArticleViewButton.swift */; };
 		0CE2CDD52A9528D500129724 /* PostArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDD32A9528D500129724 /* PostArticleView.swift */; };
+		0CE2CDDA2A953D9100129724 /* CoupleSpaceRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDD92A953D9100129724 /* CoupleSpaceRequestFactory.swift */; };
+		0CE2CDDE2A9543D100129724 /* PostAlbumRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2CDDD2A9543D100129724 /* PostAlbumRequestDTO.swift */; };
 		336E0F6B2A9203B000547013 /* MyPageMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F6A2A9203B000547013 /* MyPageMainView.swift */; };
 		336E0F6D2A9203D200547013 /* ProfileResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F6C2A9203D200547013 /* ProfileResetView.swift */; };
 		336E0F6F2A9203F100547013 /* MyPageMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F6E2A9203F100547013 /* MyPageMainViewController.swift */; };
@@ -333,6 +335,8 @@
 		0CE2CDD02A9528C400129724 /* PostArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostArticleViewController.swift; sourceTree = "<group>"; };
 		0CE2CDD22A9528D500129724 /* AddArticleViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddArticleViewButton.swift; sourceTree = "<group>"; };
 		0CE2CDD32A9528D500129724 /* PostArticleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostArticleView.swift; sourceTree = "<group>"; };
+		0CE2CDD92A953D9100129724 /* CoupleSpaceRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleSpaceRequestFactory.swift; sourceTree = "<group>"; };
+		0CE2CDDD2A9543D100129724 /* PostAlbumRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAlbumRequestDTO.swift; sourceTree = "<group>"; };
 		336E0F6A2A9203B000547013 /* MyPageMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMainView.swift; sourceTree = "<group>"; };
 		336E0F6C2A9203D200547013 /* ProfileResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResetView.swift; sourceTree = "<group>"; };
 		336E0F6E2A9203F100547013 /* MyPageMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMainViewController.swift; sourceTree = "<group>"; };
@@ -674,6 +678,7 @@
 			isa = PBXGroup;
 			children = (
 				0CE2CD8A2A91277000129724 /* RequestFailResponseDTO.swift */,
+				0CE2CDDB2A9543B900129724 /* CoupleSpace */,
 				0C63FF4A2A8F31790020D137 /* UserRelated */,
 				0C63FF1E2A8BCB3A0020D137 /* Community */,
 			);
@@ -732,6 +737,7 @@
 			children = (
 				0C59CF542A87C1AE00D847B7 /* UserRelatedRequestFactory.swift */,
 				0C63FF1C2A8BA4280020D137 /* CommunityRequestFactory.swift */,
+				0CE2CDD92A953D9100129724 /* CoupleSpaceRequestFactory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -1075,6 +1081,29 @@
 			path = CoupleInformation;
 			sourceTree = "<group>";
 		};
+		0CE2CDD82A953BC500129724 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0CE2CDDB2A9543B900129724 /* CoupleSpace */ = {
+			isa = PBXGroup;
+			children = (
+				0CE2CDDC2A9543C100129724 /* Request */,
+			);
+			path = CoupleSpace;
+			sourceTree = "<group>";
+		};
+		0CE2CDDC2A9543C100129724 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				0CE2CDDD2A9543D100129724 /* PostAlbumRequestDTO.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		336E0F672A92036D00547013 /* Mypage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1319,6 +1348,7 @@
 		56C048852A8A9166001BAAB5 /* ConnectScene */ = {
 			isa = PBXGroup;
 			children = (
+				0CE2CDD82A953BC500129724 /* Model */,
 				56C048862A8A9196001BAAB5 /* Views */,
 				56C048872A8A919E001BAAB5 /* Controllers */,
 			);
@@ -1597,6 +1627,7 @@
 				0CE2CDB52A93F17100129724 /* FetchGoodCountResponse.swift in Sources */,
 				0CB49BDF2A69526500C77341 /* LookCell.swift in Sources */,
 				0C59CF662A87E64000D847B7 /* FindPasswordRequestDTO.swift in Sources */,
+				0CE2CDDE2A9543D100129724 /* PostAlbumRequestDTO.swift in Sources */,
 				0C59CF622A87E1FD00D847B7 /* SetMateRequestDTO.swift in Sources */,
 				0C59CF552A87C1AE00D847B7 /* UserRelatedRequestFactory.swift in Sources */,
 				0CE2CD892A9110DB00129724 /* FetchCommentResponseDTO.swift in Sources */,
@@ -1694,6 +1725,7 @@
 				0C4EF98E2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift in Sources */,
 				0C4D33012A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift in Sources */,
 				33E473252A92672A00C26A2E /* CalendarViewController.swift in Sources */,
+				0CE2CDDA2A953D9100129724 /* CoupleSpaceRequestFactory.swift in Sources */,
 				0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */,
 				0CE2CD6C2A8FD04F00129724 /* LoginNetwork.swift in Sources */,
 				56C048802A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift in Sources */,
