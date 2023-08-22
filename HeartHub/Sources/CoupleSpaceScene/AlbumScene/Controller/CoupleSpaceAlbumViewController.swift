@@ -170,6 +170,13 @@ extension CoupleSpaceAlbumViewController {
     }
     
     private func configureNavigationBar() {
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(didTapBackButton))
+        backButton.tintColor = .black
+        navigationItem.leftBarButtonItem = backButton
         navigationItem.titleView = titleCoupleImageView
+    }
+    
+    @objc private func didTapBackButton() {
+        navigationController?.popViewController(animated: true)
     }
 }

@@ -3,7 +3,7 @@ import FSCalendar
 import SnapKit
 import Then
 
-class CalenderView: UIViewController {
+class CalendarViewController: UIViewController {
     
     // MARK: - Constant
     
@@ -24,24 +24,25 @@ class CalenderView: UIViewController {
     
     var selectedDate: Date?
     
+    // 포맷팅 된 선택된 날짜 담기는 변수
+    private var formattedSelectedDate: String = ""
+    
+    // 해당 날짜에 앨범 있는지 없는지
+    private var isExistAlbum: Bool = false
+    
     // MARK: - UI
     
+    private var isExistAlbumLabel: UILabel = {
+       let label = UILabel()
+        label.text = "이 날의 추억이 없습니다"
+        label.font = UIFont(name: "Pretendard-SemiBold", size: 24)
+        label.textColor = #colorLiteral(red: 0.07, green: 0.07, blue: 0.07, alpha: 0.5)
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        return label
+    }()
     
-    
-    private lazy var titleLabel = UILabel().then {
-        $0.text = "날짜 선택"
-        $0.font = .systemFont(ofSize: 20.0, weight: .bold)
-        $0.textColor = .label
-    }
-    
-    private lazy var completeButton = UIButton().then {
-        $0.setTitle("완료", for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 16.0)
-        $0.setTitleColor(.systemBlue, for: .normal)
-        $0.addTarget(self, action: #selector(tapCompleteButton), for: .touchUpInside)
-    }
-    
-    private lazy var calendarView = FSCalendar(frame: .zero)
+    private var calendarView = FSCalendar(frame: .zero)
     
     private lazy var leftButton = UIButton().then {
         $0.setImage(Icon.leftIcon, for: .normal)
@@ -69,16 +70,13 @@ class CalenderView: UIViewController {
         
         configureUI()
         configureCalendar()
+        configureIsExistAlbumLabelHidden()
     }
-    
-    
 }
-
-
 
 // MARK: - FSCalendar
 
-extension CalenderView: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         
         calendarView.snp.updateConstraints {
@@ -100,33 +98,31 @@ extension CalenderView: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDele
         }
         return nil
     }
+    
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formattedSelectedDate = formatter.string(from: date)
+        
+        print("Formatted Date: \(formattedSelectedDate)")
+    }
 }
 
 // MARK: - Method
 
-extension CalenderView {
+extension CalendarViewController {
     
     private func configureUI() {
         view.backgroundColor = .white
         
         [
-            titleLabel,
-            completeButton,
             calendarView,
             leftButton,
             rightButton,
             headerLabel,
+            isExistAlbumLabel
         ].forEach { view.addSubview($0) }
-        
-        titleLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(16.0)
-            $0.centerX.equalToSuperview()
-        }
-        
-        completeButton.snp.makeConstraints {
-            $0.centerY.equalTo(titleLabel.snp.centerY)
-            $0.trailing.equalToSuperview().offset(-16.0)
-        }
+
         
         calendarView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(60.0)
@@ -149,7 +145,12 @@ extension CalenderView {
             $0.leading.equalTo(headerLabel.snp.trailing).offset(10.0) // 조절할 공백
         }
         
-
+        isExistAlbumLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            isExistAlbumLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            isExistAlbumLabel.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 130),
+            isExistAlbumLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 50)
+        ])
     }
     
     @objc private func tapCompleteButton() {
@@ -164,11 +165,6 @@ extension CalenderView {
             print("날짜를 선택하세요.")
         }
     }
-
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        selectedDate = date
-    }
-
     
     private func configureCalendar() {
         
@@ -223,5 +219,14 @@ extension CalenderView {
     
     @objc func tapBeforeMonth() {
         self.calendarView.setCurrentPage(getPreviousMonth(date: calendarView.currentPage), animated: true)
+    }
+    
+    // MARK: isExistAlbumLabel Hidden
+    private func configureIsExistAlbumLabelHidden() {
+        if isExistAlbum == true {
+            isExistAlbumLabel.isHidden = false
+        } else {
+            isExistAlbumLabel.isHidden = true
+        }
     }
 }

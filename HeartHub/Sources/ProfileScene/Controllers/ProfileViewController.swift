@@ -33,7 +33,7 @@ final class ProfileViewController: UIViewController {
     
     private let profileFloatingButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "Pencil"), for: .normal)
+        button.setImage(UIImage(named: "ReportButton"), for: .normal)
         return button
     }()
     
