@@ -25,8 +25,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        navigationController.isNavigationBarHidden = true
 //        window?.rootViewController = navigationController
 
-        window?.rootViewController = HeartHubTabBarController()
+//        window?.rootViewController = HeartHubTabBarController()
                 
+        window?.rootViewController = AlbumImagePickerViewController()
+
+        
         window?.backgroundColor = .systemBackground
         window?.makeKeyAndVisible()
     }
