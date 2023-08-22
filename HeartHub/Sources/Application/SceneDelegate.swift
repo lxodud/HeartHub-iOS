@@ -27,6 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window?.rootViewController = HeartHubTabBarController()
         
+        window?.rootViewController = CalendarViewController()
+        
         window?.backgroundColor = .systemBackground
         window?.makeKeyAndVisible()
     }

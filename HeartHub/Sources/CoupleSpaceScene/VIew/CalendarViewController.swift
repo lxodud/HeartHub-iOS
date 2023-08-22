@@ -3,7 +3,7 @@ import FSCalendar
 import SnapKit
 import Then
 
-class CalenderView: UIViewController {
+class CalendarViewController: UIViewController {
     
     // MARK: - Constant
     
@@ -25,9 +25,6 @@ class CalenderView: UIViewController {
     var selectedDate: Date?
     
     // MARK: - UI
-    
-    
-    
     private lazy var titleLabel = UILabel().then {
         $0.text = "날짜 선택"
         $0.font = .systemFont(ofSize: 20.0, weight: .bold)
@@ -70,15 +67,11 @@ class CalenderView: UIViewController {
         configureUI()
         configureCalendar()
     }
-    
-    
 }
-
-
 
 // MARK: - FSCalendar
 
-extension CalenderView: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         
         calendarView.snp.updateConstraints {
@@ -100,11 +93,28 @@ extension CalenderView: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDele
         }
         return nil
     }
+    
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let formattedDate = formatter.string(from: date)
+        
+        print("Formatted Date: \(formattedDate)")
+    }
+    
+//    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) -> String {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy-MM-dd"
+//        let formattedDate = formatter.string(from: date)
+//
+//        print("Formatted Date: \(formattedDate)")
+//        return formattedDate
+//    }
 }
 
 // MARK: - Method
 
-extension CalenderView {
+extension CalendarViewController {
     
     private func configureUI() {
         view.backgroundColor = .white
@@ -223,5 +233,21 @@ extension CalenderView {
     
     @objc func tapBeforeMonth() {
         self.calendarView.setCurrentPage(getPreviousMonth(date: calendarView.currentPage), animated: true)
+    }
+}
+
+// MARK: 프리뷰
+import SwiftUI
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Container().edgesIgnoringSafeArea(.all)
+    }
+    struct Container: UIViewControllerRepresentable {
+        func makeUIViewController(context: Context) -> UIViewController {
+            return     UINavigationController(rootViewController: CalendarViewController())
+        }
+        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        }
+        typealias  UIViewControllerType = UIViewController
     }
 }
