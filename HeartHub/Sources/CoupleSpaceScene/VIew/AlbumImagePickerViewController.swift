@@ -6,139 +6,116 @@
 //
 
 import UIKit
-import YPImagePicker
+import PhotosUI
 
-class ViewController: UIViewController  {
+class AlbumImagePickerViewController: UIViewController  {
 
-    private var albumWriteLabel: UILabel = {
-        let name = UILabel()
-        name.text = "앨범 작성"
-        name.textAlignment = .center
-        name.font = UIFont(name: "Pretendard-SemiBold", size: 20)
-        name.textColor = .black
-        return name
-    }()
+    private let albumImagePickerView = AlbumImagePickerView()
     
-    var completeButton: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("완료", for: .normal)
-        btn.titleLabel?.font = .systemFont(ofSize: 20.0)
-        btn.setTitleColor(.systemBlue, for: .normal)
-        return btn
-    }()
+    private var postImages: [UIImage] = [UIImage(named: "AddPostImage")!]
     
-    private lazy var imagePickerView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .lightGray
-        imageView.isUserInteractionEnabled = true
-        imageView.addSubview(imagePickerbtn)
-        return imageView
-    }()
+    private var postCategoryButtonArray: [UIButton] = []
+            
+    override func loadView() {
+        view = albumImagePickerView
+    }
     
-    private var imagePickerbtn: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "camera.fill"), for: .normal)
-        button.tintColor = .white
-        return button
-    }()
-
-    
-    //MARK: - viewDidLoad
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        addViews()
-        setConstraints()
-        configureTapGesture()
-    }
-    
-    
-    private func configureTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imagePickerbtnTapped))
-        imagePickerView.addGestureRecognizer(tapGesture)
-    }
-    
-  
-
-    //MARK: - 뷰 추가 및 제약
-
-    
-    private func addViews() {
-        [albumWriteLabel, completeButton, imagePickerView].forEach{ view.addSubview($0)}
-    }
-    
-    private func setConstraints() {
-        albumWriteLabelConstraints()
-        completeButtonConstraints()
-        imagePickerViewConstraints()
-        imagePickerbtnConstraints()
-
-    }
-    
-    private func albumWriteLabelConstraints() {
-        albumWriteLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            albumWriteLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            albumWriteLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 70)])
-    }
-    
-    private func completeButtonConstraints() {
-        completeButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            completeButton.centerYAnchor.constraint(equalTo: albumWriteLabel.centerYAnchor),
-            completeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            completeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
-        ])
-    }
-    
-    private func imagePickerViewConstraints() {
-        imagePickerView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            imagePickerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imagePickerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1),
-            imagePickerView.heightAnchor.constraint(equalTo: imagePickerView.widthAnchor, multiplier: 1),
-            imagePickerView.topAnchor.constraint(equalTo: albumWriteLabel.bottomAnchor, constant: 30)
-        ])
-    }
-    
-    private func imagePickerbtnConstraints() {
-        imagePickerbtn.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            imagePickerbtn.centerXAnchor.constraint(equalTo: imagePickerView.centerXAnchor),
-            imagePickerbtn.centerYAnchor.constraint(equalTo: imagePickerView.centerYAnchor),
-            imagePickerbtn.heightAnchor.constraint(equalToConstant: 100),
-            imagePickerbtn.widthAnchor.constraint(equalToConstant: 100)
-        ])
-    }
         
-    //MARK: - function
-
-
-    
-    @objc fileprivate func imagePickerbtnTapped() {
-        var config = YPImagePickerConfiguration()
-        config.screens = [.library]
-        let picker = YPImagePicker(configuration: config)
-        //사진이 선택되었을 때
-        picker.didFinishPicking { [unowned picker] items, _ in
-            if let photo = items.singlePhoto {
-                print(photo.fromCamera) // Image source (camera or library)
-                print(photo.image) // Final image selected by the user
-                print(photo.originalImage) // original image selected by the user, unfiltered
-                print(photo.modifiedImage) // Transformed image, can be nil
-                print(photo.exifMeta) // Print exif meta data of original image.
-                
-                //사진이미지 변경
-                self.imagePickerView.image = photo.image
-                self.imagePickerbtn.isHidden = true
-            }
-            //사진 선택창 닫기
-            picker.dismiss(animated: true, completion: nil)
-        }
-        //사진 선택창 보여주기
-        present(picker, animated: true, completion: nil)
-        
+        configureInitialSetting()
     }
-
 }
 
+// MARK: Configure InitialSetting
+extension AlbumImagePickerViewController {
+    
+    private func configureInitialSetting() {
+        albumImagePickerView.albumCellPagingImageView.configureContents(self.postImages)
+        
+        albumImagePickerView.configureTapPostImageAction(self, #selector(configureSelectImageAlert))
+    }
+}
+
+// MARK: Configure ActionSheet
+extension AlbumImagePickerViewController {
+    
+    @objc private func configureSelectImageAlert() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let library = UIAlertAction(title: "앨범", style: .default) { (action)
+            in self.openLibrary()
+        }
+        let camera = UIAlertAction(title: "카메라", style: .default) { (action) in
+            self.openCamera()
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+                
+        alert.addAction(library)
+        alert.addAction(camera)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+// MARK: Configure PHPicker
+
+extension AlbumImagePickerViewController: PHPickerViewControllerDelegate {
+    
+    private func openLibrary() {
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 10
+        configuration.filter = .any(of: [.images])
+        
+        let phPickerVC = PHPickerViewController(configuration: configuration)
+        phPickerVC.delegate = self
+        self.present(phPickerVC, animated: true, completion: nil)
+    }
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        postImages = []
+        
+        results.forEach { result in
+            let itemProvider = result.itemProvider
+            if itemProvider.canLoadObject(ofClass: UIImage.self) {
+                itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                    if let image = image as? UIImage {
+                        self.postImages.append(image)
+                        DispatchQueue.main.async {
+                            self.albumImagePickerView.albumCellPagingImageView.configureContents(self.postImages)
+                        }
+                    }
+                    if let error = error {
+                        print("에러")
+                    }
+                }
+            }
+        }
+        dismiss(animated: true)
+    }
+}
+
+// MARK: Configure ImagePicker
+extension AlbumImagePickerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    private func openCamera() {
+        if(UIImagePickerController.isSourceTypeAvailable(.camera)) {
+            let addPostImagePicker = UIImagePickerController()
+            
+            addPostImagePicker.sourceType = .camera
+            addPostImagePicker.delegate = self
+            present(addPostImagePicker, animated: true, completion: nil)
+        } else {
+            print("Camera not available")
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? [UIImage] {
+            albumImagePickerView.albumCellPagingImageView.configureContents(image)
+            dismiss(animated: true)
+        }
+    }
+}

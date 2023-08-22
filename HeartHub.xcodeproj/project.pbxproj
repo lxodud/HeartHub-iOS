@@ -75,6 +75,19 @@
 		5626B3452A597FA200477EBC /* SignUpProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B3442A597FA200477EBC /* SignUpProfileViewController.swift */; };
 		5626B34B2A59938700477EBC /* SignUpEnterNickNameEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B34A2A59938700477EBC /* SignUpEnterNickNameEmailViewController.swift */; };
 		5626B34D2A5993A700477EBC /* SignUpTermAgreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B34C2A5993A700477EBC /* SignUpTermAgreeViewController.swift */; };
+		562ABF4E2A920584006FA182 /* ProfileBlockUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF4D2A920584006FA182 /* ProfileBlockUserView.swift */; };
+		562ABF502A920703006FA182 /* AlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF4F2A920703006FA182 /* AlertButton.swift */; };
+		562ABF532A920E1A006FA182 /* ProfileBlockUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF522A920E1A006FA182 /* ProfileBlockUserViewController.swift */; };
+		562ABF552A921587006FA182 /* ProfileBlockCancelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF542A921587006FA182 /* ProfileBlockCancelView.swift */; };
+		562ABF572A921659006FA182 /* ProfileBlockCancelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF562A921659006FA182 /* ProfileBlockCancelViewController.swift */; };
+		562ABF592A9217F8006FA182 /* ProfileReportReasonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF582A9217F8006FA182 /* ProfileReportReasonView.swift */; };
+		562ABF5B2A921809006FA182 /* ProfileReportReasonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF5A2A921809006FA182 /* ProfileReportReasonViewController.swift */; };
+		562ABF5D2A921844006FA182 /* ProfileDoneEditUserStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF5C2A921844006FA182 /* ProfileDoneEditUserStatusView.swift */; };
+		562ABF5F2A92186C006FA182 /* ProfileDoneReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF5E2A92186C006FA182 /* ProfileDoneReportViewController.swift */; };
+		562ABF632A921894006FA182 /* ProfileDoneBlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF622A921894006FA182 /* ProfileDoneBlockViewController.swift */; };
+		562ABF652A921C33006FA182 /* ProfileReportReasonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF642A921C33006FA182 /* ProfileReportReasonTableViewCell.swift */; };
+		562ABF672A94005B006FA182 /* ProfileDoneCancelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF662A94005B006FA182 /* ProfileDoneCancelViewController.swift */; };
+		562ABF6B2A94C0E3006FA182 /* AlbumImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562ABF6A2A94C0E3006FA182 /* AlbumImagePickerView.swift */; };
 		56348A632A631283005BB635 /* FindIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A622A631283005BB635 /* FindIdView.swift */; };
 		56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A662A6318B0005BB635 /* FindIdPopUpView.swift */; };
 		56348A692A6319EA005BB635 /* FindIdPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56348A682A6319EA005BB635 /* FindIdPopUpViewController.swift */; };
@@ -113,19 +126,19 @@
 		569E4EED2A5D499900B51898 /* SignUpTermAgreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */; };
 		569E4EFE2A5FC58200B51898 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */; };
 		569E4EFF2A5FC58200B51898 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */; };
+		56C048772A8A02D7001BAAB5 /* DDayCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048762A8A02D7001BAAB5 /* DDayCalculator.swift */; };
 		56C0487C2A8A2CBA001BAAB5 /* SignUpPrivacyTermScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0487B2A8A2CBA001BAAB5 /* SignUpPrivacyTermScrollView.swift */; };
 		56C0487E2A8A309C001BAAB5 /* SignUpPrivacyTermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0487D2A8A309C001BAAB5 /* SignUpPrivacyTermViewController.swift */; };
 		56C048802A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0487F2A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift */; };
 		56C048822A8A501B001BAAB5 /* SignUpTermOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048812A8A501B001BAAB5 /* SignUpTermOfUseViewController.swift */; };
 		56C048842A8A7663001BAAB5 /* SignUpDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048832A8A7663001BAAB5 /* SignUpDatePicker.swift */; };
-		56C048772A8A02D7001BAAB5 /* DDayCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048762A8A02D7001BAAB5 /* DDayCalculator.swift */; };
-		56C048952A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048942A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift */; };
 		56C048892A8A91BE001BAAB5 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048882A8A91BE001BAAB5 /* ConnectViewController.swift */; };
 		56C0488B2A8A91DE001BAAB5 /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0488A2A8A91DE001BAAB5 /* ConnectView.swift */; };
 		56C0488D2A8A9C5B001BAAB5 /* ConnectCheckPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0488C2A8A9C5B001BAAB5 /* ConnectCheckPopUpView.swift */; };
 		56C0488F2A8AA03A001BAAB5 /* ConnectCheckPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0488E2A8AA03A001BAAB5 /* ConnectCheckPopUpViewController.swift */; };
 		56C048912A8ABB99001BAAB5 /* ConnectCompletePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048902A8ABB99001BAAB5 /* ConnectCompletePopUpView.swift */; };
 		56C048932A8ABC88001BAAB5 /* ConnectCompletePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048922A8ABC88001BAAB5 /* ConnectCompletePopUpViewController.swift */; };
+		56C048952A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048942A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift */; };
 		56C048B02A8C9D6D001BAAB5 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048AF2A8C9D6D001BAAB5 /* AddPostViewController.swift */; };
 		56C048B22A8C9DF1001BAAB5 /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048B12A8C9DF1001BAAB5 /* AddPostView.swift */; };
 		56C048B42A8DBD0E001BAAB5 /* AddPostButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C048B32A8DBD0E001BAAB5 /* AddPostButton.swift */; };
@@ -214,6 +227,19 @@
 		5626B3442A597FA200477EBC /* SignUpProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpProfileViewController.swift; sourceTree = "<group>"; };
 		5626B34A2A59938700477EBC /* SignUpEnterNickNameEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEnterNickNameEmailViewController.swift; sourceTree = "<group>"; };
 		5626B34C2A5993A700477EBC /* SignUpTermAgreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermAgreeViewController.swift; sourceTree = "<group>"; };
+		562ABF4D2A920584006FA182 /* ProfileBlockUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBlockUserView.swift; sourceTree = "<group>"; };
+		562ABF4F2A920703006FA182 /* AlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertButton.swift; sourceTree = "<group>"; };
+		562ABF522A920E1A006FA182 /* ProfileBlockUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBlockUserViewController.swift; sourceTree = "<group>"; };
+		562ABF542A921587006FA182 /* ProfileBlockCancelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBlockCancelView.swift; sourceTree = "<group>"; };
+		562ABF562A921659006FA182 /* ProfileBlockCancelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBlockCancelViewController.swift; sourceTree = "<group>"; };
+		562ABF582A9217F8006FA182 /* ProfileReportReasonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReportReasonView.swift; sourceTree = "<group>"; };
+		562ABF5A2A921809006FA182 /* ProfileReportReasonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReportReasonViewController.swift; sourceTree = "<group>"; };
+		562ABF5C2A921844006FA182 /* ProfileDoneEditUserStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDoneEditUserStatusView.swift; sourceTree = "<group>"; };
+		562ABF5E2A92186C006FA182 /* ProfileDoneReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDoneReportViewController.swift; sourceTree = "<group>"; };
+		562ABF622A921894006FA182 /* ProfileDoneBlockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDoneBlockViewController.swift; sourceTree = "<group>"; };
+		562ABF642A921C33006FA182 /* ProfileReportReasonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileReportReasonTableViewCell.swift; sourceTree = "<group>"; };
+		562ABF662A94005B006FA182 /* ProfileDoneCancelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDoneCancelViewController.swift; sourceTree = "<group>"; };
+		562ABF6A2A94C0E3006FA182 /* AlbumImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlbumImagePickerView.swift; path = HeartHub/Sources/CoupleSpaceScene/VIew/AlbumImagePickerView.swift; sourceTree = SOURCE_ROOT; };
 		56348A622A631283005BB635 /* FindIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdView.swift; sourceTree = "<group>"; };
 		56348A662A6318B0005BB635 /* FindIdPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdPopUpView.swift; sourceTree = "<group>"; };
 		56348A682A6319EA005BB635 /* FindIdPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdPopUpViewController.swift; sourceTree = "<group>"; };
@@ -252,19 +278,19 @@
 		569E4EEC2A5D499900B51898 /* SignUpTermAgreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermAgreeView.swift; sourceTree = "<group>"; };
 		569E4EFC2A5FC58200B51898 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		569E4EFD2A5FC58200B51898 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		56C048762A8A02D7001BAAB5 /* DDayCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayCalculator.swift; sourceTree = "<group>"; };
 		56C0487B2A8A2CBA001BAAB5 /* SignUpPrivacyTermScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpPrivacyTermScrollView.swift; path = HeartHub/Sources/SignUpScene/View/ComponentView/SignUpPrivacyTermScrollView.swift; sourceTree = SOURCE_ROOT; };
 		56C0487D2A8A309C001BAAB5 /* SignUpPrivacyTermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPrivacyTermViewController.swift; sourceTree = "<group>"; };
 		56C0487F2A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermOfUseScrollView.swift; sourceTree = "<group>"; };
 		56C048812A8A501B001BAAB5 /* SignUpTermOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTermOfUseViewController.swift; sourceTree = "<group>"; };
 		56C048832A8A7663001BAAB5 /* SignUpDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDatePicker.swift; sourceTree = "<group>"; };
-		56C048762A8A02D7001BAAB5 /* DDayCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayCalculator.swift; sourceTree = "<group>"; };
-		56C048942A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostTextCollectionViewCell.swift; sourceTree = "<group>"; };
 		56C048882A8A91BE001BAAB5 /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		56C0488A2A8A91DE001BAAB5 /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
 		56C0488C2A8A9C5B001BAAB5 /* ConnectCheckPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCheckPopUpView.swift; sourceTree = "<group>"; };
 		56C0488E2A8AA03A001BAAB5 /* ConnectCheckPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCheckPopUpViewController.swift; sourceTree = "<group>"; };
 		56C048902A8ABB99001BAAB5 /* ConnectCompletePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCompletePopUpView.swift; sourceTree = "<group>"; };
 		56C048922A8ABC88001BAAB5 /* ConnectCompletePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCompletePopUpViewController.swift; sourceTree = "<group>"; };
+		56C048942A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostTextCollectionViewCell.swift; sourceTree = "<group>"; };
 		56C048AF2A8C9D6D001BAAB5 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		56C048B12A8C9DF1001BAAB5 /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
 		56C048B32A8DBD0E001BAAB5 /* AddPostButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostButton.swift; sourceTree = "<group>"; };
@@ -537,6 +563,7 @@
 				0C684F442A77D53200A31865 /* CoupleImageBetweenHeartView.swift */,
 				33E473242A92672A00C26A2E /* CalendarView.swift */,
 				338B5EF72A94879E0079C655 /* AlbumImagePickerViewController.swift */,
+				562ABF6A2A94C0E3006FA182 /* AlbumImagePickerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -574,6 +601,7 @@
 				0C6F454E2A701D520044EAC8 /* HeartHubProfileImageView.swift */,
 				0C684F472A78D4F300A31865 /* HeartHubPageViewController.swift */,
 				0C4EF9A32A7CE2EC00539320 /* HeartHubTabBarController.swift */,
+				562ABF4F2A920703006FA182 /* AlertButton.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -594,11 +622,11 @@
 		0C809A1C2A56D17F009EC362 /* CommunityScene */ = {
 			isa = PBXGroup;
 			children = (
-				56C048A72A8C95DE001BAAB5 /* AddPostScene */,
 				0C43F6112A659CB000EED860 /* Util */,
 				0C4D32FB2A6830F000AD5EFF /* Protocol */,
 				0C382E242A5950AF00EA08E0 /* View */,
 				0C382E292A59A1F100EA08E0 /* Controller */,
+				56C048A72A8C95DE001BAAB5 /* AddPostScene */,
 				0C382E2A2A5B016800EA08E0 /* DailyDateScene */,
 				0CB49BD72A69230200C77341 /* LookScene */,
 				0C5929FA2A6D47D700C21570 /* CommentScene */,
@@ -749,6 +777,31 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		562ABF4C2A92035F006FA182 /* ReportViews */ = {
+			isa = PBXGroup;
+			children = (
+				562ABF4D2A920584006FA182 /* ProfileBlockUserView.swift */,
+				562ABF582A9217F8006FA182 /* ProfileReportReasonView.swift */,
+				562ABF642A921C33006FA182 /* ProfileReportReasonTableViewCell.swift */,
+				562ABF542A921587006FA182 /* ProfileBlockCancelView.swift */,
+				562ABF5C2A921844006FA182 /* ProfileDoneEditUserStatusView.swift */,
+			);
+			path = ReportViews;
+			sourceTree = "<group>";
+		};
+		562ABF512A920DFE006FA182 /* ReportViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				562ABF522A920E1A006FA182 /* ProfileBlockUserViewController.swift */,
+				562ABF622A921894006FA182 /* ProfileDoneBlockViewController.swift */,
+				562ABF5A2A921809006FA182 /* ProfileReportReasonViewController.swift */,
+				562ABF5E2A92186C006FA182 /* ProfileDoneReportViewController.swift */,
+				562ABF562A921659006FA182 /* ProfileBlockCancelViewController.swift */,
+				562ABF662A94005B006FA182 /* ProfileDoneCancelViewController.swift */,
+			);
+			path = ReportViewControllers;
+			sourceTree = "<group>";
+		};
 		56348A8A2A6DB17C005BB635 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -786,6 +839,7 @@
 		5651FC4F2A7A65AE00965300 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				562ABF512A920DFE006FA182 /* ReportViewControllers */,
 				5651FC522A7A65F700965300 /* ProfileViewController.swift */,
 				56DEBEE52A7AAD10000BC687 /* ProfileDailyViewController.swift */,
 				56DEBEE32A7AACFC000BC687 /* ProfileLookViewController.swift */,
@@ -797,6 +851,7 @@
 		5651FC502A7A65B300965300 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				562ABF4C2A92035F006FA182 /* ReportViews */,
 				5651FC6C2A7A69B500965300 /* ProfileUserView.swift */,
 				5651FC662A7A686000965300 /* ProfilePostImageCollectionViewCell.swift */,
 				56C048942A8B8083001BAAB5 /* ProfilePostTextCollectionViewCell.swift */,
@@ -888,6 +943,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		56C048872A8A919E001BAAB5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				56C048882A8A91BE001BAAB5 /* ConnectViewController.swift */,
+				56C0488E2A8AA03A001BAAB5 /* ConnectCheckPopUpViewController.swift */,
+				56C048922A8ABC88001BAAB5 /* ConnectCompletePopUpViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		56C048A72A8C95DE001BAAB5 /* AddPostScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -902,7 +967,7 @@
 			isa = PBXGroup;
 			children = (
 				56C048AF2A8C9D6D001BAAB5 /* AddPostViewController.swift */,
-            );
+			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
@@ -915,18 +980,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-
-		56C048872A8A919E001BAAB5 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				56C048882A8A91BE001BAAB5 /* ConnectViewController.swift */,
-				56C0488E2A8AA03A001BAAB5 /* ConnectCheckPopUpViewController.swift */,
-				56C048922A8ABC88001BAAB5 /* ConnectCompletePopUpViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-
 		56C048AA2A8C95F0001BAAB5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1076,6 +1129,7 @@
 				5690136F2A7FCC7700715D23 /* LoginBackGroundView.swift in Sources */,
 				5626B2D12A57EEB300477EBC /* LoginViewController.swift in Sources */,
 				56DEBEDA2A7A9B24000BC687 /* GameMissionTableViewCell.swift in Sources */,
+				562ABF572A921659006FA182 /* ProfileBlockCancelViewController.swift in Sources */,
 				56348A952A6E87BF005BB635 /* FindPwPopUpViewController.swift in Sources */,
 				561462192A6EE50300C0AC1F /* FindIdViewController.swift in Sources */,
 				0CC33AC62A5281C1001EF4E7 /* ViewController.swift in Sources */,
@@ -1090,15 +1144,19 @@
 				56DEBEE42A7AACFC000BC687 /* ProfileLookViewController.swift in Sources */,
 				0C4EF9942A7B7F3B00539320 /* CoupleSpacePickCollectionViewController.swift in Sources */,
 				0C382E332A5C564000EA08E0 /* CommunityCellBottomButtonView.swift in Sources */,
+				562ABF632A921894006FA182 /* ProfileDoneBlockViewController.swift in Sources */,
 				56C0487C2A8A2CBA001BAAB5 /* SignUpPrivacyTermScrollView.swift in Sources */,
 				56C048892A8A91BE001BAAB5 /* ConnectViewController.swift in Sources */,
 				56C048842A8A7663001BAAB5 /* SignUpDatePicker.swift in Sources */,
 				569013792A80E26500715D23 /* SignUpDateTextField.swift in Sources */,
 				0C684F4C2A78FA4D00A31865 /* CoupleSpaceMainHeaderView.swift in Sources */,
+				562ABF6B2A94C0E3006FA182 /* AlbumImagePickerView.swift in Sources */,
 				0C4D32FD2A68312C00AD5EFF /* CommunityCellDelegate.swift in Sources */,
 				0C4EF9A42A7CE2EC00539320 /* HeartHubTabBarController.swift in Sources */,
+				562ABF652A921C33006FA182 /* ProfileReportReasonTableViewCell.swift in Sources */,
 				0C6F454B2A7003930044EAC8 /* CommentCell.swift in Sources */,
 				0C4EF9A82A8233A100539320 /* CoupleSpaceAlbumCell.swift in Sources */,
+				562ABF5D2A921844006FA182 /* ProfileDoneEditUserStatusView.swift in Sources */,
 				5651FC7A2A7A7C6A00965300 /* GameBackgroundView.swift in Sources */,
 				5690136D2A7FA60800715D23 /* GameClearTableViewCell.swift in Sources */,
 				56D4E6172A814049005215D1 /* SignUpTermTableViewCell.swift in Sources */,
@@ -1114,13 +1172,16 @@
 				0C4EF9902A7A430100539320 /* CoupleSpaceMainViewController.swift in Sources */,
 				0CB49BDF2A69526500C77341 /* LookCell.swift in Sources */,
 				0C4D32F92A6825FF00AD5EFF /* CommunityCellable.swift in Sources */,
+				562ABF4E2A920584006FA182 /* ProfileBlockUserView.swift in Sources */,
 				5690135F2A7E62A200715D23 /* GamePageViewController.swift in Sources */,
+				562ABF5F2A92186C006FA182 /* ProfileDoneReportViewController.swift in Sources */,
 				0CB49BDA2A69234A00C77341 /* LookViewController.swift in Sources */,
 				56DEBEE62A7AAD10000BC687 /* ProfileDailyViewController.swift in Sources */,
 				56C048822A8A501B001BAAB5 /* SignUpTermOfUseViewController.swift in Sources */,
 				56C0488D2A8A9C5B001BAAB5 /* ConnectCheckPopUpView.swift in Sources */,
 				0CB49BDC2A69237400C77341 /* MockData.swift in Sources */,
 				0C4D32F72A6823A600AD5EFF /* DailyDateNoImageCell.swift in Sources */,
+				562ABF552A921587006FA182 /* ProfileBlockCancelView.swift in Sources */,
 				0C6F454F2A701D520044EAC8 /* HeartHubProfileImageView.swift in Sources */,
 				0CC33AC22A5281C1001EF4E7 /* AppDelegate.swift in Sources */,
 				569013732A80167700715D23 /* SignUpBackgroundView.swift in Sources */,
@@ -1133,12 +1194,14 @@
 				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
 				0C4EF99F2A7BF91500539320 /* CoupleSpacePickDataSourceable.swift in Sources */,
 				569E4EEB2A5D40E800B51898 /* SignUpEnterNickNameEmailView.swift in Sources */,
+				562ABF592A9217F8006FA182 /* ProfileReportReasonView.swift in Sources */,
 				56348A632A631283005BB635 /* FindIdView.swift in Sources */,
 				5626B3372A584A3D00477EBC /* SignUpStartDateViewController.swift in Sources */,
 				569E4EE42A5CE18E00B51898 /* SignUpStartDateView.swift in Sources */,
 				56C048912A8ABB99001BAAB5 /* ConnectCompletePopUpView.swift in Sources */,
 				56348A8F2A6E7ECC005BB635 /* FindPwView.swift in Sources */,
 				56C048B22A8C9DF1001BAAB5 /* AddPostView.swift in Sources */,
+				562ABF502A920703006FA182 /* AlertButton.swift in Sources */,
 				5626B3452A597FA200477EBC /* SignUpProfileViewController.swift in Sources */,
 				56348A912A6E8286005BB635 /* FindPwViewController.swift in Sources */,
 				569013612A7E635200715D23 /* GameSegmentControll.swift in Sources */,
@@ -1148,11 +1211,13 @@
 				56348A672A6318B0005BB635 /* FindIdPopUpView.swift in Sources */,
 				5651FC672A7A686000965300 /* ProfilePostImageCollectionViewCell.swift in Sources */,
 				336E0F792A92078D00547013 /* PasswordChangeView.swift in Sources */,
-				5651FC672A7A686000965300 /* ProfilePostCollectionViewCell.swift in Sources */,
+				5651FC672A7A686000965300 /* ProfilePostImageCollectionViewCell.swift in Sources */,
 				5651FC6B2A7A68E200965300 /* ProfileDailyPostDataManager.swift in Sources */,
 				0C684F412A77D24000A31865 /* CommunityCellPagingImageView.swift in Sources */,
 				56C048772A8A02D7001BAAB5 /* DDayCalculator.swift in Sources */,
+				562ABF5B2A921809006FA182 /* ProfileReportReasonViewController.swift in Sources */,
 				5626B34D2A5993A700477EBC /* SignUpTermAgreeViewController.swift in Sources */,
+				562ABF532A920E1A006FA182 /* ProfileBlockUserViewController.swift in Sources */,
 				56C048B02A8C9D6D001BAAB5 /* AddPostViewController.swift in Sources */,
 				5626B34B2A59938700477EBC /* SignUpEnterNickNameEmailViewController.swift in Sources */,
 				569E4EDB2A5C241B00B51898 /* LoginView.swift in Sources */,
@@ -1163,6 +1228,7 @@
 				56C048B42A8DBD0E001BAAB5 /* AddPostButton.swift in Sources */,
 				0C4EF9972A7B966F00539320 /* CoupleSpaceHeartPickCollectionCell.swift in Sources */,
 				565473CB2A8639D2002F526C /* LoginSelectPageButtonStackView.swift in Sources */,
+				562ABF672A94005B006FA182 /* ProfileDoneCancelViewController.swift in Sources */,
 				569E4EE62A5D06C400B51898 /* SignUpProfileView.swift in Sources */,
 				0C4EF99C2A7BF63100539320 /* HeartPickDataSource.swift in Sources */,
 				0C684F452A77D53200A31865 /* CoupleImageBetweenHeartView.swift in Sources */,
@@ -1416,4 +1482,3 @@
 	};
 	rootObject = 0CC33AB62A5281C1001EF4E7 /* Project object */;
 }
-
