@@ -45,13 +45,16 @@ extension ArticleNetwork {
         networkManager.request(endpoint: request) { result in
             switch result {
             case .success(let data):
-                guard let deserializedData: FetchArticleResponseDTO = try? self.decode(from: data) else {
-                    return
+                do {
+                    let deserializedData: FetchArticleResponseDTO = try self.decode(from: data)
+                    
+                    DispatchQueue.main.async {
+                        completion(deserializedData.data)
+                    }
+                } catch {
+                    print(error)
                 }
                 
-                DispatchQueue.main.async {
-                    completion(deserializedData.data)
-                }
                 
             case .failure(let error):
                 self.tokenExpireResolver.validateExpireAccessTokenError(error) {

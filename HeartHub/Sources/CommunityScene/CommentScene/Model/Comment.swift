@@ -10,7 +10,7 @@ import Foundation
 struct Comment: Decodable {
     let commentID: Int
     let username: String
-    let content: String
+    let content: String?
     let replyComment: [Comment]
     let userID: Int
     let heartCount: Int

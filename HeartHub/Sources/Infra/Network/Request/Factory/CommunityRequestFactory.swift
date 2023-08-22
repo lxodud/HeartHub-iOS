@@ -137,7 +137,7 @@ struct CommunityRequestFactory {
     ) -> Requestable {
         return JSONBodyRequest(
             httpMethod: .post,
-            path: "/api/user/\(commentInformation.articleID)/comments",
+            path: "/api/user/boardId/comments",
             headers: ["Authorization": "Bearer " + token],
             jsonBody: commentInformation
         )
@@ -161,7 +161,7 @@ struct CommunityRequestFactory {
     ) -> Requestable {
         return JSONBodyRequest(
             httpMethod: .post,
-            path: "/api/user/board",
+            path: "/api/user/board/comment/good",
             headers: ["Authorization": "Bearer " + token],
             jsonBody: CommentLikeRequestDTO(commentID: commentID)
         )
@@ -208,6 +208,17 @@ struct CommunityRequestFactory {
         return Request(
             httpMethod: .get,
             path: "/api/user/board/\(articleID)/heart/check",
+            headers: ["Authorization": "Bearer " + token]
+        )
+    }
+    
+    static func makeFetchCommentHeartStatusRequest(
+        with commentID: Int,
+        token: String
+    ) -> Requestable {
+        return Request(
+            httpMethod: .get,
+            path: "/api/user/board/comment/\(commentID)/good/check",
             headers: ["Authorization": "Bearer " + token]
         )
     }

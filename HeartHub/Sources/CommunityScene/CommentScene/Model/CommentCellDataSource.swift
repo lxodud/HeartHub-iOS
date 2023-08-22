@@ -63,7 +63,7 @@ extension CommentCellDataSource {
         
         tasks.append(fetchAuthorInformation())
         fetchHeartStatus()
-        content = comment.content
+        content = comment.content ?? ""
         
         return tasks
     }
@@ -72,27 +72,36 @@ extension CommentCellDataSource {
         if heartInformation.status {
             heartInformation.status = false
             heartInformation.count -= 1
+            deleteCommentHeart()
         } else {
             heartInformation.status = true
             heartInformation.count += 1
+            postCommentHeart()
         }
-        
-        postCommentHeart()
-    }
-    
-    func deleteHeart() {
-        
     }
 }
 
 // MARK: - Network
 extension CommentCellDataSource {
-    private func postCommentHeart() {
+    private func deleteCommentHeart() {
+        guard let username = UserInformationRepository().fetchUsername() else {
+            return
+        }
         
+        commentContentNetwork.deleteHeartComment(
+            id: comment.commentID,
+            username: username
+        )
     }
     
+    private func postCommentHeart() {
+        commentContentNetwork.postHeartComment(with: comment.commentID)
+    }
+
     private func fetchHeartStatus() {
-        heartInformation = (false, comment.heartCount)
+        commentContentNetwork.fetchHeartStatus(with: comment.commentID) { isGood in
+            self.heartInformation = (isGood, self.comment.heartCount)
+        }
     }
     
     private func fetchAuthorInformation() -> Cancellable? {

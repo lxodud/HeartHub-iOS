@@ -37,4 +37,27 @@ extension CommentDataSource {
             self.comments = comments
         }
     }
+    
+    func postComment(_ content: String) {
+        guard let username = UserInformationRepository().fetchUsername() else {
+            return
+        }
+        
+        commentNetwork.postComment(
+            username: username,
+            articleID: articleID,
+            content: content
+        )
+        
+        let newComment = Comment(
+            commentID: 0,
+            username: username,
+            content: content,
+            replyComment: [],
+            userID: 0,
+            heartCount: 0
+        )
+        
+        comments.insert(newComment, at: 0)
+    }
 }

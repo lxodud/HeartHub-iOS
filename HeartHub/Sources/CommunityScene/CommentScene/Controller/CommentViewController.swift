@@ -64,6 +64,7 @@ final class CommentViewController: UIViewController {
         configureCommentTextView()
         configureSubview()
         configureLayout()
+        configureAction()
         bind(to: commentDataSource)
         commentDataSource.fetchComment()
     }
@@ -72,6 +73,26 @@ final class CommentViewController: UIViewController {
         dataSource.commentsPublisher = { [weak self] comments in
             self?.comments = comments
         }
+    }
+}
+
+// MARK: - Configure Action
+extension CommentViewController {
+    private func configureAction() {
+        commentPostButton.addTarget(
+            self,
+            action: #selector(tapPostButton),
+            for: .touchUpInside
+        )
+    }
+    
+    @objc
+    private func tapPostButton() {
+        guard let content = commentTextView.text else {
+            return
+        }
+        
+        commentDataSource.postComment(content)
     }
 }
 
@@ -119,6 +140,23 @@ extension CommentViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
+        let tokenRepository = TokenRepository()
+        let networkManager = DefaultNetworkManager()
+        
+        let dataSource = CommentCellDataSource(
+            comment: comments[indexPath.row],
+            commentContentNetwork: CommentContentNetwork(
+                tokenRepository: tokenRepository,
+                networkManager: networkManager
+            ),
+            userNetwork: UserNetwork(
+                tokenRepository: tokenRepository,
+                networkManager: networkManager
+            )
+        )
+        
+        cell.commentCellDataSource = dataSource
+        cell.commentLabel.text = comments[indexPath.row].content
         return cell
     }
 }

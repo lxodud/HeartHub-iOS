@@ -10,13 +10,13 @@ import Foundation
 struct RegisterCommentRequestDTO: Encodable {
     let articleID: Int
     let username: String
-    let conetent: String
-    let parentID: Int
+    let content: String
+    let parentID: Int?
     
     private enum CodingKeys: String, CodingKey {
         case articleID = "boardId"
         case username = "userName"
-        case conetent
+        case content
         case parentID = "parentId"
     }
 }

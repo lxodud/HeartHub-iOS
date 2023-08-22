@@ -57,4 +57,40 @@ extension CommentNetwork {
             }
         }
     }
+    
+    func postComment(
+        username: String,
+        articleID: Int,
+        content: String
+    ) {
+        guard let accessToken = tokenRepository.fetchAccessToken() else {
+            return
+        }
+        
+        let request = CommunityRequestFactory.makeRegisterCommentRequest(
+            with: RegisterCommentRequestDTO(
+                articleID: articleID,
+                username: username,
+                content: content,
+                parentID: nil
+            ),
+            token: accessToken
+        )
+        
+        networkManager.request(endpoint: request) { result in
+            switch result {
+            case .success(_):
+                break
+            case .failure(let error):
+                print(#function)
+                self.tokenExpireResolver.validateExpireAccessTokenError(error) {
+                    self.postComment(
+                        username: username,
+                        articleID: articleID,
+                        content: content
+                    )
+                }
+            }
+        }
+    }
 }

@@ -13,10 +13,15 @@ protocol CommentCellTransitionDelegate: AnyObject {
 
 final class CommentCell: UITableViewCell {
     weak var transitionDelegate: CommentCellTransitionDelegate?
-    var commentCellDataSource: CommentCellDataSource?
+    var commentCellDataSource: CommentCellDataSource? {
+        didSet {
+            bind(to: commentCellDataSource)
+            commentCellDataSource?.fetchCellContents()
+        }
+    }
     
     private let headerView = CommentCellHeaderView()
-    private let commentLabel: UILabel = {
+    let commentLabel: UILabel = {
         let label = UILabel()
         return label
     }()
@@ -57,10 +62,6 @@ final class CommentCell: UITableViewCell {
         dataSource?.heartInformationPublisher = { [weak self] isGood, count in
             self?.headerView.configureHeartInformation((isGood, count.description))
         }
-        
-        dataSource?.contentPublisher = { [weak self] content in
-            self?.commentLabel.text = content
-        }
     }
 }
 
@@ -71,17 +72,19 @@ extension CommentCell: CommentCellHeaderViewDelegate {
     }
     
     func didTapHeartButton() {
-        
+        commentCellDataSource?.checkHeart()
     }
 }
 
 // MARK: Configure UI
 extension CommentCell {
     private func configureSubview() {
-        [headerView, commentLabel, leaveCommentButton].forEach {
+        [headerView, commentLabel].forEach {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
+        
+        headerView.delegate = self
     }
     
     private func configureLayout() {
@@ -116,18 +119,21 @@ extension CommentCell {
             commentLabel.trailingAnchor.constraint(
                 equalTo: heartButtonLeadingAnchor
             ),
-            
-            // MARK: leaveCommentButton Constraint
-            leaveCommentButton.topAnchor.constraint(
-                equalTo: commentLabel.bottomAnchor
-            ),
-            leaveCommentButton.leadingAnchor.constraint(
-                equalTo: commentLabel.leadingAnchor,
-                constant: 30
-            ),
-            leaveCommentButton.bottomAnchor.constraint(
+            commentLabel.bottomAnchor.constraint(
                 equalTo: safeArea.bottomAnchor
             )
+            
+//            // MARK: leaveCommentButton Constraint
+//            leaveCommentButton.topAnchor.constraint(
+//                equalTo: commentLabel.bottomAnchor
+//            ),
+//            leaveCommentButton.leadingAnchor.constraint(
+//                equalTo: commentLabel.leadingAnchor,
+//                constant: 30
+//            ),
+//            leaveCommentButton.bottomAnchor.constraint(
+//                equalTo: safeArea.bottomAnchor
+//            )
         ])
     }
 }
