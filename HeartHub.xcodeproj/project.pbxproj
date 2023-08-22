@@ -67,6 +67,8 @@
 		336E0F792A92078D00547013 /* PasswordChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F782A92078D00547013 /* PasswordChangeView.swift */; };
 		336E0F7B2A9207AD00547013 /* MemberWithdrawalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F7A2A9207AD00547013 /* MemberWithdrawalViewController.swift */; };
 		336E0F7D2A9207EA00547013 /* PasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336E0F7C2A9207EA00547013 /* PasswordChangeViewController.swift */; };
+		338B5EF82A94879E0079C655 /* AlbumImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B5EF72A94879E0079C655 /* AlbumImagePickerViewController.swift */; };
+		33E473252A92672A00C26A2E /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E473242A92672A00C26A2E /* CalendarView.swift */; };
 		561462192A6EE50300C0AC1F /* FindIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561462182A6EE50300C0AC1F /* FindIdViewController.swift */; };
 		5626B2D12A57EEB300477EBC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B2D02A57EEB300477EBC /* LoginViewController.swift */; };
 		5626B3372A584A3D00477EBC /* SignUpStartDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5626B3362A584A3D00477EBC /* SignUpStartDateViewController.swift */; };
@@ -204,6 +206,8 @@
 		336E0F782A92078D00547013 /* PasswordChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeView.swift; sourceTree = "<group>"; };
 		336E0F7A2A9207AD00547013 /* MemberWithdrawalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberWithdrawalViewController.swift; sourceTree = "<group>"; };
 		336E0F7C2A9207EA00547013 /* PasswordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeViewController.swift; sourceTree = "<group>"; };
+		338B5EF72A94879E0079C655 /* AlbumImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlbumImagePickerViewController.swift; path = HeartHub/Sources/CoupleSpaceScene/VIew/AlbumImagePickerViewController.swift; sourceTree = SOURCE_ROOT; };
+		33E473242A92672A00C26A2E /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarView.swift; path = HeartHub/Sources/CoupleSpaceScene/VIew/CalendarView.swift; sourceTree = SOURCE_ROOT; };
 		561462182A6EE50300C0AC1F /* FindIdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindIdViewController.swift; sourceTree = "<group>"; };
 		5626B2D02A57EEB300477EBC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5626B3362A584A3D00477EBC /* SignUpStartDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpStartDateViewController.swift; sourceTree = "<group>"; };
@@ -531,6 +535,8 @@
 			isa = PBXGroup;
 			children = (
 				0C684F442A77D53200A31865 /* CoupleImageBetweenHeartView.swift */,
+				33E473242A92672A00C26A2E /* CalendarView.swift */,
+				338B5EF72A94879E0079C655 /* AlbumImagePickerViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1165,12 +1171,14 @@
 				336E0F732A92042A00547013 /* AlertSetting.swift in Sources */,
 				569013652A7E6CFD00715D23 /* GameMissionViewController.swift in Sources */,
 				0CA858B62A6FB44D00DFCFD5 /* CommunityCellHeaderView.swift in Sources */,
+				338B5EF82A94879E0079C655 /* AlbumImagePickerViewController.swift in Sources */,
 				0C684F432A77D26600A31865 /* DailyDateImageCell.swift in Sources */,
 				0C592A012A6D69AF00C21570 /* PanModalTransitioningDelegate.swift in Sources */,
 				5690136B2A7E6FA400715D23 /* GameClearMissionDataManager.swift in Sources */,
 				0C4EF98E2A7A2BF500539320 /* CoupleSpaceMainButtonView.swift in Sources */,
 				0C4D33012A68317200AD5EFF /* CommunityCellBottomButtonViewDelegate.swift in Sources */,
 				0CC33AC42A5281C1001EF4E7 /* SceneDelegate.swift in Sources */,
+				33E473252A92672A00C26A2E /* CalendarView.swift in Sources */,
 				0C5929F72A6D3EA800C21570 /* PanModalPresentationController.swift in Sources */,
 				56C048802A8A4D83001BAAB5 /* SignUpTermOfUseScrollView.swift in Sources */,
 				56C0488F2A8AA03A001BAAB5 /* ConnectCheckPopUpViewController.swift in Sources */,
