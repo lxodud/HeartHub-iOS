@@ -10,14 +10,14 @@ import UIKit
 final class CommunityCellBottomButtonView: UIView {
     weak var delegate: CommunityCellBottomButtonViewDelegate?
     
-    private let thumbButton: UIButton = {
+    let thumbButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "CommunityThumb"), for: .normal)
         button.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .selected)
         return button
     }()
     
-    private let thumbCountLabel: UILabel = {
+    let thumbCountLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         return label
@@ -29,7 +29,7 @@ final class CommunityCellBottomButtonView: UIView {
         return button
     }()
     
-    private let commentCountLabel: UILabel = {
+    let commentCountLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         return label
@@ -44,7 +44,7 @@ final class CommunityCellBottomButtonView: UIView {
         return stackView
     }()
     
-    private let heartButton: UIButton = {
+    let heartButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "HeartHubEmptyHeart"), for: .normal)
         button.setImage(UIImage(systemName: "HeartHubFillHeart"), for: .selected)

@@ -43,11 +43,9 @@ extension LoginNetwork {
                 }
                 
                 let token = deserializedData.data
-                self.tokenRepository.saveToken(with: token) {
-                    completion()
-                }
+                self.tokenRepository.saveToken(with: token)
                 self.saveCurrentUserInformation(token: token.accessToken, username: id)
-                
+                completion()
             case .failure(let error):
                 print(error)
             }

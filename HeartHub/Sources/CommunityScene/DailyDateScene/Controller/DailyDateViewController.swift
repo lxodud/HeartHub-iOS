@@ -107,7 +107,16 @@ extension DailyDateViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.configureCell(articles[indexPath.row])
+        let dataSource = CommunityCellDataSource(
+            article: articles[indexPath.row],
+            articleContentNetwork: ArticleContentNetwork(
+                tokenRepository: TokenRepository(),
+                networkManager: DefaultNetworkManager()
+            )
+        )
+        
+        cell.communityCellDataSource = dataSource
+        
         return cell
     }
 }

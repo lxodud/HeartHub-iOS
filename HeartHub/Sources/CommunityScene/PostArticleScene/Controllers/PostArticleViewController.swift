@@ -32,6 +32,7 @@ final class PostArticleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         
         configureButtonAction()
         configureInitialSetting()

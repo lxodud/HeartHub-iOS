@@ -9,10 +9,12 @@ import UIKit
 
 final class LookCell: UICollectionViewCell, CommunityCellable {
     weak var delegate: CommunityCellDelegate?
+    var communityCellDataSource: CommunityCellDataSource?
     
     private let headerView = CommunityCellHeaderView()
     private let pagingImageView = CommunityCellPagingImageView()
     private let bottomButtonView = CommunityCellBottomButtonView()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,10 +31,6 @@ final class LookCell: UICollectionViewCell, CommunityCellable {
 extension LookCell {
     func fetchAdjustedHeight() -> CGFloat {
         return pagingImageView.bounds.height
-    }
-    
-    func configureCell(_ data: Article) {
-        headerView.configureContents(data)
     }
 }
 

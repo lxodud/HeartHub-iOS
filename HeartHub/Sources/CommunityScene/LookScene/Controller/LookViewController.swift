@@ -63,7 +63,6 @@ extension LookViewController: UICollectionViewDelegateFlowLayout {
         let size = CGRect(x: 0, y: 0, width: width, height: estimateHeight)
         let dummyCell = LookCell(frame: size)
         
-        dummyCell.configureCell(articles[indexPath.row])
         dummyCell.layoutIfNeeded()
         
         var height = dummyCell.fetchAdjustedHeight()
@@ -97,7 +96,6 @@ extension LookViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.configureCell(articles[indexPath.row])
         return cell
     }
 }

@@ -60,10 +60,10 @@ struct UserRelatedRequestFactory {
         )
     }
     
-    static func makeGetUserInformation(of id: String, token: String) -> Requestable {
+    static func makeGetUserInformation(of id: Int, token: String) -> Requestable {
         return Request(
             httpMethod: .get,
-            path: "/api/user/info/" + id,
+            path: "/api/user/info/" + id.description,
             headers: ["Authorization": "Bearer " + token]
         )
     }

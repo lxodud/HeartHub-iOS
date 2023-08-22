@@ -10,8 +10,12 @@ import Foundation
 final class ImageProvider {
     static let shared = ImageProvider()
     
-    func fetch(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
-        DispatchQueue.global().async {
+    func fetch(
+        from url: URL,
+        queue: DispatchQueue = DispatchQueue.global(),
+        completion: @escaping (Result<Data, Error>) -> Void
+    ) {
+        queue.async {
             guard let imageData = try? Data(contentsOf: url) else {
                 completion(.failure(ImageProviderError.missingImageData))
                 return

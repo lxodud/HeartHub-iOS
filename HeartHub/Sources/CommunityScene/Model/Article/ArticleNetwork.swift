@@ -10,9 +10,9 @@ import Foundation
 final class ArticleNetwork {
     private let tokenRepository: TokenRepository
     private let networkManager: NetworkManager
-    private let decoder = JSONDecoder()
     
-    private var accessToken: String?
+    private let tokenExpireResolver = TokenExpierResolver()
+    private let decoder = JSONDecoder()
     
     init(
         tokenRepository: TokenRepository,
@@ -20,13 +20,6 @@ final class ArticleNetwork {
     ) {
         self.tokenRepository = tokenRepository
         self.networkManager = networkManager
-        fetchAccessToken()
-    }
-    
-    private func fetchAccessToken() {
-        tokenRepository.fetchAccessToken { accessToken in
-            self.accessToken = accessToken
-        }
     }
     
     private func decode<T: Decodable>(from data: Data) throws -> T {
@@ -40,7 +33,7 @@ extension ArticleNetwork {
         with theme: ArticleTheme,
         completion: @escaping ([Article]) -> Void
     ) {
-        guard let accessToken = accessToken else {
+        guard let accessToken = tokenRepository.fetchAccessToken() else {
             return
         }
         
@@ -61,9 +54,10 @@ extension ArticleNetwork {
                 }
                 
             case .failure(let error):
-                self.validateExpireAccessTokenError(error) {
+                self.tokenExpireResolver.validateExpireAccessTokenError(error) {
                     self.fetchArticle(with: theme, completion: completion)
                 }
+                break
             }
         }
     }
@@ -75,7 +69,7 @@ extension ArticleNetwork {
         theme: ArticleTheme,
         completion: @escaping (Result<Data, Error>) -> Void
     ) {
-        guard let accessToken = accessToken else {
+        guard let accessToken = tokenRepository.fetchAccessToken() else {
             return
         }
         
@@ -89,10 +83,10 @@ extension ArticleNetwork {
         
         networkManager.request(endpoint: request) { result in
             switch result {
-            case .success(let data):
+            case .success(let _):
                 break
             case .failure(let error):
-                self.validateExpireAccessTokenError(error) {
+                self.tokenExpireResolver.validateExpireAccessTokenError(error) {
                     self.postArticle(
                         username: username,
                         imageData: imageData,
@@ -109,7 +103,7 @@ extension ArticleNetwork {
 // MARK: Private Method
 extension ArticleNetwork {
     private func fetchArticleDetail(with articleID: Int, completion: @escaping () -> Void) {
-        guard let accessToken = accessToken else {
+        guard let accessToken = tokenRepository.fetchAccessToken() else {
             return
         }
         
@@ -123,70 +117,8 @@ extension ArticleNetwork {
             case .success(let data):
                 completion()
             case .failure(let error):
-                self.validateExpireAccessTokenError(error) {
+                self.tokenExpireResolver.validateExpireAccessTokenError(error) {
                     self.fetchArticleDetail(with: articleID, completion: completion)
-                }
-            }
-        }
-    }
-}
-
-// MARK: Resolve Error
-extension ArticleNetwork {
-    private func validateExpireAccessTokenError(_ error: Error, completion: @escaping () -> Void) {
-        if case NetworkError.requestFail(_, let data) = error {
-            guard let data = data else {
-                return
-            }
-            
-            let deserializedData: RequestFailResponseDTO? = try? self.decode(from: data)
-            
-            if deserializedData?.code == 3000 {
-                self.resolveExpireAccessToken {
-                    completion()
-                }
-            }
-        } else {
-            print(error.localizedDescription)
-        }
-    }
-    
-    private func resolveExpireAccessToken(completion: @escaping () -> Void) {
-        tokenRepository.fetchRefreshToken { refreshToken in
-            guard let refreshToken = refreshToken else {
-                return
-            }
-            
-            let request = UserRelatedRequestFactory.makeReissueTokenRequest(token: refreshToken)
-            
-            self.networkManager.request(endpoint: request) { result in
-                switch result {
-                case .success(let data):
-                    guard let deserializedData: FetchReissueTokenResponseDTO = try? self.decode(from: data)
-                    else {
-                        return
-                    }
-                    
-                    let accessToken = deserializedData.data.newAccessToken
-                    let refreshToken = deserializedData.data.newRefreshToken
-                    let token = Token(accessToken: accessToken, refreshToken: refreshToken)
-                    
-                    self.tokenRepository.saveToken(with: token) {
-                        self.tokenRepository.fetchAccessToken(completion: { accessToken in
-                            guard let accessToken = accessToken else {
-                                return
-                            }
-                            
-                            self.accessToken = accessToken
-                            completion()
-                        })
-                    }
-                    
-                case .failure(let error):
-                    if case NetworkError.requestFail(_, let data) = error {
-                        print(error.localizedDescription)
-                    }
-                    break
                 }
             }
         }

@@ -10,15 +10,17 @@ import UIKit
 final class CommunityProfileView: UIStackView {
     weak var delegate: CommunityProfileViewDelegate?
     
-    private let profileImageView: UIImageView = {
+    let profileImageView: UIImageView = {
         let imageView = HeartHubProfileImageView()
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         return imageView
     }()
     
-    private let profileIdLabel: UILabel = {
+    let profileIdLabel: UILabel = {
         let label = UILabel()
+        label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        label.font = UIFont(name: "Pretendard-SemiBold", size: 16)
         return label
     }()
     
@@ -90,7 +92,7 @@ extension CommunityProfileView {
             profileImageView.heightAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.heightAnchor,
                 multiplier: 0.5
-            ),
+            )
         ])
     }
 }

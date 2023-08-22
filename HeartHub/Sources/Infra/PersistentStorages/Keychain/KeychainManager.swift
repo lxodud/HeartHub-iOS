@@ -8,50 +8,43 @@
 import Foundation
 
 final class KeychainManager {
-    private let queue = DispatchQueue.global()
+    
 }
 
 // MARK: Public Interface
 extension KeychainManager {
+    @discardableResult
     func fetchItem(
-        with query: [String: Any],
-        completion: @escaping (OSStatus, CFTypeRef?) -> Void
-    ) {
-        queue.async {
-            var item: CFTypeRef?
-            let status = SecItemCopyMatching(query as CFDictionary, &item)
-            completion(status, item)
-        }
+        with query: [String: Any]
+    ) -> AnyObject? {
+        var item: CFTypeRef?
+        let status = SecItemCopyMatching(query as CFDictionary, &item)
+        return item
     }
     
+    @discardableResult
     func addItem(
-        with attributes: [String: Any],
-        completion: @escaping (OSStatus) -> Void
-    ) {
-        queue.async {
-            let status = SecItemAdd(attributes as CFDictionary, nil)
-            completion(status)
-        }
+        with attributes: [String: Any]
+    ) -> OSStatus {
+        let status = SecItemAdd(attributes as CFDictionary, nil)
+        return status
+        
     }
     
+    @discardableResult
     func updateItem(
         with query: [String: Any],
-        as attributes: [String: Any],
-        completion: @escaping (OSStatus) -> Void
-    ) {
-        queue.async {
-            let status = SecItemUpdate(query as CFDictionary, attributes as CFDictionary)
-            completion(status)
-        }
+        as attributes: [String: Any]
+    ) -> OSStatus {
+        let status = SecItemUpdate(query as CFDictionary, attributes as CFDictionary)
+        return status
     }
     
+    @discardableResult
     func deleteItem(
-        with query: [String: Any],
-        completion: @escaping (OSStatus) -> Void
-    ) {
-        queue.async {
-            let status = SecItemDelete(query as CFDictionary)
-            completion(status)
-        }
+        with query: [String: Any]
+    ) -> OSStatus {
+        let status = SecItemDelete(query as CFDictionary)
+        return status
     }
 }

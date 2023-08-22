@@ -9,9 +9,9 @@ import UIKit
 
 protocol CommunityCellable: UICollectionViewCell, CommunityCellHeaderViewDelegate, CommunityCellBottomButtonViewDelegate {
     var delegate: CommunityCellDelegate? { get set }
+    var communityCellDataSource: CommunityCellDataSource? { get set }
     
     func fetchAdjustedHeight() -> CGFloat
-    func configureCell(_ data: Article)
 }
 
 // MARK: Profile View Delegate Implementation

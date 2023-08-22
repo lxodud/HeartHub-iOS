@@ -35,7 +35,7 @@ final class TokenRepository {
 
 // MARK: Public Interface
 extension TokenRepository {
-    func saveToken(with token: Token, completion: (() -> Void)? = nil) {
+    func saveToken(with token: Token) {
         guard let accessToken = convertTokenTokSecValueData(token: token.accessToken),
               let refreshToken = convertTokenTokSecValueData(token: token.refreshToken)
         else {
@@ -45,29 +45,15 @@ extension TokenRepository {
         let accessTokenAttributesWithData = self.accessTokenAttributes.merging(accessToken) { _, _ in }
         let fullRefreshTokenAttributesWithData = self.refreshTokenAttributes.merging(refreshToken) { _, _ in }
         
-        self.keychainManager.addItem(
-            with: accessTokenAttributesWithData,
-            completion: { status in
-                debugPrint("add access: \(status)")
-                guard status != errSecDuplicateItem else {
-                    self.updateToken(with: token)
-                    return
-                }
-                
-                completion?()
-            })
+        let accessStatus = keychainManager.addItem(with: accessTokenAttributesWithData)
         
-        self.keychainManager.addItem(
-            with: fullRefreshTokenAttributesWithData,
-            completion: { status in
-                debugPrint("add refresh: \(status)")
-                guard status != errSecDuplicateItem else {
-                    self.updateToken(with: token)
-                    return
-                }
-                
-                completion?()
-            })
+        
+        
+        let refreshStatus = keychainManager.addItem(with: fullRefreshTokenAttributesWithData)
+        
+        if accessStatus == errSecDuplicateItem || refreshStatus == errSecDuplicateItem {
+            updateToken(with: token)
+        }
     }
     
     func updateToken(with token: Token, completion: (() -> Void)? = nil) {
@@ -77,72 +63,41 @@ extension TokenRepository {
             return
         }
         
-        self.keychainManager.updateItem(
-            with: self.accessTokenAttributes,
-            as: accessToken,
-            completion: { status in
-                debugPrint("update: \(status)")
-                // TODO: Handling Result
-                
-                completion?()
-            })
+        let _ = keychainManager.updateItem(with: self.accessTokenAttributes, as: accessToken)
 
-        self.keychainManager.updateItem(
-            with: self.refreshTokenAttributes,
-            as: refreshToken,
-            completion: { status in
-                debugPrint("update: \(status)")
-                // TODO: Handling Result
-                
-                completion?()
-            })
+        let _ = keychainManager.updateItem(with: self.refreshTokenAttributes, as: refreshToken)
     }
     
-    func fetchAccessToken(completion: @escaping (String?) -> Void) {
+    func fetchAccessToken() -> String? {
         let query = self.accessTokenAttributes.merging(fetchQuery) { _, _ in }
         
-        keychainManager.fetchItem(
-            with: query,
-            completion: { status, item in
-                guard let data = item as? Data,
-                      let token = String(data: data, encoding: .utf8)
-                else {
-                    completion(nil)
-                    return
-                }
-                
-                completion(token)
-            })
+        let item = keychainManager.fetchItem(with: query)
+        
+        guard let data = item as? Data,
+              let token = String(data: data, encoding: .utf8)
+        else {
+            return nil
+        }
+        
+        return token
     }
     
-    func fetchRefreshToken(completion: @escaping (String?) -> Void) {
+    func fetchRefreshToken() -> String? {
         let query = self.refreshTokenAttributes.merging(fetchQuery) { _, _ in }
         
-        keychainManager.fetchItem(
-            with: query,
-            completion: { status, item in
-                guard let data = item as? Data,
-                      let token = String(data: data, encoding: .utf8)
-                else {
-                    completion(nil)
-                    return
-                }
-                
-                completion(token)
-            })
+        let item = keychainManager.fetchItem(with: query)
+        
+        guard let data = item as? Data,
+              let token = String(data: data, encoding: .utf8)
+        else {
+            return nil
+        }
+        
+        return token
     }
     
     func deleteToken() {
-        keychainManager.deleteItem(
-            with: accessTokenAttributes,
-            completion: { status in
-               print("access delete: \(status)")
-            })
-        
-        keychainManager.deleteItem(
-            with: refreshTokenAttributes,
-            completion: { status in
-                print("refresh delete: \(status)")
-            })
+        keychainManager.deleteItem(with: accessTokenAttributes)
+        keychainManager.deleteItem(with: refreshTokenAttributes)
     }
 }

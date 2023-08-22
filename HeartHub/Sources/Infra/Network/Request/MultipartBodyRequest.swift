@@ -57,6 +57,8 @@ struct MultipartBodyRequest: MultipartBodyRequestable {
             requestData.appendString("\r\n")
         }
         
+        requestData.appendString("\r\n--\(boundary.uuidString)--\r\n")
+        
         urlRequest.httpBody = requestData
         
         return urlRequest

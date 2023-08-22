@@ -9,6 +9,7 @@ import UIKit
 
 final class DailyDateNoImageCell: UICollectionViewCell, CommunityCellable {
     weak var delegate: CommunityCellDelegate?
+    var communityCellDataSource: CommunityCellDataSource?
     
     private let headerView = CommunityCellHeaderView()
     private let bottomButtonView = CommunityCellBottomButtonView()
@@ -38,10 +39,6 @@ extension DailyDateNoImageCell {
         height += bottomButtonView.bounds.height
         
         return height
-    }
-    
-    func configureCell(_ data: Article) {
-        headerView.configureContents(data)
     }
 }
 
